@@ -1,4 +1,4 @@
-# CLAUDE.md — 1066 Test Mod (EU5 total conversion)
+﻿# CLAUDE.md — 1066 Test Mod (EU5 total conversion)
 
 ## What this is
 A total conversion moving Europa Universalis V to **1066**, the best known of
@@ -158,6 +158,45 @@ the engine notices; everything else needs a check.
     exception.
 - English only, including comments. Tabs for indentation.
 
+### Scope, tags and names — three things that fail quietly
+
+**`prev` is exactly ONE scope hop, and only scope-CHANGING blocks count as
+hops.** `if` / `limit` / `AND` / `OR` / `NOT` are transparent, so the nesting on
+screen is not the nesting `prev` walks. Two hops down —
+`c:X = { … situation:Y = { var:target = { … prev } } }` — it lands on the
+*situation*, and the engine says so precisely: `Left side and right side during
+comparison were of different types (left was 'country', right was 'situation')`
+(`jomini_script_system.cpp:252`). This shipped in all three phases of Mongol
+Resurgence, inherited from a reference mod that had it too, and it is RARE in
+the log because the gate above it short-circuits nearly every tick — testing
+will not surface it. Going up more than one hop: `save_scope_as` + `scope:x`,
+never `prev.prev` (zero vanilla uses). Mongol Resurgence's harness has a scope
+walker with a canary for this; port it.
+
+**A tag that is DEFINED but holds no land is brought onto the map by
+`change_location_owner` alone.** No formable, no `create_country_from_location`.
+Vanilla revives SKE — landless at 1337, identity-only block in
+`setup/countries/_scandinavia.txt` — with a plain
+`location:asbo = { change_location_owner = c:SKE }`
+(`events/DHE/flavor_swe_dan.txt:4`). The `culture_definition` and
+`religion_definition` fields in a `setup/countries` block exist precisely so the
+engine can instantiate a tag that comes into existence later.
+`create_country_from_location` (`effects.log:1230`) is the OTHER tool: it makes
+a country with a GENERATED tag, which is what vanilla wants for Red Turban
+splinters and wokou republics and what you do NOT want when the successor must
+be recognisable. Choose by whether the new country needs an identity.
+
+**A country's displayed name may never read its NAME key.** Name is composed by
+`common/customizable_localization/country_name_construction.txt`, first matching
+branch wins, and one of those branches is `government_type = steppe_horde` →
+`"$PREFIX$ $ADJ$ $RANK$"`. So a horde's map name is built from its ADJECTIVE and
+its RANK word and the NAME key is never consulted. RANK is itself chosen by
+`country_ranks.txt`, also first-match: `rank_empire_horde` sits at line 306 and
+the plain `rank_empire` fallback at 625. Editing the NAME key of such a country
+does nothing at all, with no error. This matters here more than in a normal
+mod — 1066 is full of tribes, hordes and theocracies, and every one of them may
+compose its name from somewhere other than where you are looking.
+
 ### When the game reports something
 Decode it with `docs/EU5-ERROR-DECODER.md` before investigating from scratch;
 16 signatures are already explained there, two of them as *unfixable, accept
@@ -174,6 +213,16 @@ project scanned zero files for weeks while reporting clean.
 **When the game finds something the harness did not, that is two commits: the
 fix, and the check.** Prove every new check against a known positive — break
 the fix, watch it fail, restore. A check never seen failing is untested.
+
+**When a check reports "not referenced", verify the CHECK's coverage before
+trusting it.** A reachability check is only as good as the syntaxes it knows.
+Ours matched `trigger_event_silently = X` and missed the delayed block form
+`trigger_event_silently = { id = X years = N }` — it then reported 11 healthy
+events in another mod as never fired, and the same blind spot exists in the
+ENGINE's own load-time validator, which calls such an event `orphaned` while
+vanilla itself ships 812 events fired only that way. Two independent validators
+were wrong about the same construct. So: an unreferenced-looking thing is a
+hypothesis about the checker first and about the code second.
 
 **Raise `min_count` as content lands.** The harness ships with most checks at
 `min_count = 1` and reports `SKIP` while the repo is empty, which is honest but

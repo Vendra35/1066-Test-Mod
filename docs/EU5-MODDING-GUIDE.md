@@ -1,4 +1,4 @@
-# Creating a Europa Universalis V Mod — A Field Guide
+﻿# Creating a Europa Universalis V Mod — A Field Guide
 
 > **Carried in from the Mongol Resurgence project.** Every rule here was paid
 > for by a real bug or a real verification against vanilla; the examples name
@@ -469,6 +469,27 @@ An AI will not conquer on theme without help. Three cooperating layers:
   back-to-back, so the player received a reward and lost it in the same instant.
   When buff and reward tiers coexist, be explicit about which is temporary
   (stripped by the granting phase's own `on_ending`) and which is not.
+
+- **A `progressbar` reading a script variable MUST wrap `GetValue` in
+  `FixedPointToFloat(...)`.** `value` takes a float; a script variable reads
+  back as fixed-point, so the bare
+  `…MakeScope.GetVariable('X').GetValue` resolves to **0** and the bar sits
+  empty forever — no error, no log line, the panel simply looks finished at
+  zero. Mongol Resurgence shipped two bars this way and the feature was written
+  off as "progress bars don't work in EU5" for the whole project, until vanilla
+  was actually read. Every vanilla bar that reads a script variable wraps it,
+  with zero exceptions:
+  - `panels/situation/italian_wars.gui:326` — the same construct on a situation
+    variable
+  - `panels/disaster/decline_of_majapahit.gui:196` — the minimal form,
+    `value = "[FixedPointToFloat(….GetVariable('demak_progress').GetValue)]"`
+  - `panels/situation/the_revolution.gui:115` — adds
+    `Multiply_float(…, '(float)100')`, which is needed ONLY when the underlying
+    value is 0–1. A score already stored 0–100 needs no scaling, just
+    `min = 0` / `max = 100`.
+  The general lesson is bigger than the wrapper: when a GUI widget shows nothing
+  and logs nothing, suspect a TYPE mismatch in the expression before suspecting
+  the widget.
 
 ## 9. Verify like you don't trust yourself — because you shouldn't
 

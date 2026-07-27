@@ -334,6 +334,97 @@ for kind, name in sorted(refs):
 # references (9 locations, 1 region). Raise this as region work adds more.
 check("regions/areas/locations exist", count, probs, min_count=10)
 
+# --------------------------------------------------------------- scopes ---
+# `prev` is ONE scope hop, and only scope-CHANGING blocks count as hops:
+# if / limit / AND / OR / NOT are transparent, so the nesting on screen is not
+# the nesting prev walks. Two hops down (c:X -> situation:Y -> var:target) it
+# lands on the SITUATION, and the engine reports
+#   "left was 'country', right was 'situation'"  jomini_script_system.cpp:252
+# That shipped in all three phases of the previous project and is RARE in the
+# log, because the gate above it short-circuits nearly every tick — it cannot
+# be relied on to surface in testing, which is exactly why it is a check.
+_LINKS = {"owner", "top_owner", "ruler", "heir", "consort", "capital", "overlord",
+          "top_overlord_or_this", "culture", "religion", "market", "province",
+          "location", "area", "region", "this", "root", "prev", "from", "dynasty",
+          "defender_leader", "attacker_leader", "employer", "country", "controller"}
+_PREF = re.compile(r"^(c|scope|var|situation|region|area|location|culture|religion|"
+                   r"scripted_geography|province|continent|sub_continent|character|"
+                   r"trait|building|government_type|culture_group|casus_belli):")
+_ITER = re.compile(r"^(every|any|random|ordered)_")
+# scope:/var: are deliberately absent — their type is not knowable from the
+# text, so they are never flagged.
+_NOTC = re.compile(r"^(situation|region|area|location|scripted_geography|culture|"
+                   r"religion|province|continent|sub_continent|character|dynasty|"
+                   r"trait|building):|^(every|any|random|ordered)_"
+                   r"(location|area|region|province|character|sub_unit|unit|building)")
+_NOTCL = {"capital", "ruler", "heir", "consort", "culture", "religion", "market",
+          "province", "location", "area", "region", "dynasty"}
+_CT = re.compile(r"^\s*(has_truce_with|top_overlord_or_this|is_subject_of|is_neighbor_of|"
+                 r"is_at_war_with|is_rival_of|cancel_subject|target|first|second|this|"
+                 r"overlord|owner|top_owner)\s*\??=\s*prev\s*$")
+_OPEN = re.compile(r"^\s*([A-Za-z0-9_:.\-]+)\s*\??=\s*\{\s*$")
+
+
+def _prev_findings(src, rel):
+    found, seen, stack, depth = [], 0, [], 0
+    for n, raw in enumerate(src.splitlines(), 1):
+        line = re.sub(r"#.*", "", raw)
+        if not line.strip():
+            continue
+        if _CT.match(line):
+            seen += 1
+            parent = stack[-2][0] if len(stack) >= 2 else "<file root>"
+            if _NOTC.match(parent) or parent in _NOTCL:
+                found.append(f"{rel}:{n}: prev resolves to '{parent}', not a country"
+                             f" -> {line.strip()[:48]}")
+        m = _OPEN.match(line)
+        if m:
+            depth += 1
+            k = m.group(1)
+            if _PREF.match(k) or _ITER.match(k) or k in _LINKS:
+                stack.append((k, depth))
+            continue
+        depth += line.count("{")
+        for _ in range(line.count("}")):
+            if stack and stack[-1][1] == depth:
+                stack.pop()
+            depth -= 1
+    return found, seen
+
+
+# Known positive: the exact shape that shipped broken, so a walker that stops
+# walking cannot pass this check vacuously. A check never seen failing is
+# untested — this one fails on demand, every run.
+_canary = """
+c:XXX = {
+	if = {
+		limit = {
+			situation:some_situation = {
+				var:target_country = {
+					NOT = {
+						top_overlord_or_this ?= prev
+					}
+				}
+			}
+		}
+	}
+}
+"""
+assert _prev_findings(_canary, "canary")[0], "prev scope walker is broken — canary not flagged"
+assert not _prev_findings(_canary.replace("?= prev", "?= c:XXX"), "canary")[0],     "prev scope walker false-positives on the fixed form"
+
+probs, count = [], 0
+for p, s in code.items():
+    f, seen = _prev_findings(s, os.path.relpath(p, MOD).replace(os.sep, "/"))
+    probs += f
+    count += seen
+# prev.prev has zero uses anywhere in vanilla, so it is not attested syntax.
+for p, s in code.items():
+    for _ in re.finditer(r"prev\s*\.\s*prev|prevprev", strip_comments(s)):
+        probs.append(f"{os.path.relpath(p, MOD)}: prev.prev is unattested syntax")
+# Raise as script content lands; today the repo is almost all setup data.
+check("prev lands on a country where one is required", count, probs, min_count=0)
+
 print()
 if fails:
     print(f"RESULT: {len(fails)} check(s) with findings: {', '.join(fails)}")

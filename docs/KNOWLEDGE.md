@@ -1,4 +1,4 @@
-# Project knowledge
+﻿# Project knowledge
 
 > Discoveries specific to THIS project, written down the moment they are made.
 >
@@ -516,13 +516,30 @@ thing to observe.
   age get designed — and it is designed from what hurt, not from a guess.
 - **Does the engine read `START_DATE` from all three defines trees?** We mirror
   because the evidence is split. First launch answers it.
-- **Database operation prefixes — largely answered.** Measured across 20
-  workshop mods in the reference project: 599 `REPLACE:`, 295 `TRY_INJECT:`,
-  190 `INJECT:`, 116 `TRY_REPLACE:`. Multiple shipped mods rely on them, so they
-  work. Every single use is under `in_game/common/…` — advances, prices, laws,
-  generic_actions, static_modifiers. **Zero uses anywhere under `setup/`**, so
-  they are not the answer for country data; a new filename in `setup/start/` is
-  (see the setup section above). Still untested by us in our own files.
+- **Database operation prefixes — ANSWERED, and now tested in our own code.**
+  Measured across 20 workshop mods in the reference project: 599 `REPLACE:`,
+  295 `TRY_INJECT:`, 190 `INJECT:`, 116 `TRY_REPLACE:`. Every single use is
+  under `in_game/common/…` — advances, prices, laws, generic_actions,
+  static_modifiers. **Zero uses anywhere under `setup/`**, so they are not the
+  answer for country data; a new filename in `setup/start/` is (see the setup
+  section above).
+  **Our own REAI mod uses them and works**: `TRY_INJECT:castle = { … }` through
+  `in_game/common/building_types/zz_REAI_building_adjustments_addon.txt`, and
+  `TRY_REPLACE:call_parliament = { … }` in `generic_actions/`. That is the
+  pattern to copy — it edits one database entry instead of freezing a vanilla
+  file.
+  **And the cost of NOT using them is now measured too.** The Prussian Destiny
+  whole-file-overrides `customizable_localization/country_name_construction.txt`;
+  diffed against vanilla, its copy silently DELETES vanilla's `ROM_republic` and
+  `BYZ_greek` naming branches. No error, no log line — the Roman republic and
+  Byzantine Greek names just stop existing for anyone running that mod. For a
+  conversion touching hundreds of vanilla databases this is the whole difference
+  between patch-survivable and quietly-broken-on-1.4.
+  **Known limit:** files whose entries are evaluated FIRST-MATCH-WINS
+  (`country_name_construction.txt`, `country_ranks.txt`) cannot always be fixed
+  by injection, because an appended branch lands after the one that already
+  matched. There a whole-file override may be unavoidable — but then it is a
+  decision, taken with the diff in hand, not a default.
 - **`replace_paths`** in `metadata.json` → `game_custom_data` declares vanilla
   paths to ignore entirely. Present but empty in a published conversion. For a
   conversion this is how you drop vanilla countries wholesale.
