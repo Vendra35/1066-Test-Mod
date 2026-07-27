@@ -18,9 +18,29 @@ Nothing is built yet. This file holds the RULES. It does not describe an
 architecture, because there is no architecture — that section gets written when
 the first real systems exist, and is updated as a by-product of each change.
 
-**Scope discipline:** the first playable target is regional depth, not global
-fidelity. A world where one region is fully realised and the rest is
-vanilla-ish ships in months; "the whole map at 1066 fidelity" does not.
+**Scope: the whole map, historically, in two phases.** The target is a real
+overhaul — every region at 1066, not one region deep and the rest borrowed. That
+is a large target, so it is reached in an order where the world is playable
+throughout rather than at the end.
+
+**Phase 1 — make the world work.** Override `main_menu/setup/start/10_countries.txt`
+wholesale, built on Location Painter's vanilla template so no territory is lost,
+carrying **no `ruler_term` entries at all** and giving every country
+`government = { ruler = random }`. That single change clears all three defects a
+1066 start currently has: rulers aged about -250, 6885 "future date" parse
+errors, and the `ruler_term_container` collisions. The world ends up full,
+correct in extent, and playable — just not yet peopled by the right individuals.
+
+**Phase 2 — make it historical.** Replace `ruler = random` region by region with
+real rulers, characters and dynasties, adjusting territory where 1066 differs
+from 1337. Each region is independent and each is a shippable increment.
+
+Two things keep this honest. Phase 1 is a prerequisite, not a shortcut: skipping
+it means no playable build until every ruler is written, and vanilla only
+supplies 188 characters who are adults in 1066 against 1566 countries holding
+territory. And Phase 2 is where "historically" is actually earned — a region is
+not done because it has borders, it is done when the people on the throne are
+the people who were there.
 
 ## REQUIRED SETUP
 Two read-only reference trees, both outside this repo. Detect, never assume,
@@ -45,6 +65,26 @@ ships is `loading_screen/common/defines/`, and `00_defines.txt` there is where
 `START_DATE` and `END_DATE` live. This file said `main_menu/common/` until the
 first session checked, which is exactly the kind of confident wrong path that
 produces a folder the engine never reads and no error anywhere.
+
+### Everything else that is already available — look here before asking
+
+Nothing in this list has to be re-derived. `docs/KNOWLEDGE.md` carries the full
+table with what each is good for.
+
+| Where | What |
+|---|---|
+| `docs/EU5-Vanilla-Script-Docs/` | **the authority** — every legal trigger, effect, scope link, modifier tag, on_action, and the GUI data types |
+| `docs/*.pdf` | 34 wiki pages saved offline: Setup / Country / Character / Event / Situation / Action / Law / War / Localization / Mod structure modding, plus every continent and subcontinent |
+| `C:\Users\Desktop\eu5-modding-project-1.3.11\…` | 11,631 files — `reference_official_defines/types/` (14 official type files), `reference_mods/` (20 workshop mods), a full 1.3.11 game copy, and an error-log filter with 663 known-vanilla signatures |
+| `C:\Users\Desktop\Bronze Era Modu Total Overhaul` | published conversion — the attested way to move `START_DATE` and rebuild `setup/start` |
+| `mod/Mongol Resurgence` | own mod — situation/state-machine/failsafe shapes, a mature harness, a nine-session test log |
+| `mod/867 Total Conversion Test Mod` | own earlier attempt — its `EU5_MOD_MEMORY.md` found the setup BOM crash before this project did |
+
+PDFs are read with `pdftotext -layout "<file>.pdf" -`, scoped with awk. The Read
+tool cannot render them here. **The wiki is a source, not the authority** — it is
+banner-marked "last verified for version pre-release" and its Country modding
+page is visibly thinner than the game. Where it and the script docs disagree, the
+script docs win; where it and vanilla source disagree, vanilla wins.
 
 ## Verification — read this before writing anything
 
@@ -104,8 +144,18 @@ the engine notices; everything else needs a check.
   vanish. A published total conversion has 20 files in exactly that state.
 - Loc values must sit on ONE physical line. A literal `\n` that becomes a real
   newline splits the entry and the game drops it.
-- Files: UTF-8 **with BOM** for `.txt` and `.yml`. `.gui` files carry no BOM
-  (vanilla ships 483 and only 49 have one).
+- Files: UTF-8 **with BOM** for `.txt` and `.yml` — with two exceptions, both
+  measured against vanilla, both enforced by the harness:
+  - `.gui` carries no BOM (vanilla ships 483 and only 49 have one).
+  - **`main_menu/setup/start/` carries NO BOM.** All 25 vanilla files there are
+    BOM-free, and so are all 25 of a published conversion's. Everywhere else is
+    the opposite: advances 215/215 have one, templates 198/205, situations
+    23/23, on_action 21/21, defines and age 1/1. A BOM in a setup file is not a
+    silent failure — the parser reads it as a token and gives up on the file
+    (`pdx_persistent_reader.cpp:289`, "Unexpected token"), and in one recorded
+    case crashed the game while loading a new game. This project shipped exactly
+    that bug once, because this rule used to say "BOM for .txt" with no
+    exception.
 - English only, including comments. Tabs for indentation.
 
 ### When the game reports something

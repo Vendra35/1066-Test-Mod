@@ -68,6 +68,75 @@ still balanced, so no other check caught it.
 
 ---
 
+### `jomini_script_system.cpp:252 — Script system error! untyped trigger [ Scoped object of type 'country' is not valid (Country 'Country' (---)) ], Script location: <unknown>:0`
+**DECODED — it is downstream of broken ruler data.**
+**Was seen:** ~30,000 lines in ten seconds of play on a 1066 start against
+vanilla's 1337 `setup/start`, filling `error.log` and five rotations. Never
+during load; it began about five minutes into play. `---` is the null tag.
+**Cause:** the setup data described people who did not exist yet. Once
+`tools/build_setup.py` stripped the future-dated `ruler_term` chains and gave
+every country a `ruler = random`, the flood **stopped completely** — confirmed
+in game. Nothing else changed, so the ruler data was the whole of it.
+**Fix:** do not leave a country holding a ruler the engine could not seat.
+`build_setup.py` asserts exactly one ruler per country for this reason.
+**A hypothesis that was wrong, kept as a warning:** `ADULT_AGE = 16` made it look
+certain that negative-age rulers would force every country into regency and spam
+`in_regency_yearly_pulse`. The arithmetic was right and the conclusion was wrong
+— the game showed no regency anywhere. Roughly 13 lines per country
+(30143 / 2337) also looked like a per-country yearly pulse. Both were plausible;
+neither was the mechanism. The signature was only ever closed by changing the
+data and watching the log.
+
+## Setup / database
+
+### `pdx_persistent_reader.cpp:289 — Error: "Unexpected token: <invisible>, near line: N" in file: "setup/start/<file>.txt"`
+**Means:** the file starts with a UTF-8 BOM and `setup/start/` does not tolerate
+one. The parser reads `EF BB BF` as a token and abandons the file. In the log
+the token prints as nothing at all, or as `ï»¿` if something decoded it as
+Latin-1 — either way an "unexpected token" you cannot see in your editor is a
+BOM until proven otherwise.
+**Consequence is worse than an error line.** The file is silently inert; a
+sibling project had it crash the game outright while loading a new game.
+**Fix:** strip the first three bytes.
+```python
+raw = open(p, "rb").read()
+open(p, "wb").write(raw[3:] if raw[:3] == b"\xef\xbb\xbf" else raw)
+```
+**Rule:** `main_menu/setup/start/` is the one BOM-free `.txt` tree — 25 of 25
+vanilla files and 25 of 25 in a published conversion. Everywhere else wants the
+BOM. `tools/verify_mod.py` now enforces both directions.
+**Cost us a false conclusion once:** a probe file written with a BOM did nothing
+in game, and the result was briefly read as "additive setup files cannot
+redefine a country". The file had never been parsed. If a setup file appears to
+do nothing, check its first three bytes before concluding anything about the
+mechanism.
+
+### `pdx_persistent_reader.cpp:289 — Error: "Future start date specified: <date>, near line: N" in file: "setup/start/10_countries.txt"`
+**Means:** the start date was moved earlier than the setup data was written for,
+so entries dated after `START_DATE` are rejected as being in the future. On a
+1066 start against vanilla's 1337 setup this fires 6885 times in one load —
+3738 "Future start date" and 3147 "Future end date" — almost all of them
+`ruler_term` entries in the regnal history chains.
+**Not a defines bug.** The calendar moved correctly; the data did not move with
+it.
+**Fix:** ship the affected countries' setup with dates at or before the start
+date. Cannot be fixed by deleting vanilla's entries without a whole-file
+override of `10_countries.txt`, and that empties the map — see the additive
+approach in `docs/KNOWLEDGE.md`.
+
+### `ruler_term_container.cpp:109 — Ruler term is active but there are subsequent ruler terms, please fix; TAG: <character> (start date: 1.1.1)`
+**Means:** the downstream half of the signature above. When a `ruler_term`'s
+dates are rejected as future, the term does not vanish — it collapses to
+`start date: 1.1.1` and so reads as active from the beginning of time. Several
+terms per country then claim to be active at once and the container complains.
+`SPL` showed three at once (`sax_heinrich_the_proud`, `spl_welf_i_altdorf`,
+`spl_welf_ii_altdorf`), all at `1.1.1`.
+**The `1.1.1` in the message is the tell** — no vanilla file contains that date.
+Seeing it means a date was discarded, not authored.
+**Does NOT change who rules.** The current ruler comes from `ruler = ` in the
+same government block, which is why a 1066 start still shows the 1337 monarch
+rather than whichever term won the collision.
+
 ## Localisation
 
 ### `localization_reader.cpp:451 — Missing colon (:) separator at line N and column M`

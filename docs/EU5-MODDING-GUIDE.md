@@ -97,7 +97,11 @@ countries = { countries = {
 ```
 
 Anything no country claims simply stays empty — which is how a mod ships a
-playable world covering one region only.
+playable world covering one region only. Note the corollary: this file is a
+whole-file override, so **every country you want to keep must be listed**.
+Omission is deletion. A conversion that wants a full world therefore starts from
+vanilla's assignments rather than a blank sheet; EU5 Location Painter ships
+exactly that as a template (1566 countries, 13,588 assigned locations).
 
 Three layers, in increasing cost:
 1. **Replace `setup/start`** — required, and sufficient for a playable world.

@@ -23,6 +23,8 @@ project tractable, carried in on day one instead of being rediscovered.
 | `docs/EU5-ERROR-DECODER.md` | error.log signature → what it means → the fix. Check here before investigating any log line |
 | `docs/EU5-MODDING-GUIDE.md` | General EU5 field guide — situations, events, wars, geography, localisation, GUI, and the verification discipline |
 | `docs/KNOWLEDGE.md` | This project's own discoveries and decisions, with how each was established |
+| `docs/PHASE-2-PLAN.md` | How 1066 becomes historical: the three mechanisms, the region order, and the situation backlog for 1066–1337 |
+| `docs/HANDOFF.md` | **Start here when resuming.** What works, what is untested, the traps that already cost time, and the next step |
 | `tools/verify_mod.py` | Static verification harness — run after every change |
 
 The guide and the decoder were carried in from the Mongol Resurgence project and

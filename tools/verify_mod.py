@@ -99,13 +99,34 @@ if not CONTENT:
           "      min_count as content lands, or the greens below mean nothing.\n")
 
 # ------------------------------------------------------------ file hygiene ---
-probs = [os.path.relpath(p, MOD) for p in all_files
-         if open(p, "rb").read(3) != b"\xef\xbb\xbf"]
-check("BOM on .txt and .yml", len(all_files), probs, min_count=1)
+# setup/start is a BOM-FREE ZONE and the only one among .txt trees. All 25
+# vanilla files there carry no BOM, nor do all 25 of a published conversion's,
+# while everywhere else is overwhelmingly BOM'd (advances 215/215, templates
+# 198/205, situations 23/23, on_action 21/21). A BOM there is read as a token:
+#   pdx_persistent_reader.cpp:289: Error: "Unexpected token: <BOM>" in file:
+#   "setup/start/50_1066_rulers.txt"
+# and the whole file is dropped — one recorded case crashed a new game outright.
+# This check used to demand a BOM on every .txt and so enforced that bug.
+BOM = b"\xef\xbb\xbf"
+SETUP = "/setup/start/"
 
-# .gui is the exception: vanilla ships 483 and only 49 carry a BOM.
+setup_txt = [p for p in txt_files if SETUP in p]
+bom_files = [p for p in all_files if p not in setup_txt]
+
+probs = [os.path.relpath(p, MOD) for p in bom_files
+         if open(p, "rb").read(3) != BOM]
+check("BOM on .txt and .yml (outside setup/start)", len(bom_files), probs, min_count=1)
+
+probs = [os.path.relpath(p, MOD) for p in setup_txt
+         if open(p, "rb").read(3) == BOM]
+# Armed at 3: build_setup.py generates 05_characters, 10_countries and
+# 15_international_organizations. Raise it again as more setup files land — a BOM
+# here is the single most expensive byte in the project.
+check("no BOM in setup/start", len(setup_txt), probs, min_count=3)
+
+# .gui is the other exception: vanilla ships 483 and only 49 carry a BOM.
 probs = [os.path.relpath(p, MOD) for p in gui_files
-         if open(p, "rb").read(3) == b"\xef\xbb\xbf"]
+         if open(p, "rb").read(3) == BOM]
 check("no BOM on .gui", len(gui_files), probs, min_count=0)
 
 probs = []
@@ -309,7 +330,9 @@ for kind, name in sorted(refs):
     count += 1
     if not re.search(r"\b" + re.escape(name) + r"\b", defs):
         probs.append(f"{kind}:{name} not in definitions.txt")
-check("regions/areas/locations exist", count, probs, min_count=PENDING)  # first geography ref
+# Armed: the generated 15_international_organizations.txt carries 10 geography
+# references (9 locations, 1 region). Raise this as region work adds more.
+check("regions/areas/locations exist", count, probs, min_count=10)
 
 print()
 if fails:
