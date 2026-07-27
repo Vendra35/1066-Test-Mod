@@ -1,0 +1,11 @@
+﻿{
+	"name":	"1178 Test Mod",
+	"id":	"1178 Test",
+	"version":	"1.0.0",
+	"supported_game_version":	"1.3.X",
+	"short_description":	"Total Conversion mod for year 1178.",
+	"tags":	["Advancements", "Balance", "Characters", "Culture & Art", "Diplomacy", "Events", "Flags", "Gameplay", "Government and Estates", "Historical", "International Organizations", "Map", "Military", "Overhaul", "Religion", "Trade and Economics", "User Interface", "Utilities"],
+	"relationships":	[],
+	"game_custom_data":	{
+}
+}
