@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static verification harness — 1178 Test Mod.
+"""Static verification harness — 1066 Test Mod.
 
 Run after every change. Every check prints its item count, and a check that
 finds nothing to scan FAILS rather than passing quietly: a silent zero is the
@@ -41,6 +41,18 @@ else:
 
 fails, skipped = [], []
 
+# Checks for a kind of content the repo does not have yet are min_count=PENDING.
+# It is not a licence to stay at zero: the moment the first file of that kind
+# lands, the SAME commit raises the number to roughly what the repo holds, so a
+# later deletion or a broken glob shows up as a vacuous scan instead of a quiet
+# pass. Grep this name to find every check still owing that.
+#
+# The whole-repo CONTENT gate below cannot do this job. It is all-or-nothing:
+# once ANY content exists it opens for EVERY check, so the first three .txt
+# files in the repo turned five unrelated checks into failures at once.
+PENDING = 0
+
+
 def check(name, count, problems, min_count=1):
     if not CONTENT and min_count > 0:
         print(f"[SKIP] {name}: no mod content to scan yet")
@@ -67,9 +79,14 @@ def read(p):
 def strip_comments(s):
     return re.sub(r"#.*", "", s)
 
+# loading_screen belongs here: it is where vanilla keeps common/defines, so the
+# start date lives in that tree. It was missing from this glob until the defines
+# landed, which would have exempted START_DATE from the BOM and brace checks —
+# the one file whose silent failure costs the most.
 txt_files = sorted(_np(p) for p in
                    glob.glob(MOD + "/in_game/**/*.txt", recursive=True)
-                   + glob.glob(MOD + "/main_menu/**/*.txt", recursive=True))
+                   + glob.glob(MOD + "/main_menu/**/*.txt", recursive=True)
+                   + glob.glob(MOD + "/loading_screen/**/*.txt", recursive=True))
 yml_files = sorted(_np(p) for p in glob.glob(MOD + "/**/*.yml", recursive=True))
 gui_files = sorted(_np(p) for p in glob.glob(MOD + "/**/*.gui", recursive=True))
 all_files = txt_files + yml_files
@@ -126,14 +143,85 @@ for p in yml_files:
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: not a `key: value` line -> {t[:50]}")
         elif re.match(r'^ [A-Za-z0-9_.]+:\s*"', line) and not line.rstrip().endswith('"'):
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: value opens a quote it never closes")
-check("loc lines are well formed", count, probs, min_count=1)
+check("loc lines are well formed", count, probs, min_count=PENDING)  # first .yml
 
 keys, dupes = set(), []
 for p in yml_files:
     for m in re.finditer(r"^ ([A-Za-z0-9_.]+):", read(p), re.M):
         if m.group(1) in keys: dupes.append(m.group(1))
         keys.add(m.group(1))
-check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=1)
+check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=PENDING)  # first .yml
+
+# -------------------------------------------------------- dates and ages ---
+# The start date is mirrored into three defines trees because the evidence for
+# which one the engine reads is split (docs/KNOWLEDGE.md). Mirroring is only
+# safe while the copies agree: three files quietly disagreeing about what year
+# the game starts is precisely the silent failure this harness exists to catch.
+
+def _date_year(s):
+    return int(s.split(".")[0])
+
+define_files = sorted(_np(p) for p in
+                      glob.glob(MOD + "/*/common/defines/**/*.txt", recursive=True))
+probs, dated = [], {}
+for p in define_files:
+    src = strip_comments(read(p))
+    found = dict(re.findall(r'(START_DATE|END_DATE)' + BS + 's*=' + BS + 's*"([0-9.]+)"', src))
+    if found:
+        dated[os.path.relpath(p, MOD)] = found
+
+for rel, d in sorted(dated.items()):
+    for key in ("START_DATE", "END_DATE"):
+        if key not in d:
+            probs.append(f"{rel}: declares the other date but not {key}")
+    if len(d) == 2 and _date_year(d["START_DATE"]) >= _date_year(d["END_DATE"]):
+        probs.append(f"{rel}: START_DATE {d['START_DATE']} is not before END_DATE {d['END_DATE']}")
+
+for key in ("START_DATE", "END_DATE"):
+    values = {d[key] for d in dated.values() if key in d}
+    if len(values) > 1:
+        probs.append(f"{key} disagrees across trees: "
+                     + ", ".join(f"{r}={d[key]}" for r, d in sorted(dated.items()) if key in d))
+
+# min_count is 3 because three mirrored copies is what the repo ships. Drop it
+# only together with the mirroring decision it guards.
+check("start/end date mirrored and consistent", len(dated), probs, min_count=3)
+
+# Ages carry ABSOLUTE years and do not move with START_DATE. We ship no age
+# override, so this reads vanilla's file — the scan is never vacuous, and the
+# day an override does land it is checked without touching this code.
+_mod_age = sorted(glob.glob(MOD + "/in_game/common/age/*.txt"))
+_age_src = read(_np(_mod_age[0])) if _mod_age else read(VAN + "/in_game/common/age/00_default.txt")
+_age_from = os.path.relpath(_mod_age[0], MOD) if _mod_age else "vanilla 00_default.txt"
+
+ages, probs = [], []
+_starts = [(m.start(), m.group(1)) for m in
+           re.finditer(r"^([a-z_0-9]+) = " + BS + "{", strip_comments(_age_src), re.M)]
+for i, (pos, name) in enumerate(_starts):
+    end = _starts[i + 1][0] if i + 1 < len(_starts) else len(_age_src)
+    m = re.search(r"^" + BS + "s+year = ([0-9]+)", strip_comments(_age_src)[pos:end], re.M)
+    if not m:
+        probs.append(f"{name}: no year field")
+    else:
+        ages.append((name, int(m.group(1))))
+
+for (an, ay), (bn, by) in zip(ages, ages[1:]):
+    if by <= ay:
+        probs.append(f"{bn} year {by} does not come after {an} year {ay}")
+
+if ages and dated:
+    start_year = _date_year(next(iter(dated.values()))["START_DATE"])
+    if start_year < ages[0][1]:
+        probs.append(f"START_DATE year {start_year} is before the first age "
+                     f"({ages[0][0]} year {ages[0][1]}) — the game would start outside every age")
+    else:
+        _in = [a for a in ages if a[1] <= start_year][-1]
+        _nxt = next((a for a in ages if a[1] > start_year), None)
+        _span = (_nxt[1] - start_year) if _nxt else "to END_DATE"
+        print(f"       start year {start_year} falls in {_in[0]}; "
+              f"{_span} years until {_nxt[0] if _nxt else 'the end'}")
+
+check(f"ages ascending and start date inside one ({_age_from})", len(ages), probs, min_count=6)
 
 # ---------------------------------------------- the engine's own documentation ---
 # docs/EU5-Vanilla-Script-Docs/ is the output of `script_docs` and
@@ -189,7 +277,7 @@ else:
                 count += 1
                 if _k.group(1) not in MODIFIERS:
                     probs.append(f"{_m.group(1)}: '{_k.group(1)}' is not a modifier tag")
-    check("modifier tags exist in engine docs", count, probs, min_count=1)
+    check("modifier tags exist in engine docs", count, probs, min_count=PENDING)  # first static_modifier
 
     probs, count = [], 0
     for p in glob.glob(MOD + "/in_game/common/on_action/*.txt"):
@@ -200,7 +288,7 @@ else:
             count += 1
             if h not in ON_ACTIONS:
                 probs.append(f"{h} is not an on_action the engine declares")
-    check("on_action hooks exist in engine docs", count, probs, min_count=1)
+    check("on_action hooks exist in engine docs", count, probs, min_count=PENDING)  # first on_action
 
 # ------------------------------------------------------------- geography ---
 defs = read(VAN + "/in_game/map_data/definitions.txt")
@@ -221,7 +309,7 @@ for kind, name in sorted(refs):
     count += 1
     if not re.search(r"\b" + re.escape(name) + r"\b", defs):
         probs.append(f"{kind}:{name} not in definitions.txt")
-check("regions/areas/locations exist", count, probs, min_count=1)
+check("regions/areas/locations exist", count, probs, min_count=PENDING)  # first geography ref
 
 print()
 if fails:

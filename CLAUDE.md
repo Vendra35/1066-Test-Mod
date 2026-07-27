@@ -1,10 +1,18 @@
-# CLAUDE.md — 1178 Test Mod (EU5 total conversion)
+# CLAUDE.md — 1066 Test Mod (EU5 total conversion)
 
 ## What this is
-A total conversion moving Europa Universalis V to **1178**, one of the Crusader
-Kings III start dates. Chosen over 867 deliberately: 1178 is 159 years from
-vanilla's 1337, so most tags, borders and religions are a *delta* from a world
-the game already ships, where 867 is a rewrite of nearly everything.
+A total conversion moving Europa Universalis V to **1066**, the best known of
+the Crusader Kings III start dates. The opening decade carries itself: the
+Norman Conquest lands in the first months, Manzikert is five years out, the
+First Crusade thirty. Byzantium is still pre-Manzikert, Anatolia still Greek,
+Iberia still taifa, the Baltic still pagan, Song China still whole.
+
+867 and 1178 were both weighed and rejected — see `docs/KNOWLEDGE.md`. The short
+version: 1178 is the cheapest date to build and 867 the most expensive, and 1066
+was chosen on the strength of the setting with its cost accepted knowingly. That
+cost is real and is written down, not glossed: EU5 puts everything before 1342
+inside a single age, so 1066 spends 276 years in `age_1_traditions` and will
+most likely need an age of its own eventually.
 
 Nothing is built yet. This file holds the RULES. It does not describe an
 architecture, because there is no architecture — that section gets written when
@@ -12,7 +20,7 @@ the first real systems exist, and is updated as a by-product of each change.
 
 **Scope discipline:** the first playable target is regional depth, not global
 fidelity. A world where one region is fully realised and the rest is
-vanilla-ish ships in months; "the whole map at 1178 fidelity" does not.
+vanilla-ish ships in months; "the whole map at 1066 fidelity" does not.
 
 ## REQUIRED SETUP
 Two read-only reference trees, both outside this repo. Detect, never assume,
@@ -29,8 +37,14 @@ fi
 Key vanilla paths used constantly: `in_game/map_data/definitions.txt`
 (region → area → province → location), `in_game/map_data/location_templates.txt`
 (what every location IS), `main_menu/setup/start/` (the world at game start),
-`in_game/setup/countries/`, `main_menu/common/` (defines, script values,
-modifier types, game rules, modifier icons).
+`in_game/setup/countries/`, `main_menu/common/` (script values, modifier types,
+game rules, modifier icons), `in_game/common/age/00_default.txt` (the six ages).
+
+**Defines are NOT under `main_menu/common/`.** The only defines tree vanilla
+ships is `loading_screen/common/defines/`, and `00_defines.txt` there is where
+`START_DATE` and `END_DATE` live. This file said `main_menu/common/` until the
+first session checked, which is exactly the kind of confident wrong path that
+produces a folder the engine never reads and no error anywhere.
 
 ## Verification — read this before writing anything
 

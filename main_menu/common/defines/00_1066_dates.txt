@@ -1,0 +1,38 @@
+﻿NGame = {
+	# 1066 start. The Norman Conquest sits inside the opening months:
+	# Stamford Bridge 25 September, Hastings 14 October.
+	#
+	# END_DATE stays at vanilla's 1836.12.31 on purpose. That makes the
+	# campaign 770 years instead of 499. Truncating the late game would throw
+	# away the entire 1437+ arc that ages 3-6 already script for free.
+	#
+	# The ages in in_game/common/age/00_default.txt are deliberately NOT
+	# overridden yet. age_1_traditions is `year = 1` and age_2_renaissance is
+	# `year = 1342`, so age 1 now runs 1066-1342 — 276 years on one advance
+	# tier, carrying that age's modifiers the whole way (efficiency = 1.0, so
+	# no research discount; expected_navy_size_modifier = -0.8; max_price = 3;
+	# hegemons not allowed until age 3). That is very probably too long, and
+	# the expected fix is an age of our own. It is left alone until the game
+	# has actually been played: static reading cannot say how much it hurts,
+	# and the split should be designed from what hurts.
+	#
+	# Advances cannot absorb the stretch on their own — none of the 215 files
+	# in in_game/common/advances/ contains a `year` field; they are gated only
+	# on `age = age_N_x`.
+	#
+	# Mirrored, identical, in all three trees:
+	#   in_game/common/defines/00_1066_dates.txt
+	#   loading_screen/common/defines/zz_1066_dates.txt
+	#   main_menu/common/defines/00_1066_dates.txt
+	# Vanilla ships defines in loading_screen only, and so does at least one
+	# published balance mod. The one published conversion that actually moves
+	# START_DATE mirrors all three. The evidence is split, so we mirror: a
+	# start date that silently stays 1337 is the worse failure. verify_mod.py
+	# keeps the three in agreement. If the game ever logs a duplicate define,
+	# drop the other two and keep this one.
+	#
+	# zz_ prefix here because vanilla's own 00_defines.txt lives in this same
+	# folder and load order is alphabetical — the override must sort after it.
+	START_DATE = "1066.9.15"
+	END_DATE = "1836.12.31"
+}

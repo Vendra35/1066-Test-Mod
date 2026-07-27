@@ -1,10 +1,15 @@
-# 1178 Test Mod — a Europa Universalis V total conversion
+# 1066 Test Mod — a Europa Universalis V total conversion
 
-Moves the game to **1178**, one of the Crusader Kings III start dates. Chosen
-over 867 on purpose: 1178 sits 159 years from vanilla's 1337, so most tags,
-borders and religions are a delta from a world the game already ships. It is
-also the Mongol date — Temüjin is born around 1162 and unifies the steppe in
-1206.
+Moves the game to **1066.9.15**, the best known of the Crusader Kings III start
+dates. Stamford Bridge is ten days out and Hastings a month; Manzikert is five
+years away, the First Crusade thirty. Byzantium is still pre-Manzikert, Anatolia
+still Greek, Iberia still taifa, the Baltic still pagan, Song China still whole.
+The Mongols arrive at 1206, year 140 of a 770-year campaign.
+
+867 and 1178 were weighed and rejected. 1178 is the date the engine cooperates
+with and 867 the one it fights; 1066 was chosen on the setting with its cost
+accepted in advance — `docs/KNOWLEDGE.md` records the measurements and the
+debt, which is that everything before 1342 falls inside a single age.
 
 Nothing is built yet. What exists is the scaffolding that made the previous
 project tractable, carried in on day one instead of being rediscovered.

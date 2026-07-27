@@ -109,11 +109,26 @@ Three layers, in increasing cost:
 3. **Repaint the map** — new location geometry. Neither mod did this; budget it
    as a separate project, not a prerequisite.
 
-Move the timeframe with `common/defines` (`START_DATE`, `END_DATE`), and keep
-the engine calendar POSITIVE — vanilla timers, cooldowns, AI scheduling,
+Move the timeframe with `START_DATE` / `END_DATE`, which live in
+`loading_screen/common/defines/00_defines.txt:2-3` inside an `NGame = { }`
+block — **not** under `main_menu/common/`, which ships no defines tree at all.
+Override the two keys in a partial `NGame` block of your own; never copy the
+2608-line file, or every patch that touches a define becomes a merge.
+
+Keep the engine calendar POSITIVE — vanilla timers, cooldowns, AI scheduling,
 situations, institutions and saves assume positive years in several places. If
 the setting is BC, keep the engine date internal and drive the DISPLAYED date
 from country variables.
+
+Moving the start date is only half the job: **the ages do not move with it.**
+`in_game/common/age/00_default.txt` gives each age an absolute `year`, and
+`age_1_traditions` is `year = 1`, so it swallows everything before
+`age_2_renaissance` at 1342. Vanilla starts in 1337 and spends five years there;
+start earlier and age 1 becomes as long as the gap. Advances cannot soften this
+— 215 advance files contain no `year` field anywhere, they are gated purely on
+`age = age_N_x` — so a long age 1 means a long stretch on one advance tier with
+age 1's modifiers (no research discount, `expected_navy_size_modifier = -0.8`,
+`max_price = 3`, no hegemons until age 3) applied throughout.
 
 ## 3. Situations — the campaign skeleton
 
