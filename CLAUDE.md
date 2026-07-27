@@ -111,6 +111,14 @@ project scanned zero files for weeks while reporting clean.
 fix, and the check.** Prove every new check against a known positive — break
 the fix, watch it fail, restore. A check never seen failing is untested.
 
+**Raise `min_count` as content lands.** The harness ships with most checks at
+`min_count = 1` and reports `SKIP` while the repo is empty, which is honest but
+guards nothing. Every time a new KIND of content appears — the first situation,
+the first event file, the first localisation file, the first scripted trigger —
+set that check's `min_count` to roughly what the repo actually contains, so a
+future deletion or a broken glob shows up as a vacuous scan instead of a quiet
+pass. Do this as part of the same change that adds the content, not later.
+
 ### Human choice
 Whatever the AI is railroaded into, a human player is asked. Conversions are
 offered and refusable, forced wars come as a visible event with a postpone

@@ -93,6 +93,15 @@ there is probably room. Test it early and cheaply rather than late.
 
 ---
 
+## Carried over, still to do
+
+- **Raise the harness `min_count`s** as each kind of content first appears. The
+  rule is in `CLAUDE.md`; this is the reminder that it applies from the very
+  first `.txt` file, because until then every check reports `SKIP`.
+- **Install CWTools** (`tboby.cwtools-vscode`) — a Paradox script language
+  server that catches syntax and reference errors in the editor, before the
+  harness and long before the game.
+
 ## Template for new entries
 
 ```
