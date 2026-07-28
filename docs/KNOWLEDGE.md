@@ -1008,6 +1008,49 @@ name_solomon bug and the composite-name attestation checked by hand.
 dynasty (Trpimirović), HUN joins MINOR_RULERS (Solomon, 13), and regnal
 surgery for SWE/HUN/CRO/POK rides along.
 
+### The Islamic South at 1066 — the hardest theatre: both rulers AND territory (research pass)
+**Established:** 2026-07-28, Opus Levant/Africa report (63 tool uses,
+identifier ledger throughout; spot-verification owed at landing).
+- **Vanilla ships ZERO Muslim characters who are adults on 1066.9.15.**
+  474 Muslim characters, earliest birth 1054 — al-Hariri of Basra, the
+  poet, aged 12 (and he starts alive for free). Every ruler in the
+  theatre must be authored, on [U] birth years.
+- **No tag exists for Fatimid Egypt, the Abbasids, Aleppo or Damascus.**
+  ABB is Arbabni in Ethiopia. MAM (143 locations, deeply
+  Mamluk-specific) sits on three-or-four 1066 states; JAL is a Mongol
+  steppe_horde on Baghdad — repurposing it without a government change
+  would render the caliph as a horde (the composed-name law). The
+  Abbasid tag and the GREAT SELJUK tag are the same piece of work.
+- **Naming machinery, decoded both ways:** `rank_empire_muslim` renders
+  "Caliphate" for ANY Muslim empire-rank country (free win); the
+  Marinid/Zayyanid/Hafsid/Nasrid rank branches are DYNASTY-GATED, so
+  seating a Zirid on TUN auto-drops the Hafsid styling with no override
+  (first-match working FOR us) — but MAM's branch is tag-gated with no
+  dynasty check: an empire-rank MAM becomes "Mamlūk Egyptian Caliphate"
+  regardless of who rules. Egypt therefore wants either the branch
+  overridden or a real EGY tag (invent-a-country #4).
+- **KOJ — the Kingdom of Jerusalem — ships landless WITH identity and
+  `is_historic = yes`:** the First Crusade's arrival tag is pre-built.
+- **No caliphate IO exists** (34 IO files, none for the era's defining
+  Sunni-vs-Ismaili rivalry); the HRE IO is the shape to copy if wanted.
+- Religion keys: Fatimids are `religion = shia` + school
+  `ismaili_school`; ibadi/shia/sunni are the only Muslim religions;
+  ibadi Mzab/Wargla are the least anachronistic Saharan tags.
+- Almoravid facts: MRK is landless with the WRONG culture (masmuda =
+  Almohad; Almoravids are sanhaja); TFL (Sijilmasa, 21 locations,
+  Almoravid since 1054/55) is the one landed seat needing no territory
+  work. The September-1066 leadership is genuinely ambiguous — Abu Bakr
+  ibn Umar is amir, Yusuf ibn Tashfin his deputy until ~1072; seat Abu
+  Bakr, author Yusuf, script the handover.
+- Literal names attested IN THIS CONTEXT: `{ name = Tashfin }` is
+  vanilla's own (05_characters.txt:48105); ~520 locations in the
+  theatre belong to states 150-270 years unborn — a bigger transfer
+  than Anatolia's, and most receiving tags must be invented first.
+**Means:** a small [U]-flagged batch is landable now (Yemen's Sulayhi,
+Zirid Tunis, Almoravid TFL); Egypt/Abbasids/Seljuks/Aleppo are one
+coordinated invent-a-country slice; the caliphate IO and the Hilalian
+catastrophe are future situation material.
+
 ## Open questions to settle early
 
 - **How badly does a 276-year `age_1` actually play?** THE question for this

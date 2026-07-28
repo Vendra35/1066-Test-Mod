@@ -278,6 +278,21 @@ regency). The opinion loc key the engine flagged is added.
    the 14 taifas and the Great Seljuks (invent-a-country),
    TRE/CIL/CYP/CRT/BUL (Byzantine themes).
 
+7. **North/East batch (LANDED, phone-approved):** Kyiv = Iziaslav I,
+   Novgorod = Mstislav, Chernihiv = Sviatoslav II, Polotsk = Vseslav the
+   Sorcerer, Sweden = Halsten, Poland = Boleslaw II, Hungary = the
+   13-year-old Solomon (MINOR), Croatia = Petar Krešimir IV (composite
+   name — check it renders!), Orkney = Paul. 47 rulers total. Check the
+   nine thrones + Hungary's regnal display.
+8. **Levant/Africa small batch (awaiting approval):** Yemen = Ali
+   al-Sulayhi, Tunis = Tamim ibn al-Mu'izz (Zirid — the Hafsid styling
+   auto-drops, dynasty-gated), Sijilmasa/TFL = Abu Bakr ibn Umar with
+   Yusuf ibn Tashfin authored for the 1072 handover. All [U] birth
+   years, literal names (vanilla's own Tashfin precedent), 4-5 new
+   dynasties. Parked as invent-a-country slice #4: Fatimid Egypt (MAM
+   naming trap), Abbasids+Seljuks (one job), Aleppo/Damascus; plus the
+   Mirdasid religion dispute and the missing caliphate IO.
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,

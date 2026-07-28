@@ -16568,7 +16568,8 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
-			ruler = random
+			ruler = zir_tamim_ibn_al_muizz
+			ruler_term = { character = zir_tamim_ibn_al_muizz start_date = 1062.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				Abd_al-Wahid = 1
@@ -16723,7 +16724,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = alm_abu_bakr_ibn_umar
+			ruler_term = { character = alm_abu_bakr_ibn_umar start_date = 1056.1.1 regnal_number = 1 }
 
 			laws = {
 				sharia_law = maliki_policy
@@ -54900,7 +54902,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = yem_ali_al_sulayhi
+			ruler_term = { character = yem_ali_al_sulayhi start_date = 1047.1.1 regnal_number = 1 }
 
 			laws = {
 				sharia_law = shafii_policy

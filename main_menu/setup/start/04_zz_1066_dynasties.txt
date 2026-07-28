@@ -34,4 +34,26 @@ dynasty_manager = {
 		name = { name = trpimirovic_dynasty }
 		home = knin
 	}
+	sulayhid_dynasty = {
+		name = { name = sulayhid_dynasty }
+		home = sana_yemen
+	}
+	zirid_dynasty = {
+		name = { name = zirid_dynasty }
+		home = kairouan
+	}
+	almoravid_dynasty = {
+		name = { name = almoravid_dynasty }
+		home = sijilmasa
+	}
+	# Banked for invent-a-country slice #4 (Egypt, Baghdad) — defined now
+	# so the characters can be authored the moment the tags exist.
+	fatimid_dynasty = {
+		name = { name = fatimid_dynasty }
+		home = cairo
+	}
+	abbasid_dynasty = {
+		name = { name = abbasid_dynasty }
+		home = baghdad
+	}
 }

@@ -148,6 +148,15 @@ HISTORICAL_RULERS = {
     "HUN": ("hun_salamon_arpad", "1063.9.11", 1),         # Solomon, aged 13 — MINOR_RULERS — NEW_CHARACTERS
     "CRO": ("cro_petar_kresimir_iv", "1058.1.1", 4),      # Petar Kresimir IV — NEW_CHARACTERS
     "ORK": ("ork_paul_thorfinnsson", "1065.1.1", 1),      # Paul Thorfinnsson, joint earl with Erlend (seat-once) — NEW_CHARACTERS
+
+    # The Islamic South, 1066 — the small [U]-flagged batch from the
+    # Levant/Africa research pass; birth years are estimates throughout.
+    # Parked as invent-a-country slice #4, reasons in KNOWLEDGE: Fatimid
+    # Egypt (MAM's ungated rank branch), Abbasids+Great Seljuks (one job),
+    # Aleppo/Damascus (no tags), Mecca (low confidence).
+    "YEM": ("yem_ali_al_sulayhi", "1047.1.1", 1),         # Ali al-Sulayhi, the Ismaili rising; capital fix (zabid->sana) waits for territory — NEW_CHARACTERS
+    "TUN": ("zir_tamim_ibn_al_muizz", "1062.1.1", 1),     # Tamim the Zirid, mid-Hilalian catastrophe; Hafsid rank styling auto-drops (dynasty-gated) — NEW_CHARACTERS
+    "TFL": ("alm_abu_bakr_ibn_umar", "1056.1.1", 1),      # Abu Bakr ibn Umar, Almoravid amir (Yusuf ibn Tashfin authored for the ~1072 handover) — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -433,6 +442,69 @@ NEW_CHARACTERS = """
 		birth_date = 1035.1.1
 		birth = orkney
 		tag = ORK
+	}
+
+	# --- 1066 Islamic South -----------------------------------------------
+	# From the Levant/Africa research pass. Birth years are [U] estimates
+	# throughout — no source dates them; every other identifier verified
+	# (name_ali:1241, name_abu_bakr:188, name_joseph:10198 in the registry;
+	# literal `Tamim` per vanilla's own literal `Tashfin`,
+	# 05_characters.txt:48105; cultures yemeni_culture, tunisian, sanhaja;
+	# religion shia = muslim.txt:64; locations sana_yemen, kairouan,
+	# aoudaghost in definitions.txt). NO death dates.
+
+	# Ali ibn Muhammad al-Sulayhi, founder of the Sulayhid state: rose in
+	# the Haraz 1047, took Sana'a 1063, Fatimid-allegiant Ismaili
+	# (religion shia; the country-level ismaili_school is territory-pass
+	# work). Historically assassinated c. 1067-1080 (sources differ).
+	yem_ali_al_sulayhi = {
+		first_name = { name = name_ali }
+		culture = yemeni_culture
+		religion = shia
+		birth_date = 1015.1.1
+		birth = sana_yemen
+		dynasty = sulayhid_dynasty
+		tag = YEM
+	}
+
+	# Tamim ibn al-Mu'izz, Zirid emir of Ifriqiya from his father's death
+	# in 1062 — mid-Hilalian catastrophe, Kairouan sacked 1057, the court
+	# on the Mahdia coast. The Zirids broke with Cairo in 1048: sunni.
+	zir_tamim_ibn_al_muizz = {
+		first_name = { name = Tamim }
+		culture = tunisian
+		religion = sunni
+		birth_date = 1031.1.1
+		birth = kairouan
+		dynasty = zirid_dynasty
+		tag = TUN
+	}
+
+	# Abu Bakr ibn Umar, Almoravid amir from his brother Yahya's death
+	# c. 1056. On 1066.9.15 he, not Yusuf, leads the movement — the
+	# leadership ambiguity is recorded in KNOWLEDGE; the ~1072 handover to
+	# Yusuf is script work, and both actors are authored for it.
+	alm_abu_bakr_ibn_umar = {
+		first_name = { name = name_abu_bakr }
+		culture = sanhaja
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = aoudaghost
+		dynasty = almoravid_dynasty
+		tag = TFL
+	}
+
+	# Yusuf ibn Tashfin, Abu Bakr's cousin and deputy, sole ruler from
+	# ~1072, victor of Sagrajas 1086 — authored now, unseated, so the
+	# handover and the Iberian intervention have their actor.
+	alm_yusuf_ibn_tashfin = {
+		first_name = { name = name_joseph }
+		culture = sanhaja
+		religion = sunni
+		birth_date = 1009.1.1
+		birth = aoudaghost
+		dynasty = almoravid_dynasty
+		tag = TFL
 	}
 """
 
