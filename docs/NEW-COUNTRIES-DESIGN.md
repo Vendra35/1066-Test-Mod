@@ -1,13 +1,15 @@
 # NEW_COUNTRIES — design for inventing a country that vanilla does not ship
 
-> **STATUS: the probe is BUILT (2026-07-28 evening).** PYS/Pereyaslavl is
-> in the generated output — five locations transferred out of KIE with
-> exclusivity assertions (capital lines excluded from ownership counting,
-> a lesson the first dry-run taught), the block inserted before the
-> wrapper braces, Vsevolod seated through the ordinary HISTORICAL_RULERS
-> row, CAPITAL_FIXES shipped alongside (PAP avignon→rome), and the
-> mechanism proven by breaking. Awaiting its first in-game launch — the
-> open questions below are what that launch answers.
+> **STATUS: ✅ PROVEN IN GAME (2026-07-28, second launch).** The
+> Principality of Pereiaslav lives on the map with its own named color,
+> its five locations, its market link to Kyiv, and Prince Vsevolod
+> Riurykovych on the throne — the composed "Principality" rank rendered
+> from the ruthenian include template, screenshots on file. The first
+> launch taught the registry lesson below; the second confirmed
+> everything else: include templates resolve, the ordinary
+> HISTORICAL_RULERS row seats a ruler on an invented tag, and the
+> transfer assertions held. **The invent-a-country factory is open:
+> taifas, Seljuks+Abbasids, Egypt, the Lombard south, Muslim Sicily.**
 
 > Written 2026-07-28 while the ruler layer stood at 50. Four parked slices
 > all block on this one mechanism: the Great Seljuks + Abbasids (one job),
