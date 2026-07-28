@@ -2225,6 +2225,7 @@ countries = {
 	#Grand Duchy of Chernihiv
 	CHR = {
 		own_control_core = {
+			taman
 			chernihiv liubech horodnia snovsk
 			rechytsa streshyn
 			gomel chachersk dobrush tereshkovichy volosovichy
@@ -3616,7 +3617,7 @@ countries = {
 			kiyl koptam uil emba atzhaksy shatyrlysay temir or_aktobe
 
 			orhei chilia cetatea_alba gura_galbenei sarata tighina chatyun kutarka sernur morki urzhum
-			lusta soldaia 
+			  
 			zainsk syun verkhneyarkeyevo
 			menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush chishmy
 			ulukulevo davlekanovo bizhbulyak turkmenevo sterlibashevo
@@ -3843,9 +3844,13 @@ countries = {
 		}
 	}
 
-	FEO = {	# Theodoro
-		own_control_core = {
+	FEO = {
+		our_cores_conquered_by_others = {
 			theodoro
+		}
+	# Theodoro
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -3869,7 +3874,7 @@ countries = {
 
 	GAZ = {	# Gazaria
 		own_control_core = {
-			kaffa vosporo #Black Sea
+			kaffa  #Black Sea
 		}
 
 		own_control_integrated = {
@@ -9206,9 +9211,9 @@ countries = {
 		}
 		own_control_integrated = {
 			  #Sardinia
-			foca #Aegean Sea
+			 #Aegean Sea
 			 #Sardinia
-			amasra #Black Sea
+			 #Black Sea
 		}
 
 		our_cores_conquered_by_others = {
@@ -10926,11 +10931,11 @@ countries = {
 	VEN = {
 		own_control_core = {
 			venice chioggia
-			pola rovinj pag zadar split brac
+			pola rovinj pag   
 		}
 
 		own_control_integrated = {
-			modon kythira andros mykonos amorgos karpathos
+			     
 		}
 
 		control = {
@@ -11029,9 +11034,13 @@ countries = {
 		}
 	}
 
-	CRT = { #Candia https://en.wikipedia.org/wiki/Kingdom_of_Candia
-		own_control_core = {
+	CRT = {
+		our_cores_conquered_by_others = {
 			chania hagios_pavlos rethymno candia gergeri elounda viannos siteia
+		}
+ #Candia https://en.wikipedia.org/wiki/Kingdom_of_Candia
+		own_control_core = {
+			       
 		}
 
 		starting_technology_level = 3
@@ -11183,8 +11192,12 @@ countries = {
 	#Balkans
 
 	ATH = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			athens megara thebes atalanti livadeia gravia
+		}
+
+		own_control_core = {
+			     
 		}
 
 		starting_technology_level = 3
@@ -11233,13 +11246,11 @@ countries = {
 
 	ACH = { #https://en.wikipedia.org/wiki/Principality_of_Achaea
 		own_control_core = {
-			damala ermioni kalamata kyparissia
-			andritsaina pontikokastro andravida corinth
-			vostitsa kalavryta xylokastro
-			nafpaktos 
+
 		}
 		
 		our_cores_conquered_by_others = {
+			damala ermioni kalamata kyparissia andritsaina pontikokastro andravida corinth vostitsa kalavryta xylokastro nafpaktos
 			tripolitsa veligosti karytaina
 			chalandritsa patras 
 		}
@@ -11299,13 +11310,14 @@ countries = {
 
 	PAT = { 
 		own_control_core = {
-			chalandritsa patras
+			 
 		}
 
 		own_control_integrated = {
 		}
 		
 		our_cores_conquered_by_others = {
+			chalandritsa patras
 		}
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -11350,8 +11362,12 @@ countries = {
 	}
 
 	CEP = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			zakynthos cephalonia
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -11435,9 +11451,13 @@ countries = {
 		capital = constantinople
 	}
 
-	NAX = { #https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago
-		own_control_core = {
+	NAX = {
+		our_cores_conquered_by_others = {
 			naxos kythnos milos
+		}
+ #https://en.wikipedia.org/wiki/Duchy_of_the_Archipelago
+		own_control_core = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -11481,10 +11501,10 @@ countries = {
 
 	EPI = {
 		own_control_core = {
-			angelokastron arta preveza parga ioannina kleisoura_epirus
-			argyrokastro avlonya karpenisi konitsa
+
 		}
 		our_cores_conquered_by_others = {
+			angelokastron arta preveza parga ioannina kleisoura_epirus argyrokastro avlonya karpenisi konitsa
 			ballsh berat
 		}
 
@@ -11585,6 +11605,7 @@ countries = {
 
 	BYZ = {
 		own_control_core = {
+			amasya gadegara ladik_pontus merzifon sonisa bozok baliseyh candir dinek_keskin sorgun corum gumus huseyinabad iskilip sungurlu divrigi arapgir arguvan egin kayseri bogazliyan develi tomarza yahyali kirsehir hacibektas nevsehir sariyahsi urgup nigde bekarlar bor_tur sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara tokat akdagmadeni aydincik koyulhisar niksar sulusaray zile aksaray kochisar kulu_turkey insuyu ankara cubuk haymana kalecik karakecili polatli beysehir aksehir bolvadin ilgin sarkikaraagac seydisehir yalvac cankiri bayat cerkes kursunlu sabanozu tosya karahisar_i_sahib altintas emirdag sandikli seyitgazi suhut konya altinekin celtik cumra ladik suluklu turgut larende eregli_kar eskil hatunsaray karapinar obruk pirloganda sivrihisar beypazari bozan kaymaz kibrus kizilca mihaliccik adana ayas iskenderun kars_armenia nicosia_cyp famagusta kyrenia larnaca limassol morphou paphos silifke anamur ermenek mut malatya besni gerger kahta kaysun samsat marash afsin elbistan enguzud goksun kapan ulnia sis anavarza caxud comana_cil hargan tarsus candir_cil corycus molevon ayvacik bandirma bayramic can canakkale gonen lapseki bursa adranos dursunbey harmancik iznik balikesir balya bergama bigadic edremit manyas mihalic soma susurluk izmit atpazari kutahya aslanapa domanic emet simav tavsanli sultanonu bilecik goynuk eynegol inonu nalli sogut bolu akcasehir akyazi konrapa mudurnu giresun akkus bayramlu mesudiye terme unye kastamonu arac devrekani inebolu kure_i_mamure taskopru safranbolu amasra bartin gerede mengen ulus yenicepazari sinop bafra boyabat gerze samsun trebizond gorele gumushane khupati rize surmene alaiye karahisar_i_teke manavgat selinti antalya elmali finike kas istanoz tire balat birgi cine guzelhisar milas nazilli isparta burdur dinar egirdir stefani uluborlu mugla bodrum gokabat golhisar marmaris megri tavas yuksekkum manisa akhisar demirci foca gordes kula smyrna ayasuluk cesme menemen urla usak banaz gediz honaz lazkiye seyhli prilep bitola florina kicevo ohrid tetovo skopje prosek kocani kratovo kumanovo shtip strumica veles burgas anhialo aytos lardeja rusokastro sozopol sliven boruy constantia_bul elhovo hiambouli kostenets kran stipon strelcha babadag cernavoda constanta enisala isaccea tulcea harsova pleven bozhenitsa dobrolak gigen hotalich lovech oryahovo veliki_preslav ktenia ovech razgrad shumen targoviste_BUL varna sredets dupnitsa pirot tsaribrod velbuzd samokov svoge zemlungrad karvuna drastar kaliakra kladentsi pangalia tutrakan tarnovo cherven lyaskovets nikopol ruse tryavna vidin archar kozelj kutlovitsa lom svrljig visesav vratsa angelokastron karpenisi loidoriki nafpaktos salona vonitsa athens atalanti livadeia megara thebes corfu cephalonia leukas zakynthos neopatras bodonitsa gravia zetounion arta ioannina parga preveza patras chalandritsa kalavryta vostitsa argos ermioni nafplio corinth damala xylokastro andravida andritsaina pontikokastro kythira kalamata kyparissia modon candia chania elounda gergeri hagios_pavlos rethymno siteia viannos negroponte eretreia karystos kleisoura kymi oreos naxos amorgos andros kythnos milos mykonos rodos karpathos kos durres ballsh debar elbasan kavaje kruje tirana avlonya argyrokastro butrint kleisoura_epirus konitsa branicevo kucevo ravno peja gjakova mitrovica novo_brdo pristina prizren nis glubocica medveda prokuplje vranje krusevac jagodina stalac zica belgrad smederevo rudnik debrc krupanj sabac valjevo ani amberd artashavan kumayri kars kagizman surmali erzurum bayburt erzincan ilic kelkit kemah sebinkarahisar siran tercan malazgirt hinis karakilise hasankale tekman tutak varto antioch afrin arsuz artah idlib latakia baniyas jableh tartus zadar split brac sremska_mitrovica petrovaradin ilok yerevan bjni khor_virap igdir van bargiri ercis hosap mus oltu tortum ispir panaskerti ayntab dluk trapessac urfa birecik siverek suruc harran theodoro lusta soldaia vosporo lezha
 			sporades servia kastoria hatera veria edessa kassandreia polygyros thessaloniki
 			kilkis giannitsa gynaikokastro serres rentina kavala mount_athos thasos drama xanthia komotini
 			traianopolis demotica lemnos imbros molyvos mitilene gallipoli kesan
@@ -11604,43 +11625,31 @@ countries = {
 		}
 		our_cores_conquered_by_others = {
 			#Vardar Province - lost in 1285
-			kocani strumica
 
 			#Rodos Province
-			kos rodos
 
 			#Prilep Province
-			kicevo prilep bitola ohrid florina tetovo
 
 			#Albania Province - lost in late 1272
-			elbasan tirana kruje debar durres
 
 			#Bolu Province - partially lost in 1304
-			akcasehir konrapa akyazi
 
 			#Kocaeli Province
-			izmit atpazari
 
 			#Hudavendigar Province - Mostly lost in 1328 except for Nicaea which fell around 1331
-			iznik  bursa adranos harmancik dursunbey
 
 			#Biga Province - substantial loss in 1306 / near-total loss in 1328
-			bandirma gonen can bayramic ayvacik canakkale lapseki
 
 			#Karasi Province - lost most of it around 1297
-			mihalic manyas susurluk balya balikesir bigadic edremit bergama
 
 			#Saruhan Province - lost in 1300
-			demirci kula gordes akhisar soma manisa foca
 
 			#Smyrna Province - lost around 1311
-			menemen smyrna ayasuluk urla cesme
 
 			#Aydin Province - partially lost in 1274 / completely in 1300
-			birgi tire guzelhisar nazilli cine balat milas
 
 			#Mugla Province - lost in late 1270
-			gokabat marmaris bodrum mugla
+			   
 		}
 
 		starting_technology_level = 3
@@ -11831,14 +11840,15 @@ countries = {
 
 	ALB = {
 		own_control_core = {
-			durres
+			
 		}
 
 		own_control_integrated = {
-			corfu butrint
+			 
 		}
 
 		our_cores_conquered_by_others = {
+			durres corfu butrint
 			elbasan kavaje kruje tirana
 		}
 
@@ -11878,8 +11888,12 @@ countries = {
 	}
 
 	THP = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			kruje tirana
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -11902,8 +11916,12 @@ countries = {
 	}
 
 	MZK = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			ballsh
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -11934,8 +11952,12 @@ countries = {
 	}
 
 	ANT = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			elbasan
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -11957,8 +11979,12 @@ countries = {
 	}
 
 	MTR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			kavaje
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -11986,17 +12012,16 @@ countries = {
 
 	SER = {
 		own_control_core = {
-			peja prizren bitola prilep kicevo tetovo kotor shkoder onogost gradina
-			budimlja brskovo gjakova mitrovica pristina novo_brdo skopje kumanovo veles prosek
-			kratovo vranje podgorica bar_cg prijepolje visegrad ustikolina soko_grad
-			glubocica nis prokuplje stalac ravno jagodina gacko trebinje ohrid
-			krusevac kucevo branicevo rudnik smederevo krupanj valjevo uzice pljevlja
-			gradac zica trgoviste_SER sjenica velbuzd
-			arilje brvenik medveda
+			         
+			budimlja brskovo        
+			    prijepolje visegrad ustikolina soko_grad
+			        
+			       uzice pljevlja
+			gradac  trgoviste_SER sjenica 
+			arilje brvenik 
 		}
 		own_control_integrated = {
-			koman has dukagjini lezha florina debar 
-			kocani strumica shtip
+
 		}
 		our_cores_conquered_by_others = {
 			mostar konjic belgrad debrc sabac
@@ -12004,7 +12029,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_mediterranean"
 		include = "eastern_european_monarchy"
-		country_rank = rank_kingdom
+		country_rank = rank_duchy
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -12047,7 +12072,7 @@ countries = {
 
 		liturgical_language = church_slavonic_language
 
-		capital = prizren
+		capital = trgoviste_SER
 		dynasty = nemanjic_dynasty
 	}
 
@@ -12056,11 +12081,11 @@ countries = {
 			glamoc
 			vrhbosna konjic srebrenica doboj soli
 			jajce livno zenica kljuc srebrenik
-			kozara glaz teocak olovo borac makarska 
+			kozara glaz teocak olovo borac  
 		}
 
 		own_control_conquered = {
-			drijeva metkovic mostar nevesinje
+			   
 		}
 
 		starting_technology_level = 3
@@ -12286,22 +12311,14 @@ countries = {
 
 	BUL = {
 		own_control_core = {
-			sredets samokov stipon ovech
-			hiambouli rusokastro lardeja boruy
-			tarnovo drastar tutrakan cherven razgrad shumen aytos targoviste_BUL sliven kran
-			lovech nikopol pleven vratsa kutlovitsa vidin oryahovo bozhenitsa hotalich tryavna
-			anhialo varna karvuna pangalia kaliakra
-			tulcea harsova
-			archar lom gigen dobrolak svoge kostenets strelcha ruse kladentsi lyaskovets veliki_preslav ktenia constantia_bul elhovo
-			babadag cernavoda constanta enisala isaccea
-			visesav kozelj svrljig pirot tsaribrod  
-			zemlungrad dupnitsa
+
 		}
 		own_control_integrated = {
-			burgas sozopol
+			 
 		}
 
 		our_cores_conquered_by_others = {
+			sredets samokov stipon ovech hiambouli rusokastro lardeja boruy tarnovo drastar tutrakan cherven razgrad shumen aytos targoviste_BUL sliven kran lovech nikopol pleven vratsa kutlovitsa vidin oryahovo bozhenitsa hotalich tryavna anhialo varna karvuna pangalia kaliakra tulcea harsova archar lom gigen dobrolak svoge kostenets strelcha ruse kladentsi lyaskovets veliki_preslav ktenia constantia_bul elhovo babadag cernavoda constanta enisala isaccea visesav kozelj svrljig pirot tsaribrod zemlungrad dupnitsa burgas sozopol
 			nis glubocica velbuzd
 		}
 
@@ -12405,8 +12422,12 @@ countries = {
 	}
 
 	HUM = {
+		own_control_core = {
+			mostar nevesinje drijeva metkovic makarska
+		}
+
 		our_cores_conquered_by_others = {
-			trebinje drijeva gacko mostar nevesinje
+			trebinje  gacko  
 			slano
 		}
 
@@ -12484,9 +12505,12 @@ countries = {
 	}
 	
 	ZTA = {
+		own_control_core = {
+			podgorica bar_cg gradina kotor onogost shkoder koman has dukagjini
+		}
+
 		our_cores_conquered_by_others = {
-			podgorica bar_cg gradina kotor
-			shkoder
+
 		}
 
 		starting_technology_level = 3
@@ -12495,7 +12519,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = zta_mihailo_vojislavljevic
+			ruler_term = { character = zta_mihailo_vojislavljevic start_date = 1046.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 			}
@@ -12507,7 +12532,7 @@ countries = {
 
 		country_rank = rank_duchy
 		capital = bar_cg #Ulcinj
-		dynasty = balsic_dynasty
+		dynasty = vojislavljevic_dynasty
 	}
 	#----------------------------- Iberia -------------------------------
 
@@ -15702,7 +15727,7 @@ countries = {
 			povazska_bystrica zilina
 			pancevo
 			kikinda titel modos
-			belgrad debrc sabac
+			  
 			gradiski_brod dubica
 			buda pest kalocsa felegyhaza
 			sopron vasvar magyarovar zalavar
@@ -15728,7 +15753,7 @@ countries = {
 			dabaca baia_crisului gurghiu
 			#Banate of Croatia
 			bjelovar koprivnica kutina pakrac vaska virovitica
-			vukovar ilok pozega sremska_mitrovica petrovaradin
+			vukovar  pozega  
 			zagreb cakovec karlovac petrinja sisak slunj varazdin
 		}
 
@@ -16062,9 +16087,13 @@ countries = {
 
 	}
 
-	NEO = {	#Neopatria
-		own_control_core = {
+	NEO = {
+		our_cores_conquered_by_others = {
 			neopatras zetounion
+		}
+	#Neopatria
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -16103,9 +16132,13 @@ countries = {
 		capital = neopatras
 	}
 
-	BOD = {	#Bodonitsa
-		own_control_core = {
+	BOD = {
+		our_cores_conquered_by_others = {
 			bodonitsa
+		}
+	#Bodonitsa
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -16155,10 +16188,10 @@ countries = {
 
 	ARG = { #Argos
 		own_control_core = {
-			argos nafplio
-			leukas vonitsa 
+
 		}
 		our_cores_conquered_by_others = {
+			argos nafplio leukas vonitsa
 			athens megara thebes atalanti livadeia gravia
 		}
 
@@ -16203,9 +16236,13 @@ countries = {
 		dynasty = enghien_dynasty
 	}
 
-	KNI = { #Knights Hospitaller
-		own_control_core = {
+	KNI = {
+		our_cores_conquered_by_others = {
 			rodos kos
+		}
+ #Knights Hospitaller
+		own_control_core = {
+			 
 		}
 
 		include = "catholic_military_order"
@@ -16253,10 +16290,11 @@ countries = {
 
 	NEG = { #Negroponte https://en.wikipedia.org/wiki/Triarchy_of_Negroponte
 		own_control_core = {
-			negroponte kleisoura kymi oreos eretreia
+			    
 		}
 	
 		our_cores_conquered_by_others = {
+			negroponte kleisoura kymi oreos eretreia
 			karystos  
 		}
 
@@ -16317,7 +16355,7 @@ countries = {
 
 	SAO = { #Salona
 		own_control_core = {
-			salona karystos loidoriki
+			  
 			malta
 		}
 
@@ -16359,9 +16397,13 @@ countries = {
 		capital = salona
 	}
 
-	TRO = { #Travunija		
+	TRO = {
+		own_control_core = {
+			trebinje gacko
+		}
+ #Travunija		
 		our_cores_conquered_by_others = {
-			trebinje
+			
 		}
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -19809,10 +19851,10 @@ countries = {
 			matruh sallum tobruk
 			el_qoseir ras_gharib safaga
 			el_jundi faran nuweiba saint_katrine
-			ayntab dluk
+			 
 			jerusalem acre amman aqaba beersheba gaza hebron karak maan majdal nablus safed sughar jaffa al_quwayrah
 			beirut baalbek deir_qamar sidon tripoli_syria shoubak madaba
-			damascus al_bab aleppo antioch arsuz artah baniyas dabiq hama homs idlib jabbul jableh kafartab latakia manbij maskanah masyaf nabek qusayr tartus zardana
+			damascus al_bab aleppo     dabiq hama homs  jabbul  kafartab  manbij maskanah masyaf nabek qusayr  zardana
 			umluj al_hawra al_manjur al_maramiyah
 			al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra
 			duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr
@@ -19821,7 +19863,7 @@ countries = {
 		}
 
 		own_control_conquered = {
-			iskenderun
+			
 		}
 
 		include = "expl_muslim_mediterranean"
@@ -28628,8 +28670,12 @@ countries = {
 
 	#Ahiler - AHI https://en.wikipedia.org/wiki/Ahis
 	AHI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			ankara cubuk haymana kalecik polatli karakecili
+		}
+
+		own_control_core = {
+			     
 		}
 
 		include = "expl_eastern_europe"
@@ -28660,8 +28706,12 @@ countries = {
 
 	#Alaiye - ALY https://en.wikipedia.org/wiki/Alaiye
 	ALY = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			alaiye selinti
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -28726,9 +28776,12 @@ countries = {
 
 	#Aydinids - AYD https://en.wikipedia.org/wiki/Aydinids
 	AYD = {
+		our_cores_conquered_by_others = {
+			smyrna ayasuluk cesme urla tire balat birgi guzelhisar nazilli
+		}
+
 		own_control_core = {
-			smyrna ayasuluk cesme urla
-			tire balat birgi guzelhisar nazilli
+
 		}
 
 		starting_technology_level = 3
@@ -28763,8 +28816,12 @@ countries = {
 
 	#Bafra - BFR #https://en.wikipedia.org/wiki/Beylik_of_Bafra
 	BFR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			bafra gerze
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -28793,14 +28850,11 @@ countries = {
 	#Cilicia - CIL https://en.wikipedia.org/wiki/Armenian_Kingdom_of_Cilicia
 	CIL = {
 		own_control_core = {
-			adana
-			anavarza kars_armenia
-			sis caxud hargan molevon
-			tarsus candir_cil corycus
-			ayas kapan
+
 		}
 
 		our_cores_conquered_by_others = {
+			adana anavarza kars_armenia sis caxud hargan molevon tarsus candir_cil corycus ayas kapan
 			silifke anamur ermenek mut
 			selinti
 			nigde bor_tur
@@ -28840,15 +28894,16 @@ countries = {
 
 	#Candarids - CND https://en.wikipedia.org/wiki/Candar_dynasty
 	CND = {
+		our_cores_conquered_by_others = {
+			bartin kastamonu arac boyabat devrekani inebolu kure_i_mamure sinop taskopru cankiri bayat cerkes kursunlu tosya iskilip sabanozu ulus yenicepazari safranbolu
+		}
+
 		own_control_core = {
-			bartin
-			kastamonu arac boyabat devrekani inebolu kure_i_mamure sinop taskopru
-			cankiri bayat cerkes kursunlu tosya
-			iskilip sabanozu ulus yenicepazari
+
 		}
 
 		own_control_integrated = {
-			safranbolu
+			
 		}
 
 		include = "expl_eastern_europe"
@@ -28878,8 +28933,12 @@ countries = {
 
 	#Cyprus - CYP
 	CYP = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			nicosia_cyp famagusta kyrenia larnaca limassol morphou paphos
+		}
+
+		own_control_core = {
+			      
 		}
 
 		starting_technology_level = 3
@@ -28970,14 +29029,15 @@ countries = {
 
 	#Dulkadirids - DUL https://en.wikipedia.org/wiki/Dulkadirids
 	DUL = {
+		our_cores_conquered_by_others = {
+			gerger kahta samsat besni elbistan enguzud goksun afsin kaysun ulnia marash
+		}
+
 		own_control_core = {
-			gerger kahta samsat
-			besni elbistan enguzud goksun afsin
-			kaysun
-			ulnia
+
 		}
 		own_control_integrated = {
-			marash
+			
 		}
 
 		include = "expl_eastern_europe"
@@ -29006,18 +29066,11 @@ countries = {
 	#Eretnids - ERE https://en.wikipedia.org/wiki/Eretnids
 	ERE = {
 		own_control_core = {
-			akdagmadeni aydincik koyulhisar sulusaray tokat zile
-			bozok baliseyh candir dinek_keskin sorgun
-			corum huseyinabad sungurlu
-			divrigi arapgir egin arguvan
-			kayseri bogazliyan comana_cil develi tomarza
-			hacibektas urgup
-			sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara
-			erzincan ilic kelkit kemah sebinkarahisar siran
-			yahyali malatya
+
 			}
 
 		our_cores_conquered_by_others = {
+			akdagmadeni aydincik koyulhisar sulusaray tokat zile bozok baliseyh candir dinek_keskin sorgun corum huseyinabad sungurlu divrigi arapgir egin arguvan kayseri bogazliyan comana_cil develi tomarza hacibektas urgup sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara erzincan ilic kelkit kemah sebinkarahisar siran yahyali malatya
 			amasya
 		}
 
@@ -29046,15 +29099,16 @@ countries = {
 
 	#Germiyanids - GRM https://en.wikipedia.org/wiki/Germiyanids
 	GRM = {
+		our_cores_conquered_by_others = {
+			mihaliccik sivrihisar bozan kaymaz altintas emirdag seyitgazi aslanapa emet simav tavsanli usak banaz gediz seyhli sandikli kutahya
+		}
+
 		own_control_core = {
-			mihaliccik sivrihisar bozan kaymaz
-			altintas emirdag seyitgazi
-			aslanapa emet simav tavsanli
-			usak banaz gediz seyhli sandikli 
+
 		}
 
 		own_control_integrated = {
-			kutahya 
+			 
 		}
 
 		starting_technology_level = 3
@@ -29078,9 +29132,12 @@ countries = {
 
 	#Hamidids - HMD https://en.wikipedia.org/wiki/Hamidids
 	HMD = {
+		our_cores_conquered_by_others = {
+			isparta burdur dinar egirdir uluborlu yalvac golhisar stefani
+		}
+
 		own_control_core = {
-			isparta burdur dinar egirdir uluborlu yalvac
-			golhisar stefani
+
 		}
 
 		starting_technology_level = 3
@@ -29105,8 +29162,12 @@ countries = {
 
 	#Haciemirids - HCI https://en.wikipedia.org/wiki/Beyliks_of_Canik
 	HCI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			mesudiye
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -29158,10 +29219,11 @@ countries = {
 	#Inanjids - INA https://en.wikipedia.org/wiki/Inanjids
 	INA = {
 		own_control_core = {
-			honaz lazkiye
+			 
 		}
 
 		our_cores_conquered_by_others = {
+			honaz lazkiye
 			tavas yuksekkum
 		}
 
@@ -29186,17 +29248,16 @@ countries = {
 
 	#Karamanids - KAR https://en.wikipedia.org/wiki/Karamanids
 	KAR = {
+		our_cores_conquered_by_others = {
+			aksaray kochisar insuyu kirsehir nevsehir sariyahsi konya celtik eregli_kar eskil hatunsaray karapinar ladik larende pirloganda bekarlar bor_tur ermenek beysehir aksehir sarkikaraagac seydisehir ilgin turgut suluklu kulu_turkey obruk altinekin cumra silifke anamur mut nigde
+		}
+
 		own_control_core = {
-			aksaray kochisar insuyu
-			kirsehir nevsehir sariyahsi
-			konya celtik eregli_kar eskil hatunsaray karapinar ladik larende pirloganda
-			bekarlar bor_tur ermenek
-			beysehir aksehir sarkikaraagac seydisehir
-			ilgin turgut suluklu kulu_turkey obruk altinekin cumra
+
 		}
 
 		own_control_integrated = {
-			silifke anamur mut nigde
+			   
 		}
 
 		include = "expl_eastern_europe"
@@ -29223,10 +29284,12 @@ countries = {
 
 	#Kubadids - KBD https://tr.wikipedia.org/wiki/Kubado%C4%9Fullar%C4%B1_Emirli%C4%9Fi
 	KBD = {
+		our_cores_conquered_by_others = {
+			gadegara ladik_pontus merzifon gumus samsun
+		}
+
 		own_control_core = {
-			gadegara ladik_pontus merzifon
-			gumus
-			samsun
+
 		}
 
 		starting_technology_level = 3
@@ -29252,10 +29315,12 @@ countries = {
 
 	#Karasids - KRD https://en.wikipedia.org/wiki/Karasids
 	KRD = {
+		our_cores_conquered_by_others = {
+			balikesir balya edremit manyas mihalic susurluk ayvacik bandirma bayramic can canakkale gonen lapseki dursunbey harmancik bergama soma bigadic
+		}
+
 		own_control_core = {
-			balikesir balya edremit manyas mihalic susurluk
-			ayvacik bandirma bayramic can canakkale gonen lapseki
-			dursunbey harmancik bergama soma bigadic
+
 		}
 
 		starting_technology_level = 3
@@ -29284,9 +29349,12 @@ countries = {
 
 	#Mentese - MEN https://en.wikipedia.org/wiki/Menteshe
 	MEN = {
+		our_cores_conquered_by_others = {
+			milas mugla bodrum cine gokabat marmaris megri yuksekkum
+		}
+
 		own_control_core = {
-			milas
-			mugla bodrum cine gokabat marmaris megri yuksekkum
+
 		}
 
 		starting_technology_level = 3
@@ -29315,8 +29383,12 @@ countries = {
 
 	#Tavas - TVS
 	TVS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			tavas
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -29344,8 +29416,12 @@ countries = {
 
 	#Sahipataids - SHP https://en.wikipedia.org/wiki/Sahib_Ataids
 	SHP = {
+		our_cores_conquered_by_others = {
+			karahisar_i_sahib suhut bolvadin
+		}
+
 		own_control_core = {
-			karahisar_i_sahib suhut bolvadin 
+			   
 		}
 
 		include = "expl_eastern_europe"
@@ -29367,9 +29443,12 @@ countries = {
 
 	#Saruhanids - SRU https://en.wikipedia.org/wiki/Sarukhanids
 	SRU = {
+		our_cores_conquered_by_others = {
+			manisa akhisar demirci gordes kula menemen
+		}
+
 		own_control_core = {
-			manisa akhisar demirci gordes kula
-			menemen
+
 		}
 
 		include = "expl_eastern_europe"
@@ -29396,11 +29475,11 @@ countries = {
 	SUT = {
 		own_control_core = {
 			harput adakli keban palu
-			malazgirt hinis karakilise tekman tutak varto
-			ahlat bargiri ercis
+			     
+			ahlat  
 			diyarbekir ergani
-			erzurum tercan
-			cermik bayburt 
+			 
+			cermik  
 		}
 		own_control_integrated = {
 			mosul qayyarah tal_afar
@@ -29662,7 +29741,7 @@ countries = {
 	#Jolemark - JLM
 	JLM = {
 		own_control_core = {
-			van bahcesaray baskale catak hosap zakho
+			 bahcesaray baskale catak  zakho
 		}
 
 		include = "expl_middle_east"
@@ -29709,8 +29788,12 @@ countries = {
 
 	#Mus - MUS
 	MUS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			mus
+		}
+
+		own_control_core = {
+			
 		}
 
 		include = "expl_middle_east"
@@ -29802,7 +29885,7 @@ countries = {
 	#Kilis - KIL
 	KIL = {
 		own_control_core = {
-			kilis afrin trapessac
+			kilis  
 		}
 
 		include = "expl_middle_east"
@@ -29826,9 +29909,12 @@ countries = {
 
 	#Tacettinids - TDJ https://en.wikipedia.org/wiki/Beyliks_of_Canik https://en.wikipedia.org/wiki/Beylik_of_Tacettin
 	TDJ = {
+		our_cores_conquered_by_others = {
+			amasya niksar sonisa akkus terme
+		}
+
 		own_control_core = {
-			amasya niksar sonisa
-			akkus terme
+
 		}
 
 		starting_technology_level = 3
@@ -29856,9 +29942,12 @@ countries = {
 
 	#Teke - TEK https://en.wikipedia.org/wiki/Beylik_of_Teke
 	TEK = {
+		our_cores_conquered_by_others = {
+			antalya elmali karahisar_i_teke kas istanoz manavgat finike
+		}
+
 		own_control_core = {
-			antalya elmali karahisar_i_teke kas istanoz
-			manavgat finike
+
 		}
 
 		include = "expl_eastern_europe"
@@ -29884,15 +29973,15 @@ countries = {
 	#Trebizond - TRE
 	TRE = {
 		own_control_core = {
-			trebizond giresun gorele gumushane surmene
-			bayramlu unye  
+
 		}
 
 		own_control_integrated = {
-			taman
+			
 		}
 
 		our_cores_conquered_by_others = {
+			trebizond giresun gorele gumushane surmene bayramlu unye taman
 			khupati rize
 			akkus mesudiye terme 
 		}
@@ -29905,18 +29994,6 @@ countries = {
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			regnal_numbers = {
-				name_alexis = 2
-				name_andronikos = 3
-				name_john = 2
-				name_emmanuel = 2
-				name_george = 1
-				name_theodora = 1
-				name_basil = 1
-			}
-			bureaucracies = {
-				{ type = themata_bureaucracy	date = 1204.4.1 entrenchment = 20 }
-			}
 		}
 
 		country_rank = rank_empire
@@ -29931,13 +30008,12 @@ countries = {
 
 	#Ottomans - TUR https://en.wikipedia.org/wiki/Rise_of_the_Ottoman_Empire
 	TUR = {
+		our_cores_conquered_by_others = {
+			beypazari kibrus kizilca bolu akcasehir akyazi konrapa gerede mengen mudurnu bursa adranos iznik izmit atpazari domanic sultanonu bilecik goynuk eynegol inonu nalli sogut
+		}
+
 		own_control_core = {
-			beypazari kibrus kizilca
-			bolu akcasehir akyazi konrapa gerede mengen mudurnu
-			bursa adranos iznik
-			izmit atpazari
-			domanic
-			sultanonu bilecik goynuk eynegol inonu nalli sogut
+
 		}
 
 		include = "expl_eastern_europe"
@@ -30086,7 +30162,7 @@ countries = {
 	#Artaz - ATZ
 	ATZ = {
 		own_control_core = {
-			maku bayazit igdir khor_virap nazok_olya qarahziaoddin siah_cheshmeh surmali
+			maku bayazit   nazok_olya qarahziaoddin siah_cheshmeh 
 		}
 
 		include = "expl_christian_caucasus"
@@ -30689,7 +30765,7 @@ countries = {
 	DGE = {
 		own_control_core = {
 			raqqa  busayrah jabar madinat_far
-			urfa  birecik harran suruc viransehir  siverek
+			     viransehir  
 		}
 
 		starting_technology_level = 3
@@ -54221,7 +54297,7 @@ countries = {
 			telavi alaverdi dusheti gremi omalo rustavi shatili
 			gagi kayen khunani jariekhi
 			hereti balakan bodbe khornabuji qakh
-			panaskerti tortum
+			 
 		}
 
 		own_control_integrated = {
@@ -54286,7 +54362,7 @@ countries = {
 
 	AAI = { #Alastani
 		own_control_core = {
-			akhalkalaki amberd artashavan dmanisi kldekari kumayri lori spitak
+			akhalkalaki   dmanisi kldekari  lori spitak
 		}
 
 		include = "expl_christian_caucasus"
@@ -54311,9 +54387,9 @@ countries = {
 	SME = { #Samtskhe
 		own_control_core = {
 			akhaltsikhe ardahan
-			hasankale ispir khupati rize
-			artanuji khikhani oltu parkhali savsat
-			ani kars kagizman tmogvi
+			   
+			artanuji khikhani  parkhali savsat
+			   tmogvi
 		}
 
 		include = "expl_christian_caucasus"
@@ -54450,10 +54526,11 @@ countries = {
 
 	ARM = { #Armenia
 		own_control_core = {
-			yerevan bjni
+			 
 		}
 
 		our_cores_conquered_by_others = {
+			yerevan bjni
 			amberd ani artashavan igdir kars kagizman khor_virap kumayri surmali
 
 		}

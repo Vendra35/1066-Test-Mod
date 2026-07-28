@@ -216,6 +216,10 @@ HISTORICAL_RULERS = {
     "EPU": ("epu_ponc_i_empuries", "1040.1.1", 1),        # Ponç I of Empúries
     "PLJ": ("plj_ramon_iv_pallars", "1047.1.1", 0),       # Ramon IV of Pallars Jussà — numbering disputed, 0 is honest
     "RSL": ("rsl_guislabert_ii_empuries", "1062.1.1", 2), # Guislabert II of Roussillon — name_guislabert is OUR key (proven mechanism)
+
+    # The Byzantium slice adds one throne: Duklja. Constantine X, Bagrat IV
+    # and the whole 1067-1081 Byzantine cast already ship in vanilla.
+    "ZTA": ("zta_mihailo_vojislavljevic", "1046.1.1", 1), # Mihailo of Duklja, King from ~1077 — accession [U], NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -447,6 +451,126 @@ _IBERIA_GRANTS = ({
     "FRA": ["montpellier"],
 })
 
+# -------------------------------------------------- pre-Manzikert Byzantium ---
+# THE BYZANTIUM SLICE (Opus package, key claims re-verified). Constantine X
+# already reigns (the ruler layer shipped earlier); this is territory. The
+# 495-location grant list is RESOLVED FROM definitions.txt at build time
+# rather than transcribed — the package's rule set (whole region/areas/
+# provinces + explicit singles) is data, the parser walks vanilla's own
+# tree, and the exact-count assertion pins the result. A location is
+# ownable land iff its location_templates.txt block carries a culture
+# field; wastelands, lakes and seas never enter the list.
+def _parse_defs():
+    s = open(os.path.join(VAN, "in_game", "map_data", "definitions.txt"),
+             encoding="utf-8-sig").read()
+    s = re.sub(r"#[^\n]*", "", s)
+    toks = re.findall(r"[A-Za-z0-9_]+|=|\{|\}", s)
+    members, stack = {}, []
+    i, n = 0, len(toks)
+    while i < n:
+        t = toks[i]
+        if i + 2 < n and toks[i + 1] == "=" and toks[i + 2] == "{":
+            stack.append(t)
+            members.setdefault(t, [])
+            i += 3
+            continue
+        if t == "}":
+            if stack:
+                stack.pop()
+            i += 1
+            continue
+        for name in stack:
+            members[name].append(t)
+        i += 1
+    return members
+
+def _ownable_set():
+    s = open(os.path.join(VAN, "in_game", "map_data", "location_templates.txt"),
+             encoding="utf-8-sig").read()
+    own = set()
+    for m in re.finditer(r"^([A-Za-z0-9_]+)[ \t]*=[ \t]*\{", s, re.M):
+        end = find_block_end(s, s.index("{", m.start()))
+        if re.search(r"\bculture[ \t]*=", s[m.start():end]):
+            own.add(m.group(1))
+    return own
+
+# The package's rule set, verbatim: sweep names resolve recursively, the
+# singles are explicit. lezha (theme of Dyrrhachion, currently SER) is the
+# package's recommended addition, listed here explicitly.
+_BYZ_SWEEP = [
+    "anatolia_region",
+    "macedonia_area", "thrace_area", "bulgaria_area",
+    "northern_greece_area", "morea_area", "aegean_archipelago_area",
+    "albania_province", "north_epirus_province",
+    "branicevo_province", "kosovo_province", "nis_province",
+    "toplica_province", "sumadija_province", "macva_province",
+    "vardar_province", "prilep_province",
+    "ani_province", "kars_province", "erzurum_province",
+    "malazgirt_province", "antakya_province", "latakia_province",
+]
+_BYZ_SINGLES = [
+    "zadar", "split", "brac", "sremska_mitrovica", "petrovaradin", "ilok",
+    "yerevan", "bjni", "khor_virap", "igdir",
+    "van", "bargiri", "ercis", "hosap",
+    "mus",
+    "oltu", "tortum", "ispir", "panaskerti",
+    "ayntab", "dluk", "trapessac",
+    "urfa", "birecik", "siverek", "suruc", "harran",
+    "theodoro", "lusta", "soldaia", "vosporo",
+    "lezha",
+]
+
+def _byz_target():
+    members = _parse_defs()
+    ownable = _ownable_set()
+    target = []
+    seen = set()
+    for name in _BYZ_SWEEP:
+        if name not in members:
+            sys.exit(f"_BYZ_SWEEP: {name} not found in definitions.txt")
+        all_own = [l for l in members[name] if l in ownable]
+        if not all_own:
+            sys.exit(f"_BYZ_SWEEP: {name} holds zero ownable locations")
+        # zero NEW is legal: vardar/prilep sit inside macedonia_area and
+        # resolve fully covered — the 495 count assert is the real guard
+        got = [l for l in all_own if l not in seen]
+        target.extend(got)
+        seen.update(got)
+    for l in _BYZ_SINGLES:
+        if l not in ownable:
+            sys.exit(f"_BYZ_SINGLES: {l} is not an ownable location")
+        if l not in seen:
+            target.append(l)
+            seen.add(l)
+    return target
+
+# The Serbian world at 1066, on tags Paradox already ships landless with
+# claims (the Sardinia trick generalized — package section 6): Duklja
+# under Mihailo is the leading Serbian power; Rascia keeps its highlands;
+# Travunia and Zahumlje are carved small; Bosnia stays independent.
+# taman: Tmutarakan was Chernihiv's appanage (Gleb Sviatoslavich restored
+# 1066) — TRE's only non-transfer holding goes to the Rus, closing the
+# TRE 1204 exemption. koman/has/dukagjini are [U] Skadar hinterland.
+_BYZ_GRANTS = {
+    "ZTA": ["podgorica", "bar_cg", "gradina", "kotor", "onogost",
+            "shkoder", "koman", "has", "dukagjini"],
+    "TRO": ["trebinje", "gacko"],
+    "HUM": ["mostar", "nevesinje", "drijeva", "metkovic", "makarska"],
+    "CHR": ["taman"],
+}
+
+# The 45 donors the sweep leaves with nothing. Each ends landless with
+# claims equal to EVERYTHING it held before the pass (snapshotted at
+# build time) — for the beyliks and Frankokratia those claims are their
+# historical re-emergence. Nothing is deleted; every registry entry stays.
+BYZ_LANDLESS = (
+    "ACH", "AHI", "ALB", "ALY", "ANT", "ARG", "ARM", "ATH", "AYD", "BFR",
+    "BOD", "BUL", "CEP", "CIL", "CND", "CRT", "CYP", "DUL", "EPI", "ERE",
+    "FEO", "GRM", "HCI", "HMD", "INA", "KAR", "KBD", "KNI", "KRD", "MEN",
+    "MTR", "MUS", "MZK", "NAX", "NEG", "NEO", "PAT", "SHP", "SRU", "TDJ",
+    "TEK", "THP", "TUR", "TVS", "TRE",
+)
+
 # Displaced tags end LANDLESS (vanilla's own LON shape — a landless kingdom
 # keeps its capital and its claims, 10_countries.txt:14682) with their
 # former locations WRITTEN INTO their claims lists:
@@ -479,7 +603,7 @@ DISPLACED_CLAIMS = {
 if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
-LANDLESS_AFTER = ("GRA", "POR", "MLL")
+LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -497,6 +621,9 @@ LOCATION_GRANTS = {
     "COR": ["aleria", "bastia", "calvi", "corte", "ajaccio", "bonifacio", "sartene", "vico"],
 }
 LOCATION_GRANTS.update(_IBERIA_GRANTS)
+LOCATION_GRANTS.update(_BYZ_GRANTS)
+# LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
+# build_countries — see _byz_target().
 
 # tag -> (expected old capital, new capital). Asserted against the old
 # value so a vanilla patch moving it fails loudly.
@@ -505,6 +632,7 @@ CAPITAL_FIXES = {
     "CAS": ("valladolid", "burgos"),  # Valladolid founded/repopulated c. 1072 — barely exists at 1066
     "ARA": ("barcelona", "jaca"),     # the kingdom of Jaca; Barcelona is CAT's
     "POR": ("lisbon", "guimaraes"),   # the comital seat; lisbon is BDJ's and POR is landless
+    "SER": ("prizren", "trgoviste_SER"),  # Prizren goes to BYZ; Trgoviste IS Ras, the zupan's seat
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -519,6 +647,10 @@ FIELD_FIXES = {
     "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
             ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
     "POR": [('include = "iberian_monarchy"', 'include = "catholic_monarchy_not_present"')],
+    # Rascia was a zupa, not a kingdom until 1217; ZTA's block-level house
+    # is the 14th-century Balsici — Mihailo is a Vojislavljevic.
+    "SER": [("country_rank = rank_kingdom", "country_rank = rank_duchy")],
+    "ZTA": [("dynasty = balsic_dynasty", "dynasty = vojislavljevic_dynasty")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -1144,6 +1276,20 @@ NEW_CHARACTERS = """
 		dynasty = empuries_dynasty
 		tag = RSL
 	}
+
+	# --- 1066 Duklja ------------------------------------------------------
+	# name_michael is IN the serbo_croatian pool (00_balkans.txt) and
+	# renders in the culture's own form — do not invent name_mihailo.
+	# Birth year [U].
+	zta_mihailo_vojislavljevic = {
+		first_name = { name = name_michael }
+		culture = serbian
+		religion = orthodox
+		birth_date = 1015.1.1
+		birth = bar_cg
+		dynasty = vojislavljevic_dynasty
+		tag = ZTA
+	}
 """
 
 
@@ -1270,29 +1416,75 @@ def build_countries(src):
                 "own_conquered", "own_integrated", "own_colony",
                 "control_core", "control")
 
-    def _owned_spans(s, loc):
-        spans = []
+    def _ownership_index(s, wanted):
+        """ONE sweep over every ownership block: loc -> [(start, end)] for
+        each wanted location. Comments are MASKED length-preservingly first
+        — `#Lost 1204` style notes contain lowercase words (van, split,
+        kars ARE location names) that a raw scan would count as holdings.
+        The old per-location scanner had both that bug latent and O(file)
+        cost per location, which the 495-location Byzantium sweep turned
+        into minutes."""
+        idx = {}
         for key in OWN_KEYS:
             for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", s, re.M):
-                end = find_block_end(s, s.index("{", m.start()))
-                for t in re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])",
-                                     s[m.start():end]):
-                    spans.append((m.start() + t.start(), m.start() + t.end()))
-        return spans
+                bo = s.index("{", m.start())
+                end = find_block_end(s, bo)
+                masked = re.sub(r"#[^\n]*",
+                                lambda mm: " " * len(mm.group(0)),
+                                s[bo:end])
+                for t in re.finditer(r"[a-z][A-Za-z0-9_]*", masked):
+                    if t.group(0) in wanted:
+                        idx.setdefault(t.group(0), []).append(
+                            (bo + t.start(), bo + t.end()))
+        return idx
 
-    def _remove_owned(s, loc, ctx):
-        spans = _owned_spans(s, loc)
-        if len(spans) != 1:
-            sys.exit(f"{ctx}: {loc} has {len(spans)} ownership occurrences — "
-                     f"expected exactly one")
-        a, b = spans[0]
-        return s[:a] + s[b:]
+    def _remove_owned_many(s, locs, ctx):
+        idx = _ownership_index(s, set(locs))
+        bad = [f"{l}({len(idx.get(l, []))})" for l in locs
+               if len(idx.get(l, [])) != 1]
+        if bad:
+            sys.exit(f"{ctx}: ownership occurrences != 1 for {bad[:8]}")
+        for a, b in sorted((sp for v in idx.values() for sp in v),
+                           reverse=True):
+            s = s[:a] + s[b:]
+        return s
+
+    def _owned_by(s, tag):
+        blocks_ob = list(re.finditer(COUNTRY_RE, s, re.M))
+        for i, b in enumerate(blocks_ob):
+            if b.group(1) != tag:
+                continue
+            end = blocks_ob[i + 1].start() if i + 1 < len(blocks_ob) else len(s)
+            body = s[b.start():end]
+            held = []
+            for key in OWN_KEYS:
+                for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", body, re.M):
+                    bo = body.index("{", m.start())
+                    inner = re.sub(r"#[^\n]*", "",
+                                   body[bo + 1:find_block_end(body, bo)])
+                    held.extend(re.findall(r"[a-z][A-Za-z0-9_]*", inner))
+            return held
+        sys.exit(f"_owned_by: tag {tag} not found")
+
+    # Byzantium: the grant list is RESOLVED from definitions.txt (the
+    # package's rule set), minus what BYZ already holds; the 45 doomed
+    # donors' holdings are snapshotted BEFORE any mutation so their
+    # claims can be written after the sweep.
+    _byz_have = set(_owned_by(src, "BYZ"))
+    _target = _byz_target()
+    LOCATION_GRANTS["BYZ"] = [l for l in _target if l not in _byz_have]
+    if len(LOCATION_GRANTS["BYZ"]) != 495:
+        sys.exit(f"BYZ grant list resolved to {len(LOCATION_GRANTS['BYZ'])} "
+                 f"locations — the package's machine count is exactly 495")
+    _landless_claims = {t: _owned_by(src, t) for t in BYZ_LANDLESS}
+    for _t, _held in _landless_claims.items():
+        if not _held:
+            sys.exit(f"BYZ_LANDLESS: {_t} already holds nothing — stale entry")
 
     n_transferred = 0
     for _t, locs in sorted(LOCATION_TRANSFERS.items()):
-        for loc in locs:
-            src = _remove_owned(src, loc, "LOCATION_TRANSFERS")
-            n_transferred += 1
+        src = _remove_owned_many(src, locs, f"LOCATION_TRANSFERS[{_t}]")
+        n_transferred += len(locs)
     report.append(("locations transferred to new countries", n_transferred))
     wrap = src.rindex("\n}\n}")
     src = src[:wrap] + "\n" + "\n".join(NEW_COUNTRIES[t] for t in sorted(NEW_COUNTRIES)) + src[wrap:]
@@ -1303,8 +1495,7 @@ def build_countries(src):
     # and drop the granted locations from the target's own claims list.
     n_granted, n_unclaimed = 0, 0
     for _t, locs in sorted(LOCATION_GRANTS.items()):
-        for loc in locs:
-            src = _remove_owned(src, loc, f"LOCATION_GRANTS[{_t}]")
+        src = _remove_owned_many(src, locs, f"LOCATION_GRANTS[{_t}]")
         blocks_g = list(re.finditer(COUNTRY_RE, src, re.M))
         for i, b in enumerate(blocks_g):
             if b.group(1) != _t:
@@ -1352,7 +1543,9 @@ def build_countries(src):
     # list — a missed 19th location would leave a stray holding and quietly
     # break the "GRA is the future, not the present" story.
     n_claims = 0
-    for _t, locs in sorted(DISPLACED_CLAIMS.items()):
+    _all_claims = dict(DISPLACED_CLAIMS)
+    _all_claims.update(_landless_claims)
+    for _t, locs in sorted(_all_claims.items()):
         blocks_d = list(re.finditer(COUNTRY_RE, src, re.M))
         for i, b in enumerate(blocks_d):
             if b.group(1) != _t:
@@ -1386,16 +1579,44 @@ def build_countries(src):
                     bo = body.index("{", m.start())
                     # comments stripped first: MLL's emptied block keeps
                     # vanilla's `#County of Cerdanya` notes, which are not
-                    # holdings
+                    # holdings. Token regex admits interior capitals —
+                    # targoviste_BUL and trgoviste_SER are real locations.
                     inner = re.sub(r"#[^\n]*", "",
                                    body[bo + 1:find_block_end(body, bo)])
-                    toks = re.findall(r"[a-z][a-z0-9_]*", inner)
+                    toks = re.findall(r"[a-z][A-Za-z0-9_]*", inner)
                     if toks:
                         sys.exit(f"LANDLESS_AFTER: {_t} still owns {toks[:5]}")
             break
         else:
             sys.exit(f"LANDLESS_AFTER: tag {_t} not found")
     report.append(("displaced tags verified landless", len(LANDLESS_AFTER)))
+
+    # TRE surgery: the 1204.4.1 themata bureaucracy records the founding
+    # of an empire that does not exist in 1066, and the Grand-Komnenoi
+    # regnal counts are the same 1204+ inflation the BYZ REGNAL_FIXES
+    # corrected. Both blocks go — and with them the build's LAST
+    # KNOWN_FUTURE exemption: the date audit now runs with zero.
+    blocks_t = list(re.finditer(COUNTRY_RE, src, re.M))
+    for i, b in enumerate(blocks_t):
+        if b.group(1) != "TRE":
+            continue
+        end = blocks_t[i + 1].start() if i + 1 < len(blocks_t) else len(src)
+        body = src[b.start():end]
+        for key, must in (("bureaucracies", "1204.4.1"),
+                          ("regnal_numbers", "name_alexis")):
+            m = re.search(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", body, re.M)
+            if not m:
+                sys.exit(f"TRE surgery: no {key} block found")
+            bo = body.index("{", m.start())
+            be = find_block_end(body, bo)
+            if must not in body[m.start():be]:
+                sys.exit(f"TRE surgery: {key} lacks `{must}` — vanilla changed, re-verify")
+            body = body[:m.start()] + body[be:]
+        src = src[:b.start()] + body + src[end:]
+        break
+    else:
+        sys.exit("TRE surgery: tag TRE not found")
+    report.append(("TRE future-dated blocks removed", 2))
 
     # Capital corrections, asserted against the expected old value.
     # Blocks are RE-SCANNED per tag: a fix that changes the block's length
@@ -1588,10 +1809,11 @@ def build_countries(src):
         # Transfer/grant exclusivity: every moved location must end owned
         # exactly once, measured by the same ownership-block parser that
         # moved it.
-        moved = [(t, l) for t, ls in list(LOCATION_TRANSFERS.items())
+        moved = [l for _, ls in list(LOCATION_TRANSFERS.items())
                  + list(LOCATION_GRANTS.items()) for l in ls]
-        for _t, loc in moved:
-            n_now = len(_owned_spans(src, loc))
+        _midx = _ownership_index(src, set(moved))
+        for loc in moved:
+            n_now = len(_midx.get(loc, []))
             if n_now != 1:
                 return f"{loc}: {n_now} owners after the move — must be exactly 1"
         for key in COUNTRY_BLOCKS + COUNTRY_LINES:
@@ -1664,7 +1886,11 @@ def build_countries(src):
         # silent fix. Anything new and future still fails the build.
         # (In 05_characters.txt dates are exempt: birth_date and death_date are
         # exactly what that file is for.)
-        KNOWN_FUTURE = {"1204.4.1"}   # TRE themata_bureaucracy — Trebizond founded 1204
+        # EMPTY since the Byzantium slice retired the TRE 1204.4.1
+        # exemption by deleting the block itself — the audit now tolerates
+        # ZERO future dates from any source. Kept as a set so a future
+        # genuinely-unfixable case has somewhere documented to go.
+        KNOWN_FUTURE = set()
         start = _start_date()
         starts_seen = 0
         for key, val in re.findall(r"\b(start_date|end_date|date)[ \t]*=[ \t]*([0-9.]+)", nc):

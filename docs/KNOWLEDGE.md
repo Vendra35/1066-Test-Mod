@@ -1304,6 +1304,31 @@ re-verified by the main session before a line was written.
 ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 / NAV 1, every emir seated, all
 accessions [U] (no taifa ruler exists in vanilla to compare against).
 
+### Landless-with-claims is Paradox's OWN standard shape — the Sardinia trick generalizes
+**Established:** 2026-07-28, Byzantium pass. Vanilla ships THIRTEEN
+landless-with-claims tags in the Balkans/Caucasus theatre alone (LAT THE
+THS VID KVN MOE ZTA HUM TRO SVN CAR TRA IME AMB — ZTA at
+10_countries.txt:12486 with claims that ARE Duklja's 1066 borders, LAT
+landless at rank_empire :11399). Their claim lists are usable 1066
+border data, and the shape scales: this project now ships 48 landless
+tags (GRA POR MLL + 45 Byzantine donors), every one keeping capital,
+rank, registry entry and claims = its historical re-emergence.
+**Means:** before inventing any border, check the target tag's OWN
+claims block first; and displacing a tag is never deletion.
+
+### `tag = X ... location = L` where X does not own L is FIRST-CLASS vanilla, not a desync
+**Established:** 2026-07-28, Byzantium pass deletion-danger scan.
+1,170 of vanilla's own 2,776 tag+location building entries already name
+a tag that does not own the location (order_commandery KNI in london,
+:1702, is the canonical case; the whole Japanese shoen layer works this
+way). The shipped taifa/Sardinia passes added 103 more with no reported
+problem.
+**Means:** do NOT "fix" 07_cities_and_buildings.txt after ownership
+passes; a cathedral on a landless tag's former seat is cosmetic. Of the
+27 vanilla setup/start files the mod does not override, only 06_pops
+and 07_cities interact with mass ownership change at all, and neither
+breaks.
+
 ### End-anchored one-liner regexes have a SECOND blind spot: trailing comments
 **Established:** 2026-07-28, the future-dependency strip's first run. The
 strip pattern `dependency = \{[^}\n]*\}[ \t]*\n` silently skipped 6 of 27

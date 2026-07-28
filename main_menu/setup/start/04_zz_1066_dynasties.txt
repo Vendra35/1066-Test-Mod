@@ -126,4 +126,10 @@ dynasty_manager = {
 		name = { name = pallars_dynasty }
 		home = talarn
 	}
+	# --- 1066 Duklja: the house of Stefan Vojislav. Vanilla ships only
+	# the 14th-century Balsici for ZTA.
+	vojislavljevic_dynasty = {
+		name = { name = vojislavljevic_dynasty }
+		home = bar_cg
+	}
 }

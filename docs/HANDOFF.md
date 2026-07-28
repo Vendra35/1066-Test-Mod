@@ -429,6 +429,84 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    the Pyrenees, Guislabert renders in Roussillon; (e) Portugal and
    Mallorca GONE from the map; (f) no orphan locations, error.log.
 
+15. **PRE-MANZIKERT BYZANTIUM (LANDED, untested) — the largest slice.**
+   BYZ 87→582: all Anatolia (no Turkish state exists — raids only),
+   the Balkans south of the Danube, the islands, Cilicia, the
+   Antioch/Edessa ducates, the Cherson theme. The 495-location grant
+   list is RESOLVED from definitions.txt at build time (the package's
+   area/province rule set + explicit singles; my resolver independently
+   reproduced the package's machine count — two implementations, same
+   495). 45 donors go LANDLESS with claims = their pre-pass holdings
+   (snapshotted at build time): all 21 beyliks incl. the Ottomans
+   (Söğüt as a claim IS the post-Manzikert future), the Frankokratia,
+   Bulgaria, Trebizond. Serbian world: Duklja (ZTA) restored with 9
+   under Mihailo Vojislavljević (name_michael — IN the serbo-croatian
+   pool; new vojislavljevic dynasty; block dynasty balsic→vojislavljevic
+   via FIELD_FIXES), Rascia 13 (rank→duchy, capital prizren→
+   trgoviste_SER = Ras), TRO 2, HUM 5, BOS 16 independent, RAG kept.
+   TRE's 1204.4.1 themata bureaucracy + Grand-Komnenoi regnal blocks
+   DELETED — **KNOWN_FUTURE is now the empty set**; taman → CHR
+   (Tmutarakan was Chernihiv's). Perf: ownership ops went through one
+   comment-masked index sweep per batch (the old per-location scan hit
+   minutes at this scale AND could count comment words as holdings).
+   TEST: (a) Constantinople rules from the Danube to the Euphrates —
+   ONE purple empire, no beyliks, no Trebizond, no Frankish Greece;
+   (b) Duklja under Mihailo (house Vojislavljević renders), Rascia/
+   Bosnia/Ragusa/Croatia small and independent; (c) Bulgaria GONE
+   (theme since 1018); (d) Cyprus+Crete+Rhodes+Aegean Byzantine;
+   (e) Ani/Kars Byzantine, Georgia untouched under Bagrat IV;
+   (f) error.log — expect a DROP (the -1000 opinion wall and IO noise
+   partly came from now-landless tags).
+
+## DEFERRED BY DESIGN — the backlog a fresh session must know
+Every item below was DECIDED, not forgotten. Sources: the taifa,
+Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
+- **Southern Italy 1066 slice** (spec banked): 87 locations (NAP 65 +
+  SIC 22), ~5 new tags (Guiscard's Apulia-Calabria, Capua, Salerno,
+  Naples, Kalbid Sicily rump), Byzantine catepanate carve-out (Bari
+  falls only 1071.4), Roger's Messina, malta stays Muslim until 1091.
+  Free ids verified: APU GAE RAS DUK KAK PEC ZET DIO TMU (word-grep
+  zero); **CAP is NOT free** (interfaces loc, all languages).
+- **Pechenegs: NO tag at start** — 1046-53 settlement made them
+  foederati INSIDE the Paristrion theme; the autonomous lords (Tatrys,
+  Sesthlav, Satzas) are 1072+. PEC is banked for a future Danube/steppe
+  situation around the 1087 invasion — a state EARNED by events, per
+  the project's philosophy. North of the Danube (WAL/Moldavia/steppe)
+  untouched = the steppe slice.
+- **Kakheti-Hereti micro-slice**: independent under Aghsartan I
+  1058-1084, needs invented tag (KAK/HER free) + name_aghsartan
+  (missing). Tashir-Dzoraget (AAI) arguably right as-is.
+- **Kharpert/Dersim Tier 2** (8 locations, SUT/CEM/EGL): softest edge
+  of the eastern frontier, NO source anchor found — deliberately left.
+- **Seljuk-slice boundaries**: Marwanid Diyar Bakr, Mirdasid Aleppo
+  (MAM keeps it for now), the Kurdish emirates — all flagged as the
+  Seljuk+Abbasid slice's western edge, not Byzantium's.
+- **CAS/LON border alternative**: the Pisuerga reading moves palencia,
+  carrion_de_los_condes, saldana, monzon_campos CAS→LON. Area-line
+  chosen (vanilla's own claims signal); 4-location revisit.
+- **vielha**: left ARA; the Comminges reading (→COM) is the alternative.
+- **ARA culture_definition = catalan** (registry, iberia.txt:17): fix
+  needs whole-file override; VERIFY IN GAME first that the field even
+  matters for a landed tag.
+- **Armenian patriarchate seat = sis** (now BYZ-owned): left unchanged
+  on purpose — every alternative is equally Byzantine-owned.
+- **Name-key bank (all confirmed MISSING in vanilla):** name_mihailo,
+  name_stefan, name_bodin, name_petrislav, name_gojislav,
+  name_konstantin, name_gagik, name_ashot, name_smbat, name_kiurike,
+  name_aghsartan, name_giorgi, name_mujahid, name_hudhayl, name_hisham,
+  name_mundhir, name_zuhayr. Present: name_michael, name_voislav,
+  name_radoslav, name_bagrat, name_george, name_david, name_nuno.
+- **BYZ's claims comments**: emptying BYZ's 63-claim block left
+  Paradox's loss-year comments orphaned in place — cosmetic; a tidy
+  pass may remove them someday.
+- **Eyeball items**: Bernat of Besalú renders via name_bernard's
+  occitan row ("# Catalan & Occitan"); ARA/NAV are both dark red and
+  NEWLY adjacent in the west Pyrenees (Gallura-class recolor if it
+  reads badly).
+- **Pop/religion/culture conversion phase**: after the world's borders
+  are done (user decision below). The taifa measurement stands: 222 of
+  244 al-Andalus locations have catholic template religion.
+
 ## STRATEGIC ORDER (user decision, 2026-07-28 evening)
 **Territory first, across the WHOLE map — pops/religions/cultures as a
 separate later phase.** The world's borders get finished before any pop

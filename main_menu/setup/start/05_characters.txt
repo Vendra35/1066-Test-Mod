@@ -104913,4 +104913,18 @@ character_db={
 		dynasty = empuries_dynasty
 		tag = RSL
 	}
+
+	# --- 1066 Duklja ------------------------------------------------------
+	# name_michael is IN the serbo_croatian pool (00_balkans.txt) and
+	# renders in the culture's own form — do not invent name_mihailo.
+	# Birth year [U].
+	zta_mihailo_vojislavljevic = {
+		first_name = { name = name_michael }
+		culture = serbian
+		religion = orthodox
+		birth_date = 1015.1.1
+		birth = bar_cg
+		dynasty = vojislavljevic_dynasty
+		tag = ZTA
+	}
 }
