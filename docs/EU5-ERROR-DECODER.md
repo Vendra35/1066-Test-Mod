@@ -159,6 +159,17 @@ Philip I, plus the odd random-roll child like AOS). Measured in game: the
 child SEATS and RULES directly — no regency fires, matching the earlier
 negative-age measurement. Informational, not a defect.
 
+### `country_manager.cpp:206 — Unknown country 'X' referenced. Please add it to setup/countries/_countries.txt`
+**DECODED — the tag is not registered.** The suggested file does not
+exist in vanilla; the REAL registry is the `in_game/setup/countries/`
+folder's identity blocks (color/color2 + culture/religion_definition per
+00_readme.info). Without one, the tag's whole 10_countries block is
+rejected: the parser then reports "Unknown country 'government'",
+"'ruler'", "'ruler_term'"… (the block's own keys read as tags) plus
+"Unexpected token" per line, and the tag's locations sit OWNERLESS on
+the map. Measured on the Pereyaslavl probe's first launch; fixed by the
+additive registration file.
+
 ### A dead-at-start ruler produces NO error at all
 Not a signature — the absence of one, recorded because it cost a session.
 A character alive at `START_DATE` carrying a post-start `death_date` starts

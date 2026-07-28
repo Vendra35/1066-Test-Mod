@@ -1,0 +1,17 @@
+﻿# Identity registrations for the NEW_COUNTRIES tags. THE PROBE'S FIRST
+# LAUNCH ANSWERED THE DESIGN QUESTION THE HARD WAY: a tag absent from the
+# in_game/setup/countries identity files does not exist — the engine
+# rejects its 10_countries block wholesale and says so
+# (country_manager.cpp:206, "Unknown country 'PYS'... add it to
+# setup/countries/_countries.txt", a file vanilla does not even ship; the
+# real registry is THIS folder). Shape per 00_readme.info and SKE
+# (_scandinavia.txt:39): color/color2 minimal, culture/religion identity.
+# Named colors are legal here (SKE uses map_skane).
+
+PYS = {
+	color = map_PYS
+	color2 = rgb { 255 223 0 }
+
+	culture_definition = ruthenian
+	religion_definition = orthodox
+}

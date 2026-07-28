@@ -93,12 +93,21 @@ historically elegant: the beylik claims ARE the future.
    correction so no horde naming).
 4. **Fatimid Egypt** (+ the MAM rank-branch decision, KNOWLEDGE).
 
-## Open questions the probe must answer
+## Open questions — the probe's FIRST LAUNCH answered the big one
 
-- Does a landed tag truly need no identity block (the SIC precedent)?
-- Does the engine accept a tag id absent from every vanilla database, or
-  is there a tag registry beyond `10_countries.txt`? (The Iberia pass
-  found none; `setup/countries` identity blocks and loc are the only
-  sightings. The probe measures it.)
+- **ANSWERED, the hard way: the identity block IS the tag registry and it
+  is MANDATORY.** A tag absent from the `in_game/setup/countries/`
+  identity files does not exist: the engine rejects the whole
+  10_countries block (`country_manager.cpp:206, "Unknown country 'PYS'…
+  add it to setup/countries/_countries.txt"` — a file vanilla does not
+  ship; the real registry is the folder), then cascades "Unknown country
+  'government'/'ruler'…" and "Unexpected token" for every line of the
+  orphaned block, and the transferred locations end up OWNERLESS on the
+  map. The "SIC has no identity block" reading from the Levant pass was
+  wrong (Italy pass found it at italy.txt:462). Registration shape per
+  00_readme.info/SKE: color + color2 minimum, culture_definition +
+  religion_definition identity; named colors legal. Our additive
+  registration file: `in_game/setup/countries/zz_1066_new_countries.txt`
+  (BOM'd — this folder is NOT the setup/start BOM-free zone).
 - Do `include = "..."` template references resolve for new tags the same
-  way (expected yes — they are setup-side templates).
+  way (expected yes — pending the re-launch).
