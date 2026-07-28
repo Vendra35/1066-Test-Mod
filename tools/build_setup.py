@@ -118,6 +118,18 @@ HISTORICAL_RULERS = {
     "HOL": ("hol_dirk_v", "1061.1.1", 5),                 # Dirk V of Holland, aged 14 — MINOR_RULERS
     "MAI": ("mai_siegfried_i", "1060.1.1", 1),            # Siegfried I, Archbishop of Mainz
     "BRB": ("brb_henry_ii_louvain", "1054.1.1", 2),       # Henry II of Louvain; accession sources differ (1054 vs c.1062) — earlier date entered
+
+    # The East and Iberia, 1066 — every accession below is vanilla's OWN
+    # ruler_term data (file:line in KNOWLEDGE.md); all five characters ship
+    # in vanilla. Held back with reasons recorded: LON/GLC/CAT (landless at
+    # 1337, the brothers' realms wait for the Iberian territory pass), GRA
+    # and the 13 other taifas plus the Great Seljuks (invent-a-country
+    # work), TRE/CIL/CYP/CRT/BUL (Byzantine themes — territory pass).
+    "BYZ": ("byz_konstantinos_x_doukas", "1059.11.23", 10), # Constantine X Doukas; d. 1067.5.23 is SCRIPT work, not data
+    "GEO": ("geo_bagrat_iv", "1027.8.16", 4),             # Bagrat IV of Georgia
+    "CAS": ("cas_sancho_ii_jimena", "1065.12.27", 2),     # Sancho II of Castile — king for nine months at start
+    "NAV": ("nav_sancho_iv_jimena", "1054.9.1", 4),       # Sancho IV of Navarre
+    "ARA": ("ara_sancho_i_aragon", "1063.5.8", 1),        # Sancho Ramirez of Aragon
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -478,10 +490,42 @@ def build_countries(src):
 
     # Regnal-number tables are 1337's: ENG carries name_william = 2 (counting
     # the Conqueror and Rufus), so William crowned via the union displayed as
-    # "William III" in game. 0 makes the next William the first. Grow this
-    # table as more wrong numerals are OBSERVED, not preemptively.
-    REGNAL_FIXES = {("ENG", "name_william"): 0}
+    # "William III" in game. 0 makes the next William the first. BYZ's table
+    # is inflated by every emperor between 1066 and 1337 (research pass,
+    # KNOWLEDGE.md). Grow this table as wrong numerals are OBSERVED or
+    # research-attested, not preemptively.
+    REGNAL_FIXES = {
+        ("ENG", "name_william"): 0,
+        ("BYZ", "name_michael"): 6,       # Michael VII accedes 1071
+        ("BYZ", "name_roman"): 3,         # Romanos IV accedes 1068
+        ("BYZ", "name_nikephoros"): 2,    # Nikephoros III accedes 1078
+        ("BYZ", "name_alexis"): 0,        # Alexios I accedes 1081
+        ("BYZ", "name_isaac"): 1,
+        ("BYZ", "name_emmanuel"): 0,      # Manuel I accedes 1143
+        ("BYZ", "name_andronikos"): 0,    # first Andronikos is 1183; key renamed below
+    }
+    # Vanilla typo: BYZ's table says `name_andonikos` — a key with no loc
+    # entry anywhere (the registry has only name_andronikos,
+    # character_names_dynamic_l_english.yml:1783). Renamed FIRST so the
+    # value fix above can find it. Report-vanilla, fix-ours discipline:
+    # this is a rename in OUR generated copy, vanilla stays untouched.
+    REGNAL_RENAMES = {("BYZ", "name_andonikos"): "name_andronikos"}
     n_fix = 0
+    starts_rf = list(re.finditer(COUNTRY_RE, src, re.M))
+    for (tag, oldkey), newkey in sorted(REGNAL_RENAMES.items()):
+        for i, b in enumerate(starts_rf):
+            if b.group(1) != tag:
+                continue
+            end = starts_rf[i + 1].start() if i + 1 < len(starts_rf) else len(src)
+            body, k = re.subn(r"(^[ \t]*)" + oldkey + r"\b",
+                              lambda mm, nk=newkey: mm.group(1) + nk,
+                              src[b.start():end], count=1, flags=re.M)
+            if not k:
+                sys.exit(f"REGNAL_RENAMES: {oldkey} not found inside {tag}")
+            src = src[:b.start()] + body + src[end:]
+            break
+        else:
+            sys.exit(f"REGNAL_RENAMES: tag {tag} not found")
     starts_rf = list(re.finditer(COUNTRY_RE, src, re.M))
     for (tag, namekey), val in sorted(REGNAL_FIXES.items()):
         for i, b in enumerate(starts_rf):

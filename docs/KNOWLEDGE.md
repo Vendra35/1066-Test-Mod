@@ -892,6 +892,85 @@ work: OGK needs a demesne, HAB needs breaking up, Swabia/Saxony need a
 decision (new tags vs proxy tags). The IO leadership choice is recorded in
 HANDOFF as an open decision.
 
+### Byzantium/Anatolia at 1066 — the mirror image of France (research pass, core claims re-verified)
+**Established:** 2026-07-28, Opus East report; the three load-bearing cites
+checked by hand and exact. France was ruler work on serviceable borders;
+the East is the inverse: **the rulers are free, the territory is the job.**
+- **Two rows buy the theatre's crowns:** vanilla ships the ENTIRE
+  11th-century Byzantine and Georgian cast alive and linked —
+  `byz_konstantinos_x_doukas` (term `10_countries.txt:13194`, accession
+  1059.11.23, regnal 10) and `geo_bagrat_iv` (term :59447, 1027.8.16,
+  regnal 4), plus Eudokia, Michael VII (16 to the day), Romanos IV, the
+  Caesar John Doukas, the child Alexios Komnenos — the whole
+  1067→1071→1081 arc has actors with family links already wired.
+  There is NO Manzikert content anywhere in vanilla — greenfield.
+- **The Great Seljuk Empire does not exist in vanilla in any form.** No
+  tag, no identity block, no character. `RUM` is only a formable NAME
+  whose `tag = TUR` — forming Rum makes you the Ottomans renamed. Only
+  `seljukids_dynasty` ships (04_dynasties.txt:8010, home konya). The
+  largest state of the 1066 world must be invented whole; Manzikert in
+  five years needs someone to fight.
+- **The Anatolian transfer is ~305 locations:** BYZ holds 5 of ~308
+  Anatolian land locations; 26 beylik-era tags (none with a character
+  born before 1210) hold 253. BYZ's own `our_cores_conquered_by_others`
+  (:13023-13060) is a Paradox-written 63-location reconquest manifest
+  with loss-year comments. Balkans add ~130 more (BUL's 63 Byzantine
+  since 1018, Latin Greece…). Dissolve-vs-empty (the SKE landless road)
+  is the slice's one real design call — parked.
+- **Three vanilla bugs, citable:** BYZ regnal_numbers carries
+  `name_andonikos = 3` (:13282) — a typo, zero loc keys match
+  (`name_andronikos` is the key); `byz_romanos_iv_diogenes` wears
+  Constantine X's death date (1067.5.23) though his own vanilla term runs
+  to 1071.10.1; BYZ's regnal numbers are 1337-inflated
+  (michael 9→6, roman 4→3, nikephoros 3→2, alexis 5→0, isaac 2→1,
+  emmanuel 1→0 for 1066).
+- Literal first names are vanilla-attested 496 times
+  (`{ name = Karaman }`, `{ name = Selcuk }`, `Izz_al_Din` for
+  multi-word) — the escape hatch for missing name keys (no name_alp, no
+  name_tughril, no name_gagik…). Underscore→space rendering unobserved.
+- TRE's `date = 1204.4.1` KNOWN_FUTURE exemption belongs to this slice:
+  Trebizond at 1066 is a Byzantine theme; when it dissolves, the
+  exemption goes with it.
+**Means:** the East's ruler batch is the cheapest win yet (two rows plus
+regnal fixes); everything else is the territory pass, and the Seljuk tag
+is the project's first invent-a-country job.
+
+### Iberia at 1066 — Christian rulers free, al-Andalus absent (research pass, core claims re-verified)
+**Established:** 2026-07-28, Opus Iberia report; term cites and the LON
+landless claim checked by hand (a first crude check here matched GRA's
+block by accident — checker-first, again).
+- **All six Christian rulers ship in vanilla with their exact accession
+  terms**, including the pivot of the start: Ferdinand I's death
+  1065.12.27 and the three-way division — CAS Sancho II (:14521, regnal
+  2), LON Alfonso VI (:14736, regnal 6), GLC García II (:14791, regnal
+  2), plus NAV Sancho IV (1054.9.1), ARA Sancho Ramírez (1063.5.8), CAT
+  Ramon Berenguer I (1035.5.26). Vanilla even ships Sancho II's 1071-72
+  seizure of his brothers' realms as terms. **But LON, GLC, CAT and VAL
+  are LANDLESS at 1337** (claims-only blocks; CAS holds 244 locations) —
+  only CAS/NAV/ARA are seatable before the Iberian territory pass.
+- **Muslim Iberia does not exist**: no taifa tags, characters or
+  dynasties; earliest andalusi character is born 1175. Fourteen taifas =
+  the project's second invent-a-country job (after the Seljuks), needing
+  the new-tag prerequisite list the report banked (identity block, map
+  color, country block, loc, CoA) — build_setup has no NEW_COUNTRIES
+  mechanism yet.
+- **Free win found:** `rank_duchy_andalusi` (country_ranks.txt:1689) —
+  any Muslim duchy-rank tag with an Iberian capital displays as
+  "Taifa of X" automatically. The first-match-wins machinery working FOR
+  us for once.
+- **Name-key traps for the Arabic world:** Yusuf → name_joseph,
+  Sulayman → name_salomon, Ismail → name_ishmael, Umar → name_omar (the
+  loc registry's .arabic_language rows render them correctly); genuinely
+  missing: name_abbad, name_badis, name_abd_al_malik. Inventing our own
+  name key is legal-in-principle (a name key is just a loc key) but
+  UNTESTED — cheap in-game check before 14 characters depend on it.
+- `alpuente` is the one 1066 taifa capital with no location on the map
+  (chelva is nearest).
+**Means:** Iberia contributes CAS/NAV/ARA to the ruler layer now; the
+brothers' realms (LON/GLC/CAT) join with the territory pass — and the
+Sancho II vs Alfonso VI fratricidal war (1068-1072) is a ready-made
+situation with every actor and date already in vanilla's own data.
+
 ## Open questions to settle early
 
 - **How badly does a 276-year `age_1` actually play?** THE question for this

@@ -266,7 +266,17 @@ regency). The opinion loc key the engine flagged is added.
    "Aquitaine", William VIII on the throne.
 4. **Standing regressions:** Norman Conquest opening beats, France
    spot-checks, error.log against the ~53-line class profile.
-5. *(Iberia / Byzantium batches will append here as they land.)*
+5. **East + Iberia batch (LANDED, phone-approved):** Byzantium =
+   Constantine X Doukas (Constantinople, regnal X), Georgia = Bagrat IV
+   (Tbilisi), Castile = Sancho II (Valladolid — territory oversized but
+   seatable), Navarre = Sancho IV (Pamplona), Aragon = Sancho Ramírez
+   (Barcelona-capital anachronism noted). BYZ regnal numerals corrected
+   for 1066 and the vanilla `name_andonikos` typo renamed to
+   `name_andronikos` (value 0). 38 rulers total. Check the five thrones
+   plus: does Constantine X display as "Constantine X"?
+   Held for territory passes: LON/GLC/CAT (landless brothers' realms),
+   the 14 taifas and the Great Seljuks (invent-a-country),
+   TRE/CIL/CYP/CRT/BUL (Byzantine themes).
 
 ## Next, in order
 
