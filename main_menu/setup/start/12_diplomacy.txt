@@ -189,7 +189,6 @@ diplomacy_manager = {
     dependency = { first = FRA second = MON subject_type = vassal }
     dependency = { first = FRA second = AUM subject_type = vassal }
     dependency = { first = FRA second = ROU subject_type = vassal }
-    dependency = { first = FRA second = FLA subject_type = vassal start_date = 1305.6.23 } #Reined in as a vassal of France by the Treaty of Athis-sur-Orge in 1305, confirmed after the Battle of Cassel in 1328
     dependency = { first = FRA second = NEV subject_type = vassal } #In a PU with FLA
     dependency = { first = FRA second = RET subject_type = vassal } #In a PU with FLA
     dependency = { first = FRA second = NRB subject_type = vassal }
@@ -214,10 +213,8 @@ diplomacy_manager = {
     #-------Italy-------
     dependency = { first = NAP second = ACH subject_type = vassal }
     dependency = { first = ACH second = NAX subject_type = vassal }
-    dependency = { first = ACH second = CEP subject_type = vassal start_date = 1332.1.1 } #John of Gravina, Prince of Achaea, exchanges his Principality with Robert, Prince of Taranto
     dependency = { first = ACH second = PAT subject_type = vassal }
 
-    dependency = { first = VEN second = TTE subject_type = vassal start_date = 1202.10.9 } #Trieste and Muggia swear loyalty to Dux Enrico Dandolo
     dependency = { first = VEN second = CRT subject_type = vassal }
     dependency = { first = VEN second = RAG subject_type = vassal }
 
@@ -227,7 +224,6 @@ diplomacy_manager = {
     dependency = { first = PAP second = FAE subject_type = vassal }
 
     dependency = { first = SAV second = CEV subject_type = vassal }
-    dependency = { first = SAV second = GNV subject_type = vassal start_date = 1329.1.1 }
     dependency = { first = SAV second = PIE subject_type = vassal }
     dependency = { first = SAV second = VUD subject_type = vassal }
 
@@ -243,7 +239,6 @@ diplomacy_manager = {
     scripted_oneway = { first = ARA second = SIC type = guarantee }
 
     #-------Iberia-------
-    dependency = { first = ARA second = MLL subject_type = vassal start_date = 1279.1.20 } #Treaty of Perpignan, where James II of Mallorca acknowledged the overlordship of his elder brother, Peter IV of Aragon
 
     scripted_oneway = { first = ARA second = ANR type = guarantee }
     scripted_oneway = { first = FRA second = ANR type = guarantee }
@@ -308,31 +303,9 @@ diplomacy_manager = {
     scripted_mutual = { first = LIT second = POL type = alliance }
 
     #-------Bohemia-------
-    dependency = { first = BOH second = WRC subject_type = fiefdom start_date = 1327.1.1 }
-    dependency = { first = BOH second = MVA subject_type = vassal start_date = 1333.1.1 } #Prince Charles is made Margrave of Moravia, and confirmed heir to Bohemia
-    dependency = { first = BOH second = BRZ subject_type = vassal start_date = 1329.1.1 }
-    dependency = { first = BOH second = BYM subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = GLO subject_type = vassal start_date = 1331.1.1 }
-    dependency = { first = BOH second = LGC subject_type = vassal start_date = 1329.5.9 }
-    dependency = { first = BOH second = NMD subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = NMS subject_type = vassal start_date = 1323.1.1 }
-    dependency = { first = BOH second = OEL subject_type = vassal start_date = 1329.1.1 }
-    dependency = { first = BOH second = OPL subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = OPV subject_type = vassal start_date = 1318.1.1 }
-    dependency = { first = BOH second = OSW subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = PDK subject_type = vassal start_date = 1318.1.1 }
-    dependency = { first = BOH second = RCB subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = SCI subject_type = vassal start_date = 1329.1.1 }
-    dependency = { first = BOH second = SIZ subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = STZ subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = TES subject_type = vassal start_date = 1327.1.1 }
-    dependency = { first = BOH second = ZAG subject_type = vassal start_date = 1329.1.1 }
-    dependency = { first = BOH second = ZIE subject_type = vassal start_date = 1336.8.29 }
-    dependency = { first = WRC second = NYS subject_type = vassal start_date = 1290.1.1 }
     scripted_mutual = { first = BOH second = LBV type = alliance }
 
     #-------Poland-------
-    dependency = { first = POL second = INO subject_type = fiefdom start_date = 1327.5.28 } #Exchanged to Przemysł of Inowrocław for Sieradz in 1327, incorporated as a Voivodeship in 1364
     dependency = { first = POL second = SDZ subject_type = vassal }
     dependency = { first = POL second = LCZ subject_type = vassal }
 

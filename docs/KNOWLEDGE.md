@@ -1304,6 +1304,18 @@ re-verified by the main session before a line was written.
 ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 / NAV 1, every emir seated, all
 accessions [U] (no taifa ruler exists in vanilla to compare against).
 
+### End-anchored one-liner regexes have a SECOND blind spot: trailing comments
+**Established:** 2026-07-28, the future-dependency strip's first run. The
+strip pattern `dependency = \{[^}\n]*\}[ \t]*\n` silently skipped 6 of 27
+targets because vanilla puts comments AFTER the closing brace on exactly
+those six lines (`} #Treaty of Perpignan…`). The one-line-block law's
+cousin: line-ANCHORED patterns miss one-line blocks, line-END-anchored
+patterns miss trailing comments. The strip's exact-count assertion
+(`!= 27 -> die`) is what caught it — a lenient strip would have shipped
+six future-dated vassalages silently.
+**Means:** every end-anchored one-liner pattern gets `(?:#[^\n]*)?` before
+its `\n`, and every bulk strip carries an exact-count assertion.
+
 ### Changing a REGISTERED tag's identity data (color etc.) = whole-file override; additive re-declaration is unattested
 **Established:** 2026-07-28, the Gallura recolor. Vanilla ships GAL
 `rgb { 100 100 100 }` and CAG `hsv { 0 0 0.43 }` — the same grey, invisible

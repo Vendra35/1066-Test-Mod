@@ -12512,11 +12512,15 @@ countries = {
 	#----------------------------- Iberia -------------------------------
 
 	CAT = {
+		own_control_core = {
+			barcelona sitges terrassa villafranca_del_penedes girona sant_feliu vic cardona cervera manresa tarragona montblanc tarrega
+		}
+
 		our_cores_conquered_by_others = {
-			barcelona sitges terrassa villafranca_del_penedes
-			girona besalu castellon_ampurias ripoll sant_feliu
-			tarragona flix lleida montblanc tarrega tortosa
-			vic berga cardona cervera manresa
+			   
+			 besalu castellon_ampurias ripoll 
+			 flix lleida   tortosa
+			 berga   
 			perpignan prades puigcerda
 			seu_durgell agramunt balaguer talarn vielha
 		}
@@ -12529,11 +12533,12 @@ countries = {
 		include = "expl_indian_trade_route"
 		include = "catholic_monarchy_not_present"
 
-		country_rank = rank_duchy
+		country_rank = rank_county
 
 		capital = barcelona
 		government = {
-			ruler = random
+			ruler = cat_ramon_berenguer_i_barcelona
+			ruler_term = { character = cat_ramon_berenguer_i_barcelona start_date = 1035.5.26 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_wilfred = 1
@@ -12568,9 +12573,8 @@ countries = {
 	}
 	ARA = {
 		own_control_core = {
-			barcelona berga besalu ripoll castellon_ampurias girona manresa sant_feliu sitges terrassa vic
-			cervera    montblanc tarragona tarrega  villafranca_del_penedes
-			seu_durgell agramunt cardona talarn vielha
+
+			    vielha
 			 ainsa  anso  benabarre   jaca   sos
 
 		}
@@ -12635,10 +12639,10 @@ countries = {
 
 		}
 
-		court_language = catalan_dialect
+		court_language = aragonese_dialect
 		country_rank = rank_kingdom
-		capital = barcelona
-		accepted_cultures = { aragonese }
+		capital = jaca
+		accepted_cultures = { catalan }
 		tolerated_cultures = {
 			andalusi
 			sephardi
@@ -12668,11 +12672,15 @@ countries = {
 		}
 	}
 	MLL = {
+		our_cores_conquered_by_others = {
+			puigcerda prades montpellier perpignan palma ciudadela_de_menorca ibiza manacor pollensa
+		}
+
 		own_control_core = {
 			     #Kingdom of Mallorca
-			puigcerda prades #County of Cerdanya
-			perpignan #County of Roselló
-			montpellier #Lordship of Montpellier
+			  #County of Cerdanya
+			 #County of Roselló
+			 #Lordship of Montpellier
 		}
 
 		starting_technology_level = 3
@@ -12705,23 +12713,13 @@ countries = {
 	CAS = {
 		own_control_core = {
 			avila adrada arevalo las_navas oropesa villatoro
-			burgos aranda_de_duero briviesca castrojeriz lerma logrono miranda_de_ebro najera sto_domingo_silos villadiego villarcayo
+			burgos aranda_de_duero briviesca castrojeriz lerma  miranda_de_ebro  sto_domingo_silos villadiego villarcayo
 			palencia aguilar_de_campoo carrion_de_los_condes monzon_campos palenzuela saldana reinosa
 			segovia cuellar fuentiduena pedraza sepulveda
-			soria agreda almazan berlanga burgo_de_osma calahorra calatanazor medinaceli arnedo
+			soria agreda almazan berlanga burgo_de_osma  calatanazor medinaceli 
 			santander laredo potes san_vicente_barquera
 			valladolid medina_de_rioseco medina_del_campo penafiel tordesillas
 
-			coruna betanzos ferrol mondonedo vivero
-			lugo monforte_de_lemos navia_de_suarna sarria villalba
-			ourense barco_de_valdeorras ginzo_de_limia monterrey ribadavia viana_bolo
-			santiago_compostela finisterre lalin mellid noya pontevedra tuy
-			oviedo aviles cangas castropol llanes mieres tineo villaviciosa
-			leon astorga castrocalbon mansilla ponferrada riano sahagun villablino villafranca_bierzo
-			salamanca alba_de_tormes bejar ciudad_rodrigo  ledesma matilla_de_canos piedrahita san_felices yecla_de_yeltes
-			zamora alba_de_aliste alcanices benavente fermoselle puebla_de_sanabria toro villalpando
-
-			bilbao anana durango onate salvatierra san_sebastian tolosa valmaseda vitoria
 		}
 
 		our_cores_conquered_by_others = {
@@ -12786,7 +12784,7 @@ countries = {
 		}
 
 		country_rank = rank_kingdom
-		capital = valladolid
+		capital = burgos
 
 		ai_advance_preference_tags = {
 			exploration = 5
@@ -12804,12 +12802,12 @@ countries = {
 	}
 
 	POR = {
+		our_cores_conquered_by_others = {
+			lagos faro silves tavira evora alvalade alvito avis beja crato elvas estremoz mertola montemor mora_portugal moura odemira ourique ponte_sor portalegre portel salvaterra serpa sines vila_vicosa coimbra besteiros castelo_branco covilha esgueira feira guarda idanha lamego meda pinhel proenca_nova sabugal seia trancoso viseu lisbon alcacer_do_sal alcobaca chao_de_couce figueira leiria santarem setubal tomar torres_novas torres_vedras porto aguiar barcelos braga guimaraes montalegre valenca viana_do_castelo braganca chaves macedo miranda_de_i_douro mirandela moncorvo vila_real
+		}
+
 		own_control_core = {
 
-			coimbra besteiros   esgueira feira guarda  lamego meda pinhel   seia trancoso viseu
-			   chao_de_couce figueira leiria     
-			porto aguiar barcelos braga guimaraes montalegre valenca viana_do_castelo
-			braganca chaves macedo miranda_de_i_douro mirandela moncorvo vila_real
 		}
 
 		starting_technology_level = 3
@@ -12818,7 +12816,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "iberian_monarchy"
+		include = "catholic_monarchy_not_present"
 
 		government = {
 			type = monarchy
@@ -12869,18 +12867,22 @@ countries = {
 		}
 
 		country_rank = rank_kingdom
-		capital = lisbon
+		capital = guimaraes
 		ai_advance_preference_tags = {
 			exploration = 5
 		}
 	}
 
 	LON = {
+		own_control_core = {
+			astorga castrocalbon ponferrada villablino villafranca_bierzo benavente alcanices puebla_de_sanabria villalpando ciudad_rodrigo ledesma san_felices yecla_de_yeltes villaviciosa cangas llanes mieres leon mansilla riano sahagun salamanca alba_de_tormes bejar matilla_de_canos piedrahita oviedo aviles castropol tineo zamora alba_de_aliste fermoselle toro
+		}
+
 		our_cores_conquered_by_others = {
-			oviedo aviles castropol tineo villaviciosa cangas llanes mieres #Asturias
-			leon mansilla riano sahagun astorga castrocalbon ponferrada villablino villafranca_bierzo #León
-			zamora alba_de_aliste fermoselle toro benavente alcanices puebla_de_sanabria villalpando #Zamora
-			salamanca alba_de_tormes matilla_de_canos ciudad_rodrigo coria ledesma san_felices yecla_de_yeltes #Salamanca
+			        #Asturias
+			         #León
+			        #Zamora
+			    coria    #Salamanca
 			granadilla galisteo caceres alcantara arroyo brozas valencia_de_alcantara #Cáceres
 			badajoz albuquerque barcarrota jerez_de_los_caballeros villanueva_del_fresno merida montanchez #Badajoz
 		}
@@ -12893,7 +12895,8 @@ countries = {
 		include = "expl_indian_trade_route"
 		include = "catholic_monarchy_not_present"
 		government = {
-			ruler = random
+			ruler = lon_alfonso_vi_jimena
+			ruler_term = { character = lon_alfonso_vi_jimena start_date = 1065.12.27 regnal_number = 6 }
 			type = monarchy
 
 			#ruler_term = { character = cas_fernando_iii_burgundy start_date = 1230.9.4 end_date = 1252.5.30 regnal_number = 3 }
@@ -12921,11 +12924,15 @@ countries = {
 	}
 
 	GLC = {
+		own_control_core = {
+			coruna betanzos ferrol mondonedo vivero lugo monforte_de_lemos navia_de_suarna sarria villalba ourense barco_de_valdeorras ginzo_de_limia monterrey ribadavia viana_bolo santiago_compostela finisterre lalin mellid noya pontevedra tuy viseu besteiros guarda lamego meda pinhel seia trancoso coimbra chao_de_couce esgueira feira figueira leiria porto barcelos braga guimaraes valenca viana_do_castelo braganca aguiar chaves macedo miranda_de_i_douro mirandela moncorvo montalegre vila_real
+		}
+
 		our_cores_conquered_by_others = {
-			coruna betanzos ferrol mondonedo vivero #A Coruña
-			lugo monforte_de_lemos navia_de_suarna sarria villalba #Lugo
-			ourense barco_de_valdeorras ginzo_de_limia monterrey ribadavia viana_bolo #Ourense
-			santiago_compostela finisterre lalin mellid noya pontevedra tuy #Santiago de Compostela
+			     #A Coruña
+			     #Lugo
+			      #Ourense
+			       #Santiago de Compostela
 		}
 
 		starting_technology_level = 3
@@ -12939,7 +12946,8 @@ countries = {
 		country_rank = rank_kingdom
 		capital = santiago_compostela
 		government = {
-			ruler = random
+			ruler = glc_garcia_ii_jimena
+			ruler_term = { character = glc_garcia_ii_jimena start_date = 1065.12.27 regnal_number = 2 }
 
 		}
 		capital = santiago_compostela
@@ -12996,12 +13004,13 @@ countries = {
 	#Navarre
 	NAV = {
 		own_control_core = {
+			vitoria anana salvatierra bilbao durango valmaseda san_sebastian onate tolosa logrono najera calahorra arnedo
 			pamplona elizondo estella olite roncesvalles sanguesa  viana laguardia
 			saint_jean_pied_de_port #Gascony
 		}
 
 		our_cores_conquered_by_others = {
-			bilbao anana durango onate salvatierra san_sebastian tolosa valmaseda vitoria
+			        
 		}
 
 		starting_technology_level = 3
@@ -13076,6 +13085,7 @@ countries = {
 
 	FRA = {
 		own_control_core = {
+			montpellier
 			paris brie_comte_robert corbeil montmorency
 			amiens breteuil corbie nesle peronne
 			clermont montargis sens saint_florentin senlis nemours melun
@@ -57790,6 +57800,42 @@ countries = {
 		capital = badajoz
 	}
 
+	BSL = {
+		government = {
+			ruler = bsl_bernat_ii_bellonid
+			ruler_term = { character = bsl_bernat_ii_bellonid start_date = 1066.1.1 regnal_number = 2 }
+		}
+		own_control_core = {
+			besalu ripoll
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+
+		country_rank = rank_county
+
+		capital = besalu
+	}
+
+	CDY = {
+		government = {
+			ruler = cdy_ramon_guifre_bellonid
+			ruler_term = { character = cdy_ramon_guifre_bellonid start_date = 1035.1.1 regnal_number = 0 }
+		}
+		own_control_core = {
+			berga puigcerda prades
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+
+		country_rank = rank_county
+
+		capital = puigcerda
+	}
+
 	CRD = {
 		own_control_core = {
 			cordoba baena carpio espiel fuenteovejuna lucena palma_del_rio pedroche santa_eufemia
@@ -57854,6 +57900,24 @@ countries = {
 		}
 
 		capital = denia
+	}
+
+	EPU = {
+		government = {
+			ruler = epu_ponc_i_empuries
+			ruler_term = { character = epu_ponc_i_empuries start_date = 1040.1.1 regnal_number = 1 }
+		}
+		own_control_core = {
+			castellon_ampurias
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+
+		country_rank = rank_county
+
+		capital = castellon_ampurias
 	}
 
 	GRZ = {
@@ -57955,6 +58019,24 @@ countries = {
 		capital = murcia
 	}
 
+	PLJ = {
+		government = {
+			ruler = plj_ramon_iv_pallars
+			ruler_term = { character = plj_ramon_iv_pallars start_date = 1047.1.1 regnal_number = 0 }
+		}
+		own_control_core = {
+			talarn
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+
+		country_rank = rank_county
+
+		capital = talarn
+	}
+
 	PYS = {
 		government = {
 			ruler = kie_vsevolod_rurikovich
@@ -58002,6 +58084,24 @@ countries = {
 		}
 
 		capital = carmona
+	}
+
+	RSL = {
+		government = {
+			ruler = rsl_guislabert_ii_empuries
+			ruler_term = { character = rsl_guislabert_ii_empuries start_date = 1062.1.1 regnal_number = 2 }
+		}
+		own_control_core = {
+			perpignan
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+
+		country_rank = rank_county
+
+		capital = perpignan
 	}
 
 	SEV = {
@@ -58068,6 +58168,24 @@ countries = {
 		}
 
 		capital = toledo
+	}
+
+	URG = {
+		government = {
+			ruler = urg_ermengol_iv_bellonid
+			ruler_term = { character = urg_ermengol_iv_bellonid start_date = 1065.1.1 regnal_number = 4 }
+		}
+		own_control_core = {
+			seu_durgell agramunt
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+
+		country_rank = rank_county
+
+		capital = seu_durgell
 	}
 
 	ZGZ = {

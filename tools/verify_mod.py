@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 140: 71 named rulers + 71 terms after the taifa factory.
+# Armed at 158: 80 named rulers + 80 terms after Christian Iberia.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=140)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=158)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -357,9 +357,9 @@ count += len(_seated)
 for _c in set(_seated):
     if _seated.count(_c) > 1:
         probs.append(f"{_c} is seated on more than one tag")
-# Armed at 200: 36 authored characters + 25 dynasties + 71 seats
-# (209 measured after the taifa factory).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=200)
+# Armed at 230: 42 authored characters + 28 dynasties + 80 seats
+# (239 measured after Christian Iberia).
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=230)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -385,10 +385,9 @@ for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
         break
 count = len(_bs.HISTORICAL_RULERS)
 print(f"       accessions cross-checked against vanilla's own terms: {_compared} of {count}")
-# Armed at 71 rows after the taifa factory; the printed compared-count is
-# the real coverage figure (the thirteen emirs exist nowhere in vanilla,
-# so the compared set stays at 31).
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=71)
+# Armed at 80 rows after Christian Iberia; compared coverage is 34 (the
+# three brothers' vanilla terms joined the machine-checked set).
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=80)
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would

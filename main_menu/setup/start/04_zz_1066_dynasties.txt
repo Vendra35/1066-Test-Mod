@@ -108,4 +108,22 @@ dynasty_manager = {
 		name = { name = birzalid_dynasty }
 		home = carmona
 	}
+	# --- 1066 Pyrenean county houses. The three-house grouping is the
+	# conventional one: the Bellonids cover Urgell/Besalú/Cerdanya (all
+	# cadet lines of Wifred the Hairy), Empúries covers Roussillon (same
+	# house since 991). Vanilla's urgell_dynasty is NOT reused — it is the
+	# 14th-century Aragonese cadet branch with home = balaguer, which is
+	# Muslim (LRD) at 1066.
+	bellonid_dynasty = {
+		name = { name = bellonid_dynasty }
+		home = barcelona
+	}
+	empuries_dynasty = {
+		name = { name = empuries_dynasty }
+		home = castellon_ampurias
+	}
+	pallars_dynasty = {
+		name = { name = pallars_dynasty }
+		home = talarn
+	}
 }

@@ -202,6 +202,20 @@ HISTORICAL_RULERS = {
     "ABR": ("abr_abd_al_malik_ibn_razin", "1045.1.1", 0), # Abd al-Malik ibn Razin of Albarracin
     "ALP": ("alp_muhammad_yumn_al_dawla", "1043.1.1", 0), # Muhammad Yumn al-Dawla of Alpuente (capital = chelva, the map gap)
     "QRM": ("qrm_muhammad_al_birzali", "1052.1.1", 0),    # Muhammad al-Birzali of Carmona — Seville eats him in 1067
+
+    # Christian Iberia (Opus package, terms re-verified). The three
+    # brothers' vanilla terms all open on Ferdinand I's death date —
+    # the partition is written into vanilla's own data.
+    "LON": ("lon_alfonso_vi_jimena", "1065.12.27", 6),    # Alfonso VI of León — vanilla term :14736
+    "GLC": ("glc_garcia_ii_jimena", "1065.12.27", 2),     # García II of Galicia (holds the county of Portugal) — vanilla term :14791
+    "CAT": ("cat_ramon_berenguer_i_barcelona", "1035.5.26", 1), # Ramon Berenguer I of Barcelona — vanilla term :14267
+    # The Pyrenean counties — NEW_CHARACTERS, accession days [U].
+    "URG": ("urg_ermengol_iv_bellonid", "1065.1.1", 4),   # Ermengol IV of Urgell
+    "BSL": ("bsl_bernat_ii_bellonid", "1066.1.1", 2),     # Bernat II of Besalú, brother Guillem II died 1066 [U]
+    "CDY": ("cdy_ramon_guifre_bellonid", "1035.1.1", 0),  # Ramon Guifré of Cerdanya — composite name, no numbering tradition
+    "EPU": ("epu_ponc_i_empuries", "1040.1.1", 1),        # Ponç I of Empúries
+    "PLJ": ("plj_ramon_iv_pallars", "1047.1.1", 0),       # Ramon IV of Pallars Jussà — numbering disputed, 0 is honest
+    "RSL": ("rsl_guislabert_ii_empuries", "1062.1.1", 2), # Guislabert II of Roussillon — name_guislabert is OUR key (proven mechanism)
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -364,18 +378,108 @@ for _t, (_cap, _locs) in _TAIFAS.items():
 if sum(len(l) for _, l in _TAIFAS.values()) != 244:
     sys.exit("_TAIFAS: the package moves exactly 244 locations — a list changed")
 
-# Displaced by the taifa pass: GRA ends LANDLESS (vanilla's own LON shape —
-# a landless kingdom keeps its capital and its claims, 10_countries.txt
-# :14682) and its 18 former locations are WRITTEN INTO its claims list:
-# the Nasrid emirate IS Granada's future, expressed as irredenta.
+# --------------------------------------------------- the Pyrenean counties ---
+# CHRISTIAN IBERIA (Opus package, terms/tags/comments re-verified). The six
+# counties Ramon Berenguer I did NOT rule. Block shape per vanilla FOI
+# (10_countries.txt:13755, a two-location Pyrenean county); country_rank
+# written explicitly (rank_county = the "County of X" fallback branch).
+# Vanilla's own comments assign MLL's residual: `puigcerda prades #County
+# of Cerdanya`, `perpignan #County of Roselló` (10_countries.txt:14436-7).
+_COUNTIES = {
+    # tag: (capital, coastal, [locations])
+    "URG": ("seu_durgell", False, ["seu_durgell", "agramunt"]),
+    "BSL": ("besalu", False, ["besalu", "ripoll"]),
+    "CDY": ("puigcerda", False, ["berga", "puigcerda", "prades"]),
+    "EPU": ("castellon_ampurias", True, ["castellon_ampurias"]),
+    "RSL": ("perpignan", True, ["perpignan"]),
+    "PLJ": ("talarn", False, ["talarn"]),
+}
+
+def _county_block(tag, capital, coastal, locs):
+    mon = "catholic_monarchy" if coastal else "catholic_monarchy_no_coast"
+    return (f"\t{tag} = {{\n"
+            f"\t\town_control_core = {{\n\t\t\t{' '.join(locs)}\n\t\t}}\n\n"
+            f"\t\tstarting_technology_level = 3\n"
+            f'\t\tinclude = "expl_western_europe"\n'
+            f'\t\tinclude = "{mon}"\n\n'
+            f"\t\tcountry_rank = rank_county\n\n"
+            f"\t\tcapital = {capital}\n\t}}\n")
+
+for _t, (_cap, _coastal, _locs) in _COUNTIES.items():
+    if _cap not in _locs:
+        sys.exit(f"_COUNTIES: {_t} capital {_cap} not in its own location list")
+    NEW_COUNTRIES[_t] = _county_block(_t, _cap, _coastal, _locs)
+    LOCATION_TRANSFERS[_t] = list(_locs)
+if sum(len(l) for _, _, l in _COUNTIES.values()) != 10:
+    sys.exit("_COUNTIES: the package moves exactly 10 locations — a list changed")
+
+# Christian Iberia grants to EXISTING tags: the three brothers' realms,
+# Navarre's Basque+Rioja restoration (vanilla itself marks the nine Basque
+# locations as NAV cores), and montpellier handed to FRA (Languedoc is the
+# France slice's problem; vanilla's comment calls it a Lordship).
+# Merged into LOCATION_GRANTS right after its definition below.
+_IBERIA_GRANTS = ({
+    "LON": ["astorga", "castrocalbon", "ponferrada", "villablino",
+            "villafranca_bierzo", "benavente", "alcanices",
+            "puebla_de_sanabria", "villalpando", "ciudad_rodrigo", "ledesma",
+            "san_felices", "yecla_de_yeltes", "villaviciosa", "cangas",
+            "llanes", "mieres", "leon", "mansilla", "riano", "sahagun",
+            "salamanca", "alba_de_tormes", "bejar", "matilla_de_canos",
+            "piedrahita", "oviedo", "aviles", "castropol", "tineo",
+            "zamora", "alba_de_aliste", "fermoselle", "toro"],
+    "GLC": ["coruna", "betanzos", "ferrol", "mondonedo", "vivero", "lugo",
+            "monforte_de_lemos", "navia_de_suarna", "sarria", "villalba",
+            "ourense", "barco_de_valdeorras", "ginzo_de_limia", "monterrey",
+            "ribadavia", "viana_bolo", "santiago_compostela", "finisterre",
+            "lalin", "mellid", "noya", "pontevedra", "tuy",
+            "viseu", "besteiros", "guarda", "lamego", "meda", "pinhel",
+            "seia", "trancoso", "coimbra", "chao_de_couce", "esgueira",
+            "feira", "figueira", "leiria", "porto", "barcelos", "braga",
+            "guimaraes", "valenca", "viana_do_castelo", "braganca",
+            "aguiar", "chaves", "macedo", "miranda_de_i_douro", "mirandela",
+            "moncorvo", "montalegre", "vila_real"],
+    "NAV": ["vitoria", "anana", "salvatierra", "bilbao", "durango",
+            "valmaseda", "san_sebastian", "onate", "tolosa",
+            "logrono", "najera", "calahorra", "arnedo"],
+    "CAT": ["barcelona", "sitges", "terrassa", "villafranca_del_penedes",
+            "girona", "sant_feliu", "vic", "cardona", "cervera", "manresa",
+            "tarragona", "montblanc", "tarrega"],
+    "FRA": ["montpellier"],
+})
+
+# Displaced tags end LANDLESS (vanilla's own LON shape — a landless kingdom
+# keeps its capital and its claims, 10_countries.txt:14682) with their
+# former locations WRITTEN INTO their claims lists:
+# - GRA: the Nasrid emirate IS Granada's future, expressed as irredenta.
+# - POR: in 1066 Portugal is a county inside García's Galicia; the claims
+#   are the 1128/1139 emergence. Vanilla's full 67-location list.
+# - MLL: the 1276 kingdom; its islands are DYA's, its Roussillon residual
+#   is CDY/RSL's, montpellier FRA's. Vanilla's full 9-location list.
 DISPLACED_CLAIMS = {
     "GRA": ["granada", "adra", "almunecar", "guadix", "huescar", "illora",
             "loja", "pinar", "orgiva", "malaga", "antequera", "velez_malaga",
             "almeria", "almanzora", "baza", "gergal", "mojacar",
             "velez_rubio"],
+    "POR": ["lagos", "faro", "silves", "tavira", "evora", "alvalade",
+            "alvito", "avis", "beja", "crato", "elvas", "estremoz",
+            "mertola", "montemor", "mora_portugal", "moura", "odemira",
+            "ourique", "ponte_sor", "portalegre", "portel", "salvaterra",
+            "serpa", "sines", "vila_vicosa", "coimbra", "besteiros",
+            "castelo_branco", "covilha", "esgueira", "feira", "guarda",
+            "idanha", "lamego", "meda", "pinhel", "proenca_nova", "sabugal",
+            "seia", "trancoso", "viseu", "lisbon", "alcacer_do_sal",
+            "alcobaca", "chao_de_couce", "figueira", "leiria", "santarem",
+            "setubal", "tomar", "torres_novas", "torres_vedras", "porto",
+            "aguiar", "barcelos", "braga", "guimaraes", "montalegre",
+            "valenca", "viana_do_castelo", "braganca", "chaves", "macedo",
+            "miranda_de_i_douro", "mirandela", "moncorvo", "vila_real"],
+    "MLL": ["puigcerda", "prades", "montpellier", "perpignan", "palma",
+            "ciudadela_de_menorca", "ibiza", "manacor", "pollensa"],
 }
+if len(DISPLACED_CLAIMS["POR"]) != 67:
+    sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
-LANDLESS_AFTER = ("GRA",)
+LANDLESS_AFTER = ("GRA", "POR", "MLL")
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -392,11 +496,29 @@ LOCATION_GRANTS = {
     "GAL": ["orosei", "terranova_pausania", "posada", "tempiopausania"],
     "COR": ["aleria", "bastia", "calvi", "corte", "ajaccio", "bonifacio", "sartene", "vico"],
 }
+LOCATION_GRANTS.update(_IBERIA_GRANTS)
 
 # tag -> (expected old capital, new capital). Asserted against the old
 # value so a vanilla patch moving it fails loudly.
 CAPITAL_FIXES = {
     "PAP": ("avignon", "rome"),   # the 1337 block is the Avignon papacy; cardinals follow the capital
+    "CAS": ("valladolid", "burgos"),  # Valladolid founded/repopulated c. 1072 — barely exists at 1066
+    "ARA": ("barcelona", "jaca"),     # the kingdom of Jaca; Barcelona is CAT's
+    "POR": ("lisbon", "guimaraes"),   # the comital seat; lisbon is BDJ's and POR is landless
+}
+
+# tag -> [(expected old line, new line)] — single-line field surgery inside
+# an EXISTING country block, asserted against the exact old text so a
+# vanilla patch changing the field fails loudly (the CAPITAL_FIXES shape,
+# generalized). Every value verified against the built file and vanilla:
+# rank_county is the "County of X" fallback (country_ranks.txt:2553),
+# aragonese_dialect exists (languages/00_iberia.txt:131),
+# catholic_monarchy_not_present is the landless include LON/GLC/CAT/GRA use.
+FIELD_FIXES = {
+    "CAT": [("country_rank = rank_duchy", "country_rank = rank_county")],
+    "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
+            ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
+    "POR": [('include = "iberian_monarchy"', 'include = "catholic_monarchy_not_present"')],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -955,6 +1077,73 @@ NEW_CHARACTERS = """
 		dynasty = birzalid_dynasty
 		tag = QRM
 	}
+
+	# --- 1066 Pyrenean counts -------------------------------------------
+	# Birth dates [U]. Name keys: name_ermengaud renders "Ermengol" via
+	# .catalan_dialect (:6552); name_raymond.name_wilfred is the attested
+	# composite form; name_pontius renders "Ponç" (:14296); name_bernard's
+	# "Bernat" sits on the occitan row marked "# Catalan & Occitan" —
+	# eyeball in game. name_guislabert is OUR key (the proven
+	# invented-name-key mechanism, fourth use).
+	urg_ermengol_iv_bellonid = {
+		first_name = { name = name_ermengaud }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = seu_durgell
+		dynasty = bellonid_dynasty
+		tag = URG
+	}
+
+	bsl_bernat_ii_bellonid = {
+		first_name = { name = name_bernard }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = besalu
+		dynasty = bellonid_dynasty
+		tag = BSL
+	}
+
+	cdy_ramon_guifre_bellonid = {
+		first_name = { name = name_raymond.name_wilfred }
+		culture = catalan
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = puigcerda
+		dynasty = bellonid_dynasty
+		tag = CDY
+	}
+
+	epu_ponc_i_empuries = {
+		first_name = { name = name_pontius }
+		culture = catalan
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = castellon_ampurias
+		dynasty = empuries_dynasty
+		tag = EPU
+	}
+
+	plj_ramon_iv_pallars = {
+		first_name = { name = name_raymond }
+		culture = catalan
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = talarn
+		dynasty = pallars_dynasty
+		tag = PLJ
+	}
+
+	rsl_guislabert_ii_empuries = {
+		first_name = { name = name_guislabert }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = perpignan
+		dynasty = empuries_dynasty
+		tag = RSL
+	}
 """
 
 
@@ -1171,10 +1360,15 @@ def build_countries(src):
             end = blocks_d[i + 1].start() if i + 1 < len(blocks_d) else len(src)
             body = src[b.start():end]
             cm = re.search(r"^([ \t]*)our_cores_conquered_by_others[ \t]*=[ \t]*\{", body, re.M)
-            if not cm:
-                sys.exit(f"DISPLACED_CLAIMS: {_t} has no claims block to extend")
-            at = b.start() + body.index("{", cm.start()) + 1
-            src = src[:at] + "\n" + cm.group(1) + "\t" + " ".join(locs) + src[at:]
+            if cm:
+                at = b.start() + body.index("{", cm.start()) + 1
+                src = src[:at] + "\n" + cm.group(1) + "\t" + " ".join(locs) + src[at:]
+            else:
+                # POR and MLL own everything they want at 1337 and ship no
+                # claims block — create one, like grants create ownership.
+                at = b.start() + body.index("{") + 1
+                src = (src[:at] + "\n\t\tour_cores_conquered_by_others = {\n\t\t\t"
+                       + " ".join(locs) + "\n\t\t}\n" + src[at:])
             n_claims += len(locs)
             break
         else:
@@ -1190,8 +1384,12 @@ def build_countries(src):
             for key in OWN_KEYS:
                 for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", body, re.M):
                     bo = body.index("{", m.start())
-                    toks = re.findall(r"[a-z][a-z0-9_]*",
-                                      body[bo + 1:find_block_end(body, bo)])
+                    # comments stripped first: MLL's emptied block keeps
+                    # vanilla's `#County of Cerdanya` notes, which are not
+                    # holdings
+                    inner = re.sub(r"#[^\n]*", "",
+                                   body[bo + 1:find_block_end(body, bo)])
+                    toks = re.findall(r"[a-z][a-z0-9_]*", inner)
                     if toks:
                         sys.exit(f"LANDLESS_AFTER: {_t} still owns {toks[:5]}")
             break
@@ -1200,9 +1398,11 @@ def build_countries(src):
     report.append(("displaced tags verified landless", len(LANDLESS_AFTER)))
 
     # Capital corrections, asserted against the expected old value.
-    starts_cf = list(re.finditer(COUNTRY_RE, src, re.M))
+    # Blocks are RE-SCANNED per tag: a fix that changes the block's length
+    # would silently stale every later offset otherwise.
     n_cap = 0
     for _t, (old_cap, new_cap) in sorted(CAPITAL_FIXES.items()):
+        starts_cf = list(re.finditer(COUNTRY_RE, src, re.M))
         for i, b in enumerate(starts_cf):
             if b.group(1) != _t:
                 continue
@@ -1218,6 +1418,30 @@ def build_countries(src):
         else:
             sys.exit(f"CAPITAL_FIXES: tag {_t} not found")
     report.append(("capitals corrected", n_cap))
+
+    # Field surgery on existing blocks (the CAPITAL_FIXES shape,
+    # generalized): each old line must appear EXACTLY ONCE in its tag's
+    # block, or the build dies — a vanilla patch that rewords the field
+    # fails loudly instead of silently skipping the fix.
+    n_fields = 0
+    for _t, fixes in sorted(FIELD_FIXES.items()):
+        starts_ff = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(starts_ff):
+            if b.group(1) != _t:
+                continue
+            end = starts_ff[i + 1].start() if i + 1 < len(starts_ff) else len(src)
+            body = src[b.start():end]
+            for old_line, new_line in fixes:
+                k = body.count(old_line)
+                if k != 1:
+                    sys.exit(f"FIELD_FIXES: `{old_line}` appears {k}x in {_t} — expected exactly once")
+                body = body.replace(old_line, new_line, 1)
+                n_fields += 1
+            src = src[:b.start()] + body + src[end:]
+            break
+        else:
+            sys.exit(f"FIELD_FIXES: tag {_t} not found")
+    report.append(("fields corrected in existing blocks", n_fields))
 
     # A country with no ruler at all hits the empty-throne regency the ENG probe
     # produced, so make it explicit. The test is per COUNTRY, not per government
@@ -1688,7 +1912,7 @@ def build_diplomacy(src):
     it."""
     report = []
     before = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
-    src, n = re.subn(r"^[ \t]*dependency = \{[^}\n]*subject_type = appanage[^}\n]*\}[ \t]*\n",
+    src, n = re.subn(r"^[ \t]*dependency = \{[^}\n]*subject_type = appanage[^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
                      "", src, flags=re.M)
     report.append(("appanage dependencies removed", n))
     src = tidy(src)
@@ -1700,21 +1924,33 @@ def build_diplomacy(src):
     # subjects — the batch test found our seated William VIII of Aquitaine
     # sitting under Harold's overlordship because of these lines. Same
     # poison class as the French appanages.
-    src, n_eng = re.subn(r"^[ \t]*dependency = \{ first = ENG [^}\n]*\}[ \t]*\n",
+    src, n_eng = re.subn(r"^[ \t]*dependency = \{ first = ENG [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
                          "", src, flags=re.M)
     report.append(("English 1337 subjections removed", n_eng))
 
-    # AUDIT, decision parked (Italy pass, F2): 27 of the surviving
-    # dependencies carry FUTURE start_dates (earliest 1202.10.9 — Venice's
-    # vassal Trieste dated to Enrico Dandolo; was 28 before the ENG strip
-    # took Wales' 1283 line with it). Whether the engine collapses them
-    # like ruler_terms is unmeasured, and stripping them reshapes the
-    # whole 1337 vassal web — recorded as a proposal, counted here so any
-    # drift is loud.
-    n_future_deps = sum(1 for d in re.findall(
-        r"start_date[ \t]*=[ \t]*([0-9.]+)", re.sub(r"#[^\n]*", "", src))
-        if date_tuple(d) >= _start_date())
-    report.append(("future-dated dependencies (parked)", n_future_deps))
+    # Future-dated dependencies STRIPPED (user-approved with the Christian
+    # Iberia batch; was parked since the Italy pass). All 27 carry start
+    # dates 1202.10.9-1336.8.29 — none has a defense at 1066, and the
+    # Iberia slice made one of them acute: ARA's 1279 vassalage over an
+    # MLL that is now landless. Exactly 27 in the current data; if a
+    # vanilla patch changes the number this fails loudly.
+    n_future_deps = 0
+    def _drop_future_dep(m):
+        nonlocal n_future_deps
+        d = re.search(r"start_date[ \t]*=[ \t]*([0-9.]+)", m.group(0))
+        if d and date_tuple(d.group(1)) >= _start_date():
+            n_future_deps += 1
+            return ""
+        return m.group(0)
+    # `(?:#[^\n]*)?` — six of the 27 carry a trailing comment after the
+    # brace (`} #Treaty of Perpignan…`) and an end-anchored pattern
+    # without it silently skips exactly those six. The one-line-block
+    # lesson's cousin, found the day this strip first ran.
+    src = re.sub(r"^[ \t]*dependency = \{[^}\n]*\}[ \t]*(?:#[^\n]*)?\n", _drop_future_dep,
+                 src, flags=re.M)
+    if n_future_deps != 27:
+        sys.exit(f"expected exactly 27 future-dated dependencies, stripped {n_future_deps}")
+    report.append(("future-dated dependencies stripped", n_future_deps))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):

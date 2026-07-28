@@ -104846,4 +104846,71 @@ character_db={
 		dynasty = birzalid_dynasty
 		tag = QRM
 	}
+
+	# --- 1066 Pyrenean counts -------------------------------------------
+	# Birth dates [U]. Name keys: name_ermengaud renders "Ermengol" via
+	# .catalan_dialect (:6552); name_raymond.name_wilfred is the attested
+	# composite form; name_pontius renders "Ponç" (:14296); name_bernard's
+	# "Bernat" sits on the occitan row marked "# Catalan & Occitan" —
+	# eyeball in game. name_guislabert is OUR key (the proven
+	# invented-name-key mechanism, fourth use).
+	urg_ermengol_iv_bellonid = {
+		first_name = { name = name_ermengaud }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = seu_durgell
+		dynasty = bellonid_dynasty
+		tag = URG
+	}
+
+	bsl_bernat_ii_bellonid = {
+		first_name = { name = name_bernard }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = besalu
+		dynasty = bellonid_dynasty
+		tag = BSL
+	}
+
+	cdy_ramon_guifre_bellonid = {
+		first_name = { name = name_raymond.name_wilfred }
+		culture = catalan
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = puigcerda
+		dynasty = bellonid_dynasty
+		tag = CDY
+	}
+
+	epu_ponc_i_empuries = {
+		first_name = { name = name_pontius }
+		culture = catalan
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = castellon_ampurias
+		dynasty = empuries_dynasty
+		tag = EPU
+	}
+
+	plj_ramon_iv_pallars = {
+		first_name = { name = name_raymond }
+		culture = catalan
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = talarn
+		dynasty = pallars_dynasty
+		tag = PLJ
+	}
+
+	rsl_guislabert_ii_empuries = {
+		first_name = { name = name_guislabert }
+		culture = catalan
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = perpignan
+		dynasty = empuries_dynasty
+		tag = RSL
+	}
 }

@@ -405,6 +405,30 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    donors shrunk, no orphans, log clean, Gallura crimson. The
    invented-name-key mechanism is now a PROVEN tool.
 
+14. **CHRISTIAN IBERIA (LANDED, untested):** Ferdinand I's partition,
+   written in vanilla's own data (all three sons' terms open 1065.12.27).
+   123 locations: LON +34 (Alfonso VI), GLC +52 with the county of
+   Portugal (García II), NAV +22 total (Basque provinces + La Rioja —
+   vanilla itself marks the nine Basque locations as NAV cores),
+   CAS 113→43 (Sancho II, capital Valladolid→Burgos — the town barely
+   exists in 1066), ARA 26→6 (kingdom of Jaca; capital→jaca,
+   court_language→aragonese_dialect via the NEW FIELD_FIXES mechanism),
+   CAT landed with 13 as rank_county "Barcelona" (loc override; the
+   "Catalonia"/"Aragon"-dynasty names are 12th-century anachronisms),
+   six NEW county tags URG/BSL/CDY/EPU/RSL/PLJ (Bellonid/Empúries/
+   Pallars houses; RSL's Guislabert II uses OUR name_guislabert — fourth
+   invented key), POR and MLL LANDLESS with claims (67/9; POR capital→
+   guimaraes), montpellier→FRA (Languedoc slice's problem), and ALL 27
+   future-dated dependencies stripped (parked since Italy pass,
+   user-approved; the strip's exact-count assert caught the
+   trailing-comment regex blind spot — KNOWLEDGE).
+   TEST: (a) the three brothers on their thrones (León/Galicia split
+   visible), Sancho II in Burgos; (b) Navarre big (Bilbao–Logroño),
+   Aragon tiny (Jaca); (c) County of Barcelona (NOT "Duchy of
+   Catalonia"), house "Barcelona" (NOT "Aragon"); (d) six counties in
+   the Pyrenees, Guislabert renders in Roussillon; (e) Portugal and
+   Mallorca GONE from the map; (f) no orphan locations, error.log.
+
 ## STRATEGIC ORDER (user decision, 2026-07-28 evening)
 **Territory first, across the WHOLE map — pops/religions/cultures as a
 separate later phase.** The world's borders get finished before any pop

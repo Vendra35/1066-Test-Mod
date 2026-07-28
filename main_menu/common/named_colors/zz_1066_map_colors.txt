@@ -22,4 +22,12 @@
 	map_ALM = rgb { 205 105 135 }   # Almeria      rose
 	map_MRU = rgb { 90 70 150 }     # Murcia       indigo
 	map_DYA = rgb { 46 52 104 }     # Denia        navy
+	# The six Pyrenean counties, checked against map_CAT burnt orange,
+	# map_ARA dark red, map_ANR olive, map_FRA blue.
+	map_URG = rgb { 222 190 55 }    # Urgell       gold
+	map_BSL = rgb { 118 82 158 }    # Besalu       violet
+	map_CDY = rgb { 78 148 208 }    # Cerdanya     sky blue
+	map_EPU = rgb { 58 148 128 }    # Empuries     teal-green
+	map_RSL = rgb { 198 78 138 }    # Roussillon   pink
+	map_PLJ = rgb { 112 88 58 }     # Pallars      brown
 }

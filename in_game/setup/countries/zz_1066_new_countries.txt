@@ -124,3 +124,55 @@ QRM = { #Taifa of Carmona
 	culture_definition = andalusi
 	religion_definition = sunni
 }
+
+# The six Pyrenean counties (Christian Iberia package; tag freeness
+# verified three ways, EPU chosen over EMP whose sole hit is a gui
+# text-format alias, and CER/PLL/AMP/BES/CDN/ROS are all taken).
+
+URG = { #County of Urgell
+	color = map_URG
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
+
+BSL = { #County of Besalu
+	color = map_BSL
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
+
+CDY = { #County of Cerdanya
+	color = map_CDY
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
+
+EPU = { #County of Empuries
+	color = map_EPU
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
+
+RSL = { #County of Roussillon
+	color = map_RSL
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
+
+PLJ = { #County of Pallars Jussa
+	color = map_PLJ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = catalan
+	religion_definition = catholic
+}
