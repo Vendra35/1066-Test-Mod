@@ -78,6 +78,62 @@ during load; it began about five minutes into play. `---` is the null tag.
 every country a `ruler = random`, the flood **stopped completely** — confirmed
 in game. Nothing else changed, so the ruler data was the whole of it.
 **Fix:** do not leave a country holding a ruler the engine could not seat.
+
+### `jomini_script_system.cpp:252 — Event target link 'dynasty' returned an invalid object, Script location: events/DHE/flavor_ENG.txt:4760`
+**DECODED — the throne is empty; the "ruler" is an engine-generated regent
+with no dynasty.**
+**Was seen:** 5,812 lines in one session of the first Phase 2 slice, paired
+with `Invalid right side during comparison 'dynasty'` at the same line, and —
+whenever the player browsed England's event list — triplets of
+`pdx_data_callstack.cpp:53` "Promote 'TARGET_DYNASTY' returned nullptr",
+`pdx_data_localize_helper.cpp:290` FetchData failed, and
+`pdx_data_localize.cpp:173` "Data error in loc string 'dynasty_equal'"
+(91 of each).
+**Cause:** vanilla's line 4760 is `dynasty = root.ruler.dynasty` inside an
+`any_character` loop. Our five named rulers had not seated (no open
+`ruler_term` — see KNOWLEDGE.md), England's throne held an engine-generated
+regent with no dynasty, and every evaluation of that England flavor trigger
+errored. The loc triplet is the same hole hit by tooltip rendering.
+**Fix:** seat the ruler properly. The flood is a symptom, not the disease —
+count it OUT of the error budget once the cause is understood, and expect it
+to vanish when the throne is filled.
+
+### `pdx_persistent_reader.cpp:289 — "Failed to read key reference: mr_railroad_on ..." / "MR_mongol_resurgence_auto_conquest_yes"` (4 lines at load)
+**LEAD FOUND** — this is the signature HANDOFF once listed as
+"`gamestate.cpp:133`, unexplained, no lead". The keys it fails to read are
+**Mongol Resurgence's game rules**: the launcher/settings remember game-rule
+choices from a playset that included that mod, and this playset does not.
+Harmless to this mod; nothing in our files is involved. Expect it to clear if
+game rules are re-saved without MR. The first three lines (empty key names,
+`near line: 3/7/11`) are the same stale-settings block.
+
+### `initialize_from_bookmark.cpp:410 — character <key> has no birth scripted`
+**Means:** the character is being INSTANTIATED at game start and has no
+`birth = <location>` field. Benign in itself — vanilla ships such characters
+and the warning costs nothing. Its diagnostic value is WHO appears in it: a
+character who should be unborn at the start date (e.g. `sco_william_the_lion`,
+b. 1143, at a 1066 start) showing up here means the engine is instantiating
+the future-born — which is what happened when ALL future death_dates were
+stripped, and the game then hard-froze on the first unpause.
+
+### Hard freeze on unpause, debug.log cut mid-word, no flood
+**Was seen:** first unpause of a new game; last debug.log line
+`CPauseGame::InternalExecute changing to fa` — cut inside the word. error.log
+calm (~500 lines), no script spinning, no crash dump. A hang inside the first
+tick, not a script error.
+**Cause that time:** ~3,500 future-born characters resurrected by an
+over-broad death_date strip (see KNOWLEDGE.md). If it recurs, ask what the
+last data change made the ENGINE simulate more of.
+
+### A dead-at-start ruler produces NO error at all
+Not a signature — the absence of one, recorded because it cost a session.
+A character alive at `START_DATE` carrying a post-start `death_date` starts
+the game DEAD — reign closed on the start date, throne to a generated
+regent — and error.log says **nothing**. The log even shrank (17,954 → 1,054)
+while five thrones were broken. If a named ruler is mysteriously a regent,
+check the character's `death_date` BEFORE reading the log; the log cannot
+catch this class. `verify_mod.py` now does ("no future death_date in setup
+characters").
 `build_setup.py` asserts exactly one ruler per country for this reason.
 **A hypothesis that was wrong, kept as a warning:** `ADULT_AGE = 16` made it look
 certain that negative-age rulers would force every country into regency and spam

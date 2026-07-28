@@ -3,8 +3,14 @@
 #
 # Removed: entries carrying 1337-dated people or dates, which a 1066 start reads
 # as the future. The engine rejects them, collapses them to `1.1.1`, and the
-# result is rulers aged about -250 and a flood of script errors.
+# result is rulers aged about -250 and a flood of script errors. That includes
+# every death_date at or after START_DATE: a living character carrying one
+# starts the game DEAD, silently.
 # Everything else — territory, capitals, ranks, templates, laws — is vanilla's.
+#
+# Added back: for each Phase 2 historical ruler, `ruler = <key>` PLUS an OPEN
+# pre-1066 ruler_term. A named ruler does not seat without one — measured in
+# game; see docs/KNOWLEDGE.md.
 #
 # KNOWN WRONG, deliberately left: regnal_numbers are still calibrated for 1337,
 # so a ruler may be numbered as though his predecessors had already reigned.
@@ -179,6 +185,7 @@ countries = {
 
 		government = {
 			ruler = dan_sweyn_estridsson
+			ruler_term = { character = dan_sweyn_estridsson start_date = 1047.10.25 regnal_number = 2 }
 
 			regnal_numbers = {
 				name_guthrum = 1
@@ -311,6 +318,7 @@ countries = {
 		include = "expl_scandinavia"
 		government = {
 			ruler = nor_harald_hardrada
+			ruler_term = { character = nor_harald_hardrada start_date = 1046.1.1 regnal_number = 3 }
 
 			centralization_vs_decentralization = 40
 			aristocracy_vs_plutocracy = -25
@@ -3913,6 +3921,7 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_harold_godwinson
+			ruler_term = { character = eng_harold_godwinson start_date = 1066.1.6 regnal_number = 2 }
 
 			# regnal numbering usually starts with the Norman Invasion
 
@@ -4466,6 +4475,7 @@ countries = {
 		include = "catholic_monarchy"
 		government = {
 			ruler = sco_malcolm_iii
+			ruler_term = { character = sco_malcolm_iii start_date = 1058.4.25 regnal_number = 3 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -15010,6 +15020,7 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_william_the_conquerer
+			ruler_term = { character = eng_william_the_conquerer start_date = 1035.7.3 regnal_number = 2 }
 
 			# Annexed to France 1204-1332
 

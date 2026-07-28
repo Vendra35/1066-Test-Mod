@@ -244,6 +244,85 @@ if ages and dated:
 
 check(f"ages ascending and start date inside one ({_age_from})", len(ages), probs, min_count=6)
 
+# ------------------------------------------------------ named rulers seat ---
+# A named ruler does NOT seat without an OPEN ruler_term (no end_date) whose
+# start_date is before START_DATE — measured in game 2026-07-28: all five
+# named-ruler countries started under engine-generated regents while every
+# `ruler = random` country seated fine (docs/KNOWLEDGE.md). The invariant in
+# the generated 10_countries.txt: named rulers and ruler_terms pair 1:1, every
+# term is open and past-dated, and every named ruler has a term of their own.
+_setup10 = _np(os.path.join(MOD, "main_menu", "setup", "start", "10_countries.txt"))
+probs, count = [], 0
+if os.path.isfile(_setup10):
+    _s10 = strip_comments(read(_setup10))
+    _named = [m.group(1) for m in
+              re.finditer(r"^[ \t]*ruler[ \t]*=[ \t]*([a-z][a-z0-9_]*)", _s10, re.M)
+              if m.group(1) != "random"]
+    _terms = re.findall(r"ruler_term[ \t]*=[ \t]*" + BS + "{([^}]*)" + BS + "}", _s10)
+    count = len(_named) + len(_terms)
+    if len(_named) != len(_terms):
+        probs.append(f"{len(_named)} named rulers but {len(_terms)} ruler_terms — they must pair 1:1")
+    _start = None
+    if dated:
+        _start = tuple(int(x) for x in next(iter(dated.values()))["START_DATE"].split("."))
+    _term_chars = set()
+    for _t in _terms:
+        _cm = re.search(r"character = ([a-z0-9_]+)", _t)
+        _sm = re.search(r"start_date = ([0-9.]+)", _t)
+        if _cm:
+            _term_chars.add(_cm.group(1))
+        if not _cm or not _sm:
+            probs.append(f"ruler_term missing character or start_date: {{{_t.strip()[:60]}}}")
+            continue
+        if "end_date" in _t:
+            probs.append(f"ruler_term for {_cm.group(1)} has an end_date — the current reign must be OPEN")
+        if _start and tuple(int(x) for x in _sm.group(1).split(".")) >= _start:
+            probs.append(f"ruler_term for {_cm.group(1)}: start_date {_sm.group(1)} is not before START_DATE")
+    for _r in _named:
+        if _r not in _term_chars:
+            probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
+else:
+    probs.append("main_menu/setup/start/10_countries.txt is missing")
+# Armed at 10: five named rulers + five terms is what the repo ships today.
+# Raise together with HISTORICAL_RULERS as Phase 2 regions land.
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=10)
+
+# A character ALIVE at start (born before START_DATE) must carry NO
+# death_date — a post-start one starts them DEAD, silently: reign closed on
+# START_DATE, throne to a generated regent, zero error.log lines. But
+# FUTURE-BORN characters must KEEP theirs: stripping those resurrected
+# ~3,500 ancients and hard-froze the game on the first unpause
+# (docs/KNOWLEDGE.md, both measured 2026-07-28).
+_setup05 = _np(os.path.join(MOD, "main_menu", "setup", "start", "05_characters.txt"))
+probs, count = [], 0
+if os.path.isfile(_setup05):
+    _s05 = strip_comments(read(_setup05))
+    _start5 = (tuple(int(x) for x in next(iter(dated.values()))["START_DATE"].split("."))
+               if dated else None)
+    _blks5 = list(re.finditer(r"^\t([a-z][a-z0-9_]*) = " + BS + "{", _s05, re.M))
+    for _i, _b in enumerate(_blks5):
+        _e5 = _blks5[_i + 1].start() if _i + 1 < len(_blks5) else len(_s05)
+        _body = _s05[_b.start():_e5]
+        _dd = re.search(r"death_date[ \t]*=[ \t]*([0-9.]+)", _body)
+        if not _dd:
+            continue
+        count += 1
+        _bd = re.search(r"birth_date[ \t]*=[ \t]*([0-9.]+)", _body)
+        if _start5 and _bd:
+            # tolerant y.m.d: vanilla ships `birth_date = 1010.1.` (trailing
+            # dot, "# unknown") — pad missing parts with 1 instead of crashing
+            def _dt5(s):
+                _p = [x for x in s.split(".") if x != ""]
+                return tuple(int(x) for x in (_p + ["1", "1"])[:3])
+            if _dt5(_bd.group(1)) < _start5 <= _dt5(_dd.group(1)):
+                probs.append(f"{_b.group(1)}: alive at start but carries death_date "
+                             f"{_dd.group(1)} — starts the game DEAD, silently")
+else:
+    probs.append("main_menu/setup/start/05_characters.txt is missing")
+# Armed at 3000: ~4,045 death_dates remain after the scoped strip (543 past +
+# ~3,502 on the future-born). A vacuous scan means the strip ate history.
+check("no death_date on a character alive at start", count, probs, min_count=3000)
+
 # ---------------------------------------------- the engine's own documentation ---
 # docs/EU5-Vanilla-Script-Docs/ is the output of `script_docs` and
 # `dump_data_types`. It says what is LEGAL, where grepping vanilla only ever

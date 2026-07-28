@@ -9,7 +9,11 @@ of script errors once the game runs. See docs/KNOWLEDGE.md.
 
 This script removes the dated parts and leaves everything else byte for byte as
 vanilla has it. Rulers become `ruler = random`, which is how a published
-conversion solves the same problem.
+conversion solves the same problem. Phase 2 then puts real rulers back as TWO
+lines — `ruler = <key>` plus an OPEN ruler_term (no end_date, accession before
+START_DATE) — because a named ruler does not seat without one: measured in
+game 2026-07-28, five named-ruler countries all under engine-generated regents
+until the terms were added. See docs/KNOWLEDGE.md.
 
 The outputs are GENERATED. Do not hand-edit them: re-run after a game patch and
 the mod picks up the new vanilla data. Phase 2 layers real historical rulers on
@@ -44,19 +48,32 @@ if not VAN:
     sys.exit("vanilla reference tree not found — see CLAUDE.md, REQUIRED SETUP")
 
 # ------------------------------------------------------------- Phase 2 ---
-# tag -> character key. Anything not listed keeps `ruler = random`.
+# tag -> (character key, accession date, regnal number).
+# Anything not listed keeps `ruler = random`.
+#
+# TWO lines are written per entry: `ruler = <key>` plus an OPEN ruler_term —
+# no end_date, start_date = accession. Both are required: a named ruler does
+# NOT seat without an open term whose start_date is before START_DATE.
+# Measured in game 2026-07-28: with `ruler =` alone, all five countries below
+# started under engine-generated regents while every `ruler = random` country
+# seated fine. Anno 1644 ships the same two-line shape for every named ruler,
+# and vanilla's own terms are the same one-line form (10_countries.txt:75).
+# See docs/KNOWLEDGE.md.
+#
 # Every entry is checked: the character must exist in the generated
-# 05_characters.txt and be at least ADULT_AGE at START_DATE. A typo here does not
-# error in game — it leaves an empty throne and an engine-generated regent — so
-# the check below is the only thing that catches one.
+# 05_characters.txt, be at least ADULT_AGE at START_DATE, and accede between
+# birth and START_DATE. A typo here does not error in game — it leaves an
+# empty throne and an engine-generated regent — so the checks below are the
+# only thing that catches one.
+# Accession dates are well-known history, entered from general knowledge.
 HISTORICAL_RULERS = {
     # North Sea, 1066. All four already exist in vanilla, which ships regnal
     # chains back to 886 and 188 characters who are adults in 1066.
-    "ENG": "eng_harold_godwinson",       # d. 1066.10.14 at Hastings — one month in
-    "NRM": "eng_william_the_conquerer",  # Duke of Normandy; rank_duchy, capital rouen
-    "DAN": "dan_sweyn_estridsson",       # King of Denmark 1047-1076
-    "SCO": "sco_malcolm_iii",            # King of Scots 1058-1093
-    "NOR": "nor_harald_hardrada",        # written below — vanilla has no Norwegian alive in 1066
+    "ENG": ("eng_harold_godwinson", "1066.1.6", 2),       # Harold II, crowned the day after Edward the Confessor died; d. 1066.10.14 at Hastings
+    "NRM": ("eng_william_the_conquerer", "1035.7.3", 2),  # William II as Duke of Normandy; rank_duchy, capital rouen
+    "DAN": ("dan_sweyn_estridsson", "1047.10.25", 2),     # Sweyn II, sole King of Denmark at Magnus the Good's death
+    "SCO": ("sco_malcolm_iii", "1058.4.25", 3),           # Malcolm III, crowned at Scone
+    "NOR": ("nor_harald_hardrada", "1046.1.1", 3),        # Harald III, co-king from 1046; written below — vanilla has no Norwegian alive in 1066
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -76,30 +93,35 @@ HISTORICAL_RULERS = {
 #   ringerike        in_game/map_data/definitions.txt
 NEW_CHARACTERS = """
 	# --- 1066 Norway ------------------------------------------------------
+	# NO death dates on anyone here: they are all alive at start, and a living
+	# character must not carry one — the engine reads a post-start death date
+	# as invalid and the character starts DEAD, silently (see KNOWLEDGE.md).
+	# Historical deaths are noted in comments; the ones that matter to the
+	# opening (Stamford Bridge) are the Norman Conquest situation's job.
+	#
 	# Harald Sigurdsson "Hardrada", king 1046-1066, of the Fairhair line through
-	# Sigurd Syr. He dies at Stamford Bridge on 1066.9.25 — ten days into the
-	# campaign — which is the history and is meant to happen.
+	# Sigurd Syr. Historically dies at Stamford Bridge on 25 Sep 1066 — ten
+	# days into the campaign. That death is SCRIPTED by the situation, not data.
 	nor_harald_hardrada = {
 		first_name = { name = name_harold }
 		culture = norwegian
 		religion = catholic
 		birth_date = 1015.1.1
 		birth = ringerike
-		death_date = 1066.9.25
 		dynasty = fairhair_dynasty
 		tag = NOR
 	}
 
 	# Sons, written after their father. They give the succession something real
 	# to land on when Hardrada dies; without them Norway would fall to a
-	# generated heir ten days into the game.
+	# generated heir. Magnus II historically dies 1069, Olaf III Kyrre 1093 —
+	# both left to the engine's own mortality.
 	nor_magnus_ii = {
 		first_name = { name = name_magnus }
 		culture = norwegian
 		religion = catholic
 		birth_date = 1048.1.1
 		birth = nidaros
-		death_date = 1069.4.28
 		dynasty = fairhair_dynasty
 		father = nor_harald_hardrada
 		tag = NOR
@@ -111,7 +133,6 @@ NEW_CHARACTERS = """
 		religion = catholic
 		birth_date = 1050.1.1
 		birth = nidaros
-		death_date = 1093.9.22
 		dynasty = fairhair_dynasty
 		father = nor_harald_hardrada
 		tag = NOR
@@ -120,6 +141,16 @@ NEW_CHARACTERS = """
 
 
 # ------------------------------------------------------------------ tools ---
+def date_tuple(s):
+    """Tolerant y.m.d parser. Vanilla ships partial dates — 2 characters carry
+    `birth_date = 1010.1.` with a trailing dot ("# unknown") — and a strict
+    int() on the empty tail crashed the build once. Missing parts pad to 1."""
+    parts = [p for p in s.split(".") if p != ""]
+    while len(parts) < 3:
+        parts.append("1")
+    return tuple(int(p) for p in parts[:3])
+
+
 def find_block_end(s, open_brace):
     """Index just past the `}` matching the `{` at open_brace, ignoring braces
     inside comments and quoted strings."""
@@ -245,12 +276,16 @@ def build_countries(src):
     if no_gov:
         report.append(("  of those, needed a government block", no_gov))
 
-    for tag, char in sorted(HISTORICAL_RULERS.items()):
-        pat = re.compile(r"(^\t" + tag + r" = \{.*?^[ \t]*)ruler = random", re.M | re.S)
-        src, k = pat.subn(r"\1ruler = " + char, src, count=1)
+    for tag, (char, accession, regnal) in sorted(HISTORICAL_RULERS.items()):
+        term = (f"ruler_term = {{ character = {char} start_date = {accession} "
+                f"regnal_number = {regnal} }}")
+        pat = re.compile(r"(^\t" + tag + r" = \{.*?^)([ \t]*)ruler = random", re.M | re.S)
+        src, k = pat.subn(lambda m, c=char, t=term:
+                          f"{m.group(1)}{m.group(2)}ruler = {c}\n{m.group(2)}{t}",
+                          src, count=1)
         if not k:
             sys.exit(f"HISTORICAL_RULERS: no `ruler = random` found for {tag}")
-    report.append(("historical rulers restored", len(HISTORICAL_RULERS)))
+    report.append(("historical rulers restored (+ open term)", len(HISTORICAL_RULERS)))
 
     src = tidy(src)
     after = len(re.findall(COUNTRY_RE, src, re.M))
@@ -259,15 +294,17 @@ def build_countries(src):
         if after != before:
             return f"country count changed {before} -> {after}: territory would be lost"
         for key in COUNTRY_BLOCKS + COUNTRY_LINES:
+            if key == "ruler_term":
+                continue    # vanilla's are stripped; OURS are re-added and audited below
             if re.search(r"^[ \t]*" + key + r"[ \t]*=", src, re.M):
                 return f"{key} survived the strip"
         # Every remaining ruler must be random or a Phase 2 entry. This is the
         # check that catches a ruler line whose shape differs just enough to miss
         # the rewrite and leave that country a -250-year-old.
+        chars = {c for c, _, _ in HISTORICAL_RULERS.values()}
         stray = [m.group(1) for m in
                  re.finditer(r"^[ \t]*ruler[ \t]*=[ \t]*([A-Za-z0-9_]+)", src, re.M)
-                 if m.group(1) != "random"
-                 and m.group(1) not in HISTORICAL_RULERS.values()]
+                 if m.group(1) != "random" and m.group(1) not in chars]
         if stray:
             return f"{len(stray)} ruler(s) still name a character: {stray[:8]}"
         # Exactly one per country: more can outrank a Phase 2 ruler, fewer means
@@ -293,14 +330,57 @@ def build_countries(src):
             r = re.findall(r"^[ \t]*ruler = ([a-z_0-9]+)", src[m.start():e], re.M)
             if r and r[0] != "random":
                 placed[m.group(1)] = r[0]
-        if placed != HISTORICAL_RULERS:
+        expected = {t: c for t, (c, _, _) in HISTORICAL_RULERS.items()}
+        if placed != expected:
             return (f"historical rulers landed in the wrong countries: "
-                    f"expected {HISTORICAL_RULERS}, found {placed}")
-        # No date may survive: at 1066 every one of them reads as the future.
-        # Checked here rather than globally, because in 05_characters.txt
-        # birth_date and death_date are exactly what the file is for.
-        if re.search(r"^[ \t]*(start_date|end_date|date)[ \t]*=", src, re.M):
-            return "a date survived — it would parse as future at 1066"
+                    f"expected {expected}, found {placed}")
+
+        # Vanilla's ruler_terms are stripped and OURS are re-added; the two
+        # motions must reconcile exactly. Every surviving term must be one we
+        # generated: OPEN (no end_date), for a Phase 2 character.
+        # Audit COMMENT-STRIPPED text: vanilla ships 60 commented-out
+        # ruler_terms (dates and all) that the parser never sees.
+        nc = re.sub(r"#[^\n]*", "", src)
+        accessions = {c: acc for c, acc, _ in HISTORICAL_RULERS.values()}
+        terms = re.findall(r"ruler_term[ \t]*=[ \t]*\{([^}]*)\}", nc)
+        if len(terms) != len(HISTORICAL_RULERS):
+            return f"expected {len(HISTORICAL_RULERS)} ruler_terms, found {len(terms)}"
+        for t in terms:
+            cm = re.search(r"character = ([a-z0-9_]+)", t)
+            if not cm or cm.group(1) not in accessions:
+                return f"a ruler_term names no Phase 2 character: {{{t.strip()}}}"
+            if "end_date" in t:
+                return (f"ruler_term for {cm.group(1)} has an end_date — the "
+                        f"current reign must be OPEN or nobody seats")
+
+        # No FUTURE date may survive: at 1066 vanilla's 1337 dates read as the
+        # future. NOT line-anchored — one-line blocks put dates mid-line, and
+        # the old line-anchored scan sailed right past them for all of Phase 1.
+        # What it was missing: five live `date =` fields in bureaucracy entries
+        # (BYZ 680/330/500/892 — past, parse fine; TRE 1204.4.1 — genuinely
+        # future). TRE's shipped through Phase 1 measured-clean, so it is a
+        # DOCUMENTED exemption deferred to the Byzantium/Anatolia slice, not a
+        # silent fix. Anything new and future still fails the build.
+        # (In 05_characters.txt dates are exempt: birth_date and death_date are
+        # exactly what that file is for.)
+        KNOWN_FUTURE = {"1204.4.1"}   # TRE themata_bureaucracy — Trebizond founded 1204
+        start = _start_date()
+        starts_seen = 0
+        for key, val in re.findall(r"\b(start_date|end_date|date)[ \t]*=[ \t]*([0-9.]+)", nc):
+            d = tuple(int(x) for x in val.split("."))
+            if key == "start_date":
+                starts_seen += 1
+                if val not in accessions.values():
+                    return f"start_date = {val} is not an accession date we wrote"
+                if d >= start:
+                    return f"start_date = {val} is not before START_DATE — the term would not be active"
+            elif key == "end_date":
+                return f"end_date = {val} survived — it would parse as future at 1066"
+            elif d >= start and val not in KNOWN_FUTURE:
+                return f"date = {val} is future at 1066 and not a documented exemption"
+        if starts_seen != len(HISTORICAL_RULERS):
+            return (f"{starts_seen} start_dates survived, expected exactly "
+                    f"{len(HISTORICAL_RULERS)} (one per generated ruler_term)")
         return None
 
     return src, report, validate, f"{before} country blocks, all kept"
@@ -323,8 +403,12 @@ def build_ios(src):
         now = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
         if now != leaders:
             return f"leader count changed {leaders} -> {now}"
-        if re.search(r"^[ \t]*(start_date|end_date)[ \t]*=", src, re.M):
-            return "a date survived — it would parse as future at 1066"
+        # NOT line-anchored — one-line blocks put dates mid-line, which is how
+        # the countries file hid five of them from this same check in Phase 1.
+        m = re.search(r"\b(start_date|end_date|date)[ \t]*=[ \t]*([0-9.]+)",
+                      re.sub(r"#[^\n]*", "", src))
+        if m:
+            return f"{m.group(1)} = {m.group(2)} survived — it would parse as future at 1066"
         return None
 
     return src, report, validate, f"{leaders} IO leaders, all kept"
@@ -359,6 +443,38 @@ def build_characters(src):
     report.append(("vanilla characters kept", before))
     report.append(("characters added", added))
 
+    # A character ALIVE at start must carry NO death_date. The engine treats a
+    # future death_date as invalid and the character starts DEAD — reign closed
+    # on START_DATE, throne to an engine-generated regent, and not one line in
+    # error.log. Measured in game 2026-07-28: all five historical rulers dead
+    # at start this way, Sweyn's death a full ten YEARS out. Vanilla's own
+    # convention agrees: 4304 of its 4305 death_dates are past at 1337, and
+    # eng_edward_iii (historically dies 1377) carries none.
+    #
+    # SCOPED to characters BORN BEFORE START_DATE, the hard way: stripping all
+    # 3,762 future death_dates also resurrected ~3,500 FUTURE-BORN characters
+    # (their collapsed birth dates plus no death made them ancient and alive —
+    # init logged future-born sco_william_the_lion as instantiated), and the
+    # game HARD-FROZE on the first unpause, log cut mid-word. Future-born
+    # characters keep their vanilla death_dates: dead-or-unborn is exactly the
+    # state the game demonstrably ran with. Past deaths are history and stay.
+    start = _start_date()
+    blocks = list(re.finditer(r"^\t([a-z][a-z0-9_]*) = \{", src, re.M))
+    cuts = []
+    for i, b in enumerate(blocks):
+        end = blocks[i + 1].start() if i + 1 < len(blocks) else len(src)
+        body = src[b.start():end]
+        bd = re.search(r"birth_date[ \t]*=[ \t]*([0-9.]+)", body)
+        if not bd or date_tuple(bd.group(1)) >= start:
+            continue    # unborn or undated: leave exactly as vanilla wrote it
+        for dm in re.finditer(r"^[ \t]*death_date[ \t]*=[ \t]*([0-9.]+)"
+                              r"[ \t]*(?:#[^\n]*)?\n", body, re.M):
+            if date_tuple(dm.group(1)) >= start:
+                cuts.append((b.start() + dm.start(), b.start() + dm.end()))
+    for a, z in reversed(cuts):
+        src = src[:a] + src[z:]
+    report.append(("death_date removed from the living", len(cuts)))
+
     # Vanilla's own loose ends, reported so they are not mistaken for ours.
     _pos = {m.group(1) for m in re.finditer(r"^\t([a-z][a-z0-9_]*) = \{", src, re.M)}
     _dangling = {m.group(2) for m in
@@ -376,6 +492,22 @@ def build_characters(src):
         start = _start_date()
         pos = {m.group(1): m.start()
                for m in re.finditer(r"^\t([a-z][a-z0-9_]*) = \{", src, re.M)}
+
+        # Exhaustive backstop for the line-anchored death_date strip: scan the
+        # comment-stripped text the parser actually sees, any format, any
+        # position, block by block. NOBODY may be born before start yet carry a
+        # post-start death — that character starts the game dead, silently.
+        # (Future-born characters legitimately keep theirs.)
+        nc5 = re.sub(r"#[^\n]*", "", src)
+        blks = list(re.finditer(r"^\t([a-z][a-z0-9_]*) = \{", nc5, re.M))
+        for i, b in enumerate(blks):
+            e5 = blks[i + 1].start() if i + 1 < len(blks) else len(nc5)
+            body = nc5[b.start():e5]
+            bd = re.search(r"birth_date[ \t]*=[ \t]*([0-9.]+)", body)
+            dd = re.search(r"death_date[ \t]*=[ \t]*([0-9.]+)", body)
+            if bd and dd and date_tuple(bd.group(1)) < start <= date_tuple(dd.group(1)):
+                return (f"{b.group(1)}: alive at start but carries "
+                        f"death_date {dd.group(1)} — starts the game dead")
 
         # A named parent must exist — but only OURS is a build failure. Vanilla
         # ships 8 dangling references of its own (yem_al_muzaffar_yusuf_i,
@@ -402,8 +534,10 @@ def build_characters(src):
             if p in ours and ours[p] > m.start():
                 return f"NEW_CHARACTERS: {p} is declared after a child that names it"
 
-        # Every historical ruler must exist and be an adult on the start date.
-        for tag, key in sorted(HISTORICAL_RULERS.items()):
+        # Every historical ruler must exist, be an adult on the start date, and
+        # accede between birth and START_DATE — the accession feeds the open
+        # ruler_term, and a future or pre-birth date there means no seat.
+        for tag, (key, accession, _regnal) in sorted(HISTORICAL_RULERS.items()):
             if key not in pos:
                 return f"HISTORICAL_RULERS[{tag}] = {key} is not a character"
             body = src[pos[key]:pos[key] + 700]
@@ -418,6 +552,13 @@ def build_characters(src):
             dd = re.search(r"death_date = (\d+)\.(\d+)\.(\d+)", body)
             if dd and tuple(int(x) for x in dd.groups()) < start:
                 return f"{key} is already dead at the start date"
+            acc = tuple(int(x) for x in accession.split("."))
+            if len(acc) != 3:
+                return f"{key} accession {accession} is not a y.m.d date"
+            if acc >= start:
+                return f"{key} accession {accession} is not before the start date"
+            if acc < born:
+                return f"{key} accession {accession} is before their birth"
         return None
 
     return src, report, validate, f"{after} characters, {len(HISTORICAL_RULERS)} rulers checked"
@@ -434,8 +575,14 @@ HEADER = """# GENERATED by tools/build_setup.py — do not hand-edit.
 #
 # Removed: entries carrying 1337-dated people or dates, which a 1066 start reads
 # as the future. The engine rejects them, collapses them to `1.1.1`, and the
-# result is rulers aged about -250 and a flood of script errors.
+# result is rulers aged about -250 and a flood of script errors. That includes
+# every death_date at or after START_DATE: a living character carrying one
+# starts the game DEAD, silently.
 # Everything else — territory, capitals, ranks, templates, laws — is vanilla's.
+#
+# Added back: for each Phase 2 historical ruler, `ruler = <key>` PLUS an OPEN
+# pre-1066 ruler_term. A named ruler does not seat without one — measured in
+# game; see docs/KNOWLEDGE.md.
 #
 # KNOWN WRONG, deliberately left: regnal_numbers are still calibrated for 1337,
 # so a ruler may be numbered as though his predecessors had already reigned.

@@ -31,9 +31,13 @@ chains reach back to 886 and it ships 7236 dated characters — 330 born
 | `DAN` | `dan_sweyn_estridsson` | 1019 | 1076.4.28 |
 | `SCO` | `sco_malcolm_iii` | 1031 | 1093.11.13 |
 
-**Check `death_date` as well as `birth_date`.** Harold dies a month into the
-campaign, which is correct and dramatic, but it means England needs a succession
-that works — see the first deliverable.
+**The `Died` column above is historical context, NOT data to enter.** A
+character alive at start must carry no `death_date` — the engine reads a
+post-start one as invalid and the character begins the game DEAD, silently
+(measured in game; KNOWLEDGE.md). `build_setup.py` strips all future death
+dates. Deaths that should happen on schedule — Harold at Hastings, Hardrada
+at Stamford Bridge — are situation/event script, with player choice per the
+human-choice rule.
 
 ### 2. New characters — generated, not additive
 Norway has **no** character alive in 1066 in vanilla (`nor_` prefix, zero hits),
@@ -41,7 +45,13 @@ so Harald Hardrada has to be written. Two routes:
 
 - **Additive file** (`character_db = { … }` under a new filename). The wiki says
   setup managers are additive, and adding rather than removing is exactly what
-  that supports. **Unverified here for `character_db`.**
+  that supports. **Unverified here for `character_db`** — but Basileia Romaion
+  ships exactly this at scale (`05_br_characters.txt`, 2359 lines, referencing
+  vanilla parents and dynasties across the file boundary), so the route has a
+  published precedent. For dynasties the picture is the reverse: Rise of Timur
+  shipped its additive `dynasty_manager` file fully commented out and creates
+  the dynasty at runtime with `found_dynasty` (character scope,
+  `effects.log:3434`). Both entries in `docs/KNOWLEDGE.md`.
 - **Generate `05_characters.txt`** as vanilla's plus ours, the way
   `10_countries.txt` and `15_international_organizations.txt` are already
   generated. **Chosen** — it removes an unknown, and the file stays regenerable
@@ -159,11 +169,12 @@ done; step 3 is not started.
    deliberately so: what it needs to do depends on what the engine already does
    with the two scheduled deaths.
 
-**What makes it interesting, and what makes it hard.** Harold dies on
-1066.10.14 whether or not anything is scripted, because vanilla gives him a
-`death_date`. So England's succession fires one month in, on its own. The
-situation's job is to make that mean something — William's claim, Harald
-Hardrada's claim, and a player who is asked rather than railroaded.
+**What makes it interesting, and what makes it hard.** Nothing happens on its
+own: future death dates cannot be data (they start the character dead —
+KNOWLEDGE.md), so Stamford Bridge and Hastings only happen if the situation
+makes them happen. Its job grew accordingly: stage the two invasions, script
+the two deaths at their historical moments, route the successions — William's
+claim, Hardrada's claim — and ask the player rather than railroad them.
 
 **Verify before writing** (`verify-tags`): that `NRM`, `DAN`, `SCO`, `NOR` hold
 the territory 1066 needs, and that the character keys resolve. `ENG` is real but

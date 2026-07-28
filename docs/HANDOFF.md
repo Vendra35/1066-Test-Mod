@@ -4,29 +4,51 @@
 > this, then `docs/KNOWLEDGE.md`. Everything below is either measured or marked
 > as unverified.
 
-## The one thing that is untested
+## The Phase 2 slice: two engine laws found in one day, third test pending
 
-**Nothing in this session's last commit has been observed in a running game.**
-Phase 1 was tested and works. The Phase 2 slice — five historical rulers and
-three new Norwegian characters — is generated, validated by the build script, and
-passes the harness, but has never been launched.
+**Test 1 (2026-07-28).** All five named-ruler countries under engine
+regents; every `ruler = random` country fine. Law 1: **a named ruler does
+not seat without an OPEN `ruler_term`** (no `end_date`, `start_date` before
+`START_DATE`). Fixed: `HISTORICAL_RULERS` is now `tag -> (character,
+accession, regnal number)` and the generator writes `ruler = X` plus the
+open one-line term, vanilla's own form (`10_countries.txt:75`).
 
-**Do this first, before writing anything new:**
+**Test 2 (same day, after that fix).** The term WORKED — Ruling History
+shows "King Harold II Godwinson", crowned 6 January 1066 — but all five
+rulers were DEAD at start, reigns closed on `START_DATE`, regents again.
+Law 2: **a character alive at start must carry NO death_date** — a
+post-start one is read as invalid and the character starts dead, with ZERO
+error.log lines. Vanilla agrees: 4,304/4,305 of its death_dates are past at
+1337 and living Edward III carries none. Both laws in `docs/KNOWLEDGE.md`,
+with screenshots.
 
-1. Launch and check the five rulers are the right people with visible names:
-   `ENG` Harold Godwinson, `NRM` William, `DAN` Sweyn Estridsson,
-   `SCO` Malcolm III, `NOR` Harald Hardrada.
-   Hardrada's name is the specific thing to look at — he uses `name_harold`
-   because **`name_harald` does not exist in the game**. If he is nameless, that
-   is why.
-2. Advance past **1066.9.25**. Hardrada dies at Stamford Bridge — that death
-   comes from our own `death_date`. Does Norway pass to Magnus II, or to a
-   generated heir? This answers whether `father =` links are enough for
-   succession, which decides how much the Norman Conquest situation has to do.
-3. Advance past **1066.10.14**. Harold dies at Hastings — that one is vanilla's
-   `death_date`, not ours. What happens to England?
-4. Check `error.log`. It was at **48 lines** at last test. If it grew, the new
-   characters are the suspect.
+**Fixed and statically proven, NOT yet observed in game:** the generator now
+strips every `death_date >= START_DATE` — 3,762 lines, resurrecting the
+**260 vanilla characters alive in 1066** who were all starting dead.
+Historical deaths on schedule (Hardrada 25 Sep, Harold 14 Oct) are now the
+Norman Conquest situation's job — script with player choice, never data.
+
+**Test 3 (same day): the kings LIVED — and the game froze.** All five alive
+and ruling, randoms intact, both engine laws confirmed working. But the
+full death-strip had also resurrected ~3,500 FUTURE-BORN characters
+(collapsed births + no deaths = ancient and alive; init logged future-born
+`sco_william_the_lion` as instantiated), and the game **hard-froze on the
+first unpause** — debug.log cut mid-word, no flood, no crash. Test 1-2
+ticked fine with those characters dead.
+
+**Fix: the strip is now SCOPED to characters born before `START_DATE`** —
+exactly 260 lines, matching the independent count of alive-in-1066
+characters; the future-born keep their vanilla death_dates. Proven by
+canary and harness ("no death_date on a character alive at start",
+4,045 items).
+
+**Test 4 (same day): ALL GREEN — the slice is CONFIRMED IN GAME.**
+The freeze is gone, the game runs for months. Five kings alive and ruling —
+Harold II, William II (NRM), Sweyn II, Malcolm III, Harald III — random
+rulers intact, nobody dies on their own, and `error.log` is at **53 lines**,
+back in the known-classified band. The North Sea RULER layer is done; what
+remains of the first deliverable is `situations/norman_conquest.txt`, which
+now also owns the two scheduled deaths and both successions.
 
 ## What works, measured in game
 
@@ -63,17 +85,25 @@ main_menu/setup/start/15_international_organizations.txt
 
 It strips everything carrying a 1337-dated person or date: 3852 `ruler_term`
 blocks and 5 `timed_modifier` blocks from countries, 93 `ruler_term` blocks from
-IOs, plus 174 `heir`/`consort`/`regency` lines. Then 861 named rulers become
+IOs, 174 `heir`/`consort`/`regency` lines, and **3,762 future-dated
+`death_date` lines from characters** (546 pre-1066 deaths stay — they are
+history on dead people). Then 861 named rulers become
 `random`, 1360 already were, and 116 countries that had none get one — totalling
-**2337, exactly the country count**.
+**2337, exactly the country count**. Phase 2 then seats its historical rulers
+back on top: `ruler = X` plus an open past-dated `ruler_term` per entry.
 
 `HISTORICAL_RULERS` at the top of the script is the Phase 2 hook: `tag ->
-character key`. Five entries so far.
+(character key, accession date, regnal number)`. The generator writes TWO
+lines per entry — `ruler = <key>` plus an OPEN `ruler_term` — because a named
+ruler does not seat without one. Five entries so far.
 
 The script refuses to write unless: country count unchanged, exactly one ruler
 per country, each historical ruler landed **in its own country**, no non-random
-ruler is unaccounted for, no date survives in the country or IO files, braces
-balance, and every historical ruler exists and is at least 16 at `START_DATE`.
+ruler is unaccounted for, exactly one open past-dated ruler_term per historical
+ruler and no other, no FUTURE date survives in the country or IO files (one
+documented exemption: TRE's `date = 1204.4.1`), braces balance, and every
+historical ruler exists, is at least 16 at `START_DATE`, and acceded between
+birth and `START_DATE`.
 
 **Also shipped:** `loading_screen|in_game|main_menu/common/defines/*_1066_dates.txt`
 — three identical copies of `START_DATE = "1066.9.15"` / `END_DATE = "1836.12.31"`.

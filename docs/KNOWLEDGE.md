@@ -129,6 +129,11 @@ own launch: delete `in_game/` and `main_menu/` copies, drop the harness check's
 `min_count` from 3 to 1, confirm the date still reads 1066 in the lobby.
 The `zz_` prefix on the loading_screen copy is load order: vanilla's own
 `00_defines.txt` sits in that folder and the override has to sort after it.
+**Fourth source (2026-07-28):** Anno 1644 — the second published conversion
+that moves `START_DATE` (forward, to `1644.4.17`) — ships its defines in
+`loading_screen/common/defines/zzz_1644_defines.txt` ONLY; no `in_game/` or
+`main_menu/` copy exists anywhere in the mod. Four sources for one tree,
+one for the mirror.
 
 ### A partial `NGame` block is enough
 **Established:** a published conversion overrides `START_DATE`/`END_DATE` in a
@@ -504,6 +509,113 @@ as Hardrada's sons so Norway's succession has something real to land on.
 **Means:** the opening month plays itself before a single situation is written.
 What that produces — who inherits, whether the claims materialise — is the next
 thing to observe.
+**SUPERSEDED on the deaths:** measured in game, a post-start `death_date`
+starts the character DEAD (see the death_date law below). Both dates are now
+stripped like every other future death; the opening month does NOT play
+itself, and Stamford Bridge and Hastings belong to the Norman Conquest
+situation. The sons and the succession reasoning stand.
+
+### A named ruler does not seat without an open `ruler_term` — measured in game
+**Established:** in-game test of the first Phase 2 slice (2026-07-28). All five
+`HISTORICAL_RULERS` countries — ENG, NRM, DAN, SCO, NOR — started under
+engine-generated regents, while every `ruler = random` country seated normally
+(Sweden: a generated 31-year-old king). The character side was ruled out
+byte by byte: our `05_characters.txt` blocks are identical to vanilla's, all
+three generated files are BOM-free, all seven character keys present. The one
+thing those five countries lacked was a `ruler_term` — `build_setup.py` strips
+them all. Corroborated three ways:
+1. **Anno 1644, the working conversion at a moved date, writes BOTH lines for
+   every named ruler** — `ruler = X` plus an OPEN (no `end_date`) past-dated
+   term: `ruler_term = { character = hol_frederik_hendrik_van_oranje
+   start_date = 1644.1.1 regnal_number = 1 }` (`10_zzz_w_countries.txt:41`),
+   `ruler_term = { character = jap_tokugawa_iemitsu start_date = 1623.1.1 }`
+   (`10_countries.txt`, Japan block). ~209 named rulers, 231 `ruler_term`s.
+2. **Vanilla:** 650 of 863 named rulers carry a matching
+   `ruler_term = { character = <same key> … }` in the same block. Of the 213
+   without, the visible cases are PU juniors whose terms live in the senior
+   partner (WLS with `ruler = eng_edward_iii`, via `inherit_ruler_terms`),
+   tribes and theocracies. Whether the remainder actually seat at 1337 is
+   unmeasured — do not cite them as counter-examples without testing one.
+3. **Our two earlier probe rounds** (England regent despite `ruler =` while
+   vanilla's poisoned term chain was present) now read as the same law from
+   the other side: seating goes through the term container. A poisoned chain
+   fails it one way, an absent chain the other.
+**Means:** `ruler =` alone is advisory; the wiki's "regnal history and regnal
+numbers" description undersells `ruler_term`. `build_setup.py` must emit, for
+each `HISTORICAL_RULERS` entry, an open `ruler_term = { character = X
+start_date = <accession date, before START_DATE> }`, and its "no date
+survives" assertions must be narrowed to "no FUTURE date survives".
+
+### The date audit was blind to one-line blocks, and Phase 1 shipped five dates through it
+**Established:** while adding the ruler_term emission (2026-07-28). The old
+"no date survives" check was line-anchored; vanilla writes one-line blocks
+with dates mid-line, so the check passed while five live `date =` fields
+survived every Phase 1 build: BYZ bureaucracy entries dated 680.6.1, 330.5.11,
+500.6.1, 892.6.1 (past at 1066 — parse fine) and TRE
+`themata_bureaucracy date = 1204.4.1`, which IS future at a 1066 start.
+Vanilla also ships 60 commented-out ruler_terms in `10_countries.txt`, which
+the first non-anchored audit draft duly flagged — audits must run on
+comment-stripped text, matching what the parser sees.
+**Means:** both builders now audit non-anchored, comment-stripped text. TRE's
+1204.4.1 is a DOCUMENTED exemption (`KNOWN_FUTURE` in `build_setup.py`) — the
+world was measured clean with it aboard, so it is deferred to the
+Byzantium/Anatolia slice rather than blindly stripped. Possibly related to the
+4 unexplained `gamestate.cpp:133` "Failed to read key reference" lines —
+unverified, noted for whoever investigates those.
+
+### A character alive at start must carry NO death_date — measured, with screenshots
+**Established:** in-game 2026-07-28, second test of the Phase 2 slice. The
+open ruler_term DID seat Harold — Ruling History shows "King Harold II
+Godwinson", crowned 6 January 1066, regnal number correct — but his reign
+closed ON the start date ("King of England from 6 January, 1066 to
+15 September, 1066"), skull icon, "His Late Majesty", and England fell to a
+generated regent. Norway and Denmark identical. Sweyn's death_date is
+1076.4.28 — ten YEARS out — and he still started dead, which rules out "the
+death fired early" and leaves the known future-date rejection: a death_date
+at or after START_DATE is invalid and the character begins the game dead.
+**Completely silent** — zero error.log lines; the log actually shrank
+(17,954 → 1,054) while all five thrones were broken.
+Vanilla's convention, measured: **4,304 of its 4,305 death_dates are past at
+1337**, and `eng_edward_iii` (historically dies 1377) carries NONE — living
+characters' deaths are simulated, not scripted. The lone exception
+(`cas_pedro_fernandez_castro`, 1342.1.1) is vanilla's own slip and
+presumably starts dead in vanilla too, unnoticed. At a 1066 start, 3,762
+vanilla death_dates are future, and **260 belong to characters alive in
+1066** — the entire period cast was starting dead.
+**Means:** `build_setup.py` strips every `death_date >= START_DATE`
+(3,762 lines; 546 past deaths stay), with a line-anchored strip, a
+non-anchored comment-stripped backstop proven by a one-line-block canary,
+and a harness check proven by breaking. Scheduled historical deaths
+(Stamford Bridge 25 Sep, Hastings 14 Oct) are SCRIPT work — the Norman
+Conquest situation's job — never data. The previous entry's law stands
+confirmed: `ruler` + open `ruler_term` seats the ruler; it was the death
+date that emptied the throne again.
+**SCOPED the hard way (test 3, same day):** stripping ALL 3,762 future
+death_dates put the five kings on their thrones — both laws confirmed
+working — and then the game **hard-froze on the first unpause**: debug.log
+cut mid-word inside `CPauseGame::InternalExecute`, no script flood, no crash.
+The tell: init logged 21 × "has no birth scripted" including FUTURE-BORN
+`sco_william_the_lion` (b. 1143) — the ~3,500 future-born characters, their
+births collapsing and their deaths now gone, were being instantiated as
+ancient living characters. Test 1-2 ran fine with them dead. So the strip is
+scoped to characters BORN BEFORE `START_DATE` — exactly 260, matching the
+independent count of alive-in-1066 characters — and the future-born keep
+their vanilla death_dates. **Confirmed in game (test 4):** freeze gone, game
+runs for months, five kings alive and ruling, error.log at 53 lines, nobody
+dies on their own. All three laws of this day are now measured, not inferred.
+**Also found:** vanilla ships two malformed partial dates
+(`birth_date = 1010.1.` "# unknown", lines 228 and 240) — date parsing in
+tools must be tolerant, pad missing parts, never crash on vanilla's data.
+
+### Vanilla DHE flavor already covers the late end of the 1066–1337 gap
+**Established:** in-game observation (2026-07-28), browsing England's event
+list: vanilla DHE events for the houses of Lancaster and York are visible with
+trigger windows in the 1300s. `flavor_ENG.txt` is dense with dynasty-driven,
+date-gated events (`dynasty:lancaster_dynasty` from line 4426 on).
+**Means:** the 1066–1337 gap is not uniformly empty — the decades nearest 1337
+already have vanilla flavor that fires correctly because the calendar stays
+real-year aligned. Prioritise the situation backlog toward the EARLY end
+(1066–1200), where vanilla truly has nothing.
 
 ## Open questions to settle early
 
@@ -548,6 +660,50 @@ thing to observe.
 
 ---
 
+## What the new reference mods measure (probed 2026-07-28)
+
+### A popular published mod ships an additive `character_db` setup file
+**Established:** Basileia Romaion ships
+`main_menu/setup/start/05_br_characters.txt` — 2359 lines, BOM-free, a
+`character_db = { … }` block of new characters — ALONGSIDE an edited override
+of `05_characters.txt` (2.56 MB vs vanilla's 2.47 MB). Its additive characters
+reference vanilla characters as parents (`father = byz_michael_kantakouzenos`)
+and vanilla dynasties (`dynasty = kantakouzenos_dynasty`) across the file
+boundary.
+**Not verified in a running game here**, and published is not attested — but it
+is the first sighting of the additive `character_db` route shipped at scale.
+**Means:** if our generated-`05_characters.txt` route ever becomes a patch
+burden, the additive route has a working precedent worth testing. Until tested
+here, generation stays the chosen mechanism.
+
+### A railroad mod abandoned setup dynasties for runtime `found_dynasty`
+**Established:** Rise of Timur's `main_menu/setup/start/timurid_dynasty.txt`
+is four lines, ALL commented out — a `dynasty_manager` block that never runs.
+The dynasty is created at runtime instead:
+`in_game/events/DHE/flavor_mughals.txt:5-6` guards with
+`NOT = { exists = dynasty:gurkani_dynasty }` then `found_dynasty =
+gurkani_dynasty`, and moves members in with `change_dynasty =
+dynasty:gurkani_dynasty` (`flavor_wrath_of_timur.txt:124`).
+Verified — `found_dynasty`, `docs/EU5-Vanilla-Script-Docs/effects.log:3434`,
+"Makes the character found a new dynasty", **Supported Scopes: character**.
+**Means:** weak negative evidence on additive `dynasty_manager` in setup — the
+one mod seen trying it shipped it commented out. If a Phase 2 region needs a
+dynasty vanilla lacks, the attested creation route is `found_dynasty` at
+runtime; the setup route needs a test before trust. (So far unneeded:
+`fairhair_dynasty` existed.)
+
+### Anno 1644 corroborates the setup BOM rule from a third dataset
+**Established:** three of its `main_menu/setup/start/` files sampled
+(`05_characters.txt`, `04_dynasties.txt`, `02_zzz_cores.txt`) — first bytes
+plain ASCII, no BOM. Its defines file DOES open with a BOM, matching the
+"everywhere else wants one" side of the rule. Also of note: it layers additive
+`zzz_`-prefixed setup files (`05_zzz_characters.txt`, `04_zzz_w_dynasties.txt`)
+over overridden ones — the same additive-next-to-override mix as Basileia.
+**Means:** the BOM rule now rests on vanilla, Bronze Era, and Anno 1644.
+Nothing to change; recorded so the tally is known.
+
+---
+
 ## Reference trees available outside this repo
 
 All read-only. Detect by probing a known file, never a directory.
@@ -556,7 +712,11 @@ All read-only. Detect by probing a known file, never a directory.
 |---|---|---|
 | `E:\SteamLibrary\...\Europa Universalis V\game` | vanilla 1.3.11 | the authority for everything |
 | `mod/Mongol Resurgence` | own railroad mod | situation/state-machine/failsafe shapes, a mature harness, a nine-session test log |
-| `C:\Users\Desktop\Bronze Era Modu Total Overhaul` | published conversion | `setup/start`, `location_templates`, the only attested `START_DATE` move |
+| `C:\Users\Desktop\Bronze Era Modu Total Overhaul` | published conversion | `setup/start`, `location_templates`, the first attested `START_DATE` move |
+| `C:\Users\Desktop\Anno 1644 The General Crisis Modu Total overhaul for 1644` | published conversion, start moved to 1644.4.17 | the second attested `START_DATE` move; defines in one tree; additive `zzz_` setup layering |
+| `C:\Users\Desktop\Basileia Romaion 1337 total overhaul modu çok popüler` | popular published 1337 total overhaul | mass character/dynasty authoring; additive `05_br_characters.txt` next to an overridden `05_characters.txt` |
+| `C:\Users\Desktop\Rise of Timur Another Railroad Mod Example` | published railroad mod | runtime `found_dynasty` instead of setup dynasties; railroad event shapes |
+| `C:\Users\Desktop\Location Painter` | the Location Painter tool itself | territorial edits for Phase 2; `EU5_Location_Painter_User_Guide.html` ships next to the exe |
 | `C:\Users\Desktop\eu5-modding-project-1.3.11\...` | SOL balance mod project, 11631 files | `reference_official_defines/types/` (14 official type files), `reference_mods/` (20 workshop mods), a full 1.3.11 game copy |
 | `docs/*.pdf` (in this repo) | 34 wiki pages saved 2026-07-20 | offline copies of Setup / Country / Character / Event / Situation / Localization / Mod structure modding and more |
 

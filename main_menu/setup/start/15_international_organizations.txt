@@ -3,8 +3,14 @@
 #
 # Removed: entries carrying 1337-dated people or dates, which a 1066 start reads
 # as the future. The engine rejects them, collapses them to `1.1.1`, and the
-# result is rulers aged about -250 and a flood of script errors.
+# result is rulers aged about -250 and a flood of script errors. That includes
+# every death_date at or after START_DATE: a living character carrying one
+# starts the game DEAD, silently.
 # Everything else — territory, capitals, ranks, templates, laws — is vanilla's.
+#
+# Added back: for each Phase 2 historical ruler, `ruler = <key>` PLUS an OPEN
+# pre-1066 ruler_term. A named ruler does not seat without one — measured in
+# game; see docs/KNOWLEDGE.md.
 #
 # KNOWN WRONG, deliberately left: regnal_numbers are still calibrated for 1337,
 # so a ruler may be numbered as though his predecessors had already reigned.

@@ -14,9 +14,11 @@ cost is real and is written down, not glossed: EU5 puts everything before 1342
 inside a single age, so 1066 spends 276 years in `age_1_traditions` and will
 most likely need an age of its own eventually.
 
-Nothing is built yet. This file holds the RULES. It does not describe an
-architecture, because there is no architecture — that section gets written when
-the first real systems exist, and is updated as a by-product of each change.
+This file holds the RULES. Current state and architecture live in
+`docs/HANDOFF.md`: Phase 1 is built, measured in a running game, and generated
+by `tools/build_setup.py`; the first Phase 2 slice (five North Sea rulers) is
+written but not yet observed in game. Read this file, then `docs/HANDOFF.md`,
+then `docs/KNOWLEDGE.md`, in that order, before writing anything.
 
 **Scope: the whole map, historically, in two phases.** The target is a real
 overhaul — every region at 1066, not one region deep and the rest borrowed. That
@@ -77,6 +79,10 @@ table with what each is good for.
 | `docs/*.pdf` | 34 wiki pages saved offline: Setup / Country / Character / Event / Situation / Action / Law / War / Localization / Mod structure modding, plus every continent and subcontinent |
 | `C:\Users\Desktop\eu5-modding-project-1.3.11\…` | 11,631 files — `reference_official_defines/types/` (14 official type files), `reference_mods/` (20 workshop mods), a full 1.3.11 game copy, and an error-log filter with 663 known-vanilla signatures |
 | `C:\Users\Desktop\Bronze Era Modu Total Overhaul` | published conversion — the attested way to move `START_DATE` and rebuild `setup/start` |
+| `C:\Users\Desktop\Anno 1644 The General Crisis Modu Total overhaul for 1644` | published conversion — the SECOND attested `START_DATE` move (forward, to 1644.4.17), defines in `loading_screen` only, additive `zzz_`-prefixed setup files layered over overrides |
+| `C:\Users\Desktop\Basileia Romaion 1337 total overhaul modu çok popüler` | popular published 1337 total overhaul — mass character/dynasty authoring, additive `05_br_characters.txt` shipped NEXT TO an overridden `05_characters.txt` |
+| `C:\Users\Desktop\Rise of Timur Another Railroad Mod Example` | published railroad mod — runtime `found_dynasty` route instead of setup dynasties; see KNOWLEDGE.md |
+| `C:\Users\Desktop\Location Painter` | the Location Painter tool itself, plus `EU5_Location_Painter_User_Guide.html` |
 | `mod/Mongol Resurgence` | own mod — situation/state-machine/failsafe shapes, a mature harness, a nine-session test log |
 | `mod/867 Total Conversion Test Mod` | own earlier attempt — its `EU5_MOD_MEMORY.md` found the setup BOM crash before this project did |
 
@@ -237,6 +243,26 @@ Whatever the AI is railroaded into, a human player is asked. Conversions are
 offered and refusable, forced wars come as a visible event with a postpone
 option, failsafes are `is_ai`-gated on both sides and never take a player's
 land, and a player's alliances are not dissolved without consent.
+
+## Division of labor — the main session designs, subagents produce
+
+The main session runs Claude Fable 5. `.claude/settings.local.json` sets
+`CLAUDE_CODE_SUBAGENT_MODEL=claude-opus-5`, so every subagent it launches runs
+Claude Opus 5 — verified live by having an agent report its own model ID. The
+split is deliberate:
+
+- **Main session (Fable):** the plan, engine constraints, trigger/scope logic,
+  the shape of every situation, everything in the FORBIDDEN-from-memory
+  categories, and final review of anything that enters the repo.
+- **Subagents (Opus):** volume — per-region historical research (who ruled
+  every tag in 1066), bulk setup data entry, localisation, mass audits and
+  cross-reference sweeps. Routine hundreds-of-lines writing is delegated, not
+  done inline in the main session.
+- **Delegation relaxes nothing.** A subagent prompt names the exact reference
+  paths to verify against and restates the rules that apply to its task
+  (citation rule, BOM rules, verify-tags). Subagent output is a draft until
+  the main session has reviewed it and `tools/verify_mod.py` has passed. A
+  subagent claim without a `file:line` is an unverified claim.
 
 ## Workflow
 - **Never write to a file without approval.** Audit first, report categorised
