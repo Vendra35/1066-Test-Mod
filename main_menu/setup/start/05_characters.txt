@@ -104682,4 +104682,29 @@ character_db={
 		birth = milano
 		tag = PAP
 	}
+
+	# --- 1066 Sardinia ----------------------------------------------------
+	# The judges of Torres and Cagliari, [U] dates throughout. Vanilla's
+	# Sardinian name pool is unusually rich (name_barisone:2962,
+	# name_torchitorio:17278, with .sardinian_dialect rows); the
+	# Lacon-Gunale house that both lines descend from is ours to add.
+	tor_barisone_i_lacon_gunale = {
+		first_name = { name = name_barisone }
+		culture = sardinian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = sassari
+		dynasty = lacon_gunale_dynasty
+		tag = TOR
+	}
+
+	cag_orzocco_torchitorio_i = {
+		first_name = { name = name_torchitorio }
+		culture = sardinian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = cagliari
+		dynasty = lacon_gunale_dynasty
+		tag = CAG
+	}
 }

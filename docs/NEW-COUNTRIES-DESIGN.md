@@ -10,6 +10,19 @@
 > HISTORICAL_RULERS row seats a ruler on an invented tag, and the
 > transfer assertions held. **The invent-a-country factory is open:
 > taifas, Seljuks+Abbasids, Egypt, the Lombard south, Muslim Sicily.**
+>
+> **SIBLING MECHANISM LANDED (same day, build-verified, game test
+> pending): `LOCATION_GRANTS`** — territory to EXISTING landless tags,
+> for the many 1066 states Paradox defined but left landless at 1337.
+> First user: the four Sardinian giudicati + Corsica, restored
+> byte-for-byte from vanilla's own claim lists. Key differences from
+> NEW_COUNTRIES: no registry entry needed (the tag already exists), no
+> country block written (`own_control_core` is created inside the
+> vanilla block), and the granted locations are stripped from the
+> receiving tag's OWN `our_cores_conquered_by_others` so it does not
+> claim what it now holds. Ownership moves through a block-aware parser
+> (`_owned_spans`) — a flat token scan double-counts any location that
+> sits in one tag's ownership and another's claims.
 
 > Written 2026-07-28 while the ruler layer stood at 50. Four parked slices
 > all block on this one mechanism: the Great Seljuks + Abbasids (one job),

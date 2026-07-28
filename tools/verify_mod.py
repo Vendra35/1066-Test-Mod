@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 110: 56 named rulers + 56 terms after Italy and the probe.
+# Armed at 114: 58 named rulers + 58 terms after Sardinia.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=110)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=114)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -353,8 +353,9 @@ count += len(_seated)
 for _c in set(_seated):
     if _seated.count(_c) > 1:
         probs.append(f"{_c} is seated on more than one tag")
-# Armed at 100: 21 authored characters x ~3 identifiers + 13 dynasties + 53 seats.
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=100)
+# Armed at 140: 23 authored characters x ~3 identifiers + 14 dynasties + 58 seats
+# (146 measured after Sardinia).
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=140)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -380,8 +381,9 @@ for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
         break
 count = len(_bs.HISTORICAL_RULERS)
 print(f"       accessions cross-checked against vanilla's own terms: {_compared} of {count}")
-# Armed at 53 rows; the printed compared-count is the real coverage figure.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=53)
+# Armed at 58 rows after Sardinia; the printed compared-count is the real
+# coverage figure.
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=58)
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would

@@ -56,4 +56,8 @@ dynasty_manager = {
 		name = { name = abbasid_dynasty }
 		home = baghdad
 	}
+	lacon_gunale_dynasty = {
+		name = { name = lacon_gunale_dynasty }
+		home = sassari
+	}
 }

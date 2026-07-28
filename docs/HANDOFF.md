@@ -344,6 +344,28 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    (the probe's whole question); does the Pope display as
    "Alexander II" of "Rome"; Doge Contarini in Venice; Aquitaine now
    independent under William VIII; the -1000 opinion wall.
+   **PROBE CONFIRMED IN GAME (2026-07-28, screenshots):** Pereiaslav on
+   the map, Vsevolod ruling — but only after the tag-registry lesson
+   (identity block MANDATORY, `zz_1066_new_countries.txt`).
+
+12. **Sardinia giudicati slice (LANDED, untested):** first use of
+   **LOCATION_GRANTS** — territory to EXISTING landless tags, the
+   complement of NEW_COUNTRIES. 27 locations restored byte-for-byte from
+   vanilla's own claim lists (`our_cores_conquered_by_others` IS the 1066
+   border): TOR 8 (from GEN+ARB), CAG 7 (from PIS), GAL 4 (from PIS),
+   COR 8 (from GEN+PIS+ARA); ARB kept its remaining 4. Ownership moved
+   by a block-aware parser (`_owned_spans` over the ten own/control list
+   keys) because sassari sits in GEN's ownership AND TOR's claims — a
+   crude token scan double-counts. Granted tokens also stripped from the
+   receiving tag's own claims list (27/27 found). Both new assertions
+   proven by breaking (bogus location → abort; removal disabled →
+   validate caught "sassari: 2 owners"). Rulers: TOR = Barisone I,
+   CAG = Orzocco Torchitorio I (both authored, [U] dates, new
+   lacon-gunale dynasty, home sassari); ARB/GAL/COR stay random
+   (1066 holders obscure/unattested). 58 rulers total.
+   TEST: Sardinia shows FOUR states + ARB; Corsica independent under COR;
+   Barisone in Sassari, Torchitorio in Cagliari, Lacon-Gunale renders;
+   GEN/PIS/ARA hold nothing on the islands; error.log for new classes.
 
 ## Next, in order
 

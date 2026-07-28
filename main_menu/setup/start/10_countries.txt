@@ -8297,7 +8297,7 @@ countries = {
 
 	ARB = {
 		own_control_core = {
-			ales oristano sorgono terralba bosa macomer bitti ozieri
+			ales oristano sorgono terralba    
 		}
 
 		starting_technology_level = 3
@@ -8498,8 +8498,12 @@ countries = {
 	}
 
 	CAG = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli
+		}
+
+		our_cores_conquered_by_others = {
+			      
 		}
 
 		starting_technology_level = 3
@@ -8522,7 +8526,8 @@ countries = {
 				Orzocco = 1
 				name_peter = 1
 			}
-			ruler = random
+			ruler = cag_orzocco_torchitorio_i
+			ruler_term = { character = cag_orzocco_torchitorio_i start_date = 1058.1.1 regnal_number = 1 }
 		}
 		capital = cagliari
 	}
@@ -8721,8 +8726,12 @@ countries = {
 	}
 
 	COR = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			aleria bastia calvi corte ajaccio bonifacio sartene vico
+		}
+
+		our_cores_conquered_by_others = {
+			       
 		}
 
 		starting_technology_level = 3
@@ -9150,8 +9159,12 @@ countries = {
 	}
 
 	GAL = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			orosei terranova_pausania posada tempiopausania
+		}
+
+		our_cores_conquered_by_others = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -9189,12 +9202,12 @@ countries = {
 		own_control_core = {
 			albenga ventimiglia genoa lavagna sarzana savona #Liguria
 			# own_control_integrated, but culture accepted
-			aleria bastia calvi corte ajaccio sartene vico bonifacio #Corsica
+			        #Corsica
 		}
 		own_control_integrated = {
-			alghero thiesi #Sardinia
+			  #Sardinia
 			foca #Aegean Sea
-			castelsardo #Sardinia
+			 #Sardinia
 			amasra #Black Sea
 		}
 
@@ -10745,8 +10758,12 @@ countries = {
 	}
 
 	TOR = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			sassari alghero bosa macomer bitti thiesi castelsardo ozieri
+		}
+
+		our_cores_conquered_by_others = {
+			       
 		}
 
 		starting_technology_level = 3
@@ -10772,7 +10789,8 @@ countries = {
 				name_peter = 2
 				Torchitorio = 1
 			}
-			ruler = random
+			ruler = tor_barisone_i_lacon_gunale
+			ruler_term = { character = tor_barisone_i_lacon_gunale start_date = 1038.1.1 regnal_number = 1 }
 		}
 		capital = sassari
 	}
@@ -12566,8 +12584,7 @@ countries = {
 		}
 
 		own_control_conquered = {
-			cagliari tratalias villa_di_chiesa isili muravera seddori tortoli orosei terranova_pausania posada tempiopausania
-			sassari
+
 		}
 
 		our_cores_conquered_by_others = {

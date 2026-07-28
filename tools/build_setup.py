@@ -177,6 +177,12 @@ HISTORICAL_RULERS = {
     "VEN": ("ven_domenico_contarini", "1043.1.1", 1),     # Doge Domenico Contarini — vanilla character, vanilla's own term date
     "PAP": ("pap_anselmo_da_baggio", "1061.9.30", 2, "name_alexander"), # Pope Alexander II — NEW_CHARACTERS; capital fixed avignon->rome below
     "PYS": ("kie_vsevolod_rurikovich", "1054.2.20", 1),   # Vsevolod I, the third triumvir — seated on the NEW_COUNTRIES probe tag
+
+    # Sardinia, restored to its giudicati by LOCATION_GRANTS. ARB's 1066
+    # judge is genuinely obscure and GAL's unattested — both stay random;
+    # Corsica gets territory only (no single 1066 ruler existed).
+    "TOR": ("tor_barisone_i_lacon_gunale", "1038.1.1", 1), # Barisone I of Torres/Logudoro, [U] dates — NEW_CHARACTERS
+    "CAG": ("cag_orzocco_torchitorio_i", "1058.1.1", 1),  # Orzocco Torchitorio I of Cagliari, [U] dates — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -212,6 +218,22 @@ NEW_COUNTRIES = {
 # whatever ownership list currently carries it and asserts exclusivity.
 LOCATION_TRANSFERS = {
     "PYS": ["pereiaslav", "desnyanskyi_horodok", "boryspil", "oster", "kozelets"],
+}
+
+# tag -> locations granted to an EXISTING tag: removed from their current
+# owner, written into the tag's own_control_core (created if absent — the
+# landless giudicati have none), and dropped from the tag's own claims
+# list, since owned land is no longer "conquered by others".
+# THE SARDINIA SLICE: the four giudicati's claim lists ARE their 1066
+# borders, written by Paradox (Italy pass, re-verified byte-for-byte).
+# Rulers: TOR and CAG get their judges; ARB's 1066 judge is genuinely
+# obscure and GAL's is unattested — both stay `ruler = random`; Corsica
+# has no single 1066 ruler at all (territory only).
+LOCATION_GRANTS = {
+    "TOR": ["sassari", "alghero", "bosa", "macomer", "bitti", "thiesi", "castelsardo", "ozieri"],
+    "CAG": ["cagliari", "tratalias", "villa_di_chiesa", "isili", "muravera", "seddori", "tortoli"],
+    "GAL": ["orosei", "terranova_pausania", "posada", "tempiopausania"],
+    "COR": ["aleria", "bastia", "calvi", "corte", "ajaccio", "bonifacio", "sartene", "vico"],
 }
 
 # tag -> (expected old capital, new capital). Asserted against the old
@@ -612,6 +634,31 @@ NEW_CHARACTERS = """
 		birth = milano
 		tag = PAP
 	}
+
+	# --- 1066 Sardinia ----------------------------------------------------
+	# The judges of Torres and Cagliari, [U] dates throughout. Vanilla's
+	# Sardinian name pool is unusually rich (name_barisone:2962,
+	# name_torchitorio:17278, with .sardinian_dialect rows); the
+	# Lacon-Gunale house that both lines descend from is ours to add.
+	tor_barisone_i_lacon_gunale = {
+		first_name = { name = name_barisone }
+		culture = sardinian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = sassari
+		dynasty = lacon_gunale_dynasty
+		tag = TOR
+	}
+
+	cag_orzocco_torchitorio_i = {
+		first_name = { name = name_torchitorio }
+		culture = sardinian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = cagliari
+		dynasty = lacon_gunale_dynasty
+		tag = CAG
+	}
 """
 
 
@@ -728,34 +775,91 @@ def build_countries(src):
     # before the wrapper braces. Runs BEFORE the ruler passes so a new tag
     # gets its `ruler = random` from the add-missing pass and can be seated
     # through HISTORICAL_RULERS like any other.
-    # `capital = <loc>` lines are NOT ownership (a landless tag's capital
-    # can sit on someone else's land — CAG's cagliari under ARA), so both
-    # the pre-check and the validate scan text with capital lines removed.
-    def _ownership_text(s):
-        return re.sub(r"^[ \t]*capital[ \t]*=[^\n]*\n", "", s, flags=re.M)
+    # OWNERSHIP is exactly these list keys — not `capital =` lines (a
+    # landless tag's capital can sit on someone else's land) and not
+    # `our_cores_conquered_by_others` (claims). The first Sardinia dry-run
+    # would have double-counted sassari (GEN's ownership + TOR's claim)
+    # under a cruder scan; this one parses the actual list blocks.
+    OWN_KEYS = ("own_control_core", "own_control_integrated",
+                "own_control_conquered", "own_control_colony", "own_core",
+                "own_conquered", "own_integrated", "own_colony",
+                "control_core", "control")
+
+    def _owned_spans(s, loc):
+        spans = []
+        for key in OWN_KEYS:
+            for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", s, re.M):
+                end = find_block_end(s, s.index("{", m.start()))
+                for t in re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])",
+                                     s[m.start():end]):
+                    spans.append((m.start() + t.start(), m.start() + t.end()))
+        return spans
+
+    def _remove_owned(s, loc, ctx):
+        spans = _owned_spans(s, loc)
+        if len(spans) != 1:
+            sys.exit(f"{ctx}: {loc} has {len(spans)} ownership occurrences — "
+                     f"expected exactly one")
+        a, b = spans[0]
+        return s[:a] + s[b:]
 
     n_transferred = 0
     for _t, locs in sorted(LOCATION_TRANSFERS.items()):
         for loc in locs:
-            own = _ownership_text(src)
-            hits = list(re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", own))
-            if len(hits) != 1:
-                sys.exit(f"LOCATION_TRANSFERS: {loc} appears {len(hits)} times "
-                         f"in ownership lists — expected exactly once")
-            # remove from the REAL src by matching the same token there
-            real = list(re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", src))
-            live = [h for h in real
-                    if not re.search(r"capital[ \t]*=[ \t]*$",
-                                     src[max(0, h.start() - 40):h.start()])]
-            if len(live) != 1:
-                sys.exit(f"LOCATION_TRANSFERS: {loc} ambiguous in raw text")
-            h = live[0]
-            src = src[:h.start()] + src[h.end():]
+            src = _remove_owned(src, loc, "LOCATION_TRANSFERS")
             n_transferred += 1
     report.append(("locations transferred to new countries", n_transferred))
     wrap = src.rindex("\n}\n}")
     src = src[:wrap] + "\n" + "\n".join(NEW_COUNTRIES[t] for t in sorted(NEW_COUNTRIES)) + src[wrap:]
     report.append(("new countries inserted", len(NEW_COUNTRIES)))
+
+    # Grants to EXISTING tags: remove from the current owner, write into
+    # the target's own_control_core (created when the tag is landless),
+    # and drop the granted locations from the target's own claims list.
+    n_granted, n_unclaimed = 0, 0
+    for _t, locs in sorted(LOCATION_GRANTS.items()):
+        for loc in locs:
+            src = _remove_owned(src, loc, f"LOCATION_GRANTS[{_t}]")
+        blocks_g = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(blocks_g):
+            if b.group(1) != _t:
+                continue
+            end = blocks_g[i + 1].start() if i + 1 < len(blocks_g) else len(src)
+            body = src[b.start():end]
+            m = re.search(r"^([ \t]*)own_control_core[ \t]*=[ \t]*\{", body, re.M)
+            if m:
+                at = b.start() + body.index("{", m.start()) + 1
+                src = src[:at] + "\n" + m.group(1) + "\t" + " ".join(locs) + src[at:]
+            else:
+                at = b.start() + body.index("{") + 1
+                src = (src[:at] + "\n\t\town_control_core = {\n\t\t\t"
+                       + " ".join(locs) + "\n\t\t}\n" + src[at:])
+            n_granted += len(locs)
+            break
+        else:
+            sys.exit(f"LOCATION_GRANTS: tag {_t} not found")
+        # claims cleanup, lenient: a granted location not in the claims
+        # list is fine, it is just counted
+        blocks_g = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(blocks_g):
+            if b.group(1) != _t:
+                continue
+            end = blocks_g[i + 1].start() if i + 1 < len(blocks_g) else len(src)
+            body = src[b.start():end]
+            cm = re.search(r"^[ \t]*our_cores_conquered_by_others[ \t]*=[ \t]*\{", body, re.M)
+            if cm:
+                cend = find_block_end(body, body.index("{", cm.start()))
+                seg = body[cm.start():cend]
+                seg2 = seg
+                for loc in locs:
+                    seg2, k = re.subn(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", "", seg2)
+                    if not k:
+                        n_unclaimed += 1
+                src = src[:b.start() + cm.start()] + seg2 + src[b.start() + cend:]
+            break
+    report.append(("locations granted to existing tags", n_granted))
+    if n_unclaimed:
+        report.append(("  of those, not in the target's claims", n_unclaimed))
 
     # Capital corrections, asserted against the expected old value.
     starts_cf = list(re.finditer(COUNTRY_RE, src, re.M))
@@ -919,15 +1023,15 @@ def build_countries(src):
         if after != before + len(NEW_COUNTRIES):
             return (f"country count {after} != {before} + {len(NEW_COUNTRIES)} "
                     f"new — territory would be lost or a block failed to land")
-        # Transfer exclusivity: every transferred location must now appear
-        # exactly once in OWNERSHIP text (capital lines excluded) — inside
-        # its new owner's block.
-        own_final = re.sub(r"^[ \t]*capital[ \t]*=[^\n]*\n", "", src, flags=re.M)
-        for _t, locs in sorted(LOCATION_TRANSFERS.items()):
-            for loc in locs:
-                n_now = len(re.findall(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", own_final))
-                if n_now != 1:
-                    return f"{loc}: {n_now} owners after the transfer — must be exactly 1"
+        # Transfer/grant exclusivity: every moved location must end owned
+        # exactly once, measured by the same ownership-block parser that
+        # moved it.
+        moved = [(t, l) for t, ls in list(LOCATION_TRANSFERS.items())
+                 + list(LOCATION_GRANTS.items()) for l in ls]
+        for _t, loc in moved:
+            n_now = len(_owned_spans(src, loc))
+            if n_now != 1:
+                return f"{loc}: {n_now} owners after the move — must be exactly 1"
         for key in COUNTRY_BLOCKS + COUNTRY_LINES:
             if key == "ruler_term":
                 continue    # vanilla's are stripped; OURS are re-added and audited below
