@@ -564,10 +564,142 @@ def build_characters(src):
     return src, report, validate, f"{after} characters, {len(HISTORICAL_RULERS)} rulers checked"
 
 
+def build_diplomacy(src):
+    """Strip the ten French appanage dependencies (12_diplomacy.txt:158-170).
+    The appanage subject type needs a Capetian dynastic link no 1066 ruler
+    has — the engine declares every one invalid at game start
+    (government.cpp:3702, ~25 of the 53-line error baseline) — and as French
+    SUBJECTS the great fiefs cannot declare war, which is what blocked
+    William's conquest in game: can_declare_legal_war_on = no, silently.
+    Historically the 1066 great vassals were de facto independent
+    (docs/PHASE-2-PLAN.md); the France-region pass will model their loose
+    ties properly. Every other dependency is left exactly as vanilla wrote
+    it."""
+    report = []
+    before = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
+    src, n = re.subn(r"^[ \t]*dependency = \{[^}\n]*subject_type = appanage[^}\n]*\}[ \t]*\n",
+                     "", src, flags=re.M)
+    report.append(("appanage dependencies removed", n))
+    src = tidy(src)
+    after = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
+
+    def validate():
+        if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):
+            return "an appanage reference survived the strip"
+        # Exactly 10 in vanilla 1.3.11. If a patch changes the number, this
+        # fails loudly and a human re-reads the file — better than drifting.
+        if n != 10 or before - after != n:
+            return f"expected exactly 10 appanage cuts, removed {n} ({before} -> {after})"
+        return None
+
+    return src, report, validate, f"{after} dependencies kept"
+
+
+# The two wars of 1066, in progress at game start. Declaring them from
+# script was measured IMPOSSIBLE before ~1 November across three in-game
+# rounds — with the CB in hand, with hidden retries on days +1..+13, the
+# declaration only ever succeeded on the first monthly tick of November,
+# which reads as an engine-side declaration lock in the opening weeks. A war
+# shipped in setup simply EXISTS from day one, the mechanism vanilla uses
+# for 219 wars of its own. Historically right as well: Hardrada's army is
+# already in England on 1066.9.15, and contemporaries dated the Norman
+# quarrel from Harold's crowning on 6 January.
+# Shape attested: war_name/start_date/action/attacker/defender per
+# vanilla 16_wars.txt:1-45, the superiority goal binding per 16_wars.txt:270.
+NEW_WARS = """
+	war = {
+		war_name = {
+			name = "NORWEGIAN_INVASION_WAR_NAME"
+			ordinal = 1
+		}
+
+		superiority = {
+			type = norwegian_invasion_wargoal
+			casus_belli = cb_norwegian_invasion
+		}
+
+		start_date = 1066.9.8
+		action = 1066.9.14
+		attacker = {
+			country = NOR
+			request = {
+				reason = Instigator
+			}
+		}
+		defender = {
+			country = ENG
+			request = {
+				reason = Target
+			}
+		}
+	}
+
+	war = {
+		war_name = {
+			name = "NORMAN_CONQUEST_WAR_NAME"
+			ordinal = 1
+		}
+
+		superiority = {
+			type = norman_conquest_wargoal
+			casus_belli = cb_norman_conquest
+		}
+
+		start_date = 1066.1.6
+		action = 1066.9.14
+		attacker = {
+			country = NRM
+			request = {
+				reason = Instigator
+			}
+		}
+		defender = {
+			country = ENG
+			request = {
+				reason = Target
+			}
+		}
+	}
+"""
+
+
+def build_wars(src):
+    """Replace the war_manager body: every one of vanilla's wars and truces
+    is future-dated at 1066 (earliest start_date 1283.1.1), the same poison
+    class as the ruler_terms, and our two 1066 wars go in instead."""
+    report = []
+    open_b = src.index("{", src.index("war_manager"))
+    close_b = find_block_end(src, open_b)
+    body = src[open_b + 1:close_b - 1]
+    n_blocks = len(re.findall(r"^\t[a-z_]+ = \{", body, re.M))
+    dates = [date_tuple(d) for d in re.findall(r"start_date = ([0-9.]+)", body)]
+    report.append(("vanilla wars and truces removed", n_blocks))
+    src = src[:open_b + 1] + NEW_WARS + src[close_b - 1:]
+    report.append(("1066 wars added", len(re.findall(r"^\twar = \{", NEW_WARS, re.M))))
+
+    def validate():
+        start = _start_date()
+        for d in dates:
+            if d < start:
+                return (f"a vanilla war starts {d} — BEFORE our start date; "
+                        f"it would have been valid and should not be stripped blindly")
+        ours = [date_tuple(x) for x in re.findall(r"start_date = ([0-9.]+)", NEW_WARS)]
+        if len(ours) != 2 or any(d >= start for d in ours):
+            return f"our wars must both start before {start}: {ours}"
+        for need in ("NOR", "NRM", "ENG"):
+            if not re.search(r"country = " + need + r"\b", NEW_WARS):
+                return f"{need} missing from the 1066 wars"
+        return None
+
+    return src, report, validate, "2 wars of 1066 in progress at start"
+
+
 TARGETS = [
     ("05_characters.txt", build_characters),
     ("10_countries.txt", build_countries),
+    ("12_diplomacy.txt", build_diplomacy),
     ("15_international_organizations.txt", build_ios),
+    ("16_wars.txt", build_wars),
 ]
 
 HEADER = """# GENERATED by tools/build_setup.py — do not hand-edit.

@@ -165,9 +165,11 @@ done; step 3 is not started.
    `nor_harald_hardrada`, `nor_magnus_ii`, `nor_olaf_iii_kyrre`.
    `fairhair_dynasty` already existed in vanilla, so `dynasty_manager` was not
    touched.
-3. `situations/norman_conquest.txt` plus its localisation — **not started**, and
-   deliberately so: what it needs to do depends on what the engine already does
-   with the two scheduled deaths.
+3. `situations/norman_conquest.txt` plus events, CBs, wargoals, on_action and
+   localisation — **written and statically proven, NOT yet observed in game**.
+   The timeline is on_action-driven and day-exact; the AI is railroaded to
+   history and the player is asked at every fork. See HANDOFF for the
+   in-game test checklist.
 
 **What makes it interesting, and what makes it hard.** Nothing happens on its
 own: future death dates cannot be data (they start the character dead —

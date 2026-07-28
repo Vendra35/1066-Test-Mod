@@ -154,18 +154,90 @@ birth and `START_DATE`.
   that mirrors. It works and logs no duplicate warning. Dropping the two extras
   deserves its own commit and its own launch.
 
+## The Norman Conquest situation is BUILT — statically proven, NEVER launched
+
+Six new files (2026-07-28, after the rulers were confirmed): the situation
+(`in_game/common/situations/norman_conquest.txt`), 11 events
+(`in_game/events/situations/norman_conquest.txt`), two CBs + two wargoals,
+an `on_game_start` on_action that drives the timeline day-exact (the
+situation's monthly tick is too coarse for Sep 20 – Dec 25), and 46 loc
+keys. AI is railroaded to history; every alternative option carries
+`trigger = { is_ai = no }`; a player England is offered submission in
+event .42 instead of being force-unioned. Every construct is cited in-file.
+The harness gained three checks (situation fields vs vanilla's field set,
+event-id reachability in BOTH reference shapes, event/war/cb loc key
+resolution), each proven by breaking.
+
+**First launch FAILED, rebuilt (same day).** The on_game_start on_action
+fired NOTHING in game, and the situation panel was empty — no per-situation
+GUI file existed. Both causes and both fixes are in KNOWLEDGE.md: the
+timeline now lives in the situation's own `on_start` (the MR lesson,
+"situations own their lifecycle"), and `gui/panels/situation/
+norman_conquest.gui` exists (MR's proven 45-line template). The on_action
+file is deleted.
+
+**Round 2 (same day): situation started, GUI fine, intro fired — nothing
+else.** Two causes found and fixed (KNOWLEDGE.md): NRM was France's
+appanage from vanilla's 1337 diplomacy and could not legally declare war —
+`build_setup.py` now generates `12_diplomacy.txt` with the ten
+engine-invalid French appanages stripped — and every event carrying an
+event-level trigger went silent (hypothesis, not isolated), so guards
+moved inside options and the two declarations retry monthly from the
+situation while their window is open.
+
+**Round 3 (same day): the machine WORKS.** Hardrada died and Magnus II
+succeeded; Hastings killed Harold on 14 Oct; the coronation event fired ON
+25 Dec, built the union, ended the war, William ruling both. Error classes
+gone. Two flaws, both decoded (KNOWLEDGE.md): the declarations lagged a
+monthly-retry cycle because a normal declaration needs the CB already in
+hand — Norway's window closed with Hardrada's death, Normandy declared
+1 Nov — fixed by granting both CBs in the situation's on_start and going
+CB-first everywhere; and the panel's two cards sat far apart — the
+wrapping expanding vbox was the cause, cards now sit directly in the
+blockoverride like rise_of_the_ottomans.
+
+**Round 4: panel fixed; wars still lag.** With CBs granted at on_start,
+Normandy STILL declared only on 1 Nov — day 0 fails on something other
+than the CB, and monthly retries cannot resolve what (the next attempt
+after day 0 IS 1 Nov). Fix: hidden retry ladders at +1/+2 (Norway, before
+Stamford at +3) and +1..+13 (Normandy), attested hidden-event shape.
+Whichever rung fires measures the real lock.
+
+**Round 5: the declaration lock is engine-side and unbeatable from
+script** (even +1..+13-day hidden retries; Normandy declared 1 Nov for
+the third round running). Solution shipped: `16_wars.txt` is now the
+FIFTH generated file — vanilla's 13 future-dated wars and truces
+stripped, our two 1066 wars in progress from day one (Norway since
+1066.9.8, Normandy since 1066.1.6). Also fixed from this round: .42's
+submit option now carries historical_option, and the NRM retry guards
+gained `NOT = { in_union_with = c:ENG }` — reviewed, they would have
+re-declared on their own union partner.
+
+**Round 6: CONFIRMED WORKING END TO END.** Both wars live from day one,
+Stamford on ~4 Oct with the succession and the withdrawal, Hastings on
+14 Oct, the coronation and union on 25 Dec. The only new log signature —
+`GetWinnerCountry returned nullptr` during the scripted war endings — is
+decoded as harmless (no peace treaty means no winner for the toast to
+name). **The Norman Conquest is done: the first Phase 2 deliverable is
+complete and measured in game.**
+
 ## Next, in order
 
-1. **Test the five rulers** (above). Nothing else should be written first.
-2. **`situations/norman_conquest.txt`** — shape it around what step 2 and 3 of
-   the test actually produce. Field list is authoritative in
-   `in_game/common/situations/readme.txt`. Remember CLAUDE.md's rule: the AI can
-   be railroaded, the player is asked.
-3. **Harness check for situations** when the first one lands, and raise the four
-   remaining `PENDING` counts as their content types appear — grep `PENDING` in
-   `tools/verify_mod.py`.
-4. Then the next region. `docs/PHASE-2-PLAN.md` has the order and the
-   1066–1337 event backlog with priorities.
+1. **Polish pass** (see the list two sections up): map layer, proper
+   illustration, richer loc via an Opus subagent, a hint entry,
+   regnal_numbers recalibrated for 1066 ("William III"), Edgar Ætheling,
+   Sweyn's 1069 invasion, Malcolm's role.
+2. **Next region: France and the Empire** — `docs/PHASE-2-PLAN.md` has
+   the order. The delegation model from CLAUDE.md applies from here:
+   Opus subagents research the ruler tables, the main session verifies
+   and lands them through HISTORICAL_RULERS.
+2. **Polish pass** once round 4 is clean: map_color/legend/tooltip layer,
+   a proper illustration, richer loc (Opus subagent), a hint entry,
+   regnal_numbers recalibrated for 1066 (William shows as "III"), Edgar
+   Ætheling for England's interregnum, Sweyn's 1069 invasion and
+   Malcolm's role as follow-ups.
+3. Then the next region: **France and the Empire** — `docs/PHASE-2-PLAN.md`
+   has the order and the 1066–1337 backlog.
 
 ## Repo state
 

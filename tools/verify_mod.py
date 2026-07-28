@@ -119,10 +119,11 @@ check("BOM on .txt and .yml (outside setup/start)", len(bom_files), probs, min_c
 
 probs = [os.path.relpath(p, MOD) for p in setup_txt
          if open(p, "rb").read(3) == BOM]
-# Armed at 3: build_setup.py generates 05_characters, 10_countries and
-# 15_international_organizations. Raise it again as more setup files land — a BOM
-# here is the single most expensive byte in the project.
-check("no BOM in setup/start", len(setup_txt), probs, min_count=3)
+# Armed at 5: build_setup.py generates 05_characters, 10_countries,
+# 12_diplomacy, 15_international_organizations and 16_wars. Raise it again
+# as more setup files land — a BOM here is the single most expensive byte
+# in the project.
+check("no BOM in setup/start", len(setup_txt), probs, min_count=5)
 
 # .gui is the other exception: vanilla ships 483 and only 49 carry a BOM.
 probs = [os.path.relpath(p, MOD) for p in gui_files
@@ -164,14 +165,14 @@ for p in yml_files:
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: not a `key: value` line -> {t[:50]}")
         elif re.match(r'^ [A-Za-z0-9_.]+:\s*"', line) and not line.rstrip().endswith('"'):
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: value opens a quote it never closes")
-check("loc lines are well formed", count, probs, min_count=PENDING)  # first .yml
+check("loc lines are well formed", count, probs, min_count=40)  # Norman Conquest loc
 
 keys, dupes = set(), []
 for p in yml_files:
     for m in re.finditer(r"^ ([A-Za-z0-9_.]+):", read(p), re.M):
         if m.group(1) in keys: dupes.append(m.group(1))
         keys.add(m.group(1))
-check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=PENDING)  # first .yml
+check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=40)  # Norman Conquest loc
 
 # -------------------------------------------------------- dates and ages ---
 # The start date is mirrored into three defines trees because the evidence for
@@ -323,6 +324,76 @@ else:
 # ~3,502 on the future-born). A vacuous scan means the strip ate history.
 check("no death_date on a character alive at start", count, probs, min_count=3000)
 
+# --------------------------------------------------- situations and events ---
+# Situation top-level fields, self-calibrated against vanilla: whatever field
+# names vanilla's 23 situation files use at one-tab depth is the legal set;
+# a typo'd field in ours does nothing, silently.
+_van_sit = set()
+for _p in glob.glob(VAN + "/in_game/common/situations/*.txt"):
+    _van_sit |= set(re.findall(r"^\t([a-z_0-9]+)[ \t]*=", strip_comments(read(_np(_p))), re.M))
+probs, count = [], 0
+for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
+    for _f in re.findall(r"^\t([a-z_0-9]+)[ \t]*=", strip_comments(read(_np(_p))), re.M):
+        count += 1
+        if _f not in _van_sit:
+            probs.append(f"{os.path.basename(_p)}: field '{_f}' appears in no vanilla situation")
+# Armed at 5: norman_conquest.txt carries 5 top-level fields.
+check("situation fields exist in vanilla's field set", count, probs, min_count=5)
+
+# Every event id we REFERENCE in a namespace we DECLARE must be DEFINED by us.
+# Both reference shapes are scanned — the plain `trigger_event_x = ns.1` and
+# the delayed block `{ id = ns.1 days = N }`. The block form is the exact
+# blind spot that once made two independent validators call 812 healthy
+# vanilla events orphaned; it does not get to happen here.
+_our_ns, _our_defined, _our_refs = set(), set(), []
+_ev_files = [p for p in txt_files if "/in_game/events/" in p]
+for _p in _ev_files:
+    _s = strip_comments(read(_p))
+    _our_ns |= set(re.findall(r"^namespace[ \t]*=[ \t]*([a-z_0-9]+)", _s, re.M))
+    _our_defined |= set(re.findall(r"^([a-z_0-9]+" + BS + ".[0-9]+)[ \t]*=[ \t]*" + BS + "{", _s, re.M))
+for _p in txt_files:
+    _s = strip_comments(read(_p))
+    _our_refs += [(m, _p) for m in re.findall(
+        r"trigger_event[a-z_]*[ \t]*=[ \t]*([a-z_0-9]+" + BS + ".[0-9]+)", _s)]
+    _our_refs += [(m, _p) for m in re.findall(
+        r"id[ \t]*=[ \t]*([a-z_0-9]+" + BS + ".[0-9]+)", _s)]
+probs, count = [], 0
+for _id, _p in _our_refs:
+    if _id.split(".")[0] not in _our_ns:
+        continue    # a vanilla event; not ours to define
+    count += 1
+    if _id not in _our_defined:
+        probs.append(f"{os.path.relpath(_p, MOD)}: {_id} is referenced but defined nowhere in our events")
+# Armed at 10: the on_action schedules 9 refs and the situation fires .90.
+check("referenced event ids in our namespaces are defined", count, probs, min_count=10)
+
+# Every title/desc/option-name key in our events must exist in our loc — and
+# so must war_name keys and the <cb>/<cb>_desc pair of every casus belli we
+# define. A missing loc key shows as a raw key string in game, no error.
+_loc_keys = keys    # collected by the duplicate-loc-keys check above
+probs, count = [], 0
+for _p in _ev_files:
+    _s = strip_comments(read(_p))
+    for _k in re.findall(r"^[ \t]*(?:title|desc|name)[ \t]*=[ \t]*([A-Za-z0-9_.]+)$", _s, re.M):
+        if _k.split(".")[0] not in _our_ns:
+            continue
+        count += 1
+        if _k not in _loc_keys:
+            probs.append(f"loc key {_k} is referenced but not defined")
+for _p in [p for p in txt_files if "/wargoals/" in p]:
+    for _k in re.findall(r'war_name[ \t]*=[ \t]*"([A-Z0-9_]+)"', read(_p)):
+        count += 1
+        if _k not in _loc_keys:
+            probs.append(f"war_name loc key {_k} is not defined")
+for _p in [p for p in txt_files if "/casus_belli/" in p]:
+    for _k in re.findall(r"^(cb_[a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{", strip_comments(read(_p)), re.M):
+        for _want in (_k, _k + "_desc"):
+            count += 1
+            if _want not in _loc_keys:
+                probs.append(f"casus belli loc key {_want} is not defined")
+# Armed at 40: 11 events x (title+desc+options) plus 2 war names and 2 CBs.
+check("event, war and cb loc keys resolve", count, probs, min_count=40)
+
 # ---------------------------------------------- the engine's own documentation ---
 # docs/EU5-Vanilla-Script-Docs/ is the output of `script_docs` and
 # `dump_data_types`. It says what is LEGAL, where grepping vanilla only ever
@@ -383,12 +454,24 @@ else:
     for p in glob.glob(MOD + "/in_game/common/on_action/*.txt"):
         oa = strip_comments(read(_np(p)))
         hooks = set(re.findall(r"^([a-z_0-9]+) = " + BS + "{", oa, re.M))
-        own = hooks & set(re.findall(r"^[ " + BS + "t]+([a-z_0-9]+)$", oa, re.M))
+        # A custom on_action is legal when something else calls it. Two call
+        # shapes: a bare name on its own line, and the ONE-LINE list
+        # `on_actions = { x y }` — vanilla's own ai_personalities_setup.txt
+        # uses the one-line form, and this check missed it until it flagged
+        # our first on_action file. One-line blocks are the day's recurring
+        # blind spot; scan both shapes.
+        own = set(re.findall(r"^[ " + BS + "t]+([a-z_0-9]+)$", oa, re.M))
+        for inner in re.findall(r"on_actions[ " + BS + "t]*=[ " + BS + "t]*" + BS + "{([^}]*)" + BS + "}", oa):
+            own |= set(inner.split())
+        own &= hooks
         for h in sorted(hooks - own):
             count += 1
             if h not in ON_ACTIONS:
                 probs.append(f"{h} is not an on_action the engine declares")
-    check("on_action hooks exist in engine docs", count, probs, min_count=PENDING)  # first on_action
+    # Back to PENDING: the Norman Conquest on_action was deleted after it
+    # did nothing in game — the situation owns its timeline now (see
+    # KNOWLEDGE.md). Re-arm when the next on_action file lands.
+    check("on_action hooks exist in engine docs", count, probs, min_count=PENDING)
 
 # ------------------------------------------------------------- geography ---
 defs = read(VAN + "/in_game/map_data/definitions.txt")

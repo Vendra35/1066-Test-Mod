@@ -1,0 +1,436 @@
+﻿namespace = norman_conquest
+
+# The opening of the 1066 campaign, fully historical on the AI side: every
+# death and every war below happened, on that date. The player is asked, the
+# AI is railroaded — alternative options carry `trigger = { is_ai = no }`
+# (attested verbatim: events/situations/golden_age_of_piracy.txt:209) and the
+# historical path is marked historical_option = yes.
+#
+# Scheduling comes from the situation's own on_start (the situation owns its
+# lifecycle — the on_action route did nothing in game; see KNOWLEDGE.md).
+# Offsets are anchored to the observed situation start of 1 October:
+# day 0 both wars (hidden retries +1..+13), +3 Stamford Bridge, +13 Hastings (14 Oct), +85 the
+# coronation (25 Dec). Event shape cloned from
+# events/situations/hundred_years_war.txt.
+#
+# NO event-level trigger blocks. In the second in-game round every event
+# that carried one went silent while the trigger-less intro fired; whether
+# the triggers or the war-legality chain were at fault is not yet isolated,
+# so the guards moved INSIDE the options as if/limit — a false guard then
+# skips an effect instead of silently swallowing the whole event.
+
+######################################
+# 1 — the succession crisis, to the five courts
+######################################
+
+norman_conquest.1 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.1.title
+	desc = norman_conquest.1.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.1.a
+	}
+}
+
+######################################
+# 11-13 — the Norwegian invasion and Stamford Bridge
+######################################
+
+# Norway: Hardrada's fleet is already off the English coast.
+norman_conquest.11 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.11.title
+	desc = norman_conquest.11.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.11.a
+		historical_option = yes
+
+		# CB first, declaration second: a normal declaration needs the CB in
+		# hand (can_declare_war_on inside country_triggers.txt:1198). The
+		# old else-branch order cost a month per attempt — measured round 3.
+		if = {
+			limit = { NOT = { is_at_war_with = c:ENG } }
+			leave_all_wars_with = c:ENG
+			if = {
+				limit = { NOT = { has_casus_belli_on = c:ENG } }
+				add_casus_belli = {
+					target = c:ENG
+					type = casus_belli:cb_norwegian_invasion
+				}
+			}
+			if = {
+				limit = {
+					can_declare_legal_war_on = { target = c:ENG }
+				}
+				declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norwegian_invasion }
+			}
+		}
+	}
+
+	option = {
+		name = norman_conquest.11.b
+		trigger = { is_ai = no }
+	}
+}
+
+# Norway, +3 days from situation start: Stamford Bridge (historically 25 September).
+norman_conquest.12 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.12.title
+	desc = norman_conquest.12.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.12.a
+		historical_option = yes
+
+		# Succession first, so the crown lands on Magnus rather than on a
+		# generated heir; then the king falls near York; then the survivors
+		# sail home, as they did. The death does NOT depend on the war
+		# having formally opened — history is the railroad, the war state
+		# is flavour.
+		if = {
+			limit = {
+				character:nor_harald_hardrada ?= { is_alive = yes }
+			}
+			set_as_designated_heir = { target = character:nor_magnus_ii }
+			kill_character = {
+				target = character:nor_harald_hardrada
+				location = location:york
+			}
+			leave_all_wars_with = c:ENG
+			c:ENG ?= {
+				trigger_event_non_silently = { id = norman_conquest.13 }
+			}
+		}
+	}
+
+	option = {
+		name = norman_conquest.12.b
+		trigger = { is_ai = no }
+	}
+}
+
+# England: news of the victory at Stamford Bridge.
+norman_conquest.13 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.13.title
+	desc = norman_conquest.13.desc
+	outcome = positive
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.13.a
+	}
+}
+
+######################################
+# 15 / 25 — hidden war-declaration pulses
+######################################
+
+# The first legal day for a declaration is not knowable from script: rounds
+# 3 and 4 measured that a day-0 attempt WITH the casus belli in hand still
+# fails, and the next monthly retry succeeds. Whether that is a CB
+# registration delay or a game-start lock, a short ladder of hidden retries
+# converges on the earliest legal day instead of losing a month per try.
+# Shape attested verbatim in
+# events/ai_area_conqest_events/hidden_events_for_ai_conquest.txt
+# (type/outcome/empty_text/hidden, effects in immediate). is_ai-gated: a
+# player who chose to hold back stays held back.
+
+norman_conquest.15 = {
+	type = country_event
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				is_ai = yes
+				NOT = { is_at_war_with = c:ENG }
+				character:nor_harald_hardrada ?= { is_alive = yes }
+			}
+			if = {
+				limit = { NOT = { has_casus_belli_on = c:ENG } }
+				add_casus_belli = {
+					target = c:ENG
+					type = casus_belli:cb_norwegian_invasion
+				}
+			}
+			if = {
+				limit = {
+					can_declare_legal_war_on = { target = c:ENG }
+				}
+				declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norwegian_invasion }
+			}
+		}
+	}
+}
+
+norman_conquest.25 = {
+	type = country_event
+	outcome = neutral
+	title = empty_text
+	desc = empty_text
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				is_ai = yes
+				NOT = { is_at_war_with = c:ENG }
+				NOT = { in_union_with = c:ENG }
+				character:eng_william_the_conquerer ?= { is_alive = yes }
+			}
+			if = {
+				limit = { NOT = { has_casus_belli_on = c:ENG } }
+				add_casus_belli = {
+					target = c:ENG
+					type = casus_belli:cb_norman_conquest
+				}
+			}
+			if = {
+				limit = {
+					can_declare_legal_war_on = { target = c:ENG }
+				}
+				declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norman_conquest }
+			}
+		}
+	}
+}
+
+######################################
+# 21 — William sails from Saint-Valery
+######################################
+
+# Normandy, day 0: the landing at Pevensey (historically 28 September).
+norman_conquest.21 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.21.title
+	desc = norman_conquest.21.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.21.a
+		historical_option = yes
+
+		# CB first, declaration second — see the note in norman_conquest.11.
+		if = {
+			limit = { NOT = { is_at_war_with = c:ENG } }
+			leave_all_wars_with = c:ENG
+			if = {
+				limit = { NOT = { has_casus_belli_on = c:ENG } }
+				add_casus_belli = {
+					target = c:ENG
+					type = casus_belli:cb_norman_conquest
+				}
+			}
+			if = {
+				limit = {
+					can_declare_legal_war_on = { target = c:ENG }
+				}
+				declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norman_conquest }
+			}
+		}
+	}
+
+	option = {
+		name = norman_conquest.21.b
+		trigger = { is_ai = no }
+	}
+}
+
+######################################
+# 30-31 — Hastings
+######################################
+
+# England, +13 days: Senlac Hill, 14 October. The event goes to England
+# because it is England's king who dies — a player England is asked.
+norman_conquest.30 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.30.title
+	desc = norman_conquest.30.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.30.a
+		historical_option = yes
+
+		if = {
+			limit = {
+				character:eng_harold_godwinson ?= { is_alive = yes }
+			}
+			kill_character = {
+				target = character:eng_harold_godwinson
+				location = location:hastings
+			}
+			c:NRM ?= {
+				trigger_event_non_silently = { id = norman_conquest.31 }
+			}
+		}
+	}
+
+	option = {
+		name = norman_conquest.30.b
+		trigger = { is_ai = no }
+	}
+}
+
+# Normandy: the field is won.
+norman_conquest.31 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.31.title
+	desc = norman_conquest.31.desc
+	outcome = positive
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.31.a
+	}
+}
+
+######################################
+# 40-42 — the crown, 25 December
+######################################
+
+# Normandy, +85 days: Westminster Abbey, 25 December. An AI England submits to history;
+# a player England is offered the choice in norman_conquest.42 instead —
+# a failsafe never takes a player's country.
+norman_conquest.40 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.40.title
+	desc = norman_conquest.40.desc
+	outcome = positive
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.40.a
+		historical_option = yes
+
+		# Gates live here, not in an event trigger: Harold must be dead and
+		# William alive, or nothing happens. The union does not depend on
+		# the war having formally opened — see the .12 note.
+		if = {
+			limit = {
+				character:eng_harold_godwinson ?= { is_alive = no }
+				character:eng_william_the_conquerer ?= { is_alive = yes }
+				c:ENG ?= { is_ai = yes }
+			}
+			leave_all_wars_with = c:ENG
+			force_union = c:ENG
+			c:ENG ?= {
+				trigger_event_non_silently = { id = norman_conquest.41 }
+			}
+		}
+		else_if = {
+			limit = {
+				character:eng_harold_godwinson ?= { is_alive = no }
+				character:eng_william_the_conquerer ?= { is_alive = yes }
+			}
+			c:ENG ?= {
+				trigger_event_non_silently = { id = norman_conquest.42 }
+			}
+		}
+	}
+
+	option = {
+		name = norman_conquest.40.b
+		trigger = { is_ai = no }
+	}
+}
+
+# England (AI path): the Norman yoke.
+norman_conquest.41 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.41.title
+	desc = norman_conquest.41.desc
+	outcome = negative
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.41.a
+	}
+}
+
+# England (player path): submit, or fight on.
+norman_conquest.42 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.42.title
+	desc = norman_conquest.42.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.42.a
+		historical_option = yes
+
+		c:NRM ?= {
+			leave_all_wars_with = c:ENG
+			force_union = c:ENG
+		}
+	}
+
+	option = {
+		name = norman_conquest.42.b
+	}
+}
+
+######################################
+# 90 — the situation closes
+######################################
+
+norman_conquest.90 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.90.title
+	desc = norman_conquest.90.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = norman_conquest.90.a
+	}
+}

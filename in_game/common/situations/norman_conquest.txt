@@ -1,0 +1,149 @@
+﻿# The opening of the 1066 start. THE SITUATION OWNS ITS OWN LIFECYCLE —
+# can_start opens it, on_start fires the intro and schedules every beat,
+# can_end closes it. The first build drove the timeline from an
+# on_game_start on_action instead; in game NOTHING fired, and Mongol
+# Resurgence's own on_action file carries the identical lesson in its
+# header ("hand-firing phase events from on_actions produced the dangling
+# trigger_event calls"). Scheduling from situation scope via c:X = { }
+# is hundred_years_war.txt's own attested on_start shape.
+#
+# Observed in game: the situation spawns on the first monthly tick,
+# 1 October. Day offsets below are anchored to that: +13 = 14 October,
+# Hastings; +85 = 25 December, the coronation. The northern campaign
+# (historically 20-25 September) compresses into the first days of
+# October. If the offsets land on other dates in game, recalibrate here.
+
+norman_conquest = {
+	monthly_spawn_chance = 1
+
+	can_start = {
+		current_date >= 1066.9.15
+		country_exists = c:ENG
+	}
+
+	on_start = {
+		# The claims exist BEFORE anyone declares: can_declare_legal_war_on
+		# wraps can_declare_war_on (country_triggers.txt:1198), and a normal
+		# declaration needs a casus belli in hand — the round-3 measurement:
+		# with the CB granted only in the else-branch, Normandy could not
+		# declare until the NEXT monthly retry (1 Nov) and Norway never could,
+		# Hardrada being dead by then. Granting both CBs at situation start
+		# makes the day-0 declarations legal.
+		c:NOR ?= {
+			add_casus_belli = {
+				target = c:ENG
+				type = casus_belli:cb_norwegian_invasion
+			}
+		}
+		c:NRM ?= {
+			add_casus_belli = {
+				target = c:ENG
+				type = casus_belli:cb_norman_conquest
+			}
+		}
+		c:ENG ?= {
+			trigger_event_non_silently = { id = norman_conquest.1 }
+			trigger_event_non_silently = { id = norman_conquest.30 days = 13 }
+		}
+		c:NOR ?= {
+			trigger_event_non_silently = { id = norman_conquest.1 }
+			trigger_event_non_silently = { id = norman_conquest.11 }
+			# Hidden retry ladder BEFORE Stamford at +3, so the war opens
+			# before the king dies — the historical order.
+			trigger_event_silently = { id = norman_conquest.15 days = 1 }
+			trigger_event_silently = { id = norman_conquest.15 days = 2 }
+			trigger_event_non_silently = { id = norman_conquest.12 days = 3 }
+		}
+		c:NRM ?= {
+			trigger_event_non_silently = { id = norman_conquest.1 }
+			trigger_event_non_silently = { id = norman_conquest.21 }
+			trigger_event_silently = { id = norman_conquest.25 days = 1 }
+			trigger_event_silently = { id = norman_conquest.25 days = 2 }
+			trigger_event_silently = { id = norman_conquest.25 days = 3 }
+			trigger_event_silently = { id = norman_conquest.25 days = 5 }
+			trigger_event_silently = { id = norman_conquest.25 days = 8 }
+			trigger_event_silently = { id = norman_conquest.25 days = 13 }
+			trigger_event_non_silently = { id = norman_conquest.40 days = 85 }
+		}
+		c:DAN ?= {
+			trigger_event_non_silently = { id = norman_conquest.1 }
+		}
+		c:SCO ?= {
+			trigger_event_non_silently = { id = norman_conquest.1 }
+		}
+	}
+
+	can_end = {
+		current_date >= 1067.1.1
+		NOT = { c:NRM ?= { is_at_war_with = c:ENG } }
+		NOT = { c:NOR ?= { is_at_war_with = c:ENG } }
+	}
+
+	visible = {
+		capital ?= { sub_continent = sub_continent:western_europe }
+	}
+
+	on_monthly = {
+		# The AI railroad RETRIES its war declarations while the historical
+		# window is open — the one-shot event attempt proved fragile in game
+		# (round 2: no wars, everything downstream silent). HYW drives its
+		# wars from on_monthly for the same reason. is_ai-gated on the
+		# declaring side: a player who chose to hold back stays held back.
+		c:NOR ?= {
+			if = {
+				limit = {
+					is_ai = yes
+					current_date <= 1066.11.30
+					NOT = { is_at_war_with = c:ENG }
+					character:nor_harald_hardrada ?= { is_alive = yes }
+				}
+				leave_all_wars_with = c:ENG
+				if = {
+					limit = { NOT = { has_casus_belli_on = c:ENG } }
+					add_casus_belli = {
+						target = c:ENG
+						type = casus_belli:cb_norwegian_invasion
+					}
+				}
+				if = {
+					limit = {
+						can_declare_legal_war_on = { target = c:ENG }
+					}
+					declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norwegian_invasion }
+				}
+			}
+		}
+		c:NRM ?= {
+			if = {
+				limit = {
+					is_ai = yes
+					current_date <= 1067.3.31
+					NOT = { is_at_war_with = c:ENG }
+					NOT = { in_union_with = c:ENG }
+					character:eng_william_the_conquerer ?= { is_alive = yes }
+				}
+				leave_all_wars_with = c:ENG
+				if = {
+					limit = { NOT = { has_casus_belli_on = c:ENG } }
+					add_casus_belli = {
+						target = c:ENG
+						type = casus_belli:cb_norman_conquest
+					}
+				}
+				if = {
+					limit = {
+						can_declare_legal_war_on = { target = c:ENG }
+					}
+					declare_war_with_cb = { target = c:ENG type = casus_belli:cb_norman_conquest }
+				}
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { can_see_situation = situation:norman_conquest }
+			trigger_event_non_silently = norman_conquest.90
+		}
+	}
+}

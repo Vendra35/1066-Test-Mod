@@ -125,6 +125,26 @@ tick, not a script error.
 over-broad death_date strip (see KNOWLEDGE.md). If it recurs, ask what the
 last data change made the ENGINE simulate more of.
 
+### `pdx_data_callstack.cpp:17 — No context supplied (Use SetDataContext), wanted context of type 'UIAction' / 'RequirementsList'` — flood while a situation panel is open
+**Was seen:** hundreds of lines, all naming vanilla's shared guis
+(`location_tooltips.gui`, `main_menu_cooltip_types.gui`), while the first
+Norman Conquest build's situation panel was on screen — EMPTY.
+**Means:** a situation is missing its per-situation GUI file. The panel
+renders blank and every hover spams context errors from the shared tooltip
+code. The requirement is documented in vanilla's own
+`in_game/gui/panels/situation/readme.txt`.
+**Fix:** ship `in_game/gui/panels/situation/<situation_key>.gui` — Mongol
+Resurgence's 45-line template is the proven minimal shape. No BOM on .gui.
+
+### `pdx_data_callstack.cpp:53 — Promote 'GetWinnerCountry' returned nullptr … loc string 'WAR_WON_OTHER_COUNTRY'` — burst when a scripted war ends
+**DECODED — harmless.** A war ended by script effect (`leave_all_wars_with`,
+`force_union`) has no peace treaty and therefore no winner; the "war won"
+notification toast still tries to name one and its loc fetch fails. Seen
+when the two 1066 setup wars wound down (Stamford withdrawal, the
+Christmas union). The game continues normally. Count it OUT of the error
+budget; no fix is warranted unless the toast itself starts bothering
+players.
+
 ### A dead-at-start ruler produces NO error at all
 Not a signature — the absence of one, recorded because it cost a session.
 A character alive at `START_DATE` carrying a post-start `death_date` starts

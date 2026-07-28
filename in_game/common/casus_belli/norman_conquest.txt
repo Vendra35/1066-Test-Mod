@@ -1,0 +1,33 @@
+﻿#root is country
+#scope:target is the target
+#
+# Shape cloned from vanilla casus_belli/hundred_years_war.txt: invisible,
+# not creatable by hand, handed out and used only by the situation's events.
+
+cb_norman_conquest = {
+
+	create_visible = { always = no }
+	create_enabled = { always = no }
+	ai_will_do = {
+		add = {
+			desc = "BASE"
+			value = 100
+		}
+	}
+
+	war_goal_type = norman_conquest_wargoal
+}
+
+cb_norwegian_invasion = {
+
+	create_visible = { always = no }
+	create_enabled = { always = no }
+	ai_will_do = {
+		add = {
+			desc = "BASE"
+			value = 100
+		}
+	}
+
+	war_goal_type = norwegian_invasion_wargoal
+}

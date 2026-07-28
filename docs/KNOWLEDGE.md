@@ -617,6 +617,189 @@ already have vanilla flavor that fires correctly because the calendar stays
 real-year aligned. Prioritise the situation backlog toward the EARLY end
 (1066–1200), where vanilla truly has nothing.
 
+### Norman Conquest situation — the mechanisms, verified before design
+**Established:** 2026-07-28, against the script docs and vanilla source.
+- `kill_character` / `kill_character_silently` — any scope, character target,
+  optional `location`, `killer`, `reason`, `disease` (`effects.log:3554/3559`).
+- `set_as_designated_heir` — country scope, character target
+  (`effects.log:10040`). Succession need not rely on `father =` links alone.
+- `add_casus_belli` — country scope, `{ target type [character] [years] }`
+  (`effects.log:75`); `declare_war_with_cb` — country scope,
+  `{ target = <country> type = <cb_type> }` (`effects.log:1391`).
+- The attested war-start idiom, guards included:
+  `events/situations/hundred_years_war.txt:243-258` — `leave_all_wars_with`,
+  a `can_declare_legal_war_on` gate, `declare_war_with_cb`, and
+  `add_casus_belli` as the else-branch. Situations define their own CB types
+  (`casus_belli:cb_hundred_years_war`).
+- Situation events live in `in_game/events/situations/<name>.txt` (23 files).
+- Seeding at game start: `main_menu/setup/start/22_situations.txt`,
+  `situation_manager = { <key> = { status=active } }` — vanilla's file is 47
+  lines, nearly all commented-out examples. Whether an ADDITIVE file merges
+  into `situation_manager` is UNTESTED.
+- Wars in progress at start exist as a mechanism: `16_wars.txt`,
+  `war_manager` blocks with PAST `start_date` (`1332.7.6` at a 1337 start),
+  attacker/defender/request/caller shape. NOT chosen for the conquest — the
+  situation declares its wars from events, one mechanism instead of two.
+  Open question parked: what becomes of vanilla's ~219 future-dated 1337
+  wars at a 1066 start is unmeasured.
+- Exact-day timing inside a monthly-ticking situation: delayed events
+  (`trigger_event = { id = X days = N }` family) scheduled from `on_start` —
+  the delayed block form is attested vanilla-wide (812 events fired only
+  that way).
+**Means:** exact-date deaths, controlled succession, player-choice
+railroading and a scripted invasion war are all buildable from attested
+constructs. Genuinely new ground: a custom `cb_norman_conquest` type (check
+vanilla's CB list for a reusable throne-war CB first), and the 22_situations
+additive-merge question.
+
+### The on_game_start on_action route did NOTHING — situations own their lifecycle
+**Established:** in game 2026-07-28, first launch of the Norman Conquest
+build. Its timeline hung off an additive
+`on_game_start = { on_actions = { … } }` file; in game nothing fired — no
+intro events, no wars, no scheduled deaths — while the situation itself
+spawned normally on the first monthly tick (1 October). The cause was not
+isolated (candidates: the cross-file merge of the `on_actions` list, three
+files now touching `on_game_start`; or the scope-less `c:X` links in the
+effect). The architectural answer was already paid for in our own Mongol
+Resurgence mod — its on_action file header records the same lesson
+verbatim: hand-firing phase events from on_actions produced its dangling
+trigger_event bugs, and it moved to *"the situations own their own
+lifecycle"* (can_start opens, on_start/on_monthly drive, can_end closes).
+**Means:** the timeline lives in the situation's own `on_start`, scheduling
+per-country delayed events via `c:X ?= { trigger_event_non_silently =
+{ id days } }` — hundred_years_war's attested on_start shape. Offsets
+anchor to the OBSERVED start of 1 October: +13 = Hastings 14 Oct, +85 =
+coronation 25 Dec. Check the reference mods for the lesson BEFORE building,
+not after — the user had to point at MR.
+
+### Every situation needs its own GUI panel file, or the panel is empty
+**Established:** in game — the situation opened with an EMPTY panel and
+hovering it flooded the log with `No context supplied (Use SetDataContext)`
+errors from vanilla's shared tooltip guis. The requirement is written in
+vanilla's own `in_game/gui/panels/situation/readme.txt`: a file named after
+the situation, `type situation_panel`, based on an existing one. Mongol
+Resurgence ships a proven 45-line minimal template
+(`mr_torghut_migration.gui`) — one END_REQUIREMENTS card reading
+`SituationView.GetActiveSituation.GetSituation.GetEndConditions`.
+**Means:** `norman_conquest.gui` is that template with the mod-specific
+hint reference emptied. Any future situation lands WITH its `.gui` in the
+same commit. `.gui` files carry NO BOM.
+
+### CWTools flags `GetCountry` in situation `_info` loc keys — false positive
+**Established:** CW266 "uses command GetCountry which does not exist in data
+type None" on `norman_conquest_info`, while vanilla's own
+`hundred_years_war_info` (`situations_l_english.yml:358`) uses the identical
+`[GetCountry('ENG').GetName]` construct.
+**Means:** vanilla-attested; ignore this CWTools diagnostic for `_info` keys.
+
+### Round 2 of the situation: subjects cannot declare war, and 1337's appanages came along
+**Established:** in game 2026-07-28 (second situation round) plus source.
+The situation started cleanly (1 Oct), the GUI showed, the trigger-less
+intro event fired — and nothing else happened: no wars, no deaths. Two
+findings underneath:
+1. **NRM is France's APPANAGE in vanilla's `12_diplomacy.txt:167`**, carried
+   into our start untouched. A subject cannot freely declare war —
+   `can_declare_legal_war_on` fails and the event's else-branch granted an
+   invisible CB and stopped. The engine had been saying so all along:
+   the "Subject type 'appanage' is invalid at game start" class (~25 of the
+   53-line baseline) names exactly these ten French appanage dependencies,
+   all requiring a Capetian dynastic link no 1066 ruler has.
+   `build_setup.py` now generates `12_diplomacy.txt` stripping exactly
+   those ten; 637 other dependencies untouched. Historically right too —
+   the 1066 great fiefs were de facto independent.
+2. **Every event that carried an event-level `trigger` went silent while
+   the trigger-less one fired.** Not yet isolated from finding 1 (the war
+   gates in those triggers were genuinely false). HYPOTHESIS, not law.
+   The build now avoids the whole class: no event-level triggers; guards
+   sit inside options as if/limit, so a false guard skips an effect
+   instead of swallowing the event; and the two declarations also RETRY
+   from the situation's `on_monthly` while their historical window is
+   open (HYW's own architecture), `is_ai`-gated so a player's refusal
+   sticks.
+**Also learned:** the engine auto-generates wargoal loc keys and prints
+them into error.log — `war_goal_<key>` and `war_goal_<key>_desc`
+(`localization_util.cpp:103`). That log line IS the naming convention,
+straight from the engine; both pairs are now defined.
+**Means:** round 3 discriminates cleanly: deaths now happen regardless of
+war state (the railroad is history, war is flavour), so if kings die but
+wars still fail, the legality chain is the remaining suspect — and if
+everything fires, the event-trigger hypothesis is confirmed as the round-2
+culprit alongside the appanage block.
+
+### Round 3: the machine works — and a war declaration needs the CB in hand FIRST
+**Established:** in game 2026-07-28, third situation round. Everything core
+fired: Hardrada died and Magnus II succeeded, the Hastings event killed
+Harold on 14 October, and ON 25 December the coronation event built the
+England–Normandy union with William ruling both. The two war declarations
+lagged: Normandy declared only on 1 November, Norway never did — but
+Norway HELD the "Invade England" casus belli (visible in the diplomacy
+panel, ten-year duration). That pattern decodes the mechanism:
+`can_declare_legal_war_on` is a SCRIPTED trigger
+(`country_triggers.txt:1198`) wrapping the engine's `can_declare_war_on`,
+and the separate existence of `can_declare_no_cb_war_on` shows a normal
+declaration requires a casus belli ALREADY HELD. Our events granted the CB
+only in the else-branch after the check failed — so every attempt cost one
+monthly-retry cycle, and Norway's window closed with Hardrada's death.
+**Means:** grant the CB BEFORE checking legality — the situation's on_start
+now hands both CBs out at start, and events plus monthly retries go
+CB-first. Also measured: `add_casus_belli` without a duration shows a
+ten-year expiry in game; the monthly retry architecture works (Normandy's
+1 November declaration WAS the retry).
+**Cosmetic debts noted for the polish pass:** William displays as
+"William III" (ENG's regnal_numbers are 1337-calibrated — the documented
+KNOWN WRONG); England between Hastings and the coronation sits under a
+generated regency (historically Edgar Ætheling, who vanilla does not ship).
+
+### Round 4: CB-in-hand at day 0 STILL does not unlock the declaration
+**Established:** in game 2026-07-28, fourth round. With both CBs granted in
+the situation's on_start, Normandy again declared only on 1 November — the
+first monthly retry — and again only after Hastings. So on day 0 something
+OTHER than the casus belli fails inside the engine's `can_declare_war_on`,
+and it passes by the next month. Two candidates, indistinguishable with
+monthly retries (the next attempt after day 0 IS 1 November): a CB whose
+registration only lands on a later tick, or a game-start declaration lock
+(no such define was found; would be hardcoded).
+**Means:** a ladder of HIDDEN retry events at +1, +2, +3, +5, +8, +13 days
+converges on the earliest legal day whatever the mechanism is. The hidden
+machinery-event shape is attested verbatim in vanilla:
+`events/ai_area_conqest_events/hidden_events_for_ai_conquest.txt` —
+`type = country_event`, `title/desc = empty_text`, `hidden = yes`, effects
+in `immediate`. Stamford moved to +3 so Norway's declaration window (+1,
++2) comes BEFORE Hardrada's death — the historical order. Whichever rung
+of the ladder fires in round 5 measures the actual lock length.
+
+### Round 5: the declaration lock is real — ship opening wars in the SETUP
+**Established:** in game 2026-07-28, fifth round. With the CB in hand from
+on_start AND hidden retries on days +1, +2, +3, +5, +8 and +13, Normandy's
+declaration STILL only succeeded on 1 November, the first monthly tick of
+the next month, for the third round running. Every scripted attempt
+through 14 October fails; ~45 days after START_DATE it works. No defines
+constant matches (searched); the lock is engine-side.
+**Means:** wars that must exist in the opening weeks are not DECLARED,
+they are SHIPPED — `16_wars.txt`, the mechanism vanilla uses for 219 wars
+of its own. `build_setup.py` now generates it: all 13 vanilla blocks are
+future-dated at 1066 (earliest start 1283.1.1 — the same poison class as
+the ruler_terms) and are stripped; the two 1066 wars go in with past
+start dates (Norway 1066.9.8, the Fulford campaign; Normandy 1066.1.6,
+the quarrel dated from Harold's crowning). Superiority goal binding
+attested at `16_wars.txt:270`. The declaration events, hidden pulses and
+monthly retries remain as guarded no-ops and alt-history failsafes — with
+one edge caught by review, not by testing: after force_union the NRM
+retry would have re-declared on its own union partner, so those guards
+now carry `NOT = { in_union_with = c:ENG }`.
+**Also from this round's screenshots-by-eye:** the player-England submit
+option in .42 lacked `historical_option = yes` while the other historical
+paths had it — the marker matters to players running the historical-AI
+game rule. Fixed.
+
+### A wrapping expanding vbox spreads situation cards apart
+**Established:** screenshot, round 3 — the two cards sat at opposite ends
+of the panel. MR's fuller gui wraps its MANY cards in an expanding vbox;
+with only two cards the free space lands between them. Vanilla's
+`rise_of_the_ottomans.gui` (the readme's recommended base) puts its two
+cards DIRECTLY in the `situation_panel_main_content` blockoverride.
+**Means:** no wrapping vbox for few-card panels; cards as direct siblings.
+
 ## Open questions to settle early
 
 - **How badly does a 276-year `age_1` actually play?** THE question for this
