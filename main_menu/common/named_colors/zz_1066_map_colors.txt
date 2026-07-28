@@ -30,4 +30,16 @@
 	map_EPU = rgb { 58 148 128 }    # Empuries     teal-green
 	map_RSL = rgb { 198 78 138 }    # Roussillon   pink
 	map_PLJ = rgb { 112 88 58 }     # Pallars      brown
+	# The Seljuk world. SEL itself wears vanilla's own map_seljukids
+	# (30 160 203 — same VALUE as map_RUM, which is poetic: RUM is the
+	# post-Manzikert successor). Neighbors: BYZ purple, GEO red,
+	# MAM tan-ish, SRV existing.
+	map_ABS = rgb { 45 45 45 }      # Abbasids     the black banner
+	map_GHZ = rgb { 130 95 45 }     # Ghaznavids   bronze
+	map_UQY = rgb { 185 150 80 }    # Mosul        sand
+	map_MRD = rgb { 105 70 40 }     # Diyar Bakr   dark umber
+	map_HLB = rgb { 200 175 90 }    # Aleppo       pale gold
+	map_SIS = rgb { 155 120 90 }    # Sistan       dun
+	map_KKY = rgb { 205 190 140 }   # Yazd         desert cream
+	map_SHD = rgb { 95 135 95 }     # Arran        sage green
 }

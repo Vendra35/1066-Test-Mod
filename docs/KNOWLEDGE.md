@@ -1304,6 +1304,47 @@ re-verified by the main session before a line was written.
 ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 / NAV 1, every emir seated, all
 accessions [U] (no taifa ruler exists in vanilla to compare against).
 
+### CORRECTION: "subjects cannot declare war" is a VASSAL law, not a subject law
+**Established:** 2026-07-29, Seljuk pass; re-verified by the main session.
+`vassal.txt:80-86` restricts declarations to three scripted exceptions —
+but **`tributary.txt:88` is `allow_declaring_wars = { always = yes }`**,
+and tributaries keep their own color and map name (`tributary.txt:92-93`,
+`counts_as_external = yes`). Vanilla ships monarchy-over-monarchy
+tributaries AT SETUP in quantity (TUN over BTL/DJE/MZB/ZAB, ERE over
+KBD/TDJ/HCI/BFR, ETH, ZAN — 67 total), so the `visible` gate is a
+diplomacy-action gate, not a setup validator. The earlier banked law
+stays true FOR VASSALS (the appanage/English-subjection strips remain
+right); it just never applied to tributaries.
+**Means:** loose historical overlordships (the Seljuk khutba: nine
+clients) are representable as setup tributaries without disarming
+anyone. SEL itself stays independent — Manzikert 1071 is safe.
+
+### The empire-rank name law, and vanilla's dead "Caliphate" branch
+**Established:** 2026-07-29, Seljuk pass, all line-cited and re-verified.
+- `country_name_construction_prefix_adjective_rank` (:117) fires on
+  ANY empire rank (except LAT) and renders `$PREFIX$ $ADJ$ $RANK$` —
+  **an empire-rank tag's NAME key is never read.** SEL is therefore a
+  KINGDOM: the muslim branch then renders "Sultanate of the Great
+  Seljuks" / "Sultan" for free (kingdom size is no objection — vanilla
+  GLH is a 738-location rank_kingdom).
+- `rank_empire_theocracy` (country_ranks.txt:296) carries NO religion
+  gate and sits 1,138 lines before `rank_empire_muslim` (:1434) —
+  **vanilla's "Caliphate" string is unreachable dead code.** Our loc
+  file overrides the theocracy branch's two strings to
+  "Caliphate"/"Caliph"; safe because no vanilla setup theocracy is
+  empire-rank (all 16 checked). ABS (type = theocracy + rank_empire) is
+  the probe; if the explicit type fails against the include template's
+  monarchy, ABS degrades to "Abbasid Empire" — that render IS the
+  probe's answer, either way.
+- `rank_duchy_persian` = "Malikdom"/"Malik" (:1673) fires before
+  `rank_duchy_muslim` "Emirate" for persian-language duchies — the
+  Persian client maliks style themselves for free.
+- `regnal_number = 0` is vanilla's own no-ordinal value — 184 uses,
+  including Alfred the Great and Harold Godwinson.
+- **No pop debt for Persia/Iraq:** 634 of the slice's 671 locations are
+  already Muslim in location_templates (94.5%) — unlike Iberia, this
+  theatre needs no pop conversion slice.
+
 ### Landless-with-claims is Paradox's OWN standard shape — the Sardinia trick generalizes
 **Established:** 2026-07-28, Byzantium pass. Vanilla ships THIRTEEN
 landless-with-claims tags in the Balkans/Caucasus theatre alone (LAT THE

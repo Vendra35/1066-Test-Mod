@@ -104927,4 +104927,121 @@ character_db={
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
 	}
+
+	# --- 1066 Seljuk world ------------------------------------------------
+	# All dates [U]. Alp_Arslan/Ibrahim/Muslim are vanilla LITERALS
+	# (character_names_l_english.yml:12559/:1364/:26123 — the
+	# underscore-to-space law); Shavur, Fariburz and Dubays are OUR
+	# literals (invented keys five to seven). name_qawurd and name_qaim
+	# ship in vanilla.
+	sel_alp_arslan = {
+		first_name = { name = Alp_Arslan }
+		culture = turkmen_culture
+		religion = sunni
+		birth_date = 1029.1.1
+		birth = merv
+		dynasty = seljukids_dynasty
+		tag = SEL
+	}
+
+	abs_abdallah_al_qaim = {
+		first_name = { name = name_abdullah }
+		culture = iraqi_culture
+		religion = sunni
+		estate = clergy_estate
+		birth_date = 1001.1.1
+		birth = baghdad
+		dynasty = abbasid_dynasty
+		tag = ABS
+	}
+
+	krm_qawurd = {
+		first_name = { name = name_qawurd }
+		culture = turkmen_culture
+		religion = sunni
+		birth_date = 1025.1.1
+		birth = merv
+		dynasty = seljukids_dynasty
+		tag = KRM
+	}
+
+	ghz_ibrahim = {
+		first_name = { name = Ibrahim }
+		culture = turkish_culture
+		religion = sunni
+		birth_date = 1033.1.1
+		birth = ghazni
+		dynasty = ghaznavid_dynasty
+		tag = GHZ
+	}
+
+	uqy_muslim_ibn_quraysh = {
+		first_name = { name = Muslim }
+		culture = iraqi_culture
+		religion = shia
+		birth_date = 1035.1.1
+		birth = mosul
+		dynasty = uqaylid_dynasty
+		tag = UQY
+	}
+
+	mrd_nasr_nizam_al_din = {
+		first_name = { name = name_nasr }
+		culture = kurdish_culture
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = mayyafariqin
+		dynasty = marwanid_dynasty
+		tag = MRD
+	}
+
+	hlb_mahmud_ibn_nasr = {
+		first_name = { name = name_mahmud }
+		culture = levantine_culture
+		religion = shia
+		birth_date = 1025.1.1
+		birth = aleppo
+		dynasty = mirdasid_dynasty
+		tag = HLB
+	}
+
+	shd_abu_l_aswar_shavur = {
+		first_name = { name = Shavur }
+		culture = kurdish_culture
+		religion = sunni
+		birth_date = 995.1.1
+		birth = ganja
+		dynasty = shaddadid_dynasty
+		tag = SHD
+	}
+
+	srv_fariburz_i = {
+		first_name = { name = Fariburz }
+		culture = adhari_culture
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = shamakhi
+		dynasty = kasranid_dynasty
+		tag = SRV
+	}
+
+	hll_dubays_i = {
+		first_name = { name = Dubays }
+		culture = iraqi_culture
+		religion = shia
+		birth_date = 1000.1.1
+		birth = hillah
+		dynasty = mazyadid_dynasty
+		tag = HLL
+	}
+
+	kky_ali_ibn_faramurz = {
+		first_name = { name = name_ali }
+		culture = farsi_culture
+		religion = shia
+		birth_date = 1035.1.1
+		birth = yazd
+		dynasty = kakuyid_dynasty
+		tag = KKY
+	}
 }

@@ -220,6 +220,22 @@ HISTORICAL_RULERS = {
     # The Byzantium slice adds one throne: Duklja. Constantine X, Bagrat IV
     # and the whole 1067-1081 Byzantine cast already ship in vanilla.
     "ZTA": ("zta_mihailo_vojislavljevic", "1046.1.1", 1), # Mihailo of Duklja, King from ~1077 — accession [U], NEW_CHARACTERS
+
+    # The Seljuk world (Opus package §5). Vanilla ships ZERO Muslim
+    # characters born before 1054, so all eleven are authored and every
+    # date is [U]. regnal_number = 0 throughout — vanilla's own
+    # no-ordinal value (184 uses, incl. Alfred the Great).
+    "SEL": ("sel_alp_arslan", "1063.9.4", 0),             # Sultan Alp Arslan — Tughril died 1063.9.4; Qutalmish's revolt [D]
+    "ABS": ("abs_abdallah_al_qaim", "1031.11.1", 0, "name_qaim"), # Caliph al-Qa'im — birth name Abdullah, the papal regnal_name route
+    "KRM": ("krm_qawurd", "1041.1.1", 0),                 # Qavurt, Alp Arslan's brother — vanilla ships name_qawurd
+    "GHZ": ("ghz_ibrahim", "1059.1.1", 0),                # Ibrahim of Ghazna — at peace with the Seljuks since 1059
+    "UQY": ("uqy_muslim_ibn_quraysh", "1061.1.1", 0),     # Muslim ibn Quraysh of Mosul — accession 1061 vs 1072 [D]
+    "MRD": ("mrd_nasr_nizam_al_din", "1061.1.1", 0),      # Nasr Nizam al-Din the Marwanid
+    "HLB": ("hlb_mahmud_ibn_nasr", "1065.1.1", 0),        # Mahmud ibn Nasr the Mirdasid — his second reign
+    "SHD": ("shd_abu_l_aswar_shavur", "1049.1.1", 0),     # Abu'l-Aswar Shavur of Ganja — dies 1067, a succession hook
+    "SRV": ("srv_fariburz_i", "1063.1.1", 0),             # Fariburz I the Shirvanshah — kasranid_dynasty ships in vanilla
+    "HLL": ("hll_dubays_i", "1018.1.1", 0),               # Dubays I the Mazyadid — a 63-year reign, attested [U]
+    "KKY": ("kky_ali_ibn_faramurz", "1063.1.1", 0),       # Ali ibn Faramurz the Kakuyid of Yazd
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -520,9 +536,38 @@ _BYZ_SINGLES = [
     "lezha",
 ]
 
+_DEFS_CACHE = {}
+def _defs():
+    if "m" not in _DEFS_CACHE:
+        _DEFS_CACHE["m"] = _parse_defs()
+        _DEFS_CACHE["o"] = _ownable_set()
+    return _DEFS_CACHE["m"], _DEFS_CACHE["o"]
+
+def _resolve_ruleset(ctx, sweep, singles, minus_sweeps, minus_singles):
+    members, ownable = _defs()
+    minus = set(minus_singles)
+    for name in minus_sweeps:
+        if name not in members:
+            sys.exit(f"{ctx}: minus-sweep {name} not in definitions.txt")
+        minus.update(members[name])
+    target, seen = [], set()
+    for name in sweep:
+        if name not in members:
+            sys.exit(f"{ctx}: {name} not found in definitions.txt")
+        got = [l for l in members[name]
+               if l in ownable and l not in seen and l not in minus]
+        target.extend(got)
+        seen.update(got)
+    for l in singles:
+        if l not in ownable:
+            sys.exit(f"{ctx}: single {l} is not an ownable location")
+        if l not in seen and l not in minus:
+            target.append(l)
+            seen.add(l)
+    return target
+
 def _byz_target():
-    members = _parse_defs()
-    ownable = _ownable_set()
+    members, ownable = _defs()
     target = []
     seen = set()
     for name in _BYZ_SWEEP:
@@ -558,6 +603,126 @@ _BYZ_GRANTS = {
     "HUM": ["mostar", "nevesinje", "drijeva", "metkovic", "makarska"],
     "CHR": ["taman"],
 }
+
+# ----------------------------------------------- the Seljuk-Abbasid world ---
+# THE SELJUK + ABBASID SLICE (Opus package, 2026-07-29; the tributary
+# war-capability law, the dead-code Caliphate branch, tag freeness, name
+# keys and dynasties all re-verified by the main session). Alp Arslan's
+# empire as a KINGDOM-rank monarchy — the engine's own chain then renders
+# "Sultanate of the Great Seljuks" / "Sultan"; empire rank would kill the
+# NAME key entirely (the prefix_adjective_rank branch, verified). Nine new
+# tags; nine clients as TRIBUTARIES (tributary.txt:88 allow_declaring_wars
+# always — the banked "subjects cannot declare war" law is VASSAL-only,
+# and vanilla ships monarchy->monarchy tributaries at setup: TUN, ERE,
+# ETH). ABS is the theocracy probe: rank_empire_theocracy carries no
+# religion gate and dead-codes vanilla's "Caliphate" — our loc file
+# overrides its two strings, and no vanilla setup theocracy is
+# empire-rank, so at 1066 only ABS can reach them.
+_SELJUK_RULES = {
+    # tag: (sweep names, singles, minus-sweeps, minus-singles, expected)
+    "SEL": (["azerbaijan_area", "fars_area", "khuzestan_area",
+             "kordestan_area", "quhestan_area", "damghan_province",
+             "daylam_province", "gorgan_province", "adraskan_province",
+             "western_khorasan_area", "eastern_khorasan_area",
+             "kath_province", "khiva_province", "uzboy_province",
+             "mughan_province", "iraq_ajam_area", "iraq_arabi_area"],
+            ["julfa", "nakhchivan"],
+            ["yazd_province", "kufa_province"], ["baghdad", "an_nil"], 463),
+    "KRM": (["kerman_area"], [], [], [], 48),
+    "GHZ": (["ghazni_province", "kabul_province", "kandahar_province",
+             "bost_province", "garmsir_province"],
+            ["gulistan", "quetta", "shorabak"], [], [], 34),
+    "MRD": (["diyarbekir_province", "hasankeyf_province", "mardin_province",
+             "nusaybin_province"],
+            ["cermik", "ahlat", "bitlis", "tatvan"], [], [], 29),
+    "HLB": (["halab_province", "hims_province", "tadmur_province",
+             "deir_province"], ["kilis"], [], [], 26),
+    "SIS": (["zaranj_province", "zabol_province", "farah_province"],
+            [], [], [], 18),
+    "UQY": (["mosul_province", "furat_province", "raqqa_province"],
+            [], [], [], 17),
+    "MZN": (["rustamdar_province", "tabaristan_province"], [], [], [], 10),
+    "HLL": (["kufa_province"], ["an_nil"], [], [], 7),
+    "KKY": (["yazd_province"], [], [], [], 6),
+    "SHD": (["arran_province"], [], [], [], 6),
+    "KCN": ([], ["goroz", "shusha"], [], [], 2),
+    "ABS": ([], ["baghdad"], [], [], 1),
+}
+# Kharpert to BYZ — the HANDOFF-deferred Tier 2's resolvable half
+# (Byzantine until the 1085 Artuqid emirate [U]); appended to the
+# resolved BYZ grant list at build time.
+_SELJUK_BYZ_EXTRA = ["adakli", "harput", "keban", "palu"]
+
+# New-tag block classes. Capitals verified in definitions.txt; every
+# enum verified against vanilla setup (hanafi_policy x40, jafari_policy
+# x3, hanafi_school x45, persian_language court x19, all cultures in
+# in_game/common/cultures).
+_SELJUK_TAGS = {
+    # tag: (capital, rank, sharia policy or None, school or None,
+    #       court language or None)
+    "SEL": ("rey", "rank_kingdom", "hanafi_policy", "hanafi_school",
+            "persian_language"),
+    "GHZ": ("ghazni", "rank_kingdom", "hanafi_policy", "hanafi_school", None),
+    "UQY": ("mosul", "rank_duchy", "jafari_policy", None, None),
+    "MRD": ("mayyafariqin", "rank_duchy", "hanafi_policy", "hanafi_school", None),
+    "HLB": ("aleppo", "rank_duchy", "jafari_policy", None, None),
+    "SIS": ("zaranj", "rank_duchy", "hanafi_policy", "hanafi_school", None),
+    "KKY": ("yazd", "rank_duchy", "jafari_policy", None, None),
+    "SHD": ("ganja", "rank_duchy", "hanafi_policy", "hanafi_school", None),
+}
+
+def _seljuk_block(tag, capital, rank, policy, school, court):
+    inc = "".join(f'\t\tinclude = "{i}"\n' for i in (
+        "expl_silk_road_west", "expl_silk_road_center",
+        "expl_silk_road_east", "expl_indian_trade_route",
+        "muslim_monarchy_no_abrahamic_dhimmi"))
+    body = (f"\t{tag} = {{\n"
+            f"\t\tstarting_technology_level = 3\n{inc}\n"
+            f"\t\tgovernment = {{\n\t\t\tlaws = {{\n"
+            f"\t\t\t\tsharia_law = {policy}\n\t\t\t}}\n\t\t}}\n")
+    if court:
+        body += f"\t\tcourt_language = {court}\n"
+    if school:
+        body += f"\t\treligious_school = {school}\n"
+    body += (f"\n\t\tcountry_rank = {rank}\n\n"
+             f"\t\tcapital = {capital}\n\t}}\n")
+    return body
+
+for _t, (_cap, _rank, _pol, _sch, _crt) in _SELJUK_TAGS.items():
+    NEW_COUNTRIES[_t] = _seljuk_block(_t, _cap, _rank, _pol, _sch, _crt)
+
+# ABS — the Caliphate probe: theocracy type + empire rank reaches
+# rank_empire_theocracy, whose two strings our loc file overrides to
+# "Caliphate"/"Caliph". Whether the explicit type overrides the include
+# template's monarchy is UNOBSERVED — if it fails, ABS degrades to
+# "Abbasid Empire" (readable) and the probe has its answer.
+NEW_COUNTRIES["ABS"] = (
+    "\tABS = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi"\n'
+    "\t\tgovernment = {\n\t\t\ttype = theocracy\n\t\t}\n\n"
+    "\t\tcountry_rank = rank_empire\n\n"
+    "\t\tcapital = baghdad\n\t}\n")
+
+# Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
+# own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
+# independent: the caliph outranks the sultan, the Ghaznavid peace of
+# 1059 was a treaty not a submission, and Alp Arslan's Shirvan campaign
+# is 1067 — a year after start, an event's job.
+SELJUK_TRIBUTARIES = ("KRM", "KKY", "SIS", "MZN", "SHD", "UQY", "MRD",
+                     "HLB", "HLL")
+
+# The 60 donors this slice empties — Mongol-era and Ottoman-era Persia/
+# Iraq/Jazira wholesale (JAL keeps its horde government, which never
+# renders on a landless tag: the naming trap stays unarmed).
+SELJUK_LANDLESS = (
+    "APD", "ARD", "ART", "ASR", "ATQ", "ATZ", "BDS", "BHT", "BIT", "BSD",
+    "DGE", "DIL", "DMB", "DML", "DSN", "FAL", "GRG", "HBN", "HDN", "HDR",
+    "HNY", "HSN", "HZP", "HZR", "INJ", "JAL", "JKR", "JUR", "KEL", "KHF",
+    "KHT", "KHU", "KIL", "KKL", "KLR", "KRI", "KRT", "KSA", "KTW", "LCK",
+    "LST", "MIH", "MKW", "MRV", "MZF", "MZJ", "NGD", "QOM", "RKL", "SBZ",
+    "SFR", "SHB", "SLI", "SOH", "SRB", "SUT", "SYY", "UGH", "ZBR", "ZRQ",
+)
 
 # The 45 donors the sweep leaves with nothing. Each ends landless with
 # claims equal to EVERYTHING it held before the pass (snapshotted at
@@ -603,7 +768,7 @@ DISPLACED_CLAIMS = {
 if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
-LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS
+LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -651,6 +816,9 @@ FIELD_FIXES = {
     # is the 14th-century Balsici — Mihailo is a Vojislavljevic.
     "SER": [("country_rank = rank_kingdom", "country_rank = rank_duchy")],
     "ZTA": [("dynasty = balsic_dynasty", "dynasty = vojislavljevic_dynasty")],
+    # Kerman's block carries the 14th-century Nikruzi house; Qavurt is a
+    # Seljukid.
+    "KRM": [("dynasty = nikruzi_dynasty", "dynasty = seljukids_dynasty")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -1290,6 +1458,123 @@ NEW_CHARACTERS = """
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
 	}
+
+	# --- 1066 Seljuk world ------------------------------------------------
+	# All dates [U]. Alp_Arslan/Ibrahim/Muslim are vanilla LITERALS
+	# (character_names_l_english.yml:12559/:1364/:26123 — the
+	# underscore-to-space law); Shavur, Fariburz and Dubays are OUR
+	# literals (invented keys five to seven). name_qawurd and name_qaim
+	# ship in vanilla.
+	sel_alp_arslan = {
+		first_name = { name = Alp_Arslan }
+		culture = turkmen_culture
+		religion = sunni
+		birth_date = 1029.1.1
+		birth = merv
+		dynasty = seljukids_dynasty
+		tag = SEL
+	}
+
+	abs_abdallah_al_qaim = {
+		first_name = { name = name_abdullah }
+		culture = iraqi_culture
+		religion = sunni
+		estate = clergy_estate
+		birth_date = 1001.1.1
+		birth = baghdad
+		dynasty = abbasid_dynasty
+		tag = ABS
+	}
+
+	krm_qawurd = {
+		first_name = { name = name_qawurd }
+		culture = turkmen_culture
+		religion = sunni
+		birth_date = 1025.1.1
+		birth = merv
+		dynasty = seljukids_dynasty
+		tag = KRM
+	}
+
+	ghz_ibrahim = {
+		first_name = { name = Ibrahim }
+		culture = turkish_culture
+		religion = sunni
+		birth_date = 1033.1.1
+		birth = ghazni
+		dynasty = ghaznavid_dynasty
+		tag = GHZ
+	}
+
+	uqy_muslim_ibn_quraysh = {
+		first_name = { name = Muslim }
+		culture = iraqi_culture
+		religion = shia
+		birth_date = 1035.1.1
+		birth = mosul
+		dynasty = uqaylid_dynasty
+		tag = UQY
+	}
+
+	mrd_nasr_nizam_al_din = {
+		first_name = { name = name_nasr }
+		culture = kurdish_culture
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = mayyafariqin
+		dynasty = marwanid_dynasty
+		tag = MRD
+	}
+
+	hlb_mahmud_ibn_nasr = {
+		first_name = { name = name_mahmud }
+		culture = levantine_culture
+		religion = shia
+		birth_date = 1025.1.1
+		birth = aleppo
+		dynasty = mirdasid_dynasty
+		tag = HLB
+	}
+
+	shd_abu_l_aswar_shavur = {
+		first_name = { name = Shavur }
+		culture = kurdish_culture
+		religion = sunni
+		birth_date = 995.1.1
+		birth = ganja
+		dynasty = shaddadid_dynasty
+		tag = SHD
+	}
+
+	srv_fariburz_i = {
+		first_name = { name = Fariburz }
+		culture = adhari_culture
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = shamakhi
+		dynasty = kasranid_dynasty
+		tag = SRV
+	}
+
+	hll_dubays_i = {
+		first_name = { name = Dubays }
+		culture = iraqi_culture
+		religion = shia
+		birth_date = 1000.1.1
+		birth = hillah
+		dynasty = mazyadid_dynasty
+		tag = HLL
+	}
+
+	kky_ali_ibn_faramurz = {
+		first_name = { name = name_ali }
+		culture = farsi_culture
+		religion = shia
+		birth_date = 1035.1.1
+		birth = yazd
+		dynasty = kakuyid_dynasty
+		tag = KKY
+	}
 """
 
 
@@ -1472,14 +1757,46 @@ def build_countries(src):
     # claims can be written after the sweep.
     _byz_have = set(_owned_by(src, "BYZ"))
     _target = _byz_target()
-    LOCATION_GRANTS["BYZ"] = [l for l in _target if l not in _byz_have]
-    if len(LOCATION_GRANTS["BYZ"]) != 495:
+    LOCATION_GRANTS["BYZ"] = ([l for l in _target if l not in _byz_have]
+                              + _SELJUK_BYZ_EXTRA)
+    if len(LOCATION_GRANTS["BYZ"]) != 499:
         sys.exit(f"BYZ grant list resolved to {len(LOCATION_GRANTS['BYZ'])} "
-                 f"locations — the package's machine count is exactly 495")
-    _landless_claims = {t: _owned_by(src, t) for t in BYZ_LANDLESS}
+                 f"locations — 495 (Byzantium package) + 4 (Kharpert) = 499")
+
+    # The Seljuk world resolves the same way. Grants to a tag that
+    # already holds some of its list (KRM 29, MZN 6, HLL 4) are no-ops by
+    # construction: removal takes them from the tag itself, the grant
+    # line puts them back.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_SELJUK_RULES.items()):
+        got = _resolve_ruleset(f"_SELJUK_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_SELJUK_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = got
+    for _t, (_cap, _rank, _pol, _sch, _crt) in _SELJUK_TAGS.items():
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_SELJUK_TAGS: {_t} capital {_cap} not in its resolved list")
+    if "baghdad" not in LOCATION_GRANTS["ABS"]:
+        sys.exit("_SELJUK_RULES: ABS must hold baghdad")
+
+    # No recipient may be a steppe horde or tribe: their name branches
+    # ignore the NAME key entirely (the JAL law, generalized).
+    _blocks_h = list(re.finditer(COUNTRY_RE, src, re.M))
+    _horde_tags = set()
+    for i, m in enumerate(_blocks_h):
+        _e = _blocks_h[i + 1].start() if i + 1 < len(_blocks_h) else len(src)
+        if re.search(r"^[ \t]*type = (steppe_horde|tribe)[ \t]*$",
+                     src[m.start():_e], re.M):
+            _horde_tags.add(m.group(1))
+    _bad_recip = (set(LOCATION_TRANSFERS) | set(LOCATION_GRANTS)) & _horde_tags
+    if _bad_recip:
+        sys.exit(f"horde/tribe recipients forbidden: {sorted(_bad_recip)}")
+
+    _landless_claims = {t: _owned_by(src, t)
+                        for t in BYZ_LANDLESS + SELJUK_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
-            sys.exit(f"BYZ_LANDLESS: {_t} already holds nothing — stale entry")
+            sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
 
     n_transferred = 0
     for _t, locs in sorted(LOCATION_TRANSFERS.items()):
@@ -2195,9 +2512,45 @@ def build_diplomacy(src):
         return m.group(0)
     src = re.sub(r"^[ \t]*dependency = \{[^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
                  _drop_landless_dep, src, flags=re.M)
-    if n_landless_deps != 28:
-        sys.exit(f"expected exactly 28 landless-tag dependencies, stripped {n_landless_deps}")
+    # 28 from the Byzantium batch + 54 from the Seljuk batch (JAL's 18,
+    # SUT's 15, GRG's 10, the Jazira web...). GRG->MZN is IN: GRG dies,
+    # MZN survives and is re-parented to SEL below.
+    if n_landless_deps != 82:
+        sys.exit(f"expected exactly 82 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
+
+    # Alliances and guarantees naming a landless tag go the same way
+    # (HBN-KTW, MKW-ZZR, HLG-GRG, KRT-GRG in the Seljuk theatre, plus
+    # vanilla's BYZ-TRE alliance — Trebizond is landless since the
+    # Byzantium batch).
+    n_pacts = 0
+    def _drop_landless_pact(m):
+        nonlocal n_pacts
+        f = re.search(r"first = (\w+)", m.group(0))
+        s2 = re.search(r"second = (\w+)", m.group(0))
+        if ((f and f.group(1) in LANDLESS_AFTER)
+                or (s2 and s2.group(1) in LANDLESS_AFTER)):
+            n_pacts += 1
+            return ""
+        return m.group(0)
+    src = re.sub(r"^[ \t]*scripted_(?:mutual|oneway) = \{[^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
+                 _drop_landless_pact, src, flags=re.M)
+    if n_pacts != 5:
+        sys.exit(f"expected exactly 5 landless-tag pacts, stripped {n_pacts}")
+    report.append(("pacts naming a landless tag stripped", n_pacts))
+
+    # The Seljuk khutba: nine clients as TRIBUTARY subjects —
+    # war-capable (tributary.txt:88), own color and name. Vanilla ships
+    # monarchy-over-monarchy tributaries at setup (TUN, ERE, ETH), so
+    # the shape is attested.
+    _wrap = src.rindex("\n}")
+    _tribs = "".join(
+        f"\tdependency = {{ first = SEL second = {t} subject_type = tributary }}\n"
+        for t in SELJUK_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\n\t# 1066: the Seljuk clients under the khutba (generated)\n"
+           + _tribs + src[_wrap:])
+    report.append(("Seljuk tributaries added", len(SELJUK_TRIBUTARIES)))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):

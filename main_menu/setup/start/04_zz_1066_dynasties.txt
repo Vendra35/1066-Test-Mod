@@ -132,4 +132,36 @@ dynasty_manager = {
 		name = { name = vojislavljevic_dynasty }
 		home = bar_cg
 	}
+	# --- 1066 Seljuk world: seven client houses. seljukids_dynasty,
+	# kasranid_dynasty (Shirvan) and bavand_dynasty (Tabaristan) ship in
+	# vanilla and are reused; abbasid_dynasty is already above. All home
+	# locations verified in definitions.txt.
+	ghaznavid_dynasty = {
+		name = { name = ghaznavid_dynasty }
+		home = ghazni
+	}
+	uqaylid_dynasty = {
+		name = { name = uqaylid_dynasty }
+		home = mosul
+	}
+	marwanid_dynasty = {
+		name = { name = marwanid_dynasty }
+		home = mayyafariqin
+	}
+	mirdasid_dynasty = {
+		name = { name = mirdasid_dynasty }
+		home = aleppo
+	}
+	shaddadid_dynasty = {
+		name = { name = shaddadid_dynasty }
+		home = ganja
+	}
+	mazyadid_dynasty = {
+		name = { name = mazyadid_dynasty }
+		home = hillah
+	}
+	kakuyid_dynasty = {
+		name = { name = kakuyid_dynasty }
+		home = yazd
+	}
 }

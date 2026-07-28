@@ -314,65 +314,13 @@ diplomacy_manager = {
     dependency = { first = HUN second = BOS subject_type = vassal }
 
     #Anatolia
-    dependency = { first = BIT second = HZN subject_type = vassal }
-    dependency = { first = JAL second = ARD subject_type = vassal }
-    dependency = { first = JAL second = ATZ subject_type = vassal }
-    dependency = { first = JAL second = DML subject_type = vassal }
-    dependency = { first = JAL second = HBN subject_type = vassal }
-    dependency = { first = JAL second = HDR subject_type = vassal }
-    dependency = { first = JAL second = HNY subject_type = vassal }
-    dependency = { first = JAL second = IHB subject_type = vassal }
-    dependency = { first = JAL second = KEL subject_type = vassal }
-    dependency = { first = JAL second = KKL subject_type = vassal }
-    dependency = { first = JAL second = KLR subject_type = vassal }
-    dependency = { first = JAL second = KRI subject_type = vassal }
-    dependency = { first = JAL second = KTW subject_type = vassal }
-    dependency = { first = JAL second = MKW subject_type = vassal }
-    dependency = { first = JAL second = RKL subject_type = vassal }
-    dependency = { first = JAL second = SLI subject_type = vassal }
-    dependency = { first = JAL second = SUT subject_type = vassal }
-    dependency = { first = JAL second = SYY subject_type = vassal }
-    dependency = { first = JAL second = ZBR subject_type = vassal }
-    dependency = { first = MAM second = KIL subject_type = vassal }
-    dependency = { first = SUT second = BHT subject_type = vassal }
-    dependency = { first = SUT second = BIN subject_type = vassal }
-    dependency = { first = SUT second = BIT subject_type = vassal }
-    dependency = { first = SUT second = CEM subject_type = vassal }
-    dependency = { first = SUT second = DIL subject_type = vassal }
-    dependency = { first = SUT second = DMB subject_type = vassal }
-    dependency = { first = SUT second = DSN subject_type = vassal }
-    dependency = { first = SUT second = EGL subject_type = vassal }
-    dependency = { first = SUT second = HKK subject_type = vassal }
-    dependency = { first = SUT second = HZR subject_type = vassal }
-    dependency = { first = SUT second = JLM subject_type = vassal }
-    dependency = { first = SUT second = MZJ subject_type = vassal }
-    dependency = { first = SUT second = SOH subject_type = vassal }
-    dependency = { first = SUT second = ZRQ subject_type = vassal }
-    dependency = { first = SUT second = ZZR subject_type = vassal }
 
-    scripted_mutual = { first = BYZ second = TRE type = alliance }
     #scripted_mutual = { first = MAM second = CND type = alliance }
     #scripted_mutual = { first = MAM second = KAR type = alliance }
-    scripted_mutual = { first = HBN second = KTW type = alliance }
-    scripted_mutual = { first = MKW second = ZZR type = alliance }
 
     #-------------Persia------------
     dependency = { first = HLG second = HLL subject_type = vassal }
-    dependency = { first = GRG second = ASR subject_type = vassal }
-    dependency = { first = GRG second = HDN subject_type = vassal }
-    dependency = { first = GRG second = JKR subject_type = vassal }
-    dependency = { first = GRG second = KHT subject_type = vassal }
-    dependency = { first = GRG second = KRT subject_type = vassal }
-    dependency = { first = GRG second = KSA subject_type = vassal }
-    dependency = { first = GRG second = MZN subject_type = vassal }
-    dependency = { first = GRG second = QOM subject_type = vassal }
-    dependency = { first = GRG second = SBZ subject_type = vassal }
-    dependency = { first = GRG second = SFR subject_type = vassal }
-    dependency = { first = KRT second = MRV subject_type = vassal }
-    dependency = { first = KRT second = KHF subject_type = vassal }
 
-    scripted_mutual = { first = HLG second = GRG type = alliance }
-    scripted_mutual = { first = KRT second = GRG type = alliance }
 
     #-------------Caucasus------------
     dependency = { first = GEO second = AAI subject_type = vassal }
@@ -389,12 +337,10 @@ diplomacy_manager = {
 
     #------------- Persia ------------
     
-    dependency = { first = INJ second = KHU subject_type = vassal }
     dependency = { first = LHJ second = RNK subject_type = vassal }
     dependency = { first = MKR second = BLA subject_type = vassal }
     dependency = { first = MKR second = BMP subject_type = vassal }
     dependency = { first = MKR second = KLW subject_type = vassal }
-    dependency = { first = ORM second = FAL subject_type = vassal }
     dependency = { first = ORM second = JSK subject_type = vassal }
     
     #-------------East Africa------------
@@ -612,16 +558,12 @@ diplomacy_manager = {
     dependency = { first = SZH second = XSY subject_type = tusi }
 
     #-------------Xinjiang----------
-    dependency = { first = CHG second = APD subject_type = vassal }
-    dependency = { first = CHG second = ART subject_type = vassal }
     dependency = { first = CHG second = BKH subject_type = vassal }
     dependency = { first = CHG second = BRL subject_type = vassal }
-    dependency = { first = CHG second = BSD subject_type = vassal }
     dependency = { first = CHG second = DGH subject_type = vassal }
     dependency = { first = CHG second = JLY subject_type = vassal }
     dependency = { first = CHG second = KRG subject_type = vassal }
     dependency = { first = CHG second = KTT subject_type = vassal }
-    dependency = { first = CHG second = NGD subject_type = vassal }
     dependency = { first = CHG second = QCH subject_type = vassal }
     dependency = { first = CHG second = QUN subject_type = vassal }
     dependency = { first = CHG second = SLD subject_type = vassal }
@@ -743,7 +685,6 @@ diplomacy_manager = {
     dependency = { first = MAM second = AMR subject_type = vassal }
     dependency = { first = MAM second = BKZ subject_type = vassal }
     dependency = { first = MAM second = BQA subject_type = vassal }
-    dependency = { first = MAM second = DGE subject_type = vassal }
     dependency = { first = MAM second = FDL subject_type = vassal }
     dependency = { first = MAM second = SKN subject_type = vassal }
 
@@ -769,5 +710,17 @@ diplomacy_manager = {
     scripted_mutual = { first = STC second = KTB type = alliance }
     scripted_mutual = { first = STC second = KSN type = alliance }
     scripted_mutual = { first = STC second = NIT type = alliance }
+
+
+	# 1066: the Seljuk clients under the khutba (generated)
+	dependency = { first = SEL second = KRM subject_type = tributary }
+	dependency = { first = SEL second = KKY subject_type = tributary }
+	dependency = { first = SEL second = SIS subject_type = tributary }
+	dependency = { first = SEL second = MZN subject_type = tributary }
+	dependency = { first = SEL second = SHD subject_type = tributary }
+	dependency = { first = SEL second = UQY subject_type = tributary }
+	dependency = { first = SEL second = MRD subject_type = tributary }
+	dependency = { first = SEL second = HLB subject_type = tributary }
+	dependency = { first = SEL second = HLL subject_type = tributary }
 
 }

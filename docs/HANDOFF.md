@@ -458,6 +458,40 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    (f) error.log — expect a DROP (the -1000 opinion wall and IO noise
    partly came from now-landless tags).
 
+16. **THE SELJUK + ABBASID WORLD (LANDED, untested — TOMORROW'S TEST).**
+   SEL = the Great Seljuks, 463 locations resolved from definitions.txt
+   (rule set, exact-count asserted), a KINGDOM so the engine renders
+   "Sultanate of the Great Seljuks" / "Sultan Alp Arslan" (empire rank
+   would kill the NAME key — KNOWLEDGE). Alp Arslan seated via
+   vanilla's own literal `Alp_Arslan`; vanilla seljukids_dynasty
+   ("Al-e Saljuq") and map_seljukids color reused. ABS = Abbasid
+   Caliphate, one location (Baghdad), al-Qa'im via the papal
+   regnal_name route, THE THEOCRACY PROBE (see test list). Nine
+   TRIBUTARY clients (war-capable — the corrected law): Kerman
+   (Qavurt, vanilla name_qawurd), Mosul, Diyar Bakr, Aleppo (shia [D]),
+   Sistan (random ruler), Yazd, Arran, Tabaristan (random), Hilla.
+   GHZ (Ghaznavids, 34), SRV (Fariburz I) and ABS independent. 60 more
+   tags landless (JAL keeps its horde government unrendered — the
+   naming trap stays unarmed; new build assert: NO recipient may be
+   horde/tribe, proven by breaking). Kharpert's 4 → BYZ (586), closing
+   half the deferred Tier 2. 82 landless-tag dependencies + 5 pacts
+   stripped, 9 tributaries added, 531 dependencies kept. Invented keys
+   five-to-seven: Shavur, Fariburz, Dubays. 92 named rulers; 108
+   landless tags; all 23 checks green.
+   TEST (tomorrow): (a) "Sultanate of the Great Seljuks" across
+   Iran-Iraq, Sultan Alp Arslan in Rey; (b) **THE PROBE: does ABS
+   render "Abbasid Caliphate" with "Caliph al-Qa'im"?** If it shows
+   "Abbasid Empire", the explicit government type lost to the include
+   template — record it in KNOWLEDGE either way; (c) nine clients show
+   the tributary subject line under SEL, keep their own colors, CAN
+   declare war (spot-check one in the war interface); (d) Shavur/
+   Fariburz/Dubays render; Qavurt in Kerman as "Al-e Saljuq";
+   (e) Ghazna/Shirvan independent; (f) the Mongol-era Persia tags GONE
+   (no Jalayirids, no Injuids, no Muzaffarids...); (g) error.log —
+   the subject/overlord flood from the Byzantium test should be gone
+   (28+54 dependency strips landed since), "removed invalid law"
+   should shrink or vanish; the 'l' formatting flood is known vanilla.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -478,9 +512,27 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
   (missing). Tashir-Dzoraget (AAI) arguably right as-is.
 - **Kharpert/Dersim Tier 2** (8 locations, SUT/CEM/EGL): softest edge
   of the eastern frontier, NO source anchor found — deliberately left.
-- **Seljuk-slice boundaries**: Marwanid Diyar Bakr, Mirdasid Aleppo
-  (MAM keeps it for now), the Kurdish emirates — all flagged as the
-  Seljuk+Abbasid slice's western edge, not Byzantium's.
+- **RESOLVED by the Seljuk slice (2026-07-29):** Marwanid Diyar Bakr
+  and Mirdasid Aleppo are landed tags (MRD, HLB); Kharpert's four
+  locations went to BYZ. Still open from that seam: the Dersim
+  remainder (CEM/BIN/EGL, 6 locations, no anchor), Hakkari/Amadiya.
+- **Central Asia slice** (named by the Seljuk package): Kara-Khanids
+  (Western at Samarkand under Ibrahim Tamghach Khan, Eastern at
+  Balasagun), transoxiana_area + zhetysu_area (~175 land, CHG/YSU/
+  BRL/JLY), Kipchak steppe, Oghuz remnant, Volga Bulgars — one
+  coherent slice, nothing in the Seljuk slice depends on it. The Oxus
+  is SEL's fixed eastern border.
+- **Arabia slice**: FDL's 6 Najd locations, ORM's Oman 22, HLG's
+  kazimah (1 — taking it would make HLG landless), the Hejaz.
+- **Rawwadid Tabriz Tier-2**: azerbaijan_area went to SEL whole; the
+  Rawwadids of Tabriz were Seljuk vassals until 1071 — a possible
+  14th client if ever wanted (34 locations affected).
+- **Gilan/Talish/Shaki left as 1337 micro-states on purpose**: the
+  Caspian littoral autonomies are not obviously wrong at 1066.
+- **ABS probe watch item**: if "Abbasid Empire" renders, the explicit
+  `type = theocracy` lost to the include template — KNOWLEDGE either
+  way; the fallback loc-only fix is
+  country_name_construction override (route 3 in the package).
 - **CAS/LON border alternative**: the Pisuerga reading moves palencia,
   carrion_de_los_condes, saldana, monzon_campos CAS→LON. Area-line
   chosen (vanilla's own claims signal); 4-location revisit.
@@ -510,10 +562,16 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
 ## STRATEGIC ORDER (user decision, 2026-07-28 evening)
 **Territory first, across the WHOLE map — pops/religions/cultures as a
 separate later phase.** The world's borders get finished before any pop
-conversion work starts. Slice order from here: Christian Iberia (the
-three brothers), Byzantium pre-Manzikert (Anatolia + Balkans), Seljuks +
-Abbasids, Fatimid Egypt, France demesne, British Isles (Wales marcher /
-Ireland), HRE/HAB, then the pop phase.
+conversion work starts.
+**DONE so far:** Sardinia, the 13 taifas, Christian Iberia, Byzantium,
+Seljuks+Abbasids (last one UNTESTED — tomorrow's first job).
+**Remaining, in rough order:** Fatimid Egypt + the Levant south of the
+named line (Damascus/Palestine; MAM keeps 120 there), France demesne
+163→~25 + Languedoc (montpellier already parked there), British Isles
+(Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
+southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
+Arabia, the Rus/steppe east, India/China/rest-of-world review — then
+the pop phase (al-Andalus owes 222 locations; Persia owes none).
 
 ## Next, in order
 
@@ -542,10 +600,22 @@ Ireland), HRE/HAB, then the pop phase.
 3. Then the next region: **France and the Empire** — `docs/PHASE-2-PLAN.md`
    has the order and the 1066–1337 backlog.
 
-## Repo state
+## Repo state (2026-07-29, end of the marathon session)
 
-Uncommitted at handoff. The 34 wiki PDFs in `docs/` are untracked and about
-26 MB — decide whether they belong in git or in `.gitignore`.
+Everything is COMMITTED through the Seljuk+Abbasid slice. The working
+tree should be clean; if it is not, `git log --oneline -8` first — the
+last commits tell the story (Sardinia → taifas → Christian Iberia →
+Byzantium → landless-dependency fix → Seljuks). The 34 wiki PDFs in
+`docs/` remain untracked (~26 MB) — still undecided, still harmless.
 
-`python tools/verify_mod.py` → all checks passed.
-`python tools/build_setup.py --dry-run` → clean.
+`python tools/verify_mod.py` → 23 checks green (last run this session).
+`python tools/build_setup.py --dry-run` → clean, ~12s (the ownership
+index refactor; if it takes minutes, something regressed).
+
+**TOMORROW STARTS WITH:** the Seljuk batch in-game test — the full list
+is item 16 above, headline question the ABS Caliphate probe. Then the
+next slice per the strategic order (Fatimid Egypt is the natural one:
+the Levant line is already drawn and named in item 16's package).
+Standing rhythm with the user: propose batch → "onay" → land → they
+test in game → findings become fixes and decoder entries. Conversation
+in Turkish, everything in the repo in English.

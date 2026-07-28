@@ -176,3 +176,79 @@ PLJ = { #County of Pallars Jussa
 	culture_definition = catalan
 	religion_definition = catholic
 }
+
+# The Seljuk world (nine tags; freeness verified three ways — note ABB is
+# Arbabni in horn_of_africa.txt, hence ABS). SEL wears vanilla's own
+# unused map_seljukids; every culture verified in in_game/common/cultures.
+
+SEL = { #Great Seljuks
+	color = map_seljukids
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = turkmen_culture
+	religion_definition = sunni
+}
+
+ABS = { #Abbasid Caliphate
+	color = map_ABS
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = iraqi_culture
+	religion_definition = sunni
+}
+
+GHZ = { #Ghaznavids
+	color = map_GHZ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = turkish_culture
+	religion_definition = sunni
+}
+
+UQY = { #Uqaylids of Mosul
+	color = map_UQY
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = iraqi_culture
+	religion_definition = shia
+}
+
+MRD = { #Marwanids of Diyar Bakr
+	color = map_MRD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = kurdish_culture
+	religion_definition = sunni
+}
+
+HLB = { #Mirdasids of Aleppo
+	color = map_HLB
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = levantine_culture
+	religion_definition = shia
+}
+
+SIS = { #Nasrid maliks of Sistan
+	color = map_SIS
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = farsi_culture
+	religion_definition = sunni
+}
+
+KKY = { #Kakuyids of Yazd
+	color = map_KKY
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = farsi_culture
+	religion_definition = shia
+}
+
+SHD = { #Shaddadids of Arran
+	color = map_SHD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = kurdish_culture
+	religion_definition = sunni
+}
