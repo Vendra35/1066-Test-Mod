@@ -140,6 +140,7 @@ norman_conquest.13 = {
 
 	option = {
 		name = norman_conquest.13.a
+		add_country_modifier = { modifier = bled_at_stamford_bridge years = 1 }
 	}
 }
 
@@ -238,6 +239,8 @@ norman_conquest.21 = {
 	option = {
 		name = norman_conquest.21.a
 		historical_option = yes
+
+		add_country_modifier = { modifier = papal_banner years = 1 }
 
 		# CB first, declaration second — see the note in norman_conquest.11.
 		if = {
@@ -387,6 +390,7 @@ norman_conquest.41 = {
 
 	option = {
 		name = norman_conquest.41.a
+		add_country_modifier = { modifier = the_norman_yoke years = 5 }
 	}
 }
 
@@ -405,6 +409,7 @@ norman_conquest.42 = {
 		name = norman_conquest.42.a
 		historical_option = yes
 
+		add_country_modifier = { modifier = the_norman_yoke years = 5 }
 		c:NRM ?= {
 			leave_all_wars_with = c:ENG
 			force_union = c:ENG

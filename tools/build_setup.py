@@ -276,6 +276,30 @@ def build_countries(src):
     if no_gov:
         report.append(("  of those, needed a government block", no_gov))
 
+    # Regnal-number tables are 1337's: ENG carries name_william = 2 (counting
+    # the Conqueror and Rufus), so William crowned via the union displayed as
+    # "William III" in game. 0 makes the next William the first. Grow this
+    # table as more wrong numerals are OBSERVED, not preemptively.
+    REGNAL_FIXES = {("ENG", "name_william"): 0}
+    n_fix = 0
+    starts_rf = list(re.finditer(COUNTRY_RE, src, re.M))
+    for (tag, namekey), val in sorted(REGNAL_FIXES.items()):
+        for i, b in enumerate(starts_rf):
+            if b.group(1) != tag:
+                continue
+            end = starts_rf[i + 1].start() if i + 1 < len(starts_rf) else len(src)
+            body, k = re.subn(r"(^[ \t]*" + namekey + r" = )\d+",
+                              lambda mm, v=val: mm.group(1) + str(v),
+                              src[b.start():end], count=1, flags=re.M)
+            if not k:
+                sys.exit(f"REGNAL_FIXES: {namekey} not found inside {tag}")
+            src = src[:b.start()] + body + src[end:]
+            n_fix += k
+            break
+        else:
+            sys.exit(f"REGNAL_FIXES: tag {tag} not found")
+    report.append(("regnal numbers recalibrated", n_fix))
+
     for tag, (char, accession, regnal) in sorted(HISTORICAL_RULERS.items()):
         term = (f"ruler_term = {{ character = {char} start_date = {accession} "
                 f"regnal_number = {regnal} }}")

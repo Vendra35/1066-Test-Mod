@@ -1,0 +1,8 @@
+﻿# Cloned from opinion_hyw_enemies
+# (biases/01_opinion_scripted_diplomacy.txt:544, value = -1000): total
+# hostility between the claimants while the situation runs; removed by the
+# situation's on_ended.
+
+opinion_norman_conquest_enemies = {
+	value = -1000
+}

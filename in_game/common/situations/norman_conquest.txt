@@ -34,14 +34,25 @@ norman_conquest = {
 				target = c:ENG
 				type = casus_belli:cb_norwegian_invasion
 			}
+			add_country_modifier = { modifier = norman_conquest_impact years = -1 mode = add }
 		}
 		c:NRM ?= {
 			add_casus_belli = {
 				target = c:ENG
 				type = casus_belli:cb_norman_conquest
 			}
+			add_country_modifier = { modifier = norman_conquest_impact years = -1 mode = add }
 		}
 		c:ENG ?= {
+			add_country_modifier = { modifier = norman_conquest_impact years = -1 mode = add }
+			add_opinion_mutual_effect = {
+				modifier = opinion_norman_conquest_enemies
+				target = c:NRM
+			}
+			add_opinion_mutual_effect = {
+				modifier = opinion_norman_conquest_enemies
+				target = c:NOR
+			}
 			trigger_event_non_silently = { id = norman_conquest.1 }
 			trigger_event_non_silently = { id = norman_conquest.30 days = 13 }
 		}
@@ -141,9 +152,97 @@ norman_conquest = {
 	}
 
 	on_ended = {
+		# Mirror of HYW's on_ended cleanup: impact markers off, hostility
+		# off, leftover conquest CBs withdrawn.
+		c:ENG ?= {
+			remove_country_modifier = norman_conquest_impact
+			remove_opinion_mutual_effect = {
+				modifier = opinion_norman_conquest_enemies
+				target = c:NRM
+			}
+			remove_opinion_mutual_effect = {
+				modifier = opinion_norman_conquest_enemies
+				target = c:NOR
+			}
+		}
+		c:NOR ?= {
+			remove_country_modifier = norman_conquest_impact
+			remove_casus_belli = {
+				target = c:ENG
+				type = casus_belli:cb_norwegian_invasion
+			}
+		}
+		c:NRM ?= {
+			remove_country_modifier = norman_conquest_impact
+			remove_casus_belli = {
+				target = c:ENG
+				type = casus_belli:cb_norman_conquest
+			}
+		}
 		every_country = {
 			limit = { can_see_situation = situation:norman_conquest }
 			trigger_event_non_silently = norman_conquest.90
+		}
+	}
+
+	# Map layer, cloned from hundred_years_war.txt's branches: sides by
+	# owner-or-subject, allies unhandled (they keep the default), colors
+	# from named_colors (map_ENG vanilla, map_NRM/map_NOR ours).
+	map_color = {
+		if = {
+			limit = { owner ?= c:ENG }
+			value = map_ENG
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:ENG } }
+			value = map_ENG
+		}
+		else_if = {
+			limit = { owner ?= c:NRM }
+			value = map_NRM
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:NRM } }
+			value = map_NRM
+		}
+		else_if = {
+			limit = { owner ?= c:NOR }
+			value = map_NOR
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:NOR } }
+			value = map_NOR
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "ENG"
+		color = map_ENG
+	}
+	legend_key = {
+		desc = "NRM"
+		color = map_NRM
+	}
+	legend_key = {
+		desc = "NOR"
+		color = map_NOR
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = { owner ?= c:ENG }
+			value = map_ENG
+		}
+		else_if = {
+			limit = { owner ?= c:NRM }
+			value = map_NRM
+		}
+		else_if = {
+			limit = { owner ?= c:NOR }
+			value = map_NOR
 		}
 	}
 }

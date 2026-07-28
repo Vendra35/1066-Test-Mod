@@ -444,11 +444,17 @@ else:
                               strip_comments(read(_np(p))), re.M | re.S):
             for _line in _m.group(2).split(chr(10)):
                 _k = re.match(r"[ " + BS + "t]*([a-z_0-9]+) = ", _line)
-                if not _k or _k.group(1) in ("game_data", "category"): continue
+                # blocks_country_formation is a static-modifier FIELD, not a
+                # modifier tag — vanilla's hundred_years_war_impact carries it
+                # (static_modifiers/country.txt:6470).
+                if not _k or _k.group(1) in ("game_data", "category",
+                                             "blocks_country_formation"):
+                    continue
                 count += 1
                 if _k.group(1) not in MODIFIERS:
                     probs.append(f"{_m.group(1)}: '{_k.group(1)}' is not a modifier tag")
-    check("modifier tags exist in engine docs", count, probs, min_count=PENDING)  # first static_modifier
+    # Armed at 4: the Norman Conquest modifier file carries four real tags.
+    check("modifier tags exist in engine docs", count, probs, min_count=4)
 
     probs, count = [], 0
     for p in glob.glob(MOD + "/in_game/common/on_action/*.txt"):

@@ -221,16 +221,35 @@ decoded as harmless (no peace treaty means no winner for the toast to
 name). **The Norman Conquest is done: the first Phase 2 deliverable is
 complete and measured in game.**
 
+**Polish pass v1 SHIPPED (untested in game):** situation map mode with
+three side colors (map_NRM/map_NOR named colors added, map_ENG vanilla's),
+legend keys, the norman_conquest_impact marker + opinion wall (-1000)
+through the situation lifecycle, three timed flavour modifiers
+(bled_at_stamford_bridge on the Stamford news, papal_banner on the
+sailing, the_norman_yoke for 5 years on the AI submission AND the player
+submission), and ENG's regnal table recalibrated so the Conqueror crowns
+as William I, not III. Still open in polish: proper illustration, hint
+entry, richer loc, Edgar Ætheling, Sweyn 1069, Malcolm.
+
+**Polish v1 CONFIRMED IN GAME**: three-color map mode, all three timed
+modifiers arriving, the Norman Yoke after the coronation, and William
+crowns as **William I**. (The -1000 opinion wall was not explicitly
+checked — low risk, verify in passing next launch.) New observation for
+the backlog: the engine generates filler family for William — a
+plausible 11-year-old son William, and an impossible 70-year-old
+daughter. The fix is authoring his REAL family (Robert Curthose ~1051,
+William Rufus ~1056, Henry 1068 — the next kings of England), same
+NEW_CHARACTERS pipeline; goes with the Edgar Ætheling item.
+
 ## Next, in order
 
-1. **Polish pass** (see the list two sections up): map layer, proper
-   illustration, richer loc via an Opus subagent, a hint entry,
-   regnal_numbers recalibrated for 1066 ("William III"), Edgar Ætheling,
-   Sweyn's 1069 invasion, Malcolm's role.
-2. **Next region: France and the Empire** — `docs/PHASE-2-PLAN.md` has
-   the order. The delegation model from CLAUDE.md applies from here:
-   Opus subagents research the ruler tables, the main session verifies
-   and lands them through HISTORICAL_RULERS.
+1. **France ruler landing** — the Opus research report is in and
+   spot-verified; four decisions await approval (Philip I minor
+   exception, Theobald seated in BLS only, William VIII in AQN only,
+   Maine left random). Then: HISTORICAL_RULERS rows for the ~15
+   vanilla-ready tags, NEW_CHARACTERS for the six solid drafts,
+   dynasties via a generated 04_dynasties.txt (proposal).
+2. **Empire research still RUNNING** (second Opus subagent).
 2. **Polish pass** once round 4 is clean: map_color/legend/tooltip layer,
    a proper illustration, richer loc (Opus subagent), a hint entry,
    regnal_numbers recalibrated for 1066 (William shows as "III"), Edgar

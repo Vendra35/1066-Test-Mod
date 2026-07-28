@@ -1,0 +1,40 @@
+﻿# Norman Conquest situation modifiers. Shape cloned from vanilla's
+# hundred_years_war_impact (static_modifiers/country.txt:6466). Every
+# modifier tag exists in docs/EU5-Vanilla-Script-Docs/modifiers.log, and
+# land_morale_modifier inside a country static modifier is vanilla's own
+# usage (country.txt:1129, receiving_send_officers = 0.1).
+
+# Marker while the situation runs, mirroring HYW: no stats, but no country
+# formations under an ongoing conquest.
+norman_conquest_impact = {
+	game_data = {
+		category = country
+	}
+	blocks_country_formation = yes
+}
+
+# England after Stamford Bridge: the fyrd is spent and the housecarls
+# thinned, days before the Normans land.
+bled_at_stamford_bridge = {
+	game_data = {
+		category = country
+	}
+	land_morale_modifier = -0.05
+	monthly_war_exhaustion = 0.02
+}
+
+# Normandy under the banner of Saint Peter.
+papal_banner = {
+	game_data = {
+		category = country
+	}
+	land_morale_modifier = 0.05
+}
+
+# England under a foreign court after the coronation.
+the_norman_yoke = {
+	game_data = {
+		category = country
+	}
+	stability_investment = -0.1
+}

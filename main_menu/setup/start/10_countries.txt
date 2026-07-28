@@ -3926,7 +3926,7 @@ countries = {
 			# regnal numbering usually starts with the Norman Invasion
 
 			regnal_numbers = {
-				name_william = 2
+				name_william = 0
 				name_henry = 3
 				name_stephen = 1
 				name_richard = 2

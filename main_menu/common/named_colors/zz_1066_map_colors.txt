@@ -1,0 +1,6 @@
+﻿colors = {
+	# Norman Conquest situation map-mode side colors. map_ENG already exists
+	# (named_colors/02_map.txt:15); these two follow its hsv360 form.
+	map_NRM = hsv360 { 45 85 90 }
+	map_NOR = hsv360 { 215 70 55 }
+}

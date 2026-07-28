@@ -489,8 +489,16 @@ pool (`00_scandinavia.txt`) has `name_harold` (line 14), `name_magnus` (18),
 `name_harald` anywhere in the game** — vanilla uses one key for Harald/Harold,
 which is why `eng_harold_godwinson` carries `name_harold`.
 **Means:** writing `first_name = { name = name_harald }` would have produced a
-character with no name and no error. Every `name_*` goes through
-`in_game/common/languages/` before it is written.
+character with no name and no error.
+**REFINED (2026-07-28, France research pass, verified):** the language pools
+are only the RANDOM-GENERATION namespace. For a scripted
+`first_name = { name = X }` the authority is the loc file
+`main_menu/localization/english/character_names_dynamic_l_english.yml` —
+vanilla's own `vnt_ebles_i_de_ventadour` (05_characters.txt:29169) uses
+`name_eblo`, which exists in NO language pool but sits in that loc file at
+line 6044. The scripted-name check is therefore: does the key exist in the
+character-names loc — a much larger namespace than the pools. `name_harald`
+exists in neither, so the original lesson stands.
 
 ### First Phase 2 slice: North Sea 1066
 **Established:** generated and validated; not yet observed in game.
@@ -791,6 +799,24 @@ now carry `NOT = { in_union_with = c:ENG }`.
 option in .42 lacked `historical_option = yes` while the other historical
 paths had it — the marker matters to players running the historical-AI
 game rule. Fixed.
+
+### The situation flavour stack, located piece by piece
+**Established:** while building the Norman Conquest polish pass, all cited.
+- Situation map colors are NAMED COLORS: `map_ENG = hsv360 { 2 80 95 }` in
+  `main_menu/common/named_colors/02_map.txt:15`, referenced bare
+  (`value = map_ENG`) from situation map_color blocks. New sides = new
+  named colors in an additive file with the `colors = { }` wrapper.
+- Situation "impact" modifiers are nearly markers: vanilla's
+  `hundred_years_war_impact` (static_modifiers/country.txt:6466) is only
+  `blocks_country_formation = yes` — which is a static-modifier FIELD, not
+  a modifier tag; the harness skiplist knows.
+- Opinion walls are biases: `opinion_hyw_enemies = { value = -1000 }`
+  (biases/01_opinion_scripted_diplomacy.txt:544), applied/removed with
+  `add/remove_opinion_mutual_effect` in the situation lifecycle.
+- Static modifier loc: `STATIC_MODIFIER_NAME_<key>` / `_DESC_<key>`.
+**Means:** the flavour layer of any future situation is four small additive
+files and a handful of lifecycle lines — the Norman Conquest versions are
+the in-repo template.
 
 ### A wrapping expanding vbox spreads situation cards apart
 **Established:** screenshot, round 3 — the two cards sat at opposite ends
