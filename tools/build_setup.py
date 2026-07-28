@@ -167,6 +167,16 @@ HISTORICAL_RULERS = {
     "LEI": ("lei_diarmait_mac_mail_na_mbo", "1042.1.1", 1), # Diarmait mac Mael na mBo, King of Leinster (and High King since 1064)
     "MCM": ("mcm_toirdelbach_ua_briain", "1063.1.1", 1),  # Toirdelbach Ua Briain, King of Munster; Donnchad deposed 1063, d. 1064.8.22
     "CNN": ("cnn_aed_in_gai_bernaig", "1046.1.1", 1),     # Aed in Gai Bernaig of Connacht, [U] dates — NEW_CHARACTERS
+
+    # Italy and the probe, from the Italy research pass. A row may carry an
+    # optional FOURTH element: a regnal_name loc key, emitted into the term
+    # — vanilla's own papal convention (`regnal_number = 2 regnal_name =
+    # name_callisto`, 10_countries.txt PAP block; 96 uses file-wide). The
+    # pope's character keeps his BIRTH name (Anselmo of Baggio); the term
+    # crowns him Alexander II.
+    "VEN": ("ven_domenico_contarini", "1043.1.1", 1),     # Doge Domenico Contarini — vanilla character, vanilla's own term date
+    "PAP": ("pap_anselmo_da_baggio", "1061.9.30", 2, "name_alexander"), # Pope Alexander II — NEW_CHARACTERS; capital fixed avignon->rome below
+    "PYS": ("kie_vsevolod_rurikovich", "1054.2.20", 1),   # Vsevolod I, the third triumvir — seated on the NEW_COUNTRIES probe tag
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -174,6 +184,41 @@ HISTORICAL_RULERS = {
 # governed by Baldwin V of Flanders as regent). The check still fails if a
 # listed tag's ruler turns out to be an adult, so stale entries cannot rot.
 MINOR_RULERS = {"FRA", "HOL", "HUN"}
+
+# ---------------------------------------------------------- new countries ---
+# The NEW-COUNTRIES-DESIGN.md mechanism, first probe: PEREYASLAVL. One tag,
+# five locations out of Kyiv's left bank, and a ruler vanilla already ships
+# (Vsevolod I, the third triumvir). The probe answers the design doc's open
+# questions: no identity block (the SIC precedent says landed tags need
+# none), a tag id absent from every vanilla database (PYS — checked), and
+# KIE's own include templates. Borders are PROVISIONAL pending the Rus
+# territory pass. `PER` is Perigord — never reuse it for Pereyaslavl.
+NEW_COUNTRIES = {
+    "PYS": """\tPYS = {
+\t\town_control_core = {
+\t\t\tpereiaslav desnyanskyi_horodok boryspil oster kozelets
+\t\t}
+
+\t\tstarting_technology_level = 3
+\t\tinclude = "expl_eastern_europe"
+\t\tinclude = "ruthenian_principality_no_coast"
+\t\tcapital = pereiaslav
+\t\tcountry_rank = rank_duchy
+\t}
+""",
+}
+
+# tag -> the locations it takes at start. The generator removes each from
+# whatever ownership list currently carries it and asserts exclusivity.
+LOCATION_TRANSFERS = {
+    "PYS": ["pereiaslav", "desnyanskyi_horodok", "boryspil", "oster", "kozelets"],
+}
+
+# tag -> (expected old capital, new capital). Asserted against the old
+# value so a vanilla patch moving it fails loudly.
+CAPITAL_FIXES = {
+    "PAP": ("avignon", "rome"),   # the 1337 block is the Avignon papacy; cardinals follow the capital
+}
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
 # 7236 stay. Two ordering rules, both of which crash rather than error:
@@ -548,6 +593,25 @@ NEW_CHARACTERS = """
 		father = lei_diarmait_mac_mail_na_mbo
 		tag = LEI
 	}
+
+	# --- 1066 Italy -------------------------------------------------------
+	# Pope Alexander II — Anselmo da Baggio of Milan, elected 1061.9.30
+	# against the antipope Cadalus (the schism is situation material). The
+	# character carries his BIRTH name; the papal name arrives through the
+	# term's regnal_name, vanilla's own convention (pap_benedetto_xii is
+	# name_james/Fournier with regnal_name = name_benedict). Dynasty-less
+	# and clergy_estate, per the vanilla papal characters. name_anselm is
+	# the North Italian pool's own key (registry:1949). Historically dies
+	# 1073.4.21 — Gregory VII and the Investiture Controversy follow.
+	pap_anselmo_da_baggio = {
+		first_name = { name = name_anselm }
+		culture = lombard
+		religion = catholic
+		estate = clergy_estate
+		birth_date = 1010.1.1
+		birth = milano
+		tag = PAP
+	}
 """
 
 
@@ -659,6 +723,60 @@ def build_countries(src):
     report.append(("ruler = <name> -> random", n_ruler))
     report.append(("ruler = random already", n_already))
 
+    # NEW COUNTRIES: transfer the locations out of their 1337 owners first
+    # (exclusive ownership is the invariant), then insert the new blocks
+    # before the wrapper braces. Runs BEFORE the ruler passes so a new tag
+    # gets its `ruler = random` from the add-missing pass and can be seated
+    # through HISTORICAL_RULERS like any other.
+    # `capital = <loc>` lines are NOT ownership (a landless tag's capital
+    # can sit on someone else's land — CAG's cagliari under ARA), so both
+    # the pre-check and the validate scan text with capital lines removed.
+    def _ownership_text(s):
+        return re.sub(r"^[ \t]*capital[ \t]*=[^\n]*\n", "", s, flags=re.M)
+
+    n_transferred = 0
+    for _t, locs in sorted(LOCATION_TRANSFERS.items()):
+        for loc in locs:
+            own = _ownership_text(src)
+            hits = list(re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", own))
+            if len(hits) != 1:
+                sys.exit(f"LOCATION_TRANSFERS: {loc} appears {len(hits)} times "
+                         f"in ownership lists — expected exactly once")
+            # remove from the REAL src by matching the same token there
+            real = list(re.finditer(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", src))
+            live = [h for h in real
+                    if not re.search(r"capital[ \t]*=[ \t]*$",
+                                     src[max(0, h.start() - 40):h.start()])]
+            if len(live) != 1:
+                sys.exit(f"LOCATION_TRANSFERS: {loc} ambiguous in raw text")
+            h = live[0]
+            src = src[:h.start()] + src[h.end():]
+            n_transferred += 1
+    report.append(("locations transferred to new countries", n_transferred))
+    wrap = src.rindex("\n}\n}")
+    src = src[:wrap] + "\n" + "\n".join(NEW_COUNTRIES[t] for t in sorted(NEW_COUNTRIES)) + src[wrap:]
+    report.append(("new countries inserted", len(NEW_COUNTRIES)))
+
+    # Capital corrections, asserted against the expected old value.
+    starts_cf = list(re.finditer(COUNTRY_RE, src, re.M))
+    n_cap = 0
+    for _t, (old_cap, new_cap) in sorted(CAPITAL_FIXES.items()):
+        for i, b in enumerate(starts_cf):
+            if b.group(1) != _t:
+                continue
+            end = starts_cf[i + 1].start() if i + 1 < len(starts_cf) else len(src)
+            body, k = re.subn(r"(^[ \t]*capital[ \t]*=[ \t]*)" + old_cap + r"\b",
+                              lambda mm, nc=new_cap: mm.group(1) + nc,
+                              src[b.start():end], count=1, flags=re.M)
+            if not k:
+                sys.exit(f"CAPITAL_FIXES: capital {old_cap} not found in {_t}")
+            src = src[:b.start()] + body + src[end:]
+            n_cap += 1
+            break
+        else:
+            sys.exit(f"CAPITAL_FIXES: tag {_t} not found")
+    report.append(("capitals corrected", n_cap))
+
     # A country with no ruler at all hits the empty-throne regency the ENG probe
     # produced, so make it explicit. The test is per COUNTRY, not per government
     # block: 175 country blocks declare `government = { … }` twice, and testing
@@ -714,6 +832,26 @@ def build_countries(src):
         ("POK", "name_vseslav"): 1,       # Vseslav reigns now, the first
         ("POK", "name_iziaslav"): 1,
         ("POK", "name_briachislav"): 1,
+        # PAP's 37-name table, the undisputed seventeen (Italy pass, F10).
+        # Deliberately NOT touched: name_benedict, name_boniface, name_john
+        # — antipope-numbering disputes, second source owed.
+        ("PAP", "name_alexander"): 2,     # Alexander II reigns NOW
+        ("PAP", "name_adrian"): 3,
+        ("PAP", "name_anastasius"): 3,
+        ("PAP", "name_callisto"): 1,
+        ("PAP", "name_celestine"): 1,
+        ("PAP", "name_clement"): 2,
+        ("PAP", "name_eugene"): 2,
+        ("PAP", "name_gelasius"): 1,
+        ("PAP", "name_gregory"): 6,       # Gregory VII arrives 1073
+        ("PAP", "name_honorius"): 1,      # the antipope claims II — situation material
+        ("PAP", "name_innocent"): 1,
+        ("PAP", "name_lucius"): 1,
+        ("PAP", "name_martin"): 1,
+        ("PAP", "name_nicholas"): 2,
+        ("PAP", "name_paschal"): 1,
+        ("PAP", "name_urban"): 1,
+        ("PAP", "name_victor"): 2,
     }
     # Vanilla typo: BYZ's table says `name_andonikos` — a key with no loc
     # entry anywhere (the registry has only name_andronikos,
@@ -760,9 +898,12 @@ def build_countries(src):
             sys.exit(f"REGNAL_FIXES: tag {tag} not found")
     report.append(("regnal numbers recalibrated", n_fix))
 
-    for tag, (char, accession, regnal) in sorted(HISTORICAL_RULERS.items()):
+    for tag, row in sorted(HISTORICAL_RULERS.items()):
+        char, accession, regnal = row[:3]
+        rname = row[3] if len(row) > 3 else None
         term = (f"ruler_term = {{ character = {char} start_date = {accession} "
-                f"regnal_number = {regnal} }}")
+                f"regnal_number = {regnal}"
+                + (f" regnal_name = {rname}" if rname else "") + " }")
         pat = re.compile(r"(^\t" + tag + r" = \{.*?^)([ \t]*)ruler = random", re.M | re.S)
         src, k = pat.subn(lambda m, c=char, t=term:
                           f"{m.group(1)}{m.group(2)}ruler = {c}\n{m.group(2)}{t}",
@@ -775,8 +916,18 @@ def build_countries(src):
     after = len(re.findall(COUNTRY_RE, src, re.M))
 
     def validate():
-        if after != before:
-            return f"country count changed {before} -> {after}: territory would be lost"
+        if after != before + len(NEW_COUNTRIES):
+            return (f"country count {after} != {before} + {len(NEW_COUNTRIES)} "
+                    f"new — territory would be lost or a block failed to land")
+        # Transfer exclusivity: every transferred location must now appear
+        # exactly once in OWNERSHIP text (capital lines excluded) — inside
+        # its new owner's block.
+        own_final = re.sub(r"^[ \t]*capital[ \t]*=[^\n]*\n", "", src, flags=re.M)
+        for _t, locs in sorted(LOCATION_TRANSFERS.items()):
+            for loc in locs:
+                n_now = len(re.findall(r"(?<=[\s])" + re.escape(loc) + r"(?=[\s])", own_final))
+                if n_now != 1:
+                    return f"{loc}: {n_now} owners after the transfer — must be exactly 1"
         for key in COUNTRY_BLOCKS + COUNTRY_LINES:
             if key == "ruler_term":
                 continue    # vanilla's are stripped; OURS are re-added and audited below
@@ -785,7 +936,7 @@ def build_countries(src):
         # Every remaining ruler must be random or a Phase 2 entry. This is the
         # check that catches a ruler line whose shape differs just enough to miss
         # the rewrite and leave that country a -250-year-old.
-        chars = {c for c, _, _ in HISTORICAL_RULERS.values()}
+        chars = {r[0] for r in HISTORICAL_RULERS.values()}
         stray = [m.group(1) for m in
                  re.finditer(r"^[ \t]*ruler[ \t]*=[ \t]*([A-Za-z0-9_]+)", src, re.M)
                  if m.group(1) != "random" and m.group(1) not in chars]
@@ -814,7 +965,7 @@ def build_countries(src):
             r = re.findall(r"^[ \t]*ruler = ([a-z_0-9]+)", src[m.start():e], re.M)
             if r and r[0] != "random":
                 placed[m.group(1)] = r[0]
-        expected = {t: c for t, (c, _, _) in HISTORICAL_RULERS.items()}
+        expected = {t: r[0] for t, r in HISTORICAL_RULERS.items()}
         if placed != expected:
             return (f"historical rulers landed in the wrong countries: "
                     f"expected {expected}, found {placed}")
@@ -825,7 +976,7 @@ def build_countries(src):
         # Audit COMMENT-STRIPPED text: vanilla ships 60 commented-out
         # ruler_terms (dates and all) that the parser never sees.
         nc = re.sub(r"#[^\n]*", "", src)
-        accessions = {c: acc for c, acc, _ in HISTORICAL_RULERS.values()}
+        accessions = {r[0]: r[1] for r in HISTORICAL_RULERS.values()}
         terms = re.findall(r"ruler_term[ \t]*=[ \t]*\{([^}]*)\}", nc)
         if len(terms) != len(HISTORICAL_RULERS):
             return f"expected {len(HISTORICAL_RULERS)} ruler_terms, found {len(terms)}"
@@ -867,7 +1018,8 @@ def build_countries(src):
                     f"{len(HISTORICAL_RULERS)} (one per generated ruler_term)")
         return None
 
-    return src, report, validate, f"{before} country blocks, all kept"
+    return src, report, validate, (f"{before} vanilla country blocks kept"
+                                   f" + {len(NEW_COUNTRIES)} new = {after}")
 
 
 def build_ios(src):
@@ -1049,7 +1201,8 @@ def build_characters(src):
         # Every historical ruler must exist, be an adult on the start date, and
         # accede between birth and START_DATE — the accession feeds the open
         # ruler_term, and a future or pre-birth date there means no seat.
-        for tag, (key, accession, _regnal) in sorted(HISTORICAL_RULERS.items()):
+        for tag, _row in sorted(HISTORICAL_RULERS.items()):
+            key, accession = _row[0], _row[1]
             if key not in pos:
                 return f"HISTORICAL_RULERS[{tag}] = {key} is not a character"
             body = src[pos[key]:pos[key] + 700]

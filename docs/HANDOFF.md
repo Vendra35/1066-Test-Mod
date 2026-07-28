@@ -332,6 +332,19 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    (vanilla character); PAP needs a regnal_name builder change first;
    the Great Seljuk slice has its full design brief.
 
+11. **Italy quick wins + THE PROBE (LANDED, untested):** Venice = Doge
+   Domenico Contarini (vanilla's own term date, machine-matched);
+   Rome = Pope Alexander II via the NEW regnal_name term mechanism
+   (character keeps his birth name Anselmo da Baggio; 17 undisputed
+   papal regnal numbers recalibrated; capital corrected avignon→rome
+   through the new CAPITAL_FIXES); and **PYS/Pereiaslav — the first
+   invented country**: five left-bank locations out of Kyiv, Vsevolod I
+   seated, no identity block (the SIC precedent under test). 56 rulers.
+   NEXT LAUNCH: does Pereiaslav EXIST on the map with Vsevolod ruling
+   (the probe's whole question); does the Pope display as
+   "Alexander II" of "Rome"; Doge Contarini in Venice; Aquitaine now
+   independent under William VIII; the -1000 opinion wall.
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,

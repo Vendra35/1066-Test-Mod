@@ -9946,35 +9946,36 @@ countries = {
 		country_rank = rank_kingdom
 		government = {
 
-			ruler = random
+			ruler = pap_anselmo_da_baggio
+			ruler_term = { character = pap_anselmo_da_baggio start_date = 1061.9.30 regnal_number = 2 regnal_name = name_alexander }
 
 			regnal_numbers = {
-				name_adrian = 5
+				name_adrian = 3
 				name_agapetus = 2
-				name_alexander = 4
-				name_anastasius = 4
+				name_alexander = 2
+				name_anastasius = 3
 				name_benedict = 12
 				name_boniface = 8
-				name_callisto = 2
-				name_celestine = 5
-				name_clement = 5
+				name_callisto = 1
+				name_celestine = 1
+				name_clement = 2
 				name_damasus = 2
-				name_eugene = 3
+				name_eugene = 2
 				name_felix = 4
 				name_formosus = 1
-				name_gelasius = 2
-				name_gregory = 10
-				name_honorius = 4
-				name_innocent = 5
+				name_gelasius = 1
+				name_gregory = 6
+				name_honorius = 1
+				name_innocent = 1
 				name_john = 22
 				name_julius = 1
 				name_lando = 1
 				name_leon = 9
-				name_lucius = 3
+				name_lucius = 1
 				name_marinus = 2
-				name_martin = 4
-				name_nicholas = 4
-				name_paschal = 2
+				name_martin = 1
+				name_nicholas = 2
+				name_paschal = 1
 				name_paul = 1
 				name_pius = 1
 				name_roman = 1
@@ -9983,9 +9984,9 @@ countries = {
 				name_sixtus = 3
 				name_stephen = 9
 				name_theodore = 2
-				name_urban = 4
+				name_urban = 1
 				name_valentine = 1
-				name_victor = 3
+				name_victor = 2
 			}
 
 			laws = {
@@ -10039,7 +10040,7 @@ countries = {
 		}
 
 		court_language = church_dialect
-		capital = avignon
+		capital = rome
 
 		is_valid_for_release = no
 	}
@@ -10929,7 +10930,8 @@ countries = {
 			type = republic
 			heir_selection = doge_election
 
-			ruler = random
+			ruler = ven_domenico_contarini
+			ruler_term = { character = ven_domenico_contarini start_date = 1043.1.1 regnal_number = 1 }
 
 			laws = {
 				republican_foundation_law = republicanism_policy
@@ -37813,7 +37815,7 @@ countries = {
 
 			poltava kremenchuk myrhorod velyki_sorochyntsi kotelva
 			lubny pyriatyn horodyshche horoshino zolotonosha
-			pereiaslav desnyanskyi_horodok boryspil oster kozelets
+			    
 			#Black Ruthenia
 			mazyr buinovichi kalinkavichy pietrykaw rudobelka
 			#Chernihiv
@@ -57653,6 +57655,22 @@ countries = {
 		government = {
 			ruler = random
 		}
+	}
+
+	PYS = {
+		government = {
+			ruler = kie_vsevolod_rurikovich
+			ruler_term = { character = kie_vsevolod_rurikovich start_date = 1054.2.20 regnal_number = 1 }
+		}
+		own_control_core = {
+			pereiaslav desnyanskyi_horodok boryspil oster kozelets
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "ruthenian_principality_no_coast"
+		capital = pereiaslav
+		country_rank = rank_duchy
 	}
 
 }

@@ -3,4 +3,6 @@
 	# (named_colors/02_map.txt:15); these two follow its hsv360 form.
 	map_NRM = hsv360 { 45 85 90 }
 	map_NOR = hsv360 { 215 70 55 }
+	# Pereyaslavl, the first NEW_COUNTRIES tag.
+	map_PYS = hsv360 { 190 55 65 }
 }

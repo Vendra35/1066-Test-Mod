@@ -1,5 +1,14 @@
 # NEW_COUNTRIES — design for inventing a country that vanilla does not ship
 
+> **STATUS: the probe is BUILT (2026-07-28 evening).** PYS/Pereyaslavl is
+> in the generated output — five locations transferred out of KIE with
+> exclusivity assertions (capital lines excluded from ownership counting,
+> a lesson the first dry-run taught), the block inserted before the
+> wrapper braces, Vsevolod seated through the ordinary HISTORICAL_RULERS
+> row, CAPITAL_FIXES shipped alongside (PAP avignon→rome), and the
+> mechanism proven by breaking. Awaiting its first in-game launch — the
+> open questions below are what that launch answers.
+
 > Written 2026-07-28 while the ruler layer stood at 50. Four parked slices
 > all block on this one mechanism: the Great Seljuks + Abbasids (one job),
 > the 14 Iberian taifas, Pereyaslavl, and Fatimid Egypt. Everything below

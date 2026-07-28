@@ -104663,4 +104663,23 @@ character_db={
 		father = lei_diarmait_mac_mail_na_mbo
 		tag = LEI
 	}
+
+	# --- 1066 Italy -------------------------------------------------------
+	# Pope Alexander II — Anselmo da Baggio of Milan, elected 1061.9.30
+	# against the antipope Cadalus (the schism is situation material). The
+	# character carries his BIRTH name; the papal name arrives through the
+	# term's regnal_name, vanilla's own convention (pap_benedetto_xii is
+	# name_james/Fournier with regnal_name = name_benedict). Dynasty-less
+	# and clergy_estate, per the vanilla papal characters. name_anselm is
+	# the North Italian pool's own key (registry:1949). Historically dies
+	# 1073.4.21 — Gregory VII and the Investiture Controversy follow.
+	pap_anselmo_da_baggio = {
+		first_name = { name = name_anselm }
+		culture = lombard
+		religion = catholic
+		estate = clergy_estate
+		birth_date = 1010.1.1
+		birth = milano
+		tag = PAP
+	}
 }

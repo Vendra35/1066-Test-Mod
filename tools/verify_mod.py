@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 104: 53 named rulers + 53 terms after the Celtic batch.
+# Armed at 110: 56 named rulers + 56 terms after Italy and the probe.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=104)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=110)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -348,7 +348,7 @@ for _dk in re.findall(r"^\t([a-z_0-9]+) = " + BS + "{", strip_comments(_our_dynf
     if f" {_dk}:" not in _our_loc:
         probs.append(f"our dynasty {_dk} has no loc key")
 # no character seated on two tags
-_seated = [c for c, _, _ in _bs.HISTORICAL_RULERS.values()]
+_seated = [r[0] for r in _bs.HISTORICAL_RULERS.values()]
 count += len(_seated)
 for _c in set(_seated):
     if _seated.count(_c) > 1:
@@ -365,7 +365,8 @@ _van10 = read(_np(VAN + "/main_menu/setup/start/10_countries.txt"))
 _vblocks = list(re.finditer(r"^\t([A-Z0-9]{2,6}) = " + BS + "{", _van10, re.M))
 probs, count = [], 0
 _compared = 0
-for _tag, (_char, _acc, _rn) in sorted(_bs.HISTORICAL_RULERS.items()):
+for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
+    _char, _acc = _row[0], _row[1]
     for _i, _b in enumerate(_vblocks):
         if _b.group(1) != _tag:
             continue
