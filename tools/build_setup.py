@@ -1792,6 +1792,19 @@ def build_countries(src):
     if _bad_recip:
         sys.exit(f"horde/tribe recipients forbidden: {sorted(_bad_recip)}")
 
+    # No location may appear in TWO different tags' transfer/grant lists:
+    # the second grant would silently re-take it from the first (sorted
+    # order decides the winner) and every per-location assert would still
+    # pass. Found as a blind spot in the end-of-day audit — nothing had
+    # fired, but the class is silent by construction.
+    _list_owner = {}
+    for _t, locs in list(LOCATION_TRANSFERS.items()) + list(LOCATION_GRANTS.items()):
+        for l in locs:
+            if l in _list_owner and _list_owner[l] != _t:
+                sys.exit(f"{l} is listed for both {_list_owner[l]} and {_t} "
+                         f"— transfer/grant lists must be disjoint")
+            _list_owner[l] = _t
+
     _landless_claims = {t: _owned_by(src, t)
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS}
     for _t, _held in _landless_claims.items():
