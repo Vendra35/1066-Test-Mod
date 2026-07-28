@@ -612,18 +612,13 @@ Byzantium → landless-dependency fix → Seljuks). The 34 wiki PDFs in
 `python tools/build_setup.py --dry-run` → clean, ~12s (the ownership
 index refactor; if it takes minutes, something regressed).
 
-**PENDING FROM THE NIGHT:** a deep audit of the SIBLING mod Mongol
-Resurgence (against this project's post-MR laws) was running as an
-overnight background agent when the session closed. Its report may or
-may not have landed in the conversation; the raw output file, if it
-completed, is under the previous session's task directory (a
-`tasks/*.output` file in the claude temp tree). If unrecoverable,
-re-launch: the audit brief is reproducible — audit MR against
-KNOWLEDGE/GUIDE/DECODER, categorized DEFINITE/SUSPECT/OBSERVATION,
-file:line + law citations, no writes. MR's own harness passes 13/13
-and its quick mechanical audit (BOM/loc/prev/c:TAG) came back clean;
-MR's CLAUDE.md now carries a "LAWS DISCOVERED DOWNSTREAM" pointer
-section (committed in MR's own repo).
+**LANDED FROM THE NIGHT:** the Mongol Resurgence deep audit completed
+and is committed in MR's own repo as `docs/AUDIT-2026-07-29.md` — six
+DEFINITE bugs (headline: the Great Partition endgame can never start;
+its arming event has no recipient), five SUSPECT, twelve observations,
+a recommended fix order, ZERO fixes applied (user approval required).
+D1/D2/D5 were spot-verified by the main session. MR's CLAUDE.md also
+carries the "LAWS DISCOVERED DOWNSTREAM" pointer section.
 
 **TOMORROW STARTS WITH:** the Seljuk batch in-game test — the full list
 is item 16 above, headline question the ABS Caliphate probe. Then the
