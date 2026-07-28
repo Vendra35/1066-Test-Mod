@@ -499,6 +499,13 @@ vanilla's own `vnt_ebles_i_de_ventadour` (05_characters.txt:29169) uses
 line 6044. The scripted-name check is therefore: does the key exist in the
 character-names loc — a much larger namespace than the pools. `name_harald`
 exists in neither, so the original lesson stands.
+**REFINED AGAIN (Persia pass, verified):** the registry is TWO files —
+LITERAL names resolve from `character_names_l_english.yml` (vanilla's own
+`Tashfin:4383`, `Ibrahim:1364`, and `Alp_Arslan:12559 → "Alp Arslan"`,
+which also settles underscore→space as OBSERVED). A literal without a row
+in either registry or our own loc renders nothing — measured on our own
+`Tamim`, caught by the authored-identifiers harness check on its first
+run and fixed by adding the loc key. Check BOTH files plus ours.
 
 ### First Phase 2 slice: North Sea 1066
 **Established:** generated and validated; not yet observed in game.
@@ -540,10 +547,14 @@ them all. Corroborated three ways:
    (`10_countries.txt`, Japan block). ~209 named rulers, 231 `ruler_term`s.
 2. **Vanilla:** 650 of 863 named rulers carry a matching
    `ruler_term = { character = <same key> … }` in the same block. Of the 213
-   without, the visible cases are PU juniors whose terms live in the senior
-   partner (WLS with `ruler = eng_edward_iii`, via `inherit_ruler_terms`),
-   tribes and theocracies. Whether the remainder actually seat at 1337 is
-   unmeasured — do not cite them as counter-examples without testing one.
+   without, the visible cases are cross-tag rulers (WLS with
+   `ruler = eng_edward_iii` and NO term), tribes and theocracies. Whether
+   the remainder actually seat at 1337 is unmeasured — do not cite them as
+   counter-examples without testing one.
+   **CORRECTED by the Celtic pass:** the original version of this entry
+   attributed WLS to `inherit_ruler_terms` — wrong; that key occurs
+   exactly twice in the whole file and both read `= YMT` (Japan),
+   re-verified by hand. WLS is simply an unmatched named ruler.
 3. **Our two earlier probe rounds** (England regent despite `ruler =` while
    vanilla's poisoned term chain was present) now read as the same law from
    the other side: seating goes through the term container. A poisoned chain
@@ -1021,8 +1032,12 @@ identifier ledger throughout; spot-verification owed at landing).
   steppe_horde on Baghdad — repurposing it without a government change
   would render the caliph as a horde (the composed-name law). The
   Abbasid tag and the GREAT SELJUK tag are the same piece of work.
-- **Naming machinery, decoded both ways:** `rank_empire_muslim` renders
-  "Caliphate" for ANY Muslim empire-rank country (free win); the
+- **Naming machinery, decoded both ways** — CORRECTED by the Persia pass:
+  `rank_empire_muslim` ("Caliphate") is **theocracy-gated**
+  (`country_ranks.txt:1434` requires `government_type = theocracy`,
+  re-verified by hand) — an empire-rank Muslim MONARCHY stays "Empire",
+  and the Abbasid tag must be a theocracy or the styling silently never
+  fires; the
   Marinid/Zayyanid/Hafsid/Nasrid rank branches are DYNASTY-GATED, so
   seating a Zirid on TUN auto-drops the Hafsid styling with no override
   (first-match working FOR us) — but MAM's branch is tag-gated with no
@@ -1050,6 +1065,91 @@ identifier ledger throughout; spot-verification owed at landing).
 Zirid Tunis, Almoravid TFL); Egypt/Abbasids/Seljuks/Aleppo are one
 coordinated invent-a-country slice; the caliphate IO and the Hilalian
 catastrophe are future situation material.
+
+### The Celtic world at 1066 — the High Kingship ships, and the naming grammar decodes (research pass, core claims re-verified)
+**Established:** 2026-07-28, Opus Celtic report; the IO term, the
+inherit_ruler_terms correction and the Gaelic loc rows checked by hand.
+- **The High Kingship of Ireland is a fully built vanilla IO**
+  (`international_organizations/high_kingship.txt`): character-type
+  leader, elections, THREE casus belli, a GUI panel, and
+  `override_ruler_title = yes` — "High King" outranks the holder's own
+  title. Vanilla's own term chain (15_IO :303) names the 1066 holder:
+  **Diarmait mac Máel na mBó, from 1064.8.22.** Leaderless at 1337; how a
+  CHARACTER-type leader is seeded at setup is an open probe. Our
+  generator stripped the chain lawfully — a comment now owed pointing
+  back at vanilla :302-304.
+- **The scripted-name grammar, decoded from the registry's own header:**
+  `name_KEY.<language>` rows drive display per the ruler's culture→
+  language, `.genitive` drives PATRONYMICS (74 `.gaelic_language.genitive`
+  rows — a son of a `name_dermot` father auto-renders "mac Diarmata"),
+  and the base key is often unrecognisable: `name_louis` renders
+  **Llywelyn** in Welsh, `name_eugene` → Owain, `name_hugh` → Aodh,
+  `name_godfrey` → Goraidh. Search the language ROW, not the base key.
+- **Clean batch: LEI Diarmait + MCM Toirdelbach Ua Briain** — vanilla
+  characters, landed tags (tiny: 1 and 4 locations — Ireland is an
+  Anatolia-shape territory job, 38 tags on 96 locations). Vanilla files
+  the whole 10th-12th century Munster cast under `mcm_`.
+- **Wales is entirely landless** — all six kingdom tags are claimant
+  shells (the LON/GLC/CAT shape); WLS itself is the 1267 Principality
+  with `culture_definition = english`. Welsh rulers wait for the
+  dissolution of the ten marcher tags. `aberffraw_dynasty` and
+  `mathrafal_dynasty` ship; Welsh name keys mostly do not (Bleddyn: zero
+  hits game-wide; literals are the road).
+- **Two more New-World tag traps:** `ISL` is in aridoamerica.txt and
+  `GWY` in eastcoast.txt — same class as PER-is-Périgord.
+- **Vanilla bug #7:** `tyr_domnall_ua_lochlainn` carries
+  `dynasty = o_neill_dynasty` though he is a Mac Lochlainn and
+  `lochlainn_dynasty` exists (04_dynasties.txt:379).
+- Mann's 1066 ruler is genuinely disputed [D] (Chronicle of Mann vs the
+  Irish annals); Godred Crovan is NOT king until 1079 — he fought at
+  Stamford Bridge, a ready-made Isles hook for the situation layer.
+**Means:** two rows land now (LEI, MCM) plus Diarmait's son Murchad
+authored for the Dublin/Mann layer; the High Kingship leader probe and
+the Irish/Welsh territory passes are recorded work; the naming-grammar
+law upgrades every future Celtic/Gaelic authoring.
+
+### Persia/Central Asia and Italy — the last two theatres mapped (research passes; key claims re-verified)
+**Established:** 2026-07-28, the Persia pass (93 tool uses) and the Italy
+pass (88); rank_empire_muslim gate, Alp_Arslan literal, map_seljukids,
+and the two live output defects re-verified by hand.
+- **The Great Seljuk synthesis:** 847 locations / 104 tags at its 1066
+  maximum (bigger than Anatolia AND the Levant); recommended carrier is a
+  NEW `SEL` tag — free id, and Paradox already ships `seljukids_dynasty`
+  + its coat of arms + "Al-e Saljuq" loc + an UNUSED
+  `map_seljukids = rgb { 30 160 203 }` (02_map.txt:2926). KRM (Kerman) is
+  a ready-made Qavurt appanage seat; MRV sits on Merv; Khwarezm and
+  Shaddadid-Ani are Seljuk PROVINCES in 1066 (their founders arrive
+  1077/1072 — script, not setup). Do NOT repurpose TIM (breaks the
+  Timurid formable — the Prussian-Destiny failure mode) or JAL (horde).
+- **The Papacy needs one builder change:** papal names live in the term's
+  `regnal_name` (96 vanilla uses — Benedict XII's character is
+  name_james/Fournier), which HISTORICAL_RULERS cannot yet emit; and
+  PAP's capital is AVIGNON (cardinal-generation follows the capital).
+  Otherwise the papal machinery is free: `PAP: "Rome"` IS read (branch 3
+  of name construction), rank renders "Papacy"/"Pope", the
+  catholic_church IO derives the pope from PAP's ruler, and membership
+  is built at runtime by _hardcoded on_game_start. NO 11th-century pope
+  ships (earliest papal term is Callixtus II, 1119; the only pap_ alive
+  in 1066 is Callixtus aged SIX — Guy of Burgundy, son of our seated
+  FCB ruler!).
+- **Italy quick wins vs holds:** VEN's 1066 doge SHIPS
+  (`ven_domenico_contarini`, doge 1043, with successors); NAP can take an
+  authored Guiscard (hauteville dynasty pending); SIC must be HELD
+  (Muslim island in 1066 — Palermo falls 1072); Tuscany has NO monarchy
+  tag (communes only — design decision); the Byzantine Catepanate
+  (Bari falls 1071!) is the southern half of the Byzantium slice, with
+  griko_culture shipped and unused.
+- **Two LIVE defects found in our own output and closed/parked:**
+  `creation_date` was invisible to every date audit (`\bdate\b` cannot
+  match after an underscore — the third one-line/wordbreak blindness of
+  the day) — 18 future-dated IO INSTANCES (Guelph/Ghibelline leagues
+  1125, Middle Kingdom 1271…) were seeded active at 1066 and are now
+  stripped by build_ios with assertions; and 28 future-dated
+  DEPENDENCIES ride in 12_diplomacy (Venice-Trieste 1202…) — counted
+  and asserted, strip PARKED (it reshapes the vassal web).
+- **The authored-identifiers harness check** (dynasty/name/birthplace/
+  dynasty-loc/single-seat, 132 items) exists per the pre-test review
+  request and caught the `Tamim` missing-loc bug on its first dry run.
 
 ## Open questions to settle early
 

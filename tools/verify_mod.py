@@ -283,9 +283,78 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 96: 50 named rulers + 50 terms after the Islamic South batch.
+# Armed at 104: 53 named rulers + 53 terms after the Celtic batch.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=96)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=104)
+
+# ------------------------------------------ authored-content cross-refs ---
+# Requested as the pre-test review pass and kept as permanent checks: every
+# identifier OUR authored characters reference must resolve, because none
+# of them errors in game — a bad dynasty, name key or birth location just
+# renders wrong or not at all. The scripted-name registry is TWO loc files
+# (character_names_dynamic + character_names — the second holds the
+# literals; vanilla's own Tashfin/Ibrahim/Alp_Arslan live there), plus our
+# own yml for keys we add. This check found its first real bug on its dry
+# run: the literal `Tamim` had no loc entry anywhere.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("build_setup", os.path.join(MOD, "tools", "build_setup.py"))
+_bs = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_bs)
+
+_defs_txt = read(_np(VAN + "/in_game/map_data/definitions.txt"))
+_dyn_reg = read(_np(VAN + "/main_menu/localization/english/character_names_dynamic_l_english.yml"))
+_lit_reg = read(_np(VAN + "/main_menu/localization/english/character_names_l_english.yml"))
+_our_loc = "".join(read(p) for p in yml_files)
+_van_dyn = read(_np(VAN + "/main_menu/setup/start/04_dynasties.txt"))
+_our_dynfile = ""
+_our_dynpath = _np(os.path.join(MOD, "main_menu", "setup", "start", "04_zz_1066_dynasties.txt"))
+if os.path.isfile(_our_dynpath):
+    _our_dynfile = read(_our_dynpath)
+
+probs, count = [], 0
+_nc_src = _bs.NEW_CHARACTERS
+for _m in re.finditer(r"^\t([a-z][a-z0-9_]*) = " + BS + "{", _nc_src, re.M):
+    _key = _m.group(1)
+    _end = _nc_src.find("\n\t}", _m.start())
+    _body = _nc_src[_m.start():_end]
+    _bodync = re.sub(r"#[^\n]*", "", _body)
+    # dynasty resolves (vanilla or ours); dynasty-less is legal
+    _dy = re.search(r"dynasty[ \t]*=[ \t]*([a-z_0-9]+)", _bodync)
+    if _dy:
+        count += 1
+        if (_dy.group(1) + " = {") not in _van_dyn and (_dy.group(1) + " = {") not in _our_dynfile:
+            probs.append(f"{_key}: dynasty {_dy.group(1)} exists nowhere")
+    # name key resolves: name_ parts in the dynamic registry; literals in
+    # the literal registry or our own loc
+    _nm = re.search(r"name[ \t]*=[ \t]*([A-Za-z_0-9.]+)[ \t]*" + BS + "}", _bodync)
+    if _nm:
+        count += 1
+        for _part in _nm.group(1).split("."):
+            if _part.startswith("name_"):
+                if f" {_part}:" not in _dyn_reg:
+                    probs.append(f"{_key}: name part {_part} not in the dynamic registry")
+            else:
+                if f" {_part}:" not in _lit_reg and f" {_part}:" not in _our_loc:
+                    probs.append(f"{_key}: literal name {_part} has no loc entry anywhere")
+    # birth location exists
+    _bl = re.search(r"birth[ \t]*=[ \t]*([a-z_0-9]+)", _bodync)
+    if _bl:
+        count += 1
+        if not re.search(r"\b" + re.escape(_bl.group(1)) + r"\b", _defs_txt):
+            probs.append(f"{_key}: birth location {_bl.group(1)} not in definitions.txt")
+# our dynasties each carry a loc key
+for _dk in re.findall(r"^\t([a-z_0-9]+) = " + BS + "{", strip_comments(_our_dynfile), re.M):
+    count += 1
+    if f" {_dk}:" not in _our_loc:
+        probs.append(f"our dynasty {_dk} has no loc key")
+# no character seated on two tags
+_seated = [c for c, _, _ in _bs.HISTORICAL_RULERS.values()]
+count += len(_seated)
+for _c in set(_seated):
+    if _seated.count(_c) > 1:
+        probs.append(f"{_c} is seated on more than one tag")
+# Armed at 100: 21 authored characters x ~3 identifiers + 13 dynasties + 53 seats.
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=100)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on

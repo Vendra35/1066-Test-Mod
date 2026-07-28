@@ -104631,4 +104631,36 @@ character_db={
 		dynasty = almoravid_dynasty
 		tag = TFL
 	}
+
+	# --- 1066 Celtic world ------------------------------------------------
+	# From the Celtic research pass. The naming grammar (KNOWLEDGE.md):
+	# display comes from the language row of the key, and .genitive rows
+	# drive patronymics — name_hugh renders Aodh in Gaelic, and Murchad's
+	# father link auto-renders "mac Diarmata" from name_dermot's genitive.
+
+	# Aed "in Gai Bernaig" Ua Conchobair, King of Connacht 1046-1067 —
+	# [U] dates throughout. o_conchobair_dynasty ships in vanilla.
+	cnn_aed_in_gai_bernaig = {
+		first_name = { name = name_hugh }
+		culture = irish
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = roscommon
+		dynasty = o_conchobair_dynasty
+		tag = CNN
+	}
+
+	# Murchad mac Diarmata — Diarmait's son, king of Dublin (and Mann) for
+	# his father until his death in 1070. Authored unseated: Dublin has no
+	# tag (it sits inside PLE), and the succession needs him.
+	lei_murchad_mac_diarmata = {
+		first_name = { name = name_murphy }
+		culture = irish
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = dublin
+		dynasty = kinsella_dynasty
+		father = lei_diarmait_mac_mail_na_mbo
+		tag = LEI
+	}
 }

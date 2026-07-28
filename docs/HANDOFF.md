@@ -299,6 +299,24 @@ passes with a smallest-probe-first rollout (Pereyaslavl: one tag, eight
 locations, a vanilla ruler). Three more research agents are digging
 Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
 
+9. **Celtic batch (LANDED, phone-approved):** Leinster = Diarmait mac
+   Máel na mBó (vanilla's own High King since 1064 — the high_kingship
+   IO ships fully built and leaderless; seeding a character-type leader
+   is an open probe), Munster = Toirdelbach Ua Briain, Connacht = Áed
+   [U]. Murchad authored (patronymic showcase — should render
+   "mac Diarmata"). 53 rulers total.
+10. **Pre-test review findings (this session, per request):** the
+   `Tamim` literal had NO loc entry — fixed, and the new
+   authored-identifiers harness check (132 items, proven) now guards
+   the whole class. 18 future-dated IO instances (Guelph/Ghibelline
+   leagues 1125, Middle Kingdom 1271, Lordship of Ireland 1177…) are
+   now STRIPPED by build_ios — expect the three IO-leader errors GONE
+   from error.log and those IOs absent in game. 28 future-dated
+   dependencies counted and parked. Italy/Persia reports in KNOWLEDGE;
+   Italy quick win awaiting approval: VEN = Doge Domenico Contarini
+   (vanilla character); PAP needs a regnal_name builder change first;
+   the Great Seljuk slice has its full design brief.
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,

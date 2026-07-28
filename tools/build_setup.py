@@ -157,6 +157,16 @@ HISTORICAL_RULERS = {
     "YEM": ("yem_ali_al_sulayhi", "1047.1.1", 1),         # Ali al-Sulayhi, the Ismaili rising; capital fix (zabid->sana) waits for territory — NEW_CHARACTERS
     "TUN": ("zir_tamim_ibn_al_muizz", "1062.1.1", 1),     # Tamim the Zirid, mid-Hilalian catastrophe; Hafsid rank styling auto-drops (dynasty-gated) — NEW_CHARACTERS
     "TFL": ("alm_abu_bakr_ibn_umar", "1056.1.1", 1),      # Abu Bakr ibn Umar, Almoravid amir (Yusuf ibn Tashfin authored for the ~1072 handover) — NEW_CHARACTERS
+
+    # The Celtic world, 1066 — from the Celtic research pass. Vanilla's own
+    # high_kingship IO chain (15_IO :303, stripped by our IO pass) names
+    # Diarmait High King from 1064.8.22; seeding a CHARACTER-type IO leader
+    # is an open probe recorded in KNOWLEDGE. Parked: all six Welsh
+    # kingdom tags (landless claimant shells), Mann and Tyrone (disputed),
+    # the Irish territory pass (38 tags on 96 locations).
+    "LEI": ("lei_diarmait_mac_mail_na_mbo", "1042.1.1", 1), # Diarmait mac Mael na mBo, King of Leinster (and High King since 1064)
+    "MCM": ("mcm_toirdelbach_ua_briain", "1063.1.1", 1),  # Toirdelbach Ua Briain, King of Munster; Donnchad deposed 1063, d. 1064.8.22
+    "CNN": ("cnn_aed_in_gai_bernaig", "1046.1.1", 1),     # Aed in Gai Bernaig of Connacht, [U] dates — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -506,6 +516,38 @@ NEW_CHARACTERS = """
 		dynasty = almoravid_dynasty
 		tag = TFL
 	}
+
+	# --- 1066 Celtic world ------------------------------------------------
+	# From the Celtic research pass. The naming grammar (KNOWLEDGE.md):
+	# display comes from the language row of the key, and .genitive rows
+	# drive patronymics — name_hugh renders Aodh in Gaelic, and Murchad's
+	# father link auto-renders "mac Diarmata" from name_dermot's genitive.
+
+	# Aed "in Gai Bernaig" Ua Conchobair, King of Connacht 1046-1067 —
+	# [U] dates throughout. o_conchobair_dynasty ships in vanilla.
+	cnn_aed_in_gai_bernaig = {
+		first_name = { name = name_hugh }
+		culture = irish
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = roscommon
+		dynasty = o_conchobair_dynasty
+		tag = CNN
+	}
+
+	# Murchad mac Diarmata — Diarmait's son, king of Dublin (and Mann) for
+	# his father until his death in 1070. Authored unseated: Dublin has no
+	# tag (it sits inside PLE), and the succession needs him.
+	lei_murchad_mac_diarmata = {
+		first_name = { name = name_murphy }
+		culture = irish
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = dublin
+		dynasty = kinsella_dynasty
+		father = lei_diarmait_mac_mail_na_mbo
+		tag = LEI
+	}
 """
 
 
@@ -834,26 +876,54 @@ def build_ios(src):
     `leader = <TAG>`, a country, not a character — so removing the terms cannot
     leave it headless the way it would a country."""
     report = []
-    leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src, n = strip_blocks(src, "ruler_term")
     report.append(("ruler_term blocks removed", n))
+
+    # Future-dated IO INSTANCES are the same poison class everything else
+    # from 1337 wears: the Middle Kingdom (1271), the Lordship of Ireland
+    # (1177), the Guelph and Ghibelline leagues (1125)... 18 instances whose
+    # creation_date is after 1066.9.15, seeded active with leaders and
+    # members — three of them complained at every load (the accepted error
+    # class). Found by the Italy research pass: `creation_date` was
+    # INVISIBLE to the old date audit, because \bdate\b cannot match after
+    # an underscore. The blocks go whole; the IO TYPES stay defined in
+    # in_game/common, and later centuries can script them back when their
+    # years arrive.
+    start = _start_date()
+    cuts, removed = [], 0
+    for m in re.finditer(r"^\tadd_international_organization = \{", src, re.M):
+        end = find_block_end(src, src.index("{", m.start()))
+        body = src[m.start():end]
+        cd = re.search(r"creation_date[ \t]*=[ \t]*([0-9.]+)", body)
+        if cd and date_tuple(cd.group(1)) >= start:
+            a = src.rfind("\n", 0, m.start()) + 1
+            b = src.find("\n", end - 1)
+            cuts.append((a, len(src) if b < 0 else b + 1))
+            removed += 1
+    for a, b in reversed(cuts):
+        src = src[:a] + src[b:]
+    report.append(("future-dated IO instances removed", removed))
+
+    leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src = tidy(src)
 
     def validate():
         if re.search(r"^[ \t]*ruler_term[ \t]*=", src, re.M):
             return "ruler_term survived the strip"
-        now = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
-        if now != leaders:
-            return f"leader count changed {leaders} -> {now}"
-        # NOT line-anchored — one-line blocks put dates mid-line, which is how
-        # the countries file hid five of them from this same check in Phase 1.
-        m = re.search(r"\b(start_date|end_date|date)[ \t]*=[ \t]*([0-9.]+)",
-                      re.sub(r"#[^\n]*", "", src))
-        if m:
-            return f"{m.group(1)} = {m.group(2)} survived — it would parse as future at 1066"
+        # Exactly 18 in vanilla 1.3.11 — a patch changing the number fails
+        # loudly and a human re-reads the file.
+        if removed != 18:
+            return f"expected exactly 18 future-dated IO removals, removed {removed}"
+        nc = re.sub(r"#[^\n]*", "", src)
+        for mm in re.finditer(r"creation_date[ \t]*=[ \t]*([0-9.]+)", nc):
+            if date_tuple(mm.group(1)) >= start:
+                return f"a future creation_date survived: {mm.group(1)}"
+        m2 = re.search(r"\b(start_date|end_date|date)[ \t]*=[ \t]*([0-9.]+)", nc)
+        if m2:
+            return f"{m2.group(1)} = {m2.group(2)} survived — it would parse as future at 1066"
         return None
 
-    return src, report, validate, f"{leaders} IO leaders, all kept"
+    return src, report, validate, f"{leaders} IO leaders kept in the surviving instances"
 
 
 def _start_date():
@@ -1029,6 +1099,17 @@ def build_diplomacy(src):
     src = tidy(src)
     after = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
 
+    # AUDIT, decision parked (Italy pass, F2): 28 of the surviving
+    # dependencies carry FUTURE start_dates (earliest 1202.10.9 — Venice's
+    # vassal Trieste dated to Enrico Dandolo). Whether the engine collapses
+    # them like ruler_terms is unmeasured, and stripping them reshapes the
+    # whole 1337 vassal web — recorded as a proposal, counted here so any
+    # drift is loud.
+    n_future_deps = sum(1 for d in re.findall(
+        r"start_date[ \t]*=[ \t]*([0-9.]+)", re.sub(r"#[^\n]*", "", src))
+        if date_tuple(d) >= _start_date())
+    report.append(("future-dated dependencies (parked)", n_future_deps))
+
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):
             return "an appanage reference survived the strip"
@@ -1036,6 +1117,9 @@ def build_diplomacy(src):
         # fails loudly and a human re-reads the file — better than drifting.
         if n != 10 or before - after != n:
             return f"expected exactly 10 appanage cuts, removed {n} ({before} -> {after})"
+        if n_future_deps != 28:
+            return (f"future-dated dependency count changed: {n_future_deps} "
+                    f"(expected 28) — re-read the file before deciding anything")
         return None
 
     return src, report, validate, f"{after} dependencies kept"

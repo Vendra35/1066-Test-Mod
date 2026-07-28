@@ -4735,7 +4735,8 @@ countries = {
 		include = "gaelic_tribe"
 		include = "expl_western_europe"
 		government = {
-			ruler = random
+			ruler = mcm_toirdelbach_ua_briain
+			ruler_term = { character = mcm_toirdelbach_ua_briain start_date = 1063.1.1 regnal_number = 1 }
 		}
 		country_rank = rank_duchy # remnants of an old provincial kingdom
 		capital = killarney
@@ -4942,7 +4943,8 @@ countries = {
 		include = "gaelic_tribe"
 		include = "expl_western_europe"
 		government = {
-			ruler = random
+			ruler = lei_diarmait_mac_mail_na_mbo
+			ruler_term = { character = lei_diarmait_mac_mail_na_mbo start_date = 1042.1.1 regnal_number = 1 }
 		}
 		country_rank = rank_duchy # remnants of an old provincial kingdom
 		capital = wicklow
@@ -5001,7 +5003,8 @@ countries = {
 		include = "gaelic_tribe_no_coast"
 		include = "expl_western_europe"
 		government = {
-			ruler = random
+			ruler = cnn_aed_in_gai_bernaig
+			ruler_term = { character = cnn_aed_in_gai_bernaig start_date = 1046.1.1 regnal_number = 1 }
 		}
 		country_rank = rank_duchy # remnants of an old provincial kingdom
 		capital = roscommon
