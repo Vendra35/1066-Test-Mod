@@ -971,6 +971,43 @@ brothers' realms (LON/GLC/CAT) join with the territory pass — and the
 Sancho II vs Alfonso VI fratricidal war (1068-1072) is a ready-made
 situation with every actor and date already in vanilla's own data.
 
+### The North and East at 1066 — the Rus are the cheapest region yet (research pass, core claims re-verified)
+**Established:** 2026-07-28, Opus North/East report; SWE/KIE terms, the
+name_solomon bug and the composite-name attestation checked by hand.
+- **Four rows buy the Rus triumvirate plus the Sorcerer:** KIE Iziaslav I,
+  NOV Mstislav, CHR Sviatoslav II, POK Vseslav — vanilla characters,
+  vanilla family links, vanilla accession terms (KIE :42875, 1054.2.20).
+  Only Pereyaslavl is missing — and beware: **`PER` is Périgord, already
+  seated**; a careless Pereyaslavl row would silently overwrite France.
+  PZL is Pereyaslavl-ZALESSKY, the wrong city. Invent-a-country job #3.
+- **Sweden decides itself:** `swe_stenkil` dies 1066.1.1 (pre-start —
+  unseatable by our own validator) and vanilla's own term seats
+  `swe_halsten` from 1066.1.1 (:81). Mechanically there is no choice.
+- **Composite scripted names are vanilla-attested:**
+  `name_x.name_y` appears 205 times; CRO's own regnal table carries
+  `name_stephen.name_drzislav` (:13915). The key for Petar Krešimir IV is
+  `name_peter.name_krasimir` (name_kresimir does not exist).
+- **Vanilla bugs #5 and #6:** HUN's regnal table uses `name_solomon = 1`
+  (:18524) — ZERO loc entries; the real key is `name_salomon` (:15508).
+  SMO's table carries a bare literal `Iwan = 1`. Same class as
+  name_andonikos; REGNAL_RENAMES handles the first.
+- **A third malformed vanilla date:** `swe_halsten` has
+  `death_date = 1100` — a bare year plus `#unknown really..`;
+  `date_tuple()`'s padding is load-bearing for it.
+- **The region's hard identifier hole: NO Slavic paganism religion**
+  exists (`norse`, `romuva`, `muinaisusko`, `sapmi_shamanism` do). The
+  Obodrites who revolted in June 1066 have no religion to be — authoring
+  one vs proxying romuva is a design call, parked.
+- Poland needs a REGNAL_ADDS mechanism eventually (its table lacks
+  name_boleslav entirely and REGNAL_FIXES exits on missing keys); the
+  ruler_term's own regnal_number carries the display meanwhile.
+- The Baltic/Wendish/Yoke-era tag layers (LIT's 98 locations, the
+  Ordensstaat, Moscow, the 1138 Piast splinters) are all 12th-14th
+  century constructs — territory-pass class, same shape as Anatolia.
+**Means:** nine seatable thrones (5 vanilla-free + 4 authored), one new
+dynasty (Trpimirović), HUN joins MINOR_RULERS (Solomon, 13), and regnal
+surgery for SWE/HUN/CRO/POK rides along.
+
 ## Open questions to settle early
 
 - **How badly does a 276-year `age_1` actually play?** THE question for this

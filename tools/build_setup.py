@@ -130,13 +130,31 @@ HISTORICAL_RULERS = {
     "CAS": ("cas_sancho_ii_jimena", "1065.12.27", 2),     # Sancho II of Castile — king for nine months at start
     "NAV": ("nav_sancho_iv_jimena", "1054.9.1", 4),       # Sancho IV of Navarre
     "ARA": ("ara_sancho_i_aragon", "1063.5.8", 1),        # Sancho Ramirez of Aragon
+
+    # The North and East, 1066 — from the North/East research pass. Five
+    # ride free on vanilla characters (the Rus triumvirate, the Sorcerer,
+    # and Sweden, where vanilla's own term seats Halsten from 1066.1.1 and
+    # Stenkil is unseatable, dead 1066.1.1); four are authored below.
+    # NOT seated, reasons recorded: Pereyaslavl (NO tag — PER is Perigord!,
+    # PZL the wrong city; invent-a-country #3), ICE (kingless Commonwealth),
+    # the Baltic/Wendish/Yoke-era layers (territory pass; and no Slavic
+    # pagan religion exists to give the Obodrites).
+    "SWE": ("swe_halsten", "1066.1.1", 1),                # Halsten Stenkilsson — vanilla's own succession
+    "KIE": ("kie_iziaslav_rurikovich", "1054.2.20", 1),   # Iziaslav I of Kyiv, the senior triumvir
+    "NOV": ("nov_mstislav_izyaslavich_rurikovich", "1054.2.20", 1), # Mstislav, Iziaslav's son, in Novgorod
+    "CHR": ("kie_sviatoslav_ii_rurikovich", "1054.2.20", 1), # Sviatoslav II in Chernihiv (I of Chernihiv, II of Kyiv later)
+    "POK": ("pok_vseslav_bryachislavich_rurikovich", "1044.1.1", 1), # Vseslav the Sorcerer of Polotsk; accession year [U]
+    "POL": ("pol_boleslaw_ii_szczodry_piast", "1058.11.28", 2), # Boleslaw II the Bold, DUKE until 1076 — NEW_CHARACTERS
+    "HUN": ("hun_salamon_arpad", "1063.9.11", 1),         # Solomon, aged 13 — MINOR_RULERS — NEW_CHARACTERS
+    "CRO": ("cro_petar_kresimir_iv", "1058.1.1", 4),      # Petar Kresimir IV — NEW_CHARACTERS
+    "ORK": ("ork_paul_thorfinnsson", "1065.1.1", 1),      # Paul Thorfinnsson, joint earl with Erlend (seat-once) — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
 # them — the engine gives them a regency, which is the history (France was
 # governed by Baldwin V of Flanders as regent). The check still fails if a
 # listed tag's ruler turns out to be an adult, so stale entries cannot rot.
-MINOR_RULERS = {"FRA", "HOL"}
+MINOR_RULERS = {"FRA", "HOL", "HUN"}
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
 # 7236 stay. Two ordering rules, both of which crash rather than error:
@@ -349,6 +367,73 @@ NEW_CHARACTERS = """
 		birth = mainz
 		tag = MAI
 	}
+
+	# --- 1066 North and East ----------------------------------------------
+	# From the North/East research pass. Identifiers verified: name keys
+	# boleslav:3597, salomon:15508, peter:14009, krasimir:10655, paul:13820
+	# in the character-names registry; cultures lesser_polish
+	# (west_slavic.txt:55), hungarian (carpathian.txt:94), croatian
+	# (south_slavic.txt:38), norn_culture (scandinavian.txt:101); dynasties
+	# piast (04_dynasties.txt:4175), arpad (:1826); locations krakow,
+	# esztergom, knin, orkney in definitions.txt. NO death dates.
+
+	# Boleslaw II "the Bold", Duke of Poland from Casimir I's death
+	# (1058.11.28); crowned KING only on Christmas Day 1076. Historically
+	# exiled 1079 after executing Bishop Stanislaus — who ships in vanilla
+	# (pol_saint_stanislav, alive, 36) for that future situation.
+	pol_boleslaw_ii_szczodry_piast = {
+		first_name = { name = name_boleslav }
+		culture = lesser_polish
+		religion = catholic
+		birth_date = 1042.1.1
+		birth = krakow
+		dynasty = piast_dynasty
+		tag = POL
+	}
+
+	# Solomon, King of Hungary, THIRTEEN at start — MINOR_RULERS. Crowned
+	# as a child 1057, sole king from Bela I's death 1063.9.11. His cousin
+	# Duke Geza holds the ducatus — the dual-power drama of 1074 is future
+	# situation material. name_salomon is the real key; vanilla's own HUN
+	# regnal table uses the dead name_solomon (renamed by REGNAL_RENAMES).
+	hun_salamon_arpad = {
+		first_name = { name = name_salomon }
+		culture = hungarian
+		religion = catholic
+		birth_date = 1053.1.1
+		birth = esztergom
+		dynasty = arpad_dynasty
+		tag = HUN
+	}
+
+	# Petar Kresimir IV, King of Croatia and Dalmatia at its greatest
+	# extent. Composite first name — the name_x.name_y form has 205 vanilla
+	# uses and CRO's own regnal table is written in it (name_kresimir does
+	# not exist; name_krasimir is the key). Trpimirovic dynasty is ours —
+	# vanilla ships no Croatian royal house.
+	cro_petar_kresimir_iv = {
+		first_name = { name = name_peter.name_krasimir }
+		culture = croatian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = knin
+		dynasty = trpimirovic_dynasty
+		tag = CRO
+	}
+
+	# Paul Thorfinnsson, Earl of Orkney JOINTLY with his brother Erlend
+	# from Thorfinn the Mighty's death c.1065 — seat-once, Paul carries it.
+	# Both earls fought at Stamford Bridge on Hardrada's side. Dynasty-less
+	# (the Norse earls' house is not in vanilla); norn_culture is the
+	# Northern Isles' own culture, vanilla's Orkney pops use it.
+	ork_paul_thorfinnsson = {
+		first_name = { name = name_paul }
+		culture = norn_culture
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = orkney
+		tag = ORK
+	}
 """
 
 
@@ -503,13 +588,30 @@ def build_countries(src):
         ("BYZ", "name_isaac"): 1,
         ("BYZ", "name_emmanuel"): 0,      # Manuel I accedes 1143
         ("BYZ", "name_andronikos"): 0,    # first Andronikos is 1183; key renamed below
+        ("SWE", "name_eric"): 7,          # vanilla's own chain: Erik VII to 995, Erik VIII accedes 1083
+        ("HUN", "name_stephen"): 1,       # Stephen I the Saint only, pre-1066
+        ("HUN", "name_andrew"): 1,        # Andrew I d. 1060
+        ("HUN", "name_bela"): 1,          # Bela I d. 1063
+        ("HUN", "name_geza"): 0,          # Geza I accedes 1074 (the 1066 DUKE Geza is not king)
+        ("HUN", "name_vladislav"): 0,     # Ladislaus I accedes 1077
+        ("HUN", "name_kalman"): 0,        # Coloman accedes 1095
+        ("HUN", "name_emmerich"): 0,      # Emeric accedes 1196
+        ("HUN", "name_salomon"): 1,       # Solomon reigns NOW — counted like BYZ's Constantine 10; key renamed below
+        ("POK", "name_vseslav"): 1,       # Vseslav reigns now, the first
+        ("POK", "name_iziaslav"): 1,
+        ("POK", "name_briachislav"): 1,
     }
     # Vanilla typo: BYZ's table says `name_andonikos` — a key with no loc
     # entry anywhere (the registry has only name_andronikos,
     # character_names_dynamic_l_english.yml:1783). Renamed FIRST so the
     # value fix above can find it. Report-vanilla, fix-ours discipline:
     # this is a rename in OUR generated copy, vanilla stays untouched.
-    REGNAL_RENAMES = {("BYZ", "name_andonikos"): "name_andronikos"}
+    REGNAL_RENAMES = {
+        ("BYZ", "name_andonikos"): "name_andronikos",
+        # Vanilla bug #5: HUN's table uses name_solomon — zero loc entries
+        # anywhere; the registry's key is name_salomon (loc:15508).
+        ("HUN", "name_solomon"): "name_salomon",
+    }
     n_fix = 0
     starts_rf = list(re.finditer(COUNTRY_RE, src, re.M))
     for (tag, oldkey), newkey in sorted(REGNAL_RENAMES.items()):

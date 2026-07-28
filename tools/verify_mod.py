@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 70: 38 named rulers + 38 terms after the East + Iberia batch.
+# Armed at 90: 47 named rulers + 47 terms after the North/East batch.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=70)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=90)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on

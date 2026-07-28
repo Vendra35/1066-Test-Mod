@@ -30,4 +30,8 @@ dynasty_manager = {
 		name = { name = northeim_dynasty }
 		home = gottingen
 	}
+	trpimirovic_dynasty = {
+		name = { name = trpimirovic_dynasty }
+		home = knin
+	}
 }

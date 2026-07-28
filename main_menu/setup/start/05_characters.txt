@@ -104501,4 +104501,71 @@ character_db={
 		birth = mainz
 		tag = MAI
 	}
+
+	# --- 1066 North and East ----------------------------------------------
+	# From the North/East research pass. Identifiers verified: name keys
+	# boleslav:3597, salomon:15508, peter:14009, krasimir:10655, paul:13820
+	# in the character-names registry; cultures lesser_polish
+	# (west_slavic.txt:55), hungarian (carpathian.txt:94), croatian
+	# (south_slavic.txt:38), norn_culture (scandinavian.txt:101); dynasties
+	# piast (04_dynasties.txt:4175), arpad (:1826); locations krakow,
+	# esztergom, knin, orkney in definitions.txt. NO death dates.
+
+	# Boleslaw II "the Bold", Duke of Poland from Casimir I's death
+	# (1058.11.28); crowned KING only on Christmas Day 1076. Historically
+	# exiled 1079 after executing Bishop Stanislaus — who ships in vanilla
+	# (pol_saint_stanislav, alive, 36) for that future situation.
+	pol_boleslaw_ii_szczodry_piast = {
+		first_name = { name = name_boleslav }
+		culture = lesser_polish
+		religion = catholic
+		birth_date = 1042.1.1
+		birth = krakow
+		dynasty = piast_dynasty
+		tag = POL
+	}
+
+	# Solomon, King of Hungary, THIRTEEN at start — MINOR_RULERS. Crowned
+	# as a child 1057, sole king from Bela I's death 1063.9.11. His cousin
+	# Duke Geza holds the ducatus — the dual-power drama of 1074 is future
+	# situation material. name_salomon is the real key; vanilla's own HUN
+	# regnal table uses the dead name_solomon (renamed by REGNAL_RENAMES).
+	hun_salamon_arpad = {
+		first_name = { name = name_salomon }
+		culture = hungarian
+		religion = catholic
+		birth_date = 1053.1.1
+		birth = esztergom
+		dynasty = arpad_dynasty
+		tag = HUN
+	}
+
+	# Petar Kresimir IV, King of Croatia and Dalmatia at its greatest
+	# extent. Composite first name — the name_x.name_y form has 205 vanilla
+	# uses and CRO's own regnal table is written in it (name_kresimir does
+	# not exist; name_krasimir is the key). Trpimirovic dynasty is ours —
+	# vanilla ships no Croatian royal house.
+	cro_petar_kresimir_iv = {
+		first_name = { name = name_peter.name_krasimir }
+		culture = croatian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = knin
+		dynasty = trpimirovic_dynasty
+		tag = CRO
+	}
+
+	# Paul Thorfinnsson, Earl of Orkney JOINTLY with his brother Erlend
+	# from Thorfinn the Mighty's death c.1065 — seat-once, Paul carries it.
+	# Both earls fought at Stamford Bridge on Hardrada's side. Dynasty-less
+	# (the Norse earls' house is not in vanilla); norn_culture is the
+	# Northern Isles' own culture, vanilla's Orkney pops use it.
+	ork_paul_thorfinnsson = {
+		first_name = { name = name_paul }
+		culture = norn_culture
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = orkney
+		tag = ORK
+	}
 }
