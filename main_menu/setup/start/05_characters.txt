@@ -104424,4 +104424,81 @@ character_db={
 		dynasty = boulogne_dynasty
 		tag = BGN
 	}
+
+	# --- 1066 Empire ------------------------------------------------------
+	# From the Empire research pass. Identifiers verified: name keys in the
+	# character-names loc registry (vratislav:17812, otto:13603,
+	# theodoric:16939, henry:8755, sigfrid:16025), cultures czech
+	# (west_slavic.txt, first entry behind the BOM), eastphalian:126,
+	# low_franconian:597, rhine_franconian:680 (german.txt), locations and
+	# dynasties per file cites below. NO death dates: all alive at 1066.9.15.
+
+	# Vratislav II, Duke of Bohemia from January 1061; King of Bohemia only
+	# from 1085. Historically dies 1092.1.14.
+	boh_vratislav_ii_premyslid = {
+		first_name = { name = name_vratislav }
+		culture = czech
+		religion = catholic
+		birth_date = 1032.1.1
+		birth = prague
+		dynasty = premyslid_dynasty
+		tag = BOH
+	}
+
+	# Otto of Nordheim, Duke of Bavaria 1061-1070 (deposed for alleged
+	# treason; historically dies 1083.1.11). "Otto II" is the common
+	# attribution but no source verified the numeral this pass — flagged,
+	# not invented. Birth location: northeim is not on the map; gottingen
+	# is the nearest existing location.
+	ubv_otto_von_nordheim = {
+		first_name = { name = name_otto }
+		culture = eastphalian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = gottingen
+		dynasty = northeim_dynasty
+		tag = UBV
+	}
+
+	# Dirk V, Count of Holland from 1061, FOURTEEN at start — MINOR_RULERS.
+	# Historical guardianship of Robert the Frisian; the engine seats minors
+	# directly (measured, see the decoder). name_theodoric is vanilla's key
+	# for Dirk/Thierry (lor_thierry_ii_lorraine precedent). Historically
+	# dies 1091.6.17.
+	hol_dirk_v = {
+		first_name = { name = name_theodoric }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1052.1.1
+		birth = the_hague
+		dynasty = gerulfing_dynasty
+		tag = HOL
+	}
+
+	# Henry II, Count of Louvain and Brussels (Brabant is not a duchy until
+	# 1183). Accession sources genuinely differ — 1054 in one account,
+	# c. 1062/63 in others; the earlier date is entered. Historically
+	# dies 1078.
+	brb_henry_ii_louvain = {
+		first_name = { name = name_henry }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = leuven
+		dynasty = reginar_dynasty
+		tag = BRB
+	}
+
+	# Siegfried I, Archbishop of Mainz from January 1060 (historically to
+	# 1084). No dynasty — the Reginbodonen have none in vanilla, and
+	# dynasty-less characters are vanilla-attested. Birth year unknown,
+	# c. 1015 entered.
+	mai_siegfried_i = {
+		first_name = { name = name_sigfrid }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = mainz
+		tag = MAI
+	}
 }

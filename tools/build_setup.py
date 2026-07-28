@@ -107,13 +107,24 @@ HISTORICAL_RULERS = {
     "FLA": ("fla_baldwin_v_flanders", "1035.5.30", 5),    # Baldwin V of Flanders — NEW_CHARACTERS
     "AQN": ("aqn_guilhem_viii_poitiers", "1058.1.1", 8),  # William VIII of Aquitaine (VI of Poitou) — NEW_CHARACTERS
     "BGN": ("bgn_eustache_ii_boulogne", "1049.1.1", 2),   # Eustace II of Boulogne — NEW_CHARACTERS
+
+    # Empire, 1066 — the clean batch from the Empire research pass. The
+    # CROWN is deliberately NOT seated: Heinrich IV's OGK tag is landless
+    # and the emperor needs a royal demesne first (HANDOFF, open decision).
+    # Also held back: Swabia/Saxony (no usable tags), KOL/TRI (name keys
+    # missing), CRH/MEI/LUX/HAI/UTR/LIE (unverified dates or disputes).
+    "BOH": ("boh_vratislav_ii_premyslid", "1061.1.1", 2), # Vratislav II, Duke of Bohemia — NEW_CHARACTERS
+    "UBV": ("ubv_otto_von_nordheim", "1061.1.1", 2),      # Otto of Nordheim, Duke of Bavaria; regnal II is the common attribution, unverified
+    "HOL": ("hol_dirk_v", "1061.1.1", 5),                 # Dirk V of Holland, aged 14 — MINOR_RULERS
+    "MAI": ("mai_siegfried_i", "1060.1.1", 1),            # Siegfried I, Archbishop of Mainz
+    "BRB": ("brb_henry_ii_louvain", "1054.1.1", 2),       # Henry II of Louvain; accession sources differ (1054 vs c.1062) — earlier date entered
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
 # them — the engine gives them a regency, which is the history (France was
 # governed by Baldwin V of Flanders as regent). The check still fails if a
 # listed tag's ruler turns out to be an adult, so stale entries cannot rot.
-MINOR_RULERS = {"FRA"}
+MINOR_RULERS = {"FRA", "HOL"}
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
 # 7236 stay. Two ordering rules, both of which crash rather than error:
@@ -248,6 +259,83 @@ NEW_CHARACTERS = """
 		birth = boulogne_sur_mer
 		dynasty = boulogne_dynasty
 		tag = BGN
+	}
+
+	# --- 1066 Empire ------------------------------------------------------
+	# From the Empire research pass. Identifiers verified: name keys in the
+	# character-names loc registry (vratislav:17812, otto:13603,
+	# theodoric:16939, henry:8755, sigfrid:16025), cultures czech
+	# (west_slavic.txt, first entry behind the BOM), eastphalian:126,
+	# low_franconian:597, rhine_franconian:680 (german.txt), locations and
+	# dynasties per file cites below. NO death dates: all alive at 1066.9.15.
+
+	# Vratislav II, Duke of Bohemia from January 1061; King of Bohemia only
+	# from 1085. Historically dies 1092.1.14.
+	boh_vratislav_ii_premyslid = {
+		first_name = { name = name_vratislav }
+		culture = czech
+		religion = catholic
+		birth_date = 1032.1.1
+		birth = prague
+		dynasty = premyslid_dynasty
+		tag = BOH
+	}
+
+	# Otto of Nordheim, Duke of Bavaria 1061-1070 (deposed for alleged
+	# treason; historically dies 1083.1.11). "Otto II" is the common
+	# attribution but no source verified the numeral this pass — flagged,
+	# not invented. Birth location: northeim is not on the map; gottingen
+	# is the nearest existing location.
+	ubv_otto_von_nordheim = {
+		first_name = { name = name_otto }
+		culture = eastphalian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = gottingen
+		dynasty = northeim_dynasty
+		tag = UBV
+	}
+
+	# Dirk V, Count of Holland from 1061, FOURTEEN at start — MINOR_RULERS.
+	# Historical guardianship of Robert the Frisian; the engine seats minors
+	# directly (measured, see the decoder). name_theodoric is vanilla's key
+	# for Dirk/Thierry (lor_thierry_ii_lorraine precedent). Historically
+	# dies 1091.6.17.
+	hol_dirk_v = {
+		first_name = { name = name_theodoric }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1052.1.1
+		birth = the_hague
+		dynasty = gerulfing_dynasty
+		tag = HOL
+	}
+
+	# Henry II, Count of Louvain and Brussels (Brabant is not a duchy until
+	# 1183). Accession sources genuinely differ — 1054 in one account,
+	# c. 1062/63 in others; the earlier date is entered. Historically
+	# dies 1078.
+	brb_henry_ii_louvain = {
+		first_name = { name = name_henry }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = leuven
+		dynasty = reginar_dynasty
+		tag = BRB
+	}
+
+	# Siegfried I, Archbishop of Mainz from January 1060 (historically to
+	# 1084). No dynasty — the Reginbodonen have none in vanilla, and
+	# dynasty-less characters are vanilla-attested. Birth year unknown,
+	# c. 1015 entered.
+	mai_siegfried_i = {
+		first_name = { name = name_sigfrid }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = mainz
+		tag = MAI
 	}
 """
 

@@ -26,4 +26,8 @@ dynasty_manager = {
 		name = { name = boulogne_dynasty }
 		home = boulogne_sur_mer
 	}
+	northeim_dynasty = {
+		name = { name = northeim_dynasty }
+		home = gottingen
+	}
 }

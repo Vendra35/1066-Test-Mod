@@ -248,6 +248,26 @@ the North Sea five plus 23 French (18 straight from vanilla characters,
 carries FRA (Philip I, 14 — the engine regency IS the historical
 regency). The opinion loc key the engine flagged is added.
 
+## BATCH TEST — one game session covers everything below
+
+> Landings continue without per-batch game tests while the user is away
+> (their call, 2026-07-28 evening); every batch is harness-green and
+> build-asserted, and THIS list accumulates what the single catch-up
+> session must check. Mechanism-class changes (borders, the crown, new
+> situations) stay parked until testing resumes.
+
+1. **Empire batch:** Bohemia = Vratislav II (Prague), Bavaria = Otto
+   (Munich), Holland = Dirk 14 ruling directly (The Hague), Mainz =
+   Siegfried, Louvain/Brabant = Henry (Brussels). Expect one new
+   "child as a ruler" info line (HOL).
+2. **Dynasty names round 2:** Flanders shows "Flanders" (not "Of
+   Flanders"), Boulogne "Boulogne", plus "Nordheim" on Bavaria.
+3. **Aquitaine:** the tag DOES exist — look at Bordeaux, named
+   "Aquitaine", William VIII on the throne.
+4. **Standing regressions:** Norman Conquest opening beats, France
+   spot-checks, error.log against the ~53-line class profile.
+5. *(Iberia / Byzantium batches will append here as they land.)*
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,
@@ -256,15 +276,17 @@ regency). The opinion loc key the engine flagged is added.
    Foix (Roger II, exactly 16); (c) the five new dynasty names render
    (de Rennes, of Flanders…); (d) error.log for any new class; (e) the
    Norman Conquest opening still plays (regression).
-2. **Empire research is IN** (structural facts in KNOWLEDGE). A clean
-   quick batch awaits approval: BOH Vratislav II, UBV Otto of Nordheim,
-   HOL Dirk V (14 — MINOR_RULERS), MAI Siegfried I, BRB Henry II, plus
-   one new dynasty (northeim). Held back pending decisions or second
-   sources: the CROWN (Heinrich IV is 15 and OGK is landless — the
-   emperor needs MINOR_RULERS plus a royal demesne, and the HRE IO
-   leadership has four options recorded in the research), Swabia/Saxony
-   (no usable tags), KOL/TRI (name keys missing — would be our first
-   own name-key loc entries), CRH/MEI/LUX/HAI/UTR/LIE (unverified dates).
+2. **EMPIRE CLEAN BATCH LANDED (untested in game):** 33 rulers total.
+   New: BOH Vratislav II, UBV Otto of Nordheim (regnal II flagged as
+   common-but-unverified), HOL Dirk V (14 — MINOR_RULERS), MAI
+   Siegfried I (dynasty-less, vanilla-attested), BRB Henry II (accession
+   sources differ, earlier date entered), plus the northeim dynasty.
+   Test: Bohemia/Bavaria/Holland/Mainz/Louvain thrones, Dirk aged 14
+   ruling directly, error.log.
+   Still held back, decisions recorded: the CROWN (Heinrich IV 15 +
+   landless OGK + HRE IO leadership options), Swabia/Saxony (no usable
+   tags), KOL/TRI (name keys missing — would be our first own name-key
+   loc entries), CRH/MEI/LUX/HAI/UTR/LIE (unverified dates).
 2. **Polish pass** once round 4 is clean: map_color/legend/tooltip layer,
    a proper illustration, richer loc (Opus subagent), a hint entry,
    regnal_numbers recalibrated for 1066 (William shows as "III"), Edgar
