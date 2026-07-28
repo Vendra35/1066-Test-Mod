@@ -399,6 +399,19 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    new classes only. KNOWN LIMIT, tell the user BEFORE they zoom in:
    pops are still 1337-Christian — Castilian Seville is EXPECTED; the
    pop conversion slice is the named follow-up.
+   **CONFIRMED IN GAME (2026-07-28, screenshots):** every point passed —
+   all thirteen render as "Taifa of X" (Granada included: GRZ works),
+   the three invented name keys render in their .arabic_language forms,
+   donors shrunk, no orphans, log clean, Gallura crimson. The
+   invented-name-key mechanism is now a PROVEN tool.
+
+## STRATEGIC ORDER (user decision, 2026-07-28 evening)
+**Territory first, across the WHOLE map — pops/religions/cultures as a
+separate later phase.** The world's borders get finished before any pop
+conversion work starts. Slice order from here: Christian Iberia (the
+three brothers), Byzantium pre-Manzikert (Anatolia + Balkans), Seljuks +
+Abbasids, Fatimid Egypt, France demesne, British Isles (Wales marcher /
+Ireland), HRE/HAB, then the pop phase.
 
 ## Next, in order
 

@@ -1285,11 +1285,16 @@ re-verified by the main session before a line was written.
 - `the_jewel_of_alandalus_reform` is `has_or_had_tag = GRA`-gated
   (government_reforms/country_specific.txt:3298) — a second, independent
   reason not to reuse GRA.
-- **Three invented name keys shipped** (name_abbad, name_badis,
-  name_abd_al_malik + .arabic_language rows), patterned byte-for-byte on
-  vanilla's name_abd_al_qadir (character_names_dynamic:41). A name key is
-  a loc key; the harness now accepts our loc file as a name registry.
-  **PENDING IN-GAME PROOF** — the taifa batch test's headline question.
+- **Three invented name keys shipped AND PROVEN IN GAME** (2026-07-28,
+  screenshots): name_abbad renders as "'Abbād II Banū ʿAbbād",
+  name_badis as "Bādīs Banū Zīrī" — both in their .arabic_language
+  forms, because andalusi speaks arabic_language, exactly as the
+  two-file-registry law predicts. A name key IS just a loc key,
+  confirmed end-to-end; the harness accepts our loc file as a registry.
+  Bonus observations from the same screenshots: the character sheet
+  renders BIRTH LOCATIONS language-appropriately ("'Ishbīliyyah" for
+  sevilla, "Ġarnāṭah" for granada) with zero work from us, and the
+  ruler style "Hajib" fires from rank_duchy_andalusi's _ruler_male row.
 - **The pop gap, measured:** of the 244 moved locations, 222 are
   `religion = catholic` in location_templates; only 175 carry any sunni
   minority pop in 06_pops. The factory produces borders and thrones; a
