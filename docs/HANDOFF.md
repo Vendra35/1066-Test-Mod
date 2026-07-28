@@ -248,7 +248,22 @@ the North Sea five plus 23 French (18 straight from vanilla characters,
 carries FRA (Philip I, 14 — the engine regency IS the historical
 regency). The opinion loc key the engine flagged is added.
 
-## BATCH TEST — one game session covers everything below
+## BATCH TEST — ✅ PASSED 2026-07-28 evening, all ten fronts
+
+All 53 thrones verified (screenshots on file): the composite name renders
+with diacritics (Petar Krešimir IV. Trpimirović), the language-row law
+showed two more faces (Basque "Antso IV", Gaelic "Tanist Murchadh Ó
+Cennsalach"), Tamīm rules the Sultanate of Tunis (dynasty-gated rank law
+confirmed in game), the stripped IOs left zero invalid-leader errors, the
+Norman opening ran clean, and both logs show ZERO mod-side error
+classes. One finding, fixed same session: vanilla 1337 gives England six
+subjects (Wales 1283, the Pale, the Aquitaine fiefdom…) — all stripped;
+NEXT LAUNCH check: Aquitaine independent under William VIII, and the
+still-unverified -1000 opinion wall between the 1066 claimants.
+
+The original checklist, kept for the record:
+
+## (was) BATCH TEST — one game session covers everything below
 
 > Landings continue without per-batch game tests while the user is away
 > (their call, 2026-07-28 evening); every batch is harness-green and
