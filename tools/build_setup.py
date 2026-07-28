@@ -74,7 +74,46 @@ HISTORICAL_RULERS = {
     "DAN": ("dan_sweyn_estridsson", "1047.10.25", 2),     # Sweyn II, sole King of Denmark at Magnus the Good's death
     "SCO": ("sco_malcolm_iii", "1058.4.25", 3),           # Malcolm III, crowned at Scone
     "NOR": ("nor_harald_hardrada", "1046.1.1", 3),        # Harald III, co-king from 1046; written below — vanilla has no Norwegian alive in 1066
+
+    # France, 1066 — from the France research pass (docs/KNOWLEDGE.md).
+    # 18 rulers below already exist in vanilla; five are authored in
+    # NEW_CHARACTERS. Deliberately NOT seated, with the reasons recorded:
+    # CHP/SAN (Theobald already seats BLS), POI (William VIII seats AQN),
+    # BAR (the titleholder was Countess Sophie, no character; Louis of
+    # Montbeliard seats his own MTB), MTZ (Gerard already seats LOR),
+    # MIE (Norman-occupied, disputed), TOU (landless at 1337 — waits for
+    # the border work), and the four low-confidence drafts (MRT, EVR,
+    # NEV, ANG — second source needed).
+    "FRA": ("fra_philippe_i_capet", "1060.8.4", 1),       # Philip I, aged 14 — MINOR_RULERS; France under Baldwin of Flanders' regency, which the engine's regency represents
+    "BUR": ("bur_robert_i_burgundian", "1032.1.1", 1),    # Robert I the Old, Duke of Burgundy
+    "BLS": ("chp_thibault_i_blois", "1037.11.15", 3),     # Theobald III of Blois (also I of Champagne — seated here only)
+    "MTB": ("mtb_louis_scarpone", "1042.1.1", 1),         # Louis of Montbeliard
+    "LOR": ("lor_gerard_alsace", "1048.11.11", 1),        # Gerard of Alsace (also Count of Metz — seated here only)
+    "AUV": ("auv_robert_ii_auvergne", "1064.1.1", 2),     # Robert II of Auvergne
+    "FOI": ("foi_roger_ii_foix", "1064.1.1", 2),          # Roger II of Foix — EXACTLY 16 at start, no margin
+    "FCB": ("fcb_guillaume_i_burgundy", "1057.9.4", 1),   # William I, Count Palatine of Burgundy
+    "DAU": ("dau_guigues_i_albon", "1034.1.1", 1),        # Guigues I of Albon
+    "SAV": ("sav_pierre_i_savoy", "1060.1.1", 1),         # Peter I of Savoy
+    "PER": ("per_audebert_ii_perigord", "1044.1.1", 2),   # Audebert II of Perigord
+    "MRC": ("mrc_adalbert_ii_lamarche", "1047.1.1", 2),   # Adalbert II of La Marche
+    "VNT": ("vnt_ebles_i_de_ventadour", "1060.1.1", 1),   # Ebles I of Ventadour
+    "AMG": ("amg_geraud_ii_armagnac", "1063.1.1", 2),     # Geraud II of Armagnac
+    "AST": ("ast_guillaume_astarac", "1023.1.1", 1),      # William of Astarac
+    "COM": ("com_arnaud_iii_comminges", "1035.1.1", 3),   # Arnaud III of Comminges
+    "IJO": ("ijo_raymond_lisle_jourdain", "1038.1.1", 1), # Raymond of L'Isle-Jourdain
+    "MON": ("mon_simon_i_montfort", "1053.1.1", 1),       # Simon I of Montfort
+    "BRI": ("bri_conan_ii_rennes", "1040.10.1", 2),       # Conan II of Brittany — NEW_CHARACTERS
+    "ANJ": ("anj_geoffroy_iii_gatinais", "1060.11.14", 3),# Geoffrey III of Anjou — NEW_CHARACTERS
+    "FLA": ("fla_baldwin_v_flanders", "1035.5.30", 5),    # Baldwin V of Flanders — NEW_CHARACTERS
+    "AQN": ("aqn_guilhem_viii_poitiers", "1058.1.1", 8),  # William VIII of Aquitaine (VI of Poitou) — NEW_CHARACTERS
+    "BGN": ("bgn_eustache_ii_boulogne", "1049.1.1", 2),   # Eustace II of Boulogne — NEW_CHARACTERS
 }
+
+# Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
+# them — the engine gives them a regency, which is the history (France was
+# governed by Baldwin V of Flanders as regent). The check still fails if a
+# listed tag's ruler turns out to be an adult, so stale entries cannot rot.
+MINOR_RULERS = {"FRA"}
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
 # 7236 stay. Two ordering rules, both of which crash rather than error:
@@ -136,6 +175,79 @@ NEW_CHARACTERS = """
 		dynasty = fairhair_dynasty
 		father = nor_harald_hardrada
 		tag = NOR
+	}
+
+	# --- 1066 France ------------------------------------------------------
+	# From the France research pass. Identifiers verified: name keys in
+	# character_names_dynamic_l_english.yml (the scripted-name authority —
+	# KNOWLEDGE.md), cultures in in_game/common/cultures/french.txt
+	# (breton:30, angevin:312, poitevin:339, picard:104) and german.txt
+	# (low_franconian:597), birth locations in definitions.txt, dynasties
+	# in our additive setup/start/04_zz_1066_dynasties.txt.
+	# NO death dates: everyone here is alive on 1066.9.15.
+
+	# Conan II, Duke of Brittany from Alan III's death (1040), effective
+	# rule from 1057. Historically dies 1066.12.11 without an heir.
+	# name_conan does not exist anywhere; name_conon ("Conon", the
+	# French/Occitan pool) is the closest key — vanilla's own BRI regnal
+	# block leaves "#Conan = 4" commented out for the same reason.
+	bri_conan_ii_rennes = {
+		first_name = { name = name_conon }
+		culture = breton
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = rennes
+		dynasty = rennes_dynasty
+		tag = BRI
+	}
+
+	# Geoffrey III "le Barbu", Count of Anjou from his uncle Geoffrey
+	# Martel's death. Historically deposed by his brother Fulk IV in 1068.
+	anj_geoffroy_iii_gatinais = {
+		first_name = { name = name_godfrey }
+		culture = angevin
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = angers
+		dynasty = gatinais_dynasty
+		tag = ANJ
+	}
+
+	# Baldwin V "of Lille", Count of Flanders, and regent of France for the
+	# minor Philip I. Historically dies 1067.9.1. Culture follows the
+	# capital (bruges is low_franconian); the court language stays french.
+	fla_baldwin_v_flanders = {
+		first_name = { name = name_baldwin }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1012.1.1
+		birth = bruges
+		dynasty = flanders_dynasty
+		tag = FLA
+	}
+
+	# William VIII "Guy-Geoffrey", Duke of Aquitaine and Count of Poitou
+	# (as William VI). One man, two vanilla tags — seated in AQN only.
+	aqn_guilhem_viii_poitiers = {
+		first_name = { name = name_william }
+		culture = poitevin
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = poitiers
+		dynasty = ramnulfid_dynasty
+		tag = AQN
+	}
+
+	# Eustace II, Count of Boulogne; fought at Hastings on William's side.
+	# Accession c. 1049 on Eustace I's death, date approximate.
+	bgn_eustache_ii_boulogne = {
+		first_name = { name = name_eustathius }
+		culture = picard
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = boulogne_sur_mer
+		dynasty = boulogne_dynasty
+		tag = BGN
 	}
 """
 
@@ -570,9 +682,13 @@ def build_characters(src):
                 return f"{key} has no birth_date"
             born = tuple(int(x) for x in bd.groups())
             age = start[0] - born[0] - ((start[1], start[2]) < (born[1], born[2]))
-            if age < ADULT_AGE:
+            if age < ADULT_AGE and tag not in MINOR_RULERS:
                 return (f"{key} is {age} at {start[0]}.{start[1]}.{start[2]} — "
-                        f"under ADULT_AGE {ADULT_AGE}, the throne would sit empty")
+                        f"under ADULT_AGE {ADULT_AGE}, the throne would sit empty; "
+                        f"if the minority is HISTORICAL, list the tag in MINOR_RULERS")
+            if age >= ADULT_AGE and tag in MINOR_RULERS:
+                return (f"MINOR_RULERS lists {tag} but {key} is {age} — "
+                        f"stale exemption, remove it")
             dd = re.search(r"death_date = (\d+)\.(\d+)\.(\d+)", body)
             if dd and tuple(int(x) for x in dd.groups()) < start:
                 return f"{key} is already dead at the start date"

@@ -10416,7 +10416,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = sav_pierre_i_savoy
+			ruler_term = { character = sav_pierre_i_savoy start_date = 1060.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_humbert = 3
@@ -13148,7 +13149,8 @@ countries = {
 		government = {
 			heir_selection = salic_law
 
-			ruler = random
+			ruler = fra_philippe_i_capet
+			ruler_term = { character = fra_philippe_i_capet start_date = 1060.8.4 regnal_number = 1 }
 
 			regnal_numbers = {
 				#Clovis = 4
@@ -13246,7 +13248,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		government = {
-			ruler = random
+			ruler = bri_conan_ii_rennes
+			ruler_term = { character = bri_conan_ii_rennes start_date = 1040.10.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				#Judicaël = 1
@@ -13317,7 +13320,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
-			ruler = random
+			ruler = bur_robert_i_burgundian
+			ruler_term = { character = bur_robert_i_burgundian start_date = 1032.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_robert = 2
@@ -13365,7 +13369,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
-			ruler = random
+			ruler = fcb_guillaume_i_burgundy
+			ruler_term = { character = fcb_guillaume_i_burgundy start_date = 1057.9.4 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_otto.name_william = 1
@@ -13446,7 +13451,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast_no_censor"
 		government = {
-			ruler = random
+			ruler = auv_robert_ii_auvergne
+			ruler_term = { character = auv_robert_ii_auvergne start_date = 1064.1.1 regnal_number = 2 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -13471,7 +13477,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = vnt_ebles_i_de_ventadour
+			ruler_term = { character = vnt_ebles_i_de_ventadour start_date = 1060.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_eblo = 8
@@ -13627,7 +13634,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mrc_adalbert_ii_lamarche
+			ruler_term = { character = mrc_adalbert_ii_lamarche start_date = 1047.1.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				name_boson = 3
@@ -13737,7 +13745,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = foi_roger_ii_foix
+			ruler_term = { character = foi_roger_ii_foix start_date = 1064.1.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				name_bernard.name_roger = 1
@@ -13848,7 +13857,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = amg_geraud_ii_armagnac
+			ruler_term = { character = amg_geraud_ii_armagnac start_date = 1063.1.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				name_bernard = 6
@@ -14016,7 +14026,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = lor_gerard_alsace
+			ruler_term = { character = lor_gerard_alsace start_date = 1048.11.11 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_albert = 1
@@ -14092,7 +14103,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = chp_thibault_i_blois
+			ruler_term = { character = chp_thibault_i_blois start_date = 1037.11.15 regnal_number = 3 }
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -14128,7 +14140,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
-			ruler = random
+			ruler = ast_guillaume_astarac
+			ruler_term = { character = ast_guillaume_astarac start_date = 1023.1.1 regnal_number = 1 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -14159,7 +14172,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy_no_coast"
 		government = {
-			ruler = random
+			ruler = com_arnaud_iii_comminges
+			ruler_term = { character = com_arnaud_iii_comminges start_date = 1035.1.1 regnal_number = 3 }
 			type = monarchy
 			heir_selection = semi_salic_law
 
@@ -14189,7 +14203,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = ijo_raymond_lisle_jourdain
+			ruler_term = { character = ijo_raymond_lisle_jourdain start_date = 1038.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_otto.name_raymond = 1
@@ -14253,7 +14268,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = per_audebert_ii_perigord
+			ruler_term = { character = per_audebert_ii_perigord start_date = 1044.1.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				#Émenon = 1
@@ -14331,7 +14347,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mon_simon_i_montfort
+			ruler_term = { character = mon_simon_i_montfort start_date = 1053.1.1 regnal_number = 1 }
 			reforms = {
 				french_ducal_vassal_reform
 			}
@@ -14469,7 +14486,8 @@ countries = {
 				feudal_de_jure_law = by_tradition
 				legal_code_law = civil_law_policy
 			}
-			ruler = random
+			ruler = aqn_guilhem_viii_poitiers
+			ruler_term = { character = aqn_guilhem_viii_poitiers start_date = 1058.1.1 regnal_number = 8 }
 
 			regnal_numbers = {
 				#Corson = 1
@@ -14738,7 +14756,8 @@ countries = {
 		include = "expl_western_europe"
 		include = "catholic_monarchy"
 		government = {
-			ruler = random
+			ruler = bgn_eustache_ii_boulogne
+			ruler_term = { character = bgn_eustache_ii_boulogne start_date = 1049.1.1 regnal_number = 2 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -14817,7 +14836,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = anj_geoffroy_iii_gatinais
+			ruler_term = { character = anj_geoffroy_iii_gatinais start_date = 1060.11.14 regnal_number = 3 }
 			reforms = {
 				french_appanage_reform
 			}
@@ -15210,7 +15230,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = dau_guigues_i_albon
+			ruler_term = { character = dau_guigues_i_albon start_date = 1034.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_wigo = 8
@@ -15358,7 +15379,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = fla_baldwin_v_flanders
+			ruler_term = { character = fla_baldwin_v_flanders start_date = 1035.5.30 regnal_number = 5 }
 
 			regnal_numbers = {
 				name_arnulf = 3
@@ -33459,7 +33481,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mtb_louis_scarpone
+			ruler_term = { character = mtb_louis_scarpone start_date = 1042.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_louis = 1

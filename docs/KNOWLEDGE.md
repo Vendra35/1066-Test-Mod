@@ -826,6 +826,72 @@ with only two cards the free space lands between them. Vanilla's
 cards DIRECTLY in the `situation_panel_main_content` blockoverride.
 **Means:** no wrapping vbox for few-card panels; cards as direct siblings.
 
+### France landed: 23 rulers in one pass, the delegation model working
+**Established:** 2026-07-28, from the Opus France research report,
+spot-verified here (name-key authority claim, core character cites,
+cultures, birth locations — all held). 18 rulers were already vanilla
+characters and cost one HISTORICAL_RULERS row each; five were authored
+(Conan II, Geoffrey III, Baldwin V, William VIII, Eustace II) with five
+new dynasties.
+- **The additive dynasty route is attested after all:** Anno 1644 ships
+  `04_zzz_ottoman_dynasties.txt` (`dynasty_manager = { koprulu_dynasty }`)
+  — a working published mod adding dynasties additively. Our
+  `04_zz_1066_dynasties.txt` follows it. This refines the earlier
+  Timur-based doubt: Timur ABANDONED the route, Anno USES it.
+- **MINOR_RULERS:** tags whose 1066 ruler was historically a minor (FRA —
+  Philip I, 14, France under Baldwin's regency) skip the adult check; a
+  stale exemption (adult ruler on the list) fails the build. Proven both
+  ways.
+- **Deliberately NOT seated, with reasons in the table comment:** CHP/SAN
+  and POI (their rulers already seat BLS/AQN), BAR (titleholder Countess
+  Sophie has no character), MTZ (Gerard seats LOR), MIE (Norman-occupied),
+  TOU (landless at 1337 — border work first), MRT/EVR/NEV/ANG
+  (low-confidence drafts, second source needed).
+- Engine-generated loc keys flagged the missing `opinion_*` name the same
+  way they did the wargoals — `localization_util.cpp:103` lines ARE the
+  loc-key convention, straight from the engine.
+**Means:** a region's ruler layer now costs a research subagent run plus a
+verification pass plus table rows. France went from zero to 23 rulers in
+one sitting; the same pipeline is aimed at the Empire next.
+
+### The Empire at 1066 — structural facts from the research pass (verified cites)
+**Established:** 2026-07-28, Opus Empire report, spot-verification pending
+landing; the structural claims below carry vanilla file:line cites.
+- **The HRE IO's leader is a COUNTRY and the emperor is that country's
+  ruler** (`in_game/common/international_organizations/hre.txt:21-25`);
+  vanilla 1337 uses `leader = UBV` (Wittelsbach Upper Bavaria).
+- **Vanilla's own emperor chain has a HOLE containing our start date:**
+  Heinrich III's imperial term ends 1056.10.5 and Heinrich IV's begins
+  only 1084.4.1 (`15_international_organizations.txt:130-131`) — the
+  engine supports a leaderless HRE (`disband_if_no_leader = no`,
+  `hre.txt:50`). Historically exact: the King of the Romans was uncrowned
+  emperor in 1066.
+- **`ogk_heinrich_iv_salier` exists and is FIFTEEN at start** (b.
+  1050.11.11 — 16 on 1066.11.11); OGK ("Holy Roman", rank_empire,
+  `is_historic = yes`) is a LANDLESS regnal-history tag with an empty
+  `own_control_core`. Seating the emperor needs both MINOR_RULERS and a
+  royal demesne — territory work.
+- **A pluralist ruler is vanilla-attested:** `boh_john_luxembourg` rules
+  BOH and LUX, `hai_guillaume_de_hainault` rules HAI and HOL,
+  `brb_jan_iii_van_brabant` rules BRB and LIM — one character, several
+  `ruler =` lines plus a term per tag. (This also retro-justifies the
+  France pass's caution — seat once until needed.)
+- **BAV/SAX/SWA/FKN exist only as FORMABLES** — loc, CoA, colors, formable
+  defs, but no `10_countries.txt` block and no identity block; the SKE
+  landless-revival rule does NOT transfer (SKE has an identity block).
+  The 1066 stem duchies of Swabia and Saxony have NO usable tag; their
+  ground is shattered across dozens of statelets. CRH/STY are the SKE
+  case proper (landless WITH identity blocks; their locations sit inside
+  HAB's 68-location anachronism).
+- The electors (`elector = { BOH SWB BRA PAL }` + three archbishops) are
+  the 1356 Golden Bull read backwards; vanilla ships
+  `no_golden_bull_policy` so a pre-Bull state is modelled.
+**Means:** the Empire's RULER layer has a landable core (Bohemia, Bavaria,
+Holland, Mainz, Louvain…) but its CROWN and its DUCHIES are territory
+work: OGK needs a demesne, HAB needs breaking up, Swabia/Saxony need a
+decision (new tags vs proxy tags). The IO leadership choice is recorded in
+HANDOFF as an open decision.
+
 ## Open questions to settle early
 
 - **How badly does a 276-year `age_1` actually play?** THE question for this

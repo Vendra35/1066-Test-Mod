@@ -145,6 +145,20 @@ Christmas union). The game continues normally. Count it OUT of the error
 budget; no fix is warranted unless the toast itself starts bothering
 players.
 
+### `initialize_from_bookmark.cpp:792 — Character has too many ruler traits! … Traits: '2', Expected: '1'`
+**DECODED — vanilla data, exposed by seating.** Vanilla gives some
+characters two `ruler_trait` lines (`fcb_guillaume_i_burgundy`: righteous
+AND expansionist, 05_characters.txt). At 1337 they are dead and nobody
+notices; seat one as a 1066 ruler and the engine complains once at init.
+Harmless — validate what we wrote, report what vanilla shipped.
+
+### `initialize_from_bookmark.cpp:1659 — Country X has a child as a ruler`
+**DECODED — expected companion of MINOR_RULERS.** One line per country
+whose seated ruler is under 16 at start (FRA with the 14-year-old
+Philip I, plus the odd random-roll child like AOS). Measured in game: the
+child SEATS and RULES directly — no regency fires, matching the earlier
+negative-age measurement. Informational, not a defect.
+
 ### A dead-at-start ruler produces NO error at all
 Not a signature — the absence of one, recorded because it cost a session.
 A character alive at `START_DATE` carrying a post-start `death_date` starts

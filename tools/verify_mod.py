@@ -119,11 +119,10 @@ check("BOM on .txt and .yml (outside setup/start)", len(bom_files), probs, min_c
 
 probs = [os.path.relpath(p, MOD) for p in setup_txt
          if open(p, "rb").read(3) == BOM]
-# Armed at 5: build_setup.py generates 05_characters, 10_countries,
-# 12_diplomacy, 15_international_organizations and 16_wars. Raise it again
-# as more setup files land — a BOM here is the single most expensive byte
-# in the project.
-check("no BOM in setup/start", len(setup_txt), probs, min_count=5)
+# Armed at 6: five generated files plus the additive 04_zz_1066_dynasties.
+# Raise it again as more setup files land — a BOM here is the single most
+# expensive byte in the project.
+check("no BOM in setup/start", len(setup_txt), probs, min_count=6)
 
 # .gui is the other exception: vanilla ships 483 and only 49 carry a BOM.
 probs = [os.path.relpath(p, MOD) for p in gui_files
@@ -284,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 10: five named rulers + five terms is what the repo ships today.
+# Armed at 50: 28 named rulers + 28 terms after the France landing.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=10)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=50)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on

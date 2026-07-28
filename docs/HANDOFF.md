@@ -241,15 +241,30 @@ daughter. The fix is authoring his REAL family (Robert Curthose ~1051,
 William Rufus ~1056, Henry 1068 — the next kings of England), same
 NEW_CHARACTERS pipeline; goes with the Edgar Ætheling item.
 
+**FRANCE LANDED (untested in game):** 28 historical rulers total now —
+the North Sea five plus 23 French (18 straight from vanilla characters,
+5 authored with 5 new dynasties in the additive
+`04_zz_1066_dynasties.txt`, Anno 1644's attested route). MINOR_RULERS
+carries FRA (Philip I, 14 — the engine regency IS the historical
+regency). The opinion loc key the engine flagged is added.
+
 ## Next, in order
 
-1. **France ruler landing** — the Opus research report is in and
-   spot-verified; four decisions await approval (Philip I minor
-   exception, Theobald seated in BLS only, William VIII in AQN only,
-   Maine left random). Then: HISTORICAL_RULERS rows for the ~15
-   vanilla-ready tags, NEW_CHARACTERS for the six solid drafts,
-   dynasties via a generated 04_dynasties.txt (proposal).
-2. **Empire research still RUNNING** (second Opus subagent).
+1. **Test France in game:** (a) Philip I on the French throne, aged 14,
+   under a regency; (b) spot-check Brittany (Conan — displays "Conon"),
+   Flanders (Baldwin V), Aquitaine (William VIII), Burgundy (Robert I),
+   Foix (Roger II, exactly 16); (c) the five new dynasty names render
+   (de Rennes, of Flanders…); (d) error.log for any new class; (e) the
+   Norman Conquest opening still plays (regression).
+2. **Empire research is IN** (structural facts in KNOWLEDGE). A clean
+   quick batch awaits approval: BOH Vratislav II, UBV Otto of Nordheim,
+   HOL Dirk V (14 — MINOR_RULERS), MAI Siegfried I, BRB Henry II, plus
+   one new dynasty (northeim). Held back pending decisions or second
+   sources: the CROWN (Heinrich IV is 15 and OGK is landless — the
+   emperor needs MINOR_RULERS plus a royal demesne, and the HRE IO
+   leadership has four options recorded in the research), Swabia/Saxony
+   (no usable tags), KOL/TRI (name keys missing — would be our first
+   own name-key loc entries), CRH/MEI/LUX/HAI/UTR/LIE (unverified dates).
 2. **Polish pass** once round 4 is clean: map_color/legend/tooltip layer,
    a proper illustration, richer loc (Opus subagent), a hint entry,
    regnal_numbers recalibrated for 1066 (William shows as "III"), Edgar

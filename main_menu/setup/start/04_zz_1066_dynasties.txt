@@ -1,0 +1,29 @@
+# 1066 dynasties vanilla does not ship. ADDITIVE file — the attested route:
+# Anno 1644 (published, working) adds dynasties exactly this way
+# (04_zzz_ottoman_dynasties.txt, dynasty_manager = { koprulu_dynasty }).
+# Minimal entry shape per vanilla 04_dynasties.txt (munso_dynasty).
+# Every home location verified against in_game/map_data/definitions.txt.
+# NO BOM in this file: setup/start is the BOM-free zone.
+
+dynasty_manager = {
+	rennes_dynasty = {
+		name = { name = rennes_dynasty }
+		home = rennes
+	}
+	gatinais_dynasty = {
+		name = { name = gatinais_dynasty }
+		home = angers
+	}
+	flanders_dynasty = {
+		name = { name = flanders_dynasty }
+		home = bruges
+	}
+	ramnulfid_dynasty = {
+		name = { name = ramnulfid_dynasty }
+		home = poitiers
+	}
+	boulogne_dynasty = {
+		name = { name = boulogne_dynasty }
+		home = boulogne_sur_mer
+	}
+}

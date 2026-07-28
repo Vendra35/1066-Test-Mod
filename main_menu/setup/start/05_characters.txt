@@ -104351,4 +104351,77 @@ character_db={
 		father = nor_harald_hardrada
 		tag = NOR
 	}
+
+	# --- 1066 France ------------------------------------------------------
+	# From the France research pass. Identifiers verified: name keys in
+	# character_names_dynamic_l_english.yml (the scripted-name authority —
+	# KNOWLEDGE.md), cultures in in_game/common/cultures/french.txt
+	# (breton:30, angevin:312, poitevin:339, picard:104) and german.txt
+	# (low_franconian:597), birth locations in definitions.txt, dynasties
+	# in our additive setup/start/04_zz_1066_dynasties.txt.
+	# NO death dates: everyone here is alive on 1066.9.15.
+
+	# Conan II, Duke of Brittany from Alan III's death (1040), effective
+	# rule from 1057. Historically dies 1066.12.11 without an heir.
+	# name_conan does not exist anywhere; name_conon ("Conon", the
+	# French/Occitan pool) is the closest key — vanilla's own BRI regnal
+	# block leaves "#Conan = 4" commented out for the same reason.
+	bri_conan_ii_rennes = {
+		first_name = { name = name_conon }
+		culture = breton
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = rennes
+		dynasty = rennes_dynasty
+		tag = BRI
+	}
+
+	# Geoffrey III "le Barbu", Count of Anjou from his uncle Geoffrey
+	# Martel's death. Historically deposed by his brother Fulk IV in 1068.
+	anj_geoffroy_iii_gatinais = {
+		first_name = { name = name_godfrey }
+		culture = angevin
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = angers
+		dynasty = gatinais_dynasty
+		tag = ANJ
+	}
+
+	# Baldwin V "of Lille", Count of Flanders, and regent of France for the
+	# minor Philip I. Historically dies 1067.9.1. Culture follows the
+	# capital (bruges is low_franconian); the court language stays french.
+	fla_baldwin_v_flanders = {
+		first_name = { name = name_baldwin }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1012.1.1
+		birth = bruges
+		dynasty = flanders_dynasty
+		tag = FLA
+	}
+
+	# William VIII "Guy-Geoffrey", Duke of Aquitaine and Count of Poitou
+	# (as William VI). One man, two vanilla tags — seated in AQN only.
+	aqn_guilhem_viii_poitiers = {
+		first_name = { name = name_william }
+		culture = poitevin
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = poitiers
+		dynasty = ramnulfid_dynasty
+		tag = AQN
+	}
+
+	# Eustace II, Count of Boulogne; fought at Hastings on William's side.
+	# Accession c. 1049 on Eustace I's death, date approximate.
+	bgn_eustache_ii_boulogne = {
+		first_name = { name = name_eustathius }
+		culture = picard
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = boulogne_sur_mer
+		dynasty = boulogne_dynasty
+		tag = BGN
+	}
 }
