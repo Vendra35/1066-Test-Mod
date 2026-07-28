@@ -1269,6 +1269,28 @@ The 1.3.11 game copy in that last tree was diffed against the installed game:
 `in_game/common/age/00_default.txt` is byte-identical and `00_defines.txt` opens
 identically. Citations taken so far are version-current.
 
+### Changing a REGISTERED tag's identity data (color etc.) = whole-file override; additive re-declaration is unattested
+**Established:** 2026-07-28, the Gallura recolor. Vanilla ships GAL
+`rgb { 100 100 100 }` and CAG `hsv { 0 0 0.43 }` — the same grey, invisible
+side by side once both hold land (user screenshot; Paradox never cared
+because both are landless at 1337). Three routes were checked before
+touching anything: (1) Basileia Romaion's additive `br_*` registry files
+re-declare ZERO vanilla tags — no attested merge semantics for a duplicate
+declaration in `in_game/setup/countries/`; (2) Anno 1644 changes vanilla
+countries by overriding the SAME-NAMED registry file wholesale
+(`british_isles.txt` etc.) — that is the attested route; (3) the tempting
+`color = map_ASK` inside a vanilla 10_countries block
+(`10_countries.txt:24524`) is NOT an override precedent — ASK has NO
+registry entry anywhere in `in_game/setup/`; its block carries inline
+`country_name`/`flag`/`color` because it is a full inline definition, a
+different mechanism entirely. Setup-block color on a registered tag would
+be an unattested experiment with silent-failure risk.
+**Means:** our `in_game/setup/countries/italy.txt` is a byte-for-byte
+vanilla copy with ONE changed line (GAL → crimson `rgb { 158 28 35 }`,
+the Visconti-of-Gallura rooster) and a header saying exactly that. Diff
+it against vanilla after every game patch. Same route for any future
+recolor of an existing tag.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The

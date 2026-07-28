@@ -366,6 +366,17 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    TEST: Sardinia shows FOUR states + ARB; Corsica independent under COR;
    Barisone in Sassari, Torchitorio in Cagliari, Lacon-Gunale renders;
    GEN/PIS/ARA hold nothing on the islands; error.log for new classes.
+   **CONFIRMED IN GAME (2026-07-28, screenshots):** all five states
+   correct, both judges seated, Lacon-Gunale renders, Corsica
+   independent, the mainland republics off the islands (ARA keeps its
+   vanilla Mallorca vassal — correct). Two findings: (a) CAG and GAL
+   were the SAME grey (vanilla never colored its landless tags) — fixed
+   by the attested whole-file override of `in_game/setup/countries/
+   italy.txt`, GAL now crimson; KNOWLEDGE has the override law.
+   (b) 56 log lines `Event target link 'international_organization'
+   returned an invalid object` in two Celestial-Empire interactions —
+   our Middle Kingdom IO strip, zero impact, decoder entry added.
+   RE-TEST (quick): Gallura renders crimson, distinct from Cagliari.
 
 ## Next, in order
 

@@ -98,6 +98,20 @@ errored. The loc triplet is the same hole hit by tooltip rendering.
 count it OUT of the error budget once the cause is understood, and expect it
 to vanish when the throne is filled.
 
+### `jomini_script_system.cpp:252 — Event target link 'international_organization' returned an invalid object, Script location: common/country_interactions/demand_silver_tribute.txt:8` (also `demote_celestial_governor_to_vassal.txt:9`)
+**DECODED — our IO strip, vanilla's script, zero impact. ACCEPT.**
+**Was seen:** 56 lines at load (2026-07-28, the Sardinia test session).
+**Cause:** both are vanilla Celestial-Empire interactions probing
+`international_organization:middle_kingdom`. Our 1066 build strips the
+Middle Kingdom IO instance (`creation_date = 1271` — the future-IO strip,
+18 instances). Vanilla even guards with
+`exists = international_organization:middle_kingdom` on the line above
+(`demand_silver_tribute.txt:6`), but the engine still logs the link
+evaluation at line 8. The interaction is correctly HIDDEN — there is no
+Middle Kingdom in 1066 — so the error is cosmetic.
+**Fix:** none possible on our side short of overriding vanilla interaction
+files, which is not worth it. Count these lines OUT of the error budget.
+
 ### `pdx_persistent_reader.cpp:289 — "Failed to read key reference: mr_railroad_on ..." / "MR_mongol_resurgence_auto_conquest_yes"` (4 lines at load)
 **LEAD FOUND** — this is the signature HANDOFF once listed as
 "`gamestate.cpp:133`, unexplained, no lead". The keys it fails to read are
