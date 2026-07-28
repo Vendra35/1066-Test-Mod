@@ -612,13 +612,14 @@ Byzantium → landless-dependency fix → Seljuks). The 34 wiki PDFs in
 `python tools/build_setup.py --dry-run` → clean, ~12s (the ownership
 index refactor; if it takes minutes, something regressed).
 
-**LANDED FROM THE NIGHT:** the Mongol Resurgence deep audit completed
-and is committed in MR's own repo as `docs/AUDIT-2026-07-29.md` — six
-DEFINITE bugs (headline: the Great Partition endgame can never start;
-its arming event has no recipient), five SUSPECT, twelve observations,
-a recommended fix order, ZERO fixes applied (user approval required).
-D1/D2/D5 were spot-verified by the main session. MR's CLAUDE.md also
-carries the "LAWS DISCOVERED DOWNSTREAM" pointer section.
+**MONGOL RESURGENCE: CLOSED OUT THE SAME NIGHT.** The deep audit
+(committed in MR as `docs/AUDIT-2026-07-29.md`) found six DEFINITE
+bugs; ALL SIX were then fixed with the user, harness 16/16 green —
+including D6, which the user's design review REVISED: a human Khaghan
+collapses like anyone else (years of visible counterplay exist);
+only bystander human vassals are protected. MR's remaining to-do is
+its own: the first in-game session of the Great Partition block
+(audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
 **TOMORROW STARTS WITH:** the Seljuk batch in-game test — the full list
 is item 16 above, headline question the ABS Caliphate probe. Then the
