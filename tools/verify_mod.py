@@ -356,6 +356,47 @@ for _c in set(_seated):
 # Armed at 100: 21 authored characters x ~3 identifiers + 13 dynasties + 53 seats.
 check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=100)
 
+# Where vanilla ships its OWN ruler_term for the same character in the same
+# country block, our accession date must MATCH it — vanilla is ground truth
+# for ~30 of the 53 rows, and this turns "trust the research agent" into a
+# machine comparison. Rows where vanilla has no such term (authored
+# characters, cross-tag seats) are simply not compared.
+_van10 = read(_np(VAN + "/main_menu/setup/start/10_countries.txt"))
+_vblocks = list(re.finditer(r"^\t([A-Z0-9]{2,6}) = " + BS + "{", _van10, re.M))
+probs, count = [], 0
+_compared = 0
+for _tag, (_char, _acc, _rn) in sorted(_bs.HISTORICAL_RULERS.items()):
+    for _i, _b in enumerate(_vblocks):
+        if _b.group(1) != _tag:
+            continue
+        _e = _vblocks[_i + 1].start() if _i + 1 < len(_vblocks) else len(_van10)
+        _terms = re.findall(r"ruler_term = " + BS + "{ character = " + _char
+                            + r" start_date = ([0-9.]+)", _van10[_b.start():_e])
+        if _terms:
+            _compared += 1
+            if _acc not in _terms:
+                probs.append(f"{_tag}/{_char}: our accession {_acc} vs vanilla's own term(s) {_terms}")
+        break
+count = len(_bs.HISTORICAL_RULERS)
+print(f"       accessions cross-checked against vanilla's own terms: {_compared} of {count}")
+# Armed at 53 rows; the printed compared-count is the real coverage figure.
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=53)
+
+# Our authored character keys must not collide with vanilla's — repeated
+# keys MERGE inside character_db (the QAR law), so a collision would
+# silently overwrite a vanilla character with ours, no error anywhere.
+_van05 = read(_np(VAN + "/main_menu/setup/start/05_characters.txt"))
+probs, count = [], 0
+_ours_keys = re.findall(r"^\t([a-z][a-z0-9_]*) = " + BS + "{", _bs.NEW_CHARACTERS, re.M)
+for _k in _ours_keys:
+    count += 1
+    if re.search(r"^\t" + _k + r" = " + BS + "{", _van05, re.M):
+        probs.append(f"{_k} already exists in vanilla — our block would silently merge over it")
+if len(_ours_keys) != len(set(_ours_keys)):
+    probs.append("duplicate key inside NEW_CHARACTERS itself")
+# Armed at 21 authored characters.
+check("authored character keys collide with nothing", count, probs, min_count=21)
+
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
 # START_DATE, throne to a generated regent, zero error.log lines. But

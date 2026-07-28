@@ -70,9 +70,9 @@ HISTORICAL_RULERS = {
     # North Sea, 1066. All four already exist in vanilla, which ships regnal
     # chains back to 886 and 188 characters who are adults in 1066.
     "ENG": ("eng_harold_godwinson", "1066.1.6", 2),       # Harold II, crowned the day after Edward the Confessor died; d. 1066.10.14 at Hastings
-    "NRM": ("eng_william_the_conquerer", "1035.7.3", 2),  # William II as Duke of Normandy; rank_duchy, capital rouen
+    "NRM": ("eng_william_the_conquerer", "1035.7.2", 2),  # William II as Duke of Normandy; rank_duchy, capital rouen
     "DAN": ("dan_sweyn_estridsson", "1047.10.25", 2),     # Sweyn II, sole King of Denmark at Magnus the Good's death
-    "SCO": ("sco_malcolm_iii", "1058.4.25", 3),           # Malcolm III, crowned at Scone
+    "SCO": ("sco_malcolm_iii", "1058.3.18", 3),           # Malcolm III, crowned at Scone
     "NOR": ("nor_harald_hardrada", "1046.1.1", 3),        # Harald III, co-king from 1046; written below — vanilla has no Norwegian alive in 1066
 
     # France, 1066 — from the France research pass (docs/KNOWLEDGE.md).

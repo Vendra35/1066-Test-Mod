@@ -4481,7 +4481,7 @@ countries = {
 		include = "catholic_monarchy"
 		government = {
 			ruler = sco_malcolm_iii
-			ruler_term = { character = sco_malcolm_iii start_date = 1058.4.25 regnal_number = 3 }
+			ruler_term = { character = sco_malcolm_iii start_date = 1058.3.18 regnal_number = 3 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -15054,7 +15054,7 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = eng_william_the_conquerer
-			ruler_term = { character = eng_william_the_conquerer start_date = 1035.7.3 regnal_number = 2 }
+			ruler_term = { character = eng_william_the_conquerer start_date = 1035.7.2 regnal_number = 2 }
 
 			# Annexed to France 1204-1332
 
