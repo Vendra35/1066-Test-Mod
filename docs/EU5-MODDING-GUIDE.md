@@ -629,3 +629,38 @@ reference-integrity harness structurally cannot see.
 | decisions | `common/generic_actions/` (`type = situation` for panel buttons) |
 | `owns_or_controls` | `owns` (events use it 70:1 over `controls`) |
 | 4-letter tags | never — 3 letters, always |
+
+## Session 2026-07-28/29 — generalizable laws (full versions in KNOWLEDGE.md)
+
+- **Tributary vs vassal:** war-declaration restriction is vassal-only;
+  tributaries keep wars, color and map name, and monarchy-over-monarchy
+  tributaries are attested at setup. Model loose overlordship with
+  tributaries, never vassals.
+- **Empire rank never reads the NAME key** (prefix_adjective_rank branch
+  fires for any empire except LAT). Choose rank by which NAME chain you
+  want, not by the state's size — vanilla ships a 738-location kingdom.
+- **Vanilla's "Caliphate" rank string is dead code** (the theocracy branch
+  fires first, no religion gate). Reviving it = loc-override the theocracy
+  branch strings; verify no other empire-rank theocracy can reach them.
+- **Landless-with-claims is Paradox's own standard shape** — check a tag's
+  claims block before inventing any border; displacement is never deletion.
+- **tag+location fields where the tag does not own the location are
+  first-class vanilla** (1,170 of 2,776 building entries) — do not "fix"
+  07_cities_and_buildings after ownership passes.
+- **End-anchored one-liner regexes miss trailing comments** (`} #note`) —
+  the one-line-block law's cousin. `(?:#[^\n]*)?\n` + exact-count asserts.
+- **Comment words collide with location tokens** (van/split/kars are real
+  locations) — mask comments length-preservingly before token scans.
+- **Ownership edits at scale need one index sweep, not per-item scans** —
+  per-location O(file) scans went from seconds to minutes at 495 items.
+- **Transfer/grant lists must be pairwise disjoint and ASSERTED so** — a
+  double-listed location is silently won by the later list with every
+  per-location check still green.
+- **A dependency/pact naming a landless tag floods the log at start**
+  ("invalid subject / non-existent overlord") — strip them with the
+  landless set, exact-count asserted.
+- **regnal_number = 0 is vanilla's no-ordinal value** (184 uses, Alfred
+  the Great included) — never guess an ordinal that sources dispute.
+- **Invented name keys are proven** (a name key is a loc key; language
+  rows render free — 'Abbād, Bādīs screenshots). Each new key is still a
+  deliberate act with a loc entry, never a substitute-guess.
