@@ -2178,6 +2178,27 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 27 future-dated dependencies, stripped {n_future_deps}")
     report.append(("future-dated dependencies stripped", n_future_deps))
 
+    # A landless tag cannot sit in the vassal web: the engine logs
+    # "invalid subject / non-existent overlord" for every dependency
+    # naming one (first in-game observation: ~318-line start flood after
+    # the Byzantium batch). All 28 are 1337 relations — the Frankokratia
+    # chains, the beylik webs, Armenia's — and every partner they free
+    # (Syunik, Khachen, Salona…) was historically independent in 1066.
+    n_landless_deps = 0
+    def _drop_landless_dep(m):
+        nonlocal n_landless_deps
+        f = re.search(r"first = (\w+)", m.group(0))
+        s2 = re.search(r"second = (\w+)", m.group(0))
+        if (f and f.group(1) in LANDLESS_AFTER) or (s2 and s2.group(1) in LANDLESS_AFTER):
+            n_landless_deps += 1
+            return ""
+        return m.group(0)
+    src = re.sub(r"^[ \t]*dependency = \{[^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
+                 _drop_landless_dep, src, flags=re.M)
+    if n_landless_deps != 28:
+        sys.exit(f"expected exactly 28 landless-tag dependencies, stripped {n_landless_deps}")
+    report.append(("dependencies naming a landless tag stripped", n_landless_deps))
+
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):
             return "an appanage reference survived the strip"

@@ -362,6 +362,29 @@ second `.txt` there, and a large published mod ships one that is dead. A file
 with THAT name replaces all 1348.
 **Accept:** one log line when the action fires, and no popup. The action works.
 
+### "invalid subject" / "non-existent overlord" flood at game start (~318 lines, 2026-07-28)
+**DECODED — dependencies naming a landless tag; FIXED at the generator.**
+**Was seen:** after the Byzantium batch, before the landless-dependency
+strip landed. Exact engine wording unconfirmed (the log was overwritten
+by the next launch) but the scale matched the measurement: exactly 28
+kept dependencies named at least one of the 48 landless tags (the
+Frankokratia vassal chains, the beylik webs, Armenia's relations).
+**Fix:** `build_diplomacy` strips any dependency whose `first` or
+`second` is in `LANDLESS_AFTER`, exact-count asserted at 28. Every
+partner freed by the strip (Syunik, Khachen, Salona…) was historically
+independent at 1066. If this flood reappears, a NEW landless tag
+probably joined LANDLESS_AFTER without the count being re-checked —
+the assert will already have said so at build time.
+
+### "Removed invalid law <X>" lines at game start
+**HYPOTHESIS — engine self-healing, likely correlated with the landless
+dependencies above; verify on the next launch.** Seen in the same
+session as the subject flood, count unknown, log overwritten. The
+engine says it REMOVED the law — self-healing, not a crash class. If
+the lines survive the dependency fix, decode properly: note which tag
+and which law the first few lines name and check whether the law's
+government/subject prerequisites vanished with our changes.
+
 ### `country_database.cpp:98 — <TAG> has the name 'empire' in it, which does not work for a tag, which would look silly as 'The Great TAG Empire Empire'`
 **Means:** a country name containing "Empire". Rank titles compose as
 `<prefix> <adjective> <rank noun>`, so the word doubles.
