@@ -1137,7 +1137,11 @@ def build_diplomacy(src):
                     f"(expected 27) — re-read the file before deciding anything")
         return None
 
-    return src, report, validate, f"{after} dependencies kept"
+    # `after` feeds the appanage-count assertion above and is measured
+    # BEFORE the English strip; the kept-count message recounts the final
+    # text so it cannot go stale again.
+    kept = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
+    return src, report, validate, f"{kept} dependencies kept"
 
 
 # The two wars of 1066, in progress at game start. Declaring them from
