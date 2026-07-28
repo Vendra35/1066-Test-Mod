@@ -293,6 +293,12 @@ regency). The opinion loc key the engine flagged is added.
    naming trap), Abbasids+Seljuks (one job), Aleppo/Damascus; plus the
    Mirdasid religion dispute and the missing caliphate IO.
 
+**Meanwhile prepared:** `docs/NEW-COUNTRIES-DESIGN.md` — the mechanism all
+four invent-a-country slices block on, synthesized from the research
+passes with a smallest-probe-first rollout (Pereyaslavl: one tag, eight
+locations, a vanilla ruler). Three more research agents are digging
+Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,
