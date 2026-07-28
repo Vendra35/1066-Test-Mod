@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 114: 58 named rulers + 58 terms after Sardinia.
+# Armed at 140: 71 named rulers + 71 terms after the taifa factory.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=114)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=140)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -331,8 +331,12 @@ for _m in re.finditer(r"^\t([a-z][a-z0-9_]*) = " + BS + "{", _nc_src, re.M):
         count += 1
         for _part in _nm.group(1).split("."):
             if _part.startswith("name_"):
-                if f" {_part}:" not in _dyn_reg:
-                    probs.append(f"{_key}: name part {_part} not in the dynamic registry")
+                # A name key is a loc key (KNOWLEDGE): vanilla's dynamic
+                # registry OR our own loc file both count — the taifa slice
+                # ships three invented keys (name_abbad, name_badis,
+                # name_abd_al_malik) patterned on name_abd_al_qadir.
+                if f" {_part}:" not in _dyn_reg and f" {_part}:" not in _our_loc:
+                    probs.append(f"{_key}: name part {_part} not in the dynamic registry or our loc")
             else:
                 if f" {_part}:" not in _lit_reg and f" {_part}:" not in _our_loc:
                     probs.append(f"{_key}: literal name {_part} has no loc entry anywhere")
@@ -353,9 +357,9 @@ count += len(_seated)
 for _c in set(_seated):
     if _seated.count(_c) > 1:
         probs.append(f"{_c} is seated on more than one tag")
-# Armed at 140: 23 authored characters x ~3 identifiers + 14 dynasties + 58 seats
-# (146 measured after Sardinia).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=140)
+# Armed at 200: 36 authored characters + 25 dynasties + 71 seats
+# (209 measured after the taifa factory).
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=200)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -381,9 +385,10 @@ for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
         break
 count = len(_bs.HISTORICAL_RULERS)
 print(f"       accessions cross-checked against vanilla's own terms: {_compared} of {count}")
-# Armed at 58 rows after Sardinia; the printed compared-count is the real
-# coverage figure.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=58)
+# Armed at 71 rows after the taifa factory; the printed compared-count is
+# the real coverage figure (the thirteen emirs exist nowhere in vanilla,
+# so the compared set stays at 31).
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=71)
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would

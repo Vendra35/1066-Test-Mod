@@ -12569,18 +12569,14 @@ countries = {
 	ARA = {
 		own_control_core = {
 			barcelona berga besalu ripoll castellon_ampurias girona manresa sant_feliu sitges terrassa vic
-			cervera balaguer flix lleida montblanc tarragona tarrega tortosa villafranca_del_penedes
+			cervera    montblanc tarragona tarrega  villafranca_del_penedes
 			seu_durgell agramunt cardona talarn vielha
-			huesca ainsa almudevar anso barbastro benabarre ejea_de_los_caballeros fraga jaca monzon sarinena sos
-			teruel albarracin alcaniz alfambra cantavieja montalban mora_de_rubielos valderrobres
-			zaragoza ariza belchite carinena caspe calatayud daroca pina_de_ebro tarazona zuera
-			castellon_de_la_plana ares_del_maestre llucena morella peniscola
-			jativa alcoy alicante denia elche orihuela
-			valencia gandia ayora bunol chelva lliria
+			 ainsa  anso  benabarre   jaca   sos
+
 		}
 
 		own_control_integrated = {
-			jumilla
+			
 		}
 
 		own_control_conquered = {
@@ -12673,7 +12669,7 @@ countries = {
 	}
 	MLL = {
 		own_control_core = {
-			palma ciudadela_de_menorca ibiza manacor pollensa #Kingdom of Mallorca
+			     #Kingdom of Mallorca
 			puigcerda prades #County of Cerdanya
 			perpignan #County of Roselló
 			montpellier #Lordship of Montpellier
@@ -12715,26 +12711,16 @@ countries = {
 			soria agreda almazan berlanga burgo_de_osma calahorra calatanazor medinaceli arnedo
 			santander laredo potes san_vicente_barquera
 			valladolid medina_de_rioseco medina_del_campo penafiel tordesillas
-			cuenca alarcon belmonte beteta canete huete iniesta jorquera molina_de_aragon moya pareja san_clemente requena torralba
-			madrid alcala_de_henares brihuega buitrago_de_lozoya cobeta colmenar el_escorial guadalajara maqueda siguenza zorita
-			ciudad_real alcaraz almaden almodovar_del_campo calatrava lezuza malagon manzanares puertollano alhambra_location montiel villapalacios villarobledo
-			toledo alcazar_de_san_juan chinchon consuegra guadalupe illescas los_yebenes navalucillos ocana puebla_de_montalban puente_arzobispo talavera_de_la_reina tomelloso ucles
-			badajoz albuquerque azuaga barcarrota jerez_de_los_caballeros llerena merida monesterio villanueva_del_fresno zafra
-			caceres alcantara arroyo brozas galisteo granadilla montanchez valencia_de_alcantara
-			plasencia belalcazar escurial herrera jaraicejo medellin puebla_de_alcocer trujillo valverde villanueva_de_la_serena zalamea
+
 			coruna betanzos ferrol mondonedo vivero
 			lugo monforte_de_lemos navia_de_suarna sarria villalba
 			ourense barco_de_valdeorras ginzo_de_limia monterrey ribadavia viana_bolo
 			santiago_compostela finisterre lalin mellid noya pontevedra tuy
 			oviedo aviles cangas castropol llanes mieres tineo villaviciosa
 			leon astorga castrocalbon mansilla ponferrada riano sahagun villablino villafranca_bierzo
-			salamanca alba_de_tormes bejar ciudad_rodrigo coria ledesma matilla_de_canos piedrahita san_felices yecla_de_yeltes
+			salamanca alba_de_tormes bejar ciudad_rodrigo  ledesma matilla_de_canos piedrahita san_felices yecla_de_yeltes
 			zamora alba_de_aliste alcanices benavente fermoselle puebla_de_sanabria toro villalpando
-			cordoba baena carpio espiel fuenteovejuna lucena palma_del_rio pedroche santa_eufemia
-			jaen andujar baeza cazorla jodar martos ubeda
-			murcia albacete caravaca cartagena chinchilla cieza hellin lorca mula segura_de_la_sierra villena
-			sevilla arcos_de_la_frontera cadiz carmona constantina ecija jerez_de_la_frontera medina_sidonia moron olvera osuna sanlucar tarifa
-			huelva almonaster_la_real aracena aroche ayamonte coria_del_rio niebla puebla_de_guzman sanlucar_la_mayor
+
 			bilbao anana durango onate salvatierra san_sebastian tolosa valmaseda vitoria
 		}
 
@@ -12819,10 +12805,9 @@ countries = {
 
 	POR = {
 		own_control_core = {
-			lagos faro silves tavira
-			evora alvalade alvito avis beja crato elvas estremoz mertola montemor mora_portugal moura odemira ourique ponte_sor portalegre portel salvaterra serpa sines vila_vicosa
-			coimbra besteiros castelo_branco covilha esgueira feira guarda idanha lamego meda pinhel proenca_nova sabugal seia trancoso viseu
-			lisbon alcacer_do_sal alcobaca chao_de_couce figueira leiria santarem setubal tomar torres_novas torres_vedras
+
+			coimbra besteiros   esgueira feira guarda  lamego meda pinhel   seia trancoso viseu
+			   chao_de_couce figueira leiria     
 			porto aguiar barcelos braga guimaraes montalegre valenca viana_do_castelo
 			braganca chaves macedo miranda_de_i_douro mirandela moncorvo vila_real
 		}
@@ -12962,12 +12947,11 @@ countries = {
 
 	GRA = {
 		own_control_core = {
-			almeria almanzora baza gergal mojacar velez_rubio
-			granada adra almunecar guadix huescar illora loja pinar orgiva
-			malaga antequera velez_malaga
+
 		}
 
 		our_cores_conquered_by_others = {
+			granada adra almunecar guadix huescar illora loja pinar orgiva malaga antequera velez_malaga almeria almanzora baza gergal mojacar velez_rubio
 			olvera
 		}
 
@@ -13012,7 +12996,7 @@ countries = {
 	#Navarre
 	NAV = {
 		own_control_core = {
-			pamplona elizondo estella olite roncesvalles sanguesa tudela viana laguardia
+			pamplona elizondo estella olite roncesvalles sanguesa  viana laguardia
 			saint_jean_pied_de_port #Gascony
 		}
 
@@ -16422,7 +16406,7 @@ countries = {
 			jerada taourirt debdou echemmaia sidi_bennour
 			nedroma tegeget kalaat_sraghna midelt
 			aouint_yghomane afso ifrane
-			ronda algeciras gibraltar marbella
+			   
 		}
 
 		control = {
@@ -57674,6 +57658,303 @@ countries = {
 		}
 	}
 
+	ABR = {
+		own_control_core = {
+			teruel albarracin alfambra mora_de_rubielos
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = abr_abd_al_malik_ibn_razin
+			ruler_term = { character = abr_abd_al_malik_ibn_razin start_date = 1045.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = albarracin
+	}
+
+	ALM = {
+		own_control_core = {
+			almeria almanzora baza gergal huescar mojacar velez_rubio
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = alm_muhammad_al_mutasim
+			ruler_term = { character = alm_muhammad_al_mutasim start_date = 1051.1.1 regnal_number = 1 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = almeria
+	}
+
+	ALP = {
+		own_control_core = {
+			chelva
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = alp_muhammad_yumn_al_dawla
+			ruler_term = { character = alp_muhammad_yumn_al_dawla start_date = 1043.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = chelva
+	}
+
+	BDJ = {
+		own_control_core = {
+			badajoz albuquerque barcarrota jerez_de_los_caballeros villanueva_del_fresno caceres alcantara arroyo brozas valencia_de_alcantara merida azuaga llerena monesterio montanchez zafra plasencia galisteo granadilla jaraicejo valverde trujillo escurial herrera puebla_de_alcocer villanueva_de_la_serena belalcazar medellin zalamea evora avis crato elvas estremoz montemor portalegre portel vila_vicosa beja alvalade alvito moura odemira ourique serpa sines lisbon alcacer_do_sal alcobaca setubal torres_vedras santarem mora_portugal ponte_sor salvaterra tomar torres_novas castelo_branco covilha idanha proenca_nova sabugal coria
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = bdj_muhammad_al_muzaffar
+			ruler_term = { character = bdj_muhammad_al_muzaffar start_date = 1045.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = badajoz
+	}
+
+	CRD = {
+		own_control_core = {
+			cordoba baena carpio espiel fuenteovejuna lucena palma_del_rio pedroche santa_eufemia
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = crd_abd_al_malik_ibn_jahwar
+			ruler_term = { character = crd_abd_al_malik_ibn_jahwar start_date = 1064.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = cordoba
+	}
+
+	DYA = {
+		own_control_core = {
+			palma ciudadela_de_menorca ibiza manacor pollensa denia gandia alcoy
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = dya_ali_iqbal_al_dawla
+			ruler_term = { character = dya_ali_iqbal_al_dawla start_date = 1045.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = denia
+	}
+
+	GRZ = {
+		own_control_core = {
+			granada adra almunecar guadix illora loja pinar orgiva malaga antequera velez_malaga marbella ronda jaen andujar baeza cazorla jodar martos ubeda
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = grz_badis_ibn_habbus
+			ruler_term = { character = grz_badis_ibn_habbus start_date = 1038.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = granada
+	}
+
+	LRD = {
+		own_control_core = {
+			lleida flix fraga balaguer
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = lrd_yusuf_al_muzaffar
+			ruler_term = { character = lrd_yusuf_al_muzaffar start_date = 1046.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = lleida
+	}
+
+	MRU = {
+		own_control_core = {
+			murcia cartagena lorca mula hellin caravaca cieza segura_de_la_sierra albacete chinchilla villena jumilla orihuela alicante elche
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = mru_muhammad_ibn_tahir
+			ruler_term = { character = mru_muhammad_ibn_tahir start_date = 1038.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = murcia
+	}
+
 	PYS = {
 		government = {
 			ruler = kie_vsevolod_rurikovich
@@ -57688,6 +57969,138 @@ countries = {
 		include = "ruthenian_principality_no_coast"
 		capital = pereiaslav
 		country_rank = rank_duchy
+	}
+
+	QRM = {
+		own_control_core = {
+			carmona
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = qrm_muhammad_al_birzali
+			ruler_term = { character = qrm_muhammad_al_birzali start_date = 1052.1.1 regnal_number = 0 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = carmona
+	}
+
+	SEV = {
+		own_control_core = {
+			sevilla constantina coria_del_rio ecija moron olvera osuna sanlucar_la_mayor huelva almonaster_la_real aracena aroche ayamonte niebla puebla_de_guzman cadiz arcos_de_la_frontera jerez_de_la_frontera medina_sidonia sanlucar tarifa algeciras gibraltar lagos faro silves tavira mertola
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = sev_abbad_al_mutadid
+			ruler_term = { character = sev_abbad_al_mutadid start_date = 1042.1.1 regnal_number = 2 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = sevilla
+	}
+
+	TOL = {
+		own_control_core = {
+			toledo guadalupe illescas los_yebenes navalucillos puebla_de_montalban puente_arzobispo talavera_de_la_reina alarcon belmonte iniesta jorquera moya san_clemente requena alcaraz lezuza alhambra_location montiel villapalacios villarobledo ciudad_real almaden almodovar_del_campo calatrava malagon manzanares puertollano guadalajara brihuega buitrago_de_lozoya cobeta siguenza zorita cuenca beteta canete huete molina_de_aragon pareja torralba madrid alcala_de_henares colmenar el_escorial maqueda ocana alcazar_de_san_juan chinchon consuegra tomelloso ucles valencia bunol lliria castellon_de_la_plana ares_del_maestre llucena morella peniscola jativa ayora
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = tol_yahya_al_mamun
+			ruler_term = { character = tol_yahya_al_mamun start_date = 1043.1.1 regnal_number = 1 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = toledo
+	}
+
+	ZGZ = {
+		own_control_core = {
+			zaragoza belchite pina_de_ebro tarazona zuera calatayud ariza carinena daroca alcaniz cantavieja caspe montalban valderrobres huesca almudevar ejea_de_los_caballeros barbastro monzon sarinena tortosa tudela
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+
+		government = {
+			ruler = zgz_ahmad_al_muqtadir
+			ruler_term = { character = zgz_ahmad_al_muqtadir start_date = 1046.1.1 regnal_number = 1 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			sephardi
+		}
+
+		capital = zaragoza
 	}
 
 }

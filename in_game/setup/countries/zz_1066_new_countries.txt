@@ -15,3 +15,112 @@ PYS = {
 	culture_definition = ruthenian
 	religion_definition = orthodox
 }
+
+# The thirteen taifas (Opus Iberia package, tag freeness verified: zero
+# registry hits, zero TAG:/TAG_ADJ loc collisions, zero whole-tree word
+# hits). color2 = rgb { 16 41 202 } is the shared Iberian secondary used
+# by every entry in vanilla iberia.txt (GRA :57, LON :65, MLL :77).
+
+SEV = { #Taifa of Seville
+	color = map_SEV
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+BDJ = { #Taifa of Badajoz
+	color = map_BDJ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+TOL = { #Taifa of Toledo
+	color = map_TOL
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+CRD = { #Taifa of Cordoba
+	color = map_CRD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+GRZ = { #Taifa of Granada (Zirid — GRA is the Nasrid future, kept landless)
+	color = map_GRZ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+ALM = { #Taifa of Almeria
+	color = map_ALM
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+MRU = { #Taifa of Murcia
+	color = map_MRU
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+DYA = { #Taifa of Denia
+	color = map_DYA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+ZGZ = { #Taifa of Zaragoza
+	color = map_ZGZ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+LRD = { #Taifa of Lerida
+	color = map_LRD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+ABR = { #Taifa of Albarracin
+	color = map_ABR
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+ALP = { #Taifa of Alpuente (capital chelva — alpuente has no map location)
+	color = map_ALP
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}
+
+QRM = { #Taifa of Carmona
+	color = map_QRM
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = andalusi
+	religion_definition = sunni
+}

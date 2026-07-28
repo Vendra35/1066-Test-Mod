@@ -104707,4 +104707,143 @@ character_db={
 		dynasty = lacon_gunale_dynasty
 		tag = CAG
 	}
+
+	# --- 1066 al-Andalus: the thirteen taifa emirs ------------------------
+	# All birth dates [U], all safely pre-start, no death dates (the alive
+	# law). Name keys: name_muhammad/name_yahya/name_ahmad/name_ali are
+	# vanilla (character_names_dynamic, cited in the package); name_joseph
+	# IS Yusuf (.arabic_language "Yūsuf", :10200). name_abbad, name_badis
+	# and name_abd_al_malik are OUR OWN keys — the invented-name-key probe,
+	# patterned on vanilla's name_abd_al_qadir (:41). Culture andalusi for
+	# all thirteen: the Berber houses (Zirid, Birzalid) ruled an andalusi
+	# country, matching vanilla GRA's own choice.
+	sev_abbad_al_mutadid = {
+		first_name = { name = name_abbad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1016.1.1
+		birth = sevilla
+		dynasty = abbadid_dynasty
+		tag = SEV
+	}
+
+	bdj_muhammad_al_muzaffar = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = badajoz
+		dynasty = aftasid_dynasty
+		tag = BDJ
+	}
+
+	tol_yahya_al_mamun = {
+		first_name = { name = name_yahya }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = toledo
+		dynasty = dhunnunid_dynasty
+		tag = TOL
+	}
+
+	crd_abd_al_malik_ibn_jahwar = {
+		first_name = { name = name_abd_al_malik }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = cordoba
+		dynasty = jahwarid_dynasty
+		tag = CRD
+	}
+
+	grz_badis_ibn_habbus = {
+		first_name = { name = name_badis }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1002.1.1
+		birth = granada
+		dynasty = zirid_dynasty
+		tag = GRZ
+	}
+
+	alm_muhammad_al_mutasim = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1037.1.1
+		birth = almeria
+		dynasty = sumadihid_dynasty
+		tag = ALM
+	}
+
+	mru_muhammad_ibn_tahir = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = murcia
+		dynasty = tahirid_murcia_dynasty
+		tag = MRU
+	}
+
+	dya_ali_iqbal_al_dawla = {
+		first_name = { name = name_ali }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = denia
+		dynasty = mujahidid_dynasty
+		tag = DYA
+	}
+
+	zgz_ahmad_al_muqtadir = {
+		first_name = { name = name_ahmad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1020.1.1
+		birth = zaragoza
+		dynasty = hudid_dynasty
+		tag = ZGZ
+	}
+
+	lrd_yusuf_al_muzaffar = {
+		first_name = { name = name_joseph }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1022.1.1
+		birth = zaragoza
+		dynasty = hudid_dynasty
+		tag = LRD
+	}
+
+	abr_abd_al_malik_ibn_razin = {
+		first_name = { name = name_abd_al_malik }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1025.1.1
+		birth = albarracin
+		dynasty = razinid_dynasty
+		tag = ABR
+	}
+
+	alp_muhammad_yumn_al_dawla = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1020.1.1
+		birth = chelva
+		dynasty = qasimid_dynasty
+		tag = ALP
+	}
+
+	qrm_muhammad_al_birzali = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = carmona
+		dynasty = birzalid_dynasty
+		tag = QRM
+	}
 }

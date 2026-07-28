@@ -183,6 +183,25 @@ HISTORICAL_RULERS = {
     # Corsica gets territory only (no single 1066 ruler existed).
     "TOR": ("tor_barisone_i_lacon_gunale", "1038.1.1", 1), # Barisone I of Torres/Logudoro, [U] dates — NEW_CHARACTERS
     "CAG": ("cag_orzocco_torchitorio_i", "1058.1.1", 1),  # Orzocco Torchitorio I of Cagliari, [U] dates — NEW_CHARACTERS
+
+    # The taifa factory (Opus Iberia package, key claims re-verified by the
+    # main session). All thirteen rulers are NEW_CHARACTERS; every accession
+    # is [U] — no taifa emir exists anywhere in vanilla to compare against.
+    # regnal_number = 0 is vanilla's own convention for unnumbered rulers
+    # (lon_alfonso_froilaz, 10_countries.txt:14723).
+    "SEV": ("sev_abbad_al_mutadid", "1042.1.1", 2),       # Abbad II al-Mu'tadid, the taifa devourer
+    "BDJ": ("bdj_muhammad_al_muzaffar", "1045.1.1", 0),   # Muhammad al-Muzaffar of Badajoz
+    "TOL": ("tol_yahya_al_mamun", "1043.1.1", 1),         # Yahya I al-Ma'mun of Toledo — holds Valencia since 1065
+    "CRD": ("crd_abd_al_malik_ibn_jahwar", "1064.1.1", 0),# Abd al-Malik ibn Jahwar of Cordoba, dates thin even for [U]
+    "GRZ": ("grz_badis_ibn_habbus", "1038.1.1", 0),       # Badis ibn Habbus the Zirid — GRZ, never GRA (rank-branch law)
+    "ALM": ("alm_muhammad_al_mutasim", "1051.1.1", 1),    # Muhammad al-Mu'tasim of Almeria
+    "MRU": ("mru_muhammad_ibn_tahir", "1038.1.1", 0),     # Muhammad ibn Ahmad ibn Tahir of Murcia
+    "DYA": ("dya_ali_iqbal_al_dawla", "1045.1.1", 0),     # Ali ibn Mujahid Iqbal al-Dawla of Denia and the Balearics
+    "ZGZ": ("zgz_ahmad_al_muqtadir", "1046.1.1", 1),      # Ahmad I al-Muqtadir the Hudid of Zaragoza
+    "LRD": ("lrd_yusuf_al_muzaffar", "1046.1.1", 0),      # Yusuf al-Muzaffar, al-Muqtadir's rival brother in Lerida
+    "ABR": ("abr_abd_al_malik_ibn_razin", "1045.1.1", 0), # Abd al-Malik ibn Razin of Albarracin
+    "ALP": ("alp_muhammad_yumn_al_dawla", "1043.1.1", 0), # Muhammad Yumn al-Dawla of Alpuente (capital = chelva, the map gap)
+    "QRM": ("qrm_muhammad_al_birzali", "1052.1.1", 0),    # Muhammad al-Birzali of Carmona — Seville eats him in 1067
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -219,6 +238,144 @@ NEW_COUNTRIES = {
 LOCATION_TRANSFERS = {
     "PYS": ["pereiaslav", "desnyanskyi_horodok", "boryspil", "oster", "kozelets"],
 }
+
+# ------------------------------------------------------------- the taifas ---
+# THE TAIFA FACTORY (Opus Iberia data package 2026-07-28; rank trigger, LON
+# precedent, reform gate, tag freeness and the three missing name keys all
+# re-verified by the main session). Thirteen Muslim states at 1066.9.15;
+# 244 locations leave CAS 131 / ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 /
+# NAV 1. Block template: vanilla GRA (10_countries.txt:14801) minus all
+# Nasrid-specific content (its 1238+ ruler_terms, its regnal_numbers, the
+# GRA-gated jewel_of_alandalus reform, its claims). "Taifa of X" display is
+# free — rank_duchy_andalusi (customizable_localization/country_ranks.txt
+# :1688) fires on duchy rank + Iberian capital + muslim religion, and
+# EXCLUDES `tag = GRA`: that exclusion is why Zirid Granada is the fresh
+# tag GRZ and vanilla GRA goes landless (LON shape) rather than reused.
+# No Valencia tag: al-Ma'mun of Toledo annexed it in 1065 [U]. Alpuente's
+# town has no map location — chelva stands in (the known definitions gap).
+_TAIFAS = {
+    # tag: (capital, [locations — whole vanilla provinces unless the
+    #                 package's judgment notes say otherwise])
+    "SEV": ("sevilla", [
+        "sevilla", "constantina", "coria_del_rio", "ecija", "moron",
+        "olvera", "osuna", "sanlucar_la_mayor",
+        "huelva", "almonaster_la_real", "aracena", "aroche", "ayamonte",
+        "niebla", "puebla_de_guzman",
+        "cadiz", "arcos_de_la_frontera", "jerez_de_la_frontera",
+        "medina_sidonia", "sanlucar", "tarifa",
+        "algeciras", "gibraltar",
+        "lagos", "faro", "silves", "tavira",
+        "mertola"]),
+    "BDJ": ("badajoz", [
+        "badajoz", "albuquerque", "barcarrota", "jerez_de_los_caballeros",
+        "villanueva_del_fresno",
+        "caceres", "alcantara", "arroyo", "brozas", "valencia_de_alcantara",
+        "merida", "azuaga", "llerena", "monesterio", "montanchez", "zafra",
+        "plasencia", "galisteo", "granadilla", "jaraicejo", "valverde",
+        "trujillo", "escurial", "herrera", "puebla_de_alcocer",
+        "villanueva_de_la_serena", "belalcazar", "medellin", "zalamea",
+        "evora", "avis", "crato", "elvas", "estremoz", "montemor",
+        "portalegre", "portel", "vila_vicosa",
+        "beja", "alvalade", "alvito", "moura", "odemira", "ourique",
+        "serpa", "sines",
+        "lisbon", "alcacer_do_sal", "alcobaca", "setubal", "torres_vedras",
+        "santarem", "mora_portugal", "ponte_sor", "salvaterra", "tomar",
+        "torres_novas",
+        "castelo_branco", "covilha", "idanha", "proenca_nova", "sabugal",
+        "coria"]),
+    "TOL": ("toledo", [
+        "toledo", "guadalupe", "illescas", "los_yebenes", "navalucillos",
+        "puebla_de_montalban", "puente_arzobispo", "talavera_de_la_reina",
+        "alarcon", "belmonte", "iniesta", "jorquera", "moya",
+        "san_clemente", "requena",
+        "alcaraz", "lezuza", "alhambra_location", "montiel",
+        "villapalacios", "villarobledo",
+        "ciudad_real", "almaden", "almodovar_del_campo", "calatrava",
+        "malagon", "manzanares", "puertollano",
+        "guadalajara", "brihuega", "buitrago_de_lozoya", "cobeta",
+        "siguenza", "zorita",
+        "cuenca", "beteta", "canete", "huete", "molina_de_aragon",
+        "pareja", "torralba",
+        "madrid", "alcala_de_henares", "colmenar", "el_escorial", "maqueda",
+        "ocana", "alcazar_de_san_juan", "chinchon", "consuegra",
+        "tomelloso", "ucles",
+        "valencia", "bunol", "lliria",
+        "castellon_de_la_plana", "ares_del_maestre", "llucena", "morella",
+        "peniscola",
+        "jativa", "ayora"]),
+    "CRD": ("cordoba", [
+        "cordoba", "baena", "carpio", "espiel", "fuenteovejuna", "lucena",
+        "palma_del_rio", "pedroche", "santa_eufemia"]),
+    "GRZ": ("granada", [
+        "granada", "adra", "almunecar", "guadix", "illora", "loja",
+        "pinar", "orgiva",
+        "malaga", "antequera", "velez_malaga",
+        "marbella", "ronda",
+        "jaen", "andujar", "baeza", "cazorla", "jodar", "martos", "ubeda"]),
+    "ALM": ("almeria", [
+        "almeria", "almanzora", "baza", "gergal", "huescar", "mojacar",
+        "velez_rubio"]),
+    "MRU": ("murcia", [
+        "murcia", "cartagena", "lorca", "mula",
+        "hellin", "caravaca", "cieza", "segura_de_la_sierra",
+        "albacete", "chinchilla", "villena", "jumilla",
+        "orihuela", "alicante", "elche"]),
+    "DYA": ("denia", [
+        "palma", "ciudadela_de_menorca", "ibiza", "manacor", "pollensa",
+        "denia", "gandia", "alcoy"]),
+    "ZGZ": ("zaragoza", [
+        "zaragoza", "belchite", "pina_de_ebro", "tarazona", "zuera",
+        "calatayud", "ariza", "carinena", "daroca",
+        "alcaniz", "cantavieja", "caspe", "montalban", "valderrobres",
+        "huesca", "almudevar", "ejea_de_los_caballeros",
+        "barbastro", "monzon", "sarinena",
+        "tortosa", "tudela"]),
+    "LRD": ("lleida", ["lleida", "flix", "fraga", "balaguer"]),
+    "ABR": ("albarracin", [
+        "teruel", "albarracin", "alfambra", "mora_de_rubielos"]),
+    "ALP": ("chelva", ["chelva"]),
+    "QRM": ("carmona", ["carmona"]),
+}
+
+def _taifa_block(tag, capital, locs):
+    inc = "".join(f'\t\tinclude = "{i}"\n' for i in (
+        "expl_muslim_mediterranean", "expl_silk_road_west",
+        "expl_silk_road_center", "expl_silk_road_east",
+        "expl_indian_trade_route", "muslim_monarchy_no_abrahamic_dhimmi"))
+    return (f"\t{tag} = {{\n"
+            f"\t\town_control_core = {{\n\t\t\t{' '.join(locs)}\n\t\t}}\n\n"
+            f"\t\tstarting_technology_level = 3\n{inc}\n"
+            f"\t\tgovernment = {{\n\t\t\tlaws = {{\n"
+            f"\t\t\t\tsharia_law = maliki_policy\n\t\t\t}}\n\t\t}}\n"
+            f"\t\tcourt_language = maghrebi_dialect\n"
+            f"\t\treligious_school = maliki_school\n"
+            f"\t\tgovernment = {{ mysticism_vs_jurisprudence = -5 }}\n\n"
+            f"\t\tcountry_rank = rank_duchy\n\n"
+            f"\t\ttolerated_cultures = {{\n\t\t\tsephardi\n\t\t}}\n\n"
+            f"\t\tcapital = {capital}\n\t}}\n")
+
+for _t, (_cap, _locs) in _TAIFAS.items():
+    if _cap not in _locs:
+        sys.exit(f"_TAIFAS: {_t} capital {_cap} not in its own location list")
+    if len(set(_locs)) != len(_locs):
+        sys.exit(f"_TAIFAS: {_t} lists a location twice")
+    NEW_COUNTRIES[_t] = _taifa_block(_t, _cap, _locs)
+    LOCATION_TRANSFERS[_t] = list(_locs)
+if sum(len(l) for _, l in _TAIFAS.values()) != 244:
+    sys.exit("_TAIFAS: the package moves exactly 244 locations — a list changed")
+
+# Displaced by the taifa pass: GRA ends LANDLESS (vanilla's own LON shape —
+# a landless kingdom keeps its capital and its claims, 10_countries.txt
+# :14682) and its 18 former locations are WRITTEN INTO its claims list:
+# the Nasrid emirate IS Granada's future, expressed as irredenta.
+DISPLACED_CLAIMS = {
+    "GRA": ["granada", "adra", "almunecar", "guadix", "huescar", "illora",
+            "loja", "pinar", "orgiva", "malaga", "antequera", "velez_malaga",
+            "almeria", "almanzora", "baza", "gergal", "mojacar",
+            "velez_rubio"],
+}
+# Tags that must hold ZERO locations once the transfers have run.
+LANDLESS_AFTER = ("GRA",)
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -659,6 +816,145 @@ NEW_CHARACTERS = """
 		dynasty = lacon_gunale_dynasty
 		tag = CAG
 	}
+
+	# --- 1066 al-Andalus: the thirteen taifa emirs ------------------------
+	# All birth dates [U], all safely pre-start, no death dates (the alive
+	# law). Name keys: name_muhammad/name_yahya/name_ahmad/name_ali are
+	# vanilla (character_names_dynamic, cited in the package); name_joseph
+	# IS Yusuf (.arabic_language "Yūsuf", :10200). name_abbad, name_badis
+	# and name_abd_al_malik are OUR OWN keys — the invented-name-key probe,
+	# patterned on vanilla's name_abd_al_qadir (:41). Culture andalusi for
+	# all thirteen: the Berber houses (Zirid, Birzalid) ruled an andalusi
+	# country, matching vanilla GRA's own choice.
+	sev_abbad_al_mutadid = {
+		first_name = { name = name_abbad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1016.1.1
+		birth = sevilla
+		dynasty = abbadid_dynasty
+		tag = SEV
+	}
+
+	bdj_muhammad_al_muzaffar = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = badajoz
+		dynasty = aftasid_dynasty
+		tag = BDJ
+	}
+
+	tol_yahya_al_mamun = {
+		first_name = { name = name_yahya }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = toledo
+		dynasty = dhunnunid_dynasty
+		tag = TOL
+	}
+
+	crd_abd_al_malik_ibn_jahwar = {
+		first_name = { name = name_abd_al_malik }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = cordoba
+		dynasty = jahwarid_dynasty
+		tag = CRD
+	}
+
+	grz_badis_ibn_habbus = {
+		first_name = { name = name_badis }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1002.1.1
+		birth = granada
+		dynasty = zirid_dynasty
+		tag = GRZ
+	}
+
+	alm_muhammad_al_mutasim = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1037.1.1
+		birth = almeria
+		dynasty = sumadihid_dynasty
+		tag = ALM
+	}
+
+	mru_muhammad_ibn_tahir = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = murcia
+		dynasty = tahirid_murcia_dynasty
+		tag = MRU
+	}
+
+	dya_ali_iqbal_al_dawla = {
+		first_name = { name = name_ali }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = denia
+		dynasty = mujahidid_dynasty
+		tag = DYA
+	}
+
+	zgz_ahmad_al_muqtadir = {
+		first_name = { name = name_ahmad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1020.1.1
+		birth = zaragoza
+		dynasty = hudid_dynasty
+		tag = ZGZ
+	}
+
+	lrd_yusuf_al_muzaffar = {
+		first_name = { name = name_joseph }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1022.1.1
+		birth = zaragoza
+		dynasty = hudid_dynasty
+		tag = LRD
+	}
+
+	abr_abd_al_malik_ibn_razin = {
+		first_name = { name = name_abd_al_malik }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1025.1.1
+		birth = albarracin
+		dynasty = razinid_dynasty
+		tag = ABR
+	}
+
+	alp_muhammad_yumn_al_dawla = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1020.1.1
+		birth = chelva
+		dynasty = qasimid_dynasty
+		tag = ALP
+	}
+
+	qrm_muhammad_al_birzali = {
+		first_name = { name = name_muhammad }
+		culture = andalusi
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = carmona
+		dynasty = birzalid_dynasty
+		tag = QRM
+	}
 """
 
 
@@ -860,6 +1156,48 @@ def build_countries(src):
     report.append(("locations granted to existing tags", n_granted))
     if n_unclaimed:
         report.append(("  of those, not in the target's claims", n_unclaimed))
+
+    # Displaced-tag bookkeeping. Claims are written into the tag's EXISTING
+    # our_cores_conquered_by_others (GRA has one, holding olvera), and the
+    # landless guarantee then proves the transfers emptied every ownership
+    # list — a missed 19th location would leave a stray holding and quietly
+    # break the "GRA is the future, not the present" story.
+    n_claims = 0
+    for _t, locs in sorted(DISPLACED_CLAIMS.items()):
+        blocks_d = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(blocks_d):
+            if b.group(1) != _t:
+                continue
+            end = blocks_d[i + 1].start() if i + 1 < len(blocks_d) else len(src)
+            body = src[b.start():end]
+            cm = re.search(r"^([ \t]*)our_cores_conquered_by_others[ \t]*=[ \t]*\{", body, re.M)
+            if not cm:
+                sys.exit(f"DISPLACED_CLAIMS: {_t} has no claims block to extend")
+            at = b.start() + body.index("{", cm.start()) + 1
+            src = src[:at] + "\n" + cm.group(1) + "\t" + " ".join(locs) + src[at:]
+            n_claims += len(locs)
+            break
+        else:
+            sys.exit(f"DISPLACED_CLAIMS: tag {_t} not found")
+    report.append(("claims written onto displaced tags", n_claims))
+    for _t in LANDLESS_AFTER:
+        blocks_d = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(blocks_d):
+            if b.group(1) != _t:
+                continue
+            end = blocks_d[i + 1].start() if i + 1 < len(blocks_d) else len(src)
+            body = src[b.start():end]
+            for key in OWN_KEYS:
+                for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", body, re.M):
+                    bo = body.index("{", m.start())
+                    toks = re.findall(r"[a-z][a-z0-9_]*",
+                                      body[bo + 1:find_block_end(body, bo)])
+                    if toks:
+                        sys.exit(f"LANDLESS_AFTER: {_t} still owns {toks[:5]}")
+            break
+        else:
+            sys.exit(f"LANDLESS_AFTER: tag {_t} not found")
+    report.append(("displaced tags verified landless", len(LANDLESS_AFTER)))
 
     # Capital corrections, asserted against the expected old value.
     starts_cf = list(re.finditer(COUNTRY_RE, src, re.M))

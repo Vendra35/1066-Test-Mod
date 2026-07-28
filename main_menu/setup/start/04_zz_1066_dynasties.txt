@@ -60,4 +60,52 @@ dynasty_manager = {
 		name = { name = lacon_gunale_dynasty }
 		home = sassari
 	}
+	# --- 1066 al-Andalus: eleven taifa houses. The Granadan Zirids REUSE
+	# zirid_dynasty above (same Banu Ziri house via Zawi ibn Ziri; the
+	# kairouan home is cosmetic). tahirid_murcia rather than tahirid so the
+	# Tahirids of Khurasan keep their name free for a future Persia pass.
+	abbadid_dynasty = {
+		name = { name = abbadid_dynasty }
+		home = sevilla
+	}
+	aftasid_dynasty = {
+		name = { name = aftasid_dynasty }
+		home = badajoz
+	}
+	dhunnunid_dynasty = {
+		name = { name = dhunnunid_dynasty }
+		home = toledo
+	}
+	jahwarid_dynasty = {
+		name = { name = jahwarid_dynasty }
+		home = cordoba
+	}
+	hudid_dynasty = {
+		name = { name = hudid_dynasty }
+		home = zaragoza
+	}
+	sumadihid_dynasty = {
+		name = { name = sumadihid_dynasty }
+		home = almeria
+	}
+	tahirid_murcia_dynasty = {
+		name = { name = tahirid_murcia_dynasty }
+		home = murcia
+	}
+	mujahidid_dynasty = {
+		name = { name = mujahidid_dynasty }
+		home = denia
+	}
+	razinid_dynasty = {
+		name = { name = razinid_dynasty }
+		home = albarracin
+	}
+	qasimid_dynasty = {
+		name = { name = qasimid_dynasty }
+		home = chelva
+	}
+	birzalid_dynasty = {
+		name = { name = birzalid_dynasty }
+		home = carmona
+	}
 }

@@ -5,4 +5,21 @@
 	map_NOR = hsv360 { 215 70 55 }
 	# Pereyaslavl, the first NEW_COUNTRIES tag.
 	map_PYS = hsv360 { 190 55 65 }
+	# The thirteen taifas. All rgb triples verified absent from vanilla
+	# 02_map.txt (3744 map_* entries); chosen against their actual 1066
+	# neighbors — CAS orange-gold, ARA dark red, POR blue, MOR tan,
+	# map_GRA pale sage.
+	map_SEV = rgb { 34 110 74 }     # Seville      deep green
+	map_CRD = rgb { 96 178 128 }    # Cordoba      light green (enclave in SEV)
+	map_QRM = rgb { 158 200 150 }   # Carmona      pale green  (enclave in SEV)
+	map_BDJ = rgb { 122 158 88 }    # Badajoz      olive
+	map_TOL = rgb { 176 146 48 }    # Toledo       ochre
+	map_ALP = rgb { 120 200 200 }   # Alpuente     cyan        (enclave in TOL)
+	map_ZGZ = rgb { 70 130 150 }    # Zaragoza     teal
+	map_LRD = rgb { 200 210 90 }    # Lerida       chartreuse
+	map_ABR = rgb { 168 60 150 }    # Albarracin   orchid
+	map_GRZ = rgb { 140 46 104 }    # Granada      deep magenta
+	map_ALM = rgb { 205 105 135 }   # Almeria      rose
+	map_MRU = rgb { 90 70 150 }     # Murcia       indigo
+	map_DYA = rgb { 46 52 104 }     # Denia        navy
 }

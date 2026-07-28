@@ -378,6 +378,28 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    our Middle Kingdom IO strip, zero impact, decoder entry added.
    RE-TEST (quick): Gallura renders crimson, distinct from Cagliari.
 
+13. **THE TAIFA FACTORY (LANDED, untested):** thirteen Muslim states at
+   1066.9.15 — SEV 28, BDJ 63, TOL 62 (holds Valencia, annexed 1065),
+   ZGZ 22, GRZ 20, MRU 15, CRD 9, DYA 8 (with the Balearics), LRD 4,
+   ABR 4, ALM 7, ALP 1 (capital chelva — alpuente has no location),
+   QRM 1 (Seville eats it in 1067). 244 locations out of CAS/ARA/POR/
+   GRA/MLL/MOR/NAV; GRA emptied to the LON landless shape with its 18
+   ex-locations as claims (the Nasrid future). All from the Opus Iberia
+   package, key claims re-verified; four new build assertions proven by
+   breaking; 71 named rulers. THE HEADLINE QUESTION: the three INVENTED
+   name keys (name_abbad Seville, name_badis Granada, name_abd_al_malik
+   Cordoba+Albarracin) — legal in principle, never observed in game.
+   TEST: (a) al-Andalus green/olive/ochre, thirteen states, all display
+   "Taifa of X" (ESPECIALLY Granada — if it reads "Duchy of Granada"
+   the GRZ/rank finding failed); (b) Abbad, Badis and two Abd al-Maliks
+   RENDER THEIR NAMES (blank/raw-key name = invented keys failed);
+   (c) al-Mu'tadid in Seville aged 50, al-Muqtadir in Zaragoza,
+   al-Ma'mun in Toledo holding Valencia; (d) Balearics under Denia;
+   (e) CAS/ARA/POR visibly shrunk, no orphan locations; (f) error.log
+   new classes only. KNOWN LIMIT, tell the user BEFORE they zoom in:
+   pops are still 1337-Christian — Castilian Seville is EXPECTED; the
+   pop conversion slice is the named follow-up.
+
 ## Next, in order
 
 1. **Test France in game:** (a) Philip I on the French throne, aged 14,

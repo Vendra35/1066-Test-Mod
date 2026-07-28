@@ -1269,6 +1269,36 @@ The 1.3.11 game copy in that last tree was diffed against the installed game:
 `in_game/common/age/00_default.txt` is byte-identical and `00_defines.txt` opens
 identically. Citations taken so far are version-current.
 
+### The taifa factory: rank_duchy_andalusi EXCLUDES GRA, and the "Taifa of X" free win is real
+**Established:** 2026-07-28, Opus Iberia data package; the rank trigger, LON
+precedent, jewel-reform gate, tag freeness and the three missing name keys
+re-verified by the main session before a line was written.
+- `rank_duchy_andalusi` (customizable_localization/country_ranks.txt:1688)
+  fires on duchy rank + (Iberian capital OR iberian_group culture) + muslim
+  religion — and carries **`NOT = { tag = GRA }`**. A reused GRA with a
+  Zirid ruler falls through every branch to the bare `rank_duchy` at :2006
+  and silently displays "Duchy of Granada". Second confirmed case of the
+  dynasty/tag-gated rank-branch law (first: Zirid-on-TUN). Hence the
+  fresh tag GRZ, with vanilla GRA kept landless in the LON shape
+  (10_countries.txt:14682 — a landless kingdom keeps capital and claims)
+  and its 18 former locations written into its claims list.
+- `the_jewel_of_alandalus_reform` is `has_or_had_tag = GRA`-gated
+  (government_reforms/country_specific.txt:3298) — a second, independent
+  reason not to reuse GRA.
+- **Three invented name keys shipped** (name_abbad, name_badis,
+  name_abd_al_malik + .arabic_language rows), patterned byte-for-byte on
+  vanilla's name_abd_al_qadir (character_names_dynamic:41). A name key is
+  a loc key; the harness now accepts our loc file as a name registry.
+  **PENDING IN-GAME PROOF** — the taifa batch test's headline question.
+- **The pop gap, measured:** of the 244 moved locations, 222 are
+  `religion = catholic` in location_templates; only 175 carry any sunni
+  minority pop in 06_pops. The factory produces borders and thrones; a
+  POP CONVERSION SLICE of comparable size is now a named backlog item,
+  not a discovery waiting in game.
+**Means:** al-Andalus exists: 13 tags, 244 locations out of CAS 131 /
+ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 / NAV 1, every emir seated, all
+accessions [U] (no taifa ruler exists in vanilla to compare against).
+
 ### Changing a REGISTERED tag's identity data (color etc.) = whole-file override; additive re-declaration is unattested
 **Established:** 2026-07-28, the Gallura recolor. Vanilla ships GAL
 `rgb { 100 100 100 }` and CAG `hsv { 0 0 0.43 }` — the same grey, invisible
