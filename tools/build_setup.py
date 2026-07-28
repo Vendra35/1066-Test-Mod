@@ -1099,10 +1099,21 @@ def build_diplomacy(src):
     src = tidy(src)
     after = len(re.findall(r"^[ \t]*dependency = \{", src, re.M))
 
-    # AUDIT, decision parked (Italy pass, F2): 28 of the surviving
+    # England's six 1337 subjections are all post-1066 creations: Wales as
+    # a dominion (1283), the Irish Pale (1177+), Aquitaine as a Plantagenet
+    # fiefdom, Durham and the rest. Harold's England of 1066 has NO
+    # subjects — the batch test found our seated William VIII of Aquitaine
+    # sitting under Harold's overlordship because of these lines. Same
+    # poison class as the French appanages.
+    src, n_eng = re.subn(r"^[ \t]*dependency = \{ first = ENG [^}\n]*\}[ \t]*\n",
+                         "", src, flags=re.M)
+    report.append(("English 1337 subjections removed", n_eng))
+
+    # AUDIT, decision parked (Italy pass, F2): 27 of the surviving
     # dependencies carry FUTURE start_dates (earliest 1202.10.9 — Venice's
-    # vassal Trieste dated to Enrico Dandolo). Whether the engine collapses
-    # them like ruler_terms is unmeasured, and stripping them reshapes the
+    # vassal Trieste dated to Enrico Dandolo; was 28 before the ENG strip
+    # took Wales' 1283 line with it). Whether the engine collapses them
+    # like ruler_terms is unmeasured, and stripping them reshapes the
     # whole 1337 vassal web — recorded as a proposal, counted here so any
     # drift is loud.
     n_future_deps = sum(1 for d in re.findall(
@@ -1117,9 +1128,13 @@ def build_diplomacy(src):
         # fails loudly and a human re-reads the file — better than drifting.
         if n != 10 or before - after != n:
             return f"expected exactly 10 appanage cuts, removed {n} ({before} -> {after})"
-        if n_future_deps != 28:
+        if n_eng != 6:
+            return f"expected exactly 6 English subjection cuts, removed {n_eng}"
+        if re.search(r"^[ \t]*dependency = \{ first = ENG ", src, re.M):
+            return "an English subjection survived the strip"
+        if n_future_deps != 27:
             return (f"future-dated dependency count changed: {n_future_deps} "
-                    f"(expected 28) — re-read the file before deciding anything")
+                    f"(expected 27) — re-read the file before deciding anything")
         return None
 
     return src, report, validate, f"{after} dependencies kept"

@@ -24,12 +24,6 @@ diplomacy_manager = {
 	#Balliol Backing
 	#scripted_oneway = { first = ENG second = SBL type = guarantee }
 	
-    dependency = { first = ENG second = WLS subject_type = dominion start_date = 1283.1.1 }
-    dependency = { first = ENG second = PLE subject_type = dominion }
-    dependency = { first = ENG second = AQN subject_type = fiefdom }
-    dependency = { first = ENG second = DHM subject_type = vassal }
-    dependency = { first = ENG second = CET subject_type = vassal }
-    dependency = { first = ENG second = LAN subject_type = vassal }
     #dependency = { first = SBL second = MNN subject_type = vassal }
     #dependency = { first = ENG second = SBL subject_type = vassal }
     dependency = { first = SBL second = LOI subject_type = vassal }
