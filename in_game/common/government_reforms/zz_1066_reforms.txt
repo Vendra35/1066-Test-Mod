@@ -45,8 +45,13 @@ seljuk_khutba_reform = {
 # against a kingdom's 2.00 (measured 2026-07-29: -47% cultural
 # tradition, -47% cultural influence, -19% cabinet efficiency).
 # cultures_capacity in a reform's country_modifier is vanilla's own
-# construct at this exact magnitude: the SE-Asian mandala reform,
-# country_specific.txt:3909, cultures_capacity = 3.
+# construct (the SE-Asian mandala reform, country_specific.txt:3909,
+# cultures_capacity = 3). The MAGNITUDE here is ours: at +3
+# (capacity 5.00) farsi alone left 1.11 — no second culture could be
+# accepted or tolerated and their levies stayed low (measured in play,
+# 2026-07-29, user report). +6 → capacity 8.00: farsi 3.89 plus
+# headroom for the empire's other big cultures. Vanilla reforms cap at
+# 3; this is a play-sized calibration, revisit as borders change.
 seljuk_nizamiyya_reform = {
 	potential = {
 		tag = SEL
@@ -55,7 +60,7 @@ seljuk_nizamiyya_reform = {
 	}
 
 	country_modifier = {
-		cultures_capacity = 3
+		cultures_capacity = 6
 		government_reform_slots = 1
 	}
 

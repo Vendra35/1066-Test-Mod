@@ -751,10 +751,10 @@ def _seljuk_block(tag, capital, rank, policy, school, court):
     # administrators, Nizam al-Mulk's world):
     # - seljuk_khutba_reform: allow_tributary_subject, the tributary
     #   gate fix — CONFIRMED working in game 2026-07-29, second launch.
-    # - seljuk_nizamiyya_reform: cultures_capacity = 3 (the mandala
-    #   reform's attested magnitude, country_specific.txt:3909) — the
-    #   measured farsi acceptance cost was 3.89 against a capacity of
-    #   2.00, a -47%/-47%/-19% penalty wall (screenshot 2026-07-29).
+    # - seljuk_nizamiyya_reform: cultures_capacity = 6 (mechanism is
+    #   the mandala reform's, country_specific.txt:3909; the MAGNITUDE
+    #   is ours — +3 left no room past farsi's 3.89 cost and the other
+    #   cultures' levies stayed low, measured in play 2026-07-29).
     gov_extra = ""
     if inland:
         gov_extra += "\t\t\their_selection = cognatic_primogeniture\n"

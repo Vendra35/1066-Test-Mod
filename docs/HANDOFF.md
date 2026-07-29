@@ -837,7 +837,9 @@ its own: the first in-game session of the Great Partition block
 
 **NEXT SESSION STARTS WITH:** the next slice per the strategic order —
 **France demesne 163→~25 + Languedoc** (montpellier parked there), or
-the British Isles if preferred. Items 16-19 are ALL CONFIRMED IN GAME
+the British Isles if preferred. Quick check owed next launch: SEL's
+culture capacity should read **8.00** (nizamiyya recalibrated +3→+6
+after play showed no room past farsi — user-approved 2026-07-29). Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the

@@ -1528,6 +1528,14 @@ slice that accepts a large culture must budget capacity the same way.
 **CONFIRMED IN GAME (2026-07-29, third launch):** capacity 5.00, the
 penalty box gone, and both reforms render by name in the government
 screen ("Recognition of the Khutba", "The Nizamiyya").
+**RECALIBRATED (2026-07-29, played):** +3 was penalty-free but left
+1.11 headroom after farsi — no second culture could be accepted or
+tolerated (tolerate costs 1/3 of accept, the engine's own tooltip)
+and their pops' levies stayed low. The reform now grants +6 (capacity
+8.00). Vanilla reforms cap at 3, so this magnitude is OUR play-sized
+calibration, not an attested one — recorded as such in the reform
+file; retune as SEL's borders change. UNTESTED until the next launch
+(expect capacity 8.00 in the society panel).
 
 ### Second-launch residue: a has_policy prerequisite, and the _no_coast template family
 **Established:** in game 2026-07-29, second launch — two self-heal
