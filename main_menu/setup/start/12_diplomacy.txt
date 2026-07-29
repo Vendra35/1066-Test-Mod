@@ -101,8 +101,6 @@ diplomacy_manager = {
 
     # Hanseatic League
     dependency = { first = HSA second = LUB subject_type = hanseatic_member }
-    dependency = { first = HSA second = HAM subject_type = hanseatic_member }
-    dependency = { first = HSA second = BRM subject_type = hanseatic_member }
 
     #India
     dependency = { first = ALU second = STR subject_type = samanta }
@@ -149,7 +147,6 @@ diplomacy_manager = {
 
     #Vassals of vassals
     dependency = { first = FLA second = NAM subject_type = vassal }
-    dependency = { first = ARS second = STP subject_type = vassal }
     dependency = { first = ALE second = PRC subject_type = fiefdom }
 
     #-------Italy-------
@@ -204,7 +201,6 @@ diplomacy_manager = {
     dependency = { first = AUG second = AGC subject_type = vassal }
     dependency = { first = BRE second = DIT subject_type = vassal }
     dependency = { first = LAU second = RTB subject_type = vassal }
-    dependency = { first = WUR second = HBR subject_type = vassal }
     dependency = { first = TRI second = PSZ subject_type = vassal }
     dependency = { first = KMM second = NWG subject_type = vassal }
     dependency = { first = BRA second = SOR subject_type = fiefdom }

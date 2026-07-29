@@ -243,4 +243,57 @@ dynasty_manager = {
 		name = { name = otakar_dynasty }
 		home = steyr
 	}
+	# --- 1066 Germany II: ten houses vanilla lacks. Reused instead of
+	# re-declared: wettin_dynasty SHIPS (04_dynasties.txt:4068, home =
+	# halle_an_der_saale #Wettin) and carries Dedi of the Ostmark — the
+	# Wettins exist in 1066, they simply do not hold Meissen yet — and
+	# flanders_dynasty is OUR OWN, above, carrying Baldwin I of Hainaut
+	# next to his father Baldwin V. The Ardennes split in two on purpose:
+	# ardennes_dynasty is Godfrey the Bearded's Verdun line,
+	# ardennes_luxembourg_dynasty the Luxembourg branch that parted from
+	# it four generations before 1066 — one shared house would render
+	# them one family in game. Every home verified in definitions.txt;
+	# mullheim is vanilla's own stand-in for Rheinfelden, which has no
+	# map location (05_characters.txt:84031, "birth = mullheim
+	# #Rheinfelden").
+	rheinfelden_dynasty = {
+		name = { name = rheinfelden_dynasty }
+		home = mullheim
+	}
+	billung_dynasty = {
+		name = { name = billung_dynasty }
+		home = luneburg
+	}
+	steusslingen_dynasty = {
+		name = { name = steusslingen_dynasty }
+		home = riedlingen
+	}
+	nellenburg_dynasty = {
+		name = { name = nellenburg_dynasty }
+		home = stockach
+	}
+	ardennes_dynasty = {
+		name = { name = ardennes_dynasty }
+		home = bouillon
+	}
+	ardennes_luxembourg_dynasty = {
+		name = { name = ardennes_luxembourg_dynasty }
+		home = luxembourg
+	}
+	weimar_dynasty = {
+		name = { name = weimar_dynasty }
+		home = weimar
+	}
+	brunonen_dynasty = {
+		name = { name = brunonen_dynasty }
+		home = brunswick
+	}
+	ezzonen_dynasty = {
+		name = { name = ezzonen_dynasty }
+		home = cochem
+	}
+	goseck_dynasty = {
+		name = { name = goseck_dynasty }
+		home = weissenfels
+	}
 }

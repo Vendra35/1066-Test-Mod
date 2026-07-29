@@ -303,6 +303,60 @@ HISTORICAL_RULERS = {
     "HAB": ("hab_ernst_babenberg", "1055.1.1", 1),        # Ernst the Brave, Margrave of Austria 1055-1075 [U] — NEW_CHARACTERS
     "CRH": ("crh_berthold_zahringen", "1061.1.1", 1),     # Berthold I of Zähringen, titular Duke of Carinthia [U/D — the Eppensteiner held it de facto] — NEW_CHARACTERS
     "STY": ("sty_otakar_steyr", "1056.1.1", 0),           # Otakar of Steyr, Margrave of the Carinthian March [U; ordinal disputed — 0] — NEW_CHARACTERS
+
+    # GERMANY II (Opus package 2026-07-29; the formable-reuse ground for
+    # SAX/SWA, all fourteen invented name keys, every donor tag and every
+    # birthplace re-verified by the main session). The two stem duchies
+    # come back on the tags Paradox ships as formables only, the fifteen
+    # imperial sees get their 1066 bishops, and Godfrey the Bearded takes
+    # TWO seats: ONE character on BLL and SPL, which is vanilla's own
+    # pluralist route (boh_john_luxembourg rules BOH and LUX — one
+    # character, one `ruler =` line and one term per tag; KNOWLEDGE.md).
+    # Deliberately left `ruler = random`, reasons recorded: FKN (there is
+    # no 1066 duke of Franconia — the ducal authority is the king's own),
+    # HES/THU/GEL/JUL/BRG/KLE/GMK and the Tier-E minors (no safely
+    # nameable 1066 ruler), NAM (Albert III from 1063 [U] — one source,
+    # the BER-precedent honesty). Einhard of Speyer, Benno of Osnabrück,
+    # Otto of Regensburg and Egbert of Brunswick all die within eighteen
+    # months of start: ACCEPTED drift, flavor-event material later, not
+    # an engine problem (a death_date on a living character starts him
+    # dead — the rule that forbids the "fix").
+    # All 29 rows below are authored characters (NEW_CHARACTERS): vanilla
+    # ships no German alive in 1066 outside Heinrich IV's own line.
+    "SWA": ("swa_rudolf_rheinfelden", "1057.1.1", 1),     # Rudolf of Rheinfelden, Duke of Swabia 1057-1079 — the future anti-king
+    "SAX": ("sax_ordulf_billung", "1059.6.29", 1),        # Ordulf Billung, Duke of Saxony on his father Bernard II's death
+    "KOL": ("kol_anno_ii", "1056.1.1", 2),                # Anno II, Archbishop of Cologne — regent of the Empire after Kaiserswerth
+    "TRI": ("tri_udo_nellenburg", "1066.6.1", 1),         # Udo of Nellenburg, Archbishop of Trier — enthroned months before start [U]
+    "BLL": ("bll_godfrey_iii_bearded", "1065.1.1", 3),    # Godfrey III the Bearded, Duke of Lower Lorraine from 1065
+    "SPL": ("bll_godfrey_iii_bearded", "1057.1.1", 3),    # THE SAME character, Margrave of Tuscany/Spoleto by his 1054 marriage to Beatrice — the pluralist route
+    "MEI": ("mei_otto_weimar", "1062.1.1", 1),            # Otto of Weimar-Orlamünde, Margrave of Meissen [U]
+    "LUX": ("lux_conrad_i", "1059.1.1", 1),               # Conrad I, Count of Luxembourg [U]
+    "HAI": ("hai_baldwin_i_hainaut", "1051.1.1", 1),      # Baldwin I of Hainaut — son of OUR seated Baldwin V of Flanders (the Ayyub/Tamim cross-tag shape)
+    "UTR": ("utr_william_i", "1054.1.1", 1),              # William I, Prince-Bishop of Utrecht
+    "LIE": ("lie_theodwin", "1048.1.1", 1),               # Theoduin, Prince-Bishop of Liège
+    # The fifteen sees. Bishops carry NO dynasty (the mai_siegfried_i
+    # precedent — dynasty-less characters are vanilla-attested), and no
+    # regnal_name: the German episcopate had no papal-style regnal
+    # convention, so the term's regnal_number carries the numeral alone.
+    "BRE": ("bre_adalbert_goseck", "1043.1.1", 1),        # Adalbert of Goseck, Archbishop of Hamburg-Bremen — Heinrich IV's other regent
+    "MAG": ("mag_werner_steusslingen", "1064.1.1", 1),    # Werner of Steusslingen, Archbishop of Magdeburg — Anno's own house
+    "WBG": ("wbg_adalbero", "1045.1.1", 1),               # Adalbero, Bishop of Würzburg — later a Gregorian, deposed 1085
+    "BAM": ("bam_herman_i", "1065.1.1", 1),               # Herman I, Bishop of Bamberg
+    "HDH": ("hdh_hezilo", "1054.1.1", 1),                 # Hezilo, Bishop of Hildesheim
+    "HBS": ("hbs_burchard_ii", "1059.1.1", 2),            # Burchard II, Bishop of Halberstadt
+    "MUN": ("mun_friedrich", "1063.1.1", 1),              # Frederick, Bishop of Münster [U]
+    "PDB": ("pdb_imad", "1051.1.1", 1),                   # Imad, Bishop of Paderborn
+    "SLZ": ("slz_gebhard", "1060.1.1", 1),                # Gebhard, Archbishop of Salzburg — the one firm Gregorian in the German south
+    "PSS": ("pss_altmann", "1065.1.1", 1),                # Altmann, Bishop of Passau
+    "EIC": ("eic_gundekar_ii", "1057.1.1", 2),            # Gundekar II, Bishop of Eichstätt
+    "KNZ": ("knz_rumold", "1051.1.1", 1),                 # Rumold, Bishop of Constance [U]
+    "SPY": ("spy_einhard", "1060.1.1", 1),                # Einhard, Bishop of Speyer — dies February 1067, accepted drift
+    "OSN": ("osn_benno_i", "1052.1.1", 1),                # Benno I, Bishop of Osnabrück — dies December 1067, accepted drift
+    "REG": ("reg_otto_riedenburg", "1060.1.1", 1),        # Otto of Riedenburg, Bishop of Regensburg — dies 1067, accepted drift
+    # The eastern marches and the Rhine.
+    "SOR": ("sor_dedi_i", "1046.1.1", 1),                 # Dedi I of Wettin, Margrave of the Saxon Ostmark (Lusatia) [U]
+    "PAL": ("pal_hermann_ii", "1064.1.1", 2),             # Hermann II of the Ezzonen, Count Palatine of the Rhine — SEVENTEEN at start, no MINOR_RULERS needed
+    "BRU": ("bru_egbert_i", "1057.1.1", 1),               # Egbert I the Brunonen, Margrave of Meissen and Count of Brunswick — dies January 1068, accepted drift
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -995,6 +1049,33 @@ NEW_COUNTRIES["ZAH"] = (
     "\t\tcountry_rank = rank_county\n\n"
     "\t\tcapital = villingen\n\t}\n")
 
+# GERMANY II: the two stem duchies. SAX and SWA exist in vanilla as
+# FORMABLES only (00_formable_countries.txt:1348 `SAX_f`/:4080 `SWA_f`,
+# each with `name = SAX`/`name = SWA`) — loc, CoA and flag_definition all
+# ship, no 10_countries block and no identity block. The formable-reuse
+# ground: 49 vanilla tags are simultaneously a formable and a live
+# country, and Paradox's own 05_characters.txt:86620 carries
+# `tag = LUN # Should be SAX` — an admission that the Billung duchy
+# wanted this tag. Identity blocks are added to
+# zz_1066_new_countries.txt (the country_manager.cpp:206 law); the
+# territory arrives through _GERMANY_GRANTS, ZAH's shape exactly.
+NEW_COUNTRIES["SAX"] = (
+    "\tSAX = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "catholic_monarchy_no_coast"\n'
+    '\t\tinclude = "german_principality"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = luneburg\n\t}\n")
+NEW_COUNTRIES["SWA"] = (
+    "\tSWA = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "catholic_monarchy_no_coast"\n'
+    '\t\tinclude = "german_principality"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = ulm\n\t}\n")
+
 for _t, _cap in (("PLM", "palermo"), ("AGR", "girgenti")):
     NEW_COUNTRIES[_t] = (
         f"\t{_t} = {{\n"
@@ -1310,6 +1391,55 @@ _EMPIRE_GRANTS = {
 EMPIRE_LANDLESS = ("GOS", "NHS", "MLH", "SYE", "WRM", "FRN", "NUR",
                   "AAC", "DTM", "GOR", "ORT", "GRK")
 
+# ------------------------------------------------------- Germany II ---
+# GERMANY II (Opus package 2026-07-29, user-approved). The two stem
+# duchies are rebuilt out of the statelets that inherited their ground,
+# the Artois is handed back to Flanders, and Hamburg-Bremen becomes the
+# archbishopric it was in 1066 rather than the two free cities it
+# becomes in 1186/1189. Explicit lists throughout — every donor was
+# checked against the CURRENT build's own holdings before a location
+# entered a list (the AQN 43-vs-31 lesson).
+# UTR takes the three Groningen locations only: FRI KEEPS its peasant
+# republic and its other eight, because the Frisian Freedom is genuine
+# 1066 and the bishop's Groningen claim is the part that is not.
+_GERMANY_GRANTS = {
+    # SAX: the whole Billung duchy, all 11 from LUN.
+    "SAX": ["luneburg", "celle", "dannenberg", "ebstorf", "fallingbostel",
+            "harburg", "isenhagen", "luchow", "uelzen", "winsen",
+            "winsen_aller"],
+    # SWA: 21 locations out of the eleven Swabian statelets that carve
+    # the stem duchy up at 1337 — WUR 10, then ULM, TUB, HLF, HEH,
+    # OET 2, HHB 2, KIR 2, WDB 1.
+    "SWA": ["stuttgart", "backnang", "calw", "goppingen", "nagold",
+            "oberndorf", "riedlingen", "sigmaringen", "urach", "welzheim",
+            "ulm",
+            "tubingen",
+            "helfenstein",
+            "heidenheim",
+            "oettingen", "vaihingen",
+            "hohenberg", "horb",
+            "erbach_swabia", "illereichen",
+            "waldburg"],
+    # The archbishopric of Hamburg-Bremen, whole: BRM and HAM are the
+    # free cities of 1186 and 1189, a century and more after start.
+    "BRE": ["bremen", "hamburg"],
+    # The Artois back to Flanders: ARS is the 1237 apanage, and in 1066
+    # Arras is Baldwin V's. Seven locations.
+    "FLA": ["arras", "bapaume", "bethune", "calais", "hesdin", "lens",
+            "saint_omer"],
+    # Groningen to the prince-bishop (partial on purpose — see above).
+    "UTR": ["groningen", "appingedam", "wedde"],
+}
+
+# The thirteen donors this slice empties. Each keeps its registry
+# identity and its former holdings become claims — the GRA/POR/MLL
+# landless-with-irredenta shape the build automates through
+# LANDLESS_AFTER and _landless_claims. LUN keeps welfen_dynasty on its
+# shell (the Welf future is real, it just is not 1066's) and WUR keeps
+# wurttemberg_dynasty for the same reason.
+GERMANY_LANDLESS = ("LUN", "WUR", "ULM", "TUB", "HLF", "HEH", "OET",
+                    "HHB", "KIR", "WDB", "ARS", "HAM", "BRM")
+
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
 # independent: the caliph outranks the sultan, the Ghaznavid peace of
@@ -1376,7 +1506,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
-    + ITALY_LANDLESS + EMPIRE_LANDLESS
+    + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1408,6 +1538,13 @@ LOCATION_GRANTS.update(_BYZ_GRANTS)
 LOCATION_GRANTS.update(_BRITISH_GRANTS)
 LOCATION_GRANTS.update(_ITALY_GRANTS)
 LOCATION_GRANTS.update(_EMPIRE_GRANTS)
+# Germany II EXTENDS rather than assigns: FLA is a recipient in two
+# slices at once (roman_flanders from FRA through _FRANCE_RULES, the
+# seven Artois locations from ARS here), and a plain `update` would drop
+# whichever list landed first with no error anywhere. The France
+# resolver below extends for the same reason.
+for _t, _locs in sorted(_GERMANY_GRANTS.items()):
+    LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + _locs
 # LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
 # build_countries — see _byz_target().
 
@@ -1423,6 +1560,7 @@ CAPITAL_FIXES = {
     "MCM": ("killarney", "bunratty"), # vanilla's own o_brien_dynasty comment: home = bunratty #Killaloe (04_dynasties.txt:485)
     "SIC": ("palermo", "messina"),    # Roger holds Palermo only from 1072; Messina is the 1061 beachhead (Italy slice)
     "OGK": ("aachen", "goslar"),      # Henry III's Kaiserpfalz, Heinrich IV's birthplace [U]; culture matches OGK's registry (HRE slice)
+    "PAL": ("heidelberg", "kaiserslautern"), # Heidelberg is first attested 1196; Kaiserslautern is a Salian palace PAL already holds (Germany II)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -1564,6 +1702,25 @@ FIELD_FIXES = {
              'include = "german_principality"')],
     "SPL": [('include = "catholic_monarchy_not_present"',
              'include = "catholic_monarchy"')],
+    # --- Germany II (2026-07-29). Four block-level values that are
+    # 1066-wrong on tags this slice seats. Each old string was checked
+    # against the CURRENT built block and appears exactly once, which is
+    # what the exactly-once assert below enforces.
+    # BRU: welfen_dynasty is the 1138+ Welf duchy — in 1066 Brunswick is
+    # the Brunonen's, Egbert I's own house.
+    "BRU": [("dynasty = welfen_dynasty", "dynasty = brunonen_dynasty")],
+    # MEI: the Wettins take Meissen in 1089 — at 1066 the march is
+    # Otto of Weimar-Orlamünde's. (wettin_dynasty is not orphaned: Dedi
+    # of the Ostmark wears it on SOR, which is where the house IS in
+    # 1066.)
+    "MEI": [("dynasty = wettin_dynasty", "dynasty = weimar_dynasty")],
+    # PAL: the Wittelsbachs get the Palatinate in 1214 — the 1066 Count
+    # Palatine of the Rhine is an Ezzone.
+    "PAL": [("dynasty = wittelsbach_dynasty", "dynasty = ezzonen_dynasty")],
+    # BLL: Godfrey the Bearded is Duke of Lower Lorraine, not a count;
+    # rank_duchy renders the ducal branch (the CAT/SIC rank precedent in
+    # reverse).
+    "BLL": [("country_rank = rank_county", "country_rank = rank_duchy")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -2667,6 +2824,377 @@ NEW_CHARACTERS = """
 		dynasty = otakar_dynasty
 		tag = STY
 	}
+
+	# --- 1066 Germany II ---------------------------------------------------
+	# Twenty-eight characters for twenty-nine seats: Godfrey the Bearded
+	# holds BLL and SPL at once, which is one character block and two
+	# HISTORICAL_RULERS rows (vanilla's boh_john_luxembourg shape).
+	#
+	# NAME KEYS. Twelve ride vanilla's dynamic registry, every one checked
+	# by line in main_menu/localization/english/character_names_dynamic_l_english.yml:
+	#   name_rudolf :15318   name_otto :13603     name_conrad :4901
+	#   name_baldwin :2813   name_william :18209  name_werner :18122
+	#   name_herman :8830    name_burchard :3939  name_frederick :7376
+	#   name_gebhard :7704   name_godfrey :8050   name_egbert :6137
+	# name_godfrey/.german_language is "Gottfried" (:8064) and
+	# name_herman/.german_language "Hermann" (:8834) — free wins on any
+	# German-dialect culture, since 00_germany.txt:679 falls the dialects
+	# back to german_language. name_ekbert does NOT exist anywhere;
+	# name_egbert is the key for Egbert of Brunswick.
+	# The other fourteen are INVENTED KEYS — the proven mechanism
+	# (name_guislabert, the taifa three): a `name = name_x` reference plus
+	# ONE loc row in our own yml. All fourteen were checked to have ZERO
+	# rows across vanilla's ENTIRE localization tree, every language:
+	# ordulf anno udo theoduin adalbert adalbero hezilo imad benno altmann
+	# gundekar rumold einhard dedi.
+	#
+	# BIRTHPLACES are the tag's capital or the bishop's see (the package
+	# rule); all 28 exist in in_game/map_data/definitions.txt.
+	# CULTURES follow the birth location's own culture in
+	# in_game/map_data/location_templates.txt, with four Rhineland/Moselle
+	# corrections that ride vanilla's OWN character for the same tag —
+	# the mod's mai_siegfried_i precedent, where Mainz is `westphalian` in
+	# the templates and the archbishop is rhine_franconian:
+	#   KOL ripuarian_franconian (vanilla kol_walram_von_julich)
+	#   TRI walloon              (vanilla tri_balduin_von_luxembourg)
+	#   SPY rhine_franconian     (vanilla spy_gerhard_von_ehrenberg)
+	#   PAL rhine_franconian     (vanilla's PAL cast, 5 of 11)
+	# NO death dates on anyone: all 28 are alive on 1066.9.15, and four of
+	# them (Einhard, Benno, Otto of Regensburg, Egbert) die within
+	# eighteen months — a death_date would start them DEAD instead.
+
+	# Rudolf of Rheinfelden, Duke of Swabia from 1057 — elected anti-king
+	# in 1077 and killed at the Elster in 1080. The single most
+	# consequential man in Germany after Heinrich IV himself.
+	swa_rudolf_rheinfelden = {
+		first_name = { name = name_rudolf }
+		culture = swabian
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = ulm
+		dynasty = rheinfelden_dynasty
+		tag = SWA
+	}
+
+	# Ordulf Billung, Duke of Saxony on his father Bernard II's death
+	# (29 June 1059); historically dies 1072. The Billung duchy is the
+	# tag Paradox wanted for LUN and said so (05_characters.txt:86620).
+	sax_ordulf_billung = {
+		first_name = { name = name_ordulf }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = luneburg
+		dynasty = billung_dynasty
+		tag = SAX
+	}
+
+	# Anno II, Archbishop of Cologne from 1056 — seized the boy king at
+	# Kaiserswerth in April 1062 and governed the Empire. Historically
+	# dies 1075; canonised 1183.
+	kol_anno_ii = {
+		first_name = { name = name_anno }
+		culture = ripuarian_franconian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = cologne
+		dynasty = steusslingen_dynasty
+		tag = KOL
+	}
+
+	# Udo of Nellenburg, Archbishop of Trier — enthroned in the summer of
+	# 1066 after the murder of Kuno of Pfullingen [U on the day]; the
+	# third archbishop Trier had that year, which is why the HRE slice
+	# left the tag random and this one seats it.
+	tri_udo_nellenburg = {
+		first_name = { name = name_udo }
+		culture = walloon
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = trier
+		dynasty = nellenburg_dynasty
+		tag = TRI
+	}
+
+	# Godfrey III "the Bearded" — Duke of Lower Lorraine from 1065 and,
+	# through his 1054 marriage to Beatrice of Bardi, Margrave of Tuscany
+	# and Spoleto. TWO SEATS, one character: the pluralist route vanilla
+	# itself ships (boh_john_luxembourg on BOH and LUX). Historically
+	# dies 1069; his son is Godfrey the Hunchback and his granddaughter
+	# by marriage is Matilda of Canossa.
+	bll_godfrey_iii_bearded = {
+		first_name = { name = name_godfrey }
+		culture = walloon
+		religion = catholic
+		birth_date = 997.1.1
+		birth = bouillon
+		dynasty = ardennes_dynasty
+		tag = BLL
+	}
+
+	# Otto of Weimar-Orlamünde, Margrave of Meissen from 1062 [U];
+	# historically dies 1067. The Wettins only take Meissen in 1089.
+	mei_otto_weimar = {
+		first_name = { name = name_otto }
+		culture = saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = meissen
+		dynasty = weimar_dynasty
+		tag = MEI
+	}
+
+	# Conrad I, Count of Luxembourg [U on the accession year]. The
+	# Ardennes-Luxembourg branch gets its own house rather than sharing
+	# Godfrey's: the two lines split four generations before 1066 and a
+	# shared dynasty would render them one family in game.
+	lux_conrad_i = {
+		first_name = { name = name_conrad }
+		culture = walloon
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = luxembourg
+		dynasty = ardennes_luxembourg_dynasty
+		tag = LUX
+	}
+
+	# Baldwin I of Hainaut — son of OUR seated Baldwin V of Flanders,
+	# count by his 1051 marriage to Richilde. The cross-tag father link
+	# and the inherited house/culture/birthplace are the Ayyub/Tamim
+	# shape exactly (plm_ayyub_ibn_tamim rides his father's zirid_dynasty,
+	# culture and Ifriqiyan birthplace, not Palermo's).
+	hai_baldwin_i_hainaut = {
+		first_name = { name = name_baldwin }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = bruges
+		father = fla_baldwin_v_flanders
+		dynasty = flanders_dynasty
+		tag = HAI
+	}
+
+	# William I, Prince-Bishop of Utrecht from 1054 — Heinrich IV's man
+	# against the Gregorians; historically dies 1076.
+	utr_william_i = {
+		first_name = { name = name_william }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = utrecht
+		tag = UTR
+	}
+
+	# Theoduin (Dietwin), Prince-Bishop of Liège from 1048; historically
+	# dies 1075. name_theoduin is invented key #20.
+	lie_theodwin = {
+		first_name = { name = name_theoduin }
+		culture = walloon
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = liege
+		tag = LIE
+	}
+
+	# The fifteen sees. Bishops carry NO dynasty line — the
+	# mai_siegfried_i precedent; dynasty-less characters are
+	# vanilla-attested — except the two whose houses this slice already
+	# needs for a lay seat (Goseck for Bremen, Steusslingen for
+	# Magdeburg, the same house as Anno of Cologne).
+
+	# Adalbert of Goseck, Archbishop of Hamburg-Bremen from 1043 — Anno's
+	# rival for the regency, the missionary of the North. Historically
+	# dies 1072.
+	bre_adalbert_goseck = {
+		first_name = { name = name_adalbert }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = bremen
+		dynasty = goseck_dynasty
+		tag = BRE
+	}
+
+	# Werner of Steusslingen, Archbishop of Magdeburg from 1064 — Anno's
+	# own kin; historically dies 1078 of wounds taken in the Saxon war.
+	mag_werner_steusslingen = {
+		first_name = { name = name_werner }
+		culture = markish
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = magdeburg
+		dynasty = steusslingen_dynasty
+		tag = MAG
+	}
+
+	wbg_adalbero = {
+		first_name = { name = name_adalbero }
+		culture = east_franconian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = wurzburg
+		tag = WBG
+	}
+
+	bam_herman_i = {
+		first_name = { name = name_herman }
+		culture = east_franconian
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = bamberg
+		tag = BAM
+	}
+
+	hdh_hezilo = {
+		first_name = { name = name_hezilo }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = hildesheim
+		tag = HDH
+	}
+
+	hbs_burchard_ii = {
+		first_name = { name = name_burchard }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1028.1.1
+		birth = halberstadt
+		tag = HBS
+	}
+
+	mun_friedrich = {
+		first_name = { name = name_frederick }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = munster
+		tag = MUN
+	}
+
+	pdb_imad = {
+		first_name = { name = name_imad }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = paderborn
+		tag = PDB
+	}
+
+	# Gebhard of Salzburg — the one unwavering Gregorian in the German
+	# south; historically driven from his see 1077 and dies 1088.
+	slz_gebhard = {
+		first_name = { name = name_gebhard }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = salzburg
+		tag = SLZ
+	}
+
+	pss_altmann = {
+		first_name = { name = name_altmann }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = passau
+		tag = PSS
+	}
+
+	eic_gundekar_ii = {
+		first_name = { name = name_gundekar }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1019.1.1
+		birth = eichstatt
+		tag = EIC
+	}
+
+	knz_rumold = {
+		first_name = { name = name_rumold }
+		culture = high_alemannic
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = konstanz
+		tag = KNZ
+	}
+
+	# Einhard, Bishop of Speyer — historically dies February 1067, four
+	# months after start. Accepted drift: a death_date would start him
+	# dead today rather than kill him then.
+	spy_einhard = {
+		first_name = { name = name_einhard }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = speyer
+		tag = SPY
+	}
+
+	# Benno I of Osnabrück — historically dies December 1067. Same
+	# accepted drift.
+	osn_benno_i = {
+		first_name = { name = name_benno }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = osnabruck
+		tag = OSN
+	}
+
+	# Otto of Riedenburg, Bishop of Regensburg — historically dies 1067.
+	# Same accepted drift.
+	reg_otto_riedenburg = {
+		first_name = { name = name_otto }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = regensburg
+		tag = REG
+	}
+
+	# Dedi I of Wettin, Margrave of the Saxon Ostmark [U on the year] —
+	# the Wettins ARE in 1066, just not yet in Meissen. Culture saxon
+	# rather than his march's sorbian: vanilla's own wettin_dynasty sits
+	# at halle_an_der_saale (04_dynasties.txt:4070), a saxon location,
+	# and every vanilla margrave of Meissen is saxon. A German house over
+	# Sorbian subjects is the ruler-culture case PLM/AGR already model.
+	sor_dedi_i = {
+		first_name = { name = name_dedi }
+		culture = saxon
+		religion = catholic
+		birth_date = 1004.1.1
+		birth = cottbus
+		dynasty = wettin_dynasty
+		tag = SOR
+	}
+
+	# Hermann II of the Ezzonen, Count Palatine of the Rhine from 1064 —
+	# SEVENTEEN at start (b. 1049 [U]), so no MINOR_RULERS entry: the
+	# build's adult check passes on its own and listing him would fail as
+	# a stale exemption. Historically dies 1085, the last Ezzone.
+	pal_hermann_ii = {
+		first_name = { name = name_herman }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1049.1.1
+		birth = kaiserslautern
+		dynasty = ezzonen_dynasty
+		tag = PAL
+	}
+
+	# Egbert I the Brunonen, Margrave of Meissen and Count of Brunswick —
+	# historically dies January 1068. Accepted drift; his son Egbert II
+	# is the Saxon rebellion's man.
+	bru_egbert_i = {
+		first_name = { name = name_egbert }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = brunswick
+		dynasty = brunonen_dynasty
+		tag = BRU
+	}
 """
 
 
@@ -2985,7 +3513,12 @@ def build_countries(src):
         if len(got) != _exp:
             sys.exit(f"_FRANCE_RULES[{_t}]: resolved {len(got)} locations, "
                      f"package count is {_exp}\n  resolved: {' '.join(got)}")
-        LOCATION_GRANTS[_t] = got
+        # EXTEND, never assign: Germany II grants FLA the seven Artois
+        # locations statically, and a bare assignment here would silently
+        # drop them (the resolved list is only the FRA-donor part). The
+        # disjointness and exactly-once asserts below cover the reverse
+        # risk of a location entering twice.
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
     for _t, _cap in (("TOU", "toulouse"), ("VLS", "soissons"),
                      ("BER", "bourges"), ("VMD", "saint_quentin")):
         if _cap not in LOCATION_GRANTS[_t]:
@@ -3056,7 +3589,7 @@ def build_countries(src):
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS
                         + EGYPT_LANDLESS + FRANCE_LANDLESS
                         + BRITISH_LANDLESS + ITALY_LANDLESS
-                        + EMPIRE_LANDLESS}
+                        + EMPIRE_LANDLESS + GERMANY_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -3624,11 +4157,17 @@ def build_ios(src):
     if _etoks != ["BOH", "SWB", "BRA", "PAL"]:
         sys.exit(f"HRE surgery: elector list is {_etoks}, expected the "
                  "1356-Bull four")
+    # Germany II moved the Billung seat off LUN and onto SAX, which is
+    # the tag that actually holds the duchy now. HARD DEPENDENCY on the
+    # landless sweep below: LUN joins LANDLESS_AFTER in the same change,
+    # and a stale `LUN` here would simply be eaten by the ghost strip —
+    # an elector silently deleted, exactly the class of failure the
+    # sweep's exact-count assert exists to make loud.
     src = (src[:_eo + 1]
            + "\n\t\t\t\t# The 1066 four: Bohemia, the Nordmark, and the"
            + "\n\t\t\t\t# Billung and Bavarian stem duchies [U] — SWB is"
            + "\n\t\t\t\t# Saxe-Wittenberg (1180+), PAL the 1214 Palatinate."
-           + "\n\t\t\t\tBOH BRA LUN UBV\n\t\t"
+           + "\n\t\t\t\tBOH BRA SAX UBV\n\t\t"
            + src[_ee - 1:])
     _hre = re.search(r"^\tadd_international_organization = \{[^{}]*?"
                      r"type = hre", src, re.M)
@@ -3638,11 +4177,14 @@ def build_ios(src):
     _hb = src[_hre.start():_hre_end]
     _hm = re.search(r"members[ \t]*=[ \t]*\{", _hb)
     _ho = _hb.index("{", _hm.start())
-    for _add in ("OGK", "CRH", "STY"):
+    # SAX and SWA join with the HRE slice's three: the two stem duchies
+    # are landed as of Germany II, and the thirteen tags that slice
+    # empties leave through the generic landless sweep below.
+    for _add in ("OGK", "CRH", "STY", "SAX", "SWA"):
         if re.search(r"\b" + _add + r"\b",
                      re.sub(r"#[^\n]*", "", _hb[_ho:find_block_end(_hb, _ho)])):
             sys.exit(f"HRE surgery: {_add} already a member")
-    src = (src[:_hre.start() + _ho + 1] + " OGK CRH STY"
+    src = (src[:_hre.start() + _ho + 1] + " OGK CRH STY SAX SWA"
            + src[_hre.start() + _ho + 1:])
     report.append(("HRE crowned (leader = OGK) and members joined", 1))
 
@@ -3687,13 +4229,24 @@ def build_ios(src):
     # lists each. The count moved 1 -> 4 -> 6 -> 28 as the runs
     # measured (a stale-offset loop bug was caught by this very
     # assert on run one).
+    # Germany II adds 23: eleven tags in TWO lists each (BRM/HAM/ULM in
+    # members + free_city; LUN/WUR/OET/HHB/HEH/HLF/KIR/TUB in members +
+    # imperial_prince) and WDB in members alone. ARS is in NO imperial
+    # list at all — the Artois sat outside the Empire, which is exactly
+    # why Flanders gets it back. LUN leaves as a member and a prince
+    # only: its elector seat moved to SAX above, BEFORE this sweep ran,
+    # which is the whole point of doing the two in one change. The count
+    # moved 1 -> 4 -> 6 -> 28 -> 51 as the runs measured.
     _expected_ghosts = sorted(
         ["ARM", "ATZ", "CIL", "EPI", "FEO", "TRE",
          "NHS", "MLH"]
         + ["AAC", "FRN", "GOS", "NUR", "SYE", "DTM", "WRM"] * 2
-        + ["GOR", "ORT", "GRK"] * 2)
-    if n_ghosts != 28 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 28 landless IO list entries, "
+        + ["GOR", "ORT", "GRK"] * 2
+        + ["BRM", "HAM", "ULM"] * 2
+        + ["LUN", "WUR", "OET", "HHB", "HEH", "HLF", "KIR", "TUB"] * 2
+        + ["WDB"])
+    if n_ghosts != 51 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 51 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -4010,9 +4563,14 @@ def build_diplomacy(src):
     # failing before this constant moved (2026-07-29) — the assert
     # works. +18 from the British batch (10 WLS->marcher, 7 PLE->X,
     # 1 SBL->LOI), the 90->108 transition observed failing the same
-    # way.
-    if n_landless_deps != 108:
-        sys.exit(f"expected exactly 108 landless-tag dependencies, stripped {n_landless_deps}")
+    # way. +4 from Germany II (HSA->HAM and HSA->BRM, the two Hanseatic
+    # memberships of cities that do not exist yet; ARS->STP and
+    # WUR->HBR, the two vassalages the emptied Artois and Wurttemberg
+    # were holding) — the 108->112 transition observed failing too, and
+    # ARS->STP is the tie an earlier slice explicitly banked for the
+    # Empire (build_diplomacy's French fiefdom comment).
+    if n_landless_deps != 112:
+        sys.exit(f"expected exactly 112 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

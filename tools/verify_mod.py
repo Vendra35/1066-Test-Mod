@@ -283,9 +283,9 @@ if os.path.isfile(_setup10):
             probs.append(f"named ruler {_r} has no ruler_term — the throne sits empty under a regent")
 else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
-# Armed at 180: 92 named rulers + 92 terms after the Seljuk world.
+# Armed at 290: 145 named rulers + 145 terms after Germany II.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=180)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=290)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -351,15 +351,28 @@ for _dk in re.findall(r"^\t([a-z_0-9]+) = " + BS + "{", strip_comments(_our_dynf
     count += 1
     if f" {_dk}:" not in _our_loc:
         probs.append(f"our dynasty {_dk} has no loc key")
-# no character seated on two tags
+# No character seated on two tags — except the DELIBERATE pluralists.
+# A ruler on several thrones is vanilla-attested: boh_john_luxembourg
+# rules BOH and LUX, hai_guillaume_de_hainault HAI and HOL,
+# brb_jan_iii_van_brabant BRB and LIM — one character, one `ruler =`
+# line and one ruler_term per tag (docs/KNOWLEDGE.md:901). Germany II
+# seats Godfrey III the Bearded on BLL and SPL that way. The allowlist
+# is EXPLICIT so an accidental second seat — the copy-paste that
+# silently hands one man two countries — still fails, and the stale
+# check below kills the entry if the second seat ever goes away.
+_PLURALISTS = {"bll_godfrey_iii_bearded"}
 _seated = [r[0] for r in _bs.HISTORICAL_RULERS.values()]
 count += len(_seated)
 for _c in set(_seated):
-    if _seated.count(_c) > 1:
+    if _seated.count(_c) > 1 and _c not in _PLURALISTS:
         probs.append(f"{_c} is seated on more than one tag")
-# Armed at 290: 54 authored characters + 36 dynasties + 92 seats
-# (295 measured after the Seljuk world).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=290)
+for _c in sorted(_PLURALISTS):
+    if _seated.count(_c) < 2:
+        probs.append(f"_PLURALISTS lists {_c}, seated on {_seated.count(_c)} "
+                     "tag(s) — stale exemption, remove it")
+# Armed at 500: 82 authored characters + 46 dynasties + 145 seats
+# (512 measured after Germany II).
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=500)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -385,10 +398,11 @@ for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
         break
 count = len(_bs.HISTORICAL_RULERS)
 print(f"       accessions cross-checked against vanilla's own terms: {_compared} of {count}")
-# Armed at 92 rows after the Seljuk world; compared coverage is 34 —
-# vanilla ships zero Muslim characters born before 1054, so none of the
-# eleven Seljuk-world rulers is comparable.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=92)
+# Armed at 145 rows after Germany II; compared coverage is 35 — vanilla
+# ships zero Muslim characters born before 1054 and zero Germans alive
+# in 1066 outside Heinrich IV's line, so none of those rulers is
+# comparable.
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=145)
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would
@@ -402,8 +416,8 @@ for _k in _ours_keys:
         probs.append(f"{_k} already exists in vanilla — our block would silently merge over it")
 if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
-# Armed at 21 authored characters.
-check("authored character keys collide with nothing", count, probs, min_count=21)
+# Armed at 109 authored characters after Germany II.
+check("authored character keys collide with nothing", count, probs, min_count=109)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
@@ -945,9 +959,9 @@ for _k in sorted(_our_coa_keys):
 for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
     probs.append(f"_INTENTIONAL_COA_OVERRIDES lists {_k} but our CoA "
                  "files define no such key")
-# 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 41
-# registry tags = 92 at landing; raise as arms land.
-check("coat of arms references resolve", _coa_count, probs, min_count=90)
+# 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 43
+# registry tags = 94 after Germany II; raise as arms land.
+check("coat of arms references resolve", _coa_count, probs, min_count=94)
 
 print()
 if fails:

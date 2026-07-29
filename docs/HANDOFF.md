@@ -1165,24 +1165,39 @@ Everything else (taifas, Catalan counties, Seljuk clients, PLM/AGR,
 ULD, south-Italian minors) KEEPS its generated flag by design — the
 deferred tiers are in `docs/COA.md` §4.
 
-**IN FLIGHT AT SESSION END (2026-07-29 ~22:30, usage limit):** a
-subagent was implementing the GERMANY II batch (user-approved, all
-decisions final) directly in the working tree when the session wound
-down. THE SPEC IS `docs/GERMANY2-PACKAGE.md` — treat it as the
-authority. If the tree is DIRTY when you read this: diff it against
-that spec, run `python tools/build_setup.py` and
-`python tools/verify_mod.py`, review per the normal subagent-draft
-rules, and commit only when both are green and the diff matches the
-spec; if the work is partial or wrong, `git checkout` it away and
-re-implement from the spec — nothing is lost, the spec is complete.
-If the tree is CLEAN with the batch committed, the commit message
-will say so — then only the game test remains. QUEUED BEHIND IT:
-the ITALY NORTH batch, spec in `docs/ITALY-NORTH-PACKAGE.md`, all
-four user decisions recorded inside (TUS revival, FLO empties, ISR
-for Ulric of Weimar, RAV takes Faenza+Imola); it depends on Germany
-II's weimar_dynasty, so it lands second. Both packages carry every
-date, key, grant list and constant-discipline note needed to
-implement without re-research.
+**ITEM 25 — GERMANY II, LANDED AND COMMITTED (2026-07-29 ~22:40,
+NEEDS GAME TEST).** Implemented by subagent from
+`docs/GERMANY2-PACKAGE.md`, main-session reviewed (elector line,
+SAX/SWA blocks, Godfrey's two seats, LUN's irredenta shell, the
+_PLURALISTS harness check), build+harness re-run green by the main
+session itself. 29 seated rulers (28 characters — Godfrey holds BLL
+AND SPL), SAX/SWA revived via formable reuse, electors now
+`BOH BRA SAX UBV`, 13 tags landless, FLA at 22 locations.
+Test — click tour, ~10 minutes:
+1. Map overview Germany: a BIG new duchy in the northeast around
+   Lüneburg (SAXONY — barry flag with the green diagonal crown) and
+   one in the southwest around Stuttgart/Ulm (SWABIA — three black
+   lions on gold). If either is missing, the formable-reuse law
+   failed — say so immediately.
+2. Click Saxony → ruler **Ordulf**, dynasty Billung.
+3. Click Swabia → ruler **Rudolf** (Rheinfelden).
+4. Click Cologne → Archbishop **Anno**.  Trier → **Udo**.
+5. Click Bouillon (tiny, in the Ardennes near Liège) → **Duke
+   Godfrey/Gottfried** at DUCHY rank; then click Spoleto (central
+   Italy) → the SAME Godfrey. One man, two thrones — the pluralist
+   probe.
+6. Click Bremen → **Adalbert**, now 9 locations including Hamburg.
+7. Click Flanders → 22 locations (Arras and Saint-Omer inside,
+   still France's tributary).
+8. HRE panel → electors read BOH BRA **SAX** UBV (Lüneburg gone).
+9. Click Utrecht → **William**, now holds Groningen.
+10. error.log: the landless-shell class should grow ~13 blocks
+    (accepted class); paste anything NEW.
+QUEUED NEXT: the ITALY NORTH batch — spec
+`docs/ITALY-NORTH-PACKAGE.md`, all four user decisions inside (TUS
+revival, FLO empties, ISR for Ulric of Weimar, RAV takes
+Faenza+Imola). It expected Germany II's weimar_dynasty, which is now
+in — launch its implementation agent first thing next session.
 
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the

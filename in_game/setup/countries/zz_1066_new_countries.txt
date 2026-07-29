@@ -382,3 +382,36 @@ ZAH = { #Zähringen
 	culture_definition = rhine_alemannic
 	religion_definition = catholic
 }
+
+# Germany II: the two stem duchies, on the FORMABLE-REUSE ground. SAX
+# and SWA are not free tags in the usual sense — vanilla ships both as
+# formables (00_formable_countries.txt:1348 SAX_f with `name = SAX`,
+# :4080 SWA_f with `name = SWA`), with loc (country_names_l_english.yml
+# :1981/:2166), coats of arms (pre_scripted_countries.txt:34798/:37939)
+# and flag definitions, but NO 10_countries block and NO identity block.
+# Registering them here is what the engine needs to instantiate them
+# (country_manager.cpp:206) and it costs the formables nothing: 49
+# vanilla tags are simultaneously a formable and a live country. Paradox
+# itself wanted the Saxon tag used this way — 05_characters.txt:86620
+# reads `tag = LUN # Should be SAX`.
+# map_SAX (named_colors/02_map.txt:243) and map_SWA (:249) are VANILLA
+# named colors, so neither needs an entry in zz_1066_map_colors.txt.
+# Cultures are the ones vanilla's own registry uses for the same ground:
+# lower_saxon is LUN's (north_germany.txt:747), swabian is AUG's and
+# AGC's (south_germany.txt:49/:56).
+
+SAX = { #Duchy of Saxony (Billung)
+	color = map_SAX
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = lower_saxon
+	religion_definition = catholic
+}
+
+SWA = { #Duchy of Swabia (Rheinfelden)
+	color = map_SWA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = swabian
+	religion_definition = catholic
+}

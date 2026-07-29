@@ -105391,4 +105391,375 @@ character_db={
 		dynasty = otakar_dynasty
 		tag = STY
 	}
+
+	# --- 1066 Germany II ---------------------------------------------------
+	# Twenty-eight characters for twenty-nine seats: Godfrey the Bearded
+	# holds BLL and SPL at once, which is one character block and two
+	# HISTORICAL_RULERS rows (vanilla's boh_john_luxembourg shape).
+	#
+	# NAME KEYS. Twelve ride vanilla's dynamic registry, every one checked
+	# by line in main_menu/localization/english/character_names_dynamic_l_english.yml:
+	#   name_rudolf :15318   name_otto :13603     name_conrad :4901
+	#   name_baldwin :2813   name_william :18209  name_werner :18122
+	#   name_herman :8830    name_burchard :3939  name_frederick :7376
+	#   name_gebhard :7704   name_godfrey :8050   name_egbert :6137
+	# name_godfrey/.german_language is "Gottfried" (:8064) and
+	# name_herman/.german_language "Hermann" (:8834) — free wins on any
+	# German-dialect culture, since 00_germany.txt:679 falls the dialects
+	# back to german_language. name_ekbert does NOT exist anywhere;
+	# name_egbert is the key for Egbert of Brunswick.
+	# The other fourteen are INVENTED KEYS — the proven mechanism
+	# (name_guislabert, the taifa three): a `name = name_x` reference plus
+	# ONE loc row in our own yml. All fourteen were checked to have ZERO
+	# rows across vanilla's ENTIRE localization tree, every language:
+	# ordulf anno udo theoduin adalbert adalbero hezilo imad benno altmann
+	# gundekar rumold einhard dedi.
+	#
+	# BIRTHPLACES are the tag's capital or the bishop's see (the package
+	# rule); all 28 exist in in_game/map_data/definitions.txt.
+	# CULTURES follow the birth location's own culture in
+	# in_game/map_data/location_templates.txt, with four Rhineland/Moselle
+	# corrections that ride vanilla's OWN character for the same tag —
+	# the mod's mai_siegfried_i precedent, where Mainz is `westphalian` in
+	# the templates and the archbishop is rhine_franconian:
+	#   KOL ripuarian_franconian (vanilla kol_walram_von_julich)
+	#   TRI walloon              (vanilla tri_balduin_von_luxembourg)
+	#   SPY rhine_franconian     (vanilla spy_gerhard_von_ehrenberg)
+	#   PAL rhine_franconian     (vanilla's PAL cast, 5 of 11)
+	# NO death dates on anyone: all 28 are alive on 1066.9.15, and four of
+	# them (Einhard, Benno, Otto of Regensburg, Egbert) die within
+	# eighteen months — a death_date would start them DEAD instead.
+
+	# Rudolf of Rheinfelden, Duke of Swabia from 1057 — elected anti-king
+	# in 1077 and killed at the Elster in 1080. The single most
+	# consequential man in Germany after Heinrich IV himself.
+	swa_rudolf_rheinfelden = {
+		first_name = { name = name_rudolf }
+		culture = swabian
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = ulm
+		dynasty = rheinfelden_dynasty
+		tag = SWA
+	}
+
+	# Ordulf Billung, Duke of Saxony on his father Bernard II's death
+	# (29 June 1059); historically dies 1072. The Billung duchy is the
+	# tag Paradox wanted for LUN and said so (05_characters.txt:86620).
+	sax_ordulf_billung = {
+		first_name = { name = name_ordulf }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = luneburg
+		dynasty = billung_dynasty
+		tag = SAX
+	}
+
+	# Anno II, Archbishop of Cologne from 1056 — seized the boy king at
+	# Kaiserswerth in April 1062 and governed the Empire. Historically
+	# dies 1075; canonised 1183.
+	kol_anno_ii = {
+		first_name = { name = name_anno }
+		culture = ripuarian_franconian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = cologne
+		dynasty = steusslingen_dynasty
+		tag = KOL
+	}
+
+	# Udo of Nellenburg, Archbishop of Trier — enthroned in the summer of
+	# 1066 after the murder of Kuno of Pfullingen [U on the day]; the
+	# third archbishop Trier had that year, which is why the HRE slice
+	# left the tag random and this one seats it.
+	tri_udo_nellenburg = {
+		first_name = { name = name_udo }
+		culture = walloon
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = trier
+		dynasty = nellenburg_dynasty
+		tag = TRI
+	}
+
+	# Godfrey III "the Bearded" — Duke of Lower Lorraine from 1065 and,
+	# through his 1054 marriage to Beatrice of Bardi, Margrave of Tuscany
+	# and Spoleto. TWO SEATS, one character: the pluralist route vanilla
+	# itself ships (boh_john_luxembourg on BOH and LUX). Historically
+	# dies 1069; his son is Godfrey the Hunchback and his granddaughter
+	# by marriage is Matilda of Canossa.
+	bll_godfrey_iii_bearded = {
+		first_name = { name = name_godfrey }
+		culture = walloon
+		religion = catholic
+		birth_date = 997.1.1
+		birth = bouillon
+		dynasty = ardennes_dynasty
+		tag = BLL
+	}
+
+	# Otto of Weimar-Orlamünde, Margrave of Meissen from 1062 [U];
+	# historically dies 1067. The Wettins only take Meissen in 1089.
+	mei_otto_weimar = {
+		first_name = { name = name_otto }
+		culture = saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = meissen
+		dynasty = weimar_dynasty
+		tag = MEI
+	}
+
+	# Conrad I, Count of Luxembourg [U on the accession year]. The
+	# Ardennes-Luxembourg branch gets its own house rather than sharing
+	# Godfrey's: the two lines split four generations before 1066 and a
+	# shared dynasty would render them one family in game.
+	lux_conrad_i = {
+		first_name = { name = name_conrad }
+		culture = walloon
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = luxembourg
+		dynasty = ardennes_luxembourg_dynasty
+		tag = LUX
+	}
+
+	# Baldwin I of Hainaut — son of OUR seated Baldwin V of Flanders,
+	# count by his 1051 marriage to Richilde. The cross-tag father link
+	# and the inherited house/culture/birthplace are the Ayyub/Tamim
+	# shape exactly (plm_ayyub_ibn_tamim rides his father's zirid_dynasty,
+	# culture and Ifriqiyan birthplace, not Palermo's).
+	hai_baldwin_i_hainaut = {
+		first_name = { name = name_baldwin }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = bruges
+		father = fla_baldwin_v_flanders
+		dynasty = flanders_dynasty
+		tag = HAI
+	}
+
+	# William I, Prince-Bishop of Utrecht from 1054 — Heinrich IV's man
+	# against the Gregorians; historically dies 1076.
+	utr_william_i = {
+		first_name = { name = name_william }
+		culture = low_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = utrecht
+		tag = UTR
+	}
+
+	# Theoduin (Dietwin), Prince-Bishop of Liège from 1048; historically
+	# dies 1075. name_theoduin is invented key #20.
+	lie_theodwin = {
+		first_name = { name = name_theoduin }
+		culture = walloon
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = liege
+		tag = LIE
+	}
+
+	# The fifteen sees. Bishops carry NO dynasty line — the
+	# mai_siegfried_i precedent; dynasty-less characters are
+	# vanilla-attested — except the two whose houses this slice already
+	# needs for a lay seat (Goseck for Bremen, Steusslingen for
+	# Magdeburg, the same house as Anno of Cologne).
+
+	# Adalbert of Goseck, Archbishop of Hamburg-Bremen from 1043 — Anno's
+	# rival for the regency, the missionary of the North. Historically
+	# dies 1072.
+	bre_adalbert_goseck = {
+		first_name = { name = name_adalbert }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = bremen
+		dynasty = goseck_dynasty
+		tag = BRE
+	}
+
+	# Werner of Steusslingen, Archbishop of Magdeburg from 1064 — Anno's
+	# own kin; historically dies 1078 of wounds taken in the Saxon war.
+	mag_werner_steusslingen = {
+		first_name = { name = name_werner }
+		culture = markish
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = magdeburg
+		dynasty = steusslingen_dynasty
+		tag = MAG
+	}
+
+	wbg_adalbero = {
+		first_name = { name = name_adalbero }
+		culture = east_franconian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = wurzburg
+		tag = WBG
+	}
+
+	bam_herman_i = {
+		first_name = { name = name_herman }
+		culture = east_franconian
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = bamberg
+		tag = BAM
+	}
+
+	hdh_hezilo = {
+		first_name = { name = name_hezilo }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = hildesheim
+		tag = HDH
+	}
+
+	hbs_burchard_ii = {
+		first_name = { name = name_burchard }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1028.1.1
+		birth = halberstadt
+		tag = HBS
+	}
+
+	mun_friedrich = {
+		first_name = { name = name_frederick }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = munster
+		tag = MUN
+	}
+
+	pdb_imad = {
+		first_name = { name = name_imad }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = paderborn
+		tag = PDB
+	}
+
+	# Gebhard of Salzburg — the one unwavering Gregorian in the German
+	# south; historically driven from his see 1077 and dies 1088.
+	slz_gebhard = {
+		first_name = { name = name_gebhard }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = salzburg
+		tag = SLZ
+	}
+
+	pss_altmann = {
+		first_name = { name = name_altmann }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = passau
+		tag = PSS
+	}
+
+	eic_gundekar_ii = {
+		first_name = { name = name_gundekar }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1019.1.1
+		birth = eichstatt
+		tag = EIC
+	}
+
+	knz_rumold = {
+		first_name = { name = name_rumold }
+		culture = high_alemannic
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = konstanz
+		tag = KNZ
+	}
+
+	# Einhard, Bishop of Speyer — historically dies February 1067, four
+	# months after start. Accepted drift: a death_date would start him
+	# dead today rather than kill him then.
+	spy_einhard = {
+		first_name = { name = name_einhard }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = speyer
+		tag = SPY
+	}
+
+	# Benno I of Osnabrück — historically dies December 1067. Same
+	# accepted drift.
+	osn_benno_i = {
+		first_name = { name = name_benno }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = osnabruck
+		tag = OSN
+	}
+
+	# Otto of Riedenburg, Bishop of Regensburg — historically dies 1067.
+	# Same accepted drift.
+	reg_otto_riedenburg = {
+		first_name = { name = name_otto }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = regensburg
+		tag = REG
+	}
+
+	# Dedi I of Wettin, Margrave of the Saxon Ostmark [U on the year] —
+	# the Wettins ARE in 1066, just not yet in Meissen. Culture saxon
+	# rather than his march's sorbian: vanilla's own wettin_dynasty sits
+	# at halle_an_der_saale (04_dynasties.txt:4070), a saxon location,
+	# and every vanilla margrave of Meissen is saxon. A German house over
+	# Sorbian subjects is the ruler-culture case PLM/AGR already model.
+	sor_dedi_i = {
+		first_name = { name = name_dedi }
+		culture = saxon
+		religion = catholic
+		birth_date = 1004.1.1
+		birth = cottbus
+		dynasty = wettin_dynasty
+		tag = SOR
+	}
+
+	# Hermann II of the Ezzonen, Count Palatine of the Rhine from 1064 —
+	# SEVENTEEN at start (b. 1049 [U]), so no MINOR_RULERS entry: the
+	# build's adult check passes on its own and listing him would fail as
+	# a stale exemption. Historically dies 1085, the last Ezzone.
+	pal_hermann_ii = {
+		first_name = { name = name_herman }
+		culture = rhine_franconian
+		religion = catholic
+		birth_date = 1049.1.1
+		birth = kaiserslautern
+		dynasty = ezzonen_dynasty
+		tag = PAL
+	}
+
+	# Egbert I the Brunonen, Margrave of Meissen and Count of Brunswick —
+	# historically dies January 1068. Accepted drift; his son Egbert II
+	# is the Saxon rebellion's man.
+	bru_egbert_i = {
+		first_name = { name = name_egbert }
+		culture = lower_saxon
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = brunswick
+		dynasty = brunonen_dynasty
+		tag = BRU
+	}
 }
