@@ -746,14 +746,17 @@ for _ov, _sub in _gate_deps:
         _def = re.search(rf"^{_k} = \{{.*?^\}}", _reform_src, re.M | re.S)
         if _def and re.search(r"allow_tributary_subject\s*=\s*yes", _def.group(0)):
             _passes = True
-            if not re.search(rf"^\s*{_k}:", _loc_all, re.M):
-                probs.append(f"reform {_k} has no loc name entry")
-            if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
-                probs.append(f"reform {_k} has no loc desc entry")
     if not _passes:
         probs.append(f"{_ov} -> {_sub}: overlord {_ov} carries no setup reform "
                      "granting allow_tributary_subject — the engine will "
                      "downgrade this tributary to a vassal at game start")
+# Every reform WE define must resolve to loc, name AND desc — a missing
+# key renders raw in the government screen, silently.
+for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
+    if not re.search(rf"^\s*{_k}:", _loc_all, re.M):
+        probs.append(f"reform {_k} has no loc name entry")
+    if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
+        probs.append(f"reform {_k} has no loc desc entry")
 # Nine Seljuk clients today; raise if a future slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
       len(_gate_deps), probs, min_count=9)
