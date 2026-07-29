@@ -57917,12 +57917,17 @@ countries = {
 		}
 
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "expl_middle_east"
 		government = {
 			ruler = abs_abdallah_al_qaim
 			ruler_term = { character = abs_abdallah_al_qaim start_date = 1031.11.1 regnal_number = 0 regnal_name = name_qaim }
 			type = theocracy
+			heir_selection = theocratic_elective
+			laws = {
+				sharia_law = hanbali_policy
+			}
 		}
+		religious_school = hanbali_school
 
 		country_rank = rank_empire
 
@@ -58158,6 +58163,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58217,6 +58223,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58226,6 +58233,7 @@ countries = {
 				sharia_law = jafari_policy
 			}
 		}
+		religious_school = jafari_school
 
 		country_rank = rank_duchy
 
@@ -58242,6 +58250,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58251,6 +58260,7 @@ countries = {
 				sharia_law = jafari_policy
 			}
 		}
+		religious_school = jafari_school
 
 		country_rank = rank_duchy
 
@@ -58300,6 +58310,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58444,17 +58455,22 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
 			ruler = sel_alp_arslan
 			ruler_term = { character = sel_alp_arslan start_date = 1063.9.4 regnal_number = 0 }
+			reforms = {
+				seljuk_khutba_reform
+			}
 			laws = {
 				sharia_law = hanafi_policy
 			}
 		}
 		court_language = persian_language
 		religious_school = hanafi_school
+		accepted_cultures = { farsi_culture }
 
 		country_rank = rank_kingdom
 
@@ -58504,6 +58520,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58530,6 +58547,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58588,6 +58606,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
 		include = "muslim_monarchy_no_abrahamic_dhimmi"
 
 		government = {
@@ -58597,6 +58616,7 @@ countries = {
 				sharia_law = jafari_policy
 			}
 		}
+		religious_school = jafari_school
 
 		country_rank = rank_duchy
 

@@ -1305,6 +1305,12 @@ ARA 47 / POR 38 / GRA 18 / MLL 5 / MOR 4 / NAV 1, every emir seated, all
 accessions [U] (no taifa ruler exists in vanilla to compare against).
 
 ### CORRECTION: "subjects cannot declare war" is a VASSAL law, not a subject law
+> **PARTLY SUPERSEDED (2026-07-29, in game):** the war-capability half
+> stands (tributary.txt:88), but the conclusion "representable as setup
+> tributaries without disarming anyone" FAILED in game — the `visible`
+> gate binds at start. See "the tributary `visible` gate DOES bind at
+> setup" below.
+
 **Established:** 2026-07-29, Seljuk pass; re-verified by the main session.
 `vassal.txt:80-86` restricts declarations to three scripted exceptions —
 but **`tributary.txt:88` is `allow_declaring_wars = { always = yes }`**,
@@ -1403,6 +1409,116 @@ vanilla copy with ONE changed line (GAL → crimson `rgb { 158 28 35 }`,
 the Visconti-of-Gallura rooster) and a header saying exactly that. Diff
 it against vanilla after every game patch. Same route for any future
 recolor of an existing tag.
+
+### The Caliphate probe PASSED — and the theocracy branch carries a "Holy" prefix
+**Established:** in game 2026-07-29, screenshots. ABS rendered "Holy
+Abbasid Caliphate" with "Caliph Qaim Banū ʿAbbās, 65" — so an explicit
+`type = theocracy` in the setup government block BEATS the include
+template's `type = monarchy` (later-key-wins across the include/block
+merge), `rank_empire_theocracy` is reachable exactly as designed, and
+both loc overrides ("Caliphate"/"Caliph") render. The unplanned third
+string: the composed form is `$PREFIX$ $ADJ$ $RANK$` and the branch's
+prefix is `rank_empire_theocracy_prefix: "Holy"`
+(government_names_l_english.yml:106). The caliphate never carried a
+"Holy" — it is a Latin-Christian gloss — so our loc file overrides the
+prefix to "" (user-approved 2026-07-29). name_qaim needed no invention:
+vanilla ships it (character_names_dynamic_l_english.yml:19941, "Qaim").
+**But the monarchy include underneath cost three engine errors** —
+heir_selection mismatch (initialize_from_bookmark.cpp:517), two
+monarchy laws without their advances under theocracy
+(government.cpp:687), no religious_school (:520) — so ABS is now an
+explicit theocracy block, every field cited in build_setup.py:
+`heir_selection = theocratic_elective` (government_types/
+00_default.txt:73), `sharia_law = hanbali_policy`
+(laws/01_legal_system.txt:1024), `hanbali_school` (al-Qa'im is the
+caliph of the Qadiri creed — Baghdad's Hanbali moment).
+**Means:** Muslim theocracies are buildable with no vanilla template,
+and the ABS block is the model the Fatimid slice copies (shia/ismaili
+variant). "Caliphate" styling needs all three: empire rank + theocracy
++ the prefix override.
+
+### SUPERSEDED in game: the tributary `visible` gate DOES bind at setup
+**Established:** in game 2026-07-29. All nine Seljuk clients shipped
+`subject_type = tributary` and every one arrived a VASSAL; error.log
+names the mechanism to the line — `government.cpp:3702 "Subject type
+'tributary' is invalid for 'X' at game start … Reason:
+tributary.txt line: 20-24"`, and lines 20-24 ARE the `visible` gate's
+OR (overlord steppe_horde / subject tribe / subject steppe_horde /
+`modifier:allow_tributary_subject`). The earlier correction's evidence
+("vanilla ships monarchy-over-monarchy tributaries at setup") does not
+hold: BTL is a monarchy but the vanilla overlords that PASS are hordes
+(GLH), tribe-subjecting (NOV), or modifier carriers — the African
+advances, the Middle Kingdom IO, government reforms
+(country_specific.txt ×3). A downgraded client is a plain vassal:
+war-incapable and overlord-tinted, the two things the tributary choice
+existed to avoid.
+**Collateral, ours:** CHA Champa and DAI Đại Việt log the same class —
+vanilla's own CHI tributaries broke when our IO strip removed the
+Middle Kingdom, CHI's modifier source. Parked for the China review;
+recorded so nobody re-discovers it.
+**Fix (PROBE until the next launch):** SEL carries
+`seljuk_khutba_reform` (in_game/common/government_reforms/
+zz_1066_reforms.txt) granting `allow_tributary_subject` — vanilla's own
+pattern for a non-horde overlord (malian_tribute_system,
+country_specific.txt:3917), assigned in setup like ENG's
+magna_carta_reform. Open: does the reform's modifier apply BEFORE the
+start validator runs? If the next launch still shows vassals, the
+fallback is an honest `subject_type = vassal`. The harness guards the
+class either way ("new-tag tributary overlords pass the subject-type
+gate", proven by breaking in both directions).
+
+### A country must DISCOVER its own capital — and expl_silk_road_center grants nothing
+**Established:** in game 2026-07-29 playing SEL: the empire's own land
+rendered as terra incognita while Anatolia/Egypt showed, and init said
+it outright — "Country 'SEL the Great Seljuks' does not know its
+capital, need a discover_areas or discovered_regions"
+(initialize_from_bookmark.cpp:528; same line for ABS, UQY, MRD, KKY,
+SHD). Root cause: the one include that should cover Persia,
+`expl_silk_road_center`, is an ALL-COMMENT template in vanilla — every
+line commented out, a no-op include, no error anywhere. Setup discovery
+comes from the expl_* templates or an inline `discovered_regions` (PAP
+carries one); vanilla's bundle for this theatre is `expl_middle_east`
+(132 uses — Mongol-era Persia's own blocks), granting persia/crescent/
+caucasus/anatolia/khorasan/arabia/egypt and more. All eight generated
+client blocks + ABS now carry it. Hillah seeing the world while Mosul
+saw nothing was the same law from the other side: vanilla-blocked tags
+kept vanilla's discovery lines.
+**Means:** every new landed block needs a discovery source that
+actually CONTAINS its capital. `build_setup.py` asserts exactly that,
+resolving the capital's membership through definitions.txt — the
+assert's own FIRST draft ("any include with live discovery content")
+was proven inadequate by its break test: SEL carried three live
+silk-road includes that simply do not contain Rey. Checks must encode
+the engine's requirement, not a proxy for it.
+
+### The registry's culture_definition IS a landed tag's primary culture — measured
+**Established:** in game 2026-07-29: "primary culture is duplicated in
+accepted cultures for ARA Aragon" (country.cpp:6166). The Iberia pass
+wrote `accepted_cultures = { catalan }` (vanilla ARA carries
+`{ aragonese }`); the duplicate is only possible if ARA's primary IS
+the registry's `culture_definition = catalan` (iberia.txt:17). That
+closes the deferred "VERIFY IN GAME first that the field even matters
+for a landed tag" item — it does. Fix by the attested registry-override
+route (the Gallura precedent): our `in_game/setup/countries/iberia.txt`
+changes that one line to `aragonese` (key verified cultures/
+iberian.txt:22; vanilla itself writes the same value form in this
+file's commented MTS block). Setup `accepted_cultures = { catalan }`
+stays — Jaca's kingdom is Aragonese-primary, Catalan-accepting.
+**Means:** a tag's `culture_definition` is not registry decoration. At
+design time, set it to the intended PRIMARY culture, and never repeat
+the primary in the accepted list.
+
+### CWTools CW225 flags cross-file $refs$ in loc — false positive, with a live caveat
+**Established:** CW225 on `SEL_THE: "$common_string_prefix_article$"` —
+"references common_string_prefix_article which doesn't exist in
+English". The string exists (common_used_strings_l_english.yml:95,
+"the") and the construct is vanilla's own (`THE_FUGGERS_THE`,
+country_names_l_english.yml:8); CWTools just does not resolve
+cross-file $refs$.
+**Caveat:** the 2026-07-29 screenshots show the map name WITHOUT the
+article — "Sultanate of Great Seljuks" — so whether the engine consults
+`<TAG>_THE` here at all is UNPROVEN. Eyeball item on the backlog, not a
+bug hunt.
 
 ## Carried over, still to do
 

@@ -511,6 +511,60 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    the subject/overlord flood from the Byzantium test should be gone
    (28+54 dependency strips landed since), "removed invalid law"
    should shrink or vanish; the 'l' formatting flood is known vanilla.
+   **TESTED 2026-07-29 (screenshots): 6/10 clean, 3 real bugs, all
+   decoded same day.** PASSED: **the Caliphate probe — "Caliphate"/
+   "Caliph" rendered, theocracy beat the include** (bonus finding: the
+   branch prefix "Holy" came along); Alp Arslan in Rey; Shavur/
+   Fariburz/Dubays render (invented keys 5-7 PROVEN); Qavurt/Al-e
+   Saljuq; GHZ+SRV independent; Mongol tags gone; old error floods
+   gone ("removed invalid law" hypothesis confirmed); Norman opening
+   clean. FAILED, causes measured: (1) all nine tributaries were
+   silently DOWNGRADED TO VASSAL — tributary.txt's visible gate binds
+   at game start (government.cpp:3702 cites its lines 20-24);
+   (2) SEL/ABS/clients could not see their own capitals — playing SEL
+   showed terra incognita (expl_silk_road_center is an ALL-COMMENT
+   vanilla template; no include contained Rey); (3) HLL under two
+   overlords, repeating assert (vanilla's Mongol-era HLG vassalage
+   survived + our SEL line); plus ABS include-clash errors
+   (heir_selection/laws/school) and ARA's duplicated primary culture
+   (which ANSWERED the deferred registry question). All fixed in
+   item 17.
+
+17. **SELJUK FIX BATCH (LANDED, untested) — everything the 16-test
+   found, one commit pair.** (a) Tributary gate: NEW
+   `seljuk_khutba_reform` (in_game/common/government_reforms/
+   zz_1066_reforms.txt, malian_tribute_system's attested shape) grants
+   SEL `allow_tributary_subject`; assigned in SEL's setup government.
+   THE PROBE: does the reform's modifier land before the start
+   validator? (b) Discovery: `expl_middle_east` (132 vanilla uses) on
+   all eight generated blocks + ABS; build now asserts every new
+   block's CAPITAL is inside some granted region/area/province
+   (definitions.txt-resolved; first draft of the assert was proven
+   inadequate by its own break test and strengthened). (c) HLG→HLL
+   Mongol-era vassalage stripped (exact-count 1) — the
+   multiple-overlord assert dies. (d) ABS rebuilt as an explicit
+   theocracy: theocratic_elective, hanbali_policy + hanbali_school
+   (Qadiri creed), no monarchy include — the heir/law/school error
+   trio dies. (e) jafari_school on UQY/HLB/KKY. (f) ARA: registry
+   override in_game/setup/countries/iberia.txt (catalan→aragonese,
+   one line, Gallura route) — primary-duplicate error dies.
+   (g) accepted_cultures = { farsi_culture } on SEL (user-approved:
+   the Persian bureaucracy). (h) "Holy" dropped:
+   rank_empire_theocracy_prefix loc-overridden to "".
+   (i) Harness: "new-tag tributary overlords pass the subject-type
+   gate" (9 items, proven both ways).
+   TEST NEXT LAUNCH: (a) THE TRIBUTARY PROBE — do the nine clients
+   now show as TRIBUTARIES (own colors, subject line under SEL), and
+   can one open a war-declaration screen? If still vassals, the
+   reform lost to init order: fallback is honest vassalage — decide
+   then. (b) Play SEL: is Persia VISIBLE from Rey outward? Play a
+   client (Mosul): world visible? (c) ABS panel reads "Abbasid
+   Caliphate" — no "Holy". (d) error.log: the 3702 tributary lines
+   for our nine GONE (CHA/DAI's two remain — known, China review),
+   capital/heir/school/law/multiple-overlord classes GONE, ARA
+   duplicate GONE. (e) SEL's Persian lands: integration/acceptance
+   visibly better with farsi accepted. (f) Regression: taifas still
+   render, Norman opening, error.log class profile.
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
@@ -574,7 +628,20 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
 - **Eyeball items**: Bernat of Besalú renders via name_bernard's
   occitan row ("# Catalan & Occitan"); ARA/NAV are both dark red and
   NEWLY adjacent in the west Pyrenees (Gallura-class recolor if it
-  reads badly).
+  reads badly); SEL's map name lacks its article ("Sultanate of Great
+  Seljuks") — SEL_THE exists and CW225 on it is a false positive, but
+  whether the engine consults _THE keys is unproven.
+- **COAT-OF-ARMS BATCH for all new tags** — ABS's flag rendered WHITE
+  (2026-07-29 screenshot): none of our invented tags has a
+  coat_of_arms entry. One batch: SEL, ABS (black Abbasid banner!),
+  GRZ, the taifa set, URG/BSL/CDY/EPU/RSL/PLJ, PYS + every future new
+  tag. Needs the vanilla CoA entry shape verified first.
+- **CHA/DAI (China) tributaries broke with our Middle Kingdom strip**
+  (government.cpp:3702 class) — CHI lost its modifier source. Owned by
+  the future China review; do not re-discover.
+- **HLG/QUN/SLD army-based shatter lines** (initialize_from_bookmark
+  .cpp:2477) — Mongol-era army tags our sweeps starved; Arabia and
+  Central Asia slices retire them properly.
 - **Pop/religion/culture conversion phase**: after the world's borders
   are done (user decision below). The taifa measurement stands: 222 of
   244 al-Andalus locations have catholic template religion.
@@ -584,7 +651,9 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
 separate later phase.** The world's borders get finished before any pop
 conversion work starts.
 **DONE so far:** Sardinia, the 13 taifas, Christian Iberia, Byzantium,
-Seljuks+Abbasids (last one UNTESTED — tomorrow's first job).
+Seljuks+Abbasids (tested 2026-07-29 — the Caliphate probe passed, three
+real bugs found, all fixed in item 17; RE-TEST pending, tributary probe
+headline).
 **Remaining, in rough order:** Fatimid Egypt + the Levant south of the
 named line (Damascus/Palestine; MAM keeps 120 there), France demesne
 163→~25 + Languedoc (montpellier already parked there), British Isles
@@ -641,10 +710,13 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**TOMORROW STARTS WITH:** the Seljuk batch in-game test — the full list
-is item 16 above, headline question the ABS Caliphate probe. Then the
-next slice per the strategic order (Fatimid Egypt is the natural one:
-the Levant line is already drawn and named in item 16's package).
+**NEXT SESSION STARTS WITH:** the item 17 re-test — headline question
+the TRIBUTARY PROBE (does seljuk_khutba_reform's modifier beat the
+start validator?); full list at the end of item 17. The 16-test itself
+ran 2026-07-29: Caliphate probe PASSED, three real bugs found and
+fixed same day. Then the next slice per the strategic order (Fatimid
+Egypt: the Levant line is drawn in item 16's package, and ABS's
+explicit-theocracy block is the Fatimid caliph's template).
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation
 in Turkish, everything in the repo in English.

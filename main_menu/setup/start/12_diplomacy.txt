@@ -319,7 +319,6 @@ diplomacy_manager = {
     #scripted_mutual = { first = MAM second = KAR type = alliance }
 
     #-------------Persia------------
-    dependency = { first = HLG second = HLL subject_type = vassal }
 
 
     #-------------Caucasus------------

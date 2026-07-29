@@ -612,12 +612,27 @@ _BYZ_GRANTS = {
 # "Sultanate of the Great Seljuks" / "Sultan"; empire rank would kill the
 # NAME key entirely (the prefix_adjective_rank branch, verified). Nine new
 # tags; nine clients as TRIBUTARIES (tributary.txt:88 allow_declaring_wars
-# always — the banked "subjects cannot declare war" law is VASSAL-only,
-# and vanilla ships monarchy->monarchy tributaries at setup: TUN, ERE,
-# ETH). ABS is the theocracy probe: rank_empire_theocracy carries no
-# religion gate and dead-codes vanilla's "Caliphate" — our loc file
-# overrides its two strings, and no vanilla setup theocracy is
-# empire-rank, so at 1066 only ABS can reach them.
+# always). MEASURED IN GAME 2026-07-29: the visible gate
+# (tributary.txt:20-24 — overlord horde/tribe OR
+# modifier:allow_tributary_subject) IS enforced at game start
+# (government.cpp:3702 names exactly those lines) and a failing tributary
+# is silently DOWNGRADED TO VASSAL — all nine were. The earlier reading
+# "vanilla ships monarchy-over-monarchy tributaries so the gate is
+# diplomacy-only" was wrong: vanilla's passing overlords are hordes,
+# tribe-subjected, or modifier carriers (African advances, Middle
+# Kingdom IO, reforms); vanilla's own CHI tributaries (CHA/DAI) broke
+# the same way after our Middle Kingdom IO strip. Fix: SEL carries
+# seljuk_khutba_reform (in_game/common/government_reforms/
+# zz_1066_reforms.txt) granting the modifier — vanilla's own pattern
+# for a non-horde overlord (country_specific.txt:3925,
+# malian_tribute_system). Whether the reform's modifier lands BEFORE
+# the start validator runs is the remaining probe; fallback if it
+# fails: accept subject_type = vassal.
+# ABS was the theocracy probe and it PASSED (in game 2026-07-29,
+# screenshots): explicit type = theocracy beat the include template and
+# "Caliphate"/"Caliph" rendered. The branch's third string,
+# rank_empire_theocracy_prefix ("Holy"), is loc-overridden to empty —
+# the historical name carries no "Holy".
 _SELJUK_RULES = {
     # tag: (sweep names, singles, minus-sweeps, minus-singles, expected)
     "SEL": (["azerbaijan_area", "fars_area", "khuzestan_area",
@@ -655,35 +670,63 @@ _SELJUK_BYZ_EXTRA = ["adakli", "harput", "keban", "palu"]
 
 # New-tag block classes. Capitals verified in definitions.txt; every
 # enum verified against vanilla setup (hanafi_policy x40, jafari_policy
-# x3, hanafi_school x45, persian_language court x19, all cultures in
-# in_game/common/cultures).
+# x3, hanafi_school x45, jafari_school x3 — 10_countries.txt:57737 —
+# persian_language court x19, all cultures in in_game/common/cultures).
+# A school of None shipped once and the engine flagged every such
+# country at init ("has no religious_school specified",
+# initialize_from_bookmark.cpp:520, 2026-07-29): the field is required,
+# so None is no longer a legal value here.
 _SELJUK_TAGS = {
-    # tag: (capital, rank, sharia policy or None, school or None,
+    # tag: (capital, rank, sharia policy, school,
     #       court language or None)
     "SEL": ("rey", "rank_kingdom", "hanafi_policy", "hanafi_school",
             "persian_language"),
     "GHZ": ("ghazni", "rank_kingdom", "hanafi_policy", "hanafi_school", None),
-    "UQY": ("mosul", "rank_duchy", "jafari_policy", None, None),
+    "UQY": ("mosul", "rank_duchy", "jafari_policy", "jafari_school", None),
     "MRD": ("mayyafariqin", "rank_duchy", "hanafi_policy", "hanafi_school", None),
-    "HLB": ("aleppo", "rank_duchy", "jafari_policy", None, None),
+    "HLB": ("aleppo", "rank_duchy", "jafari_policy", "jafari_school", None),
     "SIS": ("zaranj", "rank_duchy", "hanafi_policy", "hanafi_school", None),
-    "KKY": ("yazd", "rank_duchy", "jafari_policy", None, None),
+    "KKY": ("yazd", "rank_duchy", "jafari_policy", "jafari_school", None),
     "SHD": ("ganja", "rank_duchy", "hanafi_policy", "hanafi_school", None),
 }
 
 def _seljuk_block(tag, capital, rank, policy, school, court):
+    # expl_middle_east is the discovery layer: vanilla's own bundle for
+    # this theatre (132 uses in 10_countries.txt — CHB and the rest of
+    # Mongol-era Persia), granting persia/crescent/caucasus/anatolia/
+    # khorasan/arabia/egypt regions. It is REQUIRED, not decorative:
+    # expl_silk_road_center is an EMPTY template (every line commented
+    # out in vanilla) and a country whose capital is undiscovered fails
+    # init ("does not know its capital",
+    # initialize_from_bookmark.cpp:528) — playing SEL showed its own
+    # empire as terra incognita (2026-07-29 screenshots).
     inc = "".join(f'\t\tinclude = "{i}"\n' for i in (
         "expl_silk_road_west", "expl_silk_road_center",
         "expl_silk_road_east", "expl_indian_trade_route",
+        "expl_middle_east",
         "muslim_monarchy_no_abrahamic_dhimmi"))
+    if not school:
+        sys.exit(f"_seljuk_block: {tag} has no religious_school — the "
+                 "engine requires one (initialize_from_bookmark.cpp:520)")
+    # SEL alone carries the khutba reform (allow_tributary_subject — the
+    # tributary gate fix; reforms-in-setup shape attested at our own
+    # ARA block, vanilla 10_countries.txt) and the Persian bureaucracy
+    # as an accepted culture (farsi_culture, cultures/persian.txt:16;
+    # accepted_cultures-in-setup attested at vanilla's ARA block —
+    # user-approved 2026-07-29: the Turkic dynasty rules through Persian
+    # administrators, Nizam al-Mulk's world).
+    gov_extra = ""
+    if tag == "SEL":
+        gov_extra = "\t\t\treforms = {\n\t\t\t\tseljuk_khutba_reform\n\t\t\t}\n"
     body = (f"\t{tag} = {{\n"
             f"\t\tstarting_technology_level = 3\n{inc}\n"
-            f"\t\tgovernment = {{\n\t\t\tlaws = {{\n"
+            f"\t\tgovernment = {{\n{gov_extra}\t\t\tlaws = {{\n"
             f"\t\t\t\tsharia_law = {policy}\n\t\t\t}}\n\t\t}}\n")
     if court:
         body += f"\t\tcourt_language = {court}\n"
-    if school:
-        body += f"\t\treligious_school = {school}\n"
+    body += f"\t\treligious_school = {school}\n"
+    if tag == "SEL":
+        body += "\t\taccepted_cultures = { farsi_culture }\n"
     body += (f"\n\t\tcountry_rank = {rank}\n\n"
              f"\t\tcapital = {capital}\n\t}}\n")
     return body
@@ -691,16 +734,35 @@ def _seljuk_block(tag, capital, rank, policy, school, court):
 for _t, (_cap, _rank, _pol, _sch, _crt) in _SELJUK_TAGS.items():
     NEW_COUNTRIES[_t] = _seljuk_block(_t, _cap, _rank, _pol, _sch, _crt)
 
-# ABS — the Caliphate probe: theocracy type + empire rank reaches
-# rank_empire_theocracy, whose two strings our loc file overrides to
-# "Caliphate"/"Caliph". Whether the explicit type overrides the include
-# template's monarchy is UNOBSERVED — if it fails, ABS degrades to
-# "Abbasid Empire" (readable) and the probe has its answer.
+# ABS — the Caliphate probe PASSED in game (2026-07-29, screenshots):
+# explicit type = theocracy BEAT the include template's monarchy and
+# rank_empire_theocracy rendered our "Caliphate"/"Caliph" strings. The
+# same launch showed the cost of bolting theocracy onto a MONARCHY
+# include: the template's heir_selection mismatched the government
+# (initialize_from_bookmark.cpp:517), its feudal_de_jure_law and
+# royal_court_customs_law had no advances under theocracy
+# (government.cpp:687 x2), and no school/no discovery were engine
+# errors of their own. So the include is GONE and the block is an
+# explicit Muslim theocracy, every field cited:
+# - heir_selection = theocratic_elective: the theocracy government
+#   type's own list, government_types/00_default.txt:73 (same list the
+#   catholic_bishopric template picks bishopric_elective from).
+# - sharia_law = hanbali_policy (laws/01_legal_system.txt:1024) +
+#   religious_school = hanbali_school: al-Qa'im is the caliph of the
+#   Qadiri creed — Baghdad's 11th-century Hanbali moment.
+# - expl_middle_east: see _seljuk_block.
 NEW_COUNTRIES["ABS"] = (
     "\tABS = {\n"
     "\t\tstarting_technology_level = 3\n"
-    '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi"\n'
-    "\t\tgovernment = {\n\t\t\ttype = theocracy\n\t\t}\n\n"
+    '\t\tinclude = "expl_middle_east"\n'
+    "\t\tgovernment = {\n"
+    "\t\t\ttype = theocracy\n"
+    "\t\t\their_selection = theocratic_elective\n"
+    "\t\t\tlaws = {\n"
+    "\t\t\t\tsharia_law = hanbali_policy\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    "\t\treligious_school = hanbali_school\n\n"
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = baghdad\n\t}\n")
 
@@ -1654,8 +1716,60 @@ COUNTRY_LINES = ("heir", "consort", "active_regent", "designated_heir_reason",
                  "inherit_ruler_terms")
 
 
+_TPL_CACHE = {}
+def _tpl_grants(inc):
+    """Container names a setup template grants discovery of. Comment-
+    stripped, so an all-comment template grants the EMPTY set — which is
+    the point: expl_silk_road_center is exactly that in vanilla."""
+    if inc not in _TPL_CACHE:
+        tpl = os.path.join(VAN, "main_menu", "setup", "templates",
+                           inc + ".txt")
+        if not os.path.isfile(tpl):
+            sys.exit(f'include "{inc}" names no vanilla template')
+        body = re.sub(r"#[^\n]*", "", open(tpl, encoding="utf-8-sig").read())
+        names = []
+        for m in re.finditer(r"discover(?:ed)?_(?:regions|areas|provinces)"
+                             r"[ \t]*=[ \t]*\{([^}]*)\}", body):
+            names += m.group(1).split()
+        _TPL_CACHE[inc] = set(names)
+    return _TPL_CACHE[inc]
+
+
+def _assert_new_block_discovery():
+    """Every generated country block must SEE ITS OWN CAPITAL, the
+    engine's init requirement ("does not know its capital, need a
+    discover_areas or discovered_regions",
+    initialize_from_bookmark.cpp:528) — measured 2026-07-29 playing
+    SEL: the whole Persian empire started as terra incognita. The first
+    draft of this assert only required "some include with live
+    discovery content" and its own break test proved that inadequate:
+    SEL carried three LIVE silk-road includes and still failed in game,
+    because none of them contains Rey. So the check is the engine's
+    own: the capital must be a member of some granted region, area or
+    province, resolved through definitions.txt."""
+    members, _ = _defs()
+    for tag in sorted(NEW_COUNTRIES):
+        block = NEW_COUNTRIES[tag]
+        mcap = re.search(r"capital = (\w+)", block)
+        if not mcap:
+            sys.exit(f"{tag}: generated block has no capital")
+        cap = mcap.group(1)
+        grants = set()
+        for m in re.finditer(r"discovered_regions[ \t]*=[ \t]*\{([^}]*)\}",
+                             block):
+            grants |= set(m.group(1).split())
+        for inc in re.findall(r'include = "([^"]+)"', block):
+            grants |= _tpl_grants(inc)
+        if not any(cap in members.get(g, ()) for g in grants):
+            sys.exit(f"{tag}: capital {cap} is not discovered by any include "
+                     "or inline discovered_regions — the country fails init "
+                     "(initialize_from_bookmark.cpp:528) and its player "
+                     "starts blind (the expl_silk_road_center trap)")
+
+
 def build_countries(src):
     report = []
+    _assert_new_block_discovery()
     before = len(re.findall(COUNTRY_RE, src, re.M))
 
     for key in COUNTRY_BLOCKS:
@@ -2552,10 +2666,25 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 5 landless-tag pacts, stripped {n_pacts}")
     report.append(("pacts naming a landless tag stripped", n_pacts))
 
+    # HLL kept vanilla's Mongol-era overlord: the Hüleguid vassalage
+    # (vanilla 12_diplomacy) survived the landless strip because HLG
+    # still holds kazimah, and with our SEL tributary on top the engine
+    # asserted "Country with multiple overlords" every few ticks
+    # (diplomacy.cpp:4796 + pdx_assert.cpp:214, in game 2026-07-29).
+    # Hillah under the Hüleguids is a 1337 relation with no 1066
+    # defense; SEL's khutba is the historical tie.
+    src, n_hlg = re.subn(
+        r"^[ \t]*dependency = \{ first = HLG second = HLL [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_hlg != 1:
+        sys.exit(f"expected exactly 1 HLG->HLL dependency, stripped {n_hlg}")
+    report.append(("Mongol-era HLG->HLL vassalage stripped", n_hlg))
+
     # The Seljuk khutba: nine clients as TRIBUTARY subjects —
-    # war-capable (tributary.txt:88), own color and name. Vanilla ships
-    # monarchy-over-monarchy tributaries at setup (TUN, ERE, ETH), so
-    # the shape is attested.
+    # war-capable (tributary.txt:88), own color and name. MEASURED
+    # 2026-07-29: the tributary visible gate binds at game start and all
+    # nine downgraded to vassal; SEL now carries seljuk_khutba_reform
+    # (allow_tributary_subject) to pass it — see the slice comment.
     _wrap = src.rindex("\n}")
     _tribs = "".join(
         f"\tdependency = {{ first = SEL second = {t} subject_type = tributary }}\n"

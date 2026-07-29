@@ -377,13 +377,11 @@ probably joined LANDLESS_AFTER without the count being re-checked —
 the assert will already have said so at build time.
 
 ### "Removed invalid law <X>" lines at game start
-**HYPOTHESIS — engine self-healing, likely correlated with the landless
-dependencies above; verify on the next launch.** Seen in the same
-session as the subject flood, count unknown, log overwritten. The
-engine says it REMOVED the law — self-healing, not a crash class. If
-the lines survive the dependency fix, decode properly: note which tag
-and which law the first few lines name and check whether the law's
-government/subject prerequisites vanished with our changes.
+**CONFIRMED (2026-07-29): correlated with the landless dependencies —
+gone the launch after the strips landed.** The Seljuk-batch test showed
+none; the hypothesis (engine self-healing laws whose subject/government
+prerequisites vanished with broken dependencies) held. If the class
+reappears, start from whatever dependency change landed last.
 
 ### `country_database.cpp:98 — <TAG> has the name 'empire' in it, which does not work for a tag, which would look silly as 'The Great TAG Empire Empire'`
 **Means:** a country name containing "Empire". Rank titles compose as
@@ -393,6 +391,79 @@ country names contain "Empire".** Note the map label is built from
 `<rank>_prefix` + `<TAG>_ADJ` + `<rank noun>` and never uses the country name
 at all, so renaming may not change what you see on the map: an empire-rank
 steppe horde reads "Great <Adj> Horde" whatever you call it.
+
+### `government.cpp:3702 — Subject type 'tributary' is invalid for '<TAG>' at game start … Reason: file: common/subject_types/tributary.txt line: 20 … 24`
+**DECODED (2026-07-29) — the subject type's `visible` trigger binds at
+game start, and a failing dependency is silently DOWNGRADED TO VASSAL.**
+The Reason lines are literally the failing trigger's lines: tributary's
+20-24 are the OR of overlord-steppe_horde / subject-tribe /
+subject-steppe_horde / `modifier:allow_tributary_subject`. All nine
+Seljuk clients logged this and arrived as vassals. Same cpp line as the
+old French-appanage class (~25 of the 53-line baseline) — one decoder
+entry, many subject types.
+**Fix:** give the overlord the modifier the gate wants —
+`seljuk_khutba_reform` (vanilla's own reform pattern,
+country_specific.txt:3917) — or accept the vassal. **Known ours:** CHA
+Champa and DAI Đại Việt log it too since our Middle Kingdom IO strip
+removed CHI's modifier source; parked for the China review.
+
+### `initialize_from_bookmark.cpp:528 — Country '<TAG>' does not know its capital, need a discover_areas = or discovered_regions = .`
+**DECODED+FIXED — the block has no discovery source CONTAINING its
+capital.** Playing such a country shows terra incognita over its own
+land. Trap: `expl_silk_road_center` is an ALL-COMMENT vanilla template,
+so including it grants nothing. Fix: `expl_middle_east` (vanilla's
+132-use bundle for the theatre) on every generated Mideast block, and
+`build_setup.py` now asserts every new block's capital is a member of
+some granted region/area/province (resolved via definitions.txt).
+
+### `initialize_from_bookmark.cpp:517/520 — heir-selection does not match government / no religious_school specified`
+**DECODED+FIXED — both were the monarchy include under ABS's theocracy,
+plus schools omitted from three client blocks.** ABS is an explicit
+theocracy block now (heir_selection = theocratic_elective); a school of
+None fails the build. The pair is a smell for "government type bolted
+onto a mismatched include".
+
+### `government.cpp:687 — Setting a law - <law> - … at game start that the country doesn't have the advance for`
+**DECODED+FIXED — same root as above:** the muslim-monarchy template's
+`feudal_de_jure_law`/`royal_court_customs_law` have no advances under a
+theocracy. Gone with ABS's explicit block. If seen again: the block's
+laws come from a template written for another government type.
+
+### `diplomacy.cpp:4796 — Country with multiple overlords` + `pdx_assert.cpp:214 — Important assertion failed`
+**DECODED+FIXED — two dependencies name the same subject.** HLL held
+vanilla's Mongol-era HLG vassalage (which survived the landless strip —
+HLG still holds kazimah) plus our SEL tributary. Repeats every few
+ticks. `build_diplomacy` strips the HLG line, exact-count 1. If seen
+again: grep 12_diplomacy for `second = <TAG>` and count.
+
+### `country.cpp:6166 — primary culture is duplicated in accepted cultures for <TAG>`
+**DECODED+FIXED — the registry's `culture_definition` IS the landed
+tag's primary culture, and a setup `accepted_cultures` list repeated
+it.** ARA: registry catalan + our accepted { catalan }. Fixed by the
+attested registry override route (our iberia.txt, one line, catalan →
+aragonese). This line is also the measurement that closed the deferred
+"does culture_definition matter for a landed tag" question: it does.
+
+### `initialize_from_bookmark.cpp:2477 — Army Based Country '<TAG>' can not create regiments at start, and will this shatter.`
+**WATCH — side effect of our sweeps, not yet observed causing harm.**
+HLG/QUN/SLD: Mongol-era army-based tags whose holdings the
+Byzantium/Seljuk passes reduced to nearly nothing. The engine shatters
+them at start; the Mongol tags are gone from the map anyway (intended).
+The real fix is the Arabia and Central Asia slices retiring these tags
+properly. Decode further only if a shattered remnant shows in game.
+
+### `initialize_from_bookmark.cpp:792 — Character has too many ruler traits! Character: '<key>', Traits: 'N', Expected: 'M'`
+**WATCH — cosmetic, vanilla data on rulers WE seated.** The characters
+named (Sancho II, Alfonso VI, Sancho Ramírez, Guillaume of Burgundy…)
+are vanilla people who do not rule at 1337; seating them at 1066
+exposes trait counts above the engine's expected-for-age formula. No
+observed in-game effect. Revisit only if trait-driven content misfires.
+
+### `jomini_script_system.cpp:252 — set_court_language … Null object! Field: target … common/subject_types/dominion.txt:152`
+**UNDECODED — two lines per launch, vanilla's dominion script hitting a
+null target at start.** No dominion of ours exists; possibly a vanilla
+dominion whose partner our strips touched. Harmless so far. Decode if
+the count grows or a dominion misbehaves.
 
 ---
 

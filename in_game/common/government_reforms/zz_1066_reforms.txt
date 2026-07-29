@@ -1,0 +1,29 @@
+﻿# 1066 Test Mod — government reforms.
+#
+# seljuk_khutba_reform exists to pass the tributary subject-type gate:
+# tributary.txt:20-24 requires the overlord to be a steppe horde, the
+# subject a tribe/horde, or the overlord to carry
+# modifier:allow_tributary_subject — and that gate IS enforced at game
+# start (government.cpp:3702 cites exactly those lines; measured
+# 2026-07-29, all nine Seljuk clients silently downgraded to vassal
+# without it). Granting the modifier through a government reform is
+# vanilla's own pattern for a non-horde overlord:
+# malian_tribute_system, government_reforms/country_specific.txt:3917,
+# whose shape this copies. Assigned to SEL at setup
+# (reforms = { seljuk_khutba_reform }, written by tools/build_setup.py).
+# tag trigger: docs/EU5-Vanilla-Script-Docs/triggers.log:10438,
+# Supported Scopes: country.
+
+seljuk_khutba_reform = {
+	potential = {
+		tag = SEL
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+	}
+
+	years = 4
+}
