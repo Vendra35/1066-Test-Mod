@@ -1126,10 +1126,17 @@ it owes a v2 flavor pass (seeds already in its polish backlog:
 Edgar Ætheling, Sweyn 1069, Malcolm, the Harrying). Size situations
 1-4 days each by subject; the phase in weeks.
 
+**WATCH (2026-07-29 night screenshot):** VMD sits at 47.17% subject
+loyalty — a DISLOYAL tributary in the Capetian homage ring. One
+disloyal fief is period-accurate flavor; if a longer observer run
+shows the whole ring cancelling early, the ring gets an opinion
+cushion. Fold into the next long observer session's checklist.
+
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the
-Margraviate branch, literal #19, shrunken Austria). Items 16-22 are
-ALL CONFIRMED IN GAME (2026-07-29 — five slices tested and closed in
+Margraviate branch, literal #19, shrunken Austria) — **DONE, item 23
+is CONFIRMED AND CLOSED the same night.** Items 16-23 are
+ALL CONFIRMED IN GAME (2026-07-29 — six slices tested and closed in
 ONE day). Remaining territory per the strategic order: **Germany II**
 (parked with its cast questions), **Italy North**, Central Asia,
 Arabia, the Rus/steppe east, the India/China review (the Middle
