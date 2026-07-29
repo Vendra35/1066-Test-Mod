@@ -32319,8 +32319,7 @@ countries = {
 		starting_technology_level = 3
 		include = "expl_mediterranean"
 		include = "catholic_monarchy_no_coast"
-		government = {
-			ruler = random ruler = sav_aymon_savoy }
+		government = { ruler = random }
 		country_rank = rank_duchy
 		capital = aosta
 	}
@@ -32435,8 +32434,7 @@ countries = {
 		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = katzenelnbogen
 	}
@@ -32704,8 +32702,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 			moselle_franconian
 		}
@@ -32736,8 +32733,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_german_republic_no_coast"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = strasbourg
 	}
@@ -32772,8 +32768,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_german_republic_no_coast"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = colmar
 	}
@@ -32786,8 +32781,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_german_bishopric_no_coast"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = murbach
 	}
@@ -32800,8 +32794,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_german_republic_no_coast"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = haguenau
 	}
@@ -32814,8 +32807,7 @@ countries = {
 		include = "expl_western_europe"
 		include = "expl_northern_europe"
 		include = "catholic_german_republic_no_coast"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = mulhouse
 	}
@@ -32872,8 +32864,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 			ripuarian_franconian
 		}
@@ -32890,8 +32881,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = furstenberg
 	}
@@ -32909,8 +32899,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = feldkirchen
 	}
@@ -32924,8 +32913,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 			high_alemannic
 		}
@@ -32942,8 +32930,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 			westphalian
 		}
@@ -32960,8 +32947,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = saarwerden
 	}
@@ -32975,8 +32961,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 		}
 		country_rank = rank_county
@@ -32992,8 +32977,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital =  schesslitz
 	}
@@ -33007,8 +32991,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 			rhine_franconian
 		}
@@ -33025,8 +33008,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = ellwangen
 	}
@@ -33040,8 +33022,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = heidenheim
 	}
@@ -33055,8 +33036,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 		}
 		country_rank = rank_county
@@ -33096,8 +33076,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 		}
 		country_rank = rank_county
@@ -33114,8 +33093,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		tolerated_cultures = {
 		}
 		country_rank = rank_county
@@ -33131,8 +33109,7 @@ countries = {
 		include = "expl_northern_europe"
 		include = "catholic_monarchy_no_coast"
 		include = "german_principality"
-		government = {
-			ruler = random ruler = random }
+		government = { ruler = random }
 		country_rank = rank_county
 		capital = tubingen
 	}

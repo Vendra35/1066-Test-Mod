@@ -2841,6 +2841,24 @@ def build_countries(src):
     # through and those countries keep a 1337 ruler.
     src = re.sub(r"^([ \t]*)ruler[ \t]*=[ \t]*([A-Za-z0-9_]+)[ \t]*(#[^\n]*)?\n",
                  _ruler, src, flags=re.M)
+
+    # The ONE-LINE form: vanilla ships exactly 23 `government = { ruler = X }`
+    # single-liners (22 random + AOS's sav_aymon_savoy, 10_countries.txt:36343).
+    # The line-anchored pass above cannot see them (no newline after the name),
+    # and the add-missing pass below could not either — it prepended a SECOND
+    # `ruler = random` into each, and on AOS the surviving 1291-born ruler sat
+    # after it in the same line. Found by the Italy North research review,
+    # 2026-07-29 night.
+    def _ruler_inline(m):
+        nonlocal n_ruler, n_already
+        if m.group(2) == "random":
+            n_already += 1
+            return m.group(0)
+        n_ruler += 1
+        return m.group(1) + "ruler = random" + m.group(3)
+
+    src = re.sub(r"(government[ \t]*=[ \t]*\{[ \t]*)ruler[ \t]*=[ \t]*"
+                 r"([A-Za-z0-9_]+)([ \t]*\})", _ruler_inline, src)
     report.append(("ruler = <name> -> random", n_ruler))
     report.append(("ruler = random already", n_already))
 
@@ -3237,7 +3255,14 @@ def build_countries(src):
     for i, m in enumerate(starts):
         end = starts[i + 1].start() if i + 1 < len(starts) else len(src)
         body = src[m.start():end]
-        if re.search(r"^[ \t]*ruler[ \t]*=", body, re.M):
+        # (?<![A-Za-z0-9_]) instead of a line anchor: the 23 one-line
+        # `government = { ruler = ... }` blocks keep their ruler mid-line,
+        # and the anchored form double-inserted into every one of them.
+        # Comment-stripped first: NTC ships `#ruler = jap_koumyou_tenno`
+        # and the widened search skipped it on the first run — leaving NTC
+        # with no ruler at all.
+        if re.search(r"(?<![A-Za-z0-9_])ruler[ \t]*=",
+                     re.sub(r"#[^\n]*", "", body)):
             continue
         gov = re.search(r"^([ \t]*)government[ \t]*=[ \t]*\{", body, re.M)
         if gov:
@@ -3386,20 +3411,27 @@ def build_countries(src):
                 return f"{key} survived the strip"
         # Every remaining ruler must be random or a Phase 2 entry. This is the
         # check that catches a ruler line whose shape differs just enough to miss
-        # the rewrite and leave that country a -250-year-old.
+        # the rewrite and leave that country a -250-year-old. UNANCHORED on
+        # comment-stripped text: the line-anchored form was blind to the 23
+        # one-line `government = { ruler = X }` blocks, which is exactly how
+        # AOS's 1291-born sav_aymon_savoy shipped behind an injected
+        # `ruler = random` in the same line (Italy North review, 2026-07-29).
         chars = {r[0] for r in HISTORICAL_RULERS.values()}
+        src_nc = re.sub(r"#[^\n]*", "", src)
         stray = [m.group(1) for m in
-                 re.finditer(r"^[ \t]*ruler[ \t]*=[ \t]*([A-Za-z0-9_]+)", src, re.M)
+                 re.finditer(r"(?<![A-Za-z0-9_])ruler[ \t]*=[ \t]*([A-Za-z0-9_]+)",
+                             src_nc)
                  if m.group(1) != "random" and m.group(1) not in chars]
         if stray:
             return f"{len(stray)} ruler(s) still name a character: {stray[:8]}"
         # Exactly one per country: more can outrank a Phase 2 ruler, fewer means
         # an empty throne and an engine-generated regent.
-        s2 = list(re.finditer(COUNTRY_RE, src, re.M))
+        s2 = list(re.finditer(COUNTRY_RE, src_nc, re.M))
         bad = []
         for i, m in enumerate(s2):
-            e = s2[i + 1].start() if i + 1 < len(s2) else len(src)
-            if len(re.findall(r"^[ \t]*ruler[ \t]*=", src[m.start():e], re.M)) != 1:
+            e = s2[i + 1].start() if i + 1 < len(s2) else len(src_nc)
+            if len(re.findall(r"(?<![A-Za-z0-9_])ruler[ \t]*=",
+                              src_nc[m.start():e])) != 1:
                 bad.append(m.group(0).strip()[:6])
         if bad:
             return f"{len(bad)} countries lack exactly one ruler: {bad[:8]}"
@@ -3412,8 +3444,9 @@ def build_countries(src):
         # confirms placement rather than trusting it.
         placed = {}
         for i, m in enumerate(s2):
-            e = s2[i + 1].start() if i + 1 < len(s2) else len(src)
-            r = re.findall(r"^[ \t]*ruler = ([a-z_0-9]+)", src[m.start():e], re.M)
+            e = s2[i + 1].start() if i + 1 < len(s2) else len(src_nc)
+            r = re.findall(r"(?<![A-Za-z0-9_])ruler = ([a-z_0-9]+)",
+                           src_nc[m.start():e])
             if r and r[0] != "random":
                 placed[m.group(1)] = r[0]
         expected = {t: r[0] for t, r in HISTORICAL_RULERS.items()}
