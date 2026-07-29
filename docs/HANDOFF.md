@@ -1034,6 +1034,16 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
+**THE SITUATION QUALITY BAR (user decision, 2026-07-29 evening):**
+a situation must be HYW / Guelphs-&-Ghibellines / Mongol-Resurgence
+class — multi-year arcs, phase mechanics, buffs/nerfs, decision
+trees, flavor density; "uğraşılmış hissettirsin." The shipped Norman
+Conquest is BELOW this bar — it was the machinery probe and railroad
+opener, and it owes a v2 flavor pass (its polish backlog already
+lists the seeds: Edgar Ætheling, Sweyn 1069, Malcolm, the Harrying).
+Size every situation estimate in DAYS each, and the situation phase
+in weeks. This supersedes any earlier per-situation ~1-day estimate.
+
 **NEXT SESSION STARTS WITH:** item 22's game test (southern Italy —
 the checklist is in the item; headline probes: the Melfi tributaries
 under a THEOCRACY overlord, "Count Roger", invented keys #8-9, the
