@@ -1,0 +1,160 @@
+﻿# 1066 coats of arms — the cosmetic-upgrade batch (CoA research pass,
+# 2026-07-29). The database is additive and key-merged: a country with no
+# flag_definition list uses its TAG as the COA_KEY directly
+# (flag_definitions/00_flag_definitions.txt:1), and when two files define
+# the same key the LAST-LOADED file wins — hence the zz_ prefix
+# (Basileia's stated rule, zz_br_flags.txt:1). A tag with no entry errors
+# nothing: the template_lists generator synthesizes a religion-gated flag,
+# which is why only these nine keys exist — the remaining 33 invented tags
+# are DELIBERATELY left to the generator (taifa and Seljuk-client polities
+# had no heraldry; anything invented would be no more historical). That
+# list lives in verify_mod.py as _GENERATOR_OK; a new tag must join one
+# side or the other or the harness fails.
+
+# Great Seljuks — the double-headed eagle, mirroring vanilla's own
+# seljukids_dynasty arms (pre_scripted_dynasties.txt:16080), which our
+# ruling house already wears.
+SEL = {
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+	color2 = "white"
+	colored_emblem = {
+		texture = "ce_mena_shield_top_frame_dotted_bg.dds"
+		color1 = color2
+		color2 = color2
+		color3 = color1
+		instance = { position = { 0.5 0.46 } scale = { 0.8 0.8 } }
+	}
+	colored_emblem = {
+		texture = "ce_eagle_mena_double_seljukids.dds"
+		color1 = color2
+		color2 = color2
+		color3 = color1
+		instance = { position = { 0.5 0.46 } scale = { 0.6 0.6 } }
+	}
+}
+
+# Abbasid Caliphate — al-raya al-sawda', the black banner. The generator
+# cannot produce this: a plain black field with an inscription is in no
+# template list, and black-vs-white is the single most legible statement
+# on the 1066 map. [U] the specific inscription script.
+ABS = {
+	pattern = "pattern_solid.dds"
+	color1 = "black"
+	color2 = "white"
+	colored_emblem = {
+		texture = "ce_arabic_square_kufic_shahada.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 } }
+	}
+}
+
+# Fatimid Caliphate — white, the dynastic colour chosen AGAINST Abbasid
+# black. [U] green as the accent (an Alid association, largely later
+# convention); swap color2 to "yellow" if gold reads better in game.
+FAT = {
+	pattern = "pattern_solid.dds"
+	color1 = "white"
+	color2 = "green"
+	colored_emblem = {
+		texture = "ce_arabic_naskh_shahada.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.7 0.7 } }
+	}
+}
+
+# Apulia & Calabria (Guiscard) — the Hauteville checky bend, vanilla's
+# own NAP_hauteville charge (pre_scripted_countries.txt:27420).
+APU = {
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+	color2 = "white"
+	color3 = "red"
+	colored_emblem = {
+		texture = "ce_bend_checky.dds"
+		color1 = color2
+		color2 = color3
+		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+	}
+}
+
+# Pereiaslavl — the Rurikid tamga (ce_rurikid.dds, worn by three vanilla
+# dynasties); blue and gold per the Rus convention.
+PYS = {
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+	color2 = "yellow"
+	colored_emblem = {
+		texture = "ce_rurikid.dds"
+		color1 = color2
+		color2 = color2
+		instance = { position = { 0.5 0.5 } scale = { 0.8 0.8 } }
+	}
+}
+
+# Zähringen — the Zähringen eagle, vanilla's FBG charge
+# (pre_scripted_countries.txt:12504) with the same tinctures.
+ZAH = {
+	pattern = "pattern_solid.dds"
+	color1 = "yellow"
+	color2 = "red"
+	color3 = "white"
+	color4 = "blue_secondary"
+	colored_emblem = {
+		texture = "ce_eagle_wide.dds"
+		color1 = color2
+		color2 = color4
+		color3 = color3
+		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+	}
+}
+
+# Vermandois — checky or and azure. [U] attested from the 12th century,
+# the conventional stand-in for the house at 1066.
+VMD = {
+	pattern = "pattern_solid.dds"
+	color1 = "yellow"
+	color2 = "blue"
+	colored_emblem = {
+		texture = "ce_checky_06.dds"
+		color1 = color1
+		color2 = color2
+	}
+}
+
+# Kingdom of Dublin — the raven banner; 1066 Dublin is a Norse-Gael city
+# kingdom and the raven is its flag, not any Gaelic device.
+DUB = {
+	pattern = "pattern_solid.dds"
+	color1 = "red"
+	color2 = "black"
+	color3 = "white"
+	colored_emblem = {
+		texture = "ce_norse_raven.dds"
+		color1 = color2
+		color2 = color3
+		instance = { position = { 0.5 0.5 } scale = { 0.85 0.85 } }
+	}
+}
+
+# INTENTIONAL VANILLA-KEY OVERRIDE (the only one — verify_mod's
+# _INTENTIONAL_COA_OVERRIDES names it). Vanilla SIC's priority-1 default
+# is SIC_ancient = the Hohenstaufen eagle (pre_scripted_countries.txt:
+# 35761) — 128 years early for Roger de Hauteville. Overriding the KEY
+# leaves vanilla's flag_definition list untouched, so the Aragonese,
+# Angevin, republican and revolutionary variants all keep their own
+# triggers; only the default becomes the Hauteville bend.
+SIC_ancient = {
+	pattern = "pattern_solid.dds"
+	color1 = "blue"
+	color2 = "white"
+	color3 = "red"
+	colored_emblem = {
+		texture = "ce_bend_checky.dds"
+		color1 = color2
+		color2 = color3
+		instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+	}
+}

@@ -1861,6 +1861,27 @@ briefs, a priority order whose first five items teach the tools the
 flagships need, and two vanilla-bug fixes pre-assigned to their
 specs.
 
+### Coats of arms are compositional, key-bound and GENERATED when absent
+**Established:** the CoA research pass (2026-07-29 night), main-session
+re-verified; full bank in `docs/COA.md`. The chain:
+`flag_definitions/00_flag_definitions.txt:1` — a country with no
+flag_definition list uses its TAG as the COA_KEY (the debug panel's
+`Flag` row shows it). The database is additive and key-merged,
+last-loaded file wins per key (Basileia `zz_br_flags.txt:1` states it;
+24/24 published mods do it). A tag with NO entry gets a flag from the
+`template_lists` generator — religion/culture/rank-gated, so it is
+plausible, silent, and sometimes exactly backwards: our ABS rendered
+generator-white and FAT generator-black (user screenshots), each
+Caliphate wearing the other's colour. The registry `color` field does
+NOT feed the flag (VMD: old-gold registry, red generated flag).
+Vanilla itself leaves 280 landed 1337 tags to the generator.
+**Means:** invented tags need no arms to look fine, so arms are a
+COSMETIC-UPGRADE pass, not debt — but a broken texture name, colour or
+key also falls back to generation with NO log line, so verify_mod's
+"coat of arms references resolve" check (proven by breaking) is the
+only detector. Every new-slice tag must either get arms in
+`zz_1066_flags.txt` or join `_GENERATOR_OK` deliberately.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The

@@ -1132,6 +1132,35 @@ disloyal fief is period-accurate flavor; if a longer observer run
 shows the whole ring cancelling early, the ring gets an opinion
 cushion. Fold into the next long observer session's checklist.
 
+**ITEM 24 — THE COAT-OF-ARMS BATCH (landed 2026-07-29 night, NEEDS
+GAME TEST).** `zz_1066_flags.txt`, 9 arms; system decoded in
+`docs/COA.md`; harness check proven by breaking three ways. The user's
+"before" screenshots are the baseline: ABS flew generator-WHITE, FAT
+generator-BLACK (history inverted), SEL a generic red-crescent flag.
+Test — click tour, ~5 minutes, all in the country panel's flag:
+1. **Seljuks** (the big power over Persia): flag should now be BLUE
+   with a white DOUBLE-HEADED EAGLE. If it is still red with
+   crescents, the file did not load — say so, we strip the BOM.
+2. **Abbasid Caliphate** (Baghdad, one location): SOLID BLACK with a
+   small white square inscription.
+3. **Fatimid Caliphate** (Egypt): WHITE with a small green
+   inscription. Black-vs-white side by side is the whole point —
+   eyeball both on the map at once.
+4. **Apulia** (southern Italy, Guiscard): blue with a diagonal
+   red-and-white CHECKERED BAND.
+5. **Sicily** (the island kingdom-to-be, Roger's SIC): the SAME
+   checkered band — it used to be a black German eagle; if you still
+   see an eagle, the override failed.
+6. **Dublin** (Ireland's east coast): red with a black RAVEN.
+7. **Vermandois** (the small fief northeast of Paris): a gold-and-blue
+   CHECKERBOARD.
+8. **Zähringen** (southwest Germany, Breisgau): gold with a red eagle.
+9. **Pereiaslavl** (Rus, on the Dnieper south of Kyiv): blue with a
+   gold trident-like TAMGA.
+Everything else (taifas, Catalan counties, Seljuk clients, PLM/AGR,
+ULD, south-Italian minors) KEEPS its generated flag by design — the
+deferred tiers are in `docs/COA.md` §4.
+
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the
 Margraviate branch, literal #19, shrunken Austria) — **DONE, item 23
@@ -1143,11 +1172,11 @@ Arabia, the Rus/steppe east, the India/China review (the Middle
 Kingdom restoration is its anchor item). Meanwhile banked: the
 SITUATION-SPECS package (a research agent's report pending review
 into docs/SITUATION-SPECS.md), the situation scaffold generator
-(tools/new_situation.py, tested), the CoA batch (now ~50 white
-flags), the 11_art audit grep. Items 16-19 are ALL CONFIRMED IN GAME
+(tools/new_situation.py, tested), the CoA batch (LANDED as item 24 —
+not white flags after all, see docs/COA.md), the 11_art audit grep. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
-coat-of-arms batch (deferred list) now owes FAT its banner too; the
+coat-of-arms batch PAID FAT its white banner (item 24); the
 Hejaz interior (Mecca/Medina proper) belongs to the Arabia slice.
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation

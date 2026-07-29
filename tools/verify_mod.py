@@ -820,6 +820,107 @@ for _mm in re.finditer(r"members[ \t]*=[ \t]*\{([^}]*)\}",
                          "are not IO members (vanilla's own rule)")
 check("IO members hold land", _members_checked, probs, min_count=27)
 
+# ---- coat of arms references resolve ---------------------------------------
+# The CoA database is additive and key-merged: a country with no
+# flag_definition list uses its TAG as the COA_KEY directly
+# (flag_definitions/00_flag_definitions.txt:1, confirmed by the debug
+# panel's Flag row in game), and when two files define one key the
+# last-loaded file wins. A missing or broken entry errors NOTHING — the
+# template_lists generator silently synthesizes a religion-gated flag —
+# so a typo'd texture, an undefined colour or a mis-keyed tag all render
+# as a plausible generated flag with no log line. Textbook silent
+# failure; this check is the only defence (CoA research pass 2026-07-29,
+# measured: ABS rendered generator-white and FAT generator-black — each
+# caliphate wearing the OTHER's historical colour).
+probs = []
+_coa_count = 0
+_coa_srcs = {p: s for p, s in code.items()
+             if "/main_menu/common/coat_of_arms/coat_of_arms/" in p}
+_gfx_dirs = [os.path.join(r, "main_menu", "gfx", "coat_of_arms", d)
+             for r in (MOD, VAN)
+             for d in ("colored_emblems", "textured_emblems")]
+_pat_dirs = [os.path.join(r, "main_menu", "gfx", "coat_of_arms", "patterns")
+             for r in (MOD, VAN)]
+_named_src = "\n".join(
+    [s for p, s in code.items() if "/main_menu/common/named_colors/" in p]
+    + [read(p) for p in glob.glob(os.path.join(
+        VAN, "main_menu", "common", "named_colors", "*.txt"))])
+_color_defs = set(re.findall(r"^\s*([A-Za-z0-9_]+)\s*=\s*(?:rgb|hsv)",
+                             strip_comments(_named_src), re.M))
+_our_coa_keys = set()
+for _p, _s in sorted(_coa_srcs.items()):
+    _rel = os.path.relpath(_p, MOD)
+    _clean = strip_comments(_s)
+    _our_coa_keys |= set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{", _clean, re.M))
+    for _t in re.findall(r'texture\s*=\s*"([^"]+)"', _clean):
+        _coa_count += 1
+        if not any(os.path.isfile(os.path.join(d, os.path.basename(_t)))
+                   for d in _gfx_dirs):
+            probs.append(f"{_rel}: emblem texture {_t} is on no disk "
+                         "(mod or vanilla) — renders as a generated flag, silently")
+    for _t in re.findall(r'pattern\s*=\s*"([^"]+)"', _clean):
+        _coa_count += 1
+        if not any(os.path.isfile(os.path.join(d, os.path.basename(_t)))
+                   for d in _pat_dirs):
+            probs.append(f"{_rel}: pattern {_t} is on no disk (mod or vanilla)")
+    for _t in re.findall(r'color\d\s*=\s*"([A-Za-z0-9_]+)"', _clean):
+        _coa_count += 1
+        if _t not in _color_defs:
+            probs.append(f"{_rel}: named colour {_t} is defined in no "
+                         "named_colors file (mod or vanilla)")
+# Every invented tag either carries arms or sits DELIBERATELY on the
+# generator list — so a future slice's new tag fails loudly instead of
+# quietly shipping a flag nobody chose. The membership mirrors the CoA
+# package's tiers (docs/COA.md): tier 3 deferred, tier 4 permanent.
+_GENERATOR_OK = {
+    # 13 taifas — taifa polities had no heraldry; the generator's
+    # religion-gated Islamic designs are no less historical than
+    # anything we would invent (tier 4, permanent)
+    "SEV", "BDJ", "TOL", "CRD", "GRZ", "ALM", "MRU", "DYA", "ZGZ",
+    "LRD", "ABR", "ALP", "QRM",
+    # 6 Catalan counties — deferred (tier 3): culture:catalan already
+    # feeds their generator pool partial senyera templates; eyeball in
+    # game before investing
+    "URG", "BSL", "CDY", "EPU", "RSL", "PLJ",
+    # 7 Seljuk clients + 2 Sicilian emirates — no-heraldry ground (tier 4)
+    "GHZ", "UQY", "MRD", "HLB", "SIS", "KKY", "SHD", "PLM", "AGR",
+    # ULD + 4 south-Italian states — deferred (tier 3)
+    "ULD", "CUP", "SLR", "NEA", "GAE",
+}
+for _t in sorted(_newtags):
+    _coa_count += 1
+    if _t in _our_coa_keys and _t in _GENERATOR_OK:
+        probs.append(f"{_t} both carries arms and sits in _GENERATOR_OK — "
+                     "drop it from the list")
+    elif _t not in _our_coa_keys and _t not in _GENERATOR_OK:
+        probs.append(f"new tag {_t} has neither a CoA block nor a "
+                     "_GENERATOR_OK entry — choose deliberately")
+for _t in sorted(_GENERATOR_OK - _newtags):
+    probs.append(f"_GENERATOR_OK lists {_t}, which is not in the "
+                 "new-country registry — stale entry")
+# A key vanilla also defines is an OVERRIDE (last-loaded wins): legal,
+# but only ever deliberate. SIC_ancient is the one intended member — at
+# 1066 Sicily's default flag is the Hauteville bend, not the
+# Hohenstaufen eagle (1194+); the key-level override leaves vanilla's
+# SIC flag_definition list and all its later variants untouched.
+_INTENTIONAL_COA_OVERRIDES = {"SIC_ancient"}
+_van_coa_keys = set()
+for _p in glob.glob(os.path.join(VAN, "main_menu", "common",
+                                 "coat_of_arms", "coat_of_arms", "*.txt")):
+    _van_coa_keys |= set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{",
+                                    strip_comments(read(_p)), re.M))
+for _k in sorted(_our_coa_keys):
+    _coa_count += 1
+    if _k in _van_coa_keys and _k not in _INTENTIONAL_COA_OVERRIDES:
+        probs.append(f"CoA key {_k} silently overwrites a vanilla flag — "
+                     "add to _INTENTIONAL_COA_OVERRIDES only if intended")
+for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
+    probs.append(f"_INTENTIONAL_COA_OVERRIDES lists {_k} but our CoA "
+                 "files define no such key")
+# 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 41
+# registry tags = 92 at landing; raise as arms land.
+check("coat of arms references resolve", _coa_count, probs, min_count=90)
+
 print()
 if fails:
     print(f"RESULT: {len(fails)} check(s) with findings: {', '.join(fails)}")
