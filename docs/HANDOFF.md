@@ -1003,11 +1003,19 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
   reads badly); SEL's map name lacks its article ("Sultanate of Great
   Seljuks") — SEL_THE exists and CW225 on it is a false positive, but
   whether the engine consults _THE keys is unproven.
-- **COAT-OF-ARMS BATCH for all new tags** — ABS's flag rendered WHITE
-  (2026-07-29 screenshot): none of our invented tags has a
-  coat_of_arms entry. One batch: SEL, ABS (black Abbasid banner!),
-  GRZ, the taifa set, URG/BSL/CDY/EPU/RSL/PLJ, PYS + every future new
-  tag. Needs the vanilla CoA entry shape verified first.
+- **COAT-OF-ARMS BATCH for all new tags — RECLASSIFIED as a cosmetic
+  upgrade (2026-07-29 night, measured):** the engine AUTO-GENERATES
+  plausible flags for entry-less tags — the user's screenshots show
+  PLM with a green crescent-and-star flag (the generator reads at
+  least religion) and VMD with a red-and-white emblem. The earlier
+  "ABS rendered WHITE" note does not generalize. ~733 of vanilla's
+  own 2217 tags also lack entries (1484 in pre_scripted_countries).
+  The batch therefore targets only tags whose generated flag is
+  historically WRONG enough to matter: ABS (the black Abbasid
+  banner), FAT (white/green), SEL, Hauteville APU/SIC, and
+  case-by-case. The system is compositional script (pattern +
+  color1/color2 + emblems) — cheap to author. Research package
+  pending.
 - **CHA/DAI (China) tributaries broke with our Middle Kingdom strip**
   (government.cpp:3702 class) — CHI lost its modifier source; the ~30
   Guizhou `tusi` subjects fail the same way (country_triggers.txt:
