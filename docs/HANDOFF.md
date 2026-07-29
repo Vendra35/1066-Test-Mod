@@ -732,17 +732,22 @@ the pop phase (al-Andalus owes 222 locations; Persia owes none).
 3. Then the next region: **France and the Empire** — `docs/PHASE-2-PLAN.md`
    has the order and the 1066–1337 backlog.
 
-## Repo state (2026-07-29, end of the marathon session)
+## Repo state (2026-07-29, end of the Seljuk test-and-fix day; 3-day break follows)
 
-Everything is COMMITTED through the Seljuk+Abbasid slice. The working
+Everything is COMMITTED through the item 18 polish batch. The working
 tree should be clean; if it is not, `git log --oneline -8` first — the
-last commits tell the story (Sardinia → taifas → Christian Iberia →
-Byzantium → landless-dependency fix → Seljuks). The 34 wiki PDFs in
-`docs/` remain untracked (~26 MB) — still undecided, still harmless.
+day's last commits tell the story (doc-debt closure → Seljuk-test fix
+batch → tributary-gate harness guard → polish batch → reform-loc
+sweep). The 34 wiki PDFs in `docs/` remain untracked (~26 MB) — still
+undecided, still harmless.
 
-`python tools/verify_mod.py` → 23 checks green (last run this session).
+`python tools/verify_mod.py` → 24 checks green (last run this session;
+the two newest — the tributary gate and the reform-loc sweep — were
+proven by breaking).
 `python tools/build_setup.py --dry-run` → clean, ~12s (the ownership
-index refactor; if it takes minutes, something regressed).
+index refactor; if it takes minutes, something regressed). The build
+now also asserts capital discovery for every generated block, resolved
+through definitions.txt.
 
 **MONGOL RESURGENCE: CLOSED OUT THE SAME NIGHT.** The deep audit
 (committed in MR as `docs/AUDIT-2026-07-29.md`) found six DEFINITE
