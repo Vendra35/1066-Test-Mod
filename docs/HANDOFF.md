@@ -850,6 +850,20 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    pop phase), white flags on 7 more tags (CoA debt); (g)
    regression: PAP still renders "Alexander II"/"Rome", VEN
    Contarini, the taifas, the Norman opening.
+   **CONFIRMED IN GAME (2026-07-29, same evening): ALL PASSED — THE
+   SLICE IS CLOSED.** The map, the whole click tour, "Count Roger",
+   "Gisulfo"/"Ayyūb" (invented keys #8-9 proven), Ayyub's Banū Zīrī
+   dynasty with the cross-tag father link to Tamim of Tunis, the
+   Byzantine heel, Malta under Palermo — and **BOTH Melfi
+   tributaries LIVE: a THEOCRACY overlord's setup reform passes the
+   tributary gate** (the khutba pattern is now proven under
+   monarchy overlords, tribe subjects and a theocracy overlord
+   alike). Zero 3702 lines naming APU/CUP; only the known
+   estate-culture class in the log. The user spotted PAP's third
+   subject: **PAP→FAE (Faenza) vassal — vanilla's own**
+   (12_diplomacy:162, untouched by every strip). 1066 Romagna's
+   papal-vs-imperial status is the HRE/central-Italy pass's
+   judgment call — parked there, recorded here.
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
