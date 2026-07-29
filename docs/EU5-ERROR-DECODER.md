@@ -376,12 +376,27 @@ independent at 1066. If this flood reappears, a NEW landless tag
 probably joined LANDLESS_AFTER without the count being re-checked —
 the assert will already have said so at build time.
 
-### "Removed invalid law <X>" lines at game start
-**CONFIRMED (2026-07-29): correlated with the landless dependencies —
-gone the launch after the strips landed.** The Seljuk-batch test showed
-none; the hypothesis (engine self-healing laws whose subject/government
-prerequisites vanished with broken dependencies) held. If the class
-reappears, start from whatever dependency change landed last.
+### `government.cpp:3535/3662 — Removing invalid law / estate privilege '<X>' for '<TAG>' at game start`
+**DECODED (2026-07-29) — engine self-healing with three distinct
+sub-classes; the line names a missing PREREQUISITE, not noise.** (An
+earlier version of this entry declared the class "gone" after the
+dependency strips — half right: the dependency-correlated flood went,
+this residue stayed and decodes differently.)
+1. **Missing has_policy prerequisite (ours, FIXED):** ABS shipped
+   `sharia_law = hanbali_policy` without `legal_code_law =
+   sharia_law_policy`; the sharia_law group's potential failed and the
+   whole law was removed. Ship the prerequisite policy in the same
+   block.
+2. **Coastal template on an inland country (ours, FIXED):**
+   `sponsor_maritime_contracts` removed for every inland new block —
+   the flagged list IS the inland set. Use the template's `_no_coast`
+   variant (vanilla ships one for every family; diff it first — the
+   muslim no_coast variant drops heir_selection too).
+3. **Landless shells (accepted):** education_masses_law / dhimmi and
+   road privileges removed for landless tags (FAL, BDS, CIL, CND, the
+   beyliks…). Their vanilla blocks carry laws whose prerequisites need
+   land/pops; the engine trims them on our landless shape. Harmless,
+   the tags are dormant; no data fix.
 
 ### `country_database.cpp:98 — <TAG> has the name 'empire' in it, which does not work for a tag, which would look silly as 'The Great TAG Empire Empire'`
 **Means:** a country name containing "Empire". Rank titles compose as
@@ -401,11 +416,15 @@ subject-steppe_horde / `modifier:allow_tributary_subject`. All nine
 Seljuk clients logged this and arrived as vassals. Same cpp line as the
 old French-appanage class (~25 of the 53-line baseline) — one decoder
 entry, many subject types.
-**Fix:** give the overlord the modifier the gate wants —
-`seljuk_khutba_reform` (vanilla's own reform pattern,
-country_specific.txt:3917) — or accept the vassal. **Known ours:** CHA
-Champa and DAI Đại Việt log it too since our Middle Kingdom IO strip
-removed CHI's modifier source; parked for the China review.
+**Fix, CONFIRMED in game (2026-07-29 second launch):** give the
+overlord the modifier the gate wants — `seljuk_khutba_reform`
+(vanilla's own reform pattern, country_specific.txt:3917). A
+setup-assigned reform's country_modifier applies BEFORE this validator
+runs: all nine clients arrived as tributaries and their lines left the
+log. **Known ours, parked for the China review:** CHA Champa and DAI
+Đại Việt (tributary), and ~30 Guizhou-area tags whose `tusi` subject
+type fails the same way (Reason: country_triggers.txt:1288-1298, a
+scripted trigger leaning on the Middle Kingdom IO our strip removed).
 
 ### `initialize_from_bookmark.cpp:528 — Country '<TAG>' does not know its capital, need a discover_areas = or discovered_regions = .`
 **DECODED+FIXED — the block has no discovery source CONTAINING its

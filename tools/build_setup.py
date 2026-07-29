@@ -371,15 +371,29 @@ _TAIFAS = {
     "QRM": ("carmona", ["carmona"]),
 }
 
+# The engine self-heals coastal template content on inland countries,
+# one error line per removal (government.cpp:3662,
+# sponsor_maritime_contracts — measured 2026-07-29 on exactly these
+# five). Vanilla's answer is the template's _no_coast variant; it
+# carries NO heir_selection of its own (measured by diff against the
+# coastal one), so the heir line is restated explicitly to keep the
+# shipped behavior byte-identical.
+_TAIFAS_INLAND = {"CRD", "LRD", "ABR", "ALP", "QRM"}
+
 def _taifa_block(tag, capital, locs):
+    inland = tag in _TAIFAS_INLAND
+    gov_tpl = ("muslim_monarchy_no_abrahamic_dhimmi_no_coast" if inland
+               else "muslim_monarchy_no_abrahamic_dhimmi")
     inc = "".join(f'\t\tinclude = "{i}"\n' for i in (
         "expl_muslim_mediterranean", "expl_silk_road_west",
         "expl_silk_road_center", "expl_silk_road_east",
-        "expl_indian_trade_route", "muslim_monarchy_no_abrahamic_dhimmi"))
+        "expl_indian_trade_route", gov_tpl))
+    heir = ("\t\t\their_selection = cognatic_primogeniture\n" if inland
+            else "")
     return (f"\t{tag} = {{\n"
             f"\t\town_control_core = {{\n\t\t\t{' '.join(locs)}\n\t\t}}\n\n"
             f"\t\tstarting_technology_level = 3\n{inc}\n"
-            f"\t\tgovernment = {{\n\t\t\tlaws = {{\n"
+            f"\t\tgovernment = {{\n{heir}\t\t\tlaws = {{\n"
             f"\t\t\t\tsharia_law = maliki_policy\n\t\t\t}}\n\t\t}}\n"
             f"\t\tcourt_language = maghrebi_dialect\n"
             f"\t\treligious_school = maliki_school\n"
@@ -700,24 +714,41 @@ def _seljuk_block(tag, capital, rank, policy, school, court):
     # init ("does not know its capital",
     # initialize_from_bookmark.cpp:528) — playing SEL showed its own
     # empire as terra incognita (2026-07-29 screenshots).
+    # Every client (and GHZ) is inland — the engine measured it for us
+    # (government.cpp:3662 maritime self-heal lines, 2026-07-29); SEL
+    # alone holds coast (the Gulf and the Caspian). The _no_coast
+    # variant carries no heir_selection (diff-measured), so it is
+    # restated explicitly.
+    inland = tag != "SEL"
+    gov_tpl = ("muslim_monarchy_no_abrahamic_dhimmi_no_coast" if inland
+               else "muslim_monarchy_no_abrahamic_dhimmi")
     inc = "".join(f'\t\tinclude = "{i}"\n' for i in (
         "expl_silk_road_west", "expl_silk_road_center",
         "expl_silk_road_east", "expl_indian_trade_route",
         "expl_middle_east",
-        "muslim_monarchy_no_abrahamic_dhimmi"))
+        gov_tpl))
     if not school:
         sys.exit(f"_seljuk_block: {tag} has no religious_school — the "
                  "engine requires one (initialize_from_bookmark.cpp:520)")
-    # SEL alone carries the khutba reform (allow_tributary_subject — the
-    # tributary gate fix; reforms-in-setup shape attested at our own
-    # ARA block, vanilla 10_countries.txt) and the Persian bureaucracy
-    # as an accepted culture (farsi_culture, cultures/persian.txt:16;
-    # accepted_cultures-in-setup attested at vanilla's ARA block —
-    # user-approved 2026-07-29: the Turkic dynasty rules through Persian
-    # administrators, Nizam al-Mulk's world).
+    # SEL alone carries the two reforms and the Persian bureaucracy as
+    # an accepted culture (farsi_culture, cultures/persian.txt:16;
+    # both shapes attested at vanilla's ARA block; user-approved
+    # 2026-07-29 — the Turkic dynasty rules through Persian
+    # administrators, Nizam al-Mulk's world):
+    # - seljuk_khutba_reform: allow_tributary_subject, the tributary
+    #   gate fix — CONFIRMED working in game 2026-07-29, second launch.
+    # - seljuk_nizamiyya_reform: cultures_capacity = 3 (the mandala
+    #   reform's attested magnitude, country_specific.txt:3909) — the
+    #   measured farsi acceptance cost was 3.89 against a capacity of
+    #   2.00, a -47%/-47%/-19% penalty wall (screenshot 2026-07-29).
     gov_extra = ""
+    if inland:
+        gov_extra += "\t\t\their_selection = cognatic_primogeniture\n"
     if tag == "SEL":
-        gov_extra = "\t\t\treforms = {\n\t\t\t\tseljuk_khutba_reform\n\t\t\t}\n"
+        gov_extra += ("\t\t\treforms = {\n"
+                      "\t\t\t\tseljuk_khutba_reform\n"
+                      "\t\t\t\tseljuk_nizamiyya_reform\n"
+                      "\t\t\t}\n")
     body = (f"\t{tag} = {{\n"
             f"\t\tstarting_technology_level = 3\n{inc}\n"
             f"\t\tgovernment = {{\n{gov_extra}\t\t\tlaws = {{\n"
@@ -750,6 +781,12 @@ for _t, (_cap, _rank, _pol, _sch, _crt) in _SELJUK_TAGS.items():
 # - sharia_law = hanbali_policy (laws/01_legal_system.txt:1024) +
 #   religious_school = hanbali_school: al-Qa'im is the caliph of the
 #   Qadiri creed — Baghdad's 11th-century Hanbali moment.
+# - legal_code_law = sharia_law_policy MUST ride along: the sharia_law
+#   law group's potential is has_policy = sharia_law_policy
+#   (01_legal_system.txt), and shipping the school policy without its
+#   prerequisite got the whole law removed at init with an error line
+#   (government.cpp:3535, measured 2026-07-29). The value is the muslim
+#   template's own line.
 # - expl_middle_east: see _seljuk_block.
 NEW_COUNTRIES["ABS"] = (
     "\tABS = {\n"
@@ -759,6 +796,7 @@ NEW_COUNTRIES["ABS"] = (
     "\t\t\ttype = theocracy\n"
     "\t\t\their_selection = theocratic_elective\n"
     "\t\t\tlaws = {\n"
+    "\t\t\t\tlegal_code_law = sharia_law_policy\n"
     "\t\t\t\tsharia_law = hanbali_policy\n"
     "\t\t\t}\n"
     "\t\t}\n"

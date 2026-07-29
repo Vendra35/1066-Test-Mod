@@ -565,6 +565,35 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    duplicate GONE. (e) SEL's Persian lands: integration/acceptance
    visibly better with farsi accepted. (f) Regression: taifas still
    render, Norman opening, error.log class profile.
+   **CONFIRMED IN GAME (2026-07-29, second launch): ALL PASSED.**
+   Nine tributaries with open war screens — **the reform beat the
+   validator: a setup-assigned reform's country_modifier applies
+   BEFORE the game-start subject check** — Persia visible, plain
+   "Abbasid Caliphate", the fixed error classes gone. Residue decoded
+   same session (decoder has all three): ABS's sharia_law removed
+   (missing has_policy prerequisite), maritime privilege self-heals on
+   our 12 inland blocks (coastal template), landless-shell law trims
+   (accepted), and the tusi ×30 China class (our IO strip, parked).
+   Also measured: farsi acceptance costs 3.89 capacity against 2.00 —
+   a -47%/-47%/-19% penalty wall (screenshot). All fixed in item 18.
+
+18. **SELJUK POLISH BATCH (LANDED, untested):** (a) ABS laws gain
+   `legal_code_law = sharia_law_policy` — the sharia_law group's
+   has_policy prerequisite. (b) The 12 engine-flagged inland blocks
+   (CRD LRD ABR ALP QRM + GHZ UQY MRD HLB SIS KKY SHD) switch to
+   `muslim_monarchy_no_abrahamic_dhimmi_no_coast` with heir_selection
+   restated (the variant carries none — diff-measured). (c) NEW
+   `seljuk_nizamiyya_reform`: cultures_capacity = 3 (the mandala
+   reform's attested magnitude) — SEL's capacity 2.00→5.00, the farsi
+   penalty wall dies. Harness reform-loc sweep now covers every mod
+   reform (proven by breaking).
+   TEST NEXT LAUNCH: (a) SEL society panel: capacity ~3.89/5.00, NO
+   overflow penalty box, two reforms visible in the government screen
+   with names rendered ("Recognition of the Khutba", "The Nizamiyya");
+   (b) error.log: ABS sharia_law removal GONE, the 12
+   sponsor_maritime_contracts removals GONE (landless-shell trims and
+   tusi remain — known); (c) regression: tributaries still tributary,
+   Persia still visible, taifa/client thrones unchanged.
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
@@ -637,8 +666,22 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
   GRZ, the taifa set, URG/BSL/CDY/EPU/RSL/PLJ, PYS + every future new
   tag. Needs the vanilla CoA entry shape verified first.
 - **CHA/DAI (China) tributaries broke with our Middle Kingdom strip**
-  (government.cpp:3702 class) — CHI lost its modifier source. Owned by
-  the future China review; do not re-discover.
+  (government.cpp:3702 class) — CHI lost its modifier source; the ~30
+  Guizhou `tusi` subjects fail the same way (country_triggers.txt:
+  1288-1298 leans on the IO). Owned by the future China review; do not
+  re-discover.
+- **Muslim empire-rank styling** (user question, 2026-07-29): SEL's
+  kingdom rank is the HISTORICAL styling (Sultanate; and ABS holds
+  empire rank — the de jure hierarchy of the Islamic world is in the
+  setup). If SEL ever ranks UP, the name becomes "Seljuk Empire"
+  (legitimate historiography) but the ruler becomes "Emperor" (wrong —
+  sultans never took it). The "Holy" loc trick does NOT transfer: the
+  generic empire strings belong to every empire (BYZ's "Emperor" must
+  live). The real fix is a whole-file override of country_ranks.txt
+  inserting a muslim-MONARCHY-empire branch ("Sultanate"/"Sultan")
+  before the generic — MAM's tag-gated empire branch proves the slot
+  exists; first-match-wins rules out injection. Do it deliberately,
+  diff in hand, bundled with a future empire-styling pass (Fatimids).
 - **HLG/QUN/SLD army-based shatter lines** (initialize_from_bookmark
   .cpp:2477) — Mongol-era army tags our sweeps starved; Arabia and
   Central Asia slices retire them properly.
@@ -651,9 +694,9 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
 separate later phase.** The world's borders get finished before any pop
 conversion work starts.
 **DONE so far:** Sardinia, the 13 taifas, Christian Iberia, Byzantium,
-Seljuks+Abbasids (tested 2026-07-29 — the Caliphate probe passed, three
-real bugs found, all fixed in item 17; RE-TEST pending, tributary probe
-headline).
+Seljuks+Abbasids (CONFIRMED in game 2026-07-29 across two launches —
+Caliphate probe passed, tributary reform beat the validator; only the
+item 18 polish batch still awaits its five-minute check).
 **Remaining, in rough order:** Fatimid Egypt + the Levant south of the
 named line (Damascus/Palestine; MAM keeps 120 there), France demesne
 163→~25 + Languedoc (montpellier already parked there), British Isles
@@ -710,13 +753,16 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the item 17 re-test — headline question
-the TRIBUTARY PROBE (does seljuk_khutba_reform's modifier beat the
-start validator?); full list at the end of item 17. The 16-test itself
-ran 2026-07-29: Caliphate probe PASSED, three real bugs found and
-fixed same day. Then the next slice per the strategic order (Fatimid
-Egypt: the Levant line is drawn in item 16's package, and ABS's
-explicit-theocracy block is the Fatimid caliph's template).
+**NEXT SESSION STARTS WITH:** the item 18 quick test (SEL culture
+panel penalty gone, ABS sharia line gone, 12 maritime removals gone —
+five minutes in game). Items 16 AND 17 are both CONFIRMED IN GAME
+(2026-07-29, two launches): the Caliphate probe passed, the tributary
+reform beat the start validator, discovery works. Then the next slice
+per the strategic order — Fatimid Egypt: the Levant line is drawn in
+item 16's package, ABS's explicit-theocracy block is the Fatimid
+caliph's template (shia/ismaili variant), and remember the lessons now
+in KNOWLEDGE: capacity budgeted with acceptance, no_coast templates
+for inland blocks, has_policy prerequisites shipped together.
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation
 in Turkish, everything in the repo in English.

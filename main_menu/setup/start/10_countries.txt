@@ -57889,11 +57889,12 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = abr_abd_al_malik_ibn_razin
 			ruler_term = { character = abr_abd_al_malik_ibn_razin start_date = 1045.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -57924,6 +57925,7 @@ countries = {
 			type = theocracy
 			heir_selection = theocratic_elective
 			laws = {
+				legal_code_law = sharia_law_policy
 				sharia_law = hanbali_policy
 			}
 		}
@@ -57978,11 +57980,12 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = alp_muhammad_yumn_al_dawla
 			ruler_term = { character = alp_muhammad_yumn_al_dawla start_date = 1043.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -58080,11 +58083,12 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = crd_abd_al_malik_ibn_jahwar
 			ruler_term = { character = crd_abd_al_malik_ibn_jahwar start_date = 1064.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -58164,11 +58168,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = ghz_ibrahim
 			ruler_term = { character = ghz_ibrahim start_date = 1059.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = hanafi_policy
 			}
@@ -58224,11 +58229,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = hlb_mahmud_ibn_nasr
 			ruler_term = { character = hlb_mahmud_ibn_nasr start_date = 1065.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = jafari_policy
 			}
@@ -58251,11 +58257,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = kky_ali_ibn_faramurz
 			ruler_term = { character = kky_ali_ibn_faramurz start_date = 1063.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = jafari_policy
 			}
@@ -58278,11 +58285,12 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = lrd_yusuf_al_muzaffar
 			ruler_term = { character = lrd_yusuf_al_muzaffar start_date = 1046.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -58311,11 +58319,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = mrd_nasr_nizam_al_din
 			ruler_term = { character = mrd_nasr_nizam_al_din start_date = 1061.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = hanafi_policy
 			}
@@ -58405,11 +58414,12 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = qrm_muhammad_al_birzali
 			ruler_term = { character = qrm_muhammad_al_birzali start_date = 1052.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -58463,6 +58473,7 @@ countries = {
 			ruler_term = { character = sel_alp_arslan start_date = 1063.9.4 regnal_number = 0 }
 			reforms = {
 				seljuk_khutba_reform
+				seljuk_nizamiyya_reform
 			}
 			laws = {
 				sharia_law = hanafi_policy
@@ -58521,11 +58532,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = shd_abu_l_aswar_shavur
 			ruler_term = { character = shd_abu_l_aswar_shavur start_date = 1049.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = hanafi_policy
 			}
@@ -58548,10 +58560,11 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = random
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = hanafi_policy
 			}
@@ -58607,11 +58620,12 @@ countries = {
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
 		include = "expl_middle_east"
-		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
 
 		government = {
 			ruler = uqy_muslim_ibn_quraysh
 			ruler_term = { character = uqy_muslim_ibn_quraysh start_date = 1061.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
 			laws = {
 				sharia_law = jafari_policy
 			}

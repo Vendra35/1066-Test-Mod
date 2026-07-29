@@ -1456,16 +1456,19 @@ existed to avoid.
 vanilla's own CHI tributaries broke when our IO strip removed the
 Middle Kingdom, CHI's modifier source. Parked for the China review;
 recorded so nobody re-discovers it.
-**Fix (PROBE until the next launch):** SEL carries
+**Fix CONFIRMED IN GAME (2026-07-29, second launch):** SEL carries
 `seljuk_khutba_reform` (in_game/common/government_reforms/
 zz_1066_reforms.txt) granting `allow_tributary_subject` — vanilla's own
 pattern for a non-horde overlord (malian_tribute_system,
 country_specific.txt:3917), assigned in setup like ENG's
-magna_carta_reform. Open: does the reform's modifier apply BEFORE the
-start validator runs? If the next launch still shows vassals, the
-fallback is an honest `subject_type = vassal`. The harness guards the
-class either way ("new-tag tributary overlords pass the subject-type
-gate", proven by breaking in both directions).
+magna_carta_reform — and it WORKS: all nine clients arrived as
+tributaries, own colors, war-declaration screen open, and the nine
+3702 lines left error.log. So **a setup-assigned reform's
+country_modifier is applied BEFORE the game-start subject validator
+runs** — a load-order fact worth its own sentence, because nothing
+static could prove it. The harness guards the class ("new-tag
+tributary overlords pass the subject-type gate", proven by breaking in
+both directions).
 
 ### A country must DISCOVER its own capital — and expl_silk_road_center grants nothing
 **Established:** in game 2026-07-29 playing SEL: the empire's own land
@@ -1507,6 +1510,47 @@ stays — Jaca's kingdom is Aragonese-primary, Catalan-accepting.
 **Means:** a tag's `culture_definition` is not registry decoration. At
 design time, set it to the intended PRIMARY culture, and never repeat
 the primary in the accepted list.
+
+### Accepting a culture costs cultural capacity — and a reform can pay it
+**Established:** in game 2026-07-29, screenshot of SEL's society panel.
+`accepted_cultures = { farsi_culture }` costs **3.89** capacity (the
+cost scales with the culture's pop share — Farsi is 20.57% of the
+empire) against a kingdom's capacity of **2.00** (+1 rank, +1 Age I),
+and the overflow penalty is severe: **-47.41% cultural tradition,
+-47.41% cultural influence, -18.96% cabinet efficiency**. Setup
+acceptance is not free flavour.
+**Means:** the acceptance and its budget ship TOGETHER:
+`seljuk_nizamiyya_reform` grants `cultures_capacity = 3` — vanilla's
+own construct at vanilla's own magnitude (the SE-Asian mandala reform,
+country_specific.txt:3909) — capacity 5.00, penalty gone, and the
+reform IS the history (the Turkic sword, the Persian pen). Any future
+slice that accepts a large culture must budget capacity the same way.
+UNTESTED in game until the next launch.
+
+### Second-launch residue: a has_policy prerequisite, and the _no_coast template family
+**Established:** in game 2026-07-29, second launch — two self-heal
+classes remained in error.log, both decoded to the line.
+1. **A law group whose `potential` is `has_policy = X` needs X shipped
+   in the same block.** ABS carried `sharia_law = hanbali_policy` but
+   not `legal_code_law = sharia_law_policy`; the group's potential
+   (01_legal_system.txt) failed and the engine REMOVED the law at init
+   (government.cpp:3535). One missing line — the muslim template's own
+   `legal_code_law = sharia_law_policy` — makes it legal. The clients
+   never hit this because their template carries the prerequisite.
+2. **Vanilla's setup templates come in _no_coast variants, and the
+   engine tells you which countries need one.** The coastal muslim
+   template's `sponsor_maritime_contracts` privilege (and two maritime
+   laws) get self-heal-removed on every INLAND country, one error line
+   each (government.cpp:3662) — the flagged list (5 inland taifas, the
+   7 inland clients, GHZ) was exactly the inland set, measured for us.
+   Vanilla has 27 no_coast uses in this file; ours makes 39. Diff the
+   variant before switching: no_coast carries NO heir_selection of its
+   own, so the heir line is restated explicitly in our generated
+   blocks.
+**Means:** when the engine "removes" something at init, it is naming a
+missing prerequisite or a wrong template variant — read it as a diff
+against what the block should have declared, not as noise. Both fixes
+UNTESTED in game until the next launch.
 
 ### CWTools CW225 flags cross-file $refs$ in loc — false positive, with a live caveat
 **Established:** CW225 on `SEL_THE: "$common_string_prefix_article$"` —
