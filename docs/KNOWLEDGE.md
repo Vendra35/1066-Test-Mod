@@ -1658,15 +1658,23 @@ re-read. The visible gate is an OR of overlord-steppe_horde /
 subject-TRIBE / subject-steppe_horde / modifier:allow_tributary_subject.
 Every Gaelic tag rides `gaelic_tribe*` includes (type = tribe), so the
 six Irish ties ship with NO reform — SEL/FAT/FRA each needed one only
-because their subjects are monarchies. Whether the tribe branch is
-evaluated at game start the way the modifier branch is (proven twice)
-is THE slice's probe; fallback if it fails: a LEI reform, one block.
+because their subjects are monarchies.
+**CONFIRMED IN GAME (2026-07-29 evening):** all six Irish tributaries
+arrived AS tributaries, war screens open, and the load log carries
+ZERO 3702 lines naming any mod tag — **the tribe branch of the
+visible gate IS evaluated at game start**, exactly like the modifier
+branch (now proven three ways: modifier via reform ×2 slices, tribe
+via this one).
 **Means:** when designing a tributary ring, check the SUBJECTS'
 government type first — the reform is only for monarchy-over-monarchy.
-The harness gate check now knows both branches (proven by breaking).
+The harness gate check knows both branches (proven by breaking).
 
 ### Seeding a CHARACTER-led IO leader at setup: `leader = <TAG>`
-**Established:** 2026-07-29, British package; UNTESTED until launch.
+**Established:** 2026-07-29, British package.
+**CONFIRMED IN GAME the same evening:** Ireland tints under Leinster
+on the map and Diarmait renders "High King" in the IO panel — the
+one-line seed works exactly as the catholic_church precedent
+predicted.
 A character-led IO (high_kingship.txt:23 has_leader_country,
 :26 leader_type = character) derives its character from a leader
 COUNTRY through its own `leader = { leader_country ?= { ruler ... } }`

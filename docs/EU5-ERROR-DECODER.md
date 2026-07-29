@@ -478,6 +478,56 @@ attested registry override route (our iberia.txt, one line, catalan →
 aragonese). This line is also the measurement that closed the deferred
 "does culture_definition matter for a landed tag" question: it does.
 
+### `initialize_from_bookmark.cpp:398 — Location <X> has an invalid building <B>`
+**DECODED (2026-07-29, the France+British launch) — ownership/capital
+changes strand owner-conditioned buildings; cosmetic.** Six lines:
+rodos order_headquarters (KNI went landless, Rhodes is BYZ's),
+valladolid chancery+sergeantry (CAS's capital moved to burgos),
+lisbon sergeantry (BDJ's now), bursa sergeantry (BYZ's), dunbar peel
+towers. The building sits in the location; the new owner fails its
+condition; the engine reports and moves on. Same family as the
+first-class `tag = X location = L` law in KNOWLEDGE — do not "fix"
+07_cities. ACCEPT; a future buildings pass may tidy.
+
+### `initialize_from_bookmark.cpp:205 — The releasable country '<TAG>' has no pops of its defined culture ... in its core locations`
+**DECODED (2026-07-29) — landless shells whose culture_definition has
+no matching pops under their claims; vanilla ships the same class
+itself.** Eight lines: our ATQ/SUT/JKR/KHF/ART (Mongol-era shells over
+re-cultured ground), our CMS/EWY (English marcher shells over Welsh
+pops) — and vanilla's OWN 'ATH Athens' (catalan over Greek pops, the
+1311 Catalan duchy). Informational; the tags are dormant irredenta.
+ACCEPT.
+
+### `initialize_from_bookmark.cpp:237/:301 + country.cpp:9778 — primary-vs-pop culture mismatches, discriminated estate cultures, DUB fort limit`
+**DECODED (2026-07-29) — the POP PHASE's debt made visible; the
+strategic order's "territory first, pops later" printing its bill.**
+The estate-culture mechanics derive estate cultures from POPS, and
+our territory moved without them: GDD/MWG nobles read `english` (the
+marcher-era gentry pops), DUB's upper class reads `anglo_irish` (the
+1337 Pale pops) against a norse_gael primary, GLC reads portuguese,
+HLL iraqi-vs-hijazi is vanilla's own registry choice. DUB also
+inherits the Pale's forts (2.5/1.2 fort limit, country.cpp:9778).
+ALL of it is the pop-conversion phase's work — user-diagnosed
+correctly at first sight, recorded so nobody re-investigates. ACCEPT
+until that phase.
+
+### `cabinet_effects.cpp:44 — Tried to add blocked character <name> to a cabinet in <TAG>`
+**DECODED (2026-07-29) — 1337 scripted cabinet appointments hitting
+1066; three lines (CHI, MAJ Gajah Mada, BYZ).** Vanilla setup/script
+seats named 1337 cabinet members; at our date they are dead, unborn
+or otherwise blocked and the engine refuses them. Same poison class
+as the stripped ruler_terms, but cabinet lines live outside our
+generated files. Cosmetic — the cabinets fill with generated people.
+ACCEPT.
+
+### The `tusi`/tributary 3702 flood is ~128 lines, not ~30
+**Correction (2026-07-29):** the China class decoded earlier
+undercounted — the full load logs **128** `government.cpp:3702` lines
+(126 `tusi` + CHA/DAI tributary), every one a Chinese/SEA tag broken
+by the Middle Kingdom strip. Still ONE root cause, still the China
+review's single item. Grep tip: the tag sits inside quotes —
+`invalid for '<TAG> ` — a space-delimited filter misses every line.
+
 ### `initialize_from_bookmark.cpp:2477 — Army Based Country '<TAG>' can not create regiments at start, and will this shatter.`
 **WATCH — side effect of our sweeps, not yet observed causing harm.**
 HLG/QUN/SLD: Mongol-era army-based tags whose holdings the

@@ -776,6 +776,31 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    137→134-ish holdings; (f) error.log: landless trims grow by ~25
    tags (known class), the six IO ghosts should log nothing new,
    watch for tributary 3702 lines naming the Irish six.
+   **CONFIRMED IN GAME (2026-07-29 evening, one launch covering
+   items 20+21+the Nizamiyya): EVERYTHING PASSED.** The High
+   Kingship IS crowned — Ireland tinted under Leinster, Diarmait
+   renders "High King" in the IO panel; **the Irish tributaries
+   passed the gate REFORM-FREE: zero 3702 lines name any mod tag —
+   the tribe branch IS evaluated at setup** (new law, KNOWLEDGE);
+   all twelve mod tributaries live and war-capable; Murchad rules
+   Dublin (screenshot); Wales in its five kingdoms (screenshot);
+   Scotland whole, Moray/Galloway/Isles as designed (their random
+   rulers are the recorded [D] honesty); France tiny with its six
+   homage tributaries; **Adalbert back on La Marche** (the fiefdom
+   override confirmed and cured); Dreux gone; SEL capacity 8.00 and
+   the slot refund visible on all three reforms; wars at day 0 and
+   the conquest beats sequential. Blind capitals: ZERO (the Welsh
+   discovery restatement worked). The NRM "William II" the user
+   flagged is CORRECT BY DESIGN — duke numbering (he is the second
+   Duke William of Normandy; the recalibrated ENG table crowns him
+   King William I of England at Christmas). Log residue all decoded
+   same session (four new decoder entries): stranded owner-buildings
+   ×6, releasable-culture shells ×8 (incl. vanilla's own ATH),
+   estate/pop culture mismatches + DUB's Pale forts (the POP PHASE's
+   bill, user-diagnosed on sight), blocked 1337 cabinet names ×3,
+   and the tusi flood corrected to its true ~128 (one root, China
+   review). Open eyeball, not retested: Toulouse's ruler render
+   ("Guilhèm" — the occitan fallback probe) — one click next launch.
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
@@ -946,18 +971,16 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the ACCUMULATED test when the user
-returns to the game — items 20 + 21's lists plus SEL capacity 8.00.
-The headline probes waiting on that launch: the High Kingship crown
-(Ireland tinted under Diarmait), the reform-free Irish tributaries
-(the tribe branch), the literal Welsh names, small France + the six
-homage tributaries, Adalbert's return in La Marche. After the test:
-the next slice per the strategic order — **HRE/HAB breakup** or
-**southern Italy 1066** (spec banked) — plus the deferred LAN/CET
-fold (item 21) and the Empire-banked Lyonnais (item 20). Working
-mode (user's call, 2026-07-29 afternoon): landings continue while
-they are away, every batch harness-green and build-asserted, remote
-approvals by phone, the game-test list ACCUMULATES in the items. Items 16-19 are ALL CONFIRMED IN GAME
+**NEXT SESSION STARTS WITH:** the next slice per the strategic
+order — **HRE/HAB breakup** or **southern Italy 1066** (spec
+banked). Items 16-21 are ALL CONFIRMED IN GAME (2026-07-29; items
+20+21 in the evening launch — the High Kingship crown, the tribe
+branch, the homage ring, Adalbert's return all measured). Rolled
+into those slices when they come: the deferred LAN/CET fold (item
+21), the Empire-banked Lyonnais 7 (item 20), the Toulouse "Guilhèm"
+one-click eyeball. The pop phase's bill is now VISIBLE in the log
+(estate-culture mismatch class, decoder) — the strategic order's
+"pops later" holds, but the class will grow with every slice. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the
