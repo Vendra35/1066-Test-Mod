@@ -1172,8 +1172,12 @@ Arabia, the Rus/steppe east, the India/China review (the Middle
 Kingdom restoration is its anchor item). Meanwhile banked: the
 SITUATION-SPECS package (a research agent's report pending review
 into docs/SITUATION-SPECS.md), the situation scaffold generator
-(tools/new_situation.py, tested), the CoA batch (LANDED as item 24 —
-not white flags after all, see docs/COA.md), the 11_art audit grep. Items 16-19 are ALL CONFIRMED IN GAME
+(tools/new_situation.py, tested), the DHE flavor scaffold generator
+(tools/new_flavor.py, tested with six guard rails proven — the
+EVENT-SYSTEM.md 4.5 build; its nine 4.6 harness checks ride in the
+commit that ARMS the first real flavor event, not before), the CoA
+batch (LANDED as item 24 — not white flags after all, see
+docs/COA.md), the 11_art audit grep. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch PAID FAT its white banner (item 24); the
