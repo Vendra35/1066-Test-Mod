@@ -90,10 +90,12 @@ language.** Spelling traps: romanyoti, zenati, nestorianism, judaism,
 andalusi (no suffix) — 332 of 2,087 culture keys lack `_culture`;
 verify every key.
 
-**THE ONE DESIGN DECISION TO ESCALATE: Slavic paganism.** Mecklenburg
-+Pomerania measure 895.8 units 100% catholic; the Obodrites revolted
-three months before our start; NO Slavic pagan religion exists.
-Options: invent the religion / proxy romuva / accept. USER CALL.
+**THE SLAVIC PAGANISM DECISION — TAKEN (user, 2026-07-29 night):
+INVENT the religion.** `slavic_paganism` will be authored on romuva's
+template shape (one religion entry + loc + color) as part of the
+Baltic pop slice; Mecklenburg/Pomerania's 895.8 catholic units
+convert to it. It also grounds the Obodrite-revolt and Wendish
+Crusade (1147) situation material. The Baltic slice is unblocked.
 
 **Emptying a culture world-wide** (anglo_irish → 0) errors unless the
 culture carries `suppress_no_pops_error = yes`
