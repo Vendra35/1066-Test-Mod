@@ -159,7 +159,6 @@ diplomacy_manager = {
     scripted_mutual = { first = RAV second = CES type = alliance }
     scripted_mutual = { first = RIM second = CES type = alliance }
 
-    dependency = { first = PAP second = FAE subject_type = vassal }
 
     dependency = { first = SAV second = CEV subject_type = vassal }
     dependency = { first = SAV second = PIE subject_type = vassal }
@@ -249,9 +248,6 @@ diplomacy_manager = {
 
     #Balkans:
     scripted_mutual = { first = HUN second = POL type = alliance }
-    scripted_oneway = { first = HUN second = HAB type = embargo_nation }
-    scripted_oneway = { first = POL second = HAB type = embargo_nation }
-    scripted_oneway = { first = BOH second = HAB type = embargo_nation }
     dependency = { first = HUN second = BOS subject_type = vassal }
 
     #Anatolia

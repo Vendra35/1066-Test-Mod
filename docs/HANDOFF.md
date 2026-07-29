@@ -865,6 +865,68 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    papal-vs-imperial status is the HRE/central-Italy pass's
    judgment call — parked there, recorded here.
 
+23. **THE HRE/HAB SLICE (LANDED, untested) — the crown is DECISION D
+   (user, 2026-07-29 night):** Heinrich IV on a LANDED OGK with the
+   Standard 9-location Salian demesne (Goslar capital — his
+   birthplace; Speyer, Worms, Aachen, Frankfurt, Nuremberg,
+   Dortmund, Nordhausen, Mühlhausen — nine one-location free cities
+   emptied), `leader = OGK` + `emperor = { OGK }`, and the
+   HRE_LEADER loc overridden to **"King of the Romans"** — the 1084
+   imperial coronation is a banked event hook. THE MEASURED LAW that
+   killed the leaderless option: hre_election goes LIVE the moment
+   the IO is headless and the hre.txt failsafe crowns the richest
+   member after two years — a headless HRE elects a Habsburg.
+   Electors: the 1356-Bull SWB/PAL out, LUN/UBV in (with BOH/BRA)
+   [U]; archbishops + no_golden_bull already 1066-exact. HAB REUSED
+   as the **Babenberg Margraviate of Austria** (16, Ernst the Brave,
+   babenberg_dynasty, the margraviate-reform rank branch renders
+   "Margrave" — a vanilla free win); **STY rises as the Carinthian
+   March under Otakar of Steyr** (22 — invented literal #19: the
+   only vanilla "Otakar" is a west-slavic row, name_odoacer would
+   render "Odoacer"); **CRH ducal under Berthold of Zähringen** (13;
+   titular [D] — the Eppensteiner tension is Germany II material);
+   GOR/ORT/GRK dissolve (+pazin, GOR's SEVENTH location, missed by
+   the package and caught by the landless guarantee — to AQU);
+   PSS/AUG/RVA/ALS/KYB/NEL/VUD grow; ZAH is the one new tag (the
+   Zähringen Breisgau). ALL THREE BANKED DEBTS CLOSED: **SPL revives
+   with 15** (its five Umbrian claims from PAP + the ten Abruzzo
+   from APU — the Italy anachronism resolved the day it was banked;
+   random, Godfrey parks with Germany II), **the Lyonnais 7 resolve**
+   (lyon/riverie/beaujeu/perreux→FRZ, trevoux→SAV,
+   viviers/chalancon→VLN), **PAP→FAE stripped** (1066 Faenza is the
+   imperial archbishop of Ravenna's world). HAB's three 1337
+   embargoes stripped. The generic landless-IO sweep WIDENED to all
+   membership/status lists (members alone missed free_city — 28
+   entries stripped, exact-multiset asserted). 2378 blocks, 116
+   rulers, all counts observed-then-moved, 26 checks green. PARKED:
+   **Germany II** (Swabia/Saxony/Franconia/Rhineland — 249 tags, 148
+   of them 1-2 locations; Rudolf of Rheinfelden, Ordulf Billung,
+   Anno of Cologne with the name_anno/name_ordulf invented-key
+   decisions, Lower Lorraine/Godfrey) and **Italy North**
+   (Tuscany/Canossa/Matilda, the Verona march — Berthold's other
+   title, Aquileia/Friuli, the communes). Also parked: the 11_art
+   future-date audit (101 of 137 entries — one error.log grep next
+   launch decides if those files need overriding).
+   TEST NEXT LAUNCH (click tour): (a) map overview — Austria SHRUNK
+   to the Danube strip, Styria/Carinthia separate colors beside it,
+   nine imperial cities in OGK's grey-green scattered across
+   Germany, Lyon no longer French-blue, the Abruzzo out of Norman
+   crimson into Spoleto's; (b) click Goslar → country "Holy Roman
+   Empire", ruler Heinrich (15, regency) — his TITLE via the IO
+   should read **"King of the Romans"** (the loc-override probe);
+   open the HRE IO panel → leader Heinrich, electors BOH BRA LUN
+   UBV; (c) click Vienna → **"Margraviate of Austria" / "Margrave
+   Ernst"** (house Babenberg — the rank-branch probe); Graz →
+   Styria under **"Otakar"** (invented literal #19 render probe);
+   Klagenfurt → Carinthia under Berthold (house Zähringen);
+   (d) Spoleto → duchy with a random ruler holding the Abruzzo;
+   Faenza independent; Rome's subject list still exactly APU+CUP;
+   (e) villingen area → the small red Zähringen county;
+   (f) error.log: no 3702 naming OGK/HAB/CRH/STY, landless trims
+   grow by ~12 (known), watch the free-city auto-rescind lines;
+   (g) regression: the whole prior map (İtalya güneyi, Fransa,
+   Britanya) unchanged.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -1045,16 +1107,18 @@ it owes a v2 flavor pass (seeds already in its polish backlog:
 Edgar Ætheling, Sweyn 1069, Malcolm, the Harrying). Size situations
 1-4 days each by subject; the phase in weeks.
 
-**NEXT SESSION STARTS WITH:** item 22's game test (southern Italy —
-the checklist is in the item; headline probes: the Melfi tributaries
-under a THEOCRACY overlord, "Count Roger", invented keys #8-9, the
-returned catepanate). Then the **HRE/HAB breakup** — now carrying
-three banked debts: the Lyonnais 7 (item 20), the Abruzzo 10 (item
-22), and the crown decision (Heinrich IV + landless OGK + royal
-demesne — the open design call recorded since the Empire pass).
-Items 16-21 are ALL CONFIRMED IN GAME (2026-07-29). The pop phase's
-bill is VISIBLE in the log and grew again with the emirates (19
-Christian-pop locations) — "pops later" holds, the class is decoded. Items 16-19 are ALL CONFIRMED IN GAME
+**NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
+tour in the item; headline probes: "King of the Romans", the
+Margraviate branch, literal #19, shrunken Austria). Items 16-22 are
+ALL CONFIRMED IN GAME (2026-07-29 — five slices tested and closed in
+ONE day). Remaining territory per the strategic order: **Germany II**
+(parked with its cast questions), **Italy North**, Central Asia,
+Arabia, the Rus/steppe east, the India/China review (the Middle
+Kingdom restoration is its anchor item). Meanwhile banked: the
+SITUATION-SPECS package (a research agent's report pending review
+into docs/SITUATION-SPECS.md), the situation scaffold generator
+(tools/new_situation.py, tested), the CoA batch (now ~50 white
+flags), the 11_art audit grep. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the

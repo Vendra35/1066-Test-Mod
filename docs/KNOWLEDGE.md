@@ -1711,6 +1711,46 @@ DDI) — validate ours strictly, report what vanilla ships.
 **Means:** every future slice that empties a tag gets the IO sweep
 free; the check (753 members) and the strip guard each other.
 
+### A leaderless HRE does not stay leaderless — the election is live at day 0
+**Established:** 2026-07-29, HRE package; re-verified by the main
+session. `resolutions/hre_election.txt:17-21` — the election
+resolution's `is_live` is `international_organization_has_leader = no`,
+so a headless HRE votes IMMEDIATELY; and `hre.txt:459-488` is a
+monthly failsafe that, after a two-year deadlock, crowns the richest
+eligible member by `country_tax_base` — at 1066 that means a Habsburg
+(68 locations) or Přemyslid emperor within two years. The
+"historically exact leaderless interregnum" design was therefore
+DEAD ON MEASUREMENT; the crown went to Heinrich IV on a landed OGK
+(user decision D) with the title fixed by loc override
+(HRE_LEADER_MALE → "King of the Romans"). Also measured: vanilla's
+GERMAN-KINGSHIP chain has no hole (Heinrich IV rules OGK
+1056.10.5-1106.8.7, 10_countries.txt:34907) — only the IMPERIAL term
+chain gaps 1056-1084; and `can_lead_trigger` wants `country_exists`
++ no-regent-or-heir, so a landless OGK could never have led anyway
+(every one of vanilla's seven led IOs has a LANDED leader).
+**Means:** never design around "the IO just stays headless"; the
+election machinery is always on. Title wrongness is a loc problem,
+not a leadership problem.
+
+### The margraviate rank branch is a free win for marches
+**Established:** 2026-07-29, HRE package; country_ranks.txt:2298 —
+`rank_county_margraviate` fires on county rank + the `margraviate`
+reform (government_reforms/monarchy.txt:30, setup-assigned by NINE
+vanilla tags) → "Margraviate"/"Margrave". Austria and Styria style
+themselves correctly for one FIELD_FIXES line each.
+**Means:** any future march (Brandenburg-era work, Spanish marches)
+gets the styling free — county rank + the reform.
+
+### Registry first lines hide behind the BOM — grep ^TAG misses them
+**Established:** 2026-07-29, HRE package correction. `HAB = {` IS in
+`south_germany.txt:1` and `HOL = {` in `lowlands.txt:1` — but the
+UTF-8 BOM sits on the same line, so a `^`-anchored grep reports them
+absent (this file's own history: the same trap produced "ENG does not
+exist" in week one, and STILL caught a research pass this week).
+**Means:** registry greps use utf-8-sig reading or drop the anchor;
+"no registry entry" claims about a file's FIRST tag are suspect until
+byte-checked.
+
 ### Tag-freeness sweeps MUST exclude binaries
 **Established:** 2026-07-29, Italy package. An unfiltered `grep -rlw`
 for a three-letter id over the game tree returns 91-356 "hits" per

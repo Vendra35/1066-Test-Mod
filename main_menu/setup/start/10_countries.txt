@@ -8316,6 +8316,7 @@ countries = {
 
 	AQU = {
 		own_control_core = {
+			gorizia metlika kocevje pazin
 			aquileia tolmezzo pordenone spilimbergo udine gemona
 			tolmin pieve
 			ilirska_bistrica #Counts of Duino
@@ -10068,7 +10069,7 @@ countries = {
 	PAP = {
 		own_control_core = {
 			anagni palestrina sabina tivoli rome terracina velletri bracciano civitavecchia
-			corneto orte orvietano viterbo assisi narni rieti spoleto todi
+			corneto orte orvietano viterbo     
 			benevento
 			avignon #France
 		}
@@ -10558,6 +10559,7 @@ countries = {
 	#Savoy - SAV
 	SAV = {
 		own_control_core = {
+			trevoux
 			bourg_en_bresse belley chambery gex saint_jean_de_maurienne
 			moutiers evian
 			bage thoire
@@ -10669,6 +10671,7 @@ countries = {
 	#Vaud - VUD
 	VUD = {
 		own_control_core = {
+			fribourg
 			yverdon_les_bains nyon montreux monthey
 		}
 
@@ -10774,8 +10777,12 @@ countries = {
 	}
 
 	SPL = {
+		own_control_core = {
+			assisi narni rieti spoleto todi chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo
+		}
+
 		our_cores_conquered_by_others = {
-			assisi narni rieti spoleto todi
+			    
 		}
 
 		starting_technology_level = 3
@@ -10784,7 +10791,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -12294,10 +12301,13 @@ countries = {
 	}
 
 	GOR = {
+		our_cores_conquered_by_others = {
+			gorizia pazin lienz bruneck hermagor winklern metlika
+		}
+
 		own_control_core = {
-			gorizia pazin
-			lienz bruneck hermagor winklern
-			metlika #County of Möttling
+
+			 #County of Möttling
 		}
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -13255,10 +13265,10 @@ countries = {
 			 #C. de Gevaudan
 			  #D. de Langres
 			 #C. de Macon
-			beaujeu perreux trevoux #S.de Beaujeu
-			lyon riverie #C. de Lyon
+			   #S.de Beaujeu
+			  #C. de Lyon
 			 #C. du Velay
-			viviers # C. de Viviers
+			 # C. de Viviers
 			  
 			 #S. Ales
 			 #B. de Combraille
@@ -13276,7 +13286,6 @@ countries = {
 			 #C. Bigorre
 			 #C. Lodeve
 
-			 chalancon    
 		}
 		own_control_integrated = {
 			#Appanages
@@ -14139,6 +14148,7 @@ countries = {
 	#Forez (Vassal, Fief Mouvant)
 	FRZ = {
 		own_control_core = {
+			lyon riverie beaujeu perreux
 			roanne montbrison feurs saint_etienne
 			 #S. Thiers
 		}
@@ -14395,6 +14405,7 @@ countries = {
 	#Valentinois (Vassal, Fief Mouvant)
 	VLN = {
 		own_control_core = {
+			viviers chalancon
 			valence die privas montlaur condorcet
 
 			# own_control_integrated, but culture accepted
@@ -15784,28 +15795,26 @@ countries = {
 
 	HAB = {	#Austria
 		own_control_core = {
-			vienna amstetten austria_baden bruck_leitha ganserndorf hollabrunn horn korneuburg krems lilienfeld scheibbs melk mistelbach pitten tulln waidhofen_an_der_thaya wiener_neustadt zwettl  #Duchy of Lower Austria
-			klagenfurt st_veit steinfeld volkermarkt #Duchy of Carinthia
-			ljubljana kranj novo_mesto postojna #Duchy of Carniola
-			graz feldbach furstenfeld judenburg kapfenberg leoben liezen maribor murau murzzuschlag rottenmann schladming slovenj_gradec voitsberg weiz #Duchy of Styria
-			linz bad_ischl freistadt gmunden kirchdorf perg rohrbach st_georgen steyr wels #Duchy of Upper Austria
+			vienna amstetten austria_baden bruck_leitha ganserndorf hollabrunn horn korneuburg krems lilienfeld scheibbs melk mistelbach  tulln waidhofen_an_der_thaya  zwettl  #Duchy of Lower Austria
+			    #Duchy of Carinthia
+			    #Duchy of Carniola
+			               #Duchy of Styria
+			          #Duchy of Upper Austria
 		}
 
 		own_control_integrated = {
-			kyburg #County of Kyburg
-			bonndorf villingen waldshut #Landgraviate of Breisgau
-			krumbach gunzburg wertingen #Margraviate of Burgau
-			ensisheim #Lordship of Upper Alsace
-			waldsee saulgau #Lordship of Waldsee
+			 #County of Kyburg
+			   #Landgraviate of Breisgau
+			   #Margraviate of Burgau
+			 #Lordship of Upper Alsace
+			  #Lordship of Waldsee
 		}
 
 		own_control_conquered = {
-			aarau baden_im_aargau #County of Lenzburg
-			frauenfeld #Lordship of Thurgau
-			wolhusen #Lordship of Wolhusen
-			schaffhausen
-			fribourg
-			glarus
+			  #County of Lenzburg
+			 #Lordship of Thurgau
+			 #Lordship of Wolhusen
+
 		}
 
 		starting_technology_level = 3
@@ -15814,7 +15823,11 @@ countries = {
 		include = "german_principality"
 		government = {
 
-			ruler = random
+			reforms = {
+				margraviate
+			}
+			ruler = hab_ernst_babenberg
+			ruler_term = { character = hab_ernst_babenberg start_date = 1055.1.1 regnal_number = 1 }
 
 			#ruler_term = { character = hab_otto_habsburg start_date = 1330.1.13 regnal_number = 1 } # As Co-Ruler
 
@@ -15840,8 +15853,8 @@ countries = {
 			slovene
 		}
 
-		country_rank = rank_duchy
-		dynasty = habsburg_dynasty
+		country_rank = rank_county
+		dynasty = babenberg_dynasty
 		capital = vienna
 	}
 
@@ -16203,9 +16216,13 @@ countries = {
 
 	}
 
-	ORT = {	#Ortenburg
-		own_control_core = {
+	ORT = {
+		our_cores_conquered_by_others = {
 			spittal kocevje
+		}
+	#Ortenburg
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -31007,15 +31024,17 @@ countries = {
 	#-------------------------- Holy Roman Empire ----------------------------
 
 	OGK = {	#old german Kingdom for Ruler History
-		own_control_core = { }
+		own_control_core = {
+			goslar nordhausen muhlhausen speyer worms frankfurt nuremberg aachen dortmund }
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
-		include = "german_principality_not_present"
+		include = "german_principality"
 		government = {
-			ruler = random
+			ruler = ogk_heinrich_iv_salier
+			ruler_term = { character = ogk_heinrich_iv_salier start_date = 1056.10.5 regnal_number = 4 }
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
@@ -31036,27 +31055,32 @@ countries = {
 
 		country_rank = rank_empire
 		court_language = low_german_dialect
-		capital = aachen
+		capital = goslar
 	}
 
-	STY = {	#Styria
+	STY = {
+		own_control_core = {
+			graz voitsberg judenburg kapfenberg leoben liezen murau murzzuschlag rottenmann schladming feldbach furstenfeld weiz pitten wiener_neustadt maribor slovenj_gradec steyr wels bad_ischl gmunden kirchdorf
+		}
+	#Styria
 		our_cores_conquered_by_others = {
-			graz liezen rottenmann murzzuschlag
-			kapfenberg leoben furstenfeld weiz feldbach
-			schladming voitsberg judenburg murau
-			pitten wiener_neustadt
+
 			leibnitz
-			ptuj maribor slovenj_gradec
+			ptuj  
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
-		include = "german_principality_not_present"
-		country_rank = rank_duchy
+		include = "german_principality"
+		country_rank = rank_county
 		government = {
-			ruler = random
+			reforms = {
+				margraviate
+			}
+			ruler = sty_otakar_steyr
+			ruler_term = { character = sty_otakar_steyr start_date = 1056.1.1 regnal_number = 0 }
 
 			# ruler_term = { character = hab_albrecht_ii_habsburg start_date = 1330.1.13 regnal_number = 2 }
 			#ruler_term = { character = hab_otto_habsburg start_date = 1330.1.13 regnal_number = 1 } # As Co-Ruler
@@ -31075,20 +31099,25 @@ countries = {
 		capital = graz
 	}
 
-	CRH = {	#Carinthia
+	CRH = {
+		own_control_core = {
+			klagenfurt st_veit volkermarkt steinfeld ljubljana kranj novo_mesto postojna hermagor lienz winklern spittal feldkirchen
+		}
+	#Carinthia
 		our_cores_conquered_by_others = {
-			villach hermagor steinfeld winklern spittal lienz
-			wolfsberg st_veit friesach volkermarkt klagenfurt feldkirchen
+			villach     
+			wolfsberg  friesach   
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy_no_coast"
 		include = "expl_northern_europe"
-		include = "german_principality_not_present"
+		include = "german_principality"
 		country_rank = rank_duchy
 		government = {
-			ruler = random
+			ruler = crh_berthold_zahringen
+			ruler_term = { character = crh_berthold_zahringen start_date = 1061.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
 				name_berthold = 2
@@ -31314,6 +31343,7 @@ countries = {
 
 	AUG = {	#Augsburg
 		own_control_core = {
+			krumbach gunzburg wertingen
 			dillingen oberdorf sonthofen
 		}
 
@@ -31360,6 +31390,7 @@ countries = {
 
 	BXN = {	#Brixen
 		own_control_core = {
+			bruneck
 			brixen bled
 		}
 
@@ -31519,6 +31550,7 @@ countries = {
 
 	PSS = {	#Passau
 		own_control_core = {
+			freistadt perg rohrbach linz st_georgen
 			passau st_polten
 		}
 
@@ -31920,6 +31952,7 @@ countries = {
 
 	KYB = {
 		own_control_core = {
+			kyburg frauenfeld aarau baden_im_aargau wolhusen
 			burgdorf_emmental thun
 		}
 
@@ -32863,9 +32896,13 @@ countries = {
 		capital = furstenberg
 	}
 
-	GRK = {  # Gurk (South Germany)
-		own_control_core = {
+	GRK = {
+		our_cores_conquered_by_others = {
 			feldkirchen
+		}
+  # Gurk (South Germany)
+		own_control_core = {
+			
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
@@ -33069,6 +33106,7 @@ countries = {
 
 	NEL = {  # Nellenburg (South Germany)
 		own_control_core = {
+			schaffhausen
 			stockach
 		}
 		starting_technology_level = 3
@@ -33116,9 +33154,13 @@ countries = {
 		country_rank = rank_county
 	}
 
-	NUR = {	#Nuremberg
-		own_control_core = {
+	NUR = {
+		our_cores_conquered_by_others = {
 			nuremberg
+		}
+	#Nuremberg
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -33483,6 +33525,7 @@ countries = {
 
 	RVA = { #Ravensburg
 		own_control_core = {
+			waldsee saulgau
 			ravensburg
 		}
 
@@ -33622,6 +33665,7 @@ countries = {
 
 	ALS = { #Strasbourg
 		own_control_core = {
+			ensisheim
 			zabern oberkirch benfeld
 		}
 
@@ -34737,9 +34781,13 @@ countries = {
 		dynasty = hohnstein_dynasty
 	}
 
-	NHS = {	#Nordhausen
-		own_control_core = {
+	NHS = {
+		our_cores_conquered_by_others = {
 			nordhausen
+		}
+	#Nordhausen
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -34753,9 +34801,13 @@ countries = {
 		capital = nordhausen
 	}
 
-	MLH = {	#Mühlhausen
-		own_control_core = {
+	MLH = {
+		our_cores_conquered_by_others = {
 			muhlhausen
+		}
+	#Mühlhausen
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -34999,9 +35051,13 @@ countries = {
 		dynasty = diez_dynasty
 	}
 
-	FRN = {	#Frankfurt
-		own_control_core = {
+	FRN = {
+		our_cores_conquered_by_others = {
 			frankfurt
+		}
+	#Frankfurt
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -35041,9 +35097,13 @@ countries = {
 		dynasty = erbach_dynasty
 	}
 
-	WRM = {	#Worms
-		own_control_core = {
+	WRM = {
+		our_cores_conquered_by_others = {
 			worms
+		}
+	#Worms
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -35057,9 +35117,13 @@ countries = {
 		capital = worms
 	}
 
-	SYE = {	#Speyer
-		own_control_core = {
+	SYE = {
+		our_cores_conquered_by_others = {
 			speyer
+		}
+	#Speyer
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -35252,9 +35316,13 @@ countries = {
 		capital = prum
 	}
 
-	AAC = {	#Aachen
-		own_control_core = {
+	AAC = {
+		our_cores_conquered_by_others = {
 			aachen
+		}
+	#Aachen
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -35428,9 +35496,13 @@ countries = {
 		dynasty = wittgenstein_dynasty
 	}
 
-	DTM = { #Dortmund
-		own_control_core = {
+	DTM = {
+		our_cores_conquered_by_others = {
 			dortmund
+		}
+ #Dortmund
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -35874,9 +35946,13 @@ countries = {
 		capital = hildesheim
 	}
 
-	GOS = {	#Goslar
-		own_control_core = {
+	GOS = {
+		our_cores_conquered_by_others = {
 			goslar
+		}
+	#Goslar
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -58164,7 +58240,7 @@ countries = {
 			ruler_term = { character = apu_robert_guiscard start_date = 1059.8.1 regnal_number = 1 }
 		}
 		own_control_core = {
-			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo bojano isernia larino trivento foggia bovino lucera manfredonia rotondo sansevero altamura andria francavilla martinafr potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano avellino ariano santangelo
+			bojano isernia larino trivento foggia bovino lucera manfredonia rotondo sansevero altamura andria francavilla martinafr potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano avellino ariano santangelo
 		}
 
 		starting_technology_level = 3
@@ -58999,6 +59075,23 @@ countries = {
 		country_rank = rank_county
 
 		capital = saint_quentin
+	}
+
+	ZAH = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			bonndorf villingen waldshut glarus
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		include = "german_principality"
+		country_rank = rank_county
+
+		capital = villingen
 	}
 
 	ZGZ = {

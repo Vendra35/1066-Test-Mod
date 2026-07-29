@@ -227,4 +227,20 @@ dynasty_manager = {
 		name = { name = aquino_dynasty }
 		home = gaeta
 	}
+	# --- 1066 Empire (HRE slice): three houses vanilla lacks in
+	# 04_dynasties (von_Babenberg exists only in the random-gen name
+	# pool; zahringen only as a character comment; otakar/traungau not
+	# at all). salian_dynasty ships and carries Heinrich IV.
+	babenberg_dynasty = {
+		name = { name = babenberg_dynasty }
+		home = vienna
+	}
+	zahringen_dynasty = {
+		name = { name = zahringen_dynasty }
+		home = villingen
+	}
+	otakar_dynasty = {
+		name = { name = otakar_dynasty }
+		home = steyr
+	}
 }

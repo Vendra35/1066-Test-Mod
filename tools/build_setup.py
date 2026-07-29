@@ -289,13 +289,32 @@ HISTORICAL_RULERS = {
     "NEA": ("nea_sergius_v_naples", "1050.1.1", 5),       # Sergius V, Duke of Naples [D on dates] — NEW_CHARACTERS
     "GAE": ("gae_atenulf_i_aquino", "1064.1.1", 1),       # Atenulf I of Aquino, Duke of Gaeta [U] — NEW_CHARACTERS
     "PLM": ("plm_ayyub_ibn_tamim", "1063.1.1", 1),        # Ayyub ibn Tamim, emir of Palermo — son of OUR seated Tamim of TUN [U/D] — NEW_CHARACTERS
+
+    # The Empire (HRE package 2026-07-29; the leaderless-election law,
+    # the German-kingship no-hole term, the margraviate free win and
+    # every name route re-verified by the main session). THE CROWN is
+    # user decision D: Heinrich IV on a landed OGK with the Standard
+    # 9-location Salian demesne, styled "King of the Romans" (loc
+    # override) — the 1084 imperial coronation is a future event hook.
+    # TRI stays random ([D] — three archbishops in one year); SPL
+    # ships random (Godfrey the Bearded parks with Germany II); ZAH
+    # random (Berthold seats CRH).
+    "OGK": ("ogk_heinrich_iv_salier", "1056.10.5", 4),    # Heinrich IV — vanilla's OWN character and term values (10_countries.txt:34907); 15 at start — MINOR_RULERS
+    "HAB": ("hab_ernst_babenberg", "1055.1.1", 1),        # Ernst the Brave, Margrave of Austria 1055-1075 [U] — NEW_CHARACTERS
+    "CRH": ("crh_berthold_zahringen", "1061.1.1", 1),     # Berthold I of Zähringen, titular Duke of Carinthia [U/D — the Eppensteiner held it de facto] — NEW_CHARACTERS
+    "STY": ("sty_otakar_steyr", "1056.1.1", 0),           # Otakar of Steyr, Margrave of the Carinthian March [U; ordinal disputed — 0] — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
 # them — the engine gives them a regency, which is the history (France was
 # governed by Baldwin V of Flanders as regent). The check still fails if a
 # listed tag's ruler turns out to be an adult, so stale entries cannot rot.
-MINOR_RULERS = {"FRA", "HOL", "HUN"}
+MINOR_RULERS = {"FRA", "HOL", "HUN",
+                # Heinrich IV is 15y 10m at start (b. 1050.11.11);
+                # historically of age March 1065 [U] but ADULT_AGE=16
+                # rules — the engine regency stands in for the
+                # lingering Anno/Adalbert tutelage (HRE slice).
+                "OGK"}
 
 # ---------------------------------------------------------- new countries ---
 # The NEW-COUNTRIES-DESIGN.md mechanism, first probe: PEREYASLAVL. One tag,
@@ -964,6 +983,18 @@ for _t, _cap in (("APU", "melfi"), ("CUP", "caserta"),
         '\t\tinclude = "catholic_monarchy"\n'
         "\t\tcountry_rank = rank_duchy\n\n"
         f"\t\tcapital = {_cap}\n\t}}\n")
+# ZAH — the Zähringen Breisgau/Baar march (HRE slice's one new tag).
+# Inland; german_principality adds only magdeburg_rights
+# (diff-measured); expl_western_europe grants both German regions.
+NEW_COUNTRIES["ZAH"] = (
+    "\tZAH = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "catholic_monarchy_no_coast"\n'
+    '\t\tinclude = "german_principality"\n'
+    "\t\tcountry_rank = rank_county\n\n"
+    "\t\tcapital = villingen\n\t}\n")
+
 for _t, _cap in (("PLM", "palermo"), ("AGR", "girgenti")):
     NEW_COUNTRIES[_t] = (
         f"\t{_t} = {{\n"
@@ -1182,9 +1213,11 @@ BRITISH_LANDLESS = (
 # Sicilian claims = the 87-location Two Sicilies irredenta (the 1282
 # Angevin future); SAO's yields vanilla's four Salona claims back.
 _ITALY_GRANTS = {
-    "APU": ["chieti", "lanciano", "vasto", "aquila", "atri", "celano",
-            "cittaducale", "csantangelo", "sulmona", "teramo",
-            "bojano", "isernia", "larino", "trivento",
+    # The 10 Abruzzo locations LEFT this list the same day it landed:
+    # the HRE slice resolved the banked anachronism by reviving SPL
+    # (Spoleto takes them + its own five Umbrian claims). APU 47->37;
+    # the Molise four stay (Norman since c.1054 [U]).
+    "APU": ["bojano", "isernia", "larino", "trivento",
             "foggia", "bovino", "lucera", "manfredonia", "rotondo",
             "sansevero", "altamura", "andria", "francavilla",
             "martinafr",
@@ -1221,6 +1254,61 @@ ITALY_TRIBUTARIES = (("PAP", "APU"), ("PAP", "CUP"))
 
 # NAP (the 1282 Angevin kingdom) and SAO (Salona) end landless.
 ITALY_LANDLESS = ("NAP", "SAO")
+
+# ------------------------------------------------------- the Empire ---
+# THE HRE/HAB SLICE (Opus package 2026-07-29; crown = user decision D).
+# HAB is REUSED as the Babenberg margraviate of Austria (its loc IS
+# "Austria"; the SIC precedent — and country_HAB advances stay armed):
+# keeps its 16 austria_area locations, dynasty habsburg->babenberg,
+# rank county + the margraviate reform (vanilla's own rank branch
+# renders "Margraviate"/"Margrave" — country_ranks.txt:2298, a free
+# win; the reform is setup-assigned by NINE vanilla tags). STY/CRH
+# revive from their Paradox-written claim lists (the SKE case);
+# GOR/ORT/GRK dissolve (1127/12th-c./1072 creations). The Salian
+# demesne (Standard 9) empties nine one-location free cities — the
+# member/free-city lists self-clean through the generic landless-IO
+# strip. SPL revives with its five Umbrian claims + the ten Abruzzo
+# (closing the Italy slice's banked anachronism); the Lyonnais 7
+# resolve to FRZ/SAV/VLN (closing the France slice's). ZAH is the one
+# new tag (the Zähringen Breisgau march).
+_EMPIRE_GRANTS = {
+    "OGK": ["goslar", "nordhausen", "muhlhausen", "speyer", "worms",
+            "frankfurt", "nuremberg", "aachen", "dortmund"],
+    "STY": ["graz", "voitsberg", "judenburg", "kapfenberg", "leoben",
+            "liezen", "murau", "murzzuschlag", "rottenmann",
+            "schladming", "feldbach", "furstenfeld", "weiz", "pitten",
+            "wiener_neustadt", "maribor", "slovenj_gradec",
+            "steyr", "wels", "bad_ischl", "gmunden", "kirchdorf"],
+    "CRH": ["klagenfurt", "st_veit", "volkermarkt", "steinfeld",
+            "ljubljana", "kranj", "novo_mesto", "postojna",
+            "hermagor", "lienz", "winklern", "spittal", "feldkirchen"],
+    "PSS": ["freistadt", "perg", "rohrbach", "linz", "st_georgen"],
+    "AUG": ["krumbach", "gunzburg", "wertingen"],
+    "RVA": ["waldsee", "saulgau"],
+    "ALS": ["ensisheim"],
+    "KYB": ["kyburg", "frauenfeld", "aarau", "baden_im_aargau",
+            "wolhusen"],
+    "NEL": ["schaffhausen"],
+    "VUD": ["fribourg"],
+    "ZAH": ["bonndorf", "villingen", "waldshut", "glarus"],
+    "BXN": ["bruneck"],
+    # pazin: GOR's SEVENTH location, missed by the package inventory
+    # and caught by the landless guarantee's first dry-run — 1066
+    # Istria sits in the patriarchate's orbit [U].
+    "AQU": ["gorizia", "metlika", "kocevje", "pazin"],
+    "SPL": ["assisi", "narni", "rieti", "spoleto", "todi",
+            "chieti", "lanciano", "vasto", "aquila", "atri", "celano",
+            "cittaducale", "csantangelo", "sulmona", "teramo"],
+    "FRZ": ["lyon", "riverie", "beaujeu", "perreux"],
+    "SAV": ["trevoux"],
+    "VLN": ["viviers", "chalancon"],
+}
+
+# The nine emptied free cities + the three dissolved southeastern
+# tags. GOR (county created c.1127), ORT (12th c.), GRK (bishopric
+# founded 1072 — six years after start).
+EMPIRE_LANDLESS = ("GOS", "NHS", "MLH", "SYE", "WRM", "FRN", "NUR",
+                  "AAC", "DTM", "GOR", "ORT", "GRK")
 
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
@@ -1288,7 +1376,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
-    + ITALY_LANDLESS
+    + ITALY_LANDLESS + EMPIRE_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1319,6 +1407,7 @@ LOCATION_GRANTS.update(_IBERIA_GRANTS)
 LOCATION_GRANTS.update(_BYZ_GRANTS)
 LOCATION_GRANTS.update(_BRITISH_GRANTS)
 LOCATION_GRANTS.update(_ITALY_GRANTS)
+LOCATION_GRANTS.update(_EMPIRE_GRANTS)
 # LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
 # build_countries — see _byz_target().
 
@@ -1333,6 +1422,7 @@ CAPITAL_FIXES = {
     "MTH": ("athlone", "mullingar"),  # athlone is HYM's; the Clann Cholmain seat is Lough Ennell (British slice)
     "MCM": ("killarney", "bunratty"), # vanilla's own o_brien_dynasty comment: home = bunratty #Killaloe (04_dynasties.txt:485)
     "SIC": ("palermo", "messina"),    # Roger holds Palermo only from 1072; Messina is the 1061 beachhead (Italy slice)
+    "OGK": ("aachen", "goslar"),      # Henry III's Kaiserpfalz, Heinrich IV's birthplace [U]; culture matches OGK's registry (HRE slice)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -1443,6 +1533,37 @@ FIELD_FIXES = {
     "PAP": [("\t\t\truler = random\n",
              "\t\t\treforms = {\n\t\t\t\tpapal_investiture_reform\n"
              "\t\t\t}\n\t\t\truler = random\n")],
+    # --- The HRE slice (2026-07-29, crown decision D). OGK lands with
+    # the Salian demesne: the landed includes (the catholic no_coast
+    # family KEEPS heir_selection; german_principality adds only
+    # magdeburg_rights). HAB becomes the Babenberg MARGRAVIATE of
+    # Austria (rank branch renders "Margraviate"/"Margrave" — the
+    # margraviate reform is setup-assigned by nine vanilla tags);
+    # STY joins it as the Carinthian March under the Otakars; CRH
+    # stays ducal. SPL lands coastal (the Abruzzo Adriatic strip).
+    "OGK": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy_no_coast"'),
+            ('include = "german_principality_not_present"',
+             'include = "german_principality"')],
+    "HAB": [("dynasty = habsburg_dynasty", "dynasty = babenberg_dynasty"),
+            ("country_rank = rank_duchy", "country_rank = rank_county"),
+            ("\t\t\truler = random\n",
+             "\t\t\treforms = {\n\t\t\t\tmargraviate\n"
+             "\t\t\t}\n\t\t\truler = random\n")],
+    "STY": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy_no_coast"'),
+            ('include = "german_principality_not_present"',
+             'include = "german_principality"'),
+            ("country_rank = rank_duchy", "country_rank = rank_county"),
+            ("\t\t\truler = random\n",
+             "\t\t\treforms = {\n\t\t\t\tmargraviate\n"
+             "\t\t\t}\n\t\t\truler = random\n")],
+    "CRH": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy_no_coast"'),
+            ('include = "german_principality_not_present"',
+             'include = "german_principality"')],
+    "SPL": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy"')],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -2504,6 +2625,48 @@ NEW_CHARACTERS = """
 		dynasty = zirid_dynasty
 		tag = PLM
 	}
+
+	# --- 1066 Empire (HRE slice) -------------------------------------------
+	# Heinrich IV needs NO authoring — vanilla ships him
+	# (ogk_heinrich_iv_salier, 05_characters.txt:104039, salian_dynasty)
+	# and name_henry renders "Heinrich" through german_language. The
+	# three below are the southeastern cast; births [U] throughout.
+	# name_ernest carries a .german_language "Ernst" row (free win);
+	# name_berthold's base form is right; Otakar is invented literal
+	# key #19 — name_odoacer would render "Odoacer" on a German ruler
+	# (the .west_slavic_language row is the only "Otakar" in vanilla).
+	hab_ernst_babenberg = {
+		first_name = { name = name_ernest }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1027.1.1
+		birth = vienna
+		dynasty = babenberg_dynasty
+		tag = HAB
+	}
+
+	# Berthold I of Zähringen — TITULAR Duke of Carinthia 1061-1077;
+	# never took possession [D], the Eppensteiner ruled de facto. The
+	# seat models the title; the tension is Germany II material.
+	crh_berthold_zahringen = {
+		first_name = { name = name_berthold }
+		culture = rhine_alemannic
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = villingen
+		dynasty = zahringen_dynasty
+		tag = CRH
+	}
+
+	sty_otakar_steyr = {
+		first_name = { name = Otakar }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = steyr
+		dynasty = otakar_dynasty
+		tag = STY
+	}
 """
 
 
@@ -2874,7 +3037,8 @@ def build_countries(src):
     _landless_claims = {t: _owned_by(src, t)
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS
                         + EGYPT_LANDLESS + FRANCE_LANDLESS
-                        + BRITISH_LANDLESS + ITALY_LANDLESS}
+                        + BRITISH_LANDLESS + ITALY_LANDLESS
+                        + EMPIRE_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -3396,13 +3560,68 @@ def build_ios(src):
     src = src[:_hk.start()] + _new_body + src[_hk_end:]
     report.append(("High Kingship crowned (leader = LEI, members 27)", 1))
 
-    # Landless tags leave every IO member list (the rule vanilla's own
-    # high_kingship documents with its `#PLE` comment). Found by the
-    # new harness check's first run: CIL — landless since the
-    # Byzantium slice — was still a member of the autocephalous
-    # patriarchate. Generic: any LANDLESS_AFTER tag in any members
-    # list goes; exact-count asserted so a future slice that empties
-    # an IO member fails loudly here instead of shipping a ghost.
+    # THE HRE CROWN (user decision D, 2026-07-29): Heinrich IV on a
+    # landed OGK, styled by the HRE_LEADER loc overrides ("King of the
+    # Romans" — the imperial coronation is 1084, an event hook). The
+    # leaderless alternative was measured DEAD: hre_election.txt:17-21
+    # goes live the moment the IO has no leader, and hre.txt:459-488
+    # crowns the richest eligible member after two years — a headless
+    # HRE elects a Habsburg. `leader = <TAG>` is the proven seed (the
+    # High Kingship precedent); `emperor` is an auto-following special
+    # status and must move with the leader. The electors lose the two
+    # post-1066 constructs (SWB is Saxe-Wittenberg 1180+, PAL the 1214
+    # Rhine Palatinate) for the Billung and Bavarian stem duchies [U];
+    # the three archbishops and no_golden_bull_policy are already
+    # 1066-exact (measured — vanilla's own pre-Bull law). OGK/CRH/STY
+    # join the members (newly landed; imperial_prince auto-bestows).
+    for _old, _new, _what in (
+            ("leader = UBV", "leader = OGK", "HRE leader"),
+            ("emperor = { UBV }", "emperor = { OGK }", "emperor status")):
+        if src.count(_old) != 1:
+            sys.exit(f"HRE surgery: {_what} pattern not exactly-once "
+                     f"({src.count(_old)}x)")
+        src = src.replace(_old, _new, 1)
+    # The elector list is multi-line with per-line comments — parsed,
+    # verified against the expected 1356-Bull four, rewritten as the
+    # 1066 four.
+    _em = re.search(r"elector[ \t]*=[ \t]*\{", src)
+    _eo = src.index("{", _em.start())
+    _ee = find_block_end(src, _eo)
+    _etoks = re.sub(r"#[^\n]*", "", src[_eo + 1:_ee - 1]).split()
+    if _etoks != ["BOH", "SWB", "BRA", "PAL"]:
+        sys.exit(f"HRE surgery: elector list is {_etoks}, expected the "
+                 "1356-Bull four")
+    src = (src[:_eo + 1]
+           + "\n\t\t\t\t# The 1066 four: Bohemia, the Nordmark, and the"
+           + "\n\t\t\t\t# Billung and Bavarian stem duchies [U] — SWB is"
+           + "\n\t\t\t\t# Saxe-Wittenberg (1180+), PAL the 1214 Palatinate."
+           + "\n\t\t\t\tBOH BRA LUN UBV\n\t\t"
+           + src[_ee - 1:])
+    _hre = re.search(r"^\tadd_international_organization = \{[^{}]*?"
+                     r"type = hre", src, re.M)
+    if not _hre:
+        sys.exit("hre instance not found in 15_IO")
+    _hre_end = find_block_end(src, src.index("{", _hre.start()))
+    _hb = src[_hre.start():_hre_end]
+    _hm = re.search(r"members[ \t]*=[ \t]*\{", _hb)
+    _ho = _hb.index("{", _hm.start())
+    for _add in ("OGK", "CRH", "STY"):
+        if re.search(r"\b" + _add + r"\b",
+                     re.sub(r"#[^\n]*", "", _hb[_ho:find_block_end(_hb, _ho)])):
+            sys.exit(f"HRE surgery: {_add} already a member")
+    src = (src[:_hre.start() + _ho + 1] + " OGK CRH STY"
+           + src[_hre.start() + _ho + 1:])
+    report.append(("HRE crowned (leader = OGK) and members joined", 1))
+
+    # Landless tags leave every IO membership/status list (the rule
+    # vanilla's own high_kingship documents with its `#PLE` comment).
+    # Found by the new harness check's first run: CIL — landless since
+    # the Byzantium slice — was still a member of the autocephalous
+    # patriarchate. Generic: any LANDLESS_AFTER tag in any members OR
+    # special-status list goes (the HRE slice widened the sweep from
+    # `members` alone: the nine emptied free cities also sit in
+    # free_city = { }); exact-count asserted so a future slice that
+    # empties an IO member fails loudly instead of shipping a ghost.
     # (Building/army/pop-based members hold no land legitimately and
     # are never in LANDLESS_AFTER, so they are untouched.)
     n_ghosts = 0
@@ -3411,7 +3630,10 @@ def build_ios(src):
     # pre-mutation offsets sliced with stale indices — the exact-count
     # assert caught it on the first run (it reported a ghost set that
     # skipped CIL's own list).
-    for _mb in reversed(list(re.finditer(r"members[ \t]*=[ \t]*\{", src))):
+    for _mb in reversed(list(re.finditer(
+            r"(?:members|free_city|elector|archbishop_elector|emperor"
+            r"|imperial_prince|imperial_prelate"
+            r"|imperial_peasant_republic)[ \t]*=[ \t]*\{", src))):
         _o = src.index("{", _mb.start())
         _e = find_block_end(src, _o)
         _inner = src[_o + 1:_e - 1]
@@ -3422,18 +3644,25 @@ def build_ios(src):
             n_ghosts += len(_toks) - len(_keep)
             src = (src[:_o + 1] + "\n\t\t\t" + " ".join(_keep)
                    + "\n\t\t" + src[_e - 1:])
-    # The measured set (2026-07-29): CIL + army-based ARM/ATZ in the
-    # autocephalous patriarchate, EPI/TRE/FEO in the Orthodox world's
-    # lists — every one emptied by the Byzantium/Seljuk slices and
-    # ghosting in an IO ever since. The count moved 1 -> 4 -> 6 as the
-    # first runs measured (a stale-offset loop bug was caught by this
-    # very assert on run one).
-    if n_ghosts != 6 or sorted(_ghost_names) != [
-            "ARM", "ATZ", "CIL", "EPI", "FEO", "TRE"]:
-        sys.exit(f"expected exactly 6 landless IO members "
-                 f"(ARM ATZ CIL EPI FEO TRE), stripped {n_ghosts}: "
-                 f"{_ghost_names}")
-    report.append(("landless IO members stripped", n_ghosts))
+    # The measured set (2026-07-29): the original six ghosts (CIL +
+    # army-based ARM/ATZ in the autocephalous patriarchate, EPI/TRE/
+    # FEO in the Orthodox lists — Byzantium/Seljuk-slice leftovers)
+    # plus the HRE slice's 22 occurrences: the nine emptied free
+    # cities in BOTH members and free_city (7 of them; NHS/MLH sit
+    # only in members — their free_city rows are vanilla's own
+    # commented "should be but can't" lines) and GOR/ORT/GRK in two
+    # lists each. The count moved 1 -> 4 -> 6 -> 28 as the runs
+    # measured (a stale-offset loop bug was caught by this very
+    # assert on run one).
+    _expected_ghosts = sorted(
+        ["ARM", "ATZ", "CIL", "EPI", "FEO", "TRE",
+         "NHS", "MLH"]
+        + ["AAC", "FRN", "GOS", "NUR", "SYE", "DTM", "WRM"] * 2
+        + ["GOR", "ORT", "GRK"] * 2)
+    if n_ghosts != 28 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 28 landless IO list entries, "
+                 f"stripped {n_ghosts}: {sorted(_ghost_names)}")
+    report.append(("landless IO list entries stripped", n_ghosts))
 
     leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src = tidy(src)
@@ -3857,6 +4086,24 @@ def build_diplomacy(src):
     if n_ara != 1:
         sys.exit(f"expected exactly 1 ARA->SIC guarantee, stripped {n_ara}")
     report.append(("Vespers-era ARA->SIC guarantee removed", n_ara))
+
+    # HRE slice: HAB's three 1337 embargoes are Habsburg-era politics
+    # with no 1066 defense; the PAP->FAE vassal is war-blocking
+    # (vassal.txt:80-86) and 1066 Faenza sat under the IMPERIAL
+    # archbishop of Ravenna, not Rome — Faenza goes independent like
+    # the rest of the Romagna.
+    src, n_emb = re.subn(
+        r"^[ \t]*scripted_oneway = \{ first = \w+ second = HAB type = embargo_nation \}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_emb != 3:
+        sys.exit(f"expected exactly 3 HAB embargoes, stripped {n_emb}")
+    report.append(("Habsburg-era embargoes removed", n_emb))
+    src, n_fae = re.subn(
+        r"^[ \t]*dependency = \{ first = PAP second = FAE [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_fae != 1:
+        sys.exit(f"expected exactly 1 PAP->FAE vassalage, stripped {n_fae}")
+    report.append(("PAP->FAE vassalage removed", n_fae))
 
     # The Melfi investiture: Guiscard and Richard as papal
     # TRIBUTARIES (papal_investiture_reform carries the modifier —

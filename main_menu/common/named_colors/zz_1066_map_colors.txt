@@ -65,4 +65,7 @@
 	map_GAE = rgb { 120 170 200 }   # Gaeta        pale blue
 	map_PLM = rgb { 34 110 60 }     # Palermo      deep green
 	map_AGR = rgb { 196 164 96 }    # Agrigento    sand
+	# The HRE slice: Zähringen in the Breisgau (neighbors BDE/KYB
+	# greys, ALS, the Swiss patchwork).
+	map_ZAH = rgb { 178 60 60 }     # Zähringen    Breisgau red
 }

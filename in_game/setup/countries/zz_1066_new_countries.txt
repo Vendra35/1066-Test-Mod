@@ -369,3 +369,16 @@ AGR = { #Emirate of Agrigento
 	culture_definition = sicilian
 	religion_definition = sunni
 }
+
+# The HRE slice's one new tag: the Zähringen home march in the
+# Breisgau/Baar (freeness verified, binary-excluded sweep over both
+# trees: zero hits). rhine_alemannic matches its four locations'
+# templates (HAB's own tolerated list names the culture).
+
+ZAH = { #Zähringen
+	color = map_ZAH
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = rhine_alemannic
+	religion_definition = catholic
+}

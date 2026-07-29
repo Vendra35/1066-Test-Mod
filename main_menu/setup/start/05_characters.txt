@@ -105349,4 +105349,46 @@ character_db={
 		dynasty = zirid_dynasty
 		tag = PLM
 	}
+
+	# --- 1066 Empire (HRE slice) -------------------------------------------
+	# Heinrich IV needs NO authoring — vanilla ships him
+	# (ogk_heinrich_iv_salier, 05_characters.txt:104039, salian_dynasty)
+	# and name_henry renders "Heinrich" through german_language. The
+	# three below are the southeastern cast; births [U] throughout.
+	# name_ernest carries a .german_language "Ernst" row (free win);
+	# name_berthold's base form is right; Otakar is invented literal
+	# key #19 — name_odoacer would render "Odoacer" on a German ruler
+	# (the .west_slavic_language row is the only "Otakar" in vanilla).
+	hab_ernst_babenberg = {
+		first_name = { name = name_ernest }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1027.1.1
+		birth = vienna
+		dynasty = babenberg_dynasty
+		tag = HAB
+	}
+
+	# Berthold I of Zähringen — TITULAR Duke of Carinthia 1061-1077;
+	# never took possession [D], the Eppensteiner ruled de facto. The
+	# seat models the title; the tension is Germany II material.
+	crh_berthold_zahringen = {
+		first_name = { name = name_berthold }
+		culture = rhine_alemannic
+		religion = catholic
+		birth_date = 1000.1.1
+		birth = villingen
+		dynasty = zahringen_dynasty
+		tag = CRH
+	}
+
+	sty_otakar_steyr = {
+		first_name = { name = Otakar }
+		culture = danube_bavarian
+		religion = catholic
+		birth_date = 1020.1.1
+		birth = steyr
+		dynasty = otakar_dynasty
+		tag = STY
+	}
 }
