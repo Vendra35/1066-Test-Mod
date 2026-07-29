@@ -1371,6 +1371,13 @@ anyone. SEL itself stays independent — Manzikert 1071 is safe.
 - **No pop debt for Persia/Iraq:** 634 of the slice's 671 locations are
   already Muslim in location_templates (94.5%) — unlike Iberia, this
   theatre needs no pop conversion slice.
+  **CORRECTED by the pop pass (2026-07-29): RELIGION-only.** The
+  CULTURE axis carries a real debt: mongolian_culture + nogai are
+  11.0% of SEL's pop units (451 units across 150 locations) —
+  13th-century Ilkhanate/Horde deposits. The Mongol-strip pop slice
+  removes them, which RAISES farsi's share and moves the measured
+  3.89 acceptance cost — the Nizamiyya capacity calibration must be
+  re-measured after (docs/POP-PHASE.md).
 
 ### Landless-with-claims is Paradox's OWN standard shape — the Sardinia trick generalizes
 **Established:** 2026-07-28, Byzantium pass. Vanilla ships THIRTEEN
@@ -1778,6 +1785,28 @@ interfaces loc, not a tag — conservative to avoid, but not proven
 taken.
 **Means:** every freeness sweep names its file-type filter, or it
 lies in the safe-looking direction and wastes free ids.
+
+### The pop pass's banked traps (full detail in docs/POP-PHASE.md)
+**Established:** 2026-07-29, the pop research pass; headline items:
+(1) **11 vanilla location keys carry UPPERCASE letters**
+(trgoviste_SER, tata_MOR, matanda_aChiwawa...) with 28 pops between
+them — a lowercase-only key regex drops them silently (the agent's
+own first parser did; our _ownable_set was already correct);
+(2) **pops are the STATE, location_templates the load-time SEED** —
+every trigger/estate/levy reads pops; the layers disagree in 3,419
+vanilla locations; (3) elite pops are SEEDS the engine inflates
+(nobles world-wide = 33 units) — author identity, not quantity, and
+verify in game only with `-leavepops`; (4) ≥4 same-type pops per
+location MERGE (defines:1633) — ≤3 is the safe zone; (5)
+**`REPLACE_OR_CREATE:` is a real database prefix** (Basileia ×167) —
+the prefix list in this file gains a fourth member; (6) emptying a
+culture world-wide errors unless it carries
+suppress_no_pops_error = yes; (7) in_game/map_data is BOM-MIXED
+(definitions yes, location_templates no).
+**Means:** the pop generator design (a sixth build target reusing
+the territory rule sets, per-theatre slices, the Sicily probe first)
+is fully briefed in POP-PHASE.md; the ONE escalated design call is
+Slavic paganism (invent/proxy/accept — user decision pending).
 
 ### Setup templates NEST includes — a one-level reader lies
 **Established:** 2026-07-29, British package.
