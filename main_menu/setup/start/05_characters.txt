@@ -105253,4 +105253,100 @@ character_db={
 		dynasty = loairn_dynasty
 		tag = MOY
 	}
+
+	# --- 1066 southern Italy ------------------------------------------------
+	# The Mezzogiorno package (Opus 2026-07-29). Vanilla ships ZERO
+	# usable characters here (the only guiscard/hauteville hits are
+	# comments and two Limousin lords). Name routes: the Normans'
+	# name_robert/roger/richard have no norman-dialect rows and fall
+	# through to the base forms — exactly right; the Lombards take the
+	# neapolitan_dialect rows (name_sergius -> "Sergie"); name_gisulf
+	# and name_ayyub are invented keys #8 and #9 (zero hits in both
+	# registries, loc rows shipped). Births [U] throughout.
+	#
+	# Robert Guiscard — sixth son of Tancred of Hauteville, Duke of
+	# Apulia and Calabria by the Melfi investiture of August 1059.
+	# Historically dies 1085 besieging Cephalonia; excommunicated and
+	# absolved twice — situation material for decades.
+	apu_robert_guiscard = {
+		first_name = { name = name_robert }
+		culture = norman
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = coutances
+		dynasty = hauteville_dynasty
+		tag = APU
+	}
+
+	# Roger, Guiscard's youngest brother — Count of Sicily from the
+	# Messina beachhead; takes Palermo 1072, Malta 1091; his son is
+	# the first King of Sicily.
+	sic_roger_de_hauteville = {
+		first_name = { name = name_roger }
+		culture = norman
+		religion = catholic
+		birth_date = 1031.1.1
+		birth = coutances
+		dynasty = hauteville_dynasty
+		tag = SIC
+	}
+
+	cup_richard_i_drengot = {
+		first_name = { name = name_richard }
+		culture = norman
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = alencon
+		dynasty = drengot_dynasty
+		tag = CUP
+	}
+
+	# Gisulf II, last Lombard prince of Salerno — succeeded on his
+	# father Guaimar IV's murder (3 June 1052); Guiscard, his own
+	# brother-in-law, takes Salerno in 1077.
+	slr_gisulf_ii_salerno = {
+		first_name = { name = name_gisulf }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = salerno
+		dynasty = salerno_dynasty
+		tag = SLR
+	}
+
+	nea_sergius_v_naples = {
+		first_name = { name = name_sergius }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = naples
+		dynasty = sergi_dynasty
+		tag = NEA
+	}
+
+	gae_atenulf_i_aquino = {
+		first_name = { name = name_atenulf }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = gaeta
+		dynasty = aquino_dynasty
+		tag = GAE
+	}
+
+	# Ayyub ibn Tamim — son of OUR seated Tamim of TUN, sent by the
+	# Zirids to hold Palermo 1063-1068/69 [D]; rides our own
+	# zirid_dynasty. The father link crosses into the NEW_CHARACTERS
+	# Zirid block (zir_tamim_ibn_al_muizz precedes him — parents
+	# before children).
+	plm_ayyub_ibn_tamim = {
+		first_name = { name = name_ayyub }
+		culture = tunisian
+		religion = sunni
+		birth_date = 1040.1.1
+		birth = kairouan
+		father = zir_tamim_ibn_al_muizz
+		dynasty = zirid_dynasty
+		tag = PLM
+	}
 }

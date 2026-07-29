@@ -113,3 +113,25 @@ capetian_homage_reform = {
 
 	years = 4
 }
+
+# The Melfi investiture of August 1059 — Guiscard and Richard of Capua
+# hold their lands "by grace of God and Saint Peter" and pay the
+# census to Rome (southern Italy slice, 2026-07-29). Fourth use of the
+# khutba pattern; the first with a THEOCRACY overlord — the visible
+# gate reads only the overlord's modifier, not its government type
+# (tributary.txt:19-24), so the risk is low; if the clients arrive as
+# vassals the fallback is honest vassalage.
+papal_investiture_reform = {
+	potential = {
+		tag = PAP
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
+	}
+
+	years = 4
+}

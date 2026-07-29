@@ -802,6 +802,55 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    review). Open eyeball, not retested: Toulouse's ruler render
    ("Guilhèm" — the occitan fallback probe) — one click next launch.
 
+22. **SOUTHERN ITALY 1066 (LANDED, untested).** 88 locations, 7 new
+   tags, 2377 blocks, 7 new thrones. **Robert Guiscard's Apulia-
+   Calabria (APU, 47)** with the 10 Abruzzo locations as a knowing
+   anachronism (Lyonnais precedent, banked for the HRE slice);
+   **SIC REUSED as Roger's County of Sicily** (4, Messina-Val
+   Demone) — FORCED: vanilla locks 6 advances behind
+   has_or_had_tag = SIC and all are Norman-Sicilian (the
+   Constitutions of Melfi under an emir was the veto); surgery:
+   capital→messina, rank→county ("Count Roger"), court
+   catalan→sicilian, regnal roger 3→0. Capua (CUP, Richard
+   Drengot), Salerno (SLR, Gisulf II — Guiscard takes it 1077),
+   Naples (NEA, Sergius V), Gaeta (GAE, Atenulf I). **Emirate of
+   Palermo (PLM, 9 + Malta)** under **Ayyub ibn Tamim — son of OUR
+   seated Tamim of TUN, riding our own zirid_dynasty**; Emirate of
+   Agrigento (AGR, 10, random — Ibn al-Hawwas's death is 1064 OR
+   1068 [D]). Both emirates take sicilian as PRIMARY (no
+   siculo-arabic culture exists; 100% of their pops are sicilian —
+   the capacity-wall avoidance; Arab elite = the ruler's culture).
+   **The Byzantine catepanate returns: BYZ +7** (Bari — falls
+   16 Apr 1071, the situation hook — Otranto, Taranto). **The Melfi
+   investiture: PAP → APU and PAP → CUP as TRIBUTARIES** under
+   papal_investiture_reform (khutba pattern #4 — the FIRST theocracy
+   overlord, the slice's one genuinely new shape; fallback if 3702
+   names them: honest vassalage). NAP landless — its snapshot
+   auto-yielded the 87-location Two Sicilies irredenta (65 mainland
+   + its existing 22 Sicilian claims); SAO (Salona — which had been
+   ruling ONLY Malta since the Byzantium slice!) landless with
+   vanilla's exact four claims back, verified in the output.
+   ARA→SIC guarantee stripped (1282 Vespers), PAP→SIC kept (Melfi
+   in miniature). Amalfi has NO map location (like Capua-city and
+   Aversa) — gap recorded, no tag possible. Invented name keys
+   #8-9: name_gisulf, name_ayyub. All counts proven by breaking
+   (BYZ 506, ARA-strip); 26 checks green, gate at 25.
+   TEST NEXT LAUNCH: (a) the Mezzogiorno in seven colors — Guiscard
+   crimson over Apulia-Calabria, "Count Roger" in Messina (the
+   rank-fallback probe), the two emirate greens vs SIC's dark olive
+   (Gallura-class eyeball); (b) PAP's two tributaries LIVE (the
+   theocracy-overlord probe — 3702 naming APU/CUP = the fallback
+   trigger); (c) "Gisulfo" and "Ayyūb" render (invented keys #8-9);
+   Ayyub's dynasty shows "Banū Zīrī" and his father is Tamim of
+   Tunis (cross-tag family link); (d) Bari/Taranto BYZANTINE again;
+   Naples/Salerno/Gaeta independent city-states; (e) Malta under
+   Palermo; SAO gone from the map; (f) error.log: expect the
+   landless trims +2 (NAP/SAO — the MAM class), the pop-culture
+   class grows by the 19 Christian-pop emirate locations (known,
+   pop phase), white flags on 7 more tags (CoA debt); (g)
+   regression: PAP still renders "Alexander II"/"Rome", VEN
+   Contarini, the taifas, the Norman opening.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -971,16 +1020,16 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the next slice per the strategic
-order — **HRE/HAB breakup** or **southern Italy 1066** (spec
-banked). Items 16-21 are ALL CONFIRMED IN GAME (2026-07-29; items
-20+21 in the evening launch — the High Kingship crown, the tribe
-branch, the homage ring, Adalbert's return all measured). Rolled
-into those slices when they come: the deferred LAN/CET fold (item
-21), the Empire-banked Lyonnais 7 (item 20), the Toulouse "Guilhèm"
-one-click eyeball. The pop phase's bill is now VISIBLE in the log
-(estate-culture mismatch class, decoder) — the strategic order's
-"pops later" holds, but the class will grow with every slice. Items 16-19 are ALL CONFIRMED IN GAME
+**NEXT SESSION STARTS WITH:** item 22's game test (southern Italy —
+the checklist is in the item; headline probes: the Melfi tributaries
+under a THEOCRACY overlord, "Count Roger", invented keys #8-9, the
+returned catepanate). Then the **HRE/HAB breakup** — now carrying
+three banked debts: the Lyonnais 7 (item 20), the Abruzzo 10 (item
+22), and the crown decision (Heinrich IV + landless OGK + royal
+demesne — the open design call recorded since the Empire pass).
+Items 16-21 are ALL CONFIRMED IN GAME (2026-07-29). The pop phase's
+bill is VISIBLE in the log and grew again with the emirates (19
+Christian-pop locations) — "pops later" holds, the class is decoded. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the

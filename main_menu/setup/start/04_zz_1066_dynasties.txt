@@ -203,4 +203,28 @@ dynasty_manager = {
 		name = { name = gwent_dynasty }
 		home = newport
 	}
+	# --- 1066 southern Italy: five houses vanilla lacks entirely (the
+	# only dynasty grep hit in 1273 entries was normandy_dynasty).
+	# Ayyub of Palermo rides OUR zirid_dynasty above — he is the son of
+	# Tamim of TUN, our seated Zirid. Homes verified in definitions.
+	hauteville_dynasty = {
+		name = { name = hauteville_dynasty }
+		home = coutances
+	}
+	drengot_dynasty = {
+		name = { name = drengot_dynasty }
+		home = alencon
+	}
+	salerno_dynasty = {
+		name = { name = salerno_dynasty }
+		home = salerno
+	}
+	sergi_dynasty = {
+		name = { name = sergi_dynasty }
+		home = naples
+	}
+	aquino_dynasty = {
+		name = { name = aquino_dynasty }
+		home = gaeta
+	}
 }

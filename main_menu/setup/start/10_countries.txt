@@ -9938,14 +9938,10 @@ countries = {
 	#Naples
 	NAP = {
 		own_control_core = {
-			aquila atri celano cittaducale csantangelo sulmona teramo chieti lanciano vasto bojano
-			isernia larino trivento altamura andria bari barletta monopoli bovino foggia lucera
-			manfredonia rotondo sansevero brindisi francavilla gallipoliita lecce martinafr taranto
-			acerenza lagonegro matera melfi montepeloso potenza santarcangelo catanzaro cotrone gerace
-			monteleone nicastro palmi reggiocal cassano castrovillari cosenza scalea paola rossano caserta
-			gaeta naples nola piedimonte sora venafro campagna salacon salerno vallo ariano avellino santangelo
+
 		}
 		our_cores_conquered_by_others = {
+			aquila atri celano cittaducale csantangelo sulmona teramo chieti lanciano vasto bojano isernia larino trivento altamura andria bari barletta monopoli bovino foggia lucera manfredonia rotondo sansevero brindisi francavilla gallipoliita lecce martinafr taranto acerenza lagonegro matera melfi montepeloso potenza santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cassano castrovillari cosenza scalea paola rossano caserta gaeta naples nola piedimonte sora venafro campagna salacon salerno vallo ariano avellino santangelo
 			#Sicily
 			catania messina mistretta nicosiasic patti piazza girgenti bivona caltanisetta cefalu sciacca termini
 			corleone mazara palermo salemi trapani caltagirone modica noto syracuse terranovasic
@@ -9957,7 +9953,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_monarchy"
+		include = "catholic_monarchy_not_present"
 		government = {
 			type = monarchy
 			heir_selection = salic_law
@@ -10091,6 +10087,9 @@ countries = {
 		country_rank = rank_kingdom
 		government = {
 
+			reforms = {
+				papal_investiture_reform
+			}
 			ruler = pap_anselmo_da_baggio
 			ruler_term = { character = pap_anselmo_da_baggio start_date = 1061.9.30 regnal_number = 2 regnal_name = name_alexander }
 
@@ -10696,8 +10695,8 @@ countries = {
 
 	SIC = {
 		own_control_core = {
-			catania messina mistretta nicosiasic patti piazza girgenti bivona caltanisetta cefalu sciacca termini
-			corleone mazara palermo salemi trapani caltagirone modica noto syracuse terranovasic
+			 messina mistretta nicosiasic patti       
+			         
 		}
 		our_cores_conquered_by_others = {
 			ajim
@@ -10714,10 +10713,11 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
-			ruler = random
+			ruler = sic_roger_de_hauteville
+			ruler_term = { character = sic_roger_de_hauteville start_date = 1062.1.1 regnal_number = 1 }
 
 			regnal_numbers = {
-				name_roger = 3
+				name_roger = 0
 				name_simeon = 1
 				name_william = 3
 				Tancredi = 1
@@ -10732,14 +10732,14 @@ countries = {
 			}
 		}
 
-		court_language = catalan_dialect
+		court_language = sicilian_dialect
 		tolerated_cultures = {
 			maltese
 			catalan
 		}
 
-		country_rank = rank_kingdom
-		capital = palermo
+		country_rank = rank_county
+		capital = messina
 	}
 
 	SIE = {
@@ -11732,7 +11732,7 @@ countries = {
 
 	BYZ = {
 		own_control_core = {
-			amasya gadegara ladik_pontus merzifon sonisa bozok baliseyh candir dinek_keskin sorgun corum gumus huseyinabad iskilip sungurlu divrigi arapgir arguvan egin kayseri bogazliyan develi tomarza yahyali kirsehir hacibektas nevsehir sariyahsi urgup nigde bekarlar bor_tur sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara tokat akdagmadeni aydincik koyulhisar niksar sulusaray zile aksaray kochisar kulu_turkey insuyu ankara cubuk haymana kalecik karakecili polatli beysehir aksehir bolvadin ilgin sarkikaraagac seydisehir yalvac cankiri bayat cerkes kursunlu sabanozu tosya karahisar_i_sahib altintas emirdag sandikli seyitgazi suhut konya altinekin celtik cumra ladik suluklu turgut larende eregli_kar eskil hatunsaray karapinar obruk pirloganda sivrihisar beypazari bozan kaymaz kibrus kizilca mihaliccik adana ayas iskenderun kars_armenia nicosia_cyp famagusta kyrenia larnaca limassol morphou paphos silifke anamur ermenek mut malatya besni gerger kahta kaysun samsat marash afsin elbistan enguzud goksun kapan ulnia sis anavarza caxud comana_cil hargan tarsus candir_cil corycus molevon ayvacik bandirma bayramic can canakkale gonen lapseki bursa adranos dursunbey harmancik iznik balikesir balya bergama bigadic edremit manyas mihalic soma susurluk izmit atpazari kutahya aslanapa domanic emet simav tavsanli sultanonu bilecik goynuk eynegol inonu nalli sogut bolu akcasehir akyazi konrapa mudurnu giresun akkus bayramlu mesudiye terme unye kastamonu arac devrekani inebolu kure_i_mamure taskopru safranbolu amasra bartin gerede mengen ulus yenicepazari sinop bafra boyabat gerze samsun trebizond gorele gumushane khupati rize surmene alaiye karahisar_i_teke manavgat selinti antalya elmali finike kas istanoz tire balat birgi cine guzelhisar milas nazilli isparta burdur dinar egirdir stefani uluborlu mugla bodrum gokabat golhisar marmaris megri tavas yuksekkum manisa akhisar demirci foca gordes kula smyrna ayasuluk cesme menemen urla usak banaz gediz honaz lazkiye seyhli prilep bitola florina kicevo ohrid tetovo skopje prosek kocani kratovo kumanovo shtip strumica veles burgas anhialo aytos lardeja rusokastro sozopol sliven boruy constantia_bul elhovo hiambouli kostenets kran stipon strelcha babadag cernavoda constanta enisala isaccea tulcea harsova pleven bozhenitsa dobrolak gigen hotalich lovech oryahovo veliki_preslav ktenia ovech razgrad shumen targoviste_BUL varna sredets dupnitsa pirot tsaribrod velbuzd samokov svoge zemlungrad karvuna drastar kaliakra kladentsi pangalia tutrakan tarnovo cherven lyaskovets nikopol ruse tryavna vidin archar kozelj kutlovitsa lom svrljig visesav vratsa angelokastron karpenisi loidoriki nafpaktos salona vonitsa athens atalanti livadeia megara thebes corfu cephalonia leukas zakynthos neopatras bodonitsa gravia zetounion arta ioannina parga preveza patras chalandritsa kalavryta vostitsa argos ermioni nafplio corinth damala xylokastro andravida andritsaina pontikokastro kythira kalamata kyparissia modon candia chania elounda gergeri hagios_pavlos rethymno siteia viannos negroponte eretreia karystos kleisoura kymi oreos naxos amorgos andros kythnos milos mykonos rodos karpathos kos durres ballsh debar elbasan kavaje kruje tirana avlonya argyrokastro butrint kleisoura_epirus konitsa branicevo kucevo ravno peja gjakova mitrovica novo_brdo pristina prizren nis glubocica medveda prokuplje vranje krusevac jagodina stalac zica belgrad smederevo rudnik debrc krupanj sabac valjevo ani amberd artashavan kumayri kars kagizman surmali erzurum bayburt erzincan ilic kelkit kemah sebinkarahisar siran tercan malazgirt hinis karakilise hasankale tekman tutak varto antioch afrin arsuz artah idlib latakia baniyas jableh tartus zadar split brac sremska_mitrovica petrovaradin ilok yerevan bjni khor_virap igdir van bargiri ercis hosap mus oltu tortum ispir panaskerti ayntab dluk trapessac urfa birecik siverek suruc harran theodoro lusta soldaia vosporo lezha adakli harput keban palu
+			amasya gadegara ladik_pontus merzifon sonisa bozok baliseyh candir dinek_keskin sorgun corum gumus huseyinabad iskilip sungurlu divrigi arapgir arguvan egin kayseri bogazliyan develi tomarza yahyali kirsehir hacibektas nevsehir sariyahsi urgup nigde bekarlar bor_tur sivas darende dasmenda deliktash gemerek gurun hafik sarkisla zara tokat akdagmadeni aydincik koyulhisar niksar sulusaray zile aksaray kochisar kulu_turkey insuyu ankara cubuk haymana kalecik karakecili polatli beysehir aksehir bolvadin ilgin sarkikaraagac seydisehir yalvac cankiri bayat cerkes kursunlu sabanozu tosya karahisar_i_sahib altintas emirdag sandikli seyitgazi suhut konya altinekin celtik cumra ladik suluklu turgut larende eregli_kar eskil hatunsaray karapinar obruk pirloganda sivrihisar beypazari bozan kaymaz kibrus kizilca mihaliccik adana ayas iskenderun kars_armenia nicosia_cyp famagusta kyrenia larnaca limassol morphou paphos silifke anamur ermenek mut malatya besni gerger kahta kaysun samsat marash afsin elbistan enguzud goksun kapan ulnia sis anavarza caxud comana_cil hargan tarsus candir_cil corycus molevon ayvacik bandirma bayramic can canakkale gonen lapseki bursa adranos dursunbey harmancik iznik balikesir balya bergama bigadic edremit manyas mihalic soma susurluk izmit atpazari kutahya aslanapa domanic emet simav tavsanli sultanonu bilecik goynuk eynegol inonu nalli sogut bolu akcasehir akyazi konrapa mudurnu giresun akkus bayramlu mesudiye terme unye kastamonu arac devrekani inebolu kure_i_mamure taskopru safranbolu amasra bartin gerede mengen ulus yenicepazari sinop bafra boyabat gerze samsun trebizond gorele gumushane khupati rize surmene alaiye karahisar_i_teke manavgat selinti antalya elmali finike kas istanoz tire balat birgi cine guzelhisar milas nazilli isparta burdur dinar egirdir stefani uluborlu mugla bodrum gokabat golhisar marmaris megri tavas yuksekkum manisa akhisar demirci foca gordes kula smyrna ayasuluk cesme menemen urla usak banaz gediz honaz lazkiye seyhli prilep bitola florina kicevo ohrid tetovo skopje prosek kocani kratovo kumanovo shtip strumica veles burgas anhialo aytos lardeja rusokastro sozopol sliven boruy constantia_bul elhovo hiambouli kostenets kran stipon strelcha babadag cernavoda constanta enisala isaccea tulcea harsova pleven bozhenitsa dobrolak gigen hotalich lovech oryahovo veliki_preslav ktenia ovech razgrad shumen targoviste_BUL varna sredets dupnitsa pirot tsaribrod velbuzd samokov svoge zemlungrad karvuna drastar kaliakra kladentsi pangalia tutrakan tarnovo cherven lyaskovets nikopol ruse tryavna vidin archar kozelj kutlovitsa lom svrljig visesav vratsa angelokastron karpenisi loidoriki nafpaktos salona vonitsa athens atalanti livadeia megara thebes corfu cephalonia leukas zakynthos neopatras bodonitsa gravia zetounion arta ioannina parga preveza patras chalandritsa kalavryta vostitsa argos ermioni nafplio corinth damala xylokastro andravida andritsaina pontikokastro kythira kalamata kyparissia modon candia chania elounda gergeri hagios_pavlos rethymno siteia viannos negroponte eretreia karystos kleisoura kymi oreos naxos amorgos andros kythnos milos mykonos rodos karpathos kos durres ballsh debar elbasan kavaje kruje tirana avlonya argyrokastro butrint kleisoura_epirus konitsa branicevo kucevo ravno peja gjakova mitrovica novo_brdo pristina prizren nis glubocica medveda prokuplje vranje krusevac jagodina stalac zica belgrad smederevo rudnik debrc krupanj sabac valjevo ani amberd artashavan kumayri kars kagizman surmali erzurum bayburt erzincan ilic kelkit kemah sebinkarahisar siran tercan malazgirt hinis karakilise hasankale tekman tutak varto antioch afrin arsuz artah idlib latakia baniyas jableh tartus zadar split brac sremska_mitrovica petrovaradin ilok yerevan bjni khor_virap igdir van bargiri ercis hosap mus oltu tortum ispir panaskerti ayntab dluk trapessac urfa birecik siverek suruc harran theodoro lusta soldaia vosporo lezha adakli harput keban palu bari barletta monopoli brindisi lecce gallipoliita taranto
 			sporades servia kastoria hatera veria edessa kassandreia polygyros thessaloniki
 			kilkis giannitsa gynaikokastro serres rentina kavala mount_athos thasos drama xanthia komotini
 			traianopolis demotica lemnos imbros molyvos mitilene gallipoli kesan
@@ -16492,10 +16492,13 @@ countries = {
 		capital = negroponte
 	}
 
-	SAO = { #Salona
+	SAO = {
+		our_cores_conquered_by_others = {
+			salona karystos loidoriki malta
+		}
+ #Salona
 		own_control_core = {
-			  
-			malta
+
 		}
 
 		starting_technology_level = 3
@@ -16504,7 +16507,7 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_monarchy"
+		include = "catholic_monarchy_not_present"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -58061,6 +58064,33 @@ countries = {
 		capital = baghdad
 	}
 
+	AGR = {
+		own_control_core = {
+			girgenti bivona caltanisetta piazza catania syracuse caltagirone modica noto terranovasic
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		government = {
+			ruler = random
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			greek_culture
+		}
+
+		capital = girgenti
+	}
+
 	ALM = {
 		own_control_core = {
 			almeria almanzora baza gergal huescar mojacar velez_rubio
@@ -58126,6 +58156,23 @@ countries = {
 		}
 
 		capital = chelva
+	}
+
+	APU = {
+		government = {
+			ruler = apu_robert_guiscard
+			ruler_term = { character = apu_robert_guiscard start_date = 1059.8.1 regnal_number = 1 }
+		}
+		own_control_core = {
+			chieti lanciano vasto aquila atri celano cittaducale csantangelo sulmona teramo bojano isernia larino trivento foggia bovino lucera manfredonia rotondo sansevero altamura andria francavilla martinafr potenza acerenza lagonegro matera melfi montepeloso santarcangelo catanzaro cotrone gerace monteleone nicastro palmi reggiocal cosenza cassano castrovillari scalea paola rossano avellino ariano santangelo
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = melfi
 	}
 
 	BDJ = {
@@ -58231,6 +58278,23 @@ countries = {
 		capital = cordoba
 	}
 
+	CUP = {
+		government = {
+			ruler = cup_richard_i_drengot
+			ruler_term = { character = cup_richard_i_drengot start_date = 1058.5.12 regnal_number = 1 }
+		}
+		own_control_core = {
+			caserta venafro piedimonte sora
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = caserta
+	}
+
 	DUB = {
 		government = {
 			ruler = lei_murchad_mac_diarmata
@@ -58325,6 +58389,23 @@ countries = {
 		country_rank = rank_empire
 
 		capital = cairo
+	}
+
+	GAE = {
+		government = {
+			ruler = gae_atenulf_i_aquino
+			ruler_term = { character = gae_atenulf_i_aquino start_date = 1064.1.1 regnal_number = 1 }
+		}
+		own_control_core = {
+			gaeta
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = gaeta
 	}
 
 	GHZ = {
@@ -58539,6 +58620,23 @@ countries = {
 		capital = murcia
 	}
 
+	NEA = {
+		government = {
+			ruler = nea_sergius_v_naples
+			ruler_term = { character = nea_sergius_v_naples start_date = 1050.1.1 regnal_number = 5 }
+		}
+		own_control_core = {
+			naples nola
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = naples
+	}
+
 	PLJ = {
 		government = {
 			ruler = plj_ramon_iv_pallars
@@ -58555,6 +58653,34 @@ countries = {
 		country_rank = rank_county
 
 		capital = talarn
+	}
+
+	PLM = {
+		own_control_core = {
+			palermo corleone mazara salemi trapani termini cefalu sciacca malta
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		government = {
+			ruler = plm_ayyub_ibn_tamim
+			ruler_term = { character = plm_ayyub_ibn_tamim start_date = 1063.1.1 regnal_number = 1 }
+			laws = {
+				sharia_law = maliki_policy
+			}
+		}
+		court_language = maghrebi_dialect
+		religious_school = maliki_school
+		government = { mysticism_vs_jurisprudence = -5 }
+
+		country_rank = rank_duchy
+
+		tolerated_cultures = {
+			greek_culture
+		}
+
+		capital = palermo
 	}
 
 	PYS = {
@@ -58744,6 +58870,23 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = zaranj
+	}
+
+	SLR = {
+		government = {
+			ruler = slr_gisulf_ii_salerno
+			ruler_term = { character = slr_gisulf_ii_salerno start_date = 1052.6.3 regnal_number = 2 }
+		}
+		own_control_core = {
+			salerno campagna salacon vallo
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = salerno
 	}
 
 	TOL = {

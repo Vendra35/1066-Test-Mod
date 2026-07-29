@@ -1138,7 +1138,12 @@ and the two live output defects re-verified by hand.
   (Muslim island in 1066 — Palermo falls 1072); Tuscany has NO monarchy
   tag (communes only — design decision); the Byzantine Catepanate
   (Bari falls 1071!) is the southern half of the Byzantium slice, with
-  griko_culture shipped and unused.
+  griko_culture shipped and unused. **CORRECTED by the Italy slice
+  (2026-07-29): "shipped and unused" is wrong** — griko has zero uses
+  in location_templates but **79 define_pop entries in 06_pops.txt**
+  (orthodox; Calabria 62.7 units, Sicily 21.2 incl. messina 10.43,
+  Apulia 24.8, malta 1.89). Paradox already wrote the Byzantine
+  substrate of the Mezzogiorno — under-scaled for 1066, not absent.
 - **Two LIVE defects found in our own output and closed/parked:**
   `creation_date` was invisible to every date audit (`\bdate\b` cannot
   match after an underscore — the third one-line/wordbreak blindness of
@@ -1705,6 +1710,18 @@ vanilla's legitimate landless-member types: `type = building`
 DDI) — validate ours strictly, report what vanilla ships.
 **Means:** every future slice that empties a tag gets the IO sweep
 free; the check (753 members) and the strip guard each other.
+
+### Tag-freeness sweeps MUST exclude binaries
+**Established:** 2026-07-29, Italy package. An unfiltered `grep -rlw`
+for a three-letter id over the game tree returns 91-356 "hits" per
+candidate — all `.dds`/`.bin`/`.mesh` binary noise; with
+`--include=*.txt --include=*.yml ...` (or `-I`) the same ids return
+their true counts (APU/CUP/SLR/NEA/GAE/PLM/AGR: zero each). The CAP
+verdict also refined: its 11 hits are a `$CAP|=+$` loc PARAMETER in
+interfaces loc, not a tag — conservative to avoid, but not proven
+taken.
+**Means:** every freeness sweep names its file-type filter, or it
+lies in the safe-looking direction and wastes free ids.
 
 ### Setup templates NEST includes — a one-level reader lies
 **Established:** 2026-07-29, British package.

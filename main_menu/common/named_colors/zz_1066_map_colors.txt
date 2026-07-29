@@ -55,4 +55,14 @@
 	# map_norse_gael teal (LOI's).
 	map_DUB = rgb { 150 40 52 }     # Dublin       Norse crimson
 	map_ULD = rgb { 205 170 100 }   # Ulaid        sand gold
+	# Southern Italy. Neighbors: PAP vanilla, SIC dark olive
+	# (rgb 100 100 0 — the Gallura-class eyeball if the emirate
+	# greens read badly next to it), BYZ purple returns to Bari.
+	map_APU = rgb { 170 34 40 }     # Apulia       Norman crimson
+	map_CUP = rgb { 52 96 158 }     # Capua        steel blue
+	map_SLR = rgb { 60 140 150 }    # Salerno      teal
+	map_NEA = rgb { 235 190 80 }    # Naples       golden yellow
+	map_GAE = rgb { 120 170 200 }   # Gaeta        pale blue
+	map_PLM = rgb { 34 110 60 }     # Palermo      deep green
+	map_AGR = rgb { 196 164 96 }    # Agrigento    sand
 }

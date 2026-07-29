@@ -305,3 +305,67 @@ ULD = { #Ulaid
 	culture_definition = irish
 	religion_definition = catholic
 }
+
+# Southern Italy 1066 (freeness re-verified over both trees with
+# binary-excluded word-greps: all seven zero hits. The theatre's
+# traps: AML is Mesoamerican, SAL is Saluzzo, BEN is Benin, MLT is
+# Andean, CAP is a loc parameter — none reused). PLM/AGR take
+# sicilian as PRIMARY deliberately (no siculo-arabic culture exists;
+# 100% of their pops are sicilian — a tunisian primary would build a
+# permanent capacity wall; the Arab elite is the RULER's culture).
+
+APU = { #Duchy of Apulia and Calabria (Guiscard)
+	color = map_APU
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = neapolitan
+	religion_definition = catholic
+}
+
+CUP = { #Capua (Drengot)
+	color = map_CUP
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = neapolitan
+	religion_definition = catholic
+}
+
+SLR = { #Salerno (Lombard)
+	color = map_SLR
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = neapolitan
+	religion_definition = catholic
+}
+
+NEA = { #Naples (the old Greek duchy)
+	color = map_NEA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = neapolitan
+	religion_definition = catholic
+}
+
+GAE = { #Gaeta
+	color = map_GAE
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = neapolitan
+	religion_definition = catholic
+}
+
+PLM = { #Emirate of Palermo
+	color = map_PLM
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = sicilian
+	religion_definition = sunni
+}
+
+AGR = { #Emirate of Agrigento
+	color = map_AGR
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = sicilian
+	religion_definition = sunni
+}

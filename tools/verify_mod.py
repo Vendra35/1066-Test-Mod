@@ -736,10 +736,11 @@ _reform_src = strip_comments("\n".join(
 _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
 # Overlords to gate-check: every new-registry tag PLUS the vanilla
 # tags we hand mod-added tributaries to (FRA — the Capetian homage
-# ring; LEI/TYR/TRY/MCM — the Irish ties; a vanilla overlord is
-# invisible to the registry scan but its tributaries fail the same
-# visible gate without a passing branch).
-_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM"}
+# ring; LEI/TYR/TRY/MCM — the Irish ties; PAP — the Melfi
+# investiture; a vanilla overlord is invisible to the registry scan
+# but its tributaries fail the same visible gate without a passing
+# branch).
+_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP"}
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
     strip_comments(_diplo))
@@ -773,10 +774,10 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc name entry")
     if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
-# Nine Seljuk + two Fatimid + six Capetian + six Irish; raise if a
-# future slice adds more.
+# Nine Seljuk + two Fatimid + six Capetian + six Irish + two Melfi;
+# raise if a future slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=23)
+      len(_gate_deps), probs, min_count=25)
 
 # Landless tags are not IO members — Paradox's own rule: vanilla's
 # high_kingship list pointedly omits landless MTH and PLE. A member a

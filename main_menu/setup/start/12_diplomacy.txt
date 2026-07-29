@@ -171,7 +171,6 @@ diplomacy_manager = {
 
 
     scripted_oneway = { first = PAP second = SIC type = guarantee }
-    scripted_oneway = { first = ARA second = SIC type = guarantee }
 
     #-------Iberia-------
 
@@ -675,5 +674,9 @@ diplomacy_manager = {
 	dependency = { first = TYR second = INI subject_type = tributary }
 	dependency = { first = TYR second = KEE subject_type = tributary }
 	dependency = { first = MCM second = BEA subject_type = tributary }
+
+	# 1066: the Melfi investiture (generated)
+	dependency = { first = PAP second = APU subject_type = tributary }
+	dependency = { first = PAP second = CUP subject_type = tributary }
 
 }

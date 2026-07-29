@@ -276,6 +276,19 @@ HISTORICAL_RULERS = {
     "DUB": ("lei_murchad_mac_diarmata", "1061.1.1", 0),   # Murchad mac Diarmata, king of Dublin for his father — AUTHORED SINCE THE CELTIC PASS, seated at last
     "MTH": ("mth_conchobar_ua_mael_sechlainn", "1030.1.1", 0), # Conchobar Ua Mael Sechlainn of Mide [U] — NEW_CHARACTERS
     "MOY": ("moy_mael_snechtai", "1058.1.1", 0),          # Mael Snechtai mac Lulaig of Moray [U] — vanilla's loairn_dynasty — NEW_CHARACTERS
+
+    # Southern Italy 1066 (Opus package 2026-07-29; the SIC-advance
+    # gates, SAO's one-location Malta, the name-key pool and every
+    # birthplace re-verified by the main session). AGR stays
+    # `ruler = random` on purpose: Ibn al-Hawwas died 1064 OR 1068 [D]
+    # — a seated ruler would be a coin flip on whether he is alive.
+    "APU": ("apu_robert_guiscard", "1059.8.1", 1),        # Robert Guiscard, Duke of Apulia and Calabria by the Melfi investiture [U] — NEW_CHARACTERS
+    "SIC": ("sic_roger_de_hauteville", "1062.1.1", 1),    # Roger I, Count of Sicily from his Val Demone beachhead [U] — NEW_CHARACTERS
+    "CUP": ("cup_richard_i_drengot", "1058.5.12", 1),     # Richard I Drengot, Prince of Capua (the city itself 1062) — NEW_CHARACTERS
+    "SLR": ("slr_gisulf_ii_salerno", "1052.6.3", 2),      # Gisulf II of Salerno — succeeded on Guaimar IV's murder; falls to Guiscard 1077 — NEW_CHARACTERS
+    "NEA": ("nea_sergius_v_naples", "1050.1.1", 5),       # Sergius V, Duke of Naples [D on dates] — NEW_CHARACTERS
+    "GAE": ("gae_atenulf_i_aquino", "1064.1.1", 1),       # Atenulf I of Aquino, Duke of Gaeta [U] — NEW_CHARACTERS
+    "PLM": ("plm_ayyub_ibn_tamim", "1063.1.1", 1),        # Ayyub ibn Tamim, emir of Palermo — son of OUR seated Tamim of TUN [U/D] — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -287,11 +300,13 @@ MINOR_RULERS = {"FRA", "HOL", "HUN"}
 # ---------------------------------------------------------- new countries ---
 # The NEW-COUNTRIES-DESIGN.md mechanism, first probe: PEREYASLAVL. One tag,
 # five locations out of Kyiv's left bank, and a ruler vanilla already ships
-# (Vsevolod I, the third triumvir). The probe answers the design doc's open
-# questions: no identity block (the SIC precedent says landed tags need
-# none), a tag id absent from every vanilla database (PYS — checked), and
-# KIE's own include templates. Borders are PROVISIONAL pending the Rus
-# territory pass. `PER` is Perigord — never reuse it for Pereyaslavl.
+# (Vsevolod I, the third triumvir). NOTE the probe's own first launch
+# DISPROVED this comment's original "no identity block needed" claim —
+# identity blocks are MANDATORY (country_manager.cpp:206; the registry
+# is zz_1066_new_countries.txt, whose header records the correction).
+# Tag id absent from every vanilla database (PYS — checked), KIE's own
+# include templates. Borders are PROVISIONAL pending the Rus territory
+# pass. `PER` is Perigord — never reuse it for Pereyaslavl.
 NEW_COUNTRIES = {
     "PYS": """\tPYS = {
 \t\town_control_core = {
@@ -931,6 +946,39 @@ NEW_COUNTRIES["ULD"] = (
     "\t\tcountry_rank = rank_duchy\n\n"
     "\t\tcapital = downpatrick\n\t}\n")
 
+# Southern Italy: the catholic five ride the plain coastal
+# catholic_monarchy (no nesting, no discovery of its own — read in
+# full; expl_mediterranean carries italy_region). The muslim two
+# mirror the taifa block (Maliki — Sicily's Islam was Ifriqiyan)
+# with the Iberian discovery stack replaced by expl_muslim_
+# mediterranean and the tolerated minority set to the island's REAL
+# one: greek_culture (the griko substrate Paradox itself pops —
+# 21 units on the island in 06_pops).
+for _t, _cap in (("APU", "melfi"), ("CUP", "caserta"),
+                 ("SLR", "salerno"), ("NEA", "naples"),
+                 ("GAE", "gaeta")):
+    NEW_COUNTRIES[_t] = (
+        f"\t{_t} = {{\n"
+        "\t\tstarting_technology_level = 3\n"
+        '\t\tinclude = "expl_mediterranean"\n'
+        '\t\tinclude = "catholic_monarchy"\n'
+        "\t\tcountry_rank = rank_duchy\n\n"
+        f"\t\tcapital = {_cap}\n\t}}\n")
+for _t, _cap in (("PLM", "palermo"), ("AGR", "girgenti")):
+    NEW_COUNTRIES[_t] = (
+        f"\t{_t} = {{\n"
+        "\t\tstarting_technology_level = 3\n"
+        '\t\tinclude = "expl_muslim_mediterranean"\n'
+        '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi"\n'
+        "\t\tgovernment = {\n\t\t\tlaws = {\n"
+        "\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n\t\t}\n"
+        "\t\tcourt_language = maghrebi_dialect\n"
+        "\t\treligious_school = maliki_school\n"
+        "\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n\n"
+        "\t\tcountry_rank = rank_duchy\n\n"
+        "\t\ttolerated_cultures = {\n\t\t\tgreek_culture\n\t\t}\n\n"
+        f"\t\tcapital = {_cap}\n\t}}\n")
+
 # The Fatimid territory, resolved from definitions.txt like the Seljuk
 # rules. Variant A-prime (user-approved 2026-07-29): MAM's remaining 120
 # minus tobruk (granted to BQA — 1066 Barqa is Zirid-aligned Banu Qurra
@@ -1118,6 +1166,62 @@ BRITISH_LANDLESS = (
     "SBL", "MNN",
 )
 
+# ------------------------------------------------- southern Italy 1066 ---
+# THE MEZZOGIORNO (Opus package 2026-07-29, user-approved). Explicit
+# grant lists; donors NAP 65 (emptied), SIC 22->4 (KEPT as Roger's
+# Norman county — vanilla locks 6 advances behind has_or_had_tag =
+# SIC and every one is Norman-Sicilian content: the Constitutions of
+# Melfi, the Studium Generale; an emir must never hold them), SAO 1
+# (the Frankokratia duchy of Salona, holding ONLY malta since our
+# Byzantium slice took its Greek locations). The 10 Abruzzo locations
+# ride with APU as a KNOWING ANACHRONISM (imperial in 1066; aquila is
+# a 1254 foundation — the Lyonnais precedent, banked for the HRE
+# slice). Amalfi has NO map location (like Capua-city and Aversa,
+# both inside caserta) — the gap is recorded, no tag is possible.
+# NAP's landless snapshot auto-yields 65 mainland + its existing 22
+# Sicilian claims = the 87-location Two Sicilies irredenta (the 1282
+# Angevin future); SAO's yields vanilla's four Salona claims back.
+_ITALY_GRANTS = {
+    "APU": ["chieti", "lanciano", "vasto", "aquila", "atri", "celano",
+            "cittaducale", "csantangelo", "sulmona", "teramo",
+            "bojano", "isernia", "larino", "trivento",
+            "foggia", "bovino", "lucera", "manfredonia", "rotondo",
+            "sansevero", "altamura", "andria", "francavilla",
+            "martinafr",
+            "potenza", "acerenza", "lagonegro", "matera", "melfi",
+            "montepeloso", "santarcangelo",
+            "catanzaro", "cotrone", "gerace", "monteleone", "nicastro",
+            "palmi", "reggiocal",
+            "cosenza", "cassano", "castrovillari", "scalea", "paola",
+            "rossano",
+            "avellino", "ariano", "santangelo"],
+    "CUP": ["caserta", "venafro", "piedimonte", "sora"],
+    "SLR": ["salerno", "campagna", "salacon", "vallo"],
+    "NEA": ["naples", "nola"],
+    "GAE": ["gaeta"],
+    "PLM": ["palermo", "corleone", "mazara", "salemi", "trapani",
+            "termini", "cefalu", "sciacca", "malta"],
+    "AGR": ["girgenti", "bivona", "caltanisetta", "piazza", "catania",
+            "syracuse", "caltagirone", "modica", "noto",
+            "terranovasic"],
+}
+
+# The Byzantine catepanate restored: Bari (the catepan's seat, falls
+# 16 April 1071 — the situation hook), the Terra d'Otranto, and the
+# [D] Taranto/Brindisi pair on the recovered-1060s reading. BYZ's
+# expl_mediterranean already grants italy_region — no blind capital.
+_ITALY_BYZ_EXTRA = ["bari", "barletta", "monopoli", "brindisi",
+                    "lecce", "gallipoliita", "taranto"]
+
+# The Melfi investiture: Guiscard and Richard as PAPAL tributaries
+# under papal_investiture_reform (the khutba pattern's fourth use;
+# first theocracy overlord). SIC/SLR/NEA/GAE independent; the
+# emirates independent.
+ITALY_TRIBUTARIES = (("PAP", "APU"), ("PAP", "CUP"))
+
+# NAP (the 1282 Angevin kingdom) and SAO (Salona) end landless.
+ITALY_LANDLESS = ("NAP", "SAO")
+
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
 # independent: the caliph outranks the sultan, the Ghaznavid peace of
@@ -1183,7 +1287,8 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
-    + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS
+    + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
+    + ITALY_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1213,6 +1318,7 @@ LOCATION_GRANTS = {
 LOCATION_GRANTS.update(_IBERIA_GRANTS)
 LOCATION_GRANTS.update(_BYZ_GRANTS)
 LOCATION_GRANTS.update(_BRITISH_GRANTS)
+LOCATION_GRANTS.update(_ITALY_GRANTS)
 # LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
 # build_countries — see _byz_target().
 
@@ -1226,6 +1332,7 @@ CAPITAL_FIXES = {
     "SER": ("prizren", "trgoviste_SER"),  # Prizren goes to BYZ; Trgoviste IS Ras, the zupan's seat
     "MTH": ("athlone", "mullingar"),  # athlone is HYM's; the Clann Cholmain seat is Lough Ennell (British slice)
     "MCM": ("killarney", "bunratty"), # vanilla's own o_brien_dynasty comment: home = bunratty #Killaloe (04_dynasties.txt:485)
+    "SIC": ("palermo", "messina"),    # Roger holds Palermo only from 1072; Messina is the 1061 beachhead (Italy slice)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -1317,6 +1424,25 @@ FIELD_FIXES = {
     # has no rank line of its own — anchored on its capital line.
     "LOI": [("capital = islay",
              "country_rank = rank_kingdom\n\t\tcapital = islay")],
+    # --- Southern Italy (2026-07-29). SIC becomes Roger's COUNTY:
+    # rank_kingdom is 1130 (renders "Count Roger" via the generic
+    # county fallback — the CAT precedent), catalan is the 1282
+    # Aragonese court. NAP and SAO go landless (the POR swap). PAP's
+    # government block carries NO reforms block — the container is
+    # created against the `ruler = random` anchor (field surgery runs
+    # BEFORE the historical seating, measured in the report order:
+    # "fields corrected" precedes "historical rulers restored"; the
+    # exactly-once assert flips this loudly if the order changes).
+    "SIC": [("country_rank = rank_kingdom", "country_rank = rank_county"),
+            ("court_language = catalan_dialect",
+             "court_language = sicilian_dialect")],
+    "NAP": [('include = "catholic_monarchy"',
+             'include = "catholic_monarchy_not_present"')],
+    "SAO": [('include = "catholic_monarchy"',
+             'include = "catholic_monarchy_not_present"')],
+    "PAP": [("\t\t\truler = random\n",
+             "\t\t\treforms = {\n\t\t\t\tpapal_investiture_reform\n"
+             "\t\t\t}\n\t\t\truler = random\n")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -2282,6 +2408,102 @@ NEW_CHARACTERS = """
 		dynasty = loairn_dynasty
 		tag = MOY
 	}
+
+	# --- 1066 southern Italy ------------------------------------------------
+	# The Mezzogiorno package (Opus 2026-07-29). Vanilla ships ZERO
+	# usable characters here (the only guiscard/hauteville hits are
+	# comments and two Limousin lords). Name routes: the Normans'
+	# name_robert/roger/richard have no norman-dialect rows and fall
+	# through to the base forms — exactly right; the Lombards take the
+	# neapolitan_dialect rows (name_sergius -> "Sergie"); name_gisulf
+	# and name_ayyub are invented keys #8 and #9 (zero hits in both
+	# registries, loc rows shipped). Births [U] throughout.
+	#
+	# Robert Guiscard — sixth son of Tancred of Hauteville, Duke of
+	# Apulia and Calabria by the Melfi investiture of August 1059.
+	# Historically dies 1085 besieging Cephalonia; excommunicated and
+	# absolved twice — situation material for decades.
+	apu_robert_guiscard = {
+		first_name = { name = name_robert }
+		culture = norman
+		religion = catholic
+		birth_date = 1015.1.1
+		birth = coutances
+		dynasty = hauteville_dynasty
+		tag = APU
+	}
+
+	# Roger, Guiscard's youngest brother — Count of Sicily from the
+	# Messina beachhead; takes Palermo 1072, Malta 1091; his son is
+	# the first King of Sicily.
+	sic_roger_de_hauteville = {
+		first_name = { name = name_roger }
+		culture = norman
+		religion = catholic
+		birth_date = 1031.1.1
+		birth = coutances
+		dynasty = hauteville_dynasty
+		tag = SIC
+	}
+
+	cup_richard_i_drengot = {
+		first_name = { name = name_richard }
+		culture = norman
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = alencon
+		dynasty = drengot_dynasty
+		tag = CUP
+	}
+
+	# Gisulf II, last Lombard prince of Salerno — succeeded on his
+	# father Guaimar IV's murder (3 June 1052); Guiscard, his own
+	# brother-in-law, takes Salerno in 1077.
+	slr_gisulf_ii_salerno = {
+		first_name = { name = name_gisulf }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = salerno
+		dynasty = salerno_dynasty
+		tag = SLR
+	}
+
+	nea_sergius_v_naples = {
+		first_name = { name = name_sergius }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = naples
+		dynasty = sergi_dynasty
+		tag = NEA
+	}
+
+	gae_atenulf_i_aquino = {
+		first_name = { name = name_atenulf }
+		culture = neapolitan
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = gaeta
+		dynasty = aquino_dynasty
+		tag = GAE
+	}
+
+	# Ayyub ibn Tamim — son of OUR seated Tamim of TUN, sent by the
+	# Zirids to hold Palermo 1063-1068/69 [D]; rides our own
+	# zirid_dynasty. The father link crosses into the NEW_CHARACTERS
+	# Zirid block (zir_tamim_ibn_al_muizz precedes him — parents
+	# before children).
+	plm_ayyub_ibn_tamim = {
+		first_name = { name = name_ayyub }
+		culture = tunisian
+		religion = sunni
+		birth_date = 1040.1.1
+		birth = kairouan
+		father = zir_tamim_ibn_al_muizz
+		dynasty = zirid_dynasty
+		tag = PLM
+	}
 """
 
 
@@ -2531,10 +2753,11 @@ def build_countries(src):
     _byz_have = set(_owned_by(src, "BYZ"))
     _target = _byz_target()
     LOCATION_GRANTS["BYZ"] = ([l for l in _target if l not in _byz_have]
-                              + _SELJUK_BYZ_EXTRA)
-    if len(LOCATION_GRANTS["BYZ"]) != 499:
+                              + _SELJUK_BYZ_EXTRA + _ITALY_BYZ_EXTRA)
+    if len(LOCATION_GRANTS["BYZ"]) != 506:
         sys.exit(f"BYZ grant list resolved to {len(LOCATION_GRANTS['BYZ'])} "
-                 f"locations — 495 (Byzantium package) + 4 (Kharpert) = 499")
+                 f"locations — 495 (Byzantium package) + 4 (Kharpert) "
+                 f"+ 7 (the Italian catepanate) = 506")
 
     # The Seljuk world resolves the same way. Grants to a tag that
     # already holds some of its list (KRM 29, MZN 6, HLL 4) are no-ops by
@@ -2651,7 +2874,7 @@ def build_countries(src):
     _landless_claims = {t: _owned_by(src, t)
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS
                         + EGYPT_LANDLESS + FRANCE_LANDLESS
-                        + BRITISH_LANDLESS}
+                        + BRITISH_LANDLESS + ITALY_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -2882,6 +3105,7 @@ def build_countries(src):
         ("BYZ", "name_isaac"): 1,
         ("BYZ", "name_emmanuel"): 0,      # Manuel I accedes 1143
         ("BYZ", "name_andronikos"): 0,    # first Andronikos is 1183; key renamed below
+        ("SIC", "name_roger"): 0,         # Roger I is our seated term's regnal 1; the table's 3 is Hohenstaufen-era (Italy slice)
         ("SWE", "name_eric"): 7,          # vanilla's own chain: Erik VII to 995, Erik VIII accedes 1083
         ("HUN", "name_stephen"): 1,       # Stephen I the Saint only, pre-1066
         ("HUN", "name_andrew"): 1,        # Andrew I d. 1060
@@ -3623,6 +3847,28 @@ def build_diplomacy(src):
            + "\n\t# 1066: the Irish client ties (generated)\n"
            + _btribs + src[_wrap:])
     report.append(("Irish tributaries added", len(BRITISH_TRIBUTARIES)))
+
+    # Aragon guaranteeing Sicily is the 1282 Vespers — gone. The
+    # PAP->SIC guarantee STAYS: a papal guarantee over Roger's county
+    # is the Melfi relationship in miniature.
+    src, n_ara = re.subn(
+        r"^[ \t]*scripted_oneway = \{ first = ARA second = SIC [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_ara != 1:
+        sys.exit(f"expected exactly 1 ARA->SIC guarantee, stripped {n_ara}")
+    report.append(("Vespers-era ARA->SIC guarantee removed", n_ara))
+
+    # The Melfi investiture: Guiscard and Richard as papal
+    # TRIBUTARIES (papal_investiture_reform carries the modifier —
+    # the khutba pattern's fourth use, first theocracy overlord).
+    _wrap = src.rindex("\n}")
+    _itribs = "".join(
+        f"\tdependency = {{ first = {o} second = {s} subject_type = tributary }}\n"
+        for o, s in ITALY_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Melfi investiture (generated)\n"
+           + _itribs + src[_wrap:])
+    report.append(("Melfi tributaries added", len(ITALY_TRIBUTARIES)))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):
