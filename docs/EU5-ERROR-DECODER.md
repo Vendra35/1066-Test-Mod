@@ -591,6 +591,30 @@ regex:<python regular expression>
 Their list is 663 lines for EU5 1.3. Building one for this project is cheap and
 pays back the first time an unfamiliar signature turns out not to be ours.
 
+### `jomini_script_system.cpp:252 — Undefined event target 'target_ruler'/'target_province' + Event target link 'scope' returned an unset scope` at `events/disaster/horde_civil_war.txt:608/628/739/750/761`
+**Means:** VANILLA-side (decoded in Mongol Resurgence 2026-07-30, which
+ships no override of that file — and neither do we). Vanilla saves the
+scopes through a swallowed link (`ruler_or_regent ?= { save_scope_as }`)
+and uses them UNGUARDED in the option bodies; a momentarily rulerless
+civil-war party makes every option error. The error.log
+`CHARACTER.GetName`/`FetchData`/`THIRD_ADD_CHARACTER_MODIFIER_DURATION`
+trio with identical timestamps is the same event's tooltips, not a
+second bug. 1066 is full of hordes, so this disaster CAN fire here —
+when the signature appears, it is this.
+**Fix:** none — accepted, harmless no-op.
+
+### `initialize_from_bookmark.cpp:495-1719 — Country '<TAG>' has no government type / heir-selection / capital / society values / parliament_type…` (12-line barrage per tag)
+**Means:** a registry identity block with NO presence at bookmark init.
+Measured on MR's KAZ (2026-07-30): the initializer accepts any ONE of
+three things — a 10_countries block, revolter cores (vanilla SKE,
+10_countries.txt:308), or `is_historic = yes` on the identity block
+(vanilla's idiom, 58 uses, balkans.txt:40). Our landless shells all
+carry 10_countries claim blocks, which is why this never fired here.
+**Fix:** if a future slice ships a PURE identity block (no 10_countries
+presence at all), add `is_historic = yes` — and test that
+`change_location_owner` still instantiates it (unobserved combination,
+flagged in MR's Great Partition test).
+
 ## Adding to this file
 
 When the game reports a signature that is not here, add a row **once you have

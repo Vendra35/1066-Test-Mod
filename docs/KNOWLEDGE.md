@@ -1906,6 +1906,37 @@ prove the construct never occurs mid-line. Harness now guards
 "exactly one ruler key per country block" (2378 items, proven by
 breaking); the build validator scans unanchored comment-stripped text.
 
+### Four laws imported from the MR session of 2026-07-30
+**Established:** the MR observer-run decode + six-lens audit, each point
+measured there and re-checked for relevance here.
+1. **Advance `requires` never crosses an age.** 2748 of 2748 vanilla
+   `requires` entries name a SAME-age advance, zero exceptions; vanilla's
+   Chagatai line roots its age-3 advance on a fresh age-3 root rather
+   than its own age-2 predecessor. A cross-age chain likely dead-ends
+   silently at the age boundary. Matters here the day 1066 authors
+   advances — and age_1 spans 276 years, so our chains will be LONG;
+   MR's harness now encodes the law, copy that check when the first
+   1066 advance lands.
+2. **Resource modifiers no-op silently on governments lacking the
+   resource.** `monthly_horde_unity` on a settled monarchy errors
+   NOTHING — vanilla grants it to non-hordes deliberately (generic
+   age-5 reform `licensing_of_the_press_act` gives horde unity AND
+   tribal cohesion to everyone). Cross-government content costs dead
+   tooltip lines, never log spam — relevant to every 1066 reform or
+   advance that touches tribes and hordes.
+3. **A pure identity block trips a 12-line init barrage** unless it has
+   a 10_countries presence, revolter cores, or `is_historic = yes` —
+   full decode in the error decoder. Our landless shells are immune
+   (they carry claim blocks); a future presence-less tag is not.
+4. **definitions.txt: 1337 of 4150 province blocks are MULTI-LINE.**
+   Any line-based parser silently drops 38% of the map — MR's harness
+   did exactly that (16,948 memberships seen vs 27,279 real) until its
+   2026-07-30 fix. Checked the same day: our `_parse_defs` is
+   token-stack, brace-aware, comment-stripped — CLEAN. The law binds
+   any FUTURE parser: token/brace-based only, never line-shape.
+**Means:** the anchor class (BOM-^, one-line blocks, now multi-line
+provinces) keeps producing members; parse structure, never line shape.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The
