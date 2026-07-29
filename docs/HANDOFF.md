@@ -1132,8 +1132,12 @@ disloyal fief is period-accurate flavor; if a longer observer run
 shows the whole ring cancelling early, the ring gets an opinion
 cushion. Fold into the next long observer session's checklist.
 
-**ITEM 24 — THE COAT-OF-ARMS BATCH (landed 2026-07-29 night, NEEDS
-GAME TEST).** `zz_1066_flags.txt`, 9 arms; system decoded in
+**ITEM 24 — THE COAT-OF-ARMS BATCH — CORE CONFIRMED IN GAME the same
+night (user screenshots 22:11): SEL blue double-headed eagle, ABS
+black kufic banner, FAT white — the BOM'd file LOADS, tag-as-COA_KEY
+binds, the caliphal inversion is fixed. Probes 4-9 below (APU, the
+SIC override, DUB, VMD, ZAH, PYS) still ride the next session's
+tour.** `zz_1066_flags.txt`, 9 arms; system decoded in
 `docs/COA.md`; harness check proven by breaking three ways. The user's
 "before" screenshots are the baseline: ABS flew generator-WHITE, FAT
 generator-BLACK (history inverted), SEL a generic red-crescent flag.
@@ -1160,6 +1164,25 @@ Test — click tour, ~5 minutes, all in the country panel's flag:
 Everything else (taifas, Catalan counties, Seljuk clients, PLM/AGR,
 ULD, south-Italian minors) KEEPS its generated flag by design — the
 deferred tiers are in `docs/COA.md` §4.
+
+**IN FLIGHT AT SESSION END (2026-07-29 ~22:30, usage limit):** a
+subagent was implementing the GERMANY II batch (user-approved, all
+decisions final) directly in the working tree when the session wound
+down. THE SPEC IS `docs/GERMANY2-PACKAGE.md` — treat it as the
+authority. If the tree is DIRTY when you read this: diff it against
+that spec, run `python tools/build_setup.py` and
+`python tools/verify_mod.py`, review per the normal subagent-draft
+rules, and commit only when both are green and the diff matches the
+spec; if the work is partial or wrong, `git checkout` it away and
+re-implement from the spec — nothing is lost, the spec is complete.
+If the tree is CLEAN with the batch committed, the commit message
+will say so — then only the game test remains. QUEUED BEHIND IT:
+the ITALY NORTH batch, spec in `docs/ITALY-NORTH-PACKAGE.md`, all
+four user decisions recorded inside (TUS revival, FLO empties, ISR
+for Ulric of Weimar, RAV takes Faenza+Imola); it depends on Germany
+II's weimar_dynasty, so it lands second. Both packages carry every
+date, key, grant list and constant-discipline note needed to
+implement without re-research.
 
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the
