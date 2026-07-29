@@ -710,6 +710,54 @@ for p, s in code.items():
 # Raise as script content lands; today the repo is almost all setup data.
 check("prev lands on a country where one is required", count, probs, min_count=0)
 
+# ---- new-tag tributary overlords pass the subject-type gate ----------------
+# Measured 2026-07-29: tributary.txt's visible gate (:20-24 — overlord
+# steppe_horde, subject tribe/horde, or overlord carries
+# modifier:allow_tributary_subject) IS enforced at game start
+# (government.cpp:3702 cites those exact lines) and a failing dependency is
+# silently DOWNGRADED TO VASSAL — all nine Seljuk clients were, in game.
+# Vanilla's own passing overlords are hordes, tribe-subjecting, or modifier
+# carriers (African advances, the Middle Kingdom IO, reforms); ours must
+# carry the modifier through a reform assigned in setup. Scoped to overlords
+# WE invented (the zz_1066_new_countries.txt registry): vanilla's own
+# gate-failing lines are Paradox-side data, reported by the engine, not
+# validated here.
+probs = []
+_newreg = next((s for p, s in code.items()
+                if p.endswith("in_game/setup/countries/zz_1066_new_countries.txt")), "")
+_newtags = set(re.findall(r"^([A-Z][A-Z0-9]{2,4}) = \{",
+                          strip_comments(_newreg), re.M))
+_diplo = next((s for p, s in code.items()
+               if p.endswith("main_menu/setup/start/12_diplomacy.txt")), "")
+_countries10 = next((s for p, s in code.items()
+                     if p.endswith("main_menu/setup/start/10_countries.txt")), "")
+_reform_src = strip_comments("\n".join(
+    s for p, s in code.items() if "/in_game/common/government_reforms/" in p))
+_loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
+_gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
+    r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
+    strip_comments(_diplo)) if m.group(1) in _newtags]
+for _ov, _sub in _gate_deps:
+    _blk = re.search(rf"^\t{_ov} = \{{.*?^\t\}}", _countries10, re.M | re.S)
+    _keys = " ".join(re.findall(r"reforms = \{([^}]*)\}",
+                                _blk.group(0) if _blk else "")).split()
+    _passes = False
+    for _k in _keys:
+        _def = re.search(rf"^{_k} = \{{.*?^\}}", _reform_src, re.M | re.S)
+        if _def and re.search(r"allow_tributary_subject\s*=\s*yes", _def.group(0)):
+            _passes = True
+            if not re.search(rf"^\s*{_k}:", _loc_all, re.M):
+                probs.append(f"reform {_k} has no loc name entry")
+            if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
+                probs.append(f"reform {_k} has no loc desc entry")
+    if not _passes:
+        probs.append(f"{_ov} -> {_sub}: overlord {_ov} carries no setup reform "
+                     "granting allow_tributary_subject — the engine will "
+                     "downgrade this tributary to a vassal at game start")
+# Nine Seljuk clients today; raise if a future slice adds more.
+check("new-tag tributary overlords pass the subject-type gate",
+      len(_gate_deps), probs, min_count=9)
+
 print()
 if fails:
     print(f"RESULT: {len(fails)} check(s) with findings: {', '.join(fails)}")
