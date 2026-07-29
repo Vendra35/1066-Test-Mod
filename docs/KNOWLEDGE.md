@@ -1778,6 +1778,44 @@ restate expl + rank explicitly.
 the full include chain; vanilla mixes quoted and unquoted include
 forms.
 
+### The situation-spec pass's mechanism findings (2026-07-29; the specs live in docs/SITUATION-SPECS.md)
+**Established:** the spec-bank research pass; the three headline
+claims re-verified by the main session by hand.
+1. **The DISASTER system exists and we have never used it** — 35
+   vanilla disasters, a native `modifier = {}` block situations lack,
+   `fire_only_once`, its own actions and map-mode link
+   (disasters/readme.txt). The country-scoped sibling of a situation.
+2. **`byzantine_succession_crisis` is LIVE at 1066** (re-verified:
+   `tag = BYZ`, no date/age gate) — a complete pretender machine that
+   can fire on our Byzantium TODAY. Next-launch grep: has it been
+   firing already? Spec 1 drives it rather than duplicating it.
+3. **`coup_attempt` is dead for our whole era** (re-verified:
+   `NOT = { current_age = age_1_traditions }`, coup_attempt.txt:8) —
+   the first cheap MEASURED content cost of the age-1 decision;
+   feeds the open age-1 question.
+4. A situation has NO phase field and NO modifier block — phase is a
+   situation-scoped variable (the Tordesillas idiom), modifiers are
+   pushed from lifecycle hooks; situation FACTIONS are real IOs
+   joined via `join_situation_faction` (no add_to_situation exists).
+5. NO character imprisonment and NO scripted battles exist — both
+   are modifier+event constructions.
+6. **Vanilla bug #8:** `eng_henry_i` carries
+   `father = eng_william_ii_rufus` (his BROTHER; both are the
+   Conqueror's sons — re-verified 05_characters.txt:733). Fix rides
+   with the Norman v2 spec. Bug #2's consequence sharpened:
+   `byz_romanos_iv_diogenes` wears Constantine X's BIRTH date too —
+   our death-strip leaves him alive but aged 60 at Manzikert; fix
+   rides with the Manzikert spec.
+7. The 11th-century vanilla roster is 43% Japanese (193 of 446 born
+   1000-1090); Latin Christendom + Byzantium is under 150 — every
+   Islamic/Norman-Italian/Welsh/Pecheneg actor must be authored.
+8. Map gaps of the alpuente/Amalfi class, recorded: alamut,
+   silistra, sofia, pliska, adrianople, zallaqa, tyre.
+**Means:** the situation phase opens with twelve reviewed build
+briefs, a priority order whose first five items teach the tools the
+flagships need, and two vanilla-bug fixes pre-assigned to their
+specs.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The
