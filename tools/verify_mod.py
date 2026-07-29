@@ -736,12 +736,23 @@ _reform_src = strip_comments("\n".join(
 _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
 # Overlords to gate-check: every new-registry tag PLUS the vanilla
 # tags we hand mod-added tributaries to (FRA — the Capetian homage
-# ring; a vanilla overlord is invisible to the registry scan but its
-# tributaries fail the same visible gate without a reform).
+# ring; LEI/TYR/TRY/MCM — the Irish ties; a vanilla overlord is
+# invisible to the registry scan but its tributaries fail the same
+# visible gate without a passing branch).
+_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM"}
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
-    strip_comments(_diplo)) if m.group(1) in _newtags or m.group(1) == "FRA"]
+    strip_comments(_diplo))
+    if m.group(1) in _newtags or m.group(1) in _MOD_TRIB_OVERLORDS]
 for _ov, _sub in _gate_deps:
+    # The visible gate (tributary.txt:19-24) passes on EITHER branch:
+    # the SUBJECT is a tribe/steppe_horde (the Gaelic ties — their
+    # gaelic_tribe* includes carry type = tribe) or the overlord holds
+    # modifier:allow_tributary_subject from a setup reform.
+    _sblk = re.search(rf"^\t{_sub} = \{{.*?^\t\}}", _countries10,
+                      re.M | re.S)
+    if _sblk and re.search(r'include = "gaelic_tribe', _sblk.group(0)):
+        continue
     _blk = re.search(rf"^\t{_ov} = \{{.*?^\t\}}", _countries10, re.M | re.S)
     _keys = " ".join(re.findall(r"reforms = \{([^}]*)\}",
                                 _blk.group(0) if _blk else "")).split()
@@ -751,9 +762,10 @@ for _ov, _sub in _gate_deps:
         if _def and re.search(r"allow_tributary_subject\s*=\s*yes", _def.group(0)):
             _passes = True
     if not _passes:
-        probs.append(f"{_ov} -> {_sub}: overlord {_ov} carries no setup reform "
-                     "granting allow_tributary_subject — the engine will "
-                     "downgrade this tributary to a vassal at game start")
+        probs.append(f"{_ov} -> {_sub}: neither branch of the tributary "
+                     "visible gate passes — no overlord reform granting "
+                     "allow_tributary_subject and the subject is not a "
+                     "tribe; the engine will downgrade it to a vassal")
 # Every reform WE define must resolve to loc, name AND desc — a missing
 # key renders raw in the government screen, silently.
 for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
@@ -761,10 +773,51 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc name entry")
     if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
-# Nine Seljuk + two Fatimid + six Capetian homage; raise if a future
-# slice adds more.
+# Nine Seljuk + two Fatimid + six Capetian + six Irish; raise if a
+# future slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=17)
+      len(_gate_deps), probs, min_count=23)
+
+# Landless tags are not IO members — Paradox's own rule: vanilla's
+# high_kingship list pointedly omits landless MTH and PLE. A member a
+# slice emptied would sit in its IO as a ghost (British slice 2026-
+# 07-29, whose member surgery — CLA/THO/CVN out, MTH/DUB/ULD in —
+# this check guards).
+probs = []
+_io15 = next((s for p, s in code.items()
+              if p.endswith("main_menu/setup/start/15_international_organizations.txt")), "")
+_own_re = re.compile(
+    r"(?:own_control_core|own_control_integrated|own_control_conquered"
+    r"|own_control_colony|own_core|own_conquered|own_integrated"
+    r"|own_colony|control_core|control)[ \t]*=[ \t]*\{([^}]*)\}")
+_c10_clean = strip_comments(_countries10)
+_blk_starts = list(re.finditer(r"^\t([A-Z0-9]{2,6}) = \{", _c10_clean, re.M))
+_blk_bodies = {}
+for _i, _b in enumerate(_blk_starts):
+    _e = (_blk_starts[_i + 1].start() if _i + 1 < len(_blk_starts)
+          else len(_c10_clean))
+    _blk_bodies[_b.group(1)] = _c10_clean[_b.start():_e]
+_members_checked = 0
+for _mm in re.finditer(r"members[ \t]*=[ \t]*\{([^}]*)\}",
+                       strip_comments(_io15)):
+    for _t in _mm.group(1).split():
+        _members_checked += 1
+        _body = _blk_bodies.get(_t)
+        if _body is None:
+            probs.append(f"IO member {_t} has no country block")
+        elif (not any(g.split() for g in _own_re.findall(_body))
+              and not re.search(r"^\t\ttype = (building|army|pop)", _body,
+                                re.M)):
+            # building/army/pop-based countries legitimately hold no
+            # land: this check's first runs flagged TGS/YSM (vanilla
+            # `type = building` Japanese clans) and DDI (`type = pop`,
+            # the Thai sect) — validate ours strictly, report what
+            # vanilla shipped. It ALSO found a real ghost on the same
+            # first run: landless CIL sitting in the autocephalous
+            # patriarchate — now stripped by build_ios.
+            probs.append(f"IO member {_t} holds no land — landless tags "
+                         "are not IO members (vanilla's own rule)")
+check("IO members hold land", _members_checked, probs, min_count=27)
 
 print()
 if fails:

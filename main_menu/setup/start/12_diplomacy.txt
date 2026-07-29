@@ -26,40 +26,13 @@ diplomacy_manager = {
 	
     #dependency = { first = SBL second = MNN subject_type = vassal }
     #dependency = { first = ENG second = SBL subject_type = vassal }
-    dependency = { first = SBL second = LOI subject_type = vassal }
-    dependency = { first = SCO second = ROS subject_type = vassal }
-    dependency = { first = SCO second = MOY subject_type = vassal }
 
-    dependency = { first = WLS second = GWR subject_type = vassal }
-    dependency = { first = WLS second = GMG subject_type = vassal }
-    dependency = { first = WLS second = MAC subject_type = vassal }
-    dependency = { first = WLS second = AUD subject_type = vassal }
-    dependency = { first = WLS second = BRO subject_type = vassal }
-    dependency = { first = WLS second = POS subject_type = vassal }
-    dependency = { first = WLS second = EWY subject_type = vassal }
-    dependency = { first = WLS second = CMS subject_type = vassal }
-    dependency = { first = WLS second = PMB subject_type = vassal }
-    dependency = { first = WLS second = DEN subject_type = vassal }
 
     #dependency = { first = PLE second = CLR subject_type = vassal }
-    dependency = { first = PLE second = CWM subject_type = vassal }
     #dependency = { first = PLE second = MYO subject_type = vassal }
-    dependency = { first = PLE second = KID subject_type = vassal }
-    dependency = { first = PLE second = ORD subject_type = vassal }
-    dependency = { first = PLE second = DMS subject_type = vassal }
-    dependency = { first = PLE second = ULS subject_type = vassal }
-    dependency = { first = PLE second = AMA subject_type = vassal }
-    dependency = { first = PLE second = DCI subject_type = vassal }
     #dependency = { first = PLE second = GLE subject_type = vassal }
     
-    dependency = { first = TRY second = AMH subject_type = vassal }
-    dependency = { first = TYR second = INI subject_type = vassal }
-    dependency = { first = TYR second = KEE subject_type = vassal }
-    dependency = { first = LEI second = OSS subject_type = vassal }
-    dependency = { first = MCM second = BEA subject_type = vassal }
 
-    scripted_mutual = { first = THO second = CWM type = alliance }
-    scripted_mutual = { first = MYO second = UMH type = alliance }
 
     # Scandinavia
 
@@ -694,5 +667,13 @@ diplomacy_manager = {
 	dependency = { first = FRA second = VLS subject_type = tributary }
 	dependency = { first = FRA second = VMD subject_type = tributary }
 	dependency = { first = FRA second = ANJ subject_type = tributary }
+
+	# 1066: the Irish client ties (generated)
+	dependency = { first = LEI second = DUB subject_type = tributary }
+	dependency = { first = LEI second = OSS subject_type = tributary }
+	dependency = { first = TRY second = AMH subject_type = tributary }
+	dependency = { first = TYR second = INI subject_type = tributary }
+	dependency = { first = TYR second = KEE subject_type = tributary }
+	dependency = { first = MCM second = BEA subject_type = tributary }
 
 }

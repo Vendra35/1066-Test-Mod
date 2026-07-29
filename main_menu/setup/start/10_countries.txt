@@ -3902,6 +3902,7 @@ countries = {
 
 	ENG = { # England
 		own_control_core = {
+			ludlow wigmore oswestry
 			appleby hythe alnwick barnstaple bedford dunstable birmingham boston bosworth shoreham lewes bristol buckingham bury glossop cambridge canterbury carlisle rochester cheltenham chelmsford chesterfield chichester chippenham cockermouth colchester kettering coventry cirencester derby dorchester dover exeter gloucester grimsby guildford reigate harrow hastings hedingham hertford hexham hull huntingdon ipswich kendal grantham penrith kidderminster leeds leicester lincoln london loughborough lowestoft lynn daventry newark newcastle northampton norwich nottingham oxford ely plymouth bideford bampton okehampton poole portsmouth amesbury lymington retford rutland salisbury southampton prittlewell kingston stafford stoke stratford trowbridge taunton wells barking weymouth shaftesbury wight winchester windsor worcester yarmouth york scarborough tamworth bedale richmond whitby bridlington selby pontefract skipton wakefield louth thetford fakenham reading tonbridge minehead portishead bath henley royston aylesbury wycombe lavenham abingdon st_albans banbury walden spalding woking morpeth billingham norton ripon doncaster egremont basingstoke
 
 			# Earldom of Chester
@@ -3915,12 +3916,12 @@ countries = {
 			# cornwall
 			launceston truro bodmin
 			# channel
-			jersey
+			
 			# france			
-			abbeville  #Ponthieu
+			  #Ponthieu
 		}
 		own_control_conquered = {
-			berwick
+			
 		}
 
 		include = "catholic_monarchy"
@@ -4012,10 +4013,14 @@ countries = {
 		}
 	}
 
-	GWR = { # Gower Marcher Lordship
+	GWR = {
+		our_cores_conquered_by_others = {
+			swansea
+		}
+ # Gower Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			swansea
+			
 		}
 		capital = swansea
 
@@ -4025,10 +4030,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	GMG = { # Glamorgan Marcher Lordship
+	GMG = {
+		our_cores_conquered_by_others = {
+			cardiff caerphilly neath
+		}
+ # Glamorgan Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			cardiff caerphilly neath
+			  
 		}
 		capital = cardiff
 
@@ -4042,9 +4051,10 @@ countries = {
 	MAC = { # March Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			radnor builth newport wigmore ludlow
+			    
 		}
 		our_cores_conquered_by_others = {
+			radnor builth newport wigmore ludlow
 			denbigh montgomery
 		}
 		capital = wigmore
@@ -4055,10 +4065,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	AUD = { # Arundel Marcher Lordship
+	AUD = {
+		our_cores_conquered_by_others = {
+			llangollen oswestry
+		}
+ # Arundel Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord_no_coast"
 		own_control_core = {
-			llangollen oswestry
+			 
 		}
 		capital = oswestry
 
@@ -4069,10 +4083,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	BRO = { # Brecknock Brecon Marcher Lordship
+	BRO = {
+		our_cores_conquered_by_others = {
+			brecknock
+		}
+ # Brecknock Brecon Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord_no_coast"
 		own_control_core = {
-			brecknock
+			
 		}
 		capital = brecknock
 
@@ -4083,10 +4101,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	POS = { # Powis Marcher Lordship
+	POS = {
+		our_cores_conquered_by_others = {
+			machynlleth montgomery
+		}
+ # Powis Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord_no_coast"
 		own_control_core = {
-			machynlleth montgomery
+			 
 		}
 		capital = machynlleth
 
@@ -4096,10 +4118,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	EWY = { # Ewyas Marcher Lordship
+	EWY = {
+		our_cores_conquered_by_others = {
+			ewyas
+		}
+ # Ewyas Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord_no_coast"
 		own_control_core = {
-			ewyas
+			
 		}
 		capital = ewyas
 
@@ -4109,10 +4135,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	CMS = { # Cemais Marcher Lordship
+	CMS = {
+		our_cores_conquered_by_others = {
+			fishguard
+		}
+ # Cemais Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			fishguard
+			
 		}
 		capital = fishguard
 
@@ -4122,10 +4152,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	PMB = { # Pembroke Marcher Lordship
+	PMB = {
+		our_cores_conquered_by_others = {
+			pembroke
+		}
+ # Pembroke Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			pembroke
+			
 		}
 		capital = pembroke
 
@@ -4136,10 +4170,14 @@ countries = {
 		tolerated_cultures = { welsh }
 	}
 
-	DEN = { # Denbigh Marcher Lordship
+	DEN = {
+		our_cores_conquered_by_others = {
+			denbigh
+		}
+ # Denbigh Marcher Lordship
 		include = "catholic_monarchy_english_lordship_welsh_marcher_lord"
 		own_control_core = {
-			denbigh
+			
 		}
 		capital = denbigh
 
@@ -4175,8 +4213,7 @@ countries = {
 		}
 
 		own_control_conquered = {
-			monmouth
-			kidwelly
+
 		}
 
 		include = "catholic_monarchy_english_lordship"
@@ -4204,7 +4241,7 @@ countries = {
 		}
 
 		own_control_conquered = {
-			flint
+			
 		}
 
 		include = "catholic_monarchy_english_lordship"
@@ -4224,16 +4261,17 @@ countries = {
 	WLS = { # Wales
 		own_control_core = {
 			# Principality of Wales
-			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn
+			       
 		}
 		our_cores_conquered_by_others = {
+			aberystwyth anglesey cardigan carnarvon harlech conwy carmarthen penllyn
 			# Earldom of Chester
 
 			# Marcher Lordships
 			brecknock cardiff caerphilly swansea monmouth montgomery builth denbigh llangollen ewyas kidwelly machynlleth radnor
 		}
 
-		include = "catholic_monarchy_english_lordship"
+		include = "catholic_monarchy_english_lordship_not_present"
 
 		government = {
 			type = monarchy
@@ -4283,56 +4321,91 @@ countries = {
 
 	GDD = {
 		government = {
-			ruler = random
-		} # Gwynedd
-		our_cores_conquered_by_others = {
+			ruler = gdd_bleddyn_ap_cynfyn
+			ruler_term = { character = gdd_bleddyn_ap_cynfyn start_date = 1063.8.5 regnal_number = 0 }
+		}
+		own_control_core = {
 			carnarvon anglesey conwy harlech flint denbigh
 		}
-		include = "catholic_monarchy_welsh_releasable"
+ # Gwynedd
+		our_cores_conquered_by_others = {
+			     
+		}
+		include = "catholic_monarchy"
+		include = "expl_western_europe"
+		country_rank = rank_duchy
 		capital = anglesey
 	}
 
 	PWS = {
 		government = {
-			ruler = random
-		} # Powys
-		our_cores_conquered_by_others = {
-			montgomery machynlleth llangollen penllyn
+			ruler = pws_rhiwallon_ap_cynfyn
+			ruler_term = { character = pws_rhiwallon_ap_cynfyn start_date = 1063.8.5 regnal_number = 0 }
 		}
-		include = "catholic_monarchy_welsh_releasable"
+		own_control_core = {
+			penllyn montgomery machynlleth llangollen
+		}
+ # Powys
+		our_cores_conquered_by_others = {
+			   
+		}
+		include = "catholic_monarchy_no_coast"
+		include = "expl_western_europe"
+		country_rank = rank_duchy
 		capital = llangollen
 	}
 
 	DHB = {
 		government = {
-			ruler = random
-		} # Deheubarth
-		our_cores_conquered_by_others = {
-			carmarthen pembroke fishguard kidwelly cardigan aberystwyth
+			ruler = dhb_maredudd_ab_owain
+			ruler_term = { character = dhb_maredudd_ab_owain start_date = 1063.1.1 regnal_number = 0 }
 		}
-		include = "catholic_monarchy_welsh_releasable"
+		own_control_core = {
+			carmarthen cardigan aberystwyth pembroke fishguard kidwelly brecknock builth radnor
+		}
+ # Deheubarth
+		our_cores_conquered_by_others = {
+			     
+		}
+		include = "catholic_monarchy"
+		include = "expl_western_europe"
+		country_rank = rank_duchy
 		capital = pembroke
 	}
 
 	MWG = {
 		government = {
-			ruler = random
-		} # Morgannwg
-		our_cores_conquered_by_others = {
-			cardiff neath caerphilly swansea
+			ruler = mwg_cadwgan_ap_meurig
+			ruler_term = { character = mwg_cadwgan_ap_meurig start_date = 1055.1.1 regnal_number = 0 }
 		}
-		include = "catholic_monarchy_welsh_releasable"
+		own_control_core = {
+			cardiff caerphilly neath swansea
+		}
+ # Morgannwg
+		our_cores_conquered_by_others = {
+			   
+		}
+		include = "catholic_monarchy"
+		include = "expl_western_europe"
+		country_rank = rank_duchy
 		capital = cardiff
 	}
 
 	GWT = {
 		government = {
-			ruler = random
-		} # Gwent
-		our_cores_conquered_by_others = { 
-			monmouth newport 
+			ruler = gwt_caradog_ap_gruffydd
+			ruler_term = { character = gwt_caradog_ap_gruffydd start_date = 1063.1.1 regnal_number = 0 }
 		}
-		include = "catholic_monarchy_welsh_releasable"
+		own_control_core = {
+			monmouth newport ewyas
+		}
+ # Gwent
+		our_cores_conquered_by_others = { 
+			  
+		}
+		include = "catholic_monarchy"
+		include = "expl_western_europe"
+		country_rank = rank_duchy
 		capital = monmouth
 	}
 
@@ -4347,11 +4420,15 @@ countries = {
 		capital = brecknock
 	}
 
-	MNN = { # Isle of Man
-		own_control_core = {
+	MNN = {
+		our_cores_conquered_by_others = {
 			mann
 		}
-		include = "catholic_monarchy_english_lordship"
+ # Isle of Man
+		own_control_core = {
+			
+		}
+		include = "catholic_monarchy_english_lordship_not_present"
 		include = "expl_northern_europe"
 		government = {
 			type = monarchy
@@ -4370,23 +4447,28 @@ countries = {
 		}
 		government = {
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = moy_mael_snechtai
+			ruler_term = { character = moy_mael_snechtai start_date = 1058.1.1 regnal_number = 0 }
 		}
 		include = "catholic_monarchy_scottish_earldom"
 		include = "expl_northern_europe"
 		capital = elgin
 		accepted_cultures = { highland }
-		court_language = norman_dialect
+		court_language = scottish_gaelic_dialect
 	}
 
-	GLY = { # Galloway
+	GLY = {
+		own_control_core = {
+			kirkcudbright kenmure stranraer ayr irvine
+		}
+ # Galloway
 		our_cores_conquered_by_others = {
-			stranraer ayr kirkcudbright irvine kenmure
+			    
 		}
 		government = {
 			ruler = random
 		}
-		include = "gaelic_tribe_not_present"
+		include = "gaelic_tribe"
 		include = "expl_northern_europe"
 		capital = kirkcudbright
 	}
@@ -4435,10 +4517,11 @@ countries = {
 		include = "catholic_monarchy"
 		include = "expl_northern_europe"
 		own_control_core = {
+			thurso dornoch durness tongue
 			orkney shetland
 		}
 		our_cores_conquered_by_others = {
-			strathearn thurso
+			strathearn 
 		}
 		government = {
 			type = monarchy
@@ -4463,19 +4546,20 @@ countries = {
 
 	SCO = { # Scotland
 		own_control_core = {
-			glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine
-			oban inverary cowal forfar arbroath arran selkirk scone
-			dornoch durness tongue	
+			perth edinburgh stirling roxburgh linlithgow duns lanark strathearn cupar dumfries berwick
+			glasgow paisley dumbarton aberdeen dunbar banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy 
+			oban inverary cowal forfar arbroath  selkirk scone
+			  	
 		}	
 		own_control_conquered = {
-			thurso
+			
 		}
 
 		our_cores_conquered_by_others = {
-			berwick
-			perth kirkcudbright kenmure stranraer
-			edinburgh stirling roxburgh dumfries lanark ayr
-			strathearn cupar
+			
+			 kirkcudbright kenmure stranraer
+			     ayr
+			 
 			#ross
 			dingwall gairloch ullapool
 		}
@@ -4562,10 +4646,10 @@ countries = {
 
 	SBL = { # Balliol Pretender
 		own_control_core = {
-			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark
-			strathearn cupar
+
 		}
 		our_cores_conquered_by_others = {
+			kirkcudbright kenmure stranraer ayr perth edinburgh stirling roxburgh linlithgow duns dumfries lanark strathearn cupar
 			glasgow paisley dumbarton aberdeen dunbar elgin banff dunfermline st_andrews dundee buchan mar inverurie stonehaven clackmannan aberfeldy irvine dornoch durness tongue
 			oban inverary cowal forfar arbroath arran selkirk scone
 
@@ -4575,7 +4659,7 @@ countries = {
 
 		include = "expl_northern_europe"
 		starting_technology_level = 3
-		include = "catholic_monarchy"
+		include = "catholic_monarchy_not_present"
 		
 		rebellion_demand = the_goals_of_balliol
 		
@@ -4645,6 +4729,7 @@ countries = {
 
 	LOI = { # The Isles
 		own_control_core = {
+			mann skye arran
 			# Western Isles
 			uist lewis mull islay harris
 		}
@@ -4654,7 +4739,7 @@ countries = {
 		}
 
 		our_cores_conquered_by_others = {
-			mann skye
+			 
 		}
 
 		tolerated_cultures = { highland }
@@ -4686,6 +4771,7 @@ countries = {
 			
 			land_vs_naval = 100
 		}
+		country_rank = rank_kingdom
 		capital = islay
 	}
 
@@ -4695,7 +4781,7 @@ countries = {
 		}
 		own_control_conquered = {
 			# Bishop of the Isles
-			skye
+			
 		}
 		government = {
 			type = monarchy
@@ -4712,9 +4798,10 @@ countries = {
 	}
 	CLA = {
 		own_control_core = {
-			belfast newtownards ballymena
+			  
 		}
 		our_cores_conquered_by_others = {
+			belfast newtownards ballymena
 			# TYR Tyrone
 			dungannon magherafelt strabane clogher
 		}
@@ -4733,6 +4820,7 @@ countries = {
 	}
 	MCM = { # Munster
 		own_control_core = {
+			limerick cork waterford kinsale youghal dungarvan dingle tralee adare killmallock fermoy clonmel cashel roscrea nenagh castleconnell tipperary ennis bunratty moyarta
 			killarney muskerry dunhallow kilbrittain
 		}
 
@@ -4743,7 +4831,7 @@ countries = {
 			ruler_term = { character = mcm_toirdelbach_ua_briain start_date = 1063.1.1 regnal_number = 1 }
 		}
 		country_rank = rank_duchy # remnants of an old provincial kingdom
-		capital = killarney
+		capital = bunratty
 	}
 	BEA = { # Beare
 		own_control_core = {
@@ -4757,23 +4845,23 @@ countries = {
 		}
 		capital = carbery
 	}
-	PLE = { # The Pale
+	PLE = {
+		our_cores_conquered_by_others = {
+			dublin navan fingal drogheda dundalk waterford wexford new_ross limerick cork trim kells ballymore carlow kilkenny mullingar wicklow
+		}
+ # The Pale
 		own_control_core = {
 			# the pale proper
-			dublin navan fingal drogheda dundalk
-			
-			waterford wexford new_ross  
+
 		}
 		own_control_integrated = {
-			limerick cork
+			 
 		}
 		own_control_conquered = {
 			# lordship of meath
-			 trim kells  ballymore
+			    
 			 # kilkenny frontier
-			  carlow kilkenny
-			 mullingar
-			 wicklow
+
 		}
 		government = {
 			ruler = random
@@ -4810,7 +4898,7 @@ countries = {
 				name_edward = 3
 			}
 		}
-		include = "catholic_monarchy_english_lordship"
+		include = "catholic_monarchy_english_lordship_not_present"
 		capital = dublin
 		accepted_cultures = { anglo_irish }
 		tolerated_cultures = { irish }
@@ -4920,8 +5008,12 @@ countries = {
 		capital = glendalough
 	}
 	GLS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			ballycastle
+		}
+
+		own_control_core = {
+			
 		}
 
 		include = "catholic_monarchy_english_lordship_irish_earldom"
@@ -4935,11 +5027,12 @@ countries = {
 	}
 	LEI = { # Leinster
 		own_control_core = {
+			wicklow wexford new_ross carlow athy kildare naas
 			ferns
 		}
 
 		our_cores_conquered_by_others = {
-			wexford new_ross carlow athy kildare naas glendalough dublin wicklow # the fifth of leinster
+			      glendalough dublin  # the fifth of leinster
 		}
 
 		tolerated_cultures = { anglo_irish }
@@ -5001,6 +5094,7 @@ countries = {
 	}
 	CNN = { # Connacht Connaught
 		own_control_core = {
+			galway athenry tuam castlebar erris ballaghaderreen
 			roscommon castlereagh
 		}
 
@@ -5028,16 +5122,21 @@ countries = {
 	}
 	MTH = {
 		government = {
-			ruler = random
-		} # Meath Midhe
+			ruler = mth_conchobar_ua_mael_sechlainn
+			ruler_term = { character = mth_conchobar_ua_mael_sechlainn start_date = 1030.1.1 regnal_number = 0 }
+		}
+		own_control_core = {
+			trim navan kells mullingar ballymore drogheda dundalk
+		}
+ # Meath Midhe
 		our_cores_conquered_by_others = {
-			dublin fingal drogheda trim navan kells dundalk mullingar longford ardagh ballymore
+			dublin fingal       longford ardagh 
 		}
 
-		include = "gaelic_tribe_not_present"
+		include = "gaelic_tribe"
 		include = "expl_western_europe"
 		country_rank = rank_duchy # remnants of an old provincial kingdom
-		capital = athlone
+		capital = mullingar
 	}
 	CMA = { # Connemara
 		own_control_core = {
@@ -5053,6 +5152,7 @@ countries = {
 	}
 	OSS = { # Ossory
 		own_control_core = {
+			kilkenny
 			cullahill
 		}
 
@@ -5077,11 +5177,12 @@ countries = {
 	}
 	BFN = { # West Breffny
 		own_control_core = {
+			cavan killycolly
 			dromahair leitrim killeshandra
 		}
 
 		our_cores_conquered_by_others = {
-			cavan killycolly
+			 
 		}
 
 		include = "gaelic_tribe"
@@ -5093,10 +5194,11 @@ countries = {
 	}
 	CVN = { # East Breffny Cavan
 		own_control_core = {
-			cavan killycolly
+			 
 		}
 
 		our_cores_conquered_by_others = {
+			cavan killycolly
 			dromahair leitrim killeshandra
 		}
 
@@ -5136,8 +5238,12 @@ countries = {
 		capital = moycarn # Birr
 	}
 	CLR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			galway athenry tuam
+		}
+
+		own_control_core = {
+			  
 		}
 
 		government = {
@@ -5150,9 +5256,13 @@ countries = {
 		capital = galway
 		accepted_cultures = { irish }
 	}
-	CWM = { # Clanwilliam
-		own_control_core = {
+	CWM = {
+		our_cores_conquered_by_others = {
 			castleconnell tipperary
+		}
+ # Clanwilliam
+		own_control_core = {
+			 
 		}
 
 		government = {
@@ -5167,10 +5277,11 @@ countries = {
 	}
 	ULS = { # Ulster
 		own_control_core = {
-			carrickfergus downpatrick dunluce
+			  
 		}
 
 		our_cores_conquered_by_others = {
+			carrickfergus downpatrick dunluce
 			# Glens
 			ballycastle
 			# CLA clandeboye
@@ -5194,9 +5305,13 @@ countries = {
 		include = "catholic_monarchy_english_lordship_irish_earldom"
 		capital = carrickfergus
 	}
-	MYO = { # Mayo
-		own_control_core = {
+	MYO = {
+		our_cores_conquered_by_others = {
 			castlebar erris ballaghaderreen
+		}
+ # Mayo
+		own_control_core = {
+			  
 		}
 
 		government = {
@@ -5209,9 +5324,13 @@ countries = {
 		capital = castlebar
 		accepted_cultures = { irish }
 	}
-	ORD = { # Ormond
-		own_control_core = {
+	ORD = {
+		our_cores_conquered_by_others = {
 			clonmel cashel roscrea nenagh
+		}
+ # Ormond
+		own_control_core = {
+			   
 		}
 
 		government = {
@@ -5243,13 +5362,14 @@ countries = {
 	}
 	DMS = { # Desmond
 		own_control_core = {
-			kinsale youghal dungarvan
+			  
 		}
 		own_control_conquered = {
-			dingle tralee adare killmallock fermoy
+			    
 		}
 
 		our_cores_conquered_by_others = {
+			kinsale youghal dungarvan dingle tralee adare killmallock fermoy
 			cork
 		}
 
@@ -5266,9 +5386,13 @@ countries = {
 		include = "catholic_monarchy_english_lordship_irish_earldom"
 		capital = youghal
 	}
-	KID = { # Kildare
-		own_control_core = {
+	KID = {
+		our_cores_conquered_by_others = {
 			athy kildare naas
+		}
+ # Kildare
+		own_control_core = {
+			  
 		}
 
 		government = {
@@ -5299,9 +5423,13 @@ countries = {
 		}
 		capital = burrishoole
 	}
-	THO = { # Thomond
-		own_control_core = {
+	THO = {
+		our_cores_conquered_by_others = {
 			ennis bunratty moyarta
+		}
+ # Thomond
+		own_control_core = {
+			  
 		}
 
 		include = "gaelic_tribe"
@@ -14803,6 +14931,7 @@ countries = {
 	#Boulogne
 	BGN = {
 		own_control_core = {
+			abbeville
 			boulogne_sur_mer
 		}
 
@@ -15076,6 +15205,7 @@ countries = {
 	#Normandy
 	NRM = {
 		own_control_core = {
+			jersey
 			bernay laigle louviers pont_audemer
 			caen argentan bayeux domfront falaise lisieux pont_douilly
 			cherbourg coutances avranches st_sauveur vire
@@ -15083,7 +15213,7 @@ countries = {
 		}
 
 		our_cores_conquered_by_others = {
-			jersey # England
+			 # England
 			evreux harcourt mortain #Evreux
 			longueville #Longueville
 			alencon domfront argentan #Alencon
@@ -58101,6 +58231,23 @@ countries = {
 		capital = cordoba
 	}
 
+	DUB = {
+		government = {
+			ruler = lei_murchad_mac_diarmata
+			ruler_term = { character = lei_murchad_mac_diarmata start_date = 1061.1.1 regnal_number = 0 }
+		}
+		own_control_core = {
+			dublin fingal
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "gaelic_tribe"
+		country_rank = rank_duchy
+
+		capital = dublin
+	}
+
 	DYA = {
 		own_control_core = {
 			palma ciudadela_de_menorca ibiza manacor pollensa denia gandia alcoy
@@ -58630,6 +58777,22 @@ countries = {
 		}
 
 		capital = toledo
+	}
+
+	ULD = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			carrickfergus downpatrick dunluce belfast newtownards ballymena ballycastle
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "gaelic_tribe"
+		country_rank = rank_duchy
+
+		capital = downpatrick
 	}
 
 	UQY = {

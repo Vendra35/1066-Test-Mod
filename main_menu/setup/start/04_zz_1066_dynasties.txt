@@ -186,4 +186,21 @@ dynasty_manager = {
 		name = { name = crepy_dynasty }
 		home = crepy
 	}
+	# --- 1066 Wales (British Isles slice): the three houses vanilla
+	# lacks. mathrafal_dynasty and aberffraw_dynasty SHIP
+	# (04_dynasties.txt:213/:614) and Bleddyn/Rhiwallon ride Mathrafal;
+	# loairn_dynasty ships too (:626) and carries Mael Snechtai of
+	# Moray. All homes verified in definitions.txt.
+	dinefwr_dynasty = {
+		name = { name = dinefwr_dynasty }
+		home = carmarthen
+	}
+	morgannwg_dynasty = {
+		name = { name = morgannwg_dynasty }
+		home = cardiff
+	}
+	gwent_dynasty = {
+		name = { name = gwent_dynasty }
+		home = newport
+	}
 }

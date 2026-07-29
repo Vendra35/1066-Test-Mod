@@ -1652,6 +1652,67 @@ comment in place). Any future parser over definitions.txt must assume
 duplicate members are possible — Paradox's own data does it at least
 once.
 
+### The tributary gate's THIRD branch is free: a tribe subject needs no reform
+**Established:** 2026-07-29, British package; tributary.txt:19-24
+re-read. The visible gate is an OR of overlord-steppe_horde /
+subject-TRIBE / subject-steppe_horde / modifier:allow_tributary_subject.
+Every Gaelic tag rides `gaelic_tribe*` includes (type = tribe), so the
+six Irish ties ship with NO reform — SEL/FAT/FRA each needed one only
+because their subjects are monarchies. Whether the tribe branch is
+evaluated at game start the way the modifier branch is (proven twice)
+is THE slice's probe; fallback if it fails: a LEI reform, one block.
+**Means:** when designing a tributary ring, check the SUBJECTS'
+government type first — the reform is only for monarchy-over-monarchy.
+The harness gate check now knows both branches (proven by breaking).
+
+### Seeding a CHARACTER-led IO leader at setup: `leader = <TAG>`
+**Established:** 2026-07-29, British package; UNTESTED until launch.
+A character-led IO (high_kingship.txt:23 has_leader_country,
+:26 leader_type = character) derives its character from a leader
+COUNTRY through its own `leader = { leader_country ?= { ruler ... } }`
+block — so setup seeds the TAG, exactly like a country-led IO. The
+attested precedent is the structural twin catholic_church
+(type definition :10/:12 identical shape; setup instance
+`leader = PAP`, 15_international_organizations.txt:182). Our
+high_kingship instance now carries `leader = LEI` — Diarmait, High
+King since 1064.8.22 by vanilla's own stripped term (:303). The
+observable: Ireland tints under the leader (show_as_overlord_on_map
+fires only with a leader) and `override_ruler_title` renders
+"High King".
+**Means:** any future character-led IO (a caliphate IO one day) seeds
+its leader the same one-line way.
+
+### Landless tags ghost in IO member lists — and vanilla has three legitimate landless-member types
+**Established:** 2026-07-29, the new "IO members hold land" harness
+check's FIRST runs. Vanilla's own high_kingship list documents the
+rule (its `#PLE` comment excludes the landless Pale) — and our earlier
+slices had left SIX ghosts behind: ARM/ATZ/CIL in the autocephalous
+patriarchate and EPI/TRE/FEO in Orthodox lists, all emptied by the
+Byzantium/Seljuk passes and sitting in their IOs ever since.
+build_ios now strips LANDLESS_AFTER members generically (exact-count
+6, the count measured 1→4→6 as a stale-offset loop bug — caught by
+the assert itself — was fixed). The check's false positives mapped
+vanilla's legitimate landless-member types: `type = building`
+(Japanese clans TGS/YSM), `type = army`, `type = pop` (Thai sect
+DDI) — validate ours strictly, report what vanilla ships.
+**Means:** every future slice that empties a tag gets the IO sweep
+free; the check (753 members) and the strip guard each other.
+
+### Setup templates NEST includes — a one-level reader lies
+**Established:** 2026-07-29, British package.
+catholic_monarchy_welsh_releasable.txt line 1 is a bare
+`include = catholic_monarchy_not_present` (unquoted!) and line 2 the
+quoted `include = "expl_western_europe"` — the Welsh shells' ONLY
+discovery source and their `country_rank = rank_duchy` both live in
+the template, not the blocks. The one-level `_tpl_grants` would have
+called the shells blind AND the landed swap would have silently
+dropped their discovery and rank. `_tpl_grants` is now recursive
+(cycle-guarded, both include spellings), and the Welsh FIELD_FIXES
+restate expl + rank explicitly.
+**Means:** any check or swap that reasons about a template must walk
+the full include chain; vanilla mixes quoted and unquoted include
+forms.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The

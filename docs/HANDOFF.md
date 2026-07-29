@@ -718,6 +718,65 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    whole French theatre changed around it: watch the two 1066 wars
    still fire.
 
+21. **THE BRITISH ISLES (LANDED, untested — test list accumulates).**
+   106 locations moved, 25 tags landless, 2 new tags (DUB, ULD), 2370
+   country blocks, 8 new thrones. WALES: the ten marcher tags + the
+   1267 WLS Principality dissolve into the six claimant shells whose
+   claim lists partition wales_area EXACTLY 25/25 (Paradox's own 1066
+   border): Bleddyn ap Cynfyn on Gwynedd, brother Rhiwallon on Powys
+   (both Mathrafal — the house ships), Maredudd on Deheubarth
+   (name_meredith → "Maredudd"), Cadwgan on Morgannwg, Caradog on
+   Gwent (the 1065 Portskewett raid); ludlow/wigmore/oswestry
+   (English-culture shires) → ENG. IRELAND: the Pale and the Norman
+   earldoms undone — MCM 24, LEI 8, CNN 8, new DUB under **Murchad
+   mac Diarmata, authored since the Celtic pass and seated at last**,
+   MTH rises from landless under Conchobar Ua Mael Sechlainn, new ULD
+   for Ulaid (random [D]). **THE HIGH KINGSHIP IS CROWNED:**
+   `leader = LEI` seeded by the catholic_church precedent
+   (leader = PAP, 15_IO:182 — the character-led-IO syntax), member
+   surgery CLA/THO/CVN→MTH/DUB/ULD (27 conserved). **Six Irish
+   tributaries with NO reform** — every subject is a gaelic tribe and
+   tributary.txt:21's subject-is-a-tribe branch passes free (five
+   vassal conversions + new LEI→DUB). SCOTLAND: **the SBL find** —
+   the 1332 Balliol Pretender held Edinburgh/Perth/Stirling/Roxburgh
+   at start ("Support from the English", revolt = yes); SCO
+   reunified at 36 (+berwick from ENG — Lothian is Scottish from
+   1018), Galloway independent (its own claim list), Moray under
+   Mael Snechtai mac Lulaig (vanilla's loairn_dynasty; norman court
+   language fixed to Gaelic; SCO→MOY and SCO→ROS vassalages
+   stripped — Malcolm's reign was a war AGAINST Moray), ORK takes
+   Caithness+Sutherland, LOI becomes the KINGDOM of the Isles
+   (mann/skye/arran; MNN landless as the 1333 English irredenta).
+   ENGLAND: jersey → NRM, abbeville → BGN (the last Ponthieu relic).
+   **DEFERRED: the LAN/CET fold into ENG** — the one conquest-balance
+   item, parked for a post-launch pass. FOUND ON THE WAY: the new
+   "IO members hold land" harness check (753 items) caught SIX ghost
+   members the earlier slices left in IOs (ARM ATZ CIL EPI TRE FEO —
+   now generically stripped, exact-count 6); _tpl_grants went
+   recursive (welsh_releasable carries its discovery in a NESTED
+   include — a one-level reader called the shells blind); the
+   horde/tribe recipient assert narrowed to steppe_horde on
+   measurement (country_name_construction has ZERO tribe branches);
+   vanilla's high_kingship member list carries comment tokens
+   (#PLE) a raw split miscounts. 25 checks green, tributary gate 23
+   (tribe branch proven by breaking), all count transitions observed
+   failing before their constants moved.
+   TEST WHEN THE USER RETURNS: (a) **Ireland tints under Leinster
+   and Diarmait renders "High King"** — the IO probe's pass/fail
+   signal (show_as_overlord_on_map fires only with a leader);
+   (b) Wales in five native kingdoms, Bleddyn in Gwynedd ("Bleddyn"
+   literal + brythonic fallback probe), no marcher lords; (c) Dublin
+   under Murchad ("Murchadh mac Diarmata" — the patronymic
+   showcase), six Irish tributaries LIVE WITHOUT any reform (the
+   tribe-branch probe — if downgraded to vassal, the branch is not
+   evaluated at setup and the fallback is a LEI reform); (d) Scotland
+   whole — Edinburgh SCOTTISH, no Balliol pretender, Moray under
+   Mael Snechtai, Galloway/Isles independent, ORK holds Caithness;
+   (e) ENG regression: the conquest opening plays, jersey Norman,
+   137→134-ish holdings; (f) error.log: landless trims grow by ~25
+   tags (known class), the six IO ghosts should log nothing new,
+   watch for tributary 3702 lines naming the Irish six.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -826,8 +885,9 @@ launches: Caliphate probe passed, tributary reform beat the validator,
 and the item 18 polish batch passed its five-minute check), Fatimid
 Egypt + southern Levant (CLOSED — confirmed in game 2026-07-29 the
 same day it landed, all seven test points; item 19).
-**Remaining, in rough order:** ~~France demesne + Languedoc~~ (LANDED
-2026-07-29, item 20 — test accumulates), British Isles
+**Remaining, in rough order:** ~~France demesne + Languedoc~~ (item
+20), ~~British Isles~~ (item 21 — both LANDED 2026-07-29, tests
+accumulate)
 (Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
 southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
 Arabia, the Rus/steppe east, India/China/rest-of-world review — then
@@ -886,14 +946,18 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the accumulated test (items 20's list +
-SEL capacity 8.00) when the user returns to the game, OR the next
-slice per the strategic order — the **British Isles** (Wales marcher
-dissolution, Ireland/PLE breakup; the ENG Ponthieu relic abbeville is
-parked there too). Working mode (user's call, 2026-07-29 afternoon):
-landings continue while they are away, every batch harness-green and
-build-asserted, remote approvals by phone, the game-test list
-ACCUMULATES in the items. Items 16-19 are ALL CONFIRMED IN GAME
+**NEXT SESSION STARTS WITH:** the ACCUMULATED test when the user
+returns to the game — items 20 + 21's lists plus SEL capacity 8.00.
+The headline probes waiting on that launch: the High Kingship crown
+(Ireland tinted under Diarmait), the reform-free Irish tributaries
+(the tribe branch), the literal Welsh names, small France + the six
+homage tributaries, Adalbert's return in La Marche. After the test:
+the next slice per the strategic order — **HRE/HAB breakup** or
+**southern Italy 1066** (spec banked) — plus the deferred LAN/CET
+fold (item 21) and the Empire-banked Lyonnais (item 20). Working
+mode (user's call, 2026-07-29 afternoon): landings continue while
+they are away, every batch harness-green and build-asserted, remote
+approvals by phone, the game-test list ACCUMULATES in the items. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the

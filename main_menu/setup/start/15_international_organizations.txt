@@ -187,11 +187,10 @@ international_organization_manager = {
 
 		map_color = hsv360 { 143 76 65 }
 
-		members = { 
-			#PLE
-			#
-		 	CLA MCM BEA TYR LEI TRY OIL CMA OSS FMA BFN UMH THO SLN FLY CNN HYM ANN KEE IVG IMA TGH FCL ELY CVN AMH INI
+		members = {
+			MCM BEA TYR LEI TRY OIL CMA OSS FMA BFN UMH SLN FLY CNN HYM ANN KEE IVG IMA TGH FCL ELY AMH INI MTH DUB ULD
 		}
+		leader = LEI
 		regions = { ireland_region }
 		areas = { }
 		
@@ -245,15 +244,8 @@ international_organization_manager = {
 	add_international_organization = {
 		type = autocephalous_patriarchate
 		creation_date = 330.1.1
-		members = { 
-			BYZ EPI TRE VBK NOV SER WAL
-			PSK ORE SMO FMB MOS VLR UGL YRV TPS BLO YAR RSO 
-			TVE KAS KLN ZUB DMI GLM RZH VYA TRB BRY CHR STS NVS 
-			RYL NSL KCH KZK TRS RYA PRK SKY NZH GRS SZL MRM KOS MOG
-
-			BIA BLD HTN HSC IAS SRC SSI
-			VOL HAL KIE POK TUV PNK SSK MSV NRK DRU
-			FEO			
+		members = {
+			BYZ VBK NOV SER WAL PSK ORE SMO FMB MOS VLR UGL YRV TPS BLO YAR RSO TVE KAS KLN ZUB DMI GLM RZH VYA TRB BRY CHR STS NVS RYL NSL KCH KZK TRS RYA PRK SKY NZH GRS SZL MRM KOS MOG BIA BLD HTN HSC IAS SRC SSI VOL HAL KIE POK TUV PNK SSK MSV NRK DRU
 		}
 		variables = { 
 			religion = religion:orthodox
@@ -320,7 +312,9 @@ international_organization_manager = {
 	add_international_organization = {
 		type = autocephalous_patriarchate
 		creation_date = 301.1.1
-		members = { ARM ATZ KCN SYU VDZ CIL }
+		members = {
+			KCN SYU VDZ
+		}
 		variables = { 
 			religion = religion:miaphysite
 			seat = location:sis

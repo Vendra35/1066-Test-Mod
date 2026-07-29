@@ -260,6 +260,22 @@ HISTORICAL_RULERS = {
     "TOU": ("tou_guilhem_iv_toulouse", "1061.1.1", 4),    # William IV of Toulouse — vanilla's own TOU regnal table expects name_william = 4 (10_countries.txt:17843) — NEW_CHARACTERS
     "VLS": ("vls_raoul_iv_crepy", "1038.1.1", 4),         # Raoul IV de Crepy — Valois, Amiens and the Vexin; accession [U] — NEW_CHARACTERS
     "VMD": ("vmd_herbert_iv_vermandois", "1045.1.1", 4),  # Herbert IV, last Carolingian count of Vermandois [U] — NEW_CHARACTERS
+
+    # The British Isles (Opus package 2026-07-29; the SBL find, the
+    # free tribe-tributary gate, the IO leader syntax, all name routes
+    # and the six Welsh shells' 25/25 claim partition re-verified by
+    # the main session). Deliberately random, reasons recorded:
+    # TYR/ULD (the 1064-1083 Cenel nEogain succession is genuinely
+    # unresolved [D]), LOI/GLY/ROS (no safely nameable 1066 ruler),
+    # BER-precedent honesty throughout.
+    "GDD": ("gdd_bleddyn_ap_cynfyn", "1063.8.5", 0),      # Bleddyn ap Cynfyn — Gwynedd (with Powys), installed after Gruffydd's fall — NEW_CHARACTERS
+    "PWS": ("pws_rhiwallon_ap_cynfyn", "1063.8.5", 0),    # Rhiwallon, Bleddyn's brother and co-ruler, seated on Powys (d. 1069 Mechain) — NEW_CHARACTERS
+    "DHB": ("dhb_maredudd_ab_owain", "1063.1.1", 0),      # Maredudd ab Owain of Deheubarth [U] — NEW_CHARACTERS
+    "MWG": ("mwg_cadwgan_ap_meurig", "1055.1.1", 0),      # Cadwgan ap Meurig of Morgannwg [U] — NEW_CHARACTERS
+    "GWT": ("gwt_caradog_ap_gruffydd", "1063.1.1", 0),    # Caradog ap Gruffydd — the 1065 Portskewett raid places him — NEW_CHARACTERS
+    "DUB": ("lei_murchad_mac_diarmata", "1061.1.1", 0),   # Murchad mac Diarmata, king of Dublin for his father — AUTHORED SINCE THE CELTIC PASS, seated at last
+    "MTH": ("mth_conchobar_ua_mael_sechlainn", "1030.1.1", 0), # Conchobar Ua Mael Sechlainn of Mide [U] — NEW_CHARACTERS
+    "MOY": ("moy_mael_snechtai", "1058.1.1", 0),          # Mael Snechtai mac Lulaig of Moray [U] — vanilla's loairn_dynasty — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -894,6 +910,27 @@ NEW_COUNTRIES["VMD"] = (
     "\t\tcountry_rank = rank_county\n\n"
     "\t\tcapital = saint_quentin\n\t}\n")
 
+# DUB and ULD — the British slice's two new tags. Both ride
+# gaelic_tribe (type = tribe — which is ALSO what makes their
+# tributary ties gate-free, tributary.txt:21) + an explicit
+# expl_western_europe (grants great_britain_region AND ireland_region;
+# there is no expl_british_isles). rank_duchy: the Kingdom of Dublin
+# and Ulaid are kingdoms of the Irish grade — LEI's own rank.
+NEW_COUNTRIES["DUB"] = (
+    "\tDUB = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "gaelic_tribe"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = dublin\n\t}\n")
+NEW_COUNTRIES["ULD"] = (
+    "\tULD = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "gaelic_tribe"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = downpatrick\n\t}\n")
+
 # The Fatimid territory, resolved from definitions.txt like the Seljuk
 # rules. Variant A-prime (user-approved 2026-07-29): MAM's remaining 120
 # minus tobruk (granted to BQA — 1066 Barqa is Zirid-aligned Banu Qurra
@@ -1002,6 +1039,85 @@ FRANCE_TRIBUTARIES = ("FLA", "BUR", "BLS", "VLS", "VMD", "ANJ")
 # location as the claim.
 FRANCE_LANDLESS = ("DRE",)
 
+# ------------------------------------------------- the British Isles ---
+# THE BRITISH ISLES (Opus package 2026-07-29, user-approved before
+# leaving; the LAN/CET-into-ENG fold is DEFERRED to a post-launch pass
+# — it was the one item flagged with a conquest-balance cost, and the
+# Norman machine is untested against this slice). Explicit grant
+# lists, the Sardinia shape — the six Welsh shells' claim lists
+# partition wales_area EXACTLY 25/25 (Paradox wrote the 1066 border),
+# and every Irish/Scottish move is location-cited in the package.
+# Headline finds: SBL, the 1332 Balliol Pretender, holds Edinburgh/
+# Perth/Stirling/Roxburgh at start (revolt = yes, "Support from the
+# English" — 10_countries.txt:4563); and Irish tributaries need NO
+# reform (tributary.txt:21 — the SUBJECT-is-a-tribe branch of the
+# visible gate; every Gaelic tag is type = tribe via its template).
+_BRITISH_GRANTS = {
+    # Wales: the marcher dissolution. ewyas -> GWT is the [D] call
+    # (culture = welsh, location_templates:1596); ludlow/wigmore/
+    # oswestry are English-culture English shires -> ENG.
+    "GDD": ["carnarvon", "anglesey", "conwy", "harlech", "flint", "denbigh"],
+    "PWS": ["penllyn", "montgomery", "machynlleth", "llangollen"],
+    "DHB": ["carmarthen", "cardigan", "aberystwyth", "pembroke",
+            "fishguard", "kidwelly", "brecknock", "builth", "radnor"],
+    "MWG": ["cardiff", "caerphilly", "neath", "swansea"],
+    "GWT": ["monmouth", "newport", "ewyas"],
+    "ENG": ["ludlow", "wigmore", "oswestry"],
+    # Ireland: the Pale and the 14th-century earldoms undone.
+    "MCM": ["limerick", "cork", "waterford", "kinsale", "youghal",
+            "dungarvan", "dingle", "tralee", "adare", "killmallock",
+            "fermoy", "clonmel", "cashel", "roscrea", "nenagh",
+            "castleconnell", "tipperary", "ennis", "bunratty", "moyarta"],
+    "LEI": ["wicklow", "wexford", "new_ross", "carlow", "athy",
+            "kildare", "naas"],
+    "DUB": ["dublin", "fingal"],
+    "MTH": ["trim", "navan", "kells", "mullingar", "ballymore",
+            "drogheda", "dundalk"],
+    "OSS": ["kilkenny"],
+    "CNN": ["galway", "athenry", "tuam", "castlebar", "erris",
+            "ballaghaderreen"],
+    "ULD": ["carrickfergus", "downpatrick", "dunluce", "belfast",
+            "newtownards", "ballymena", "ballycastle"],
+    "BFN": ["cavan", "killycolly"],
+    # Scotland, the Isles, and England's relics. berwick: Lothian is
+    # Scottish from 1018 and SCO claims it (one conquerable location
+    # fewer for William — noted). thurso+Sutherland: Caithness was
+    # the Orkney earls' and ORK claims thurso; the sutherland sweep
+    # is the [U] extension, taken. mann/skye/arran are norse_gael
+    # (location_templates) and mann/skye are LOI's OWN claims.
+    "SCO": ["perth", "edinburgh", "stirling", "roxburgh", "linlithgow",
+            "duns", "lanark", "strathearn", "cupar", "dumfries",
+            "berwick"],
+    "GLY": ["kirkcudbright", "kenmure", "stranraer", "ayr", "irvine"],
+    "ORK": ["thurso", "dornoch", "durness", "tongue"],
+    "LOI": ["mann", "skye", "arran"],
+    "NRM": ["jersey"],
+    "BGN": ["abbeville"],
+}
+
+# (overlord, subject) pairs — Irish overlords differ, unlike the
+# single-overlord SEL/FAT/FRA rings. Five are CONVERSIONS of vanilla
+# vassal ties (war-blocking) to tributary (war-capable, own color);
+# LEI->DUB is new — Murchad rules Dublin for his father. NO reform
+# needed: every subject is a gaelic tribe (the free gate branch).
+BRITISH_TRIBUTARIES = (("LEI", "DUB"), ("LEI", "OSS"), ("TRY", "AMH"),
+                       ("TYR", "INI"), ("TYR", "KEE"), ("MCM", "BEA"))
+
+# 25 tags end landless-with-claims: Wales 11 (the ten marchers + the
+# 1267 Principality), Ireland 12 (the Pale + the Norman earldoms +
+# the 1256 East Breifne), Britain 2 (SBL the 1332 pretender, MNN the
+# 1333 English Mann). BCN is NOT here — it already holds zero and the
+# stale-entry check would rightly kill the build. LAN/CET stay LANDED
+# (the deferred fold); DCI keeps its one location (the Deisi are
+# genuine 1066); DHM stays (a defensible 1066 bishopric).
+BRITISH_LANDLESS = (
+    "WLS", "GWR", "GMG", "MAC", "AUD", "BRO", "POS", "EWY", "CMS",
+    "PMB", "DEN",
+    "PLE", "DMS", "ORD", "CWM", "KID", "ULS", "CLA", "CLR", "MYO",
+    "GLS", "THO", "CVN",
+    "SBL", "MNN",
+)
+
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
 # independent: the caliph outranks the sultan, the Ghaznavid peace of
@@ -1067,7 +1183,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
-    + EGYPT_LANDLESS + FRANCE_LANDLESS
+    + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1096,6 +1212,7 @@ LOCATION_GRANTS = {
 }
 LOCATION_GRANTS.update(_IBERIA_GRANTS)
 LOCATION_GRANTS.update(_BYZ_GRANTS)
+LOCATION_GRANTS.update(_BRITISH_GRANTS)
 # LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
 # build_countries — see _byz_target().
 
@@ -1107,6 +1224,8 @@ CAPITAL_FIXES = {
     "ARA": ("barcelona", "jaca"),     # the kingdom of Jaca; Barcelona is CAT's
     "POR": ("lisbon", "guimaraes"),   # the comital seat; lisbon is BDJ's and POR is landless
     "SER": ("prizren", "trgoviste_SER"),  # Prizren goes to BYZ; Trgoviste IS Ras, the zupan's seat
+    "MTH": ("athlone", "mullingar"),  # athlone is HYM's; the Clann Cholmain seat is Lough Ennell (British slice)
+    "MCM": ("killarney", "bunratty"), # vanilla's own o_brien_dynasty comment: home = bunratty #Killaloe (04_dynasties.txt:485)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -1146,6 +1265,58 @@ FIELD_FIXES = {
     "FRA": [("\t\t\t\tancient_french_taxation\n",
              "\t\t\t\tancient_french_taxation\n"
              "\t\t\t\tcapetian_homage_reform\n")],
+    # --- The British slice's swaps. The Welsh trap, measured:
+    # catholic_monarchy_welsh_releasable's line 1 is a NESTED
+    # `include = catholic_monarchy_not_present` and line 2 is the
+    # tags' ONLY discovery source (`expl_western_europe`), with
+    # `country_rank = rank_duchy` at line 30 — so the landed swap must
+    # RESTATE both or the kingdom starts blind and rankless.
+    "GDD": [('include = "catholic_monarchy_welsh_releasable"',
+             'include = "catholic_monarchy"\n'
+             '\t\tinclude = "expl_western_europe"\n'
+             '\t\tcountry_rank = rank_duchy')],
+    "PWS": [('include = "catholic_monarchy_welsh_releasable"',
+             'include = "catholic_monarchy_no_coast"\n'
+             '\t\tinclude = "expl_western_europe"\n'
+             '\t\tcountry_rank = rank_duchy')],
+    "DHB": [('include = "catholic_monarchy_welsh_releasable"',
+             'include = "catholic_monarchy"\n'
+             '\t\tinclude = "expl_western_europe"\n'
+             '\t\tcountry_rank = rank_duchy')],
+    "MWG": [('include = "catholic_monarchy_welsh_releasable"',
+             'include = "catholic_monarchy"\n'
+             '\t\tinclude = "expl_western_europe"\n'
+             '\t\tcountry_rank = rank_duchy')],
+    "GWT": [('include = "catholic_monarchy_welsh_releasable"',
+             'include = "catholic_monarchy"\n'
+             '\t\tinclude = "expl_western_europe"\n'
+             '\t\tcountry_rank = rank_duchy')],
+    # MTH and GLY land: the _not_present -> landed swap (their
+    # separate expl lines survive untouched).
+    "MTH": [('include = "gaelic_tribe_not_present"',
+             'include = "gaelic_tribe"')],
+    "GLY": [('include = "gaelic_tribe_not_present"',
+             'include = "gaelic_tribe"')],
+    # The four big landless-goers swap to _not_present (the POR
+    # precedent; the small marchers/earldoms keep their includes and
+    # join the accepted landless-trim class like the beyliks).
+    "WLS": [('include = "catholic_monarchy_english_lordship"',
+             'include = "catholic_monarchy_english_lordship_not_present"')],
+    "PLE": [('include = "catholic_monarchy_english_lordship"',
+             'include = "catholic_monarchy_english_lordship_not_present"')],
+    "MNN": [('include = "catholic_monarchy_english_lordship"',
+             'include = "catholic_monarchy_english_lordship_not_present"')],
+    "SBL": [('include = "catholic_monarchy"',
+             'include = "catholic_monarchy_not_present"')],
+    # Moray: the block's norman_dialect is the 1312 Randolph earldom;
+    # the Scottish-earldom template's own value for a Gaelic house.
+    "MOY": [("court_language = norman_dialect",
+             "court_language = scottish_gaelic_dialect")],
+    # The Isles become the Kingdom of the Isles (Sudreyjar over Mann +
+    # the Hebrides; vanilla already ranks Mann itself a kingdom). LOI
+    # has no rank line of its own — anchored on its capital line.
+    "LOI": [("capital = islay",
+             "country_rank = rank_kingdom\n\t\tcapital = islay")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -2014,6 +2185,103 @@ NEW_CHARACTERS = """
 		dynasty = carolingian_dynasty
 		tag = VMD
 	}
+
+	# --- 1066 British Isles ------------------------------------------------
+	# The British package (Opus 2026-07-29). Name routes: Bleddyn/
+	# Rhiwallon/Cadwgan/Caradog/MaelSnechtai are OUR literals with loc
+	# rows (vanilla's own Welsh literals Meurig/Gwyn at
+	# character_names_l_english.yml:1057-1058 are the precedent, next to
+	# the ap_/ab_ patronymic particles); name_meredith renders "Maredudd"
+	# (dynamic:12565 .brythonic_language) and name_connor "Conchobar"
+	# (:4862 .gaelic_language). welsh culture -> welsh_dialect nested in
+	# brythonic_language (british.txt:104, languages/00_great_britain.txt)
+	# — the dialect->parent name fallback is the render probe.
+	#
+	# Bleddyn ap Cynfyn — installed over Gwynedd AND Powys with his
+	# brother in August 1063 by Harold and Tostig after Gruffydd ap
+	# Llywelyn's fall; rules to 1075. House of Mathrafal (ships,
+	# 04_dynasties.txt:213). Births [U] throughout the Welsh five.
+	gdd_bleddyn_ap_cynfyn = {
+		first_name = { name = Bleddyn }
+		culture = welsh
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = montgomery
+		dynasty = mathrafal_dynasty
+		tag = GDD
+	}
+
+	# Rhiwallon ap Cynfyn — Bleddyn's brother and co-ruler, seated on
+	# Powys (the joint rule split across the two tags); dies at Mechain
+	# 1069 fighting Gruffydd's sons — a succession hook.
+	pws_rhiwallon_ap_cynfyn = {
+		first_name = { name = Rhiwallon }
+		culture = welsh
+		religion = catholic
+		birth_date = 1027.1.1
+		birth = montgomery
+		dynasty = mathrafal_dynasty
+		tag = PWS
+	}
+
+	dhb_maredudd_ab_owain = {
+		first_name = { name = name_meredith }
+		culture = welsh
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = carmarthen
+		dynasty = dinefwr_dynasty
+		tag = DHB
+	}
+
+	mwg_cadwgan_ap_meurig = {
+		first_name = { name = Cadwgan }
+		culture = welsh
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = cardiff
+		dynasty = morgannwg_dynasty
+		tag = MWG
+	}
+
+	# Caradog ap Gruffydd of Gwent/Gwynllwg — the 1065 destruction of
+	# Harold's hunting lodge at Portskewett is the best 1066 attestation
+	# in Wales.
+	gwt_caradog_ap_gruffydd = {
+		first_name = { name = Caradog }
+		culture = welsh
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = newport
+		dynasty = gwent_dynasty
+		tag = GWT
+	}
+
+	# Conchobar Ua Mael Sechlainn, king of Mide c.1030-1073 [U] — the
+	# o_melaghlin_dynasty ships (04_dynasties.txt:361, home = athlone).
+	mth_conchobar_ua_mael_sechlainn = {
+		first_name = { name = name_connor }
+		culture = irish
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = mullingar
+		dynasty = o_melaghlin_dynasty
+		tag = MTH
+	}
+
+	# Mael Snechtai mac Lulaig, king/mormaer of Moray — son of King
+	# Lulach (SCO's own regnal table carries name_lulach = 1); defeated
+	# by Malcolm III in 1078, dies 1085. Cenel Loairn: vanilla's
+	# loairn_dynasty (04_dynasties.txt:626, home = inverness).
+	moy_mael_snechtai = {
+		first_name = { name = MaelSnechtai }
+		culture = highland
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = elgin
+		dynasty = loairn_dynasty
+		tag = MOY
+	}
 """
 
 
@@ -2094,22 +2362,36 @@ COUNTRY_LINES = ("heir", "consort", "active_regent", "designated_heir_reason",
 
 
 _TPL_CACHE = {}
-def _tpl_grants(inc):
+def _tpl_grants(inc, _walking=None):
     """Container names a setup template grants discovery of. Comment-
     stripped, so an all-comment template grants the EMPTY set — which is
-    the point: expl_silk_road_center is exactly that in vanilla."""
-    if inc not in _TPL_CACHE:
-        tpl = os.path.join(VAN, "main_menu", "setup", "templates",
-                           inc + ".txt")
-        if not os.path.isfile(tpl):
-            sys.exit(f'include "{inc}" names no vanilla template')
-        body = re.sub(r"#[^\n]*", "", open(tpl, encoding="utf-8-sig").read())
-        names = []
-        for m in re.finditer(r"discover(?:ed)?_(?:regions|areas|provinces)"
-                             r"[ \t]*=[ \t]*\{([^}]*)\}", body):
-            names += m.group(1).split()
-        _TPL_CACHE[inc] = set(names)
-    return _TPL_CACHE[inc]
+    the point: expl_silk_road_center is exactly that in vanilla.
+    RECURSIVE since the British slice: templates nest includes —
+    catholic_monarchy_welsh_releasable's line 1 is a bare
+    `include = catholic_monarchy_not_present` and line 2 the quoted
+    `include = "expl_western_europe"` that carries ALL its discovery.
+    A one-level reader called the Welsh shells blind when they were
+    not (and would have missed the reverse mistake too)."""
+    if inc in _TPL_CACHE:
+        return _TPL_CACHE[inc]
+    _walking = _walking or set()
+    if inc in _walking:
+        return set()    # cycle guard; vanilla has none, but never hang
+    _walking.add(inc)
+    tpl = os.path.join(VAN, "main_menu", "setup", "templates",
+                       inc + ".txt")
+    if not os.path.isfile(tpl):
+        sys.exit(f'include "{inc}" names no vanilla template')
+    body = re.sub(r"#[^\n]*", "", open(tpl, encoding="utf-8-sig").read())
+    names = set()
+    for m in re.finditer(r"discover(?:ed)?_(?:regions|areas|provinces)"
+                         r"[ \t]*=[ \t]*\{([^}]*)\}", body):
+        names |= set(m.group(1).split())
+    for m in re.finditer(r'^[ \t]*include[ \t]*=[ \t]*"?([A-Za-z0-9_]+)"?',
+                         body, re.M):
+        names |= _tpl_grants(m.group(1), _walking)
+    _TPL_CACHE[inc] = names
+    return names
 
 
 def _assert_new_block_discovery():
@@ -2306,18 +2588,52 @@ def build_countries(src):
             sys.exit(f"_FRANCE_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
-    # No recipient may be a steppe horde or tribe: their name branches
-    # ignore the NAME key entirely (the JAL law, generalized).
+    # No recipient may be a STEPPE HORDE: the horde name branch ignores
+    # the NAME key entirely (the JAL law). The original assert also
+    # banned tribes as a cautious generalization; the British slice
+    # MEASURED it: country_name_construction.txt contains ZERO tribe
+    # branches (grep "tribe" = no matches), and the landed Gaelic
+    # tribes render their names in game (LEI "Leinster", batch-tested).
+    # Tribes are now legal recipients — the whole Irish pass is grants
+    # to them. Detection also follows TEMPLATE-carried types now: the
+    # old in-block-only scan could never see a type an include brought
+    # in (gaelic_tribe carries `type = tribe` for every Irish tag).
+    _TPLTYPE_CACHE = {}
+    def _tpl_type(inc):
+        if inc not in _TPLTYPE_CACHE:
+            p = os.path.join(VAN, "main_menu", "setup", "templates",
+                             inc + ".txt")
+            t = None
+            if os.path.isfile(p):
+                b = re.sub(r"#[^\n]*", "",
+                           open(p, encoding="utf-8-sig").read())
+                m2 = re.search(r"^[ \t]*type[ \t]*=[ \t]*(\w+)", b, re.M)
+                if m2:
+                    t = m2.group(1)
+                else:
+                    for mi in re.finditer(
+                            r'^[ \t]*include[ \t]*=[ \t]*"?([A-Za-z0-9_]+)"?',
+                            b, re.M):
+                        t = t or _tpl_type(mi.group(1))
+            _TPLTYPE_CACHE[inc] = t
+        return _TPLTYPE_CACHE[inc]
+
     _blocks_h = list(re.finditer(COUNTRY_RE, src, re.M))
     _horde_tags = set()
     for i, m in enumerate(_blocks_h):
         _e = _blocks_h[i + 1].start() if i + 1 < len(_blocks_h) else len(src)
-        if re.search(r"^[ \t]*type = (steppe_horde|tribe)[ \t]*$",
-                     src[m.start():_e], re.M):
+        _b = src[m.start():_e]
+        if re.search(r"^[ \t]*type = steppe_horde[ \t]*$", _b, re.M):
             _horde_tags.add(m.group(1))
+            continue
+        if not re.search(r"^[ \t]*type = \w+", _b, re.M):
+            for mi in re.finditer(r'include = "([^"]+)"', _b):
+                if _tpl_type(mi.group(1)) == "steppe_horde":
+                    _horde_tags.add(m.group(1))
+                    break
     _bad_recip = (set(LOCATION_TRANSFERS) | set(LOCATION_GRANTS)) & _horde_tags
     if _bad_recip:
-        sys.exit(f"horde/tribe recipients forbidden: {sorted(_bad_recip)}")
+        sys.exit(f"steppe-horde recipients forbidden: {sorted(_bad_recip)}")
 
     # No location may appear in TWO different tags' transfer/grant lists:
     # the second grant would silently re-take it from the first (sorted
@@ -2334,7 +2650,8 @@ def build_countries(src):
 
     _landless_claims = {t: _owned_by(src, t)
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS
-                        + EGYPT_LANDLESS + FRANCE_LANDLESS}
+                        + EGYPT_LANDLESS + FRANCE_LANDLESS
+                        + BRITISH_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -2806,6 +3123,94 @@ def build_ios(src):
         src = src[:a] + src[b:]
     report.append(("future-dated IO instances removed", removed))
 
+    # THE HIGH KINGSHIP LEADER (British slice, 2026-07-29). The IO is
+    # character-led (high_kingship.txt:23 has_leader_country,
+    # :26 leader_type = character) and derives the character from a
+    # leader COUNTRY — the seeding syntax is `leader = <TAG>`, attested
+    # by the structural twin catholic_church (its type definition :10/
+    # :12 matches, its setup instance carries `leader = PAP`,
+    # 15_international_organizations.txt:182). Vanilla's own chain
+    # named Diarmait High King from 1064.8.22 (:303 — stripped with
+    # every ruler_term above, lawfully); this restores the crown by
+    # the country key. Member surgery rides along: Paradox's own rule
+    # is that landless tags are not members (MTH and PLE are pointedly
+    # absent from vanilla's list), so the three tags this slice
+    # empties leave and the three it lands join — 27 before and after.
+    _hk = re.search(r"^\tadd_international_organization = \{[^{}]*?"
+                    r"type = high_kingship", src, re.M)
+    if not _hk:
+        sys.exit("high_kingship instance not found in 15_IO")
+    _hk_end = find_block_end(src, src.index("{", _hk.start()))
+    _hk_body = src[_hk.start():_hk_end]
+    _mm = re.search(r"members[ \t]*=[ \t]*\{", _hk_body)
+    if not _mm:
+        sys.exit("high_kingship members block not found")
+    _m_open = _hk_body.index("{", _mm.start())
+    _m_end = find_block_end(_hk_body, _m_open)
+    # comment-stripped: vanilla's list carries `#PLE` — its own note
+    # that the landless Pale is excluded — and a raw split() counted
+    # the comment tokens as members (measured: 29 vs the true 27).
+    _members = re.sub(r"#[^\n]*", "",
+                      _hk_body[_m_open + 1:_m_end - 1]).split()
+    if len(_members) != 27:
+        sys.exit(f"high_kingship: expected 27 vanilla members, found {len(_members)}")
+    for _out in ("CLA", "THO", "CVN"):
+        if _out not in _members:
+            sys.exit(f"high_kingship: expected member {_out} to remove")
+        _members.remove(_out)
+    for _in in ("MTH", "DUB", "ULD"):
+        if _in in _members:
+            sys.exit(f"high_kingship: {_in} already a member")
+        _members.append(_in)
+    if len(_members) != 27:
+        sys.exit("high_kingship: member surgery must conserve 27")
+    _new_body = (_hk_body[:_m_open + 1] + "\n\t\t\t"
+                 + " ".join(_members) + "\n\t\t"
+                 + _hk_body[_m_end - 1:_m_end]
+                 + "\n\t\tleader = LEI"
+                 + _hk_body[_m_end:])
+    src = src[:_hk.start()] + _new_body + src[_hk_end:]
+    report.append(("High Kingship crowned (leader = LEI, members 27)", 1))
+
+    # Landless tags leave every IO member list (the rule vanilla's own
+    # high_kingship documents with its `#PLE` comment). Found by the
+    # new harness check's first run: CIL — landless since the
+    # Byzantium slice — was still a member of the autocephalous
+    # patriarchate. Generic: any LANDLESS_AFTER tag in any members
+    # list goes; exact-count asserted so a future slice that empties
+    # an IO member fails loudly here instead of shipping a ghost.
+    # (Building/army/pop-based members hold no land legitimately and
+    # are never in LANDLESS_AFTER, so they are untouched.)
+    n_ghosts = 0
+    _ghost_names = []
+    # REVERSED: the loop mutates src, and forward iteration over
+    # pre-mutation offsets sliced with stale indices — the exact-count
+    # assert caught it on the first run (it reported a ghost set that
+    # skipped CIL's own list).
+    for _mb in reversed(list(re.finditer(r"members[ \t]*=[ \t]*\{", src))):
+        _o = src.index("{", _mb.start())
+        _e = find_block_end(src, _o)
+        _inner = src[_o + 1:_e - 1]
+        _toks = re.sub(r"#[^\n]*", "", _inner).split()
+        _keep = [t for t in _toks if t not in LANDLESS_AFTER]
+        if len(_keep) != len(_toks):
+            _ghost_names += [t for t in _toks if t in LANDLESS_AFTER]
+            n_ghosts += len(_toks) - len(_keep)
+            src = (src[:_o + 1] + "\n\t\t\t" + " ".join(_keep)
+                   + "\n\t\t" + src[_e - 1:])
+    # The measured set (2026-07-29): CIL + army-based ARM/ATZ in the
+    # autocephalous patriarchate, EPI/TRE/FEO in the Orthodox world's
+    # lists — every one emptied by the Byzantium/Seljuk slices and
+    # ghosting in an IO ever since. The count moved 1 -> 4 -> 6 as the
+    # first runs measured (a stale-offset loop bug was caught by this
+    # very assert on run one).
+    if n_ghosts != 6 or sorted(_ghost_names) != [
+            "ARM", "ATZ", "CIL", "EPI", "FEO", "TRE"]:
+        sys.exit(f"expected exactly 6 landless IO members "
+                 f"(ARM ATZ CIL EPI FEO TRE), stripped {n_ghosts}: "
+                 f"{_ghost_names}")
+    report.append(("landless IO members stripped", n_ghosts))
+
     leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src = tidy(src)
 
@@ -3071,6 +3476,28 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 4 French fiefdom sub-ties, stripped {n_fief}")
     report.append(("French fiefdom sub-ties removed", n_fief))
 
+    # The British slice's tie surgery (package 2026-07-29): five
+    # Gaelic vassal ties become tributaries below (vassal is
+    # war-blocking, and Gaelic tribes pass the tributary gate free),
+    # and the two Scottish crown vassalages die — there is no earldom
+    # of Ross before the 12th century, and Malcolm III's reign was a
+    # war AGAINST Moray, not lordship over it. NOR->ORK is KEPT
+    # (historically right, and ORK is a monarchy — a tributary
+    # conversion would fail the gate without a reform on NOR).
+    n_brit = 0
+    for _pair in ("TRY second = AMH", "TYR second = INI",
+                  "TYR second = KEE", "LEI second = OSS",
+                  "MCM second = BEA", "SCO second = ROS",
+                  "SCO second = MOY"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = " + _pair
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_brit += _k
+    if n_brit != 7:
+        sys.exit(f"expected exactly 7 British vassal strips, stripped {n_brit}")
+    report.append(("British vassal ties removed", n_brit))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -3095,9 +3522,11 @@ def build_diplomacy(src):
     # FDL SKN MDA MEC — vanilla 12_diplomacy.txt:798-808; DUL/KIL/DGE
     # died with earlier slices). The 82->90 transition was OBSERVED
     # failing before this constant moved (2026-07-29) — the assert
-    # works.
-    if n_landless_deps != 90:
-        sys.exit(f"expected exactly 90 landless-tag dependencies, stripped {n_landless_deps}")
+    # works. +18 from the British batch (10 WLS->marcher, 7 PLE->X,
+    # 1 SBL->LOI), the 90->108 transition observed failing the same
+    # way.
+    if n_landless_deps != 108:
+        sys.exit(f"expected exactly 108 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
@@ -3116,8 +3545,10 @@ def build_diplomacy(src):
         return m.group(0)
     src = re.sub(r"^[ \t]*scripted_(?:mutual|oneway) = \{[^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
                  _drop_landless_pact, src, flags=re.M)
-    if n_pacts != 5:
-        sys.exit(f"expected exactly 5 landless-tag pacts, stripped {n_pacts}")
+    # +2 British (THO<->CWM, MYO<->UMH alliances); 5->7 observed
+    # failing before the constant moved, like every transition here.
+    if n_pacts != 7:
+        sys.exit(f"expected exactly 7 landless-tag pacts, stripped {n_pacts}")
     report.append(("pacts naming a landless tag stripped", n_pacts))
 
     # HLL kept vanilla's Mongol-era overlord: the Hüleguid vassalage
@@ -3177,6 +3608,21 @@ def build_diplomacy(src):
            + "\n\t# 1066: the Capetian homage ring (generated)\n"
            + _htribs + src[_wrap:])
     report.append(("Capetian homage tributaries added", len(FRANCE_TRIBUTARIES)))
+
+    # The Irish khutba needs no khutba: every subject is a gaelic
+    # TRIBE, and tributary.txt:21's visible gate passes on the
+    # subject's government type alone — the first reform-free
+    # tributary ring (the package's second headline find). Five
+    # conversions + the new LEI->DUB (Murchad rules Dublin for his
+    # father, the one unambiguous 1066 subjection).
+    _wrap = src.rindex("\n}")
+    _btribs = "".join(
+        f"\tdependency = {{ first = {o} second = {s} subject_type = tributary }}\n"
+        for o, s in BRITISH_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Irish client ties (generated)\n"
+           + _btribs + src[_wrap:])
+    report.append(("Irish tributaries added", len(BRITISH_TRIBUTARIES)))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):

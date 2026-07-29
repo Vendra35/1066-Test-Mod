@@ -50,4 +50,9 @@
 	# Vermandois — the checky or of its arms; neighbors FRA blue,
 	# FLA and BLS vanilla, VLS/PIC-area greys.
 	map_VMD = rgb { 186 148 58 }    # Vermandois   old gold
+	# The British Isles slice. Neighbors checked: LEI dark green,
+	# MTH cyan-ish, ULS orange (goes landless), AMA violet,
+	# map_norse_gael teal (LOI's).
+	map_DUB = rgb { 150 40 52 }     # Dublin       Norse crimson
+	map_ULD = rgb { 205 170 100 }   # Ulaid        sand gold
 }

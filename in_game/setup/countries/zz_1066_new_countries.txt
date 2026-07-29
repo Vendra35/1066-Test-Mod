@@ -282,3 +282,26 @@ VMD = { #County of Vermandois
 	culture_definition = picard
 	religion_definition = catholic
 }
+
+# The British Isles slice's two new tags (freeness verified by
+# whole-tree word-grep over game AND mod: DUB and ULD zero hits each;
+# the theatre's traps — GWY is Amerindian, ISL aridoamerica, MAN is
+# Mantua — all avoided; Mann is vanilla MNN, the Isles vanilla LOI).
+# DUB's culture follows LOI's norse_gael (british_isles.txt:354
+# precedent) — 1066 Dublin is a Norse-Gael city kingdom.
+
+DUB = { #Kingdom of Dublin
+	color = map_DUB
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = norse_gael
+	religion_definition = catholic
+}
+
+ULD = { #Ulaid
+	color = map_ULD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = irish
+	religion_definition = catholic
+}

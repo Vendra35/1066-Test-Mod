@@ -105156,4 +105156,101 @@ character_db={
 		dynasty = carolingian_dynasty
 		tag = VMD
 	}
+
+	# --- 1066 British Isles ------------------------------------------------
+	# The British package (Opus 2026-07-29). Name routes: Bleddyn/
+	# Rhiwallon/Cadwgan/Caradog/MaelSnechtai are OUR literals with loc
+	# rows (vanilla's own Welsh literals Meurig/Gwyn at
+	# character_names_l_english.yml:1057-1058 are the precedent, next to
+	# the ap_/ab_ patronymic particles); name_meredith renders "Maredudd"
+	# (dynamic:12565 .brythonic_language) and name_connor "Conchobar"
+	# (:4862 .gaelic_language). welsh culture -> welsh_dialect nested in
+	# brythonic_language (british.txt:104, languages/00_great_britain.txt)
+	# — the dialect->parent name fallback is the render probe.
+	#
+	# Bleddyn ap Cynfyn — installed over Gwynedd AND Powys with his
+	# brother in August 1063 by Harold and Tostig after Gruffydd ap
+	# Llywelyn's fall; rules to 1075. House of Mathrafal (ships,
+	# 04_dynasties.txt:213). Births [U] throughout the Welsh five.
+	gdd_bleddyn_ap_cynfyn = {
+		first_name = { name = Bleddyn }
+		culture = welsh
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = montgomery
+		dynasty = mathrafal_dynasty
+		tag = GDD
+	}
+
+	# Rhiwallon ap Cynfyn — Bleddyn's brother and co-ruler, seated on
+	# Powys (the joint rule split across the two tags); dies at Mechain
+	# 1069 fighting Gruffydd's sons — a succession hook.
+	pws_rhiwallon_ap_cynfyn = {
+		first_name = { name = Rhiwallon }
+		culture = welsh
+		religion = catholic
+		birth_date = 1027.1.1
+		birth = montgomery
+		dynasty = mathrafal_dynasty
+		tag = PWS
+	}
+
+	dhb_maredudd_ab_owain = {
+		first_name = { name = name_meredith }
+		culture = welsh
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = carmarthen
+		dynasty = dinefwr_dynasty
+		tag = DHB
+	}
+
+	mwg_cadwgan_ap_meurig = {
+		first_name = { name = Cadwgan }
+		culture = welsh
+		religion = catholic
+		birth_date = 1030.1.1
+		birth = cardiff
+		dynasty = morgannwg_dynasty
+		tag = MWG
+	}
+
+	# Caradog ap Gruffydd of Gwent/Gwynllwg — the 1065 destruction of
+	# Harold's hunting lodge at Portskewett is the best 1066 attestation
+	# in Wales.
+	gwt_caradog_ap_gruffydd = {
+		first_name = { name = Caradog }
+		culture = welsh
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = newport
+		dynasty = gwent_dynasty
+		tag = GWT
+	}
+
+	# Conchobar Ua Mael Sechlainn, king of Mide c.1030-1073 [U] — the
+	# o_melaghlin_dynasty ships (04_dynasties.txt:361, home = athlone).
+	mth_conchobar_ua_mael_sechlainn = {
+		first_name = { name = name_connor }
+		culture = irish
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = mullingar
+		dynasty = o_melaghlin_dynasty
+		tag = MTH
+	}
+
+	# Mael Snechtai mac Lulaig, king/mormaer of Moray — son of King
+	# Lulach (SCO's own regnal table carries name_lulach = 1); defeated
+	# by Malcolm III in 1078, dies 1085. Cenel Loairn: vanilla's
+	# loairn_dynasty (04_dynasties.txt:626, home = inverness).
+	moy_mael_snechtai = {
+		first_name = { name = MaelSnechtai }
+		culture = highland
+		religion = catholic
+		birth_date = 1035.1.1
+		birth = elgin
+		dynasty = loairn_dynasty
+		tag = MOY
+	}
 }
