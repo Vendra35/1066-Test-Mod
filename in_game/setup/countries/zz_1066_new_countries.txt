@@ -267,3 +267,18 @@ FAT = { #Fatimid Caliphate
 	culture_definition = lower_egyptian_culture
 	religion_definition = shia
 }
+
+# The county of Vermandois — the France demesne slice's one new tag
+# (freeness verified: zero whole-tree word hits for VMD). A FRESH tag
+# over the agent's PIC-reuse alternative: PIC's claim list bundles
+# Ponthieu (abbeville/boulogne/calais) — live irredenta the house of
+# Vermandois never held (the GRZ lesson: reuse bites when the tag
+# carries other data). culture picard = cultures/french.txt:104.
+
+VMD = { #County of Vermandois
+	color = map_VMD
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = picard
+	religion_definition = catholic
+}

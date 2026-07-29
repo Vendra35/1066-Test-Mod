@@ -89,3 +89,27 @@ fatimid_khutba_reform = {
 
 	years = 4
 }
+
+# The homage of the great fiefs to the Capetian crown — the third use
+# of the khutba pattern (France demesne slice, 2026-07-29). The 1337
+# vassal web is stripped (vassal blocks war declarations, vassal.txt:
+# 80-86 — the mechanism that froze the Norman Conquest in round 2);
+# the six northern fiefs that historically did homage to Philip I ride
+# as TRIBUTARIES instead (war-capable, own color, cancellable —
+# tributary.txt:86-93), and the visible gate (tributary.txt:20-24)
+# wants this modifier on the overlord. Assigned in FRA's setup
+# alongside its two vanilla reforms (10_countries.txt:15156-15157).
+capetian_homage_reform = {
+	potential = {
+		tag = FRA
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
+	}
+
+	years = 4
+}

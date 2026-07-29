@@ -667,6 +667,57 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    classes unchanged (French appanage, tusi, landless trims — all
    decoded).
 
+20. **FRANCE DEMESNE + LANGUEDOC (LANDED, untested — the user is away;
+   test list ACCUMULATES, remote approvals continue).** FRA 164→29:
+   the 1066 Capetian demesne (19: Île-de-France, Orléanais, Sens,
+   the crown bishoprics) + 3 additions (etampes — ETA keeps gien;
+   dreux — DRE empties, county created 1137; montreuil — ENG's 1279
+   Ponthieu relic) + 7 Lyonnais/Vivarais kept as a KNOWING anachronism
+   (Kingdom-of-Arles side, French only 1312 — banked for the Empire
+   slice). 142 locations to 16 recipients via _FRANCE_RULES (exact
+   counts, proven by breaking): TOU 39 (Toulousain-Quercy-Rouergue-
+   Gévaudan-Narbonnais-Nîmois incl. montpellier — the Iberia-era
+   parking RETIRED), AQN 31, BLS 20 (Champagne folded under Theobald),
+   VLS 7, VMD 7, AUV 8, ANJ 6, MRC 6, BER 6, PER 3, FLA 3 (the 1305
+   Lille relic returns), BUR 3, COM/RET/BAR 1 each. Four approved
+   HISTORICAL moves ride along (rodez/lautrec from AMG, castres from
+   VDM, thiers from FRZ). TOU/BER/VLS rise from landless (own claims =
+   1066 borders); VMD is the one NEW tag (Vermandois — fresh over
+   PIC-reuse, whose claims bundle Ponthieu). THE TIE REFORM: the 1337
+   French web is GONE — 27 `first = FRA` vassal lines (war-blocking,
+   the round-2 freeze class, sat on twelve seated thrones) + 4
+   fiefdom sub-ties (fiefdom carries has_overlords_ruler = yes:
+   BOU→MRC was overriding our Adalbert!) — and the six northern fiefs
+   (FLA BUR BLS VLS VMD ANJ) return as TRIBUTARIES under
+   capetian_homage_reform (khutba pattern #3). NRM/TOU/BRI/AQN and
+   the Occitan south stay fully independent. Cast: William IV of
+   Toulouse (vanilla's own TOU regnal table expects name_william =
+   4), Raoul IV de Crépy, Herbert IV on vanilla's carolingian_dynasty
+   ("Caroling" — the last Carolingian male line); BER stays random
+   ([D] — Berry's 1066 holder genuinely disputed). Found and fixed on
+   the way: vanilla definitions.txt ships a SELF-NESTED duplicate
+   province (limousin_province wraps itself, :944-945) — the resolver
+   now dedups within sweeps. 24 checks green, tributary gate at 17
+   (proven by breaking: reform removed → all six FRA lines flagged).
+   TEST WHEN THE USER RETURNS (accumulated list): (a) France is
+   SMALL — Paris/Orléans core + Reims/Sens; Toulouse big and
+   independent under "William IV" (Guilhèm? — the occitan_dialect
+   name-fallback probe); Vermandois gold in Picardy under Herbert IV
+   (house renders "Caroling"); Raoul IV in Soissons/Amiens; Berry
+   under a random ruler in Bourges. (b) The six homage tributaries
+   render with OWN colors and open war screens; SEL/FAT rings
+   regression. (c) MRC: Adalbert II RULES AGAIN (the fiefdom override
+   is gone — if he was a random before, this fix is visible);
+   FOI rules only Foix (BRR/MDM freed); MIE independent. (d) DRE gone
+   from the map, ETA = gien only, FRA holds montreuil. (e) SEL
+   capacity 8.00 (the +6 Nizamiyya recalibration). (f) error.log:
+   expect the French appanage class (~25 lines) GONE — the ten
+   appanage lines died long ago but the 27-vassal web may have been
+   feeding other classes; new classes only; the landless trims grow
+   by DRE. (g) Norman opening regression — NRM untouched, but the
+   whole French theatre changed around it: watch the two 1066 wars
+   still fire.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -775,8 +826,8 @@ launches: Caliphate probe passed, tributary reform beat the validator,
 and the item 18 polish batch passed its five-minute check), Fatimid
 Egypt + southern Levant (CLOSED — confirmed in game 2026-07-29 the
 same day it landed, all seven test points; item 19).
-**Remaining, in rough order:** France demesne
-163→~25 + Languedoc (montpellier already parked there), British Isles
+**Remaining, in rough order:** ~~France demesne + Languedoc~~ (LANDED
+2026-07-29, item 20 — test accumulates), British Isles
 (Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
 southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
 Arabia, the Rus/steppe east, India/China/rest-of-world review — then
@@ -835,11 +886,14 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the next slice per the strategic order —
-**France demesne 163→~25 + Languedoc** (montpellier parked there), or
-the British Isles if preferred. Quick check owed next launch: SEL's
-culture capacity should read **8.00** (nizamiyya recalibrated +3→+6
-after play showed no room past farsi — user-approved 2026-07-29). Items 16-19 are ALL CONFIRMED IN GAME
+**NEXT SESSION STARTS WITH:** the accumulated test (items 20's list +
+SEL capacity 8.00) when the user returns to the game, OR the next
+slice per the strategic order — the **British Isles** (Wales marcher
+dissolution, Ireland/PLE breakup; the ENG Ponthieu relic abbeville is
+parked there too). Working mode (user's call, 2026-07-29 afternoon):
+landings continue while they are away, every batch harness-green and
+build-asserted, remote approvals by phone, the game-test list
+ACCUMULATES in the items. Items 16-19 are ALL CONFIRMED IN GAME
 (2026-07-29). Threads item 19 left for later: the MEC khutba switch of
 1071 and the Mustansirite Hardship are situation material; the
 coat-of-arms batch (deferred list) now owes FAT its banner too; the

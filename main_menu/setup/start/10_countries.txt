@@ -3917,7 +3917,7 @@ countries = {
 			# channel
 			jersey
 			# france			
-			abbeville montreuil #Ponthieu
+			abbeville  #Ponthieu
 		}
 		own_control_conquered = {
 			berwick
@@ -13109,85 +13109,66 @@ countries = {
 
 	FRA = {
 		own_control_core = {
-			montpellier
+			etampes dreux montreuil
 			paris brie_comte_robert corbeil montmorency
-			amiens breteuil corbie nesle peronne
-			clermont montargis sens saint_florentin senlis nemours melun
-			beauvais saint_quentin noyon la_rochelle
-			ribemont laon
-			cahors mirepoix limoux carcassonne lavaur castelnaudary condom nerac bazas agen
-			bergerac montauban albi millau saint_pons beziers agde sauveterre_de_guyenne
-			figeac villefranche chaumont_vexin
-			bar_sur_seine
-			limeuil sarlat marmande montflanquin
-			braine loudun
-			mauriac riom tour_auvergne brioude saint_flour vodable
-			montaigut herment
+			    
+			 montargis sens saint_florentin senlis nemours melun
+			beauvais  noyon 
+			 laon
 
-			tours chinon loches chatillon_sur_indre #D. de Touraine
+			    #D. de Touraine
 
-			soissons crepy #Valois (Own by the ruler)
+			  #Valois (Own by the ruler)
 
-			chartres auneau #C. Chartres
-			tulle #Limousin
-			limoges nontron segur st_leonard aixe thiviers #Vic. Limoges
-			turenne gourdon #Vic.Turenne
-			mende #C. de Gevaudan
-			langres grancey #D. de Langres
-			macon #C. de Macon
+			  #C. Chartres
+			 #Limousin
+			      #Vic. Limoges
+			  #Vic.Turenne
+			 #C. de Gevaudan
+			  #D. de Langres
+			 #C. de Macon
 			beaujeu perreux trevoux #S.de Beaujeu
 			lyon riverie #C. de Lyon
-			le_puy #C. du Velay
+			 #C. du Velay
 			viviers # C. de Viviers
-			nimes uzes melgueil
-			french_ales #S. Ales
-			chambon #B. de Combraille
+			  
+			 #S. Ales
+			 #B. de Combraille
 			chalons_champagne #C. de Chalon
 			reims #D. Reims
 
-			amboise #S.
+			 #S.
 
 			orleans sully vitry_aux_loges #D. de Orleans, Appanage in 1344
 
-			issoudun bourges lignieres sancoins vierzon #Berry(On October 1360, King John II created the title)
+			     #Berry(On October 1360, King John II created the title)
 
-			chateauroux boussac #S. de Chateauroux
+			  #S. de Chateauroux
 
-			tarbes #C. Bigorre
-			lodeve #C. Lodeve
+			 #C. Bigorre
+			 #C. Lodeve
 
-			fenouillet toulouse verdun_sur_garonne villemur
-			meaux
-			provins
-			peyrusse entraigues st_affrique
-			allegre chalancon peyre chateauneuf_de_randon florac st_ambroix
+			 chalancon    
 		}
 		own_control_integrated = {
 			#Appanages
 
 			#Poitou (Own by the ruler)
-			poitiers la_roche_sur_yon montaigu thouars parthenay fontenay montmorillon
-			niort bourganeuf chatellerault brosse lusignan aulnay st_jean_dangely
-			talmont beauvoir mauleon_poitou
 
 			#C. de Champagne
-			chateau_thierry broyes vertus nogent_sur_seine bar_sur_aube
-			chaumont vaucouleurs vitry_en_pertois troyes epernay menehould
-			rosnay villemaur choiseul
 
 			#Too small/unimportant appanages
-			guise hirson
 
 			#Too small/unimportant vassals (fiefs movants)
-			coucy marle #S. Coucy
-			saint_gaudens #Vic. des Quatre Valles
-			brienne #C. Brienne
-			joinville #S. Joinville
-			grandpre #C. Grandpre
+			coucy  #S. Coucy
+			 #Vic. des Quatre Valles
+			 #C. Brienne
+			 #S. Joinville
+			 #C. Grandpre
 		}
 
 		own_control_conquered = {
-			lille douai tournai #From Flanders after the Treaty of Athis-sur-Orge
+			   #From Flanders after the Treaty of Athis-sur-Orge
 		}
 
 		our_cores_conquered_by_others = {
@@ -13246,6 +13227,7 @@ countries = {
 			reforms = {
 				french_feudal_nobility
 				ancient_french_taxation
+				capetian_homage_reform
 			}
 
 			laws = {
@@ -13359,6 +13341,7 @@ countries = {
 	#Burgundy (Appanage)
 	BUR = {
 		own_control_core = {
+			grancey langres macon
 			dijon semur_en_auxois chatillon_sur_seine
 			chalon_sur_saone charolles autun
 			semur_en_brionnais
@@ -13496,6 +13479,7 @@ countries = {
 	#Auvergne (Appanage)
 	AUV = {
 		own_control_core = {
+			clermont allegre brioude riom thiers vodable mauriac saint_flour
 			vic_le_comte
 		}
 		starting_technology_level = 3
@@ -13677,6 +13661,7 @@ countries = {
 	#La Marche (In PU with Bourbonnais)
 	MRC = {
 		own_control_core = {
+			chambon herment montaigut tour_auvergne bourganeuf boussac
 			bellac charroux gueret aubusson #La Marche
 		}
 		starting_technology_level = 3
@@ -13897,9 +13882,9 @@ countries = {
 	#Armagnac (Vassal, Fief Mouvant)
 	AMG = {
 		own_control_core = {
-			auch nogaro rodez
+			auch nogaro 
 			lectoure #Vic. de Lomagne
-			lautrec #Vic. de Lautrec
+			 #Vic. de Lautrec
 		}
 
 		starting_technology_level = 3
@@ -13934,8 +13919,12 @@ countries = {
 
 	#Dreux (Appanage)
 	DRE = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			dreux
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -13964,7 +13953,7 @@ countries = {
 	VDM = {
 		own_control_core = {
 			vendome
-			castres #S. de Castres
+			 #S. de Castres
 		}
 
 		starting_technology_level = 3
@@ -13997,7 +13986,7 @@ countries = {
 	#Etampes (Appanage)
 	ETA = {
 		own_control_core = {
-			etampes #C. de Etampes
+			 #C. de Etampes
 			gien #C. de Gien
 		}
 		starting_technology_level = 3
@@ -14023,7 +14012,7 @@ countries = {
 	FRZ = {
 		own_control_core = {
 			roanne montbrison feurs saint_etienne
-			thiers #S. Thiers
+			 #S. Thiers
 		}
 
 		starting_technology_level = 3
@@ -14106,6 +14095,7 @@ countries = {
 	#Bar (Vassal, Fief Mouvant)
 	BAR = {
 		own_control_core = {
+			vaucouleurs
 			la_mothe_en_bassigny bar_le_duc clermont_en_argonne
 			saint_mihiel longwy #HRE
 			# own_control_integrated, but culture accepted
@@ -14145,6 +14135,7 @@ countries = {
 	#Blois (Vassal, Fief Mouvant)
 	BLS = {
 		own_control_core = {
+			meaux broyes chateau_thierry nogent_sur_seine provins troyes brienne villemaur chartres auneau vitry_en_pertois joinville bar_sur_aube rosnay bar_sur_seine chaumont choiseul epernay menehould vertus
 			blois beaugency chateaudun romorantin st_aignan
 		}
 
@@ -14216,6 +14207,7 @@ countries = {
 	#Comminges (Vassal, Fief Mouvant)
 	COM = {
 		own_control_core = {
+			saint_gaudens
 			muret aspet saint_lizier
 		}
 
@@ -14310,6 +14302,7 @@ countries = {
 	#Perigord (Vassal, Fief Mouvant)
 	PER = {
 		own_control_core = {
+			bergerac limeuil sarlat
 			perigueux riberac
 		}
 
@@ -14497,6 +14490,7 @@ countries = {
 	#Aquitaine
 	AQN = {
 		own_control_core = {
+			bazas condom nerac sauveterre_de_guyenne limoges aixe nontron segur st_leonard thiviers brosse turenne tulle thouars beauvoir fontenay la_roche_sur_yon mauleon_poitou montaigu parthenay talmont la_rochelle st_jean_dangely poitiers aulnay chatellerault lusignan montmorillon niort marmande tarbes
 			bordeaux castelnau_de_medoc benauges lesparre_medoc libourne
 			dax belin la_teste_de_buch mimizan tartas tosse
 			labrit
@@ -14505,28 +14499,28 @@ countries = {
 		}
 
 		our_cores_conquered_by_others = {
-			thouars beauvoir fontenay la_roche_sur_yon mauleon_poitou montaigu parthenay talmont
-			poitiers aulnay chatellerault lusignan montmorillon niort #Poitou
+			       
+			      #Poitou
 			loudun #Loudun
-			la_rochelle #Aunis 
-			st_jean_dangely #Saintonge
+			 #Aunis 
+			 #Saintonge
 			angouleme cognac chabanais #Angouleme
 			chateauroux boussac #Deols
 			issoudun lignieres #Issoudun
-			gueret aubusson bellac bourganeuf brosse charroux rochechouart #La Marche
-			limoges aixe segur st_leonard 
-			turenne tulle ussel ventadour #Limousin
-			nontron thiviers
+			gueret aubusson bellac bourganeuf  charroux rochechouart #La Marche
+			    
+			  ussel ventadour #Limousin
+			 
 			perigueux bergerac limeuil riberac sarlat #Perigord
 			chambon herment montaigut tour_auvergne
 			aurillac mauriac saint_flour 
 			clermont allegre brioude riom thiers vic_le_comte vodable #Auvergne
-			agen marmande montflanquin #Agenais
-			bazas condom nerac sauveterre_de_guyenne #Bazadais
+			agen  montflanquin #Agenais
+			    #Bazadais
 			auch lectoure mirande nogaro #Armagnac
 			muret aspet saint_lizier saint_gaudens #Comminges
 			pau oloron orthez #Bearn
-			tarbes #Bigorre
+			 #Bigorre
 			aire mont_de_marsan #Marsan
 		}
 
@@ -14569,13 +14563,17 @@ countries = {
 
 	#Berry (Revolter)
 	BER = {
+		own_control_core = {
+			bourges sancoins vierzon chateauroux issoudun lignieres
+		}
+
 		our_cores_conquered_by_others = {
-			issoudun bourges
+			 
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -14627,17 +14625,22 @@ countries = {
 
 	#Valois (Revolter)
 	VLS = {
+		own_control_core = {
+			amiens breteuil corbie braine chaumont_vexin crepy soissons
+		}
+
 		our_cores_conquered_by_others = {
-			soissons
+			
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = vls_raoul_iv_crepy
+			ruler_term = { character = vls_raoul_iv_crepy start_date = 1038.1.1 regnal_number = 4 }
 
 			regnal_numbers = {
 				#Ermenfroi = 1
@@ -14877,6 +14880,7 @@ countries = {
 	#Anjou
 	ANJ = {
 		own_control_core = {
+			tours amboise chatillon_sur_indre chinon loches loudun
 			angers chateau_gontier bauge saumur
 			beaupreau le_lude passavant
 		}
@@ -15000,6 +15004,7 @@ countries = {
 	#Rethel
 	RET = {
 		own_control_core = {
+			grandpre
 			rethel #C. Rethel
 			chateau_porcien #C. Porcien, vassal of Rethiel
 		}
@@ -15195,21 +15200,25 @@ countries = {
 
 	#Toulouse (Revolter)
 	TOU = {
+		own_control_core = {
+			chateauneuf_de_randon florac mende peyre agde beziers lodeve saint_pons nimes french_ales melgueil montpellier st_ambroix uzes cahors figeac gourdon montauban carcassonne fenouillet limoux rodez entraigues millau peyrusse st_affrique villefranche toulouse castelnaudary lavaur verdun_sur_garonne villemur agen albi le_puy mirepoix montflanquin lautrec castres
+		}
+
 		our_cores_conquered_by_others = {
-			toulouse lisle_jourdain narbonne lavaur castelnaudary saint_pons beziers agde lodeve melgueil
-			nimes uzes french_ales castres rodez villefranche figeac cahors agen peyrusse entraigues peyre mende
-			lectoure montauban albi villemur lautrec verdun_sur_garonne montflanquin gourdon pamiers foix
-			mirepoix limoux carcassonne fenouillet montpellier chateauneuf_de_randon st_affrique millau 
-			florac st_ambroix
+			 lisle_jourdain narbonne       
+			            
+			lectoure        pamiers foix
+
 		}
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_monarchy"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = tou_guilhem_iv_toulouse
+			ruler_term = { character = tou_guilhem_iv_toulouse start_date = 1061.1.1 regnal_number = 4 }
 
 			regnal_numbers = {
 				#Corson = 1
@@ -15418,11 +15427,12 @@ countries = {
 	#Flanders
 	FLA = {
 		own_control_core = {
+			lille douai tournai
 			cassel dunkirk oudenaarde ypres veurne
 			ostend bruges hulst ghent sint_niklaas aalst kortriik
 		}
 		our_cores_conquered_by_others = {
-			lille douai tournai
+			  
 		}
 		starting_technology_level = 3
 		include = "expl_western_europe"
@@ -58666,6 +58676,23 @@ countries = {
 		country_rank = rank_county
 
 		capital = seu_durgell
+	}
+
+	VMD = {
+		government = {
+			ruler = vmd_herbert_iv_vermandois
+			ruler_term = { character = vmd_herbert_iv_vermandois start_date = 1045.1.1 regnal_number = 4 }
+		}
+		own_control_core = {
+			guise hirson marle ribemont saint_quentin nesle peronne
+		}
+
+		starting_technology_level = 3
+		include = "expl_western_europe"
+		include = "catholic_monarchy_no_coast"
+		country_rank = rank_county
+
+		capital = saint_quentin
 	}
 
 	ZGZ = {

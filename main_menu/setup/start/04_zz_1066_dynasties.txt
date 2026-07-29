@@ -172,4 +172,18 @@ dynasty_manager = {
 		name = { name = hawashim_dynasty }
 		home = mecca
 	}
+	# --- 1066 France, demesne slice: the Raymondine house of Toulouse
+	# and the Crepy house of Valois (both ZERO HITS in vanilla's
+	# dynasties and dynasty loc). Vermandois needs NO new house —
+	# Herbert IV wears vanilla's own carolingian_dynasty
+	# (04_dynasties.txt:6746, "Caroling"): the counts of Vermandois ARE
+	# the last Carolingian male line.
+	toulouse_dynasty = {
+		name = { name = toulouse_dynasty }
+		home = toulouse
+	}
+	crepy_dynasty = {
+		name = { name = crepy_dynasty }
+		home = crepy
+	}
 }

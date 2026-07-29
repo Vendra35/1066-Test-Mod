@@ -734,9 +734,13 @@ _countries10 = next((s for p, s in code.items()
 _reform_src = strip_comments("\n".join(
     s for p, s in code.items() if "/in_game/common/government_reforms/" in p))
 _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
+# Overlords to gate-check: every new-registry tag PLUS the vanilla
+# tags we hand mod-added tributaries to (FRA — the Capetian homage
+# ring; a vanilla overlord is invisible to the registry scan but its
+# tributaries fail the same visible gate without a reform).
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
-    strip_comments(_diplo)) if m.group(1) in _newtags]
+    strip_comments(_diplo)) if m.group(1) in _newtags or m.group(1) == "FRA"]
 for _ov, _sub in _gate_deps:
     _blk = re.search(rf"^\t{_ov} = \{{.*?^\t\}}", _countries10, re.M | re.S)
     _keys = " ".join(re.findall(r"reforms = \{([^}]*)\}",
@@ -757,10 +761,10 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc name entry")
     if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
-# Nine Seljuk clients + two Fatimid (MEC, BKZ); raise if a future
+# Nine Seljuk + two Fatimid + six Capetian homage; raise if a future
 # slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=11)
+      len(_gate_deps), probs, min_count=17)
 
 print()
 if fails:

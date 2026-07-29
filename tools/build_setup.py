@@ -250,6 +250,16 @@ HISTORICAL_RULERS = {
     # Mustansirite Hardship (1062-1073) is future situation material.
     "FAT": ("fat_maad_al_mustansir", "1036.6.13", 0, "Mustansir"), # al-Mustansir Billah, 8th Fatimid Imam-Caliph — NEW_CHARACTERS
     "MEC": ("mec_muhammad_abu_hashim", "1063.1.1", 0),    # Abu Hashim, first Hawashim emir of Mecca, appointed 1063 by al-Sulayhi [U] — NEW_CHARACTERS
+
+    # France demesne + Languedoc (Opus package 2026-07-29; the 27-vassal
+    # finding, the subject-type table, the tag ledger and every name key
+    # re-verified by the main session). BER stays `ruler = random` ON
+    # PURPOSE: who holds Berry in 1066 is genuinely disputed [D] — the
+    # viscounty of Bourges and the Deols lordship are distinct and
+    # neither is a county; random is the honest value.
+    "TOU": ("tou_guilhem_iv_toulouse", "1061.1.1", 4),    # William IV of Toulouse — vanilla's own TOU regnal table expects name_william = 4 (10_countries.txt:17843) — NEW_CHARACTERS
+    "VLS": ("vls_raoul_iv_crepy", "1038.1.1", 4),         # Raoul IV de Crepy — Valois, Amiens and the Vexin; accession [U] — NEW_CHARACTERS
+    "VMD": ("vmd_herbert_iv_vermandois", "1045.1.1", 4),  # Herbert IV, last Carolingian count of Vermandois [U] — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -492,7 +502,12 @@ _IBERIA_GRANTS = ({
     "CAT": ["barcelona", "sitges", "terrassa", "villafranca_del_penedes",
             "girona", "sant_feliu", "vic", "cardona", "cervera", "manresa",
             "tarragona", "montblanc", "tarrega"],
-    "FRA": ["montpellier"],
+    # montpellier was parked here ("FRA": ["montpellier"] — the
+    # Languedoc slice's problem) from the day MLL went landless. The
+    # Languedoc slice ARRIVED (France demesne, 2026-07-29): TOU's
+    # nimois sweep now takes montpellier straight out of MLL, and a
+    # second FRA grant would violate the disjointness assert — which
+    # is exactly how the parking's retirement was caught.
 })
 
 # -------------------------------------------------- pre-Manzikert Byzantium ---
@@ -582,10 +597,19 @@ def _resolve_ruleset(ctx, sweep, singles, minus_sweeps, minus_singles):
     for name in sweep:
         if name not in members:
             sys.exit(f"{ctx}: {name} not found in definitions.txt")
-        got = [l for l in members[name]
-               if l in ownable and l not in seen and l not in minus]
+        # seen is updated DURING the walk, not after: vanilla's own
+        # definitions.txt ships a self-nested duplicate province
+        # (limousin_province wraps itself, :944-945) whose members
+        # arrive twice from _defs — the old after-the-fact update let
+        # both copies through and a grant list with duplicated tokens
+        # fails the exclusivity validate (found by the France slice,
+        # 2026-07-29).
+        got = []
+        for l in members[name]:
+            if l in ownable and l not in seen and l not in minus:
+                got.append(l)
+                seen.add(l)
         target.extend(got)
-        seen.update(got)
     for l in singles:
         if l not in ownable:
             sys.exit(f"{ctx}: single {l} is not an ownable location")
@@ -856,6 +880,20 @@ NEW_COUNTRIES["FAT"] = (
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = cairo\n\t}\n")
 
+# VMD — the county of Vermandois, the France slice's one new tag (see
+# the registry file's comment for the PIC-reuse rejection). Inland →
+# catholic_monarchy_no_coast; the catholic no_coast variant KEEPS
+# heir_selection (diff-measured 2026-07-29 — unlike the muslim
+# family), so nothing is restated. expl_western_europe grants
+# france_region, which contains saint_quentin (capital assert).
+NEW_COUNTRIES["VMD"] = (
+    "\tVMD = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "catholic_monarchy_no_coast"\n'
+    "\t\tcountry_rank = rank_county\n\n"
+    "\t\tcapital = saint_quentin\n\t}\n")
+
 # The Fatimid territory, resolved from definitions.txt like the Seljuk
 # rules. Variant A-prime (user-approved 2026-07-29): MAM's remaining 120
 # minus tobruk (granted to BQA — 1066 Barqa is Zirid-aligned Banu Qurra
@@ -890,6 +928,79 @@ FATIMID_TRIBUTARIES = ("MEC", "BKZ")
 # Its snapshot claims (120 locations) are the Mamluk future as
 # irredenta — the GRA/POR shape.
 EGYPT_LANDLESS = ("MAM",)
+
+# ------------------------------------------------- the France demesne ---
+# FRANCE DEMESNE + LANGUEDOC (Opus package 2026-07-29; user-approved).
+# Vanilla FRA holds 163 locations (our build 164 with montpellier);
+# the 1066 Capetian demesne was famously tiny. 142 locations leave
+# through the rule sets below (138 from FRA + rodez/lautrec from AMG,
+# castres from VDM, thiers from FRZ — the four approved HISTORICAL
+# moves; aurillac was rejected, it would empty CLT on a [D] reading).
+# FRA keeps 19 (Ile-de-France, Orleanais, Sens — Henry I's 1055
+# acquisition [U] — and the crown-aligned bishoprics Reims/Laon/
+# Noyon/Beauvais/Chalons) and GAINS three through LOCATION_GRANTS:
+# etampes (ETA keeps gien — a 12th-c. royal appanage, demesne at
+# 1066), dreux (DRE empties — the county is created 1137), montreuil
+# (ENG's 1279 Ponthieu-marriage relic; the crown's one seaport since
+# Hugh Capet [U]). Lyonnais/Vivarais (7 locations, Kingdom-of-Arles
+# side, French only from 1312) stay with FRA as a KNOWING anachronism
+# banked for the Empire slice. TOU/BER/VLS rise from landless (their
+# own claim lists are the 1066 borders — the ZTA/Duklja shape);
+# montpellier reaches TOU through the nimois sweep and MLL's claim on
+# it is untouched. NRB keeps Narbonne (autonomous viscounty).
+_FRANCE_RULES = {
+    "TOU": (["gevaudan_province", "narbonnais_province", "nimois_province",
+             "quercy_province", "razes_province", "rouergue_province",
+             "toulousain_province"],
+            ["agen", "albi", "le_puy", "mirepoix", "montflanquin",
+             "lautrec", "castres"],
+            [], ["narbonne"], 39),
+    "AQN": (["bazadais_province", "limousin_province", "lower_poitou_province",
+             "saintonge_province", "turenne_province", "upper_poitou_province"],
+            ["brosse", "marmande", "tarbes"],
+            [], ["belin", "jonzac", "montendre", "oleron", "rochefort",
+                 "royan", "saintes", "ussel", "ventadour",
+                 # La Marche's own Limousin holdings + Rochechouart
+                 # (RCC's) — measured by the resolver's first run; the
+                 # package's minus list had missed them.
+                 "aubusson", "bellac", "bourganeuf", "charroux",
+                 "gueret", "rochechouart"], 31),
+    "BLS": (["brie_champenois_province", "champagne_province",
+             "chartrain_province", "perthois_province"],
+            ["bar_sur_seine", "chaumont", "choiseul", "epernay",
+             "menehould", "vertus"],
+            [], ["dreux", "etampes"], 20),
+    "VLS": (["amienois_province"],
+            ["braine", "chaumont_vexin", "crepy", "soissons"], [], [], 7),
+    "VMD": (["thierache_province", "vermandois_province"], [], [], [], 7),
+    "AUV": (["lower_auvergne_province", "upper_auvergne_province"],
+            [], [], ["aurillac", "vic_le_comte"], 8),
+    "ANJ": (["touraine_province"], ["loudun"], [], [], 6),
+    "MRC": (["combraille_province"], ["bourganeuf", "boussac"], [], [], 6),
+    "BER": (["upper_berry_province"],
+            ["chateauroux", "issoudun", "lignieres"],
+            [], ["gien", "sancerre"], 6),
+    "PER": (["perigord_province"], [], [], ["perigueux", "riberac"], 3),
+    "FLA": (["roman_flanders_province"], [], [], [], 3),
+    "BUR": ([], ["grancey", "langres", "macon"], [], [], 3),
+    "COM": ([], ["saint_gaudens"], [], [], 1),
+    "RET": ([], ["grandpre"], [], [], 1),
+    "BAR": ([], ["vaucouleurs"], [], [], 1),
+}
+
+# The Capetian homage ring: the six northern fiefs that historically
+# did homage to Philip I, as TRIBUTARIES (war-capable, own color,
+# cancellable — tributary.txt:86-93; the vassal type the 1337 web used
+# blocks war declarations, vassal.txt:80-86, the round-2 freeze).
+# NOT tied, deliberately: NRM (the Norman Conquest machine — hard
+# constraint), TOU/BRI and the whole Occitan south (outside royal
+# reach in 1066), AQN (the [D] call — homage was nominal and loose).
+FRANCE_TRIBUTARIES = ("FLA", "BUR", "BLS", "VLS", "VMD", "ANJ")
+
+# DRE empties (the county of Dreux is created 1137 for Robert of
+# France [U]; at 1066 dreux is royal demesne) — landless with its one
+# location as the claim.
+FRANCE_LANDLESS = ("DRE",)
 
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
@@ -956,7 +1067,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
-    + EGYPT_LANDLESS
+    + EGYPT_LANDLESS + FRANCE_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -976,6 +1087,12 @@ LOCATION_GRANTS = {
     # emirate under ZIRID suzerainty [U/D], not Fatimid — and the grant
     # makes al_bayda_province whole under BQA (Fatimid slice).
     "BQA": ["tobruk"],
+    # The three demesne additions (France slice): etampes from ETA
+    # (12th-c. royal appanage; ETA keeps gien), dreux from DRE (county
+    # created 1137 — DRE empties, FRANCE_LANDLESS), montreuil from ENG
+    # (the 1279 Ponthieu-marriage relic; the crown's seaport since
+    # Hugh Capet [U]).
+    "FRA": ["etampes", "dreux", "montreuil"],
 }
 LOCATION_GRANTS.update(_IBERIA_GRANTS)
 LOCATION_GRANTS.update(_BYZ_GRANTS)
@@ -1011,6 +1128,24 @@ FIELD_FIXES = {
     # Kerman's block carries the 14th-century Nikruzi house; Qavurt is a
     # Seljukid.
     "KRM": [("dynasty = nikruzi_dynasty", "dynasty = seljukids_dynasty")],
+    # France demesne slice: the three landless-to-landed tags swap the
+    # _not_present include for the landed variant (the POR entry in
+    # reverse). The catholic no_coast variant KEEPS heir_selection
+    # (diff-measured — unlike the muslim family), nothing restated.
+    # TOU is coastal (montpellier/agde); BER and VLS are inland
+    # (amienois resolves to amiens/breteuil/corbie — no coast).
+    "TOU": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy"')],
+    "BER": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy_no_coast"')],
+    "VLS": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_monarchy_no_coast"')],
+    # FRA: capetian_homage_reform joins the two vanilla reforms in
+    # place (10_countries.txt:15156-15157) — injection, not
+    # replacement; the tributary ring's visible gate needs it.
+    "FRA": [("\t\t\t\tancient_french_taxation\n",
+             "\t\t\t\tancient_french_taxation\n"
+             "\t\t\t\tcapetian_homage_reform\n")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -1832,6 +1967,53 @@ NEW_CHARACTERS = """
 		dynasty = hawashim_dynasty
 		tag = MEC
 	}
+
+	# --- 1066 France: the demesne partition's three new thrones ------------
+	# The France-demesne package (Opus 2026-07-29). Name keys are all
+	# vanilla (character_names_dynamic_l_english.yml): name_william
+	# renders "Guillaume"/"Guilhem" by the ruler's language (:18222/
+	# :18235), name_ralph renders "Raoul" (:14702), name_herbert :8798.
+	# Cultures: languedocien cultures/french.txt:389, picard :104.
+	# All three accessions/births are [U] estimates.
+	#
+	# William IV of Toulouse (r. 1061-1094) — vanilla's own TOU regnal
+	# table already counts name_william = 4 (10_countries.txt:17843);
+	# Raymond IV of Saint-Gilles is 1094, a succession hook.
+	tou_guilhem_iv_toulouse = {
+		first_name = { name = name_william }
+		culture = languedocien
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = toulouse
+		dynasty = toulouse_dynasty
+		tag = TOU
+	}
+
+	# Raoul IV de Crepy — count of Valois, Amiens and the Vexin, the
+	# scandal of the age: marries Philip I's widowed mother Anne of
+	# Kyiv c. 1062 and is excommunicated for it. Dies 1074.
+	vls_raoul_iv_crepy = {
+		first_name = { name = name_ralph }
+		culture = picard
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = crepy
+		dynasty = crepy_dynasty
+		tag = VLS
+	}
+
+	# Herbert IV of Vermandois (r. 1045-1080) — the last Carolingian
+	# count in the male line, hence vanilla's own carolingian_dynasty
+	# (04_dynasties.txt:6746, marked "# Extinct" — not in 1066).
+	vmd_herbert_iv_vermandois = {
+		first_name = { name = name_herbert }
+		culture = picard
+		religion = catholic
+		birth_date = 1032.1.1
+		birth = saint_quentin
+		dynasty = carolingian_dynasty
+		tag = VMD
+	}
 """
 
 
@@ -2105,6 +2287,25 @@ def build_countries(src):
             sys.exit(f"_EGYPT_RULES: FAT must hold {_must} — the slice's "
                      "whole Levant claim rests on it")
 
+    # The France demesne resolves the same way. STRICT construction:
+    # the minus lists exclude every swept-province member the DONORS do
+    # not own (including the recipients' own holdings — saintes and
+    # oleron are AQN's already, ventadour VNT's, narbonne NRB's), so
+    # every resolved list contains ONLY donor land (FRA + the four
+    # approved moves from AMG/VDM/FRZ). If a vanilla patch shifts any
+    # ownership, the exact-once assert in _remove_owned_many dies.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_FRANCE_RULES.items()):
+        got = _resolve_ruleset(f"_FRANCE_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_FRANCE_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}\n  resolved: {' '.join(got)}")
+        LOCATION_GRANTS[_t] = got
+    for _t, _cap in (("TOU", "toulouse"), ("VLS", "soissons"),
+                     ("BER", "bourges"), ("VMD", "saint_quentin")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_FRANCE_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
     # No recipient may be a steppe horde or tribe: their name branches
     # ignore the NAME key entirely (the JAL law, generalized).
     _blocks_h = list(re.finditer(COUNTRY_RE, src, re.M))
@@ -2133,7 +2334,7 @@ def build_countries(src):
 
     _landless_claims = {t: _owned_by(src, t)
                         for t in BYZ_LANDLESS + SELJUK_LANDLESS
-                        + EGYPT_LANDLESS}
+                        + EGYPT_LANDLESS + FRANCE_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -2835,6 +3036,41 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 27 future-dated dependencies, stripped {n_future_deps}")
     report.append(("future-dated dependencies stripped", n_future_deps))
 
+    # The 1337 French vassal web dies with the demesne partition
+    # (France package 2026-07-29). All 27 surviving `first = FRA ...
+    # vassal` lines go: the vassal type blocks war declarations
+    # (vassal.txt:80-86 — the exact class that froze the Norman
+    # Conquest in round 2) and it sat on twelve of our seated thrones
+    # (BRI FOI AMG BLS AST COM IJO PER MON VNT AUV BGN). The six-fief
+    # homage ring returns below as TRIBUTARIES. Runs AFTER the
+    # future-dated strip, which already removed FRA->FLA (1305.6.23).
+    src, n_frav = re.subn(
+        r"^[ \t]*dependency = \{ first = FRA second = \w+ subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_frav != 27:
+        sys.exit(f"expected exactly 27 FRA vassal dependencies, stripped {n_frav}")
+    report.append(("French 1337 vassal web removed", n_frav))
+
+    # Four fiefdom sub-ties die with it. fiefdom carries
+    # has_overlords_ruler = yes (fiefdom.txt:16): BOU->MRC was
+    # overriding our seated Adalbert of La Marche with BOU's random
+    # ruler, FOI->BRR and FOI->MDM copied Roger II onto Bearn and
+    # Mont-de-Marsan, ANJ->MIE put Geoffrey III on Maine — which in
+    # 1066 is under NORMAN occupation, not Angevin. ALE->PRC stays
+    # (two random-ruler tags, a defensible Belleme-family tie);
+    # FLA->NAM and ARS->STP belong to the Empire slice.
+    n_fief = 0
+    for _pair in ("ANJ second = MIE", "FOI second = BRR",
+                  "FOI second = MDM", "BOU second = MRC"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = " + _pair
+            + r" subject_type = fiefdom \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_fief += _k
+    if n_fief != 4:
+        sys.exit(f"expected exactly 4 French fiefdom sub-ties, stripped {n_fief}")
+    report.append(("French fiefdom sub-ties removed", n_fief))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -2925,6 +3161,22 @@ def build_diplomacy(src):
            + "\n\t# 1066: the Fatimid clients under the khutba (generated)\n"
            + _ftribs + src[_wrap:])
     report.append(("Fatimid tributaries added", len(FATIMID_TRIBUTARIES)))
+
+    # The Capetian homage ring: the six northern fiefs that
+    # historically did homage to Philip I, as TRIBUTARIES —
+    # war-capable, own color, cancellable (tributary.txt:86-93), the
+    # loose bond 11th-century homage actually was. FRA carries
+    # capetian_homage_reform for the visible gate. Their old FRA
+    # vassal lines died in the strip above, so no multiple-overlord
+    # collision is possible.
+    _wrap = src.rindex("\n}")
+    _htribs = "".join(
+        f"\tdependency = {{ first = FRA second = {t} subject_type = tributary }}\n"
+        for t in FRANCE_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Capetian homage ring (generated)\n"
+           + _htribs + src[_wrap:])
+    report.append(("Capetian homage tributaries added", len(FRANCE_TRIBUTARIES)))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):

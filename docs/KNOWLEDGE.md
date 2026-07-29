@@ -1609,6 +1609,49 @@ name_alexander, name_qaim) and the literal route are BOTH live.
 **Means:** a regnal name never blocks on the name-key bank again —
 any missing key is one loc row away, same as first names.
 
+### The French subject-type laws — appanage's real killer, fiefdom's ruler theft, and the vassal web that outlived the strip
+**Established:** 2026-07-29, France demesne package; every cite
+re-verified by the main session against the subject_types files.
+1. **Appanage dies at 1066 because of the REGENCY, not the dynasty
+   link.** The `visible` block (appanage.txt:120-133) has NO dynasty
+   condition — it wants monarchy + `french_feudal_nobility`, which
+   vanilla FRA carries (10_countries.txt:15156). The killer is the
+   separate `enabled` block (:135-155): its first line is
+   `exists = root.ruler_or_heir_if_regent.dynasty`, and FRA at 1066 is
+   under an ENGINE regency (Philip I is 14) — the generated regent has
+   no dynasty, so every appanage fails [INFERRED from the block +
+   the observed all-ten failure; consistent, not screenshot-proven].
+   The earlier "needs a Capetian dynastic link" reading was the right
+   outcome for the wrong clause.
+2. **fiefdom and dominion carry `has_overlords_ruler = yes`**
+   (fiefdom.txt:16, dominion.txt:17) — the subject's throne shows the
+   OVERLORD's ruler. Vanilla's BOU→MRC fiefdom was silently overriding
+   our seated Adalbert of La Marche; FOI→BRR/MDM copied Roger II onto
+   Béarn. Never leave a fiefdom tie over a seated ruler.
+3. **Only `subject_type = appanage` was ever stripped — 27
+   `first = FRA ... vassal` lines survived every launch** until this
+   slice, war-blocking (vassal.txt:80-86) twelve of our seated
+   thrones. A premise like "the fiefs are independent now" must be
+   grepped, not remembered — the check took one command.
+4. march is the only gate-free type (rank + lock only, march.txt:6-33)
+   but drags subjects into EVERY offensive war (:36-38) and its
+   war-declaration/map-tint behavior is unattested — probe before use.
+**Means:** loose feudal geometry = tributary + a khutba-pattern reform
+(third use: capetian_homage_reform); the subject-type table in the
+France package is the reference for every future tie decision.
+
+### Vanilla definitions.txt ships a SELF-NESTED duplicate province
+**Established:** 2026-07-29, the France slice's first dry-run.
+`limousin_province = { limousin_province = { limoges aixe ... } }`
+(definitions.txt:944-945) — the flattening parser lists every member
+TWICE, and `_resolve_ruleset`'s sweep comprehension (seen updated
+after the walk) let both copies into the grant list, where the
+duplicated tokens would have failed the exclusivity validate.
+**Means:** the resolver now dedups DURING the walk (build_setup.py,
+comment in place). Any future parser over definitions.txt must assume
+duplicate members are possible — Paradox's own data does it at least
+once.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The

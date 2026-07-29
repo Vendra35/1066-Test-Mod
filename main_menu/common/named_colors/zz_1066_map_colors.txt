@@ -47,4 +47,7 @@
 	# (67 176 140, reserved by the EGY formable) and from the Iberian
 	# greens. Neighbors: BYZ purple, HLB pale gold, MEC/MDA vanilla.
 	map_FAT = rgb { 24 134 90 }     # Fatimids     emerald
+	# Vermandois — the checky or of its arms; neighbors FRA blue,
+	# FLA and BLS vanilla, VLS/PIC-area greys.
+	map_VMD = rgb { 186 148 58 }    # Vermandois   old gold
 }

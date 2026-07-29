@@ -105109,4 +105109,51 @@ character_db={
 		dynasty = hawashim_dynasty
 		tag = MEC
 	}
+
+	# --- 1066 France: the demesne partition's three new thrones ------------
+	# The France-demesne package (Opus 2026-07-29). Name keys are all
+	# vanilla (character_names_dynamic_l_english.yml): name_william
+	# renders "Guillaume"/"Guilhem" by the ruler's language (:18222/
+	# :18235), name_ralph renders "Raoul" (:14702), name_herbert :8798.
+	# Cultures: languedocien cultures/french.txt:389, picard :104.
+	# All three accessions/births are [U] estimates.
+	#
+	# William IV of Toulouse (r. 1061-1094) — vanilla's own TOU regnal
+	# table already counts name_william = 4 (10_countries.txt:17843);
+	# Raymond IV of Saint-Gilles is 1094, a succession hook.
+	tou_guilhem_iv_toulouse = {
+		first_name = { name = name_william }
+		culture = languedocien
+		religion = catholic
+		birth_date = 1040.1.1
+		birth = toulouse
+		dynasty = toulouse_dynasty
+		tag = TOU
+	}
+
+	# Raoul IV de Crepy — count of Valois, Amiens and the Vexin, the
+	# scandal of the age: marries Philip I's widowed mother Anne of
+	# Kyiv c. 1062 and is excommunicated for it. Dies 1074.
+	vls_raoul_iv_crepy = {
+		first_name = { name = name_ralph }
+		culture = picard
+		religion = catholic
+		birth_date = 1025.1.1
+		birth = crepy
+		dynasty = crepy_dynasty
+		tag = VLS
+	}
+
+	# Herbert IV of Vermandois (r. 1045-1080) — the last Carolingian
+	# count in the male line, hence vanilla's own carolingian_dynasty
+	# (04_dynasties.txt:6746, marked "# Extinct" — not in 1066).
+	vmd_herbert_iv_vermandois = {
+		first_name = { name = name_herbert }
+		culture = picard
+		religion = catholic
+		birth_date = 1032.1.1
+		birth = saint_quentin
+		dynasty = carolingian_dynasty
+		tag = VMD
+	}
 }

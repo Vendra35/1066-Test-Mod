@@ -173,42 +173,11 @@ diplomacy_manager = {
     #Appanages
 
     #Vassal, Fief Mouvant of France
-    dependency = { first = FRA second = BRI subject_type = vassal }
-    dependency = { first = FRA second = FOI subject_type = vassal }
-    dependency = { first = FRA second = AMG subject_type = vassal }
-    dependency = { first = FRA second = FRZ subject_type = vassal }
-    dependency = { first = FRA second = BAR subject_type = vassal }
-    dependency = { first = FRA second = BLS subject_type = vassal }
-    dependency = { first = FRA second = AST subject_type = vassal }
-    dependency = { first = FRA second = COM subject_type = vassal }
-    dependency = { first = FRA second = IJO subject_type = vassal }
-    dependency = { first = FRA second = MRT subject_type = vassal }
-    dependency = { first = FRA second = VLN subject_type = vassal }
-    dependency = { first = FRA second = PER subject_type = vassal }
-    dependency = { first = FRA second = TON subject_type = vassal }
-    dependency = { first = FRA second = MON subject_type = vassal }
-    dependency = { first = FRA second = AUM subject_type = vassal }
-    dependency = { first = FRA second = ROU subject_type = vassal }
-    dependency = { first = FRA second = NEV subject_type = vassal } #In a PU with FLA
-    dependency = { first = FRA second = RET subject_type = vassal } #In a PU with FLA
-    dependency = { first = FRA second = NRB subject_type = vassal }
-    dependency = { first = FRA second = VNT subject_type = vassal }
-    dependency = { first = FRA second = RCC subject_type = vassal }
-    dependency = { first = FRA second = CLT subject_type = vassal }
-    dependency = { first = FRA second = AUX subject_type = vassal }
-    dependency = { first = FRA second = SAN subject_type = vassal }
-    dependency = { first = FRA second = AUV subject_type = vassal }
-    dependency = { first = FRA second = VDM subject_type = vassal }
-    dependency = { first = FRA second = BGN subject_type = vassal }
 
     #Vassals of vassals
-    dependency = { first = ANJ second = MIE subject_type = fiefdom }
     dependency = { first = FLA second = NAM subject_type = vassal }
     dependency = { first = ARS second = STP subject_type = vassal }
-    dependency = { first = FOI second = BRR subject_type = fiefdom }
-    dependency = { first = FOI second = MDM subject_type = fiefdom }
     dependency = { first = ALE second = PRC subject_type = fiefdom }
-    dependency = { first = BOU second = MRC subject_type = fiefdom }
 
     #-------Italy-------
 
@@ -717,5 +686,13 @@ diplomacy_manager = {
 	# 1066: the Fatimid clients under the khutba (generated)
 	dependency = { first = FAT second = MEC subject_type = tributary }
 	dependency = { first = FAT second = BKZ subject_type = tributary }
+
+	# 1066: the Capetian homage ring (generated)
+	dependency = { first = FRA second = FLA subject_type = tributary }
+	dependency = { first = FRA second = BUR subject_type = tributary }
+	dependency = { first = FRA second = BLS subject_type = tributary }
+	dependency = { first = FRA second = VLS subject_type = tributary }
+	dependency = { first = FRA second = VMD subject_type = tributary }
+	dependency = { first = FRA second = ANJ subject_type = tributary }
 
 }
