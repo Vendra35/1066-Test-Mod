@@ -820,6 +820,28 @@ for _mm in re.finditer(r"members[ \t]*=[ \t]*\{([^}]*)\}",
                          "are not IO members (vanilla's own rule)")
 check("IO members hold land", _members_checked, probs, min_count=27)
 
+# ---- exactly one ruler key per country block -------------------------------
+# Vanilla ships 23 one-line `government = { ruler = X }` blocks; every
+# line-anchored scan in the build was blind to them, and AOS shipped a
+# 1291-born ruler sitting AFTER an injected `ruler = random` in the same
+# line — three independent scans blessed it (Italy North review,
+# 2026-07-29). More than one ruler key can silently outrank a seated
+# Phase 2 ruler; zero means an engine-generated regent. Unanchored, on
+# comment-stripped text (NTC ships `#ruler = jap_koumyou_tenno`).
+probs = []
+_rblocks = 0
+for _i, _b in enumerate(_blk_starts):
+    _e = (_blk_starts[_i + 1].start() if _i + 1 < len(_blk_starts)
+          else len(_c10_clean))
+    _body = _c10_clean[_b.start():_e]
+    _n = len(re.findall(r"(?<![A-Za-z0-9_])ruler[ \t]*=[ \t]*[A-Za-z0-9_]",
+                        _body))
+    _rblocks += 1
+    if _n != 1:
+        probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
+check("exactly one ruler key per country block", _rblocks, probs,
+      min_count=2300)
+
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
 # flag_definition list uses its TAG as the COA_KEY directly
@@ -868,10 +890,21 @@ for _p, _s in sorted(_coa_srcs.items()):
         if _t not in _color_defs:
             probs.append(f"{_rel}: named colour {_t} is defined in no "
                          "named_colors file (mod or vanilla)")
-# Every invented tag either carries arms or sits DELIBERATELY on the
-# generator list — so a future slice's new tag fails loudly instead of
-# quietly shipping a flag nobody chose. The membership mirrors the CoA
-# package's tiers (docs/COA.md): tier 3 deferred, tier 4 permanent.
+# A key vanilla also defines is an OVERRIDE (last-loaded wins) — legal,
+# but only ever deliberate; computed here because the registry loop
+# below also consults the vanilla key set.
+_van_coa_keys = set()
+for _p in glob.glob(os.path.join(VAN, "main_menu", "common",
+                                 "coat_of_arms", "coat_of_arms", "*.txt")):
+    _van_coa_keys |= set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{",
+                                    strip_comments(read(_p)), re.M))
+# Every invented tag either carries arms, or has VANILLA arms already
+# (the formable-reuse class: SAX/SWA ship scripted CoAs with no registry
+# block — reviving the tag inherits the flag for free), or sits
+# DELIBERATELY on the generator list — so a future slice's new tag fails
+# loudly instead of quietly shipping a flag nobody chose. The membership
+# mirrors the CoA package's tiers (docs/COA.md): tier 3 deferred, tier 4
+# permanent.
 _GENERATOR_OK = {
     # 13 taifas — taifa polities had no heraldry; the generator's
     # religion-gated Islamic designs are no less historical than
@@ -892,23 +925,18 @@ for _t in sorted(_newtags):
     if _t in _our_coa_keys and _t in _GENERATOR_OK:
         probs.append(f"{_t} both carries arms and sits in _GENERATOR_OK — "
                      "drop it from the list")
-    elif _t not in _our_coa_keys and _t not in _GENERATOR_OK:
-        probs.append(f"new tag {_t} has neither a CoA block nor a "
-                     "_GENERATOR_OK entry — choose deliberately")
+    elif (_t not in _our_coa_keys and _t not in _GENERATOR_OK
+          and _t not in _van_coa_keys):
+        probs.append(f"new tag {_t} has neither a CoA block, nor vanilla "
+                     "arms, nor a _GENERATOR_OK entry — choose deliberately")
 for _t in sorted(_GENERATOR_OK - _newtags):
     probs.append(f"_GENERATOR_OK lists {_t}, which is not in the "
                  "new-country registry — stale entry")
-# A key vanilla also defines is an OVERRIDE (last-loaded wins): legal,
-# but only ever deliberate. SIC_ancient is the one intended member — at
-# 1066 Sicily's default flag is the Hauteville bend, not the
-# Hohenstaufen eagle (1194+); the key-level override leaves vanilla's
-# SIC flag_definition list and all its later variants untouched.
+# SIC_ancient is the one intended override member — at 1066 Sicily's
+# default flag is the Hauteville bend, not the Hohenstaufen eagle
+# (1194+); the key-level override leaves vanilla's SIC flag_definition
+# list and all its later variants untouched.
 _INTENTIONAL_COA_OVERRIDES = {"SIC_ancient"}
-_van_coa_keys = set()
-for _p in glob.glob(os.path.join(VAN, "main_menu", "common",
-                                 "coat_of_arms", "coat_of_arms", "*.txt")):
-    _van_coa_keys |= set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{",
-                                    strip_comments(read(_p)), re.M))
 for _k in sorted(_our_coa_keys):
     _coa_count += 1
     if _k in _van_coa_keys and _k not in _INTENTIONAL_COA_OVERRIDES:

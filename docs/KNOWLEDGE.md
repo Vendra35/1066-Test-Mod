@@ -1882,6 +1882,24 @@ key also falls back to generation with NO log line, so verify_mod's
 only detector. Every new-slice tag must either get arms in
 `zz_1066_flags.txt` or join `_GENERATOR_OK` deliberately.
 
+### Line-anchored scans are blind to one-line blocks — the anchor class's fourth incident
+**Established:** vanilla ships exactly 23 one-line
+`government = { ruler = X }` blocks (22 random + AOS's 1291-born
+sav_aymon_savoy, vanilla 10_countries.txt:36343). Every line-anchored
+ruler scan in build_setup.py missed them: the rewrite pass could not
+convert them, the add-missing pass double-inserted into all 23, and
+the build's own validator shared the anchor and blessed the result —
+three independent scans wrong about the same construct (the
+two-validators-wrong-about-DHE-reachability shape, again). Found by
+the Italy North research review 2026-07-29; NTC's commented
+`#ruler = jap_koumyou_tenno` then ambushed the widened scan on its
+first run, so the fix is BOTH unanchored AND comment-stripped.
+**Means:** with BOM-defeats-^ (three incidents) this is the anchor
+class's fourth: any `^`-anchored scan over Paradox script must first
+prove the construct never occurs mid-line. Harness now guards
+"exactly one ruler key per country block" (2378 items, proven by
+breaking); the build validator scans unanchored comment-stripped text.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The
