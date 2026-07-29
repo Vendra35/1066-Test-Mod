@@ -594,6 +594,20 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    sponsor_maritime_contracts removals GONE (landless-shell trims and
    tusi remain — known); (c) regression: tributaries still tributary,
    Persia still visible, taifa/client thrones unchanged.
+   **CONFIRMED IN GAME (2026-07-29, third launch): ALL PASSED — THE
+   SELJUK SLICE IS CLOSED.** Capacity 5.00 with the penalty box gone,
+   both reforms render by name, ABS's sharia_law line gone, and the 12
+   maritime removals gone — the user's pasted 3662 residue was checked
+   tag by tag: all 28 flagged tags are landless shells
+   (SELJUK_LANDLESS / BYZ_LANDLESS / GRA), NONE of the 12 no_coast
+   blocks among them — decoder sub-class 3, accepted. Regression clean
+   (nine tributaries, Persia visible, thrones unchanged). One NEW
+   signature decoded and parked: CHI's accepted-culture flood
+   (country.cpp:9635) is the Middle Kingdom strip again — the IO's
+   leader_modifier carried cultures_capacity = 50 AND
+   allow_tributary_subject (middle_kingdom.txt:69-75), so this flood,
+   CHA/DAI and the tusi ×30 are ONE root cause, owned by the China
+   review (decoder entry added).
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
@@ -669,7 +683,11 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
   (government.cpp:3702 class) — CHI lost its modifier source; the ~30
   Guizhou `tusi` subjects fail the same way (country_triggers.txt:
   1288-1298 leans on the IO). Owned by the future China review; do not
-  re-discover.
+  re-discover. **Third symptom, same root (2026-07-29):** CHI's
+  accepted-culture flood (country.cpp:9635) — the IO's leader_modifier
+  also carried `cultures_capacity = 50` (middle_kingdom.txt:71). One
+  restore point (an ABS-style setup reform for 1066 China) fixes all
+  three.
 - **Muslim empire-rank styling** (user question, 2026-07-29): SEL's
   kingdom rank is the HISTORICAL styling (Sultanate; and ABS holds
   empire rank — the de jure hierarchy of the Islamic world is in the
@@ -694,9 +712,9 @@ Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
 separate later phase.** The world's borders get finished before any pop
 conversion work starts.
 **DONE so far:** Sardinia, the 13 taifas, Christian Iberia, Byzantium,
-Seljuks+Abbasids (CONFIRMED in game 2026-07-29 across two launches —
-Caliphate probe passed, tributary reform beat the validator; only the
-item 18 polish batch still awaits its five-minute check).
+Seljuks+Abbasids (CLOSED — confirmed in game 2026-07-29 across THREE
+launches: Caliphate probe passed, tributary reform beat the validator,
+and the item 18 polish batch passed its five-minute check).
 **Remaining, in rough order:** Fatimid Egypt + the Levant south of the
 named line (Damascus/Palestine; MAM keeps 120 there), France demesne
 163→~25 + Languedoc (montpellier already parked there), British Isles
@@ -758,16 +776,15 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the item 18 quick test (SEL culture
-panel penalty gone, ABS sharia line gone, 12 maritime removals gone —
-five minutes in game). Items 16 AND 17 are both CONFIRMED IN GAME
-(2026-07-29, two launches): the Caliphate probe passed, the tributary
-reform beat the start validator, discovery works. Then the next slice
-per the strategic order — Fatimid Egypt: the Levant line is drawn in
-item 16's package, ABS's explicit-theocracy block is the Fatimid
-caliph's template (shia/ismaili variant), and remember the lessons now
-in KNOWLEDGE: capacity budgeted with acceptance, no_coast templates
-for inland blocks, has_policy prerequisites shipped together.
+**NEXT SESSION STARTS WITH:** the Fatimid Egypt + Levant slice. The
+whole Seljuk arc (items 16-18) is CONFIRMED IN GAME (2026-07-29, three
+launches): Caliphate probe passed, tributary reform beat the start
+validator, discovery works, the polish batch passed its five-minute
+check. For the Fatimid slice: the Levant line is drawn in item 16's
+package, ABS's explicit-theocracy block is the Fatimid caliph's
+template (shia/ismaili variant), and remember the lessons now in
+KNOWLEDGE: capacity budgeted with acceptance, no_coast templates for
+inland blocks, has_policy prerequisites shipped together.
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation
 in Turkish, everything in the repo in English.

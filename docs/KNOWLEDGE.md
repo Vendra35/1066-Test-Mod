@@ -1525,7 +1525,9 @@ own construct at vanilla's own magnitude (the SE-Asian mandala reform,
 country_specific.txt:3909) — capacity 5.00, penalty gone, and the
 reform IS the history (the Turkic sword, the Persian pen). Any future
 slice that accepts a large culture must budget capacity the same way.
-UNTESTED in game until the next launch.
+**CONFIRMED IN GAME (2026-07-29, third launch):** capacity 5.00, the
+penalty box gone, and both reforms render by name in the government
+screen ("Recognition of the Khutba", "The Nizamiyya").
 
 ### Second-launch residue: a has_policy prerequisite, and the _no_coast template family
 **Established:** in game 2026-07-29, second launch — two self-heal
@@ -1549,8 +1551,13 @@ classes remained in error.log, both decoded to the line.
    blocks.
 **Means:** when the engine "removes" something at init, it is naming a
 missing prerequisite or a wrong template variant — read it as a diff
-against what the block should have declared, not as noise. Both fixes
-UNTESTED in game until the next launch.
+against what the block should have declared, not as noise.
+**Both fixes CONFIRMED IN GAME (2026-07-29, third launch):** ABS's
+sharia_law line gone, and no 3535/3662 line names ANY of the 12
+no_coast-switched blocks. The surviving 3662 residue was classified
+tag by tag against the build lists: all 28 flagged tags are landless
+shells (decoder sub-class 3) — reading a "still there" log correctly
+meant checking WHICH tags, not counting lines.
 
 ### CWTools CW225 flags cross-file $refs$ in loc — false positive, with a live caveat
 **Established:** CW225 on `SEL_THE: "$common_string_prefix_article$"` —

@@ -426,6 +426,21 @@ log. **Known ours, parked for the China review:** CHA Champa and DAI
 type fails the same way (Reason: country_triggers.txt:1288-1298, a
 scripted trigger leaning on the Middle Kingdom IO our strip removed).
 
+### `country.cpp:9635 — Country CHI Yuán starts with <N> out of <M> accepted or tolerated cultures…` + `ACCEPTED_CULTURE_SETUP_ERROR_IF_ABOVE_MAX` culture-list tooltip
+**DECODED (2026-07-29, third Seljuk launch) — our Middle Kingdom strip
+again; CHI lost the IO leader's +50 culture capacity.** The Middle
+Kingdom IO's `leader_modifier` is where BOTH lost pieces live
+(`middle_kingdom.txt:69-75`): `cultures_capacity = 50` — without it
+CHI's capacity collapses to 6 against its 56.45-cost accepted/tolerated
+list, hence this line — and `allow_tributary_subject = yes`, which is
+why CHA/DAI downgrade to vassal (the 3702 class) as well. One removed
+IO instance, three symptoms: this flood, the CHA/DAI tributary lines,
+the ~30 `tusi` lines (country_triggers.txt:1288-1298). All parked for
+the China review; the fix there is restoring an equivalent modifier
+source for 1066 China (an ABS-style setup reform is the attested
+shape), not patching tags one by one. Count these lines OUT of the
+error budget until that review.
+
 ### `initialize_from_bookmark.cpp:528 — Country '<TAG>' does not know its capital, need a discover_areas = or discovered_regions = .`
 **DECODED+FIXED — the block has no discovery source CONTAINING its
 capital.** Playing such a country shows terra incognita over its own
