@@ -87,6 +87,7 @@ EVENT_TPL = """######################################
 	type = country_event
 	title = {ns}.{num}.title
 	desc = {ns}.{num}.desc
+	historical_info = {ns}.{num}.historical_info
 	outcome = neutral
 	fire_only_once = yes
 
