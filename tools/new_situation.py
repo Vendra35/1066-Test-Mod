@@ -63,7 +63,9 @@ SITUATION_TPL = """# {title} — SCAFFOLD. The situation owns its own lifecycle
 # itself — anchor day offsets to that tick and recalibrate in game.
 #
 # AUTHOR CHECKLIST (every item cost a Norman round):
-# - no event-level triggers; guards go INSIDE options as if/limit
+# - RAILROAD beats carry NO event-level trigger (guards go INSIDE
+#   options as if/limit); FLAVOR events MAY carry one — the resolved
+#   trigger law, docs/EVENT-SYSTEM.md 4.3
 # - wars that must exist in the opening weeks are SHIPPED in 16_wars,
 #   never declared from script (the round-5 lesson)
 # - CBs are granted in on_start, BEFORE any legality check

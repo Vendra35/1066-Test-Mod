@@ -398,7 +398,16 @@ this residue stayed and decodes differently.)
    land/pops; the engine trims them on our landless shape. Harmless,
    the tags are dormant; no data fix.
 
-### `country_database.cpp:98 — <TAG> has the name 'empire' in it, which does not work for a tag, which would look silly as 'The Great TAG Empire Empire'`
+### `government.cpp:3612 — Removing invalid reform 'french_ducal_vassal_reform' for '<TAG>' at game start`
+**DECODED (2026-07-29, via tools/scan_log.py's first triage) — the
+France slice's 27-vassal strip made the reform invalid on the
+ex-subjects; the engine self-heals.** AUM/ROU/RET/BRR/MDM and the
+other former French vassals carry `french_ducal_vassal_reform` in
+their 1337 blocks; its potential wants a French subjection our strip
+removed. Same self-heal family as 3535/3662 — the line names the
+missing prerequisite (the vassalage), the tags run fine without the
+reform. ACCEPT; if the reform's bonuses are ever missed, the France
+polish pass can swap blocks instead. which does not work for a tag, which would look silly as 'The Great TAG Empire Empire'`
 **Means:** a country name containing "Empire". Rank titles compose as
 `<prefix> <adjective> <rank noun>`, so the word doubles.
 **Fix:** rename, or accept — it is a load-time cosmetic line. **Zero vanilla

@@ -679,7 +679,15 @@ intro events, no wars, no scheduled deaths — while the situation itself
 spawned normally on the first monthly tick (1 October). The cause was not
 isolated (candidates: the cross-file merge of the `on_actions` list, three
 files now touching `on_game_start`; or the scope-less `c:X` links in the
-effect). The architectural answer was already paid for in our own Mongol
+effect).
+**UPDATED (2026-07-29, the event-system pass): the MERGE candidate is
+ELIMINATED** — vanilla itself declares `on_game_start` in TWO files
+(_hardcoded.txt:1 behind a BOM + ai_personalities_setup.txt:9) and
+both run; cross-file on_action merging is real. The new lead
+candidate (attested by three framework mods): **on_game_start fires
+BEFORE country selection**, so anything player-scoped or
+selection-dependent cannot work there. The architectural answer
+(situations own their lifecycle) stands regardless. The architectural answer was already paid for in our own Mongol
 Resurgence mod — its on_action file header records the same lesson
 verbatim: hand-firing phase events from on_actions produced its dangling
 trigger_event bugs, and it moved to *"the situations own their own
@@ -735,6 +743,14 @@ findings underneath:
    from the situation's `on_monthly` while their historical window is
    open (HYW's own architecture), `is_ai`-gated so a player's refusal
    sticks.
+   **RESOLVED (2026-07-29, the event-system pass — docs/EVENT-SYSTEM.md):
+   the hypothesis is FALSE as stated; the mechanic under it is LAW.**
+   `trigger_event_*` DOES evaluate the target's trigger on every route
+   (vanilla's own readme documents `on_trigger_fail` for exactly this;
+   delayed fires evaluate TWICE). Round 2's triggers were simply false
+   — findings 1 and 2 were ONE finding. The corrected rule: flavor
+   events SHOULD carry triggers (95% of vanilla DHEs do); RAILROAD
+   beats still must not (guards in options) — narrowed, not deleted.
 **Also learned:** the engine auto-generates wargoal loc keys and prints
 them into error.log — `war_goal_<key>` and `war_goal_<key>_desc`
 (`localization_util.cpp:103`). That log line IS the naming convention,
