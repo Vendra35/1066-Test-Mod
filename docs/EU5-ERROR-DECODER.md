@@ -543,7 +543,21 @@ are vanilla people who do not rule at 1337; seating them at 1066
 exposes trait counts above the engine's expected-for-age formula. No
 observed in-game effect. Revisit only if trait-driven content misfires.
 
-### `jomini_script_system.cpp:252 — set_court_language … Null object! Field: target … common/subject_types/dominion.txt:152`
+### `jomini_script_system.cpp:252 — untyped trigger [ Scoped object of type 'country' is not valid (---) ] … common/international_organizations/hre.txt:328`
+**DECODED (2026-07-29, the HRE launch) — a UI TOOLTIP trigger
+evaluated on a null candidate; cosmetic.** hre.txt:328 sits inside
+`can_lead_tooltip_trigger` (the election-candidate tooltip; the :327
+`trigger_if` block's `exists = union`). 180 lines in the session that
+confirmed the crowned HRE — consistent with the panel being OPEN
+during the check; the root country is `---`, i.e. the UI evaluated
+the tooltip with an empty candidate slot (no election is live — our
+seeded `leader = OGK` holds). Same family as the "No context
+supplied" GUI class: the cited line is where the trigger lives, not
+where the mistake is, and there is no mistake on our side —
+crown/electors/title all render correctly. WATCH: if the class grows
+during play WITHOUT the HRE panel open, revisit (the candidate-sweep
+theory would then need a second look). Count it OUT of the error
+budget meanwhile.
 **UNDECODED — two lines per launch, vanilla's dominion script hitting a
 null target at start.** No dominion of ours exists; possibly a vanilla
 dominion whose partner our strips touched. Harmless so far. Decode if

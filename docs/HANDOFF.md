@@ -926,6 +926,17 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    grow by ~12 (known), watch the free-city auto-rescind lines;
    (g) regression: the whole prior map (İtalya güneyi, Fransa,
    Britanya) unchanged.
+   **CONFIRMED IN GAME (2026-07-29 night, screenshots): ALL PASSED —
+   THE SLICE IS CLOSED.** "Holy Roman Empire" under tag OGK with the
+   15-year-old Heinrich, title correct ("King of the Romans"),
+   electors correct; the Babenberg Margraviate, Styria (STY) and
+   Carinthia (CRH) exactly as designed; Spoleto/Lyonnais/Faenza all
+   verified; zero 3702 lines naming the slice. One new signature,
+   decoded same session: 180× jomini-252 from hre.txt:328 —
+   `can_lead_tooltip_trigger` evaluated by the UI on a null election
+   candidate while the IO panel was open; cosmetic, decoder entry
+   added, WATCH status. The user's map screenshot is the whole 1066
+   Europe in one frame — every slice visible.
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
