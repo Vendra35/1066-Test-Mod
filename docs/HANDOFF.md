@@ -234,7 +234,8 @@ entry, richer loc, Edgar Ætheling, Sweyn 1069, Malcolm.
 **Polish v1 CONFIRMED IN GAME**: three-color map mode, all three timed
 modifiers arriving, the Norman Yoke after the coronation, and William
 crowns as **William I**. (The -1000 opinion wall was not explicitly
-checked — low risk, verify in passing next launch.) New observation for
+checked then; CLOSED — observed live in the Byzantium-batch launch,
+2026-07-28.) New observation for
 the backlog: the engine generates filler family for William — a
 plausible 11-year-old son William, and an impossible 70-year-old
 daughter. The fix is authoring his REAL family (Robert Curthose ~1051,
@@ -259,7 +260,8 @@ Norman opening ran clean, and both logs show ZERO mod-side error
 classes. One finding, fixed same session: vanilla 1337 gives England six
 subjects (Wales 1283, the Pale, the Aquitaine fiefdom…) — all stripped;
 NEXT LAUNCH check: Aquitaine independent under William VIII, and the
-still-unverified -1000 opinion wall between the 1066 claimants.
+still-unverified -1000 opinion wall between the 1066 claimants —
+**both since CONFIRMED** (Byzantium-batch launch, 2026-07-28).
 
 The original checklist, kept for the record:
 
@@ -347,6 +349,11 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    **PROBE CONFIRMED IN GAME (2026-07-28, screenshots):** Pereiaslav on
    the map, Vsevolod ruling — but only after the tag-registry lesson
    (identity block MANDATORY, `zz_1066_new_countries.txt`).
+   **The rest of the list CONFIRMED in the Byzantium-batch launch
+   (2026-07-28):** the Pope renders "Alexander II" of "Rome", Doge
+   Contarini in Venice, Aquitaine independent under William VIII, and
+   the -1000 opinion wall observed live. Nothing from item 11 remains
+   open.
 
 12. **Sardinia giudicati slice (LANDED, untested):** first use of
    **LOCATION_GRANTS** — territory to EXISTING landless tags, the
@@ -428,6 +435,11 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    Catalonia"), house "Barcelona" (NOT "Aragon"); (d) six counties in
    the Pyrenees, Guislabert renders in Roussillon; (e) Portugal and
    Mallorca GONE from the map; (f) no orphan locations, error.log.
+   **CONFIRMED IN GAME (2026-07-28, screenshots):** renders exactly as
+   designed — the three brothers on their thrones, big Navarre, tiny
+   Jaca, County of Barcelona, six Pyrenean counties, Portugal and
+   Mallorca gone. (Recorded at the time only in commit 486163f's
+   message; this paragraph closes the doc debt.)
 
 15. **PRE-MANZIKERT BYZANTIUM (LANDED, untested) — the largest slice.**
    BYZ 87→582: all Anatolia (no Turkish state exists — raids only),
@@ -457,6 +469,14 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    (e) Ani/Kars Byzantine, Georgia untouched under Bagrat IV;
    (f) error.log — expect a DROP (the -1000 opinion wall and IO noise
    partly came from now-landless tags).
+   **CONFIRMED IN GAME (2026-07-28, screenshots):** one purple empire
+   from the Danube to the Euphrates, the Serbian world small and
+   independent around it. One real defect found: a ~318-line
+   invalid-subject/nonexistent-overlord start flood — exactly 28 kept
+   dependencies named a landless tag; fixed the same night in 486163f
+   (build_diplomacy strips them, exact-count asserted, decoder entry
+   added). This launch also closed the item 11 leftovers and the
+   -1000 opinion wall (see above).
 
 16. **THE SELJUK + ABBASID WORLD (LANDED, untested — TOMORROW'S TEST).**
    SEL = the Great Seljuks, 463 locations resolved from definitions.txt
