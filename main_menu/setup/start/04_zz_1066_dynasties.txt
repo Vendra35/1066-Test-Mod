@@ -164,4 +164,12 @@ dynasty_manager = {
 		name = { name = kakuyid_dynasty }
 		home = yazd
 	}
+	# --- 1066 Mecca: the Hawashim, first sharifian house of the Fatimid
+	# era (Abu Hashim Muhammad, emir from 1063). Vanilla ships NO sharifid
+	# dynasty at all — its 1337 MEC ruler is a Qatadid (1201+) with no
+	# dynasty block. fatimid_dynasty itself is already above.
+	hawashim_dynasty = {
+		name = { name = hawashim_dynasty }
+		home = mecca
+	}
 }

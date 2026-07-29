@@ -236,6 +236,20 @@ HISTORICAL_RULERS = {
     "SRV": ("srv_fariburz_i", "1063.1.1", 0),             # Fariburz I the Shirvanshah — kasranid_dynasty ships in vanilla
     "HLL": ("hll_dubays_i", "1018.1.1", 0),               # Dubays I the Mazyadid — a 63-year reign, attested [U]
     "KKY": ("kky_ali_ibn_faramurz", "1063.1.1", 0),       # Ali ibn Faramurz the Kakuyid of Yazd
+
+    # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
+    # freeness, the ismaili_policy pairing, cairo, the discovery
+    # templates and both name registries re-verified by the main
+    # session). The regnal_name slot takes a bare LITERAL as well as a
+    # name key — vanilla's own `regnal_name = Chungsuk`
+    # (10_countries.txt:24295, loc character_names_l_english.yml:11818);
+    # Mustansir is OUR literal with a loc row (the proven mechanism).
+    # Both al-Mustansir dates are firm (b. 1029.7.2, caliph 1036.6.13 —
+    # aged 7; thirty years on the throne at start). NO vizier is
+    # authored: the vizierate changed hands monthly in 1066 [D] and the
+    # Mustansirite Hardship (1062-1073) is future situation material.
+    "FAT": ("fat_maad_al_mustansir", "1036.6.13", 0, "Mustansir"), # al-Mustansir Billah, 8th Fatimid Imam-Caliph — NEW_CHARACTERS
+    "MEC": ("mec_muhammad_abu_hashim", "1063.1.1", 0),    # Abu Hashim, first Hawashim emir of Mecca, appointed 1063 by al-Sulayhi [U] — NEW_CHARACTERS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -804,6 +818,79 @@ NEW_COUNTRIES["ABS"] = (
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = baghdad\n\t}\n")
 
+# FAT — the Fatimid Caliphate: the ABS explicit-theocracy block's
+# Shia/Ismaili variant (the Fatimid slice, Opus package 2026-07-29).
+# Field citations beyond ABS's own:
+# - sharia_law = ismaili_policy: laws/01_legal_system.txt:1102, whose
+#   potential passes ismaili_school (jafari_policy explicitly NORs it);
+#   the exact pairing ismaili_policy + ismaili_school is vanilla's own
+#   setup at QHT (10_countries.txt:60609), also GLI/SND/DUL/ASR/YAM —
+#   7 uses. nizari/mustali schools are post-1094 and wrong for 1066.
+# - legal_code_law = sharia_law_policy rides along — the has_policy
+#   prerequisite lesson (government.cpp:3535, measured on ABS).
+# - discovery: expl_muslim_mediterranean is MAM's own vanilla include
+#   and grants crescent_region/arabia_region/egypt_region (:15,:16,:18)
+#   — the whole FAT footprint; expl_middle_east adds the Seljuk east
+#   (the rival caliphate's world, the Ismaili da'wa's reach).
+# - fatimid_khutba_reform: allow_tributary_subject for the MEC/BKZ
+#   tributaries (the proven setup-reform-beats-validator route).
+# - rank_empire + theocracy → "Fatimid Caliphate"/"Caliph" via the
+#   already-shipped tag-independent rank loc overrides.
+NEW_COUNTRIES["FAT"] = (
+    "\tFAT = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_muslim_mediterranean"\n'
+    '\t\tinclude = "expl_middle_east"\n'
+    "\t\tgovernment = {\n"
+    "\t\t\ttype = theocracy\n"
+    "\t\t\their_selection = theocratic_elective\n"
+    "\t\t\treforms = {\n"
+    "\t\t\t\tfatimid_khutba_reform\n"
+    "\t\t\t}\n"
+    "\t\t\tlaws = {\n"
+    "\t\t\t\tlegal_code_law = sharia_law_policy\n"
+    "\t\t\t\tsharia_law = ismaili_policy\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    "\t\treligious_school = ismaili_school\n\n"
+    "\t\tcountry_rank = rank_empire\n\n"
+    "\t\tcapital = cairo\n\t}\n")
+
+# The Fatimid territory, resolved from definitions.txt like the Seljuk
+# rules. Variant A-prime (user-approved 2026-07-29): MAM's remaining 120
+# minus tobruk (granted to BQA — 1066 Barqa is Zirid-aligned Banu Qurra
+# [U/D], and the grant makes al_bayda_province whole under BQA), plus
+# AAL's three shaam locations (Damascus hinterland — the 14th-century
+# Bedouin confederation is anachronistic there; Damascus is DIRECTLY
+# Fatimid-governed on 1066.9.15: Badr al-Jamali, governor of Damascus
+# and all Syria from 3 July 1066). BKZ keeps Aswan (the Banu Kanz are a
+# Fatimid CLIENT — Kanz al-Dawla is a Fatimid title [U] — hence the
+# tributary, not annexation) and MDA keeps al_ais. 119 (MAM) + 3 (AAL)
+# = 122. No Damascus tag: Atsiz taking Jerusalem 1073 and Damascus 1076
+# is a decade of event material. KOJ (landless, is_historic) untouched.
+_EGYPT_RULES = {
+    "FAT": (["lower_egypt_area", "upper_egypt_area", "sinai_area",
+             "filastin_province", "sharat_province", "lebanon_province",
+             "shaam_province", "duba_province", "madian_province",
+             "qura_province", "tabuk_province", "umluj_province"],
+            [],
+            [], ["aswan", "kom_ombo", "al_ais"], 122),
+}
+
+# The Fatimid khutba's clients, as TRIBUTARIES (the Seljuk mechanism):
+# MEC — the khutba was read in Mecca for al-Mustansir until 15 April
+# 1071 (the switch to the Abbasids is an event hook); BKZ — the Banu
+# Kanz client emirate at Aswan. MDA is left independent (lower
+# confidence); YEM stays independent (al-Sulayhi is a Fatimid da'i but
+# chaining MEC under YEM would need a second reform — parked).
+FATIMID_TRIBUTARIES = ("MEC", "BKZ")
+
+# The one donor this slice empties. MAM must be emptied, NEVER deleted:
+# 103 DHE references and the EGY formable's potential lean on the tag.
+# Its snapshot claims (120 locations) are the Mamluk future as
+# irredenta — the GRA/POR shape.
+EGYPT_LANDLESS = ("MAM",)
+
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
 # independent: the caliph outranks the sultan, the Ghaznavid peace of
@@ -868,7 +955,8 @@ DISPLACED_CLAIMS = {
 if len(DISPLACED_CLAIMS["POR"]) != 67:
     sys.exit("DISPLACED_CLAIMS: POR must carry vanilla's exact 67 claims")
 # Tags that must hold ZERO locations once the transfers have run.
-LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS
+LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
+    + EGYPT_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -884,6 +972,10 @@ LOCATION_GRANTS = {
     "CAG": ["cagliari", "tratalias", "villa_di_chiesa", "isili", "muravera", "seddori", "tortoli"],
     "GAL": ["orosei", "terranova_pausania", "posada", "tempiopausania"],
     "COR": ["aleria", "bastia", "calvi", "corte", "ajaccio", "bonifacio", "sartene", "vico"],
+    # MAM's Cyrenaican toehold to Barqa: 1066 Barqa is the Banu Qurra
+    # emirate under ZIRID suzerainty [U/D], not Fatimid — and the grant
+    # makes al_bayda_province whole under BQA (Fatimid slice).
+    "BQA": ["tobruk"],
 }
 LOCATION_GRANTS.update(_IBERIA_GRANTS)
 LOCATION_GRANTS.update(_BYZ_GRANTS)
@@ -1675,6 +1767,71 @@ NEW_CHARACTERS = """
 		dynasty = kakuyid_dynasty
 		tag = KKY
 	}
+
+	# --- 1066 Fatimid Egypt + the southern Levant --------------------------
+	# The Fatimid package (Opus 2026-07-29). Identifier routes:
+	# Maad/Mustansir/Nizar are OUR literals with loc rows (the proven
+	# invented-key mechanism); Badr is vanilla's own literal
+	# (character_names_l_english.yml:10920); name_muhammad is the dynamic
+	# registry's (:12931). Cultures: lower_egyptian_culture egypt.txt:1,
+	# armenian_culture caucasian.txt:1, hijazi_culture arabia.txt:46.
+	#
+	# al-Mustansir Billah, 8th Fatimid Imam-Caliph — b. 2 July 1029,
+	# caliph 13 June 1036 aged 7, both dates firm; d. 1094 (simulated,
+	# never data). estate = clergy_estate per the ABS caliph precedent.
+	fat_maad_al_mustansir = {
+		first_name = { name = Maad }
+		culture = lower_egyptian_culture
+		religion = shia
+		estate = clergy_estate
+		birth_date = 1029.7.2
+		birth = cairo
+		dynasty = fatimid_dynasty
+		tag = FAT
+	}
+
+	# Nizar, the caliph's eldest son — b. 26 Sep 1045, firm. Never
+	# formally designated wali al-ahd [D]; under theocratic_elective the
+	# heir is the oldest clergy-estate male, so Nizar is AN eligible
+	# heir, not THE heir — accepted (the ABS trade-off; user-approved).
+	fat_nizar = {
+		first_name = { name = Nizar }
+		culture = lower_egyptian_culture
+		religion = shia
+		estate = clergy_estate
+		birth_date = 1045.9.26
+		birth = cairo
+		father = fat_maad_al_mustansir
+		dynasty = fatimid_dynasty
+		tag = FAT
+	}
+
+	# Badr al-Jamali — Armenian, governor of Damascus and all Syria from
+	# 3 July 1066 (his second tenure); vizier and the state's rescuer
+	# from Jan 1074. Authored UNSEATED, the Tashfin precedent. Birth
+	# c. 1005-1008 [U]; birthplace unattested — Ani stands in [U].
+	fat_badr_al_jamali = {
+		first_name = { name = Badr }
+		culture = armenian_culture
+		religion = shia
+		birth_date = 1006.1.1
+		birth = ani
+		tag = FAT
+	}
+
+	# Abu Hashim Muhammad ibn Ja'far al-Hasani, first Hawashim emir of
+	# Mecca — appointed 1063 by Ali al-Sulayhi of Yemen (our seated YEM
+	# ruler); reads the khutba for al-Mustansir until 15 April 1071 (the
+	# switch to the Abbasids is an event hook). b. c. 1020-24 [U].
+	mec_muhammad_abu_hashim = {
+		first_name = { name = name_muhammad }
+		culture = hijazi_culture
+		religion = shia
+		birth_date = 1022.1.1
+		birth = mecca
+		dynasty = hawashim_dynasty
+		tag = MEC
+	}
 """
 
 
@@ -1931,6 +2088,23 @@ def build_countries(src):
     if "baghdad" not in LOCATION_GRANTS["ABS"]:
         sys.exit("_SELJUK_RULES: ABS must hold baghdad")
 
+    # The Fatimid slice resolves identically (Opus package counts:
+    # MAM 119 + AAL 3 = 122; tobruk is BQA's grant, aswan/kom_ombo stay
+    # BKZ's, al_ais stays MDA's). The 122 assert was proven by breaking
+    # (121 -> died with "resolved 122", 2026-07-29).
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_EGYPT_RULES.items()):
+        got = _resolve_ruleset(f"_EGYPT_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_EGYPT_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = got
+    if "cairo" not in LOCATION_GRANTS["FAT"]:
+        sys.exit("_EGYPT_RULES: FAT must hold cairo")
+    for _must in ("damascus", "jerusalem"):
+        if _must not in LOCATION_GRANTS["FAT"]:
+            sys.exit(f"_EGYPT_RULES: FAT must hold {_must} — the slice's "
+                     "whole Levant claim rests on it")
+
     # No recipient may be a steppe horde or tribe: their name branches
     # ignore the NAME key entirely (the JAL law, generalized).
     _blocks_h = list(re.finditer(COUNTRY_RE, src, re.M))
@@ -1958,7 +2132,8 @@ def build_countries(src):
             _list_owner[l] = _t
 
     _landless_claims = {t: _owned_by(src, t)
-                        for t in BYZ_LANDLESS + SELJUK_LANDLESS}
+                        for t in BYZ_LANDLESS + SELJUK_LANDLESS
+                        + EGYPT_LANDLESS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -2679,9 +2854,14 @@ def build_diplomacy(src):
                  _drop_landless_dep, src, flags=re.M)
     # 28 from the Byzantium batch + 54 from the Seljuk batch (JAL's 18,
     # SUT's 15, GRG's 10, the Jazira web...). GRG->MZN is IN: GRG dies,
-    # MZN survives and is re-parented to SEL below.
-    if n_landless_deps != 82:
-        sys.exit(f"expected exactly 82 landless-tag dependencies, stripped {n_landless_deps}")
+    # MZN survives and is re-parented to SEL below. +8 from the Fatimid
+    # batch: MAM's eight surviving 1337 dependencies (AAL AMR BKZ BQA
+    # FDL SKN MDA MEC — vanilla 12_diplomacy.txt:798-808; DUL/KIL/DGE
+    # died with earlier slices). The 82->90 transition was OBSERVED
+    # failing before this constant moved (2026-07-29) — the assert
+    # works.
+    if n_landless_deps != 90:
+        sys.exit(f"expected exactly 90 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
@@ -2731,6 +2911,20 @@ def build_diplomacy(src):
            + "\n\n\t# 1066: the Seljuk clients under the khutba (generated)\n"
            + _tribs + src[_wrap:])
     report.append(("Seljuk tributaries added", len(SELJUK_TRIBUTARIES)))
+
+    # The Fatimid khutba: MEC (until 15 April 1071 — the switch is an
+    # event hook) and BKZ (the Banu Kanz of Aswan, Kanz al-Dawla being
+    # a Fatimid title [U]). Their MAM overlord lines died with the
+    # landless strip above, so no multiple-overlord collision is
+    # possible; FAT carries fatimid_khutba_reform for the visible gate.
+    _wrap = src.rindex("\n}")
+    _ftribs = "".join(
+        f"\tdependency = {{ first = FAT second = {t} subject_type = tributary }}\n"
+        for t in FATIMID_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Fatimid clients under the khutba (generated)\n"
+           + _ftribs + src[_wrap:])
+    report.append(("Fatimid tributaries added", len(FATIMID_TRIBUTARIES)))
 
     def validate():
         if re.search(r"appanage", re.sub(r"#[^\n]*", "", src)):

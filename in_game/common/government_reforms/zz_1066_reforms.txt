@@ -1,5 +1,16 @@
 ﻿# 1066 Test Mod — government reforms.
 #
+# Every reform here grants government_reform_slots = 1 in its own
+# country_modifier, so it does not consume one of the country's reform
+# slots (user request 2026-07-29: the player/AI must stay free to enact
+# other reforms alongside these setup-assigned historical ones).
+# Verified: government_reform_slots is a country modifier tag
+# (docs/EU5-Vanilla-Script-Docs/modifiers.log:793; loc: "Affects the
+# amount of Government Reforms a Country can have"), and a reform
+# granting back its own slot is vanilla's own pattern —
+# revolutionary_empire (government_reforms/monarchy.txt:169),
+# theocracy.txt:75/96, republic.txt:76/100/174/231/251.
+#
 # seljuk_khutba_reform exists to pass the tributary subject-type gate:
 # tributary.txt:20-24 requires the overlord to be a steppe horde, the
 # subject a tribe/horde, or the overlord to carry
@@ -23,6 +34,7 @@ seljuk_khutba_reform = {
 
 	country_modifier = {
 		allow_tributary_subject = yes
+		government_reform_slots = 1
 	}
 
 	years = 4
@@ -44,6 +56,30 @@ seljuk_nizamiyya_reform = {
 
 	country_modifier = {
 		cultures_capacity = 3
+		government_reform_slots = 1
+	}
+
+	years = 4
+}
+
+# The khutba read for the Imam-Caliph in Cairo — the Ismaili mirror of
+# the Seljuk reform above, same vanilla model (malian_tribute_system,
+# country_specific.txt:3917), same purpose: FAT's clients (Mecca, the
+# Banu Kanz of Aswan) ship as setup TRIBUTARIES and the visible gate
+# (tributary.txt:20-24) demands modifier:allow_tributary_subject on the
+# overlord. A setup-assigned reform's country_modifier applies BEFORE
+# the game-start subject validator — measured in game 2026-07-29 on the
+# Seljuk clients (KNOWLEDGE.md).
+fatimid_khutba_reform = {
+	potential = {
+		tag = FAT
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
 	}
 
 	years = 4

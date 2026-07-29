@@ -609,6 +609,48 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    CHA/DAI and the tusi ×30 are ONE root cause, owned by the China
    review (decoder entry added).
 
+19. **FATIMID EGYPT + SOUTHERN LEVANT (LANDED, untested).** FAT = the
+   Fatimid Caliphate, 122 locations resolved from definitions.txt
+   (MAM's remaining 119 + AAL's 3 Damascus-hinterland; exact-count
+   assert proven by breaking). MAM landless with its 120 as claims
+   (the Mamluk future); tobruk granted to BQA (1066 Barqa is
+   Zirid-aligned Banu Qurra); BKZ keeps Aswan, MDA keeps al_ais.
+   FAT is the ABS explicit-theocracy block's Ismaili variant:
+   theocratic_elective, legal_code_law + sharia_law = ismaili_policy
+   (vanilla's own pairing with ismaili_school — QHT :60609),
+   rank_empire → "Fatimid Caliphate"/"Caliph" via the existing
+   tag-independent rank overrides; discovery
+   expl_muslim_mediterranean + expl_middle_east; capital cairo.
+   Cast: al-Mustansir seated via regnal_name = Mustansir (FIRST
+   LITERAL regnal_name — vanilla's Chungsuk precedent; Maad/Mustansir/
+   Nizar are new invented literals), Nizar authored (clergy_estate —
+   an eligible heir under theocratic_elective, not the designated
+   one), Badr al-Jamali authored unseated (the Tashfin precedent),
+   Abu Hashim seated on MEC (name_muhammad, new hawashim_dynasty).
+   Two tributaries under fatimid_khutba_reform: MEC (khutba until
+   15 Apr 1071 — event hook) and BKZ. NO vizier authored (monthly
+   turnover in 1066 [D]); the Mustansirite Hardship (1062-1073) is
+   future situation material. ALSO: all three mod reforms now carry
+   government_reform_slots = 1 (user request — they no longer consume
+   a reform slot; vanilla's own revolutionary_empire pattern,
+   monarchy.txt:169). Landless-dep strip 82→90 (observed failing
+   before the constant moved), country count 2367, tributary-gate
+   harness check 9→11 items, 24 checks green.
+   TEST NEXT LAUNCH: (a) "Fatimid Caliphate" from Cyrenaica's edge to
+   Lebanon, EMERALD green, "Caliph al-Mustansir" (the literal
+   regnal_name probe!) in Cairo; (b) THREE caliphate-styled states
+   coexist — ABS "Abbasid Caliphate", FAT "Fatimid Caliphate", no
+   "Holy" prefix on either; (c) MEC + BKZ show as tributaries under
+   FAT (own colors, war screens open); Abu Hashim rules Mecca;
+   (d) Mamluks GONE from the map; KOJ still absent (landless);
+   Jerusalem/Damascus Fatimid; (e) SEL government screen: the two
+   Seljuk reforms still render AND the reform-slot counter shows
+   free slots (the government_reform_slots addition); (f) error.log:
+   expect the landless-shell trim class to GROW by MAM's block (known,
+   accepted); new classes only — the first coastal explicit theocracy
+   is the one real unknown; (g) regression: nine Seljuk tributaries,
+   Persia visible, taifa/Iberia/Norman opening unchanged.
+
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
 Christian-Iberia and Byzantium packages (2026-07-28), all re-verified.
@@ -715,8 +757,8 @@ conversion work starts.
 Seljuks+Abbasids (CLOSED — confirmed in game 2026-07-29 across THREE
 launches: Caliphate probe passed, tributary reform beat the validator,
 and the item 18 polish batch passed its five-minute check).
-**Remaining, in rough order:** Fatimid Egypt + the Levant south of the
-named line (Damascus/Palestine; MAM keeps 120 there), France demesne
+**Remaining, in rough order:** ~~Fatimid Egypt + the Levant~~ (LANDED
+2026-07-29, item 19 — awaiting its game test), France demesne
 163→~25 + Languedoc (montpellier already parked there), British Isles
 (Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
 southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
@@ -776,15 +818,14 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** the Fatimid Egypt + Levant slice. The
-whole Seljuk arc (items 16-18) is CONFIRMED IN GAME (2026-07-29, three
-launches): Caliphate probe passed, tributary reform beat the start
-validator, discovery works, the polish batch passed its five-minute
-check. For the Fatimid slice: the Levant line is drawn in item 16's
-package, ABS's explicit-theocracy block is the Fatimid caliph's
-template (shia/ismaili variant), and remember the lessons now in
-KNOWLEDGE: capacity budgeted with acceptance, no_coast templates for
-inland blocks, has_policy prerequisites shipped together.
+**NEXT SESSION STARTS WITH:** item 19's game test (the Fatimid slice —
+the checklist is in the item). The whole Seljuk arc (items 16-18) is
+CONFIRMED IN GAME (2026-07-29, three launches). After the Fatimid test
+the strategic order continues: France demesne + Languedoc, or the
+British Isles. Two open threads item 19 created: the MEC khutba switch
+of 1071 and the Mustansirite Hardship are situation material; the
+coat-of-arms batch (deferred list) now owes FAT its Fatimid white/green
+banner too.
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation
 in Turkish, everything in the repo in English.

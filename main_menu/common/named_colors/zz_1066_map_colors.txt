@@ -42,4 +42,9 @@
 	map_SIS = rgb { 155 120 90 }    # Sistan       dun
 	map_KKY = rgb { 205 190 140 }   # Yazd         desert cream
 	map_SHD = rgb { 95 135 95 }     # Arran        sage green
+	# Fatimid Egypt. The dynastic banner was WHITE (unmappable); the
+	# conventional Ismaili green, kept distinct from map_egypt
+	# (67 176 140, reserved by the EGY formable) and from the Iberian
+	# greens. Neighbors: BYZ purple, HLB pale gold, MEC/MDA vanilla.
+	map_FAT = rgb { 24 134 90 }     # Fatimids     emerald
 }

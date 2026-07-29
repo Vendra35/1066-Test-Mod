@@ -1571,6 +1571,23 @@ article — "Sultanate of Great Seljuks" — so whether the engine consults
 `<TAG>_THE` here at all is UNPROVEN. Eyeball item on the backlog, not a
 bug hunt.
 
+### A setup reform need not consume a reform slot — grant the slot back inside the reform
+**Established:** 2026-07-29, user request on the Seljuk reforms. The
+slot capacity is the country modifier `government_reform_slots`
+(modifiers.log:793; the DLH event counts against it —
+`num_reforms >= modifier:government_reform_slots`,
+flavor_DLH.txt:4659). `government_size` is a DIFFERENT modifier
+(:797) — do not confuse them. A reform granting
+`government_reform_slots = 1` in its own `country_modifier` is
+vanilla's own pattern: revolutionary_empire
+(government_reforms/monarchy.txt:169), theocracy.txt:75/96,
+republic.txt ×5 — the reform occupies a slot and hands one back, net
+zero.
+**Means:** all three mod reforms (seljuk_khutba, seljuk_nizamiyya,
+fatimid_khutba) carry it, so a setup-assigned historical reform never
+eats the player's or AI's enactment budget. Any future setup reform
+ships with the same line. UNTESTED in game until the next launch.
+
 ## Carried over, still to do
 
 - **Raise the harness `min_count`s** as each kind of content first appears. The

@@ -105044,4 +105044,69 @@ character_db={
 		dynasty = kakuyid_dynasty
 		tag = KKY
 	}
+
+	# --- 1066 Fatimid Egypt + the southern Levant --------------------------
+	# The Fatimid package (Opus 2026-07-29). Identifier routes:
+	# Maad/Mustansir/Nizar are OUR literals with loc rows (the proven
+	# invented-key mechanism); Badr is vanilla's own literal
+	# (character_names_l_english.yml:10920); name_muhammad is the dynamic
+	# registry's (:12931). Cultures: lower_egyptian_culture egypt.txt:1,
+	# armenian_culture caucasian.txt:1, hijazi_culture arabia.txt:46.
+	#
+	# al-Mustansir Billah, 8th Fatimid Imam-Caliph — b. 2 July 1029,
+	# caliph 13 June 1036 aged 7, both dates firm; d. 1094 (simulated,
+	# never data). estate = clergy_estate per the ABS caliph precedent.
+	fat_maad_al_mustansir = {
+		first_name = { name = Maad }
+		culture = lower_egyptian_culture
+		religion = shia
+		estate = clergy_estate
+		birth_date = 1029.7.2
+		birth = cairo
+		dynasty = fatimid_dynasty
+		tag = FAT
+	}
+
+	# Nizar, the caliph's eldest son — b. 26 Sep 1045, firm. Never
+	# formally designated wali al-ahd [D]; under theocratic_elective the
+	# heir is the oldest clergy-estate male, so Nizar is AN eligible
+	# heir, not THE heir — accepted (the ABS trade-off; user-approved).
+	fat_nizar = {
+		first_name = { name = Nizar }
+		culture = lower_egyptian_culture
+		religion = shia
+		estate = clergy_estate
+		birth_date = 1045.9.26
+		birth = cairo
+		father = fat_maad_al_mustansir
+		dynasty = fatimid_dynasty
+		tag = FAT
+	}
+
+	# Badr al-Jamali — Armenian, governor of Damascus and all Syria from
+	# 3 July 1066 (his second tenure); vizier and the state's rescuer
+	# from Jan 1074. Authored UNSEATED, the Tashfin precedent. Birth
+	# c. 1005-1008 [U]; birthplace unattested — Ani stands in [U].
+	fat_badr_al_jamali = {
+		first_name = { name = Badr }
+		culture = armenian_culture
+		religion = shia
+		birth_date = 1006.1.1
+		birth = ani
+		tag = FAT
+	}
+
+	# Abu Hashim Muhammad ibn Ja'far al-Hasani, first Hawashim emir of
+	# Mecca — appointed 1063 by Ali al-Sulayhi of Yemen (our seated YEM
+	# ruler); reads the khutba for al-Mustansir until 15 April 1071 (the
+	# switch to the Abbasids is an event hook). b. c. 1020-24 [U].
+	mec_muhammad_abu_hashim = {
+		first_name = { name = name_muhammad }
+		culture = hijazi_culture
+		religion = shia
+		birth_date = 1022.1.1
+		birth = mecca
+		dynasty = hawashim_dynasty
+		tag = MEC
+	}
 }

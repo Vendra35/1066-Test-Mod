@@ -252,3 +252,18 @@ SHD = { #Shaddadids of Arran
 	culture_definition = kurdish_culture
 	religion_definition = sunni
 }
+
+# Fatimid Egypt (Opus package 2026-07-29; freeness verified by whole-tree
+# word-grep: FAT = zero hits. EGY is DISQUALIFIED — it is a live formable,
+# 00_formable_countries.txt:745, with loc, CoA and ru custom-loc entries;
+# the CAP precedent). culture_definition IS the primary culture (measured,
+# KNOWLEDGE.md) — lower_egyptian_culture matches MAM's own registry entry
+# (in_game/setup/countries/egypt.txt:24) and Cairo.
+
+FAT = { #Fatimid Caliphate
+	color = map_FAT
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = lower_egyptian_culture
+	religion_definition = shia
+}

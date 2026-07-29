@@ -19832,33 +19832,16 @@ countries = {
 
 	#Mamluk Sultanate - MAM
 	MAM = {
+		our_cores_conquered_by_others = {
+			alexandria el_alamein damanhur ramsis kafr_saqr kharibta rashid wadi_el_natrun cairo atfih beni_suef faiyum giza dakahla damietta al_mima el_burullus el_mahalla fuwa menouf samanoud tidah mansoura bilbeis faqus ushmum_tannah qalyub tarrana tinnis suez saint_anthony saint_paul_anchorite el_tor edfu esna qena hiw qus asyut el_balyana el_buwit akhmim manfalut minya ashmunayn el_bahnasa sharuna tahna kharga bahariyya baris el_qasr qasr_farafra siwa el_arish nekhel qatya warrada matruh sallum tobruk el_qoseir ras_gharib safaga el_jundi faran nuweiba saint_katrine ayntab dluk jerusalem acre amman aqaba beersheba gaza hebron karak maan majdal nablus safed sughar jaffa al_quwayrah beirut baalbek deir_qamar sidon tripoli_syria shoubak madaba damascus al_bab aleppo antioch arsuz artah baniyas dabiq hama homs idlib jabbul jableh kafartab latakia manbij maskanah masyaf nabek qusayr tartus zardana umluj al_hawra al_manjur al_maramiyah al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr tabuk_arabia al_khanbarah al_muazzam al_ukhaydir bajdah bir_ibn_hermas dhat_al_hajj aynuna al_bad al_muwaylih haql makna iskenderun
+		}
+
 		own_control_core = {
-			alexandria el_alamein damanhur ramsis kafr_saqr kharibta rashid wadi_el_natrun
-			cairo atfih beni_suef faiyum giza dakahla
-			damietta al_mima el_burullus el_mahalla fuwa menouf samanoud tidah
-			mansoura bilbeis faqus ushmum_tannah qalyub tarrana tinnis
-			suez saint_anthony saint_paul_anchorite
-			el_tor
-			edfu esna qena hiw qus
-			asyut el_balyana el_buwit akhmim manfalut
-			minya ashmunayn el_bahnasa sharuna tahna
-			kharga bahariyya baris el_qasr qasr_farafra siwa
+
 		}
 
 		own_control_integrated = {
-			el_arish nekhel qatya warrada
-			matruh sallum tobruk
-			el_qoseir ras_gharib safaga
-			el_jundi faran nuweiba saint_katrine
-			 
-			jerusalem acre amman aqaba beersheba gaza hebron karak maan majdal nablus safed sughar jaffa al_quwayrah
-			beirut baalbek deir_qamar sidon tripoli_syria shoubak madaba
-			damascus                  nabek   
-			umluj al_hawra al_manjur al_maramiyah
-			al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra
-			duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr
-			tabuk_arabia al_khanbarah al_muazzam al_ukhaydir bajdah bir_ibn_hermas dhat_al_hajj
-			aynuna al_bad al_muwaylih haql makna
+
 		}
 
 		own_control_conquered = {
@@ -19975,6 +19958,7 @@ countries = {
 	#Barqa - BQA
 	BQA = {
 		own_control_core = {
+			tobruk
 			benghazi ajdabiya al_bayda al_khuimat barca derna mechili msus qaminis suluntah tmimi
 			awjila el_agheila
 		}
@@ -30768,7 +30752,7 @@ countries = {
 	#Al 'Alī - AAL
 	AAL = {
 		own_control_core = {
-			burraq jayrud qutayfah
+			  
 			sakaka dumat_al_jandal aba_al_qur al_hamad arar
 		}
 
@@ -55265,7 +55249,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mec_muhammad_abu_hashim
+			ruler_term = { character = mec_muhammad_abu_hashim start_date = 1063.1.1 regnal_number = 0 }
 
 			laws = {
 				sharia_law = zaidi_policy
@@ -58155,6 +58140,34 @@ countries = {
 		country_rank = rank_county
 
 		capital = castellon_ampurias
+	}
+
+	FAT = {
+		own_control_core = {
+			alexandria el_alamein matruh sallum damanhur ramsis kharibta rashid tarrana wadi_el_natrun dakahla damietta mansoura tinnis ushmum_tannah el_mahalla al_mima el_burullus fuwa samanoud tidah cairo atfih giza menouf qalyub bilbeis faqus kafr_saqr suez asyut el_balyana el_buwit akhmim el_bahnasa beni_suef faiyum sharuna minya ashmunayn manfalut tahna qus edfu esna qena hiw el_qoseir ras_gharib safaga saint_anthony saint_paul_anchorite kharga bahariyya baris el_qasr qasr_farafra siwa el_arish nekhel qatya warrada el_tor el_jundi faran nuweiba saint_katrine jerusalem acre beersheba gaza hebron jaffa majdal nablus safed karak al_quwayrah amman aqaba maan madaba shoubak sughar beirut baalbek deir_qamar sidon tripoli_syria damascus burraq jayrud nabek qutayfah duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr aynuna al_bad al_muwaylih haql makna al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra tabuk_arabia al_khanbarah al_muazzam al_ukhaydir bajdah bir_ibn_hermas dhat_al_hajj umluj al_hawra al_manjur al_maramiyah
+		}
+
+		starting_technology_level = 3
+		include = "expl_muslim_mediterranean"
+		include = "expl_middle_east"
+		government = {
+			ruler = fat_maad_al_mustansir
+			ruler_term = { character = fat_maad_al_mustansir start_date = 1036.6.13 regnal_number = 0 regnal_name = Mustansir }
+			type = theocracy
+			heir_selection = theocratic_elective
+			reforms = {
+				fatimid_khutba_reform
+			}
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = ismaili_policy
+			}
+		}
+		religious_school = ismaili_school
+
+		country_rank = rank_empire
+
+		capital = cairo
 	}
 
 	GHZ = {

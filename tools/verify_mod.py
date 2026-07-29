@@ -757,9 +757,10 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc name entry")
     if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
-# Nine Seljuk clients today; raise if a future slice adds more.
+# Nine Seljuk clients + two Fatimid (MEC, BKZ); raise if a future
+# slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=9)
+      len(_gate_deps), probs, min_count=11)
 
 print()
 if fails:
