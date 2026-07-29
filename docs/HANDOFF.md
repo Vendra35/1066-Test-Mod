@@ -1166,8 +1166,10 @@ ULD, south-Italian minors) KEEPS its generated flag by design — the
 deferred tiers are in `docs/COA.md` §4.
 
 **ITEM 25 — GERMANY II, LANDED AND COMMITTED (2026-07-29 ~22:40,
-NEEDS GAME TEST).** Implemented by subagent from
-`docs/GERMANY2-PACKAGE.md`, main-session reviewed (elector line,
+NEEDS GAME TEST).** Implemented by subagent from the Germany II spec
+(retired after landing — the implementation and its build_setup.py
+comments are now the authority; the spec survives in git history at
+commit b7fcc07), main-session reviewed (elector line,
 SAX/SWA blocks, Godfrey's two seats, LUN's irredenta shell, the
 _PLURALISTS harness check), build+harness re-run green by the main
 session itself. 29 seated rulers (28 characters — Godfrey holds BLL
@@ -1204,10 +1206,11 @@ tour in the item; headline probes: "King of the Romans", the
 Margraviate branch, literal #19, shrunken Austria) — **DONE, item 23
 is CONFIRMED AND CLOSED the same night.** Items 16-23 are
 ALL CONFIRMED IN GAME (2026-07-29 — six slices tested and closed in
-ONE day). Remaining territory per the strategic order: **Germany II**
-(parked with its cast questions), **Italy North**, Central Asia,
-Arabia, the Rus/steppe east, the India/China review (the Middle
-Kingdom restoration is its anchor item). Meanwhile banked: the
+ONE day). Remaining territory per the strategic order: **Germany II is DONE
+(item 25, needs game test)**; **Italy North** is next (spec ready,
+`docs/ITALY-NORTH-PACKAGE.md`); then Central Asia, Arabia, the
+Rus/steppe east, the India/China review (the Middle Kingdom
+restoration is its anchor item). Meanwhile banked: the
 SITUATION-SPECS package (a research agent's report pending review
 into docs/SITUATION-SPECS.md), the situation scaffold generator
 (tools/new_situation.py, tested), the DHE flavor scaffold generator

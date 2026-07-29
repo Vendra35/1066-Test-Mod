@@ -904,12 +904,18 @@ landing; the structural claims below carry vanilla file:line cites.
   `ruler =` lines plus a term per tag. (This also retro-justifies the
   France pass's caution — seat once until needed.)
 - **BAV/SAX/SWA/FKN exist only as FORMABLES** — loc, CoA, colors, formable
-  defs, but no `10_countries.txt` block and no identity block; the SKE
-  landless-revival rule does NOT transfer (SKE has an identity block).
-  The 1066 stem duchies of Swabia and Saxony have NO usable tag; their
-  ground is shattered across dozens of statelets. CRH/STY are the SKE
-  case proper (landless WITH identity blocks; their locations sit inside
-  HAB's 68-location anachronism).
+  defs, but no `10_countries.txt` block and no identity block.
+  **CORRECTED by the Germany II pass (2026-07-29): "no usable tag" was
+  one step short.** A formable tag becomes a live country by adding a
+  registry identity block — the PYS route — and vanilla itself ships 49
+  tags that are BOTH formables and live countries (ENG, FRA, BOH…),
+  plus its own comment `tag = LUN # Should be SAX`
+  (05_characters.txt:86620). SAX and SWA were revived exactly this way
+  (item 25), inheriting name/adjective/color/ARMS free; the cost is
+  that the formable becomes unreachable (its target exists from day 1).
+  EGY's rejection still stands — that was identity mismatch (Fatimids
+  are not "Egypt"), not formable status. CRH/STY are the SKE case
+  proper (landless WITH identity blocks).
 - The electors (`elector = { BOH SWB BRA PAL }` + three archbishops) are
   the 1356 Golden Bull read backwards; vanilla ships
   `no_golden_bull_policy` so a pre-Bull state is modelled.
