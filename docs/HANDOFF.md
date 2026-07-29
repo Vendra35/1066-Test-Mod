@@ -650,6 +650,22 @@ Italy+Papacy, Persia/Central Asia (the Seljuk body), and the Celtic world.
    accepted); new classes only — the first coastal explicit theocracy
    is the one real unknown; (g) regression: nine Seljuk tributaries,
    Persia visible, taifa/Iberia/Norman opening unchanged.
+   **CONFIRMED IN GAME (2026-07-29, same day, screenshots): ALL SEVEN
+   PASSED — THE FATIMID SLICE IS CLOSED.** "Fatimid Caliphate" emerald
+   across Egypt-Palestine-Lebanon-Hejaz coast, "Caliph al-Mustansir"
+   in Cairo — **the literal regnal_name probe PASSED** (first
+   non-name_key regnal_name, Chungsuk precedent proven in our data);
+   both Caliphates styled, no "Holy"; MEC/BKZ tributaries with open
+   war screens; Abu Hashim renders "Šayḵ Muḥammad Hawāshim" of the
+   "Sheikhdom of Mecca" (hawashim_dynasty + name_muhammad confirmed on
+   the debug panel); Mamluks gone, Barqa separate; **the reform-slot
+   fix shows +1 free slot in game**; error.log grew by EXACTLY the
+   forecast three MAM lines (education_masses + 2 privileges —
+   decoder sub-class 3, accepted) and NOTHING else: **a coastal
+   explicit theocracy produced zero new error classes — the ABS
+   minimal-law shape is proven for coastal use too.** All standing
+   classes unchanged (French appanage, tusi, landless trims — all
+   decoded).
 
 ## DEFERRED BY DESIGN — the backlog a fresh session must know
 Every item below was DECIDED, not forgotten. Sources: the taifa,
@@ -756,9 +772,10 @@ conversion work starts.
 **DONE so far:** Sardinia, the 13 taifas, Christian Iberia, Byzantium,
 Seljuks+Abbasids (CLOSED — confirmed in game 2026-07-29 across THREE
 launches: Caliphate probe passed, tributary reform beat the validator,
-and the item 18 polish batch passed its five-minute check).
-**Remaining, in rough order:** ~~Fatimid Egypt + the Levant~~ (LANDED
-2026-07-29, item 19 — awaiting its game test), France demesne
+and the item 18 polish batch passed its five-minute check), Fatimid
+Egypt + southern Levant (CLOSED — confirmed in game 2026-07-29 the
+same day it landed, all seven test points; item 19).
+**Remaining, in rough order:** France demesne
 163→~25 + Languedoc (montpellier already parked there), British Isles
 (Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
 southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
@@ -818,14 +835,13 @@ only bystander human vassals are protected. MR's remaining to-do is
 its own: the first in-game session of the Great Partition block
 (audit S3), plus S1/S2/S4 checks. Nothing in MR blocks this project.
 
-**NEXT SESSION STARTS WITH:** item 19's game test (the Fatimid slice —
-the checklist is in the item). The whole Seljuk arc (items 16-18) is
-CONFIRMED IN GAME (2026-07-29, three launches). After the Fatimid test
-the strategic order continues: France demesne + Languedoc, or the
-British Isles. Two open threads item 19 created: the MEC khutba switch
-of 1071 and the Mustansirite Hardship are situation material; the
-coat-of-arms batch (deferred list) now owes FAT its Fatimid white/green
-banner too.
+**NEXT SESSION STARTS WITH:** the next slice per the strategic order —
+**France demesne 163→~25 + Languedoc** (montpellier parked there), or
+the British Isles if preferred. Items 16-19 are ALL CONFIRMED IN GAME
+(2026-07-29). Threads item 19 left for later: the MEC khutba switch of
+1071 and the Mustansirite Hardship are situation material; the
+coat-of-arms batch (deferred list) now owes FAT its banner too; the
+Hejaz interior (Mecca/Medina proper) belongs to the Arabia slice.
 Standing rhythm with the user: propose batch → "onay" → land → they
 test in game → findings become fixes and decoder entries. Conversation
 in Turkish, everything in the repo in English.

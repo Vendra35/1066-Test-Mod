@@ -1586,7 +1586,20 @@ zero.
 **Means:** all three mod reforms (seljuk_khutba, seljuk_nizamiyya,
 fatimid_khutba) carry it, so a setup-assigned historical reform never
 eats the player's or AI's enactment budget. Any future setup reform
-ships with the same line. UNTESTED in game until the next launch.
+ships with the same line.
+**CONFIRMED IN GAME (2026-07-29, Fatimid launch):** SEL's government
+screen shows the extra free slot; both reforms still render.
+
+### regnal_name accepts an invented LITERAL — measured
+**Established:** in game 2026-07-29, the Fatimid launch. FAT's term
+carries `regnal_name = Mustansir` where `Mustansir` is OUR literal
+(loc row `Mustansir: "al-Mustansir"`), not a name key — and Cairo
+renders "Caliph al-Mustansir". Vanilla's own `regnal_name = Chungsuk`
+(10_countries.txt:24295 against character_names_l_english.yml:11818)
+predicted it; now proven in our data. The papal route (name keys —
+name_alexander, name_qaim) and the literal route are BOTH live.
+**Means:** a regnal name never blocks on the name-key bank again —
+any missing key is one loc row away, same as first names.
 
 ## Carried over, still to do
 
