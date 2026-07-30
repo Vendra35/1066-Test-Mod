@@ -1055,12 +1055,14 @@ and the item 18 polish batch passed its five-minute check), Fatimid
 Egypt + southern Levant (CLOSED — confirmed in game 2026-07-29 the
 same day it landed, all seven test points; item 19).
 **Remaining, in rough order:** ~~France demesne + Languedoc~~ (item
-20), ~~British Isles~~ (item 21 — both LANDED 2026-07-29, tests
-accumulate)
-(Wales marcher dissolution, Ireland/PLE breakup), HRE/HAB breakup,
-southern Italy 1066 (spec banked), Central Asia (Kara-Khanids),
-Arabia, the Rus/steppe east, India/China/rest-of-world review — then
-the pop phase (al-Andalus owes 222 locations; Persia owes none).
+20), ~~British Isles~~ (item 21), ~~HRE/HAB breakup~~ (item 23),
+~~southern Italy 1066~~ (item 22), ~~Germany II~~ (item 25),
+~~Italy North~~ (item 26 — ALL confirmed in game and closed as of
+2026-07-30). Left: Central Asia (Kara-Khanids), Arabia, the
+Rus/steppe east, India/China review — ALL FOUR now hold decision-ready
+research packages in docs/ (2026-07-30, pending main-session review +
+user decisions) — then the pop phase (al-Andalus owes 222 locations;
+Persia owes none).
 
 ## Next, in order
 
@@ -1089,22 +1091,34 @@ the pop phase (al-Andalus owes 222 locations; Persia owes none).
 3. Then the next region: **France and the Empire** — `docs/PHASE-2-PLAN.md`
    has the order and the 1066–1337 backlog.
 
-## Repo state (2026-07-29, end of the Seljuk test-and-fix day; 3-day break follows)
+## Repo state (2026-07-30, end of the Italy North day)
 
-Everything is COMMITTED through the item 18 polish batch. The working
-tree should be clean; if it is not, `git log --oneline -8` first — the
-day's last commits tell the story (doc-debt closure → Seljuk-test fix
-batch → tributary-gate harness guard → polish batch → reform-loc
-sweep). The 34 wiki PDFs in `docs/` remain untracked (~26 MB) — still
-undecided, still harmless.
+Everything is COMMITTED through the landless-claims guard. The day's
+commits tell the story: `190cdac` (Italy North landed, main-session
+implementation), `639e330` (the five log classes the item 24/25/26
+game test surfaced, fixed), `4e143d7` (the claims-backed landless
+guard, proven by breaking), plus the closing docs commit banking the
+four theater packages. The working tree should be clean; the 34 wiki
+PDFs in `docs/` remain untracked (~26 MB) — still undecided, still
+harmless.
 
-`python tools/verify_mod.py` → 24 checks green (last run this session;
-the two newest — the tributary gate and the reform-loc sweep — were
-proven by breaking).
-`python tools/build_setup.py --dry-run` → clean, ~12s (the ownership
-index refactor; if it takes minutes, something regressed). The build
-now also asserts capital discovery for every generated block, resolved
-through definitions.txt.
+`python tools/verify_mod.py` → ALL checks green (authored keys at 116,
+identifiers at 540, CoA at 96, one-ruler at 2382).
+`python tools/build_setup.py --dry-run` → clean, ~12s; 2382 blocks,
+153 thrones, claims 1421, landless 180 all claims-backed.
+
+**The four theater packages are IN GIT as DRAFTS** — written by four
+parallel Opus research agents 2026-07-30, banked unreviewed: every
+claim inside still needs the main session's file:line re-verification
+before implementation, and every OPEN DECISIONS list needs the user.
+The division of labor is now: agents research ONLY, the main session
+writes everything (CLAUDE.md, user decision 2026-07-30).
+
+**NEXT LAUNCH one-glance log check:** the four fixed classes must be
+GONE — initialize_from_bookmark.cpp:592 ×17, the ABS/FAT
+marriage/heir/society trio, the four "no birth scripted" lines, the
+Ayyub conception line. Everything else in the log is decoded and
+accepted (see the decoder's 2026-07-30 entries).
 
 **MONGOL RESURGENCE: CLOSED OUT THE SAME NIGHT.** The deep audit
 (committed in MR as `docs/AUDIT-2026-07-29.md`) found six DEFINITE
@@ -1324,12 +1338,23 @@ were USER-CONFIRMED on sight (Kyiv tributary of a 15-subject Golden
 Horde; Novgorod a republic) — both queued with the Rus decisions.
 VMD loyalty still ~47% — the WATCH stands. **ITEM 26 IS CLOSED.**
 
-**NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
-tour in the item; headline probes: "King of the Romans", the
-Margraviate branch, literal #19, shrunken Austria) — **DONE, item 23
-is CONFIRMED AND CLOSED the same night.** Items 16-23 are
-ALL CONFIRMED IN GAME (2026-07-29 — six slices tested and closed in
-ONE day). Remaining territory per the strategic order: **Germany II is DONE
+**NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
+1. Main-session review of the four theater packages (they are DRAFTS —
+   re-verify key file:line claims before trusting anything), then give
+   the user a per-package decision list IN TURKISH and wait for onay.
+2. The recommended first implementation is the small **Rus live-defect
+   patch** — strip GLH→KIE (12_diplomacy.txt:99) and fix Novgorod's
+   1136 veche-republic shape — both defects USER-CONFIRMED in game
+   2026-07-30; near-zero decisions, but it still needs the user's
+   onay and the packages' exact prescriptions re-verified first.
+3. Full theater slices follow the strategic order below, one package
+   at a time, implemented BY THE MAIN SESSION (agents research only).
+4. Whenever the user next launches the game: the one-glance log check
+   in "Repo state" below (four fixed classes must be gone).
+Historical record of the previous next-session note: item 23's game
+test — DONE, item 23 CONFIRMED AND CLOSED the same night. Items 16-23
+are ALL CONFIRMED IN GAME (2026-07-29 — six slices tested and closed
+in ONE day), items 24-26 on 2026-07-30. Remaining territory per the strategic order: **Germany II is DONE
 (item 25, needs game test)**; **Italy North is DONE (item 26, needs
 game test — spec retired with its landing, like Germany II's)**. The
 four remaining theaters ALL have research packages ON DISK as of
