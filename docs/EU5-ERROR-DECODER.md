@@ -567,10 +567,15 @@ crown/electors/title all render correctly. WATCH: if the class grows
 during play WITHOUT the HRE panel open, revisit (the candidate-sweep
 theory would then need a second look). Count it OUT of the error
 budget meanwhile.
-**UNDECODED — two lines per launch, vanilla's dominion script hitting a
-null target at start.** No dominion of ours exists; possibly a vanilla
-dominion whose partner our strips touched. Harmless so far. Decode if
-the count grows or a dominion misbehaves.
+**DECODED (2026-07-30): the two lines are NOR→ICE and NOR→GRL** —
+vanilla's own dominion pairs, both kept by us
+(12_diplomacy.txt:40-41). `dominion.txt:152` runs
+`set_court_language = scope:future_overlord.court_dialect` in a block
+written for runtime subject creation; replayed at bookmark init the
+saved scope does not exist and the effect's target is null. Vanilla's
+own start would produce the same two lines. Harmless, cosmetic, count
+is exactly the number of start-date dominions. WATCH only if the count
+grows past the dominion count or a dominion misbehaves.
 
 ---
 
@@ -614,6 +619,81 @@ carry 10_countries claim blocks, which is why this never fired here.
 presence at all), add `is_historic = yes` — and test that
 `change_location_owner` still instantiates it (unobserved combination,
 flagged in MR's Great Partition test).
+
+### `initialize_from_bookmark.cpp:592 — Country '<TAG>' does not exist, nor has cores as a revolter at start… add 'is_historic = yes'`
+**Means:** a landless tag shipped with NO claims list — the engine
+accepts land, revolter cores (= `our_cores_conquered_by_others`) or
+`is_historic`, and the tag has none of the three. First fired
+2026-07-30, seventeen lines, all Italy North donors: the build's
+`_landless_claims` was a per-slice enumeration PARALLEL to
+`LANDLESS_AFTER`, and the slice updated one list but not the other —
+so the eighteen donors went landless with their claims never written
+(SAL's single claim was vanilla's own; Germany II's thirteen passed
+because that slice was in both lists).
+**Fix:** FIXED same day — `_landless_claims` now DERIVES from
+`LANDLESS_AFTER` (minus the three DISPLACED_CLAIMS tags), and the
+landless verifier asserts a non-empty claims list per tag, proven by
+breaking. If this signature ever reappears, a landless tag shipped
+claim-less past that assert — re-read the build before anything else.
+The companion `:595` reverse line — `'OGK Holy Roman' is set as
+'is_historic = yes' but it currently exists` — is vanilla's registry
+marking OGK historic while we landed it: one cosmetic line, accepted.
+
+### `country_database.cpp:107 — The following two countries have the same name 'GRZ' & 'GRA' = 'Granada'` (and `'NEA' & 'NAP' = 'Naples'`)
+**Means:** by design. The landless irredenta tag IS the future of the
+same polity the landed 1066 tag represents — Zirid Granada beside the
+Nasrid shell, the duchy of Naples beside the Angevin-kingdom shell.
+The engine only warns about the display-name collision; the landless
+twin never renders on the map.
+**Fix:** none — accepted, exactly two lines. If a future slice mints a
+third pair, expect a third line.
+
+### `pdx_persistent_reader.cpp:289 — Failed to read key reference: mr_railroad_on / MR_* …" in file: ""`
+**Means:** ENVIRONMENT-side, not the mod. The user's Paradox settings
+persist Mongol Resurgence game-rule selections; a 1066 session without
+MR loaded cannot resolve those keys and logs one line per remembered
+rule (the empty-name `::` lines at nearby line numbers are the same
+settings file's other entries). Zero effect on the 1066 mod.
+**Fix:** none needed; deleting the remembered game-rule block from the
+launcher settings would silence it. This LIKELY also closes the old
+`gamestate.cpp:133` "Failed to read key reference" ×4 that HANDOFF
+carried as *Unexplained* since Phase 1 — same failed-key-reference
+family, no file named, count matches a small settings block. Marked
+likely rather than certain: the :133 lines were never re-observed
+side by side with the MR keys.
+
+### `initialize_from_bookmark.cpp:410 — character <key> has no birth scripted`
+**Means:** a character ALIVE at start with no `birth = <location>`
+field. Vanilla ships exactly four such characters (sco_malcolm_iii,
+sco_donald_iii, sco_duncan_ii, ogk_heinrich_iv_salier) — dead by 1337,
+so vanilla never needed to place them; OUR death-strip resurrection
+exposed the gap (first observed 2026-07-30; an independent sweep
+confirmed the four are the complete living-without-birth set).
+**Fix:** FIXED — build_characters' `_BIRTH_FIXES` injects birthplaces
+(scone [U] for the three Dunkeld Scots, goslar for Heinrich), with
+already-has-birth and exact-count asserts so a vanilla patch filling
+the gap fails loudly.
+
+### `initialize_from_bookmark.cpp:1558/:1576/:169 — '<TAG>' has no marriage_law / heir_religion_law / society values scripted`
+**Means:** a 10_countries block built WITHOUT any template include —
+the template family is what supplies those laws and the thirteen
+society sliders. Our two template-less explicit theocracies (ABS, FAT)
+were the only tags in this state.
+**Fix:** FIXED 2026-07-30 — both blocks restate
+`marriage_law = muslim_marriage`, `heir_religion_law =
+heir_same_religion` and the muslim family's thirteen sliders
+(setup/templates/muslim_monarchy_no_abrahamic_dhimmi.txt values). Rule
+for future template-less blocks: restate BOTH laws and the sliders, or
+the engine logs all three classes and defaults silently.
+
+### `character_manager.cpp:287 — <parent> has less than 10 years in <date> when Child (<key>) was conceived`
+**Means:** the engine back-computes conception (birth minus nine
+months) and requires the named parent to be at least ten. Fired once:
+authored Ayyub (b. 1040) against authored Tamim (b. 1031).
+**Fix:** FIXED — Ayyub moved to 1048.1.1 [U] (Tamim sixteen at
+conception, Ayyub eighteen at start — the seat threshold still
+passes). Rule for future cross-links: parent's birth + ~10y 9m must
+precede the child's birth.
 
 ## Adding to this file
 

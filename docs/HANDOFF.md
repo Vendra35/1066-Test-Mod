@@ -1164,6 +1164,8 @@ Test — click tour, ~5 minutes, all in the country panel's flag:
 Everything else (taifas, Catalan counties, Seljuk clients, PLM/AGR,
 ULD, south-Italian minors) KEEPS its generated flag by design — the
 deferred tiers are in `docs/COA.md` §4.
+**Probes 4-9 CONFIRMED IN GAME (2026-07-30): all six flags correct,
+the SIC key-level override included — ITEM 24 IS CLOSED.**
 
 **ITEM 25 — GERMANY II, LANDED AND COMMITTED (2026-07-29 ~22:40,
 NEEDS GAME TEST).** Implemented by subagent from the Germany II spec
@@ -1195,6 +1197,14 @@ Test — click tour, ~10 minutes:
 9. Click Utrecht → **William**, now holds Groningen.
 10. error.log: the landless-shell class should grow ~13 blocks
     (accepted class); paste anything NEW.
+**CONFIRMED IN GAME (2026-07-30): ALL TEN POINTS PASSED — ITEM 25 IS
+CLOSED.** Both stem duchies on the map with their flags, Ordulf/
+Rudolf/Anno/Udo seated, Godfrey on both thrones, Bremen at 9 with
+Hamburg, Flanders at 22 still France's tributary, electors exactly
+BOH BRA SAX UBV (panel screenshot — archbishop electors render as
+their own class beside the princes), Utrecht holding Groningen. The
+one agent-implemented slice thus passed its game test — with the
+division of labor since reverted regardless.
 QUEUED NEXT: the ITALY NORTH batch — spec
 `docs/ITALY-NORTH-PACKAGE.md`, all four user decisions inside (TUS
 revival, FLO empties, ISR for Ulric of Weimar, RAV takes
@@ -1285,6 +1295,34 @@ TEST — click tour, ~10 minutes:
 10. error.log: the landless-shell trim class grows by ~18 (accepted);
     NEW classes only — paste anything naming TUS/ISR or a revived
     bishopric.
+**CONFIRMED IN GAME (2026-07-30, same day it landed): the WHOLE click
+tour passed — Beatrice ruling (the first seated woman renders), Ulrich
+in Istria, Adelaide ("County of Piedmont" — vanilla PIE loc, correct),
+Otto II Aleramici, Azzo on Padua, the bishoprics as theocracies,
+Cadalus without ordinal, Venice at two locations with Contarini, every
+CoA probe — and the log sweep became the SAME-DAY FIX BATCH:**
+(a) seventeen `initialize_from_bookmark.cpp:592` lines exposed a REAL
+BUG — `_landless_claims` was a per-slice enumeration parallel to
+LANDLESS_AFTER and Italy North updated only the latter, so its
+eighteen donors went landless with NO claims; fixed by DERIVING the
+dict from LANDLESS_AFTER (the two-list class is dead permanently) and
+the landless verifier now asserts non-empty claims per tag, proven by
+breaking; claims 1376→1421. (b) ABS/FAT restate marriage_law/
+heir_religion_law + the thirteen society sliders (the template-less
+theocracy gap — three engine classes die). (c) `_BIRTH_FIXES`: the
+death-strip resurrection had exposed vanilla's four birth-less living
+characters (three Dunkeld Scots → scone [U], Heinrich IV → goslar).
+(d) Ayyub 1040→1048 (the conception-age validator: Tamim was eight).
+(e) Accepted with decoder entries: GRZ/GRA + NEA/NAP name duplicates
+(landless-future-twin design), OGK is_historic reverse line, NOR's
+two dominion nulls (decoded: vanilla's own ICE/GRL at bookmark init),
+the MR-game-rule settings keys (environment-side — and LIKELY the
+close of the old gamestate.cpp:133 ×4 "Unexplained"). Also closed
+this session: the Guilhèm eyeball (renders "Guilhelm IV" — occitan
+row confirmed live), and the Rus package's two live-defect claims
+were USER-CONFIRMED on sight (Kyiv tributary of a 15-subject Golden
+Horde; Novgorod a republic) — both queued with the Rus decisions.
+VMD loyalty still ~47% — the WATCH stands. **ITEM 26 IS CLOSED.**
 
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the

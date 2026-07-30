@@ -2740,6 +2740,7 @@ character_db={
 		culture = scottish
 		religion = catholic
 		birth_date = 1031.1.1
+		birth = scone
 		dynasty = dunkeld_dynasty
 		father = sco_duncan_i
 		tag = SCO
@@ -2761,6 +2762,7 @@ character_db={
 		culture = highland
 		religion = catholic
 		birth_date = 1033.1.1
+		birth = scone
 		dynasty = dunkeld_dynasty
 		father = sco_duncan_i
 		tag = SCO
@@ -2771,6 +2773,7 @@ character_db={
 		culture = scottish
 		religion = catholic
 		birth_date = 1060.1.1
+		birth = scone
 		dynasty = dunkeld_dynasty
 		father = sco_malcolm_iii
 		tag = SCO
@@ -103803,6 +103806,7 @@ character_db={
 		culture = westphalian
 		religion = catholic
 		birth_date = 1050.11.11
+		birth = goslar
 		dynasty = salian_dynasty
 		father = ogk_heinrich_iii_salier
 		tag = OGK
@@ -105343,7 +105347,12 @@ character_db={
 		first_name = { name = name_ayyub }
 		culture = tunisian
 		religion = sunni
-		birth_date = 1040.1.1
+		# 1048, not the package's 1040: Tamim is born 1031 and the engine
+		# rejects a father under ten at conception
+		# (character_manager.cpp:287, observed 2026-07-30). Ayyub's real
+		# birth year is unrecorded [U]; 1048 makes Tamim sixteen at the
+		# conception and Ayyub eighteen at start — both thresholds pass.
+		birth_date = 1048.1.1
 		birth = kairouan
 		father = zir_tamim_ibn_al_muizz
 		dynasty = zirid_dynasty

@@ -963,7 +963,28 @@ NEW_COUNTRIES["ABS"] = (
     "\t\t\tlaws = {\n"
     "\t\t\t\tlegal_code_law = sharia_law_policy\n"
     "\t\t\t\tsharia_law = hanbali_policy\n"
+    # The include-less explicit-theocracy shape carries NO template, so
+    # the two laws every template supplies and the thirteen society
+    # values must be restated — the engine logged all three absences at
+    # start (initialize_from_bookmark.cpp:1558/:1576/:169, first
+    # user-observed 2026-07-30). Values are the muslim family's own
+    # (setup/templates/muslim_monarchy_no_abrahamic_dhimmi.txt).
+    "\t\t\t\tmarriage_law = muslim_marriage\n"
+    "\t\t\t\their_religion_law = heir_same_religion\n"
     "\t\t\t}\n"
+    "\t\t\tcentralization_vs_decentralization = 40\n"
+    "\t\t\ttraditionalist_vs_innovative = -25\n"
+    "\t\t\tspiritualist_vs_humanist = -50\n"
+    "\t\t\taristocracy_vs_plutocracy = -50\n"
+    "\t\t\tserfdom_vs_free_subjects = -30\n"
+    "\t\t\tmercantilism_vs_free_trade = -20\n"
+    "\t\t\tbelligerent_vs_conciliatory = 30\n"
+    "\t\t\tquality_vs_quantity = 10\n"
+    "\t\t\toffensive_vs_defensive = -20\n"
+    "\t\t\tland_vs_naval = -10\n"
+    "\t\t\tcapital_economy_vs_traditional_economy = 70\n"
+    "\t\t\tindividualism_vs_communalism = 50\n"
+    "\t\t\toutward_vs_inward = -20\n"
     "\t\t}\n"
     "\t\treligious_school = hanbali_school\n\n"
     "\t\tcountry_rank = rank_empire\n\n"
@@ -1001,7 +1022,25 @@ NEW_COUNTRIES["FAT"] = (
     "\t\t\tlaws = {\n"
     "\t\t\t\tlegal_code_law = sharia_law_policy\n"
     "\t\t\t\tsharia_law = ismaili_policy\n"
+    # Same restatement as ABS: the template-less shape must supply the
+    # two laws and the society values itself (the .cpp:1558/:1576/:169
+    # trio, observed 2026-07-30) — muslim-family values.
+    "\t\t\t\tmarriage_law = muslim_marriage\n"
+    "\t\t\t\their_religion_law = heir_same_religion\n"
     "\t\t\t}\n"
+    "\t\t\tcentralization_vs_decentralization = 40\n"
+    "\t\t\ttraditionalist_vs_innovative = -25\n"
+    "\t\t\tspiritualist_vs_humanist = -50\n"
+    "\t\t\taristocracy_vs_plutocracy = -50\n"
+    "\t\t\tserfdom_vs_free_subjects = -30\n"
+    "\t\t\tmercantilism_vs_free_trade = -20\n"
+    "\t\t\tbelligerent_vs_conciliatory = 30\n"
+    "\t\t\tquality_vs_quantity = 10\n"
+    "\t\t\toffensive_vs_defensive = -20\n"
+    "\t\t\tland_vs_naval = -10\n"
+    "\t\t\tcapital_economy_vs_traditional_economy = 70\n"
+    "\t\t\tindividualism_vs_communalism = 50\n"
+    "\t\t\toutward_vs_inward = -20\n"
     "\t\t}\n"
     "\t\treligious_school = ismaili_school\n\n"
     "\t\tcountry_rank = rank_empire\n\n"
@@ -3021,7 +3060,12 @@ NEW_CHARACTERS = """
 		first_name = { name = name_ayyub }
 		culture = tunisian
 		religion = sunni
-		birth_date = 1040.1.1
+		# 1048, not the package's 1040: Tamim is born 1031 and the engine
+		# rejects a father under ten at conception
+		# (character_manager.cpp:287, observed 2026-07-30). Ayyub's real
+		# birth year is unrecorded [U]; 1048 makes Tamim sixteen at the
+		# conception and Ayyub eighteen at start — both thresholds pass.
+		birth_date = 1048.1.1
 		birth = kairouan
 		father = zir_tamim_ibn_al_muizz
 		dynasty = zirid_dynasty
@@ -3942,11 +3986,18 @@ def build_countries(src):
                          f"— transfer/grant lists must be disjoint")
             _list_owner[l] = _t
 
+    # DERIVED from LANDLESS_AFTER, not enumerated per slice. The old
+    # per-slice enumeration was a second parallel list, and Italy North
+    # updated one but not the other: its eighteen donors went landless
+    # with NO claims written, and the engine said so at start
+    # (initialize_from_bookmark.cpp:592, seventeen lines, first
+    # user-observed 2026-07-30 — LUN passed because Germany II WAS in
+    # both lists; SAL's single claim was vanilla's own). GRA/POR/MLL
+    # are excluded because their claims are the explicit
+    # DISPLACED_CLAIMS lists, byte-for-byte vanilla's.
     _landless_claims = {t: _owned_by(src, t)
-                        for t in BYZ_LANDLESS + SELJUK_LANDLESS
-                        + EGYPT_LANDLESS + FRANCE_LANDLESS
-                        + BRITISH_LANDLESS + ITALY_LANDLESS
-                        + EMPIRE_LANDLESS + GERMANY_LANDLESS}
+                        for t in LANDLESS_AFTER
+                        if t not in DISPLACED_CLAIMS}
     for _t, _held in _landless_claims.items():
         if not _held:
             sys.exit(f"LANDLESS list: {_t} already holds nothing — stale entry")
@@ -4703,6 +4754,40 @@ def build_characters(src):
     for a, z in reversed(cuts):
         src = src[:a] + src[z:]
     report.append(("death_date removed from the living", len(cuts)))
+
+    # Vanilla ships exactly FOUR characters who are alive at 1066 but
+    # carry no `birth = <location>` — at 1337 all four are long dead and
+    # vanilla never needed to place them; our death-strip resurrection
+    # exposed the gap and the engine names each at start
+    # (initialize_from_bookmark.cpp:410, first user-observed 2026-07-30).
+    # An independent sweep of the built file confirms these four are the
+    # COMPLETE set of living-without-birth. Places: Heinrich's Goslar is
+    # already the mod's recorded [U] birthplace (CAPITAL_FIXES comment);
+    # the three Dunkeld Scots get scone [U] — dunkeld itself is no map
+    # location, and Scone is the house's crowning seat.
+    _BIRTH_FIXES = {
+        "sco_malcolm_iii": "scone",
+        "sco_donald_iii": "scone",
+        "sco_duncan_ii": "scone",
+        "ogk_heinrich_iv_salier": "goslar",
+    }
+    n_births = 0
+    for _ch, _loc in sorted(_BIRTH_FIXES.items()):
+        _bm = re.search(r"^\t" + _ch + r" = \{", src, re.M)
+        if not _bm:
+            sys.exit(f"BIRTH_FIXES: {_ch} not found")
+        _be = find_block_end(src, src.index("{", _bm.start()))
+        _body = src[_bm.start():_be]
+        if re.search(r"^\t\tbirth[ \t]*=[ \t]*[a-z]", _body, re.M):
+            sys.exit(f"BIRTH_FIXES: {_ch} already carries a birth — "
+                     "a vanilla patch filled the gap; drop the entry")
+        _bdm = re.search(r"^\t\tbirth_date[ \t]*=[^\n]*\n", _body, re.M)
+        if not _bdm:
+            sys.exit(f"BIRTH_FIXES: {_ch} has no birth_date to anchor on")
+        _at = _bm.start() + _bdm.end()
+        src = src[:_at] + f"\t\tbirth = {_loc}\n" + src[_at:]
+        n_births += 1
+    report.append(("birthplaces added to the resurrected", n_births))
 
     # Vanilla's own loose ends, reported so they are not mistaken for ours.
     _pos = {m.group(1) for m in re.finditer(r"^\t([a-z][a-z0-9_]*) = \{", src, re.M)}

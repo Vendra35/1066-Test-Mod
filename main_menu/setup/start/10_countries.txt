@@ -8254,7 +8254,11 @@ countries = {
 	}
 
 	#---------------------------- Italy --------------------------------
-	PST = {  # Pistoia (Italy)
+	PST = {
+		our_cores_conquered_by_others = {
+			pistoia
+		}
+  # Pistoia (Italy)
 		own_control_core = {
 			
 		}
@@ -8275,6 +8279,10 @@ countries = {
 	}
 
 	ABA = {
+		our_cores_conquered_by_others = {
+			alba
+		}
+
 		own_control_core = {
 			
 		}
@@ -8528,6 +8536,10 @@ countries = {
 	}
 
 	ASD = {
+		our_cores_conquered_by_others = {
+			alessandria
+		}
+
 		own_control_core = {
 			
 		}
@@ -8754,6 +8766,10 @@ countries = {
 	}
 
 	CEV = {
+		our_cores_conquered_by_others = {
+			ceva
+		}
+
 		own_control_core = {
 			
 		}
@@ -8793,6 +8809,10 @@ countries = {
 	}
 
 	CHX = {
+		our_cores_conquered_by_others = {
+			chieri
+		}
+
 		own_control_core = {
 			
 		}
@@ -8896,6 +8916,10 @@ countries = {
 	}
 
 	COT = {
+		our_cores_conquered_by_others = {
+			cortona
+		}
+
 		own_control_core = {
 			
 		}
@@ -9012,6 +9036,10 @@ countries = {
 	}
 
 	FAE = {
+		our_cores_conquered_by_others = {
+			faenza
+		}
+
 		own_control_core = {
 			
 		}
@@ -9067,6 +9095,10 @@ countries = {
 	}
 
 	FER = {
+		our_cores_conquered_by_others = {
+			comacchio ferrara ficarolo rovigo argenta frassinoro modena nonantola
+		}
+
 		own_control_core = {
 			     
 		}
@@ -9105,7 +9137,11 @@ countries = {
 		dynasty = ramberti_dynasty
 	}
 
-	FLO = { #Florence
+	FLO = {
+		our_cores_conquered_by_others = {
+			florence mangona poggibonsi sanlorenzo arezzo
+		}
+ #Florence
 		own_control_core = {
 			   
 		}
@@ -9440,6 +9476,10 @@ countries = {
 	}
 
 	IMO = {
+		our_cores_conquered_by_others = {
+			imola
+		}
+
 		own_control_core = {
 			
 		}
@@ -9475,7 +9515,11 @@ countries = {
 		dynasty = alidosi_dynasty
 	}
 
-	LUC = { #Personal Union with Verona
+	LUC = {
+		our_cores_conquered_by_others = {
+			lucca massa pescia
+		}
+ #Personal Union with Verona
 		own_control_core = {
 			  
 		}
@@ -9515,6 +9559,10 @@ countries = {
 	}
 
 	MAN = {
+		our_cores_conquered_by_others = {
+			goito mantova ostiglia canossa guastalla mirandola reggioem asola
+		}
+
 		own_control_core = {
 			  
 			# own_control_integrated, but culture accepted
@@ -9845,6 +9893,10 @@ countries = {
 	}
 
 	MND = {
+		our_cores_conquered_by_others = {
+			mondovi
+		}
+
 		own_control_core = {
 			
 		}
@@ -10419,6 +10471,10 @@ countries = {
 	}
 
 	PRA = {
+		our_cores_conquered_by_others = {
+			prato
+		}
+
 		own_control_core = {
 			
 		}
@@ -10548,6 +10604,7 @@ countries = {
 		}
 
 		our_cores_conquered_by_others = {
+			carmagnola saluzzo
 			cuneo
 		}
 
@@ -10777,6 +10834,10 @@ countries = {
 	}
 
 	SIE = {
+		our_cores_conquered_by_others = {
+			massamar chiusi montalcino siena grosseto
+		}
+
 		own_control_core = {
 			   
 		}
@@ -11324,6 +11385,10 @@ countries = {
 	}
 
 	VLT = {
+		our_cores_conquered_by_others = {
+			volterra
+		}
+
 		own_control_core = {
 			
 		}
@@ -32356,7 +32421,11 @@ countries = {
 		dynasty = von_gleichen_dynasty
 	}
 
-	AOS = {  # Aosta (South Germany)
+	AOS = {
+		our_cores_conquered_by_others = {
+			aosta chatillonaos morgex
+		}
+  # Aosta (South Germany)
 		own_control_core = {
 			   
 		}
@@ -58210,7 +58279,22 @@ countries = {
 			laws = {
 				legal_code_law = sharia_law_policy
 				sharia_law = hanbali_policy
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
 			}
+			centralization_vs_decentralization = 40
+			traditionalist_vs_innovative = -25
+			spiritualist_vs_humanist = -50
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -30
+			mercantilism_vs_free_trade = -20
+			belligerent_vs_conciliatory = 30
+			quality_vs_quantity = 10
+			offensive_vs_defensive = -20
+			land_vs_naval = -10
+			capital_economy_vs_traditional_economy = 70
+			individualism_vs_communalism = 50
+			outward_vs_inward = -20
 		}
 		religious_school = hanbali_school
 
@@ -58537,7 +58621,22 @@ countries = {
 			laws = {
 				legal_code_law = sharia_law_policy
 				sharia_law = ismaili_policy
+				marriage_law = muslim_marriage
+				heir_religion_law = heir_same_religion
 			}
+			centralization_vs_decentralization = 40
+			traditionalist_vs_innovative = -25
+			spiritualist_vs_humanist = -50
+			aristocracy_vs_plutocracy = -50
+			serfdom_vs_free_subjects = -30
+			mercantilism_vs_free_trade = -20
+			belligerent_vs_conciliatory = 30
+			quality_vs_quantity = 10
+			offensive_vs_defensive = -20
+			land_vs_naval = -10
+			capital_economy_vs_traditional_economy = 70
+			individualism_vs_communalism = 50
+			outward_vs_inward = -20
 		}
 		religious_school = ismaili_school
 
