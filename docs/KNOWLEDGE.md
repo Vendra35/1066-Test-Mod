@@ -1946,6 +1946,25 @@ provinces) keeps producing members; parse structure, never line shape.
   server that catches syntax and reference errors in the editor, before the
   harness and long before the game.
 
+### An unbound country slot in a static tooltip renders as SWEDEN — the database's first-registered tag
+**Established:** in game 2026-07-30, on Mongol Resurgence's late-steppe
+situation panels: `government_type = government_type:steppe_horde`
+inside an `any_country` end trigger rendered as "Sweden is Steppe
+Horde". The fallback is mechanical: SWE is the first tag the country
+database registers (`_scandinavia.txt:1` — underscore-prefixed file
+sorts first, SWE sits on line 1 behind the BOM). Evaluation is
+per-iterated-country and CORRECT; only the display subject is unbound.
+The scope-compare form itself is vanilla's own (culture_jurchen.txt:
+121-122), and the bare-key form has zero vanilla uses in trigger
+position — so the fix is never to rewrite the trigger, it is to wrap
+the requirement in `custom_tooltip` (MR's header rule: ONE
+custom_tooltip PER requirement, text on one line — a single wrap
+around everything fights the checklist widget, measured in MR Phase 3).
+**Means:** any player-visible trigger context (situation can_end
+foremost) that iterates countries or compares scope objects needs its
+custom_tooltip wrap from day one; "Sweden" appearing in a tooltip is
+THIS, not a tag error. Fixed in MR 3f082c5.
+
 ## Template for new entries
 
 ```
