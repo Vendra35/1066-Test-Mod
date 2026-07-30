@@ -105762,4 +105762,116 @@ character_db={
 		dynasty = brunonen_dynasty
 		tag = BRU
 	}
+
+	# --- Italy North (approved package 2026-07-29) ------------------------
+	# Beatrice of Bar, margravine of Tuscany — ruling since Boniface III's
+	# 1052 murder, married to Godfrey the Bearded since 1054 (HE is already
+	# authored on BLL/SPL: the couple rules the middle of the peninsula
+	# between them, each on their own thrones). female = yes is vanilla's
+	# own field shape (05_characters.txt:105). name_beatrix is vanilla
+	# (character_names_dynamic_l_english.yml:3132, "Beatrix");
+	# de_bar_dynasty is vanilla too (04_dynasties.txt:5959, home nancy —
+	# her birth house, correct until Matilda), so neither needs authoring.
+	tus_beatrice_di_bar = {
+		first_name = { name = name_beatrix }
+		female = yes
+		culture = lorrain
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1020.1.1
+		birth = nancy
+		dynasty = de_bar_dynasty
+		tag = TUS
+	}
+
+	# Matilda of Canossa, the future Great Countess — authored UNSEATED at
+	# twenty (the Badr al-Jamali precedent), daughter of the seated
+	# Beatrice. canossa_dynasty is created for her: the march passes to
+	# the house of Canossa's heiress, and the dynasty existing NOW is what
+	# makes that succession expressible later. Mother link only — her
+	# father Boniface is not authored, and we do not write dangling
+	# references (validate ours strictly, report vanilla's). Birth city
+	# [U] — Lucca by the majority reading; name_matilda is vanilla
+	# (de_bar's own female_names row, 04_dynasties.txt:5956).
+	tus_matilda_di_canossa = {
+		first_name = { name = name_matilda }
+		female = yes
+		culture = tuscan
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1046.3.1
+		birth = lucca
+		mother = tus_beatrice_di_bar
+		dynasty = canossa_dynasty
+		tag = TUS
+	}
+
+	# Ulric I of Weimar, margrave of Carniola and Istria — the brother
+	# house of MEI's Otto, riding Germany II's weimar_dynasty
+	# (04_zz_1066_dynasties.txt:283). name_ulrick is VANILLA
+	# (languages/00_germany.txt:215; renders "Ulrich" through the
+	# .german_language row, character_names_dynamic_l_english.yml:17373)
+	# — the package's literal fallback proved unnecessary. saxon is
+	# Weimar's own template culture (location_templates.txt:1090).
+	isr_ulrich_i_weimar = {
+		first_name = { name = name_ulrick }
+		culture = saxon
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1030.1.1
+		birth = weimar
+		dynasty = weimar_dynasty
+		tag = ISR
+	}
+
+	# The three prelates, in the kol_anno shape (no estate, no skills)
+	# and dynasty-less per the mai_siegfried precedent: Ravenger's origin
+	# is unrecorded, Henry's uncertain, and Cadalus's Sabbioneta line is
+	# in no vanilla registry. Cultures are their sees' own template
+	# values; Cadalus is Veronese-born (the one biographical anchor).
+	# Cadalus IS the man who becomes antipope Honorius II in 1061 — the
+	# Cadalan schism is situation material and the papal claim is
+	# deliberately NOT modeled in data (package decision C).
+	aqu_ravengerius = {
+		first_name = { name = Ravenger }
+		culture = friulian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = aquileia
+		tag = AQU
+	}
+
+	rav_henry_ravenna = {
+		first_name = { name = name_henry }
+		culture = romagnol
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = ravenna
+		tag = RAV
+	}
+
+	par_cadalus = {
+		first_name = { name = Cadalus }
+		culture = venetian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = verona
+		tag = PAR
+	}
+
+	# Adelaide of Susa, margravine of Turin — the LITERAL first name is
+	# the Otakar precedent: name_adelaide exists but its piedmontese row
+	# renders "Lalsia" (package decision, main session). arduinici_dynasty
+	# is NEW (her father Ulric Manfred II's house, home turin).
+	pie_adelaide_susa = {
+		first_name = { name = Adelaide }
+		female = yes
+		culture = piedmontese
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1015.1.1
+		birth = turin
+		dynasty = arduinici_dynasty
+		tag = PIE
+	}
 }

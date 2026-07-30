@@ -357,6 +357,29 @@ HISTORICAL_RULERS = {
     "SOR": ("sor_dedi_i", "1046.1.1", 1),                 # Dedi I of Wettin, Margrave of the Saxon Ostmark (Lusatia) [U]
     "PAL": ("pal_hermann_ii", "1064.1.1", 2),             # Hermann II of the Ezzonen, Count Palatine of the Rhine — SEVENTEEN at start, no MINOR_RULERS needed
     "BRU": ("bru_egbert_i", "1057.1.1", 1),               # Egbert I the Brunonen, Margrave of Meissen and Count of Brunswick — dies January 1068, accepted drift
+
+    # ITALY NORTH (approved package 2026-07-29, landed by the main session
+    # 2026-07-30). TUS revives on the SAX/SWA formable-reuse ground and
+    # Beatrice rules the march; ISR is the slice's one new tag. Two vanilla
+    # characters seat without authoring: MFA matches vanilla's own term
+    # exactly (10_countries.txt:10387) and PAD is a CROSS-TAG seat of
+    # vanilla's mlo_alberto_azzo_ii_este (the PYS/kie_ precedent) — Azzo's
+    # real county was Este/Padua; vanilla's term for him (:10604) sits on
+    # MLO, Visconti-era Milan. Deliberately `ruler = random`, reasons
+    # recorded: MLO/GEN/PIS/VER/BLG (the communal shapes are BANKED
+    # anachronisms, package section H — no 1066 signore existed to seat).
+    # PAR regnal note: the package table said 2, but Cadalus is Parma's
+    # FIRST of the name — the "II" belongs to his 1061 antipapal style
+    # Honorius II, which the package itself forbids modeling; 0 is the
+    # project's no-ordinal honesty value (vanilla's own, 184 uses).
+    "TUS": ("tus_beatrice_di_bar", "1052.5.6", 0),        # Beatrice of Bar, margravine of Tuscany from Boniface III's murder — NEW_CHARACTERS
+    "ISR": ("isr_ulrich_i_weimar", "1060.1.1", 1),        # Ulric I of Weimar, margrave of Carniola and Istria [U] — NEW_CHARACTERS
+    "AQU": ("aqu_ravengerius", "1063.1.1", 0),            # Ravenger, Patriarch of Aquileia [U] — NEW_CHARACTERS
+    "RAV": ("rav_henry_ravenna", "1051.1.1", 0),          # Henry, Archbishop of Ravenna [U] — NEW_CHARACTERS
+    "PAR": ("par_cadalus", "1045.1.1", 0),                # Cadalus, Bishop of Parma (the future antipope — situation material, not data) — NEW_CHARACTERS
+    "PIE": ("pie_adelaide_susa", "1034.1.1", 0),          # Adelaide of Susa, margravine of Turin — NEW_CHARACTERS
+    "MFA": ("mfa_ottone_ii_monferrato", "1045.1.1", 2),   # Otto II of Montferrat — vanilla character, vanilla's own term values
+    "PAD": ("mlo_alberto_azzo_ii_este", "1029.1.1", 2),   # Albert Azzo II d'Este on his real county — vanilla character, cross-tag seat
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -1360,8 +1383,12 @@ _EMPIRE_GRANTS = {
             "schladming", "feldbach", "furstenfeld", "weiz", "pitten",
             "wiener_neustadt", "maribor", "slovenj_gradec",
             "steyr", "wels", "bad_ischl", "gmunden", "kirchdorf"],
+    # novo_mesto/postojna left this list with Italy North: the Carniolan
+    # interior is Ulric's march (ISR), not Berthold's duchy — they now
+    # travel straight from their pre-slice owner (grant lists must be
+    # disjoint). CRH revives with 11.
     "CRH": ["klagenfurt", "st_veit", "volkermarkt", "steinfeld",
-            "ljubljana", "kranj", "novo_mesto", "postojna",
+            "ljubljana", "kranj",
             "hermagor", "lienz", "winklern", "spittal", "feldkirchen"],
     "PSS": ["freistadt", "perg", "rohrbach", "linz", "st_georgen"],
     "AUG": ["krumbach", "gunzburg", "wertingen"],
@@ -1373,10 +1400,14 @@ _EMPIRE_GRANTS = {
     "VUD": ["fribourg"],
     "ZAH": ["bonndorf", "villingen", "waldshut", "glarus"],
     "BXN": ["bruneck"],
-    # pazin: GOR's SEVENTH location, missed by the package inventory
-    # and caught by the landless guarantee's first dry-run — 1066
-    # Istria sits in the patriarchate's orbit [U].
-    "AQU": ["gorizia", "metlika", "kocevje", "pazin"],
+    # GOR dissolves four ways now: gorizia stays with the patriarch;
+    # metlika/kocevje/pazin (pazin was GOR's SEVENTH location, missed
+    # by the HRE package inventory and caught by the landless
+    # guarantee's first dry-run) went to AQU until Italy North rerouted
+    # them into ISR — Ulric's march of Carniola-Istria, the user's ISR
+    # decision. Grant lists must be disjoint, so they leave this list
+    # rather than bouncing through the patriarchate.
+    "AQU": ["gorizia"],
     "SPL": ["assisi", "narni", "rieti", "spoleto", "todi",
             "chieti", "lanciano", "vasto", "aquila", "atri", "celano",
             "cittaducale", "csantangelo", "sulmona", "teramo"],
@@ -1439,6 +1470,125 @@ _GERMANY_GRANTS = {
 # wurttemberg_dynasty for the same reason.
 GERMANY_LANDLESS = ("LUN", "WUR", "ULM", "TUB", "HLF", "HEH", "OET",
                     "HHB", "KIR", "WDB", "ARS", "HAM", "BRM")
+
+# ------------------------------------------------------- Italy North ---
+# ITALY NORTH (approved package 2026-07-29; user decisions: TUS revived
+# via formable reuse, FLO empties into it, ISR new for Ulric of Weimar,
+# RAV takes faenza+imola). TUS rides the SAX/SWA formable-reuse ground:
+# TUS_f (00_formable_countries.txt:4229) ships name = TUS, tag = TUS,
+# color = map_TUS (vanilla named_colors/02_map.txt:749), loc and CoA —
+# only the identity block and territory are missing. ISR is genuinely
+# free (whole-tree word-grep over game and mod: zero standalone hits)
+# and wears vanilla's own unused map_ISR named color (02_map.txt:138,
+# an Adriatic blue) — the SKE named-color route, no zz_1066_map_colors
+# entry needed; the package's "new color" step died against vanilla.
+# Both take their donors' Italian five-include discovery stack; ISR
+# adds expl_western_europe because its Carniolan interior (postojna/
+# novo_mesto) came from CRH, which sees through that template — the
+# blind-capital lesson applied at authoring time.
+NEW_COUNTRIES["TUS"] = (
+    "\tTUS = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_mediterranean"\n'
+    '\t\tinclude = "expl_silk_road_west"\n'
+    '\t\tinclude = "expl_silk_road_center"\n'
+    '\t\tinclude = "expl_silk_road_east"\n'
+    '\t\tinclude = "expl_indian_trade_route"\n'
+    '\t\tinclude = "catholic_monarchy"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = lucca\n\t}\n")
+# ISR copies HAB's WHOLE march shape — rank_county plus the vanilla
+# margraviate reform (the pair is what renders "Margraviate"/"Margrave",
+# country_ranks.txt:2298; nine vanilla tags assign the reform in setup).
+# court_language: the Weimar margrave's German court over croatian pops
+# (central_german_dialect, cultures/german.txt:764) — the PLM
+# elite-vs-pop split, maghrebi over sicilian, exactly.
+NEW_COUNTRIES["ISR"] = (
+    "\tISR = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_mediterranean"\n'
+    '\t\tinclude = "expl_silk_road_west"\n'
+    '\t\tinclude = "expl_silk_road_center"\n'
+    '\t\tinclude = "expl_silk_road_east"\n'
+    '\t\tinclude = "expl_indian_trade_route"\n'
+    '\t\tinclude = "expl_western_europe"\n'
+    '\t\tinclude = "catholic_monarchy"\n'
+    "\t\tgovernment = {\n\t\t\treforms = {\n\t\t\t\tmargraviate\n\t\t\t}\n\t\t}\n"
+    "\t\tcourt_language = central_german_dialect\n"
+    "\t\tcountry_rank = rank_county\n\n"
+    "\t\tcapital = pazin\n\t}\n")
+
+# Every location's CURRENT owner was verified against the built
+# 10_countries before it entered a list (the AQN lesson): all donors
+# clean, no exceptions. Two package expectations corrected on
+# measurement: sansepolcro's owner is PEA (Perugia — which keeps its
+# other two locations and is NOT landless), and postojna/novo_mesto
+# came from CRH (the HRE slice's Carniola), not AQU — a clean donor,
+# and historically right: Ulric's Carniolan march was never the
+# patriarch's. MLO's own_control_conquered is EXACTLY the 22 granted
+# (measured token-for-token); it keeps its seven own_control_core
+# (milano legnano rho varese monza lecco treviglio). VER keeps verona,
+# the Brescia block (banked Tier B) and its core; the government swap
+# attempt was ABORTED per the package's own condition: VER's block
+# restates type = republic + signoria_selection + a
+# dynastic_signoria_reform block — far beyond an include+rank swap.
+_NITALY_GRANTS = {
+    # The march of Tuscany: Tuscany 18 + Emilia 15 = 33. Canossa itself
+    # (the house's seat) rides in MAN's donation.
+    "TUS": ["lucca", "massa", "pescia",
+            "florence", "mangona", "poggibonsi", "sanlorenzo", "arezzo",
+            "prato", "pistoia", "volterra", "cortona",
+            "sansepolcro",
+            "siena", "massamar", "chiusi", "montalcino", "grosseto",
+            "canossa", "reggioem", "guastalla", "mantova", "goito",
+            "ostiglia", "mirandola", "asola",
+            "modena", "frassinoro", "nonantola", "ferrara", "ficarolo",
+            "comacchio", "argenta"],
+    # The eight MLO carve-outs = exactly MLO's own_control_conquered.
+    "BGM": ["bergamo", "cortenuova", "clusone", "zogno"],
+    "CRM": ["cremona", "casalmaggiore", "soncino"],
+    "LDI": ["lodi"],
+    "NVA": ["novara", "arona", "domodossola", "varallo"],
+    "VRC": ["vercelli", "biella"],
+    "PCZ": ["piacenza", "bardi", "fiorenzuola"],
+    "LCA": ["como", "lugano"],
+    "CHV": ["chiavenna", "bormio", "tresivio"],
+    # The VER carve-outs: the Veneto's bishops and the two returns.
+    "VIN": ["vicenza", "bassano", "schio"],
+    "CEN": ["ceneda", "conegliano"],
+    "FEL": ["feltre", "belluno"],
+    "TRV": ["treviso", "castelfranco", "mestre"],
+    "TNT": ["rovereto"],
+    "AQU": ["cividale"],
+    # The march of Istria-Carniola: VEN's two Istrian ports; buzet
+    # from AQU's own vanilla holdings; pazin/metlika/kocevje straight
+    # from dissolving GOR (rerouted out of the HRE slice's AQU grant —
+    # lists must be disjoint); postojna/novo_mesto from CRH's
+    # Carniolan interior.
+    "ISR": ["pola", "rovinj",
+            "pazin", "buzet", "metlika", "kocevje",
+            "postojna", "novo_mesto"],
+    "PAD": ["rovigo"],
+    "CRO": ["pag"],
+    # Adelaide's march of Turin: seven single-location statelets and
+    # MFA's lanzo fold into the arduinici domain.
+    "PIE": ["lanzo", "cuneo", "saluzzo", "carmagnola", "chieri", "alba",
+            "mondovi", "ceva"],
+    "MFA": ["alessandria"],
+    "SAV": ["aosta", "chatillonaos", "morgex"],
+    # The archbishop takes his Romagna: faenza and imola (FAE and IMO
+    # empty — 1066 Romagna is the IMPERIAL archbishop of Ravenna's
+    # world, the HRE slice's PAP->FAE finding carried to its end).
+    "RAV": ["faenza", "imola"],
+}
+
+# The eighteen donors this slice empties. Each keeps its registry
+# identity; former holdings become claims (the GRA/POR shape the build
+# automates). PEA is NOT here — it donates sansepolcro and keeps
+# Perugia; MLO/VER/VEN/CRH/MFA/PRO keep cores and are not landless.
+NITALY_LANDLESS = ("LUC", "FLO", "PRA", "PST", "VLT", "COT", "SIE",
+                   "MAN", "FER", "SAL", "CHX", "ABA", "MND", "CEV",
+                   "ASD", "AOS", "FAE", "IMO")
 
 # Nine clients under the Seljuk khutba as TRIBUTARIES — war-capable,
 # own color, own name (tributary.txt:5,7,92,93). ABS, GHZ and SRV stay
@@ -1506,7 +1656,8 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 # Tags that must hold ZERO locations once the transfers have run.
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
-    + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS
+    + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
+    + NITALY_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1544,6 +1695,11 @@ LOCATION_GRANTS.update(_EMPIRE_GRANTS)
 # whichever list landed first with no error anywhere. The France
 # resolver below extends for the same reason.
 for _t, _locs in sorted(_GERMANY_GRANTS.items()):
+    LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + _locs
+# Italy North extends for the same reason: AQU and SAV are recipients
+# in the Empire slice too (gorizia-group and trevoux), and a plain
+# update would silently drop whichever list landed first.
+for _t, _locs in sorted(_NITALY_GRANTS.items()):
     LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + _locs
 # LOCATION_GRANTS["BYZ"] itself is resolved at build time inside
 # build_countries — see _byz_target().
@@ -1721,6 +1877,95 @@ FIELD_FIXES = {
     # rank_duchy renders the ducal branch (the CAT/SIC rank precedent in
     # reverse).
     "BLL": [("country_rank = rank_county", "country_rank = rank_duchy")],
+    # --- Italy North (2026-07-29 package, landed 2026-07-30). The
+    # twelve communal shells revive as the BISHOPRICS they were in 1066.
+    # The include swap alone is NOT enough: each block RESTATES republic/
+    # monarchy machinery at block level, and under merge semantics the
+    # block value overrides the new template's theocracy — the ABS
+    # include-clash class, measured in item 16. So the government lines
+    # swap WITH the include: the bishopric family's own values are
+    # type = theocracy + heir_selection = bishopric_elective
+    # (setup/templates/catholic_bishopric_no_coast.txt:5-6), and the
+    # 1337 signoria/podesta reform blocks go entirely. Template diff,
+    # measured: the republic templates' laws/privileges are all
+    # republic-specific (wanted gone); the bishopric family carries its
+    # own full law set plus court_language = church_dialect; both sides
+    # ship starting_technology_level = 3 — nothing to restate. CEN's
+    # block carries NO government machinery (`ruler = random` alone), so
+    # its include swap rides alone. Ranks untouched throughout (the five
+    # bishop-counts already carry CNV's rank_county; the rankless six
+    # were rankless as vanilla republics too). VIN's scala_dynasty and
+    # RAV's polenta_dynasty block lines stay: inert under an elective
+    # theocracy, noted for a future tidy pass.
+    "BGM": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    "CRM": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    "NVA": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    "VRC": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    "PCZ": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    "LDI": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = monarchy\n\t\t\their_selection = cognatic_primogeniture",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective")],
+    "CHV": [('include = "catholic_monarchy_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = monarchy\n\t\t\their_selection = cognatic_primogeniture",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective")],
+    "VIN": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = oligarchic_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective")],
+    "CEN": [('include = "catholic_bishopric_not_present"',
+             'include = "catholic_bishopric_no_coast"')],
+    "FEL": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = republic_4_year_terms",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective")],
+    "TRV": [('include = "catholic_republic_not_present"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    # RAV is COASTAL: catholic_bishopric is AQU's exact include, the
+    # family's coastal member (TNT/CNV inland use _no_coast). PAR is
+    # inland. Both drop their republic machinery like the rest.
+    "RAV": [('include = "catholic_republic"',
+             'include = "catholic_bishopric"'),
+            ("type = republic\n\t\t\their_selection = signoria_selection",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tdynastic_signoria_reform\n\t\t\t}\n", "")],
+    "PAR": [('include = "catholic_republic_no_coast"',
+             'include = "catholic_bishopric_no_coast"'),
+            ("type = republic\n\t\t\their_selection = podesta_elective",
+             "type = theocracy\n\t\t\their_selection = bishopric_elective"),
+            ("\t\t\treforms = {\n\t\t\t\tsignoria_reform\n\t\t\t}\n", "")],
+    # VEN cedes control of este: este is PAD's own_core, and with the
+    # 1330s Scaliger/Venetian ties gone the town reverts to its owner —
+    # Azzo's own seat (package section E).
+    "VEN": [("\t\tcontrol = {\n\t\t\teste\n\t\t}\n\n", "")],
+    # MFA's block carries the 14th-century Palaiologos house; Otto II is
+    # an Aleramici (his own vanilla character says so) — the KRM/ZTA
+    # wrong-house precedent, applied on measurement.
+    "MFA": [("dynasty = palaiologos_dynasty", "dynasty = aleramici_dynasty")],
 }
 
 # Characters vanilla does not ship. Appended inside `character_db`, so vanilla's
@@ -3195,6 +3440,118 @@ NEW_CHARACTERS = """
 		dynasty = brunonen_dynasty
 		tag = BRU
 	}
+
+	# --- Italy North (approved package 2026-07-29) ------------------------
+	# Beatrice of Bar, margravine of Tuscany — ruling since Boniface III's
+	# 1052 murder, married to Godfrey the Bearded since 1054 (HE is already
+	# authored on BLL/SPL: the couple rules the middle of the peninsula
+	# between them, each on their own thrones). female = yes is vanilla's
+	# own field shape (05_characters.txt:105). name_beatrix is vanilla
+	# (character_names_dynamic_l_english.yml:3132, "Beatrix");
+	# de_bar_dynasty is vanilla too (04_dynasties.txt:5959, home nancy —
+	# her birth house, correct until Matilda), so neither needs authoring.
+	tus_beatrice_di_bar = {
+		first_name = { name = name_beatrix }
+		female = yes
+		culture = lorrain
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1020.1.1
+		birth = nancy
+		dynasty = de_bar_dynasty
+		tag = TUS
+	}
+
+	# Matilda of Canossa, the future Great Countess — authored UNSEATED at
+	# twenty (the Badr al-Jamali precedent), daughter of the seated
+	# Beatrice. canossa_dynasty is created for her: the march passes to
+	# the house of Canossa's heiress, and the dynasty existing NOW is what
+	# makes that succession expressible later. Mother link only — her
+	# father Boniface is not authored, and we do not write dangling
+	# references (validate ours strictly, report vanilla's). Birth city
+	# [U] — Lucca by the majority reading; name_matilda is vanilla
+	# (de_bar's own female_names row, 04_dynasties.txt:5956).
+	tus_matilda_di_canossa = {
+		first_name = { name = name_matilda }
+		female = yes
+		culture = tuscan
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1046.3.1
+		birth = lucca
+		mother = tus_beatrice_di_bar
+		dynasty = canossa_dynasty
+		tag = TUS
+	}
+
+	# Ulric I of Weimar, margrave of Carniola and Istria — the brother
+	# house of MEI's Otto, riding Germany II's weimar_dynasty
+	# (04_zz_1066_dynasties.txt:283). name_ulrick is VANILLA
+	# (languages/00_germany.txt:215; renders "Ulrich" through the
+	# .german_language row, character_names_dynamic_l_english.yml:17373)
+	# — the package's literal fallback proved unnecessary. saxon is
+	# Weimar's own template culture (location_templates.txt:1090).
+	isr_ulrich_i_weimar = {
+		first_name = { name = name_ulrick }
+		culture = saxon
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1030.1.1
+		birth = weimar
+		dynasty = weimar_dynasty
+		tag = ISR
+	}
+
+	# The three prelates, in the kol_anno shape (no estate, no skills)
+	# and dynasty-less per the mai_siegfried precedent: Ravenger's origin
+	# is unrecorded, Henry's uncertain, and Cadalus's Sabbioneta line is
+	# in no vanilla registry. Cultures are their sees' own template
+	# values; Cadalus is Veronese-born (the one biographical anchor).
+	# Cadalus IS the man who becomes antipope Honorius II in 1061 — the
+	# Cadalan schism is situation material and the papal claim is
+	# deliberately NOT modeled in data (package decision C).
+	aqu_ravengerius = {
+		first_name = { name = Ravenger }
+		culture = friulian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = aquileia
+		tag = AQU
+	}
+
+	rav_henry_ravenna = {
+		first_name = { name = name_henry }
+		culture = romagnol
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = ravenna
+		tag = RAV
+	}
+
+	par_cadalus = {
+		first_name = { name = Cadalus }
+		culture = venetian
+		religion = catholic
+		birth_date = 1010.1.1
+		birth = verona
+		tag = PAR
+	}
+
+	# Adelaide of Susa, margravine of Turin — the LITERAL first name is
+	# the Otakar precedent: name_adelaide exists but its piedmontese row
+	# renders "Lalsia" (package decision, main session). arduinici_dynasty
+	# is NEW (her father Ulric Manfred II's house, home turin).
+	pie_adelaide_susa = {
+		first_name = { name = Adelaide }
+		female = yes
+		culture = piedmontese
+		religion = catholic
+		estate = nobles_estate
+		birth_date = 1015.1.1
+		birth = turin
+		dynasty = arduinici_dynasty
+		tag = PIE
+	}
 """
 
 
@@ -4179,12 +4536,17 @@ def build_ios(src):
     _ho = _hb.index("{", _hm.start())
     # SAX and SWA join with the HRE slice's three: the two stem duchies
     # are landed as of Germany II, and the thirteen tags that slice
-    # empties leave through the generic landless sweep below.
-    for _add in ("OGK", "CRH", "STY", "SAX", "SWA"):
+    # empties leave through the generic landless sweep below. Italy
+    # North adds TUS and ISR — the march of Tuscany and the march of
+    # Istria were both imperial (AQU and VER were verified already in
+    # the member list before the package was approved); the twelve
+    # revived bishoprics are NOT added — vanilla's list never carried
+    # them and the package does not ask for it (banked as a note).
+    for _add in ("OGK", "CRH", "STY", "SAX", "SWA", "TUS", "ISR"):
         if re.search(r"\b" + _add + r"\b",
                      re.sub(r"#[^\n]*", "", _hb[_ho:find_block_end(_hb, _ho)])):
             sys.exit(f"HRE surgery: {_add} already a member")
-    src = (src[:_hre.start() + _ho + 1] + " OGK CRH STY SAX SWA"
+    src = (src[:_hre.start() + _ho + 1] + " OGK CRH STY SAX SWA TUS ISR"
            + src[_hre.start() + _ho + 1:])
     report.append(("HRE crowned (leader = OGK) and members joined", 1))
 
@@ -4237,6 +4599,12 @@ def build_ios(src):
     # only: its elector seat moved to SAX above, BEFORE this sweep ran,
     # which is the whole point of doing the two in one change. The count
     # moved 1 -> 4 -> 6 -> 28 -> 51 as the runs measured.
+    # Italy North adds 20: the fifteen emptied imperial-Italian donors
+    # sit in the HRE member list (FER/FAE/IMO do NOT — Ferrara and the
+    # Romagna are the papal-orbit side, which is its own confirmation),
+    # and five of them (FLO/PRA/SAL/CEV/AOS) also hold imperial_prince
+    # seats. The count moved 1 -> 4 -> 6 -> 28 -> 51 -> 71, every
+    # transition observed failing before its constant moved.
     _expected_ghosts = sorted(
         ["ARM", "ATZ", "CIL", "EPI", "FEO", "TRE",
          "NHS", "MLH"]
@@ -4244,9 +4612,12 @@ def build_ios(src):
         + ["GOR", "ORT", "GRK"] * 2
         + ["BRM", "HAM", "ULM"] * 2
         + ["LUN", "WUR", "OET", "HHB", "HEH", "HLF", "KIR", "TUB"] * 2
-        + ["WDB"])
-    if n_ghosts != 51 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 51 landless IO list entries, "
+        + ["WDB"]
+        + ["LUC", "SIE", "MAN", "PST", "VLT", "COT", "CHX", "ABA",
+           "MND", "ASD"]
+        + ["FLO", "PRA", "SAL", "CEV", "AOS"] * 2)
+    if n_ghosts != 71 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 71 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -4568,8 +4939,12 @@ def build_diplomacy(src):
     # WUR->HBR, the two vassalages the emptied Artois and Wurttemberg
     # were holding) — the 108->112 transition observed failing too, and
     # ARS->STP is the tie an earlier slice explicitly banked for the
-    # Empire (build_diplomacy's French fiefdom comment).
-    if n_landless_deps != 112:
+    # Empire (build_diplomacy's French fiefdom comment). +3 from Italy
+    # North: SAV->CEV and VER->LUC (both donors empty into PIE and TUS)
+    # plus PAP->FAE — the HRE slice stripped that one by name, but FAE
+    # itself is landless now, so this sweep eats it first and the
+    # dedicated strip below is RETIRED. 112->115 observed failing.
+    if n_landless_deps != 115:
         sys.exit(f"expected exactly 112 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
@@ -4679,22 +5054,47 @@ def build_diplomacy(src):
     report.append(("Vespers-era ARA->SIC guarantee removed", n_ara))
 
     # HRE slice: HAB's three 1337 embargoes are Habsburg-era politics
-    # with no 1066 defense; the PAP->FAE vassal is war-blocking
-    # (vassal.txt:80-86) and 1066 Faenza sat under the IMPERIAL
-    # archbishop of Ravenna, not Rome — Faenza goes independent like
-    # the rest of the Romagna.
+    # with no 1066 defense. (The HRE slice's second strip here —
+    # PAP->FAE, the war-blocking vassal over a Faenza that belonged to
+    # the IMPERIAL archbishop's world — is RETIRED: Italy North makes
+    # FAE itself landless and the generic landless sweep above now owns
+    # that line; its count carries the ledger entry.)
     src, n_emb = re.subn(
         r"^[ \t]*scripted_oneway = \{ first = \w+ second = HAB type = embargo_nation \}[ \t]*(?:#[^\n]*)?\n",
         "", src, flags=re.M)
     if n_emb != 3:
         sys.exit(f"expected exactly 3 HAB embargoes, stripped {n_emb}")
     report.append(("Habsburg-era embargoes removed", n_emb))
-    src, n_fae = re.subn(
-        r"^[ \t]*dependency = \{ first = PAP second = FAE [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
-        "", src, flags=re.M)
-    if n_fae != 1:
-        sys.exit(f"expected exactly 1 PAP->FAE vassalage, stripped {n_fae}")
-    report.append(("PAP->FAE vassalage removed", n_fae))
+
+    # Italy North (2026-07-29 package): the 1330s Scaliger/Savoyard/
+    # Venetian web dies where it crosses this slice's thrones —
+    # SAV->PIE (Adelaide is the SENIOR: the house of Savoy are her
+    # in-laws on the rise — deleted, not flipped, package decision G),
+    # VER->PAD and VER->PAR (Scaliger conquests of the 1320s), and
+    # VEN->RAG (1066 Ragusa sits in the Byzantine orbit; vanilla
+    # 12_diplomacy.txt:219). SAV->CEV and VER->LUC died in the
+    # landless sweep above — CEV and LUC empty into PIE and TUS.
+    n_nit = 0
+    for _pair in ("SAV second = PIE", "VER second = PAD",
+                  "VER second = PAR", "VEN second = RAG"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = " + _pair
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_nit += _k
+    if n_nit != 4:
+        sys.exit(f"expected exactly 4 Italy North vassal strips, stripped {n_nit}")
+    report.append(("Italy North 1337 vassal ties removed", n_nit))
+
+    # The march of Tuscany's one tie: Pisa under Beatrice — the
+    # margravial suzerainty over the young commune [U]. Plain vassal on
+    # purpose (package decision G; no reform gate exists for vassals).
+    _wrap = src.rindex("\n}")
+    src = (src[:_wrap]
+           + "\n\t# 1066: the march of Tuscany (generated)\n"
+           + "\tdependency = { first = TUS second = PIS subject_type = vassal }\n"
+           + src[_wrap:])
+    report.append(("Tuscan vassalage added", 1))
 
     # The Melfi investiture: Guiscard and Richard as papal
     # TRIBUTARIES (papal_investiture_reform carries the modifier —

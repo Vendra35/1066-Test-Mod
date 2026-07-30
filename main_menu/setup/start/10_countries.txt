@@ -8256,7 +8256,7 @@ countries = {
 	#---------------------------- Italy --------------------------------
 	PST = {  # Pistoia (Italy)
 		own_control_core = {
-			pistoia
+			
 		}
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -8276,7 +8276,7 @@ countries = {
 
 	ABA = {
 		own_control_core = {
-			alba
+			
 		}
 
 		starting_technology_level = 3
@@ -8324,23 +8324,24 @@ countries = {
 
 	AQU = {
 		own_control_core = {
-			gorizia metlika kocevje pazin
+			gorizia cividale
 			aquileia tolmezzo pordenone spilimbergo udine gemona
 			tolmin pieve
 			ilirska_bistrica #Counts of Duino
 		}
 
 		own_control_integrated = {
-			buzet rijeka
+			 rijeka
 		}
 
 		our_cores_conquered_by_others = {
-			cividale pieve
+			 pieve
 		}
 
 		government = {
 
-			ruler = random
+			ruler = aqu_ravengerius
+			ruler_term = { character = aqu_ravengerius start_date = 1063.1.1 regnal_number = 0 }
 
 			# Vacant See 1318-1319
 			# Vacant See 1331-1334
@@ -8528,7 +8529,7 @@ countries = {
 
 	ASD = {
 		own_control_core = {
-			alessandria
+			
 		}
 
 		starting_technology_level = 3
@@ -8699,11 +8700,15 @@ countries = {
 	}
 
 	CEN = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			ceneda conegliano
 		}
 
-		include = "catholic_bishopric_not_present"
+		our_cores_conquered_by_others = {
+			 
+		}
+
+		include = "catholic_bishopric_no_coast"
 		starting_technology_level = 3
 		include = "expl_mediterranean"
 		include = "expl_silk_road_west"
@@ -8750,7 +8755,7 @@ countries = {
 
 	CEV = {
 		own_control_core = {
-			ceva
+			
 		}
 
 		starting_technology_level = 3
@@ -8789,7 +8794,7 @@ countries = {
 
 	CHX = {
 		own_control_core = {
-			chieri
+			
 		}
 
 		starting_technology_level = 3
@@ -8892,7 +8897,7 @@ countries = {
 
 	COT = {
 		own_control_core = {
-			cortona
+			
 		}
 
 		starting_technology_level = 3
@@ -8923,8 +8928,12 @@ countries = {
 	}
 
 	CRM = {
+		own_control_core = {
+			cremona casalmaggiore soncino
+		}
+
 		our_cores_conquered_by_others = {
-			casalmaggiore cremona soncino
+			  
 		}
 
 		starting_technology_level = 3
@@ -8933,14 +8942,10 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
-
-			reforms = {
-				signoria_reform
-			}
+			type = theocracy
+			heir_selection = bishopric_elective
 
 			ruler = random
 
@@ -9008,7 +9013,7 @@ countries = {
 
 	FAE = {
 		own_control_core = {
-			faenza
+			
 		}
 
 		starting_technology_level = 3
@@ -9038,8 +9043,12 @@ countries = {
 	}
 
 	FEL = {
+		own_control_core = {
+			feltre belluno
+		}
+
 		our_cores_conquered_by_others = {
-			feltre
+			
 		}
 
 		starting_technology_level = 3
@@ -9048,10 +9057,10 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = republic_4_year_terms
+			type = theocracy
+			heir_selection = bishopric_elective
 			ruler = random
 		}
 		capital = feltre
@@ -9059,11 +9068,11 @@ countries = {
 
 	FER = {
 		own_control_core = {
-			comacchio ferrara ficarolo rovigo argenta 
+			     
 		}
 
 		own_control_conquered = {
-			frassinoro modena nonantola
+			  
 		}
 
 		starting_technology_level = 3
@@ -9098,11 +9107,11 @@ countries = {
 
 	FLO = { #Florence
 		own_control_core = {
-			florence mangona poggibonsi sanlorenzo
+			   
 		}
 
 		own_control_conquered = {
-			arezzo
+			
 		}
 
 		starting_technology_level = 3
@@ -9432,7 +9441,7 @@ countries = {
 
 	IMO = {
 		own_control_core = {
-			imola
+			
 		}
 
 		starting_technology_level = 3
@@ -9468,7 +9477,7 @@ countries = {
 
 	LUC = { #Personal Union with Verona
 		own_control_core = {
-			lucca massa pescia
+			  
 		}
 
 		starting_technology_level = 3
@@ -9507,13 +9516,13 @@ countries = {
 
 	MAN = {
 		own_control_core = {
-			goito mantova ostiglia
+			  
 			# own_control_integrated, but culture accepted
-			canossa guastalla mirandola reggioem
+			   
 		}
 
 		own_control_conquered = {
-			asola
+			
 		}
 
 		starting_technology_level = 3
@@ -9545,7 +9554,8 @@ countries = {
 
 	MFA = {
 		own_control_core = {
-			lanzo casale acqui
+			alessandria
+			 casale acqui
 		}
 
 		starting_technology_level = 3
@@ -9559,7 +9569,8 @@ countries = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 
-			ruler = random
+			ruler = mfa_ottone_ii_monferrato
+			ruler_term = { character = mfa_ottone_ii_monferrato start_date = 1045.1.1 regnal_number = 2 }
 
 			regnal_numbers = {
 				name_aleramo = 1
@@ -9585,12 +9596,16 @@ countries = {
 
 		country_rank = rank_county
 		capital = casale
-		dynasty = palaiologos_dynasty
+		dynasty = aleramici_dynasty
 	}
 
 	BGM = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			bergamo cortenuova clusone zogno
+		}
+
+		our_cores_conquered_by_others = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -9599,14 +9614,11 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				signoria_reform
-			}
 			ruler = random
 		}
 		country_rank = rank_county
@@ -9614,8 +9626,12 @@ countries = {
 	}
 
 	CHV = {
+		own_control_core = {
+			chiavenna bormio tresivio
+		}
+
 		our_cores_conquered_by_others = {
-			chiavenna
+			
 		}
 
 		starting_technology_level = 3
@@ -9624,10 +9640,10 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = theocracy
+			heir_selection = bishopric_elective
 
 			regnal_numbers = {
 			}
@@ -9637,8 +9653,12 @@ countries = {
 	}
 
 	LDI = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			lodi
+		}
+
+		our_cores_conquered_by_others = {
+			
 		}
 
 		starting_technology_level = 3
@@ -9647,10 +9667,10 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_monarchy_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = theocracy
+			heir_selection = bishopric_elective
 
 			regnal_numbers = {
 			}
@@ -9660,8 +9680,12 @@ countries = {
 	}
 
 	NVA = {
+		own_control_core = {
+			novara arona domodossola varallo
+		}
+
 		our_cores_conquered_by_others = {
-			arona novara domodossola varallo
+			   
 		}
 
 		starting_technology_level = 3
@@ -9670,14 +9694,11 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				signoria_reform
-			}
 			ruler = random
 		}
 		country_rank = rank_county
@@ -9685,8 +9706,12 @@ countries = {
 	}
 
 	PCZ = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			piacenza bardi fiorenzuola
+		}
+
+		our_cores_conquered_by_others = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -9695,14 +9720,11 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				signoria_reform
-			}
 			ruler = random
 		}
 		country_rank = rank_county
@@ -9710,8 +9732,12 @@ countries = {
 	}
 
 	VRC = {
-		our_cores_conquered_by_others = {
+		own_control_core = {
 			vercelli biella
+		}
+
+		our_cores_conquered_by_others = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -9720,14 +9746,11 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				signoria_reform
-			}
 			ruler = random
 		}
 		country_rank = rank_county
@@ -9740,14 +9763,14 @@ countries = {
 		}
 
 		own_control_conquered = {
-			bergamo cortenuova clusone zogno #Republic of Bergamo
-			chiavenna #County of Chiavenna
-			como bormio lugano tresivio #County of Como 
-			cremona casalmaggiore soncino #Republic of Cremona
-			lodi #Lordship of Lodi
-			arona novara domodossola varallo #Comune of Novara
-			piacenza bardi fiorenzuola #Comune of Piacenza
-			vercelli biella #Comune of Vercelli
+			    #Republic of Bergamo
+			 #County of Chiavenna
+			    #County of Como 
+			   #Republic of Cremona
+			 #Lordship of Lodi
+			    #Comune of Novara
+			   #Comune of Piacenza
+			  #Comune of Vercelli
 		}
 
 		starting_technology_level = 3
@@ -9823,7 +9846,7 @@ countries = {
 
 	MND = {
 		own_control_core = {
-			mondovi
+			
 		}
 
 		starting_technology_level = 3
@@ -10001,7 +10024,7 @@ countries = {
 			aix_en_provence arles brignoles marseille toulon tarascon
 			apt barcelonnette forcalquier sisteron
 			nice barjols castellane digne draguignan frejus grasse puget_theniers
-			cuneo
+			
 		}
 		our_cores_conquered_by_others = {
 			avignon #Controlled by the Pope, but historically owned by Naples
@@ -10041,6 +10064,7 @@ countries = {
 
 	PAD = {
 		own_control_core = {
+			rovigo
 			monselice padova
 		}
 		own_core = {
@@ -10062,7 +10086,8 @@ countries = {
 				dynastic_signoria_reform
 			}
 
-			ruler = random
+			ruler = mlo_alberto_azzo_ii_este
+			ruler_term = { character = mlo_alberto_azzo_ii_este start_date = 1029.1.1 regnal_number = 2 }
 
 		}
 
@@ -10209,15 +10234,13 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_no_coast"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = podesta_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				signoria_reform
-			}
-			ruler = random
+			ruler = par_cadalus
+			ruler_term = { character = par_cadalus start_date = 1045.1.1 regnal_number = 0 }
 
 		}
 
@@ -10271,7 +10294,7 @@ countries = {
 		}
 
 		own_control_conquered = {
-			sansepolcro
+			
 		}
 
 		starting_technology_level = 3
@@ -10397,7 +10420,7 @@ countries = {
 
 	PRA = {
 		own_control_core = {
-			prato
+			
 		}
 
 		starting_technology_level = 3
@@ -10428,6 +10451,7 @@ countries = {
 
 	RAV = {
 		own_control_core = {
+			faenza imola
 			ravenna
 		}
 
@@ -10441,16 +10465,13 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic"
+		include = "catholic_bishopric"
 		government = {
-			type = republic
-			heir_selection = signoria_selection
+			type = theocracy
+			heir_selection = bishopric_elective
 
-			reforms = {
-				dynastic_signoria_reform
-			}
-
-			ruler = random
+			ruler = rav_henry_ravenna
+			ruler_term = { character = rav_henry_ravenna start_date = 1051.1.1 regnal_number = 0 }
 
 		}
 
@@ -10523,7 +10544,7 @@ countries = {
 
 	SAL = {
 		own_control_core = {
-			carmagnola saluzzo
+			 
 		}
 
 		our_cores_conquered_by_others = {
@@ -10567,7 +10588,7 @@ countries = {
 	#Savoy - SAV
 	SAV = {
 		own_control_core = {
-			trevoux
+			trevoux aosta chatillonaos morgex
 			bourg_en_bresse belley chambery gex saint_jean_de_maurienne
 			moutiers evian
 			bage thoire
@@ -10607,6 +10628,7 @@ countries = {
 	#Principality of Piedmont - PIE
 	PIE = {
 		own_control_core = {
+			lanzo cuneo saluzzo carmagnola chieri alba mondovi ceva
 			pinerolo susa turin
 		}
 
@@ -10620,7 +10642,8 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = pie_adelaide_susa
+			ruler_term = { character = pie_adelaide_susa start_date = 1034.1.1 regnal_number = 0 }
 
 			regnal_numbers = {
 				name_thomas = 3
@@ -10755,11 +10778,11 @@ countries = {
 
 	SIE = {
 		own_control_core = {
-			massamar chiusi montalcino siena
+			   
 		}
 
 		own_control_conquered = {
-			grosseto
+			
 		}
 
 		starting_technology_level = 3
@@ -10867,6 +10890,7 @@ countries = {
 
 	TNT = {
 		own_control_core = {
+			rovereto
 			cavalese cles trento
 		}
 
@@ -10944,8 +10968,12 @@ countries = {
 	}
 
 	TRV = {
+		own_control_core = {
+			treviso castelfranco mestre
+		}
+
 		our_cores_conquered_by_others = {
-			castelfranco treviso belluno
+			  belluno
 		}
 
 		starting_technology_level = 3
@@ -10954,15 +10982,11 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
 			ruler = random
-			type = republic
-			heir_selection = podesta_elective
-
-			reforms = {
-				signoria_reform
-			}
+			type = theocracy
+			heir_selection = bishopric_elective
 
 			# Frederick III of HRE 1312-1328
 		}
@@ -11074,15 +11098,11 @@ countries = {
 	VEN = {
 		own_control_core = {
 			venice chioggia
-			pola rovinj pag   
+			     
 		}
 
 		own_control_integrated = {
 			     
-		}
-
-		control = {
-			este
 		}
 
 		include = "expl_mediterranean"
@@ -11239,17 +11259,12 @@ countries = {
 		own_control_core = {
 			legnago peschiera verona
 			# own_control_integrated, but culture accepted
-			bassano schio vicenza
+			  
 		}
 
 		own_control_conquered = {
 			brescia palazzolo salo_ita breno nozza #Imperial City of Brescia
-			cividale
-			ceneda conegliano
-			feltre
-			castelfranco treviso belluno
-			rovereto
-			mestre 
+
 		}
 
 		starting_technology_level = 3
@@ -11284,8 +11299,12 @@ countries = {
 	}
 
 	VIN = {
+		own_control_core = {
+			vicenza bassano schio
+		}
+
 		our_cores_conquered_by_others = {
-			bassano schio vicenza
+			  
 		}
 
 		starting_technology_level = 3
@@ -11294,10 +11313,10 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		include = "expl_indian_trade_route"
-		include = "catholic_republic_not_present"
+		include = "catholic_bishopric_no_coast"
 		government = {
-			type = republic
-			heir_selection = oligarchic_elective
+			type = theocracy
+			heir_selection = bishopric_elective
 			ruler = random
 		}
 		capital = vicenza
@@ -11306,7 +11325,7 @@ countries = {
 
 	VLT = {
 		own_control_core = {
-			volterra
+			
 		}
 
 		starting_technology_level = 3
@@ -12379,6 +12398,7 @@ countries = {
 
 	CRO = {
 		own_control_core = {
+			pag
 			sibenik kaseg knin novigrad crikvenica senj
 			bihac krk srb sinj otocac
 		}
@@ -31118,7 +31138,7 @@ countries = {
 
 	CRH = {
 		own_control_core = {
-			klagenfurt st_veit volkermarkt steinfeld ljubljana kranj novo_mesto postojna hermagor lienz winklern spittal feldkirchen
+			klagenfurt st_veit volkermarkt steinfeld ljubljana kranj hermagor lienz winklern spittal feldkirchen
 		}
 	#Carinthia
 		our_cores_conquered_by_others = {
@@ -31733,10 +31753,11 @@ countries = {
 
 	LCA = {	# Como, last remnants in defense against Milan
 		own_control_core = {
+			como lugano
 			bellinzona locarno
 		}
 		our_cores_conquered_by_others = {
-			como bormio lugano tresivio
+			 bormio  tresivio
 		}
 
 		starting_technology_level = 3
@@ -32337,7 +32358,7 @@ countries = {
 
 	AOS = {  # Aosta (South Germany)
 		own_control_core = {
-			aosta  chatillonaos morgex
+			   
 		}
 		starting_technology_level = 3
 		include = "expl_mediterranean"
@@ -58631,6 +58652,32 @@ countries = {
 		capital = aleppo
 	}
 
+	ISR = {
+		own_control_core = {
+			pola rovinj pazin buzet metlika kocevje postojna novo_mesto
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "expl_western_europe"
+		include = "catholic_monarchy"
+		government = {
+			ruler = isr_ulrich_i_weimar
+			ruler_term = { character = isr_ulrich_i_weimar start_date = 1060.1.1 regnal_number = 1 }
+			reforms = {
+				margraviate
+			}
+		}
+		court_language = central_german_dialect
+		country_rank = rank_county
+
+		capital = pazin
+	}
+
 	KKY = {
 		own_control_core = {
 			yazd ardakan meybod nadushan saryazd taft
@@ -59090,6 +59137,27 @@ countries = {
 		}
 
 		capital = toledo
+	}
+
+	TUS = {
+		government = {
+			ruler = tus_beatrice_di_bar
+			ruler_term = { character = tus_beatrice_di_bar start_date = 1052.5.6 regnal_number = 0 }
+		}
+		own_control_core = {
+			lucca massa pescia florence mangona poggibonsi sanlorenzo arezzo prato pistoia volterra cortona sansepolcro siena massamar chiusi montalcino grosseto canossa reggioem guastalla mantova goito ostiglia mirandola asola modena frassinoro nonantola ferrara ficarolo comacchio argenta
+		}
+
+		starting_technology_level = 3
+		include = "expl_mediterranean"
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "catholic_monarchy"
+		country_rank = rank_duchy
+
+		capital = lucca
 	}
 
 	ULD = {

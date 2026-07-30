@@ -415,3 +415,31 @@ SWA = { #Duchy of Swabia (Rheinfelden)
 	culture_definition = swabian
 	religion_definition = catholic
 }
+
+# Italy North: TUS rides the SAX/SWA formable-reuse ground — TUS_f
+# (00_formable_countries.txt:4229) ships name = TUS, tag = TUS,
+# color = map_TUS (vanilla named_colors/02_map.txt:749), loc and CoA;
+# the identity block is the only missing piece. ISR is genuinely free
+# (whole-tree word-grep over game and mod: zero standalone hits) and
+# wears vanilla's own UNUSED map_ISR named color (02_map.txt:138 —
+# an Adriatic blue; the SKE named-color route, so no
+# zz_1066_map_colors entry). ISR's primary is the POP majority: all
+# four Istrian locations are croatian in location_templates.txt
+# (:5655-5658) — the PLM rule; the Weimar margrave is the RULER's
+# culture only.
+
+TUS = { #March of Tuscany (Beatrice)
+	color = map_TUS
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = tuscan
+	religion_definition = catholic
+}
+
+ISR = { #March of Istria (Ulric of Weimar)
+	color = map_ISR
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = croatian
+	religion_definition = catholic
+}

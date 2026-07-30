@@ -253,11 +253,14 @@ split is deliberate:
 
 - **Main session (Fable):** the plan, engine constraints, trigger/scope logic,
   the shape of every situation, everything in the FORBIDDEN-from-memory
-  categories, and final review of anything that enters the repo.
-- **Subagents (Opus):** volume — per-region historical research (who ruled
-  every tag in 1066), bulk setup data entry, localisation, mass audits and
-  cross-reference sweeps. Routine hundreds-of-lines writing is delegated, not
-  done inline in the main session.
+  categories, final review of anything that enters the repo — **and ALL
+  writing that lands in the repo** (user decision 2026-07-30, reverting a
+  one-slice experiment: Germany II was implemented by an agent and stays the
+  only such slice).
+- **Subagents (Opus):** research only — per-region historical research (who
+  ruled every tag in 1066), decision-ready package docs, mass audits and
+  cross-reference sweeps. Their deliverable is a report or a draft doc,
+  never a change to mod files.
 - **Delegation relaxes nothing.** A subagent prompt names the exact reference
   paths to verify against and restates the rules that apply to its task
   (citation rule, BOM rules, verify-tags). Subagent output is a draft until

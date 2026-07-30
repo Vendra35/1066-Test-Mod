@@ -296,4 +296,14 @@ dynasty_manager = {
 		name = { name = goseck_dynasty }
 		home = weissenfels
 	}
+	# Italy North: Matilda's house (created now so the Canossa
+	# succession is expressible later) and Adelaide's Arduinici.
+	canossa_dynasty = {
+		name = { name = canossa_dynasty }
+		home = canossa
+	}
+	arduinici_dynasty = {
+		name = { name = arduinici_dynasty }
+		home = turin
+	}
 }

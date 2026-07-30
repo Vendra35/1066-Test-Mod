@@ -1201,16 +1201,116 @@ revival, FLO empties, ISR for Ulric of Weimar, RAV takes
 Faenza+Imola). It expected Germany II's weimar_dynasty, which is now
 in — launch its implementation agent first thing next session.
 
+**ITEM 26 — ITALY NORTH (LANDED 2026-07-30, needs game test).**
+Implemented BY THE MAIN SESSION — the division of labor REVERTED by
+user decision (2026-07-30): agents research, the main session writes;
+Germany II stays the only agent-implemented slice. 116 locations
+moved, 2 new registry tags (TUS by formable reuse — third use — and
+ISR genuinely free), 18 tags landless, 2382 blocks, 8 new thrones
+(153 total), 7 authored characters (116 total) including the mod's
+FIRST TWO seated women (Beatrice of Tuscany, Adelaide of Susa —
+`female = yes`, vanilla 05_characters.txt:105 shape) and Matilda of
+Canossa authored UNSEATED at twenty (the Badr precedent), mother-linked
+to Beatrice, on the new canossa_dynasty. TUS = Tuscany 18 + Emilia 15
+under Beatrice (de_bar_dynasty is vanilla), PIS as its vassal;
+ISR = Istria + Carniola under Ulric of Weimar — via vanilla's
+`name_ulrick` (renders "Ulrich" through .german_language — the spec's
+three candidate keys were all missing but the REAL key existed),
+croatian primary over a German court (the PLM elite/pop split),
+rank_county + margraviate = HAB's whole march shape, and vanilla's own
+unused map_ISR named color (02_map.txt:138 — the "new color" step died
+against vanilla). Twelve communal shells revived as BISHOPRICS with
+government-block surgery riding every include swap (type/heir
+restatements would have overridden the theocracy template — the ABS
+include-clash class, prevented at authoring time); CEN's clean block
+needed the include swap alone. VER government swap ABORTED per the
+package's own bail condition (its block restates signoria machinery) —
+Verona keeps the Scaliger shape, gives up 12 locations, keeps the
+banked Brescia block. MFA: block dynasty palaiologos→aleramici (the
+KRM/ZTA wrong-house precedent, applied on measurement) — and vanilla
+MFA already carries the margraviate reform, so "Margraviate of
+Montferrat" renders FREE. PAD seats vanilla's mlo_alberto_azzo_ii_este
+cross-tag (the PYS precedent; his 1029.1.1 accession matches vanilla's
+own term, so the accession harness check passed untaught); PAD's
+republic shape deliberately untouched (spec silence + vanilla's own
+Scaliger-on-signoria seat precedent). VEN cedes control of este (PAD's
+own core), pola/rovinj to ISR, pag to CRO — Venice is venice+chioggia
+now. RAV (archbishop Henry) takes faenza+imola; AQU seats Ravenger,
+PAR seats Cadalus — BOTH literals with loc rows; **PAR regnal
+DEVIATION: the spec table said 2, but Cadalus is Parma's FIRST — the
+"II" was Honorius II contamination (the antipapal style the spec
+itself forbids modeling); 0 shipped, flagged for user review.**
+Diplomacy: SAV->PIE / VER->PAD / VER->PAR / VEN->RAG stripped
+explicitly (exact-count 4), SAV->CEV + VER->LUC + PAP->FAE died in the
+landless sweep (112→115 observed; the HRE slice's dedicated PAP->FAE
+strip RETIRED — the sweep owns it now), TUS->PIS vassal added. HRE:
+TUS + ISR joined members (AQU/VER verified already in); ghost sweep
+51→71 observed (fifteen imperial-Italian donors in members, five of
+them also imperial_prince; FER/FAE/IMO were never members — the
+papal-orbit confirmation). Build fixes on the way: GOR's HRE-slice
+grant rerouted (metlika/kocevje/pazin now travel straight to ISR —
+grant lists must be disjoint, caught by the assert), CRH revives at 11
+(postojna/novo_mesto are Ulric's). Every count transition observed
+failing before its constant moved. Harness all green; authored-keys
+armed at 116, identifiers at 540, CoA at 96.
+TEST — click tour, ~10 minutes:
+1. Map overview northern Italy: ONE march from Lucca over the
+   Apennines to the Po (TUS, the vanilla slate-blue), Milan SMALL
+   (7 locations), the Veneto a patchwork of small bishoprics, and
+   Istria+Carniola one blue state. If TUS is missing, formable reuse
+   failed a third time — say so immediately.
+2. Click Lucca → "Duchy of Tuscany" — ruler a WOMAN: Beatrix/Beatrice
+   of house de Bar (THE headline probe: the mod's first seated
+   female ruler; a regent or a random male = failure). Subject list:
+   Pisa as vassal.
+3. Click Pazin → "Margraviate of Istria" under "Ulrich" (the
+   name_ulrick render probe), house Weimar.
+4. Click Turin → Adelaide (literal render probe — raw key or blank =
+   loc row failed), house Arduinici. Then Casale → "Margraviate of
+   Montferrat", Otto II, house Aleramici (Palaiologos = the FIELD_FIX
+   failed).
+5. Click Padua → Albert Azzo II, house Este (the cross-tag seat).
+6. Click Bergamo, Cremona or Lodi → bishopric government, a random
+   bishop ruling (eyeball what the rank renders — "Bishopric of X"
+   expected, unverified). Vicenza/Treviso/Feltre same class.
+7. Click Ravenna → Archbishop Henry, holding Faenza and Imola.
+   Aquileia → Patriarch Ravenger (literal probe). Parma → Bishop
+   Cadalus, NO ordinal (if "Cadalus II" shows, report — the regnal
+   deviation needs re-judging).
+8. Click Venice → venice+chioggia only, Doge Contarini still seated
+   (regression); Pag under Croatia; Verona a small republic of 8
+   (Brescia block still inside it — banked, correct).
+9. Aosta under Savoy; Cuneo/Saluzzo/Alba under Adelaide's Turin;
+   Alessandria under Montferrat.
+10. error.log: the landless-shell trim class grows by ~18 (accepted);
+    NEW classes only — paste anything naming TUS/ISR or a revived
+    bishopric.
+
 **NEXT SESSION STARTS WITH:** item 23's game test (the HRE — click
 tour in the item; headline probes: "King of the Romans", the
 Margraviate branch, literal #19, shrunken Austria) — **DONE, item 23
 is CONFIRMED AND CLOSED the same night.** Items 16-23 are
 ALL CONFIRMED IN GAME (2026-07-29 — six slices tested and closed in
 ONE day). Remaining territory per the strategic order: **Germany II is DONE
-(item 25, needs game test)**; **Italy North** is next (spec ready,
-`docs/ITALY-NORTH-PACKAGE.md`); then Central Asia, Arabia, the
-Rus/steppe east, the India/China review (the Middle Kingdom
-restoration is its anchor item). Meanwhile banked: the
+(item 25, needs game test)**; **Italy North is DONE (item 26, needs
+game test — spec retired with its landing, like Germany II's)**. The
+four remaining theaters ALL have research packages ON DISK as of
+2026-07-30, written by four parallel Opus agents, UNCOMMITTED and
+awaiting main-session review + user decisions:
+`docs/CENTRAL-ASIA-PACKAGE.md` (QRK/QRA/BLH invented tags verified
+free; needs a NEW `LOCATION_VACATED` build mechanism — no current
+tool can make land unowned), `docs/ARABIA-PACKAGE.md` (QMT Qarmatians;
+KRM already seated rules Seljuk Oman; measured warning: a rank_duchy
+Muslim theocracy renders "High Priest" — monarchy is the correct
+emirate shape), `docs/RUS-STEPPE-PACKAGE.md` (NO new tags — 41
+vanilla tags go landless; TWO LIVE DEFECTS on the current map:
+GLH→KIE makes Iziaslav a Golden-Horde tributary NOW, and Novgorod
+runs a 1136 veche republic under a Rurikid prince), and
+`docs/INDIA-CHINA-REVIEW.md` (anchor finding: the tusi flood cannot
+be fixed by a reform — country_triggers.txt:1287 demands the
+middle_kingdom IO EXIST; Route B restores the IO instance re-dated
+1271→960; plus JAP's shogunate error class has a one-token fix with
+vanilla's own Go-Reizei ready to seat). Meanwhile banked: the
 SITUATION-SPECS package (a research agent's report pending review
 into docs/SITUATION-SPECS.md), the situation scaffold generator
 (tools/new_situation.py, tested), the DHE flavor scaffold generator

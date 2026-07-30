@@ -151,19 +151,13 @@ diplomacy_manager = {
 
     #-------Italy-------
 
-    dependency = { first = VEN second = RAG subject_type = vassal }
 
     scripted_mutual = { first = RAV second = CES type = alliance }
     scripted_mutual = { first = RIM second = CES type = alliance }
 
 
-    dependency = { first = SAV second = CEV subject_type = vassal }
-    dependency = { first = SAV second = PIE subject_type = vassal }
     dependency = { first = SAV second = VUD subject_type = vassal }
 
-    dependency = { first = VER second = PAD subject_type = vassal }
-    dependency = { first = VER second = PAR subject_type = vassal }
-    dependency = { first = VER second = LUC subject_type = vassal }
 
 
     scripted_oneway = { first = PAP second = SIC type = guarantee }
@@ -666,6 +660,9 @@ diplomacy_manager = {
 	dependency = { first = TYR second = INI subject_type = tributary }
 	dependency = { first = TYR second = KEE subject_type = tributary }
 	dependency = { first = MCM second = BEA subject_type = tributary }
+
+	# 1066: the march of Tuscany (generated)
+	dependency = { first = TUS second = PIS subject_type = vassal }
 
 	# 1066: the Melfi investiture (generated)
 	dependency = { first = PAP second = APU subject_type = tributary }

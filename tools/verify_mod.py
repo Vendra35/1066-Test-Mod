@@ -370,7 +370,8 @@ for _c in sorted(_PLURALISTS):
     if _seated.count(_c) < 2:
         probs.append(f"_PLURALISTS lists {_c}, seated on {_seated.count(_c)} "
                      "tag(s) — stale exemption, remove it")
-# Armed at 500: 82 authored characters + 46 dynasties + 145 seats
+# Armed at 540 after Italy North: 89 authored characters + 48 dynasties
+# + 153 seats
 # (512 measured after Germany II).
 check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=500)
 
@@ -416,8 +417,9 @@ for _k in _ours_keys:
         probs.append(f"{_k} already exists in vanilla — our block would silently merge over it")
 if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
-# Armed at 109 authored characters after Germany II.
-check("authored character keys collide with nothing", count, probs, min_count=109)
+# Armed at 116 authored characters after Italy North (+7: Beatrice,
+# Matilda, Ulric, the three prelates, Adelaide).
+check("authored character keys collide with nothing", count, probs, min_count=116)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
@@ -933,6 +935,11 @@ _GENERATOR_OK = {
     "GHZ", "UQY", "MRD", "HLB", "SIS", "KKY", "SHD", "PLM", "AGR",
     # ULD + 4 south-Italian states — deferred (tier 3)
     "ULD", "CUP", "SLR", "NEA", "GAE",
+    # ISR — deferred (tier 3): no Istrian march heraldry is attested for
+    # 1066; eyeball the generated flag in game before investing. TUS is
+    # NOT here: it has VANILLA arms (the SAX/SWA formable-reuse class —
+    # TUS_f ships flag = TUS) and passes through the _van_coa_keys branch.
+    "ISR",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -959,9 +966,9 @@ for _k in sorted(_our_coa_keys):
 for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
     probs.append(f"_INTENTIONAL_COA_OVERRIDES lists {_k} but our CoA "
                  "files define no such key")
-# 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 43
-# registry tags = 94 after Germany II; raise as arms land.
-check("coat of arms references resolve", _coa_count, probs, min_count=94)
+# 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 45
+# registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
+check("coat of arms references resolve", _coa_count, probs, min_count=96)
 
 print()
 if fails:
