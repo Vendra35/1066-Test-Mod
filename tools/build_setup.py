@@ -4107,10 +4107,32 @@ def build_countries(src):
                     toks = re.findall(r"[a-z][A-Za-z0-9_]*", inner)
                     if toks:
                         sys.exit(f"LANDLESS_AFTER: {_t} still owns {toks[:5]}")
+            # THE CHECK the 2026-07-30 game test showed was missing: a
+            # landless tag must also carry a NON-EMPTY claims list, or
+            # the engine rejects it at start ("does not exist, nor has
+            # cores as a revolter", initialize_from_bookmark.cpp:592).
+            # Verifying zero holdings alone let eighteen claim-less
+            # shells ship. Proven by breaking (one tag excluded from
+            # _landless_claims -> this line fired).
+            _cm = re.search(
+                r"^[ \t]*our_cores_conquered_by_others[ \t]*=[ \t]*\{",
+                body, re.M)
+            _ctoks = []
+            if _cm:
+                _co = body.index("{", _cm.start())
+                _ctoks = re.findall(
+                    r"[a-z][A-Za-z0-9_]*",
+                    re.sub(r"#[^\n]*", "",
+                           body[_co + 1:find_block_end(body, _co)]))
+            if not _ctoks:
+                sys.exit(f"LANDLESS_AFTER: {_t} is landless with NO "
+                         "claims — the engine will reject it at start "
+                         "(initialize_from_bookmark.cpp:592)")
             break
         else:
             sys.exit(f"LANDLESS_AFTER: tag {_t} not found")
-    report.append(("displaced tags verified landless", len(LANDLESS_AFTER)))
+    report.append(("displaced tags verified landless, claims-backed",
+                   len(LANDLESS_AFTER)))
 
     # TRE surgery: the 1204.4.1 themata bureaucracy records the founding
     # of an empire that does not exist in 1066, and the Grand-Komnenoi
