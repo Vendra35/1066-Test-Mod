@@ -2629,9 +2629,30 @@ FIELD_FIXES = {
     # 50 is ours, flagged).
     "CHI": [('flag = "YUA"', 'flag = "CSO"'),
             ('country_name = "YUA"', 'country_name = "CSO"'),
-            ("\n\t\t\t\tlegacy_of_kublai_khan", ""),
-            ("\n\t\t\treforms = {\n\t\t\t}", ""),
+            ("\n\t\t\t\tlegacy_of_kublai_khan",
+             # Kublai carried cultures_capacity = 3 and a
+             # Mongol-culture allow (dead on the Song anyway);
+             # replacements: three_departments_system (the
+             # Song-defining institution, gate passes on the
+             # Chinese court + MK leadership) and the civil-
+             # service capacity reform (grand-test fix).
+             "\n\t\t\t\tthree_departments_system"
+             "\n\t\t\t\tsong_civil_service_reform"),
             ("\n\t\t\t\tstatus_of_the_han_law = limit_the_han_powers", ""),
+            # Yuan cosmopolitan tolerance the Song court never
+            # kept: the eleven steppe/Inner-Asian entries go
+            # (historical regardless of the capacity math).
+            ("\n\t\t\tsibe_culture", ""),
+            ("\n\t\t\tjurchen_culture", ""),
+            ("\n\t\t\tdaur_culture", ""),
+            ("\n\t\t\ttumed_culture", ""),
+            ("\n\t\t\tkharchin_culture", ""),
+            ("\n\t\t\toirat_culture", ""),
+            ("\n\t\t\ttuvan_culture", ""),
+            ("\n\t\t\tuyghur_culture", ""),
+            ("\n\t\t\tyugur_culture", ""),
+            ("\n\t\t\tmonguor_culture", ""),
+            ("\n\t\t\tamdowa_culture", ""),
             ("sinicized_vs_unsinicized = -50 # Bayan's policies",
              "sinicized_vs_unsinicized = 50 # the Song court [magnitude ours; positive = sinicized, asia templates +10]")],
     # France demesne slice: the three landless-to-landed tags swap the
@@ -6450,6 +6471,30 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 46 Jurchen repoints to LIA, got {n_liao}")
     report.append(("Jurchen tribes repointed to the Liao", n_liao))
 
+    # THE JIMI FIX (grand-test launch, 2026-08-01): the sixteen
+    # mid-tier tusi lords (SZH, BZU, QJG...) were LNG's OWN tusi, and
+    # LNG's retirement freed them - breaking can_country_have_tusi's
+    # subject-branch for their 45 sub-ties (country_triggers.txt:
+    # 1291-1293; 45 government.cpp:3702 lines, measured). They repoint
+    # to CHI: the Song's jimi (loose-rein) frontier prefectures are
+    # this system's ancestor, and CHI as Middle-Kingdom leader passes
+    # every branch of the gate. LNG's other 46 leaf-tusi (the Yunnan
+    # orbit, Dali's world) still die with it.
+    _JIMI = ("BZH BZU GGX GNN LIN MHU PAN PDN QJG QYN SDG SMG SZH "
+             "TNZ YGS YNJ").split()
+    n_jimi = 0
+    for _j in _JIMI:
+        src, _k = re.subn(
+            r"^([ \t]*)dependency = \{ first = LNG second = " + _j
+            + r" subject_type = tusi \}[ \t]*(?:#[^\n]*)?\n",
+            lambda m, j=_j: (m.group(1) + "dependency = { first = CHI "
+                             f"second = {j} subject_type = tusi }}\n"),
+            src, flags=re.M)
+        n_jimi += _k
+    if n_jimi != 16:
+        sys.exit(f"expected exactly 16 jimi repoints to CHI, got {n_jimi}")
+    report.append(("jimi lords repointed to the Song", n_jimi))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -6514,8 +6559,11 @@ def build_diplomacy(src):
     # 239 -> 249 with India Tier 1 (observed failing first): DLH's
     # nine samanta ties + GAU->TRF. The twelve surviving samantas are
     # all defensible 1066 hill/coastal clientages (package G.1).
-    if n_landless_deps != 249:
-        sys.exit(f"expected exactly 249 landless-tag dependencies, stripped {n_landless_deps}")
+    # 249 -> 233 with the jimi fix (observed failing first): the
+    # sixteen mid-tier tusi lords now repoint to CHI BEFORE this sweep
+    # and survive as the Song's jimi frontier.
+    if n_landless_deps != 233:
+        sys.exit(f"expected exactly 233 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

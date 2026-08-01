@@ -164,6 +164,27 @@ kyivan_seniority_reform = {
 # but the reform guarantees the ring against a vanilla template change
 # and satisfies the harness's overlord check, at the cost of nothing
 # (the slot is refunded).
+# The Song civil service (grand-test fix, 2026-08-01): dropping
+# Kublai's legacy cost CHI 3 cultures_capacity and the share-based
+# costs rose when the steppe left - the launch logged 66.18/53. The
+# mechanism is the SEL-Nizamiyya precedent (mandala reform's shape,
+# country_specific.txt:3909); the MAGNITUDE 16 is ours, sized to the
+# measured gap and flagged. Slot refunded, the house rule.
+song_civil_service_reform = {
+	potential = {
+		tag = CHI
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		cultures_capacity = 16
+		government_reform_slots = 1
+	}
+
+	years = 4
+}
+
 liao_ordo_reform = {
 	potential = {
 		tag = LIA

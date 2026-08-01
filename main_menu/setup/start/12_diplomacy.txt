@@ -323,6 +323,22 @@ diplomacy_manager = {
     dependency = { first = CHI second = AMD subject_type = tusi }
     dependency = { first = CHI second = CKL subject_type = tusi }
     #Vassals of Liang
+    dependency = { first = CHI second = BZU subject_type = tusi }
+    dependency = { first = CHI second = SZH subject_type = tusi }
+    dependency = { first = CHI second = YGS subject_type = tusi }
+    dependency = { first = CHI second = SDG subject_type = tusi }
+    dependency = { first = CHI second = PDN subject_type = tusi }
+    dependency = { first = CHI second = QYN subject_type = tusi }
+    dependency = { first = CHI second = LIN subject_type = tusi }
+    dependency = { first = CHI second = PAN subject_type = tusi }
+    dependency = { first = CHI second = TNZ subject_type = tusi }
+    dependency = { first = CHI second = SMG subject_type = tusi }
+    dependency = { first = CHI second = GNN subject_type = tusi }
+    dependency = { first = CHI second = GGX subject_type = tusi }
+    dependency = { first = CHI second = QJG subject_type = tusi }
+    dependency = { first = CHI second = MHU subject_type = tusi }
+    dependency = { first = CHI second = BZH subject_type = tusi }
+    dependency = { first = CHI second = YNJ subject_type = tusi }
     #Vassals of Tusi
     dependency = { first = BZH second = YNG subject_type = tusi }
     dependency = { first = YNJ second = NWU subject_type = tusi }

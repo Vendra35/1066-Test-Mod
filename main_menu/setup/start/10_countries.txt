@@ -26421,6 +26421,10 @@ countries = {
 			laws = {
 			}
 
+			reforms = {
+				three_departments_system
+				song_civil_service_reform
+			}
 			ruler = chi_zhao_shu_yingzong
 			ruler_term = { character = chi_zhao_shu_yingzong start_date = 1063.5.1 regnal_number = 0 regnal_name = Yingzong }
 
@@ -26488,24 +26492,13 @@ countries = {
 			yulin_culture
 			guibei_culture
 			yao_china_culture
-			sibe_culture
 			hlai_culture
 			zhuang_culture
 			hui_muslim_culture
-			jurchen_culture
-			daur_culture
-			tumed_culture
 			tujia_culture
-			kharchin_culture
 			kam_culture
-			oirat_culture
 			yi_culture
-			tuvan_culture
-			amdowa_culture
 			mulam_culture
-			yugur_culture
-			monguor_culture
-			uyghur_culture
 			sui_culture
 			rma_culture
 			lahu_culture

@@ -120,6 +120,11 @@ KNOWN = [
     # display name on purpose (decoder: exactly two lines, by design).
     ("ACCEPTED", "landless-twin display-name pairs (by design)",
      r"country_database\.cpp:107"),
+    # CHI deliberately wears map_CSO (the Song crimson) while CSO's
+    # registry keeps the same key - the state wears the dynasty's
+    # color, one warning line by design (item 32).
+    ("ACCEPTED", "CHI/CSO share the Song crimson (by design)",
+     r"has same color as CHI"),
     # pops on LOCATION_VACATED settled land: pop_triggers.txt:3 reads
     # the owning country's religion and the location has no owner —
     # one line per pop at init (~504 for the Kipchak/Siberia/Danube
