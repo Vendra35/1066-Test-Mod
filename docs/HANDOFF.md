@@ -1119,6 +1119,15 @@ GONE — initialize_from_bookmark.cpp:592 ×17, the ABS/FAT
 marriage/heir/society trio, the four "no birth scripted" lines, the
 Ayyub conception line. Everything else in the log is decoded and
 accepted (see the decoder's 2026-07-30 entries).
+**Added 2026-08-01 (the audit-fix session):** the trio fix had missed
+its FOURTH item — expect the `initialize_from_bookmark.cpp:1719`
+parliament_type lines for ABS and FAT (present in every launch until
+now) GONE too, and no new class from the nine repointed capitals
+(ETA/AAL/FDL/FRI/JLM/ORM/HLG/QUN/SLD — audit D1). The situation map
+mode and legend must still render its three side colors (the map_NRM
+→ map_NRM_1066 rename, audit D3), and vanilla Normandy/norman culture
+return to their proper grey-green. The situation panel's second card
+must show NO stray hint button (audit D5).
 
 **MONGOL RESURGENCE: CLOSED OUT THE SAME NIGHT.** The deep audit
 (committed in MR as `docs/AUDIT-2026-07-29.md`) found six DEFINITE
