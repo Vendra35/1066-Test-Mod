@@ -1524,6 +1524,19 @@ TEST — click tour, ~5 minutes:
 5. error.log via scan_log.py: landless trims +10, vacated-location
    classes may grow by Danube towns (2065/2388 — known), NEW classes
    only; watch that KIE/CHR/PYS borders did not move.
+**CONFIRMED IN GAME (2026-08-01, same day, screenshots + a clean
+scan): "Tribe of Cumania" RENDERS (the tribe name law holds), the
+Danube EMPTY, GLH correctly split Volga-corridor + Kuban with its
+astrakhan seat, Crimea interior Cuman with the four Byzantine coast
+towns, Kaffa Genoese-free, the Rus five untouched. Japan re-check
+PASSED: "Emperor of Japan" on Go-Reizei's panel, ASK branding gone
+(country label composes "Japanese Court" — the imperial-family
+reform's government name; acceptable, cosmetic refinement possible).
+ONE new log class, decoded same day: pops on vacated SETTLED land
+log an owner-religion link error each (~504; vanilla's unowned land
+is unsettled, ours has towns — decoder entry; shrinks as the steppe
+gains owners). scan_log.py: UNKNOWN 0, REGRESSION 0.
+ITEM 31 IS CLOSED.**
 
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**

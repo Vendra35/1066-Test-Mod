@@ -110,8 +110,32 @@ KNOWN = [
      r"tooltips_utils\.h:85"),
     ("ACCEPTED", "stale MR game-rule keys in settings",
      r"mr_railroad_on|MR_mongol_resurgence"),
-    ("ACCEPTED", "stale-settings empty key refs (persistent_reader 289)",
-     r"Failed to read key reference: (:|\"\")"),
+    # the launcher persists every subscribed mod's game-rule choices;
+    # a session without those mods logs one line per remembered key
+    # (dmsd_*, pp_*, htc_*, historical_* ... — grows with the user's
+    # workshop library). Environment-side, zero effect on this mod.
+    ("ACCEPTED", "stale launcher game-rule keys (other subscribed mods)",
+     r"Failed to read key reference"),
+    # the landless-future-twin design: GRZ/GRA and NEA/NAP share a
+    # display name on purpose (decoder: exactly two lines, by design).
+    ("ACCEPTED", "landless-twin display-name pairs (by design)",
+     r"country_database\.cpp:107"),
+    # pops on LOCATION_VACATED settled land: pop_triggers.txt:3 reads
+    # the owning country's religion and the location has no owner —
+    # one line per pop at init (~504 for the Kipchak/Siberia/Danube
+    # vacates). Vanilla's own 7334 unowned locations are UNSETTLED, so
+    # the class is ours alone; harmless fail-safe (decoder 2026-08-01).
+    ("ACCEPTED", "pop owner-religion on vacated settled land (252/pop_types 153)",
+     r"pop_types/00_default\.txt:153|pop_triggers\.txt:3"),
+    # OGK is_historic reverse line — decoded, cosmetic, exactly one.
+    ("ACCEPTED", "OGK is_historic-but-exists reverse line (595)",
+     r"initialize_from_bookmark\.cpp:595"),
+    ("ACCEPTED", "audio arena size warning (environment)",
+     r"AudioArena size is too small"),
+    # two one-shot engine asserts paired with the vacated-pop class
+    # (who/pop culture lookups) — WATCH, decode further if they multiply.
+    ("WATCH", "one-shot Lookup asserts (pdx_assert 214, vacate-adjacent)",
+     r"pdx_assert\.cpp:214"),
     ("ACCEPTED", "system/hardware noise (VRAM, mipmaps, gui perf)",
      r"interface_application\.cpp|icondatabase\.h|Not enough dedicated"
      r"|minimum requirements|poor performance"),

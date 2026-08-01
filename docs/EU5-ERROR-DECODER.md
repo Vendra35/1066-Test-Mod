@@ -672,6 +672,18 @@ The companion `:595` reverse line — `'OGK Holy Roman' is set as
 'is_historic = yes' but it currently exists` — is vanilla's registry
 marking OGK historic while we landed it: one cosmetic line, accepted.
 
+### `jomini_script_system.cpp:252 — Event target link 'religion' returned an invalid object` at `scripted_triggers/pop_triggers.txt:3` via `pop_types/00_default.txt:153` (~504 lines)
+**DECODED 2026-08-01 (first LOCATION_VACATED launch) — pops on vacated
+SETTLED land.** A pop-type trigger reads the owning country's religion;
+the location has no owner, so the link returns nothing — one line per
+pop at init. Vanilla's own 7334 unowned locations are UNSETTLED, which
+is why the class never existed before us: our Kipchak/Siberia/Danube
+vacates emptied real towns with real pops. Harmless fail-safe (the
+promotion/assimilation check just fails); the two one-shot
+pdx_assert:214 Lookup lines in the same launch are WATCH-paired with
+it. The class shrinks as future slices land owners on the steppe.
+**Fix:** none — accepted; scan_log.py classifies it.
+
 ### `country_database.cpp:107 — The following two countries have the same name 'GRZ' & 'GRA' = 'Granada'` (and `'NEA' & 'NAP' = 'Naples'`)
 **Means:** by design. The landless irredenta tag IS the future of the
 same polity the landed 1066 tag represents — Zirid Granada beside the
