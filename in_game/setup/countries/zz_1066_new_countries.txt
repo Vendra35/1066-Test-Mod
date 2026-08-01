@@ -581,3 +581,59 @@ XIA = { #Western Xia — the Tangut state (Xingqing, seat ningxia)
 	culture_definition = mi_niah_culture
 	religion_definition = mahayana
 }
+
+PRS = { #The Prussians — the pagan lands between the Vistula and the Nemunas
+	color = map_PRU
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = pruthenian
+	religion_definition = romuva
+}
+
+SUD = { #Sudovia / Yotvingia — the Sudovian forest between Prussia and Lithuania
+	color = map_sudovian
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = sudovian
+	religion_definition = romuva
+}
+
+KUO = { #The Curonians — the sea-kings of the Courland coast (Grobina = Seeburg)
+	color = map_curonian
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = curonian
+	religion_definition = romuva
+}
+
+ZEM = { #Semigallia and Selonia — the middle Daugava and the Lielupe
+	color = map_latvian
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = latvian
+	religion_definition = romuva
+}
+
+LTG = { #The Latgalians and the Daugava Livs — Jersika, Koknese, Turaida
+	color = map_liv
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = latvian
+	religion_definition = romuva
+}
+
+ESO = { #Estonia — the maakonnad, no king; Tartu = Yaroslav's Yuryev
+	color = map_estonian
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = estonian
+	religion_definition = muinaisusko
+}
+
+AUK = { #Aukstaitija — the Lithuanian highlands before the Grand Duchy (Kernave)
+	color = map_aukstaitian
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = aukstaitian
+	religion_definition = romuva
+}

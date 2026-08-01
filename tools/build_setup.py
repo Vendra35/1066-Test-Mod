@@ -1627,6 +1627,148 @@ NEW_COUNTRIES["XIA"] = (
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = ningxia\n\t}\n")
 
+# ================================ BALTIC ====================================
+# The Baltic package (docs/BALTIC-PACKAGE.md, user-approved 2026-08-01,
+# all 12 recommendations incl. option 2 for Lithuania). The crusader
+# state — TEU, LIV and their nine bishopric/city satellites, none
+# founded before 1190 — retires landless with auto-derived claims (the
+# thirteenth century as a claim list), and the pagan peoples the
+# crusade was preached against take the ground: PRS, SUD, KUO, ZEM,
+# LTG, ESO new; SXM revived onto its own vanilla claim list; AUK new
+# in Lithuania's place (option 2: rank_kingdom_grand_duchy_LIT at
+# country_ranks.txt:1355 is tag-gated ABOVE the tribe branches, so a
+# tribal LIT at rank_duchy still renders "Grand Duchy of Lithuania" —
+# retiring the tag bypasses the branch structurally). NO rulers, NO
+# dynasties, NO characters: the first named Lithuanian dukes are the
+# 1219 treaty's, the Prussians produce no name before Herkus Monte
+# (1260s), Estonia had no king at all — the Pecheneg discipline
+# applied to people.
+
+# tag -> locations listed in that tag's `control = { ... }` block ONLY
+# (owned by somebody else). Vanilla ships exactly TEN such locations
+# game-wide: TEU controls six Samogitian locations LIT owns (own_core),
+# and MOR controls four Tlemcen locations TLE owns — the Maghreb slice
+# will need a second key here the day it retires or regrants either.
+# `control` is the last member of OWN_KEYS, so all three of
+# _remove_owned_many, the LANDLESS_AFTER guard and the orphan-capital
+# guard read these as holdings. Any slice that grants, vacates or
+# retires one of the two occupiers must clear the occupation first.
+# The consuming loop runs BEFORE the _landless_claims snapshot so the
+# retiring tag's claims are its REAL holdings, not its conquests — a
+# 1066 Teutonic claim on Samogitia is exactly the wrong line to write.
+CONTROL_STRIPS = {
+    "TEU": ["palanga", "rietavas", "silale", "skuodas", "taurage",
+            "mazeikiai"],
+}
+
+# The definitions-resolved grants, the _SELJUK_RULES 5-tuple shape:
+# tag -> (sweeps, singles, minus-sweeps, minus-singles, expected).
+# All 176 resolved locations are owned in vanilla — nothing is
+# vacated, so the pop-line class (ERROR-DECODER, ~504 lines) neither
+# grows nor shrinks: prefer real recipients on settled ground.
+_BALTIC_RULES = {
+    # THE PRUSSIANS. The five eastern provinces are the Prussian lands
+    # proper — Sambia, Natangia, Warmia, Pogesania, Pomesania, Barta,
+    # Galindia, Nadruvia, Skalvia. elk and barten are sudovian-culture
+    # and go to SUD. Donors TEU 21 / ERM 3 / SMD 1 / PMS 1. The seat
+    # is fischhausen (Sambia, the most populous land; Wiskiauten was
+    # the Viking-age emporium on this ground) — konigsberg is a 1255
+    # Order foundation and malbork a 1274 one, both refused.
+    "PRS": (["lower_prussia_province", "upper_prussia_province",
+             "warmia_province", "masuria_province",
+             "lithuania_minor_province"], [], [], ["elk", "barten"], 26),
+    # SUDOVIA / YOTVINGIA. Every sudovian-culture location forming a
+    # contiguous block: the Suwalki lakes, the two Masurian outliers,
+    # the upper Nemunas crossings, and (option 2) the Grodno pocket
+    # from LIT — grodno is a Rurikid town by 1116 but sudovian-culture
+    # ground in 1066 (package decision 4, RAW/SUD/NRK split).
+    "SUD": (["suwalki_province"],
+            ["elk", "barten", "lazdijai", "alytus", "vilkaviskis",
+             "grodno", "sokolka", "grodek", "bershty"], [], [], 12),
+    # THE CURONIANS — the whole Courland peninsula, Seeburg to
+    # Domesnes. Donors LIV 6 / KUR 2.
+    "KUO": (["courland_province"], [], [], [], 8),
+    # SEMIGALLIA AND SELONIA — the Lielupe and the middle Daugava.
+    # dobele is a Semigallian hillfort; jelgava (Mitau, 1265) refused.
+    "ZEM": (["semigalia_province", "selonia_province"], [], [], [], 7),
+    # THE LATGALIANS AND THE DAUGAVA LIVS — Latgale, Tolowa, and the
+    # Livonian river mouth. koknese is Kukenois, one of the two
+    # Latgalian principalities Henry of Livonia names; riga (1201)
+    # refused. Donors ARR 8 / LIV 8 / RIG 1.
+    "LTG": (["latgalia_province", "inner_livonia_province",
+             "south_livonia_province"], [], [], [], 17),
+    # ESTONIA — Sakala, Ugaunia, Revala/Harjumaa/Virumaa, Laanemaa,
+    # Saaremaa. Includes DAN's seven estonia_province locations:
+    # Danish Estonia begins at Lyndanisse in 1219, not 1066 (package
+    # decision 11). tartu = Tarbatu, Yaroslav's Yuryev since 1030 —
+    # the one Estonian place with a documented 11th-century identity.
+    "ESO": (["north_livonia_province", "tartu_province",
+             "estonia_province", "rotalia_province"], [], [], [], 24),
+    # SAMOGITIA — vanilla's own SXM revived onto its own claim list
+    # (its our_cores_conquered_by_others IS the sixteen). Requires the
+    # CONTROL_STRIPS step above or the six own_core/control doubles
+    # die in _remove_owned_many.
+    "SXM": (["samogitia_area"], [], [], [], 16),
+    # AUKSTAITIJA — the Lithuanian highlands in LIT's place (option
+    # 2). kernave: continuously occupied through the 1st millennium,
+    # five hillforts, the Grand Duchy's first seat — vilnius is first
+    # documented 1323. The minus lists are SUD's share of the area.
+    "AUK": (["lithuania_area"], [], ["suwalki_province"],
+            ["lazdijai", "alytus", "vilkaviskis"], 37),
+    # POLAND — Pomerelia (Gdansk, Tuchola), Culmerland and the Dobrzyn
+    # land: Piast ground in 1066, Order ground only from 1228/1308.
+    # Donors TEU 19 / CHL 2.
+    "POL": (["danzig_province", "tuchola_province", "chelmno_province",
+             "dobrzyn_province"], ["bytow", "lebork"], [], [], 21),
+    # MAZOVIA — the Podlasie strip, Mazovian marchland raided by the
+    # Yotvingians; RAW holds 14 in the same area (package decision 4).
+    "RAW": ([], ["drohiczyn", "bielsk_podlaski", "mielnik", "sokolow",
+                 "suraz"], [], [], 5),
+    # NOVOGRUDOK — the two Polesian-culture, orthodox locations of
+    # LIT's Black Ruthenia pocket: Kievan/Turov ground, and NRK is
+    # the Rus package's chosen holder of the area (decision 4).
+    "NRK": ([], ["masty", "nyasvizh"], [], [], 2),
+    # HOHENLOHE — mergentheim, the Order's post-1525 seat, back to the
+    # local Franconian lord: UFF (dynasty = hohenlohe_dynasty) holds
+    # crailsheim and ohringen in the same tauberfranken_province, and
+    # Mergentheim was a Hohenlohe possession before the 1219 donation
+    # (package decision 5; the family itself is c. 1153 — the Germany
+    # slice's anachronism, flagged not fixed).
+    "UFF": ([], ["mergentheim"], [], [], 1),
+}
+
+# The crusader state retires whole: the Order tags (1190/1202), the
+# five Prussian bishoprics (1243), Riga city (1201) and the Livonian
+# sees (1186-1234) — none exists in 1066. Landless with auto-derived
+# claims, never deleted: seven DHE flavor files, two country-advance
+# files, the hussite situation and an on_action all hang off TEU/LIV
+# by existence- or tag-gates and degrade to no-ops. LIT rides with
+# them (option 2): the Grand Duchy IS the future object here — the
+# claims are Mindaugas's state, exactly as TEU's are the Ordensstaat.
+BALTIC_LANDLESS = ("TEU", "LIV", "ARR", "KUR", "RIG", "BID", "BIO",
+                   "ERM", "SMD", "PMS", "CHL", "LIT")
+
+# The Baltic tribes ride CUM's shape exactly (the attested 1066
+# tribal block): eurasian_tribe supplies type = tribe,
+# tribal_oldest_male, assembly parliament; expl_eastern_europe
+# carries baltic_region, which holds all seven capitals. tech 2 is
+# the Irish tribal precedent (gaelic_tribe ships 2; CUM's 3 is the
+# steppe's) — package decision 8, a slider not a correctness claim.
+# rank_duchy is declared, not derived, so the F-section render is
+# deterministic: map label = NAME key verbatim (the tribal fallback's
+# map string is bare $NAME$), long form "Tribe of ...", ruler Chief.
+for _t, _cap in (("PRS", "fischhausen"), ("SUD", "suwalki"),
+                 ("KUO", "grobina"), ("ZEM", "dobele"),
+                 ("LTG", "koknese"), ("ESO", "tartu"),
+                 ("AUK", "kernave")):
+    NEW_COUNTRIES[_t] = (
+        "\t" + _t + " = {\n"
+        "\t\tstarting_technology_level = 2\n"
+        '\t\tinclude = "expl_eastern_europe"\n'
+        '\t\tinclude = "eurasian_tribe"\n'
+        "\t\tcountry_rank = rank_duchy\n\n"
+        "\t\tcapital = " + _cap + "\n\t}\n")
+
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
 # user-approved same day, all recommendations incl. UKH Tier B). One
@@ -2406,7 +2548,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
-    + INDIA_LANDLESS
+    + INDIA_LANDLESS + BALTIC_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2571,6 +2713,22 @@ FIELD_FIXES = {
             ("\t\t\truler = random",
              "\t\t\their_selection = partition_inheritance\n"
              "\t\t\truler = random")],
+    # SXM revived (Baltic slice): vanilla ships it as a catholic-
+    # monarchy revolter shell — a package gap caught at implementation
+    # (the KLB precedent). Landing it unchanged would seat a catholic
+    # Duke over the LAST pagan corner of Europe (Samogitia converts
+    # 1413); its registry identity is already samogitian + romuva.
+    # Reskinned to its six new siblings' tribal shape; tech 3 -> 2
+    # aligns it with them (package decision 8). The explicit
+    # type/heir lines override the include's — later-key-wins — so
+    # both must move with the template.
+    "SXM": [('include = "eastern_european_catholic_monarchy_not_present"',
+             'include = "eurasian_tribe"'),
+            ("starting_technology_level = 3",
+             "starting_technology_level = 2"),
+            ("type = monarchy", "type = tribe"),
+            ("heir_selection = cognatic_primogeniture",
+             "heir_selection = tribal_oldest_male")],
     "CAT": [("country_rank = rank_duchy", "country_rank = rank_county")],
     "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
             ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
@@ -5142,6 +5300,26 @@ def build_countries(src):
             sys.exit(f"_INDIA_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
+    # The Baltic resolves the same way (twelve rule sets, 176 total;
+    # zero =UNOWNED= donors, so nothing joins the pop-line class).
+    # EXTEND, never assign — POL, RAW, NRK and UFF are landed
+    # recipients, the France lesson. Requires CONTROL_STRIPS below:
+    # without it the six own_core/control doubles die in
+    # _remove_owned_many with `occurrences != 1`.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_BALTIC_RULES.items()):
+        got = _resolve_ruleset(f"_BALTIC_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_BALTIC_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, _cap in (("PRS", "fischhausen"), ("SUD", "suwalki"),
+                     ("KUO", "grobina"), ("ZEM", "dobele"),
+                     ("LTG", "koknese"), ("ESO", "tartu"),
+                     ("AUK", "kernave"), ("SXM", "raseiniai")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_BALTIC_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5225,6 +5403,40 @@ def build_countries(src):
                 sys.exit(f"{l} is listed for both {_list_owner[l]} and {_t} "
                          f"— transfer/grant lists must be disjoint")
             _list_owner[l] = _t
+
+    # Occupations cleared (the Baltic slice's CONTROL_STRIPS): delete
+    # each tag's `control = { ... }` block after asserting its token
+    # list equals the declared list EXACTLY — a vanilla patch that
+    # changes the occupation fails loudly instead of silently under-
+    # or over-stripping. Must run BEFORE the _landless_claims snapshot
+    # below AND before any grant touches the occupied locations (the
+    # exactly-once assert in _remove_owned_many reads `control` too).
+    n_strips = 0
+    for _t, _locs in sorted(CONTROL_STRIPS.items()):
+        blocks_cs = list(re.finditer(COUNTRY_RE, src, re.M))
+        for i, b in enumerate(blocks_cs):
+            if b.group(1) != _t:
+                continue
+            end = blocks_cs[i + 1].start() if i + 1 < len(blocks_cs) else len(src)
+            body = src[b.start():end]
+            m = re.search(r"^[ \t]*control[ \t]*=[ \t]*\{", body, re.M)
+            if not m:
+                sys.exit(f"CONTROL_STRIPS: {_t} has no control block — "
+                         "vanilla changed, re-verify the occupation")
+            bo = body.index("{", m.start())
+            be = find_block_end(body, bo)
+            toks = re.findall(r"[a-z][A-Za-z0-9_]*",
+                              re.sub(r"#[^\n]*", "", body[bo + 1:be]))
+            if sorted(toks) != sorted(_locs):
+                sys.exit(f"CONTROL_STRIPS[{_t}]: control block holds "
+                         f"{sorted(toks)}, declared {sorted(_locs)} — "
+                         "vanilla changed, re-verify the occupation")
+            src = src[:b.start()] + body[:m.start()] + body[be:] + src[end:]
+            n_strips += len(toks)
+            break
+        else:
+            sys.exit(f"CONTROL_STRIPS: tag {_t} not found")
+    report.append(("occupations cleared (control blocks stripped)", n_strips))
 
     # DERIVED from LANDLESS_AFTER, not enumerated per slice. The old
     # per-slice enumeration was a second parallel list, and Italy North
@@ -6562,7 +6774,15 @@ def build_diplomacy(src):
     # 249 -> 233 with the jimi fix (observed failing first): the
     # sixteen mid-tier tusi lords now repoint to CHI BEFORE this sweep
     # and survive as the Song's jimi frontier.
-    if n_landless_deps != 233:
+    # 233 -> 244 with the Baltic (observed failing first, 2026-08-01):
+    # the crusader web's ten lines — TEU's four bishopric vassals
+    # (ERM SMD PMS CHL), LIV's five (RIG ARR KUR BIO BID) and
+    # TEU->LIV itself — plus LIT->NRK, which the package's G.2 slated
+    # for a named strip on the assumption both partners stay landed;
+    # under option 2 LIT is landless and this sweep owns its lines
+    # (the PAP->FAE law). LIT->POK still dies by name in the Rus strip
+    # ABOVE this sweep, so it lands in n_rus, not here.
+    if n_landless_deps != 244:
         sys.exit(f"expected exactly 233 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
@@ -6584,7 +6804,12 @@ def build_diplomacy(src):
                  _drop_landless_pact, src, flags=re.M)
     # +2 British (THO<->CWM, MYO<->UMH alliances); 5->7 observed
     # failing before the constant moved, like every transition here.
-    if n_pacts != 7:
+    # 7 -> 9 with the Baltic (observed failing first, 2026-08-01):
+    # TEU<->BOH — John of Luxembourg's crusading alliance, pure
+    # 1337 — and LIT<->POL, which is Krewo 1385 inverted (Boleslaw II
+    # raided Yotvingia); the latter dies FREE via LIT's option-2
+    # retirement, one of the package's own arguments for it.
+    if n_pacts != 9:
         sys.exit(f"expected exactly 7 landless-tag pacts, stripped {n_pacts}")
     report.append(("pacts naming a landless tag stripped", n_pacts))
 

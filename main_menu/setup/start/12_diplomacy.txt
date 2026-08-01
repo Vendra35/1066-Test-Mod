@@ -41,12 +41,6 @@ diplomacy_manager = {
     dependency = { first = NOR second = GRL subject_type = dominion }
     dependency = { first = NOR second = ORK subject_type = vassal }
 
-    dependency = { first = TEU second = LIV subject_type = vassal }
-    dependency = { first = LIV second = RIG subject_type = vassal }
-    dependency = { first = LIV second = ARR subject_type = vassal }
-    dependency = { first = LIV second = KUR subject_type = vassal }
-    dependency = { first = LIV second = BIO subject_type = vassal }
-    dependency = { first = LIV second = BID subject_type = vassal }
     dependency = { first = DAN second = SLV subject_type = vassal }
     scripted_mutual = { first = DAN second = UBV type = alliance }
     scripted_mutual = { first = DAN second = BRA type = alliance }
@@ -168,15 +162,8 @@ diplomacy_manager = {
     dependency = { first = HOL second = ZEE subject_type = fiefdom }
 
     #-------Baltics-------
-    dependency = { first = TEU second = ERM subject_type = vassal }
-    dependency = { first = TEU second = SMD subject_type = vassal }
-    dependency = { first = TEU second = PMS subject_type = vassal }
-    dependency = { first = TEU second = CHL subject_type = vassal }
-    scripted_mutual = { first = TEU second = BOH type = alliance }
 
     #-------Lithuania-------
-    dependency = { first = LIT second = NRK subject_type = vassal }
-    scripted_mutual = { first = LIT second = POL type = alliance }
 
     #-------Bohemia-------
     scripted_mutual = { first = BOH second = LBV type = alliance }

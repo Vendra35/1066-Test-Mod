@@ -857,7 +857,7 @@ for _i, _b in enumerate(_blk_starts):
     if _n != 1:
         probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
 check("exactly one ruler key per country block", _rblocks, probs,
-      min_count=2385)
+      min_count=2402)  # 2395 + 7 Baltic tribes (2026-08-01)
 
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
@@ -956,6 +956,11 @@ _GENERATOR_OK = {
     # emblems ARE attested (the Chola tiger, the Chalukya boar, the
     # Paramara eagle) — eyeball the generated flags before investing.
     "COZ", "CLK", "PAA", "PMR", "CHU",
+    # Baltic — tier 4, permanent: the pagan Baltic peoples had no
+    # heraldry of any kind; the Order/bishopric arms vanilla ships
+    # belong to the tags that slice retires, not to these. SXM is NOT
+    # here: it has vanilla arms (the _van_coa_keys branch).
+    "PRS", "SUD", "KUO", "ZEM", "LTG", "ESO", "AUK",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -984,7 +989,8 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
                  "files define no such key")
 # 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 45
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
-check("coat of arms references resolve", _coa_count, probs, min_count=99)
+# 116 after the Baltic's 7 registry tags (2026-08-01).
+check("coat of arms references resolve", _coa_count, probs, min_count=116)
 
 # ---- audit 2026-07-31: the four class-closing checks -----------------------
 # From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
@@ -1017,7 +1023,7 @@ for _t in sorted(_start_tags - _id_tags):
     probs.append(f"10_countries block {_t} has NO registry identity block — "
                  "the engine rejects the whole block (PYS lesson)")
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
-      len(_id_tags), probs, min_count=2388)
+      len(_id_tags), probs, min_count=2405)  # +7 Baltic (2026-08-01)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
@@ -1135,9 +1141,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # Rus Tier 2 (10 landless, CUM landed); 1398 after China-East (9
 # landless); 1399 after Northern Dynasties (+2 new, -1 SYG); 1385
 # after India Tier 1 (19 landless, 5 new landed) — each drop tripped
-# the vacuous-scan guard first and was moved deliberately.
+# the vacuous-scan guard first and was moved deliberately; 1381 after
+# the Baltic (12 landless — the crusader state and LIT — against 7 new
+# tribes + SXM revived, all eight reaching assembly via eurasian_tribe).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1385)
+      min_count=1381)
 
 print()
 if fails:

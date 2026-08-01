@@ -162,8 +162,7 @@ countries = {
 			kobenhavn slagelse vordingborg falster
 
 			# own_control_integrated, but culture accepted
-			tallinn narva padise rakvere rapla toolse vasknarva
-			
+
 			#still owned in skane
 			laholm asbo
 		}
@@ -605,40 +604,26 @@ countries = {
 		}
 	}
 
-	TEU = { #Teutonic Order
+	TEU = {
+		our_cores_conquered_by_others = {
+			balga ostroda dzierzgon elblag morag ragnit tilsit mergentheim gumbinnen barten wegorzewo gerdauen insterburg wehlau labiau memel windenburg elk nibork ryn_poland szczytno malbork konigsberg brandenburg_prussia brodnica grudziadz torun gdansk gniew koscierzyna mirochowo puck tczew tuchola bialobork czluchow nowe swiecie bytow lebork dobrzyn lipno rypin
+		}
+ #Teutonic Order
 		own_control_core = {
-			 balga   ostroda  dzierzgon elblag morag
+			        
 		}
 		own_control_integrated = {
-			ragnit tilsit mergentheim gumbinnen barten wegorzewo
-			gerdauen insterburg wehlau
-			labiau memel windenburg
-			elk nibork ryn_poland szczytno 
-			malbork
-			konigsberg brandenburg_prussia
+
 		}
 		
 		own_control_conquered = {
 			#Chełmno Land
-			brodnica grudziadz torun
+			  
 			#Pomerelia
-			gdansk gniew koscierzyna mirochowo puck tczew
-			tuchola bialobork czluchow nowe swiecie
-
-			bytow lebork
 
 			# Occupied
 			#Dobrzyń Land
-			dobrzyn lipno rypin
-		}
-		control = {
-			#Samogitia
-			palanga rietavas silale skuodas taurage
-			mazeikiai
-			##Dobrzyń Land
-			#dobrzyn lipno rypin
-			##Kujavia
-			#wloclawek bydgoszcz inowroclaw kowal radziejow
+			  
 		}
 
 		include = "catholic_military_order"
@@ -686,17 +671,16 @@ countries = {
 		}
 	}
 
-	LIV = { #Livonian Order
+	LIV = {
+		our_cores_conquered_by_others = {
+			parnu valmiera viljandi kaina valjala karksi poltsamaa kandava dobele bauska sigulda cesis aluksne rezekne daugavpils selpils kraslava jelgava tukums saarde suure_jaani makonkalns aizkraukle salaspils saldus paide ventspils grobina kuldiga durbe
+		}
+ #Livonian Order
 		own_control_core = {
 		}
 		
 		own_control_integrated = {
-			parnu  valmiera viljandi kaina valjala
-			karksi poltsamaa  kandava dobele bauska sigulda cesis aluksne
-			rezekne daugavpils selpils kraslava jelgava  tukums
-			saarde suure_jaani makonkalns aizkraukle salaspils  saldus
-			paide
-			ventspils grobina kuldiga durbe
+
 		}
 		
 		include = "catholic_military_order"
@@ -732,9 +716,13 @@ countries = {
 		capital = parnu
 	}
 
-	ERM = { #Ermland / Warmia
-		own_control_core = {
+	ERM = {
+		our_cores_conquered_by_others = {
 			lidzbark olsztyn frombork
+		}
+ #Ermland / Warmia
+		own_control_core = {
+			  
 		}
 
 		include = "catholic_bishopric"
@@ -753,9 +741,13 @@ countries = {
 		capital = lidzbark
 	}
 
-	CHL = { #Kulm / Chełmno
-		own_control_core = {
+	CHL = {
+		our_cores_conquered_by_others = {
 			lubawa chelmno
+		}
+ #Kulm / Chełmno
+		own_control_core = {
+			 
 		}
 
 		include = "catholic_bishopric_no_coast"
@@ -779,9 +771,13 @@ countries = {
 		capital = lubawa
 	}
 
-	PMS = { #Pomesania
-		own_control_core = {
+	PMS = {
+		our_cores_conquered_by_others = {
 			kwidzyn
+		}
+ #Pomesania
+		own_control_core = {
+			
 		}
 
 		include = "catholic_bishopric_no_coast"
@@ -800,9 +796,13 @@ countries = {
 		capital = kwidzyn
 	}
 
-	SMD = { #Samland / Samia
-		own_control_core = {
+	SMD = {
+		our_cores_conquered_by_others = {
 			fischhausen
+		}
+ #Samland / Samia
+		own_control_core = {
+			
 		}
 
 		include = "catholic_bishopric"
@@ -899,9 +899,13 @@ countries = {
 	#	country_rank = rank_county
 	#}
 
-	RIG = { #Riga
-		own_control_core = {
+	RIG = {
+		our_cores_conquered_by_others = {
 			riga
+		}
+ #Riga
+		own_control_core = {
+			
 		}
 
 		include = "catholic_republic"
@@ -920,9 +924,13 @@ countries = {
 		capital = riga
 	}
 
-	ARR = { #Archbishopric of Riga https://en.wikipedia.org/wiki/Archbishopric_of_Riga
-		own_control_core = {
+	ARR = {
+		our_cores_conquered_by_others = {
 			gulbene jekabpils koknese limbazi pietalava rauna straupe vilaka
+		}
+ #Archbishopric of Riga https://en.wikipedia.org/wiki/Archbishopric_of_Riga
+		own_control_core = {
+			       
 		}
 
 		include = "catholic_bishopric"
@@ -944,12 +952,16 @@ countries = {
 		capital = limbazi
 	}
 
-	KUR = { #Courland
+	KUR = {
+		our_cores_conquered_by_others = {
+			dundaga piltene
+		}
+ #Courland
 		own_control_core = {
 		}
 
 		own_control_integrated = {
-			dundaga piltene
+			 
 		}
 
 		include = "catholic_bishopric"
@@ -971,8 +983,12 @@ countries = {
 	}
 
 	BIO = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			hapsal lihula kuressaare st_martin
+		}
+
+		own_control_core = {
+			   
 		}
 
 		include = "catholic_bishopric"
@@ -995,8 +1011,12 @@ countries = {
 	}
 
 	BID = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			tartu valka vastseliina vonnu
+		}
+
+		own_control_core = {
+			   
 		}
 
 		include = "catholic_bishopric_no_coast"
@@ -33325,6 +33345,7 @@ countries = {
 
 	UFF = {	#Uffenheim
 		own_control_core = {
+			mergentheim
 			uffenheim crailsheim ohringen kitzingen
 		}
 
@@ -37359,6 +37380,7 @@ countries = {
 
 	POL = {	#Poland
 		own_control_core = {
+			gdansk gniew koscierzyna mirochowo puck tczew tuchola bialobork czluchow nowe swiecie chelmno brodnica grudziadz lubawa torun dobrzyn lipno rypin bytow lebork
 			#Lesser Poland
 			krakow chrzanow ksiaz_wielki proszowice
 			kielce opoczno przedborz zarnow
@@ -37388,16 +37410,14 @@ countries = {
 		}
 		our_cores_conquered_by_others = {
 			#Chełmno Land
-			chelmno brodnica grudziadz lubawa torun
+			    
 			#Kuyavia
 			bydgoszcz inowroclaw
 			#Pomerelia
-			gdansk gniew koscierzyna mirochowo puck tczew
-			tuchola bialobork czluchow nowe swiecie
 
 			#Actually Occupied
 			#Dobrzyń Land
-			dobrzyn lipno rypin
+			  
 		}
 		own_core = {
 		}
@@ -37646,6 +37666,7 @@ countries = {
 	#Rawa
 	RAW = {	#https://en.wikipedia.org/wiki/Duchy_of_Masovia
 		own_control_core = {
+			drohiczyn bielsk_podlaski mielnik sokolow suraz
 			rawa sochaczew wizna goniadz zambrow ostroleka zakroczym przasnysz
 			rozan lomza kolno biala_rawska ciechanow tykocin
 		}
@@ -37855,40 +37876,30 @@ countries = {
 		country_rank = rank_kingdom
 	}
 
-	LIT = {	#Lithuania
+	LIT = {
+		our_cores_conquered_by_others = {
+			vilnius giedraiciai kernave medininkai_vilna ashmyany halshany hieraniony kreva braslaw drysvyaty ezerenai miory kaunas alytus punia vilkaviskis lida astrina eisiskes shchuchyn suwalki lipsk veisiejai trakai lazdijai onushkis merkine svir dokshytsy hlybokaye myadzyel svencionys vileyka upyte birzai linkava panevezys pasvalys vilkmerge anyksciai maleisiai rokiskis utena grodno bershty masty sokolka nyasvizh babruysk luchin rahachow svietlahorsk brest_litowsk biala_podlaska chernyany malaryta wlodawa kobryn dabuchyn hajnowka kamyenyets medininkai raseiniai jurbarkas kedainiai panemune tendziogala siauliai kraziai papile zagare barysaw klichaw krupki lukolm lyubashany lahoysk begoml byerazino ilya krasnoe smalyavichy minsk chervyen koidanova marjina_horka rakau stowbtsy svislach mogilev bykhaw grodek drohiczyn bielsk_podlaski mielnik sokolow suraz palanga rietavas silale skuodas taurage mazeikiai
+		}
+	#Lithuania
 		own_control_core = {
 			#Lithuania
-			vilnius giedraiciai kernave medininkai_vilna
-			ashmyany halshany hieraniony kreva
-			braslaw drysvyaty ezerenai miory
-			kaunas alytus punia vilkaviskis
-			lida astrina eisiskes shchuchyn
-			suwalki lipsk veisiejai
-			trakai lazdijai onushkis merkine
-			svir dokshytsy hlybokaye myadzyel svencionys vileyka
-			upyte birzai linkava panevezys pasvalys
-			vilkmerge anyksciai maleisiai rokiskis utena
+
 			#Black Ruthenia
-			grodno bershty masty sokolka
-			nyasvizh
-			   
+
 			#Polesia
 
 			#Samogitia
-			medininkai
-			raseiniai jurbarkas kedainiai panemune tendziogala
-			siauliai kraziai papile zagare
+
 			#White Ruthenia
 
 		}
 		own_control_integrated = {
-			grodek
+			
 			#Podlasie
-			drohiczyn bielsk_podlaski mielnik sokolow suraz
+			    
 		}
 		own_core = {
-			palanga rietavas silale skuodas taurage
-			mazeikiai
+
 		}
 
 		include = "expl_eastern_europe"
@@ -37927,19 +37938,21 @@ countries = {
 		}
 	}
 
-	SXM = {	#Samogitia - Revolter of LIT
+	SXM = {
+		own_control_core = {
+			medininkai palanga rietavas silale skuodas taurage raseiniai jurbarkas kedainiai panemune tendziogala siauliai kraziai mazeikiai papile zagare
+		}
+	#Samogitia - Revolter of LIT
 		our_cores_conquered_by_others = {
-			medininkai palanga rietavas silale skuodas taurage
-			raseiniai jurbarkas kedainiai panemune tendziogala
-			siauliai kraziai mazeikiai papile zagare
+
 		}
 
-		starting_technology_level = 3
+		starting_technology_level = 2
 		include = "expl_eastern_europe"
-		include = "eastern_european_catholic_monarchy_not_present"
+		include = "eurasian_tribe"
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = tribe
+			heir_selection = tribal_oldest_male
 			ruler = random
 		}
 		capital = raseiniai
@@ -38037,6 +38050,7 @@ countries = {
 
 	NRK = {	#Novogrudok - Vassal of LIT
 		own_control_core = {
+			masty nyasvizh
 			#Black Ruthenia
 			novogrudok lyakhavichy lyubcha turets
 			vawkavysk porazava vowpa
@@ -58420,6 +58434,22 @@ countries = {
 		capital = melfi
 	}
 
+	AUK = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			ashmyany halshany hieraniony kreva braslaw drysvyaty ezerenai miory kaunas punia lida astrina eisiskes shchuchyn trakai onushkis merkine svir dokshytsy hlybokaye myadzyel svencionys vileyka upyte birzai linkava panevezys pasvalys vilkmerge anyksciai maleisiai rokiskis utena vilnius giedraiciai kernave medininkai_vilna
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = kernave
+	}
+
 	BDJ = {
 		own_control_core = {
 			badajoz albuquerque barcarrota jerez_de_los_caballeros villanueva_del_fresno caceres alcantara arroyo brozas valencia_de_alcantara merida azuaga llerena monesterio montanchez zafra plasencia galisteo granadilla jaraicejo valverde trujillo escurial herrera puebla_de_alcocer villanueva_de_la_serena belalcazar medellin zalamea evora avis crato elvas estremoz montemor portalegre portel vila_vicosa beja alvalade alvito moura odemira ourique serpa sines lisbon alcacer_do_sal alcobaca setubal torres_vedras santarem mora_portugal ponte_sor salvaterra tomar torres_novas castelo_branco covilha idanha proenca_nova sabugal coria
@@ -58719,6 +58749,22 @@ countries = {
 		capital = castellon_ampurias
 	}
 
+	ESO = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			parnu karksi poltsamaa saarde suure_jaani viljandi tartu valka vastseliina vonnu tallinn narva padise paide rakvere rapla toolse vasknarva hapsal kaina kuressaare lihula st_martin valjala
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = tartu
+	}
+
 	FAT = {
 		own_control_core = {
 			alexandria el_alamein matruh sallum damanhur ramsis kharibta rashid tarrana wadi_el_natrun dakahla damietta mansoura tinnis ushmum_tannah el_mahalla al_mima el_burullus fuwa samanoud tidah cairo atfih giza menouf qalyub bilbeis faqus kafr_saqr suez asyut el_balyana el_buwit akhmim el_bahnasa beni_suef faiyum sharuna minya ashmunayn manfalut tahna qus edfu esna qena hiw el_qoseir ras_gharib safaga saint_anthony saint_paul_anchorite kharga bahariyya baris el_qasr qasr_farafra siwa el_arish nekhel qatya warrada el_tor el_jundi faran nuweiba saint_katrine jerusalem acre beersheba gaza hebron jaffa majdal nablus safed karak al_quwayrah amman aqaba maan madaba shoubak sughar beirut baalbek deir_qamar sidon tripoli_syria damascus burraq jayrud nabek qutayfah duba ad_disah al_azlam al_wajh bada_yaqub bir_al_qurr aynuna al_bad al_muwaylih haql makna al_ula al_bleiteh al_farah_ula al_marwa az_zubayir mughayra tabuk_arabia al_khanbarah al_muazzam al_ukhaydir bajdah bir_ibn_hermas dhat_al_hajj umluj al_hawra al_manjur al_maramiyah
@@ -58925,6 +58971,22 @@ countries = {
 		capital = yazd
 	}
 
+	KUO = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			kuldiga dundaga durbe grobina kandava piltene saldus ventspils
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = grobina
+	}
+
 	LIA = {
 		own_control_core = {
 			baoan_baoan huailai longqing yijin dacheng wenan changping huairou miyun shunyi yuyang luanyang banbishan fengrun shicheng_jizhou pinggu yutian zunhua yifeng macheng_luanzhou laoting dadu fangshan guan daxing dongan_shuntian wanping yongqing fanyang luxian baodi sanhe_tongzhou lutai xianghe wuqing huaian yunzhou dushikou xuanping longmen_chicheng shunsheng xuande lulong changli funing longwangmiao qianan sanchakou daning_pingquan huihe hezhong naiman pingquan wuping_daning fushu xingzhong xiankang lizhou longshan chuanzhou shenshui quanning songzhou pingdisonglin enhua yingchang dongliangting shangdu chagannur huanzhou baitan yixingzhou kuanhe_xingzhou niushan limin taipingzhuang liuyuan xiabancheng zhangsanying gaoyuan baochang fuzhou weining zhongdu dingliao dandong donggo kuandian wanggika gaizhou fuzhou_liaoyang jinzhou_dalian xiuyan zhuanghe guangning fuxin kaicheng wangping yizhou_jinzhou jinzhou_liaoyang dalinghe haizhou_liaoyang ningyuan_jinzhou qiantun liaoyang fushun_liaoyang hetu_ala jabiyan qinhe shenyang yizhou_jurchen kaiyuan_jurchen ningchang tieling tongliao yehe datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan jining erdao liangcheng pingdi fengzhou yinshan hebin zhenwu ningbian yunnei dongsheng wuchuan jincheng shanyin zhongling shenwu shanyang_yingzhou lingxian_shanxi guangling hunyuan feihu lingqiu zhengjiatun haihaer kailu linhuang qingzhou_mongol xinkai chaghankhot gorlos huolin taluhe tuliemao wafang taizhou_jurchen buteha chol hurle buir_nuur barun_xiabaer khalkh tamsabulag bars_khot bayan_tumen bayantsagaan dalai_nuur menen hailar bayan_ula hulun xuguit yimin avraga kherlen rahsaan_khad uguumur undurkhaan enhe_hada jiliu lower_gazimur merelka upper_gazimur urov abagaita gegen hasar khirkhira talman_boorj choyrin_datsan bayan gazrin_chuluu takhilyn ulziit tavan_tolgoi matad sharga_uul sumtiin zara_uul jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod bishreit dalay doloodyn_gobi ikh_narttin_chuluu saikhandulaan ulaanbadrakh avnagar chono khuuchid sangiin_dalai sorin_nuur ulgain uzemchin bayankhot alxa bagh bayannurhong urad del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan khara_khoto banzart_khairkhan naraan_chilaun noyon_uul zag_suujiyn_gobi kyakhta khadanzaa khan_khentii tsokh selenge khimni ulenkhe zed zelterijin amarbayas_galang bornuur eroo sulkhari khilgo khilgoson ung ude_baikal anaa bureen khudan khurbe khatgal eringiin uur karakorum khar_balgas orkhon tsetserleg baibalyk alyanbulag kharkhul mori_baridag tarvagatai urga kedun khar_bukhyn kharuukh manzushir tuul zagzuugiin_balgas altan_gadas chuluutyn delger_moron ider nibuchu chit ingedei nurchuu tura uldurga qorqonaq_yubur aga boorj unda silkari kara_shilka kuenga uryum tsagaan baruun_tar_nuur lower_ulz upper_ulz yakhi zyyn_tar_nuur onon balj baldan_bereeven kyra
@@ -58980,6 +59042,22 @@ countries = {
 		}
 
 		capital = lleida
+	}
+
+	LTG = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			vilaka jekabpils kraslava makonkalns pietalava rezekne cesis aluksne gulbene rauna valmiera riga koknese limbazi salaspils sigulda straupe
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = koknese
 	}
 
 	MRD = {
@@ -59150,6 +59228,22 @@ countries = {
 		country_rank = rank_kingdom
 
 		capital = dhar
+	}
+
+	PRS = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			konigsberg balga brandenburg_prussia fischhausen gerdauen insterburg wehlau malbork dzierzgon elblag kwidzyn morag lidzbark frombork olsztyn nibork ostroda ryn_poland szczytno wegorzewo tilsit gumbinnen labiau memel ragnit windenburg
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = fischhausen
 	}
 
 	PYS = {
@@ -59466,6 +59560,22 @@ countries = {
 		capital = salerno
 	}
 
+	SUD = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			suwalki lipsk veisiejai elk barten lazdijai alytus vilkaviskis grodno sokolka grodek bershty
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = suwalki
+	}
+
 	SWA = {
 		government = {
 			ruler = swa_rudolf_rheinfelden
@@ -59675,6 +59785,22 @@ countries = {
 		country_rank = rank_county
 
 		capital = villingen
+	}
+
+	ZEM = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			jelgava bauska dobele tukums daugavpils aizkraukle selpils
+		}
+
+		starting_technology_level = 2
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = dobele
 	}
 
 	ZGZ = {
