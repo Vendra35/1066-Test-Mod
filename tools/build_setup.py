@@ -2240,7 +2240,16 @@ FIELD_FIXES = {
     # japanese_imperial_family (:1952) is the 1066 truth; its own
     # locked block (:1968-1976) demands a yamato_dynasty ruler — hence
     # the mandatory Go-Reizei seat in HISTORICAL_RULERS.
-    "JAP": [("\t\t\t\tshogunate", "\t\t\t\tjapanese_imperial_family")],
+    # The first launch (2026-08-01) showed Go-Reizei ruling an
+    # "Ashikaga Empire": vanilla's block carries country_name/flag
+    # overrides to "ASK" — the 1337 shogunal dynasty branding, the same
+    # class as CHI's "YUA" pair. Both removed; the tag falls back to
+    # its own JAP key ("Japan") and its own arms. The inner
+    # `flag = "supports_northern_court"` VARIABLE is a different thing
+    # and stays.
+    "JAP": [("\t\t\t\tshogunate", "\t\t\t\tjapanese_imperial_family"),
+            ('\n\t\tcountry_name = "ASK"', ""),
+            ('\n\t\tflag = "ASK"', "")],
     # France demesne slice: the three landless-to-landed tags swap the
     # _not_present include for the landed variant (the POR entry in
     # reverse). The catholic no_coast variant KEEPS heir_selection

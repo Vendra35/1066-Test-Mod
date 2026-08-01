@@ -21940,8 +21940,6 @@ countries = {
 
 		country_rank = rank_empire
 		capital = kyoto
-		flag = "ASK"
-		country_name = "ASK"
 		color = map_ASK
 	}
 

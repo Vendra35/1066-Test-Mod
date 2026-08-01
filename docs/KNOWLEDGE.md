@@ -1374,6 +1374,15 @@ anyone. SEL itself stays independent — Manzikert 1071 is safe.
 - `rank_duchy_persian` = "Malikdom"/"Malik" (:1673) fires before
   `rank_duchy_muslim` "Emirate" for persian-language duchies — the
   Persian client maliks style themselves for free.
+- **`$PREFIX$` COMPOSES IN GAME — confirmed live 2026-08-01.** KIE at
+  `country_rank = rank_kingdom` with a russian_group culture reaches
+  `rank_duchy_grand_principality_slavic` (country_ranks.txt:1136) and
+  the map renders **"Grand Principality of Kyiv"** — the prefix row
+  (`government_names_l_english.yml:737 "Grand"`) really is prepended to
+  the composed name. The probe class is closed: prefix rows can be
+  designed for, not just hoped for. (Same launch confirmed the whole
+  slavic-principality family: NOV renders "Principality of Velikiy
+  Novgorod" as a monarchy.)
 - `regnal_number = 0` is vanilla's own no-ordinal value — 184 uses,
   including Alfred the Great and Harold Godwinson.
 - **No pop debt for Persia/Iraq:** 634 of the slice's 671 locations are

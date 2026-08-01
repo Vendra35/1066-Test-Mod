@@ -32,9 +32,27 @@ LOG_DIR = os.path.expanduser(
 # entry. Continuation lines (Reason:, indented tooltips, culture
 # lists) attach to the previous entry's bucket.
 KNOWN = [
+    # ------------------------------------------------ REGRESSION ---
+    # Classes CONFIRMED DEAD on the 2026-08-01 accumulated-test launch.
+    # Any line here means a fix regressed — treat as a finding, not
+    # noise. (3702/9635: the Middle Kingdom restore; 1719: audit D2;
+    # 592: the claims guard; 410: _BIRTH_FIXES; 1558/1576/169: the
+    # template-less restatements; 287: the Ayyub conception fix.)
+    ("REGRESSION", "tributary/tusi gate is BACK (Middle Kingdom restore broke?)",
+     r"government\.cpp:3702"),
+    ("REGRESSION", "CHI culture flood is BACK (Middle Kingdom restore broke?)",
+     r"country\.cpp:9635"),
+    ("REGRESSION", "parliament_type barrage is BACK (audit D2 regressed)",
+     r"initialize_from_bookmark\.cpp:1719"),
+    ("REGRESSION", "landless-no-claims is BACK (the claims guard regressed)",
+     r"initialize_from_bookmark\.cpp:592"),
+    ("REGRESSION", "characters without birth are BACK (_BIRTH_FIXES regressed)",
+     r"initialize_from_bookmark\.cpp:410.*no birth scripted"),
+    ("REGRESSION", "template-less law barrage is BACK",
+     r"initialize_from_bookmark\.cpp:(1558|1576)"),
+    ("REGRESSION", "conception-age validator is BACK",
+     r"character_manager\.cpp:287"),
     # -------------------------------------------------- ACCEPTED ---
-    ("ACCEPTED", "tusi/CHA/DAI subject gate (China review, 3702)",
-     r"government\.cpp:3702.*'(tusi|tributary)' is invalid"),
     ("ACCEPTED", "landless-shell law trims (3535 sub-class 3)",
      r"government\.cpp:3535.*Removing invalid law"),
     ("ACCEPTED", "landless/inland privilege trims (3662)",
@@ -59,18 +77,41 @@ KNOWN = [
      r"initialize_from_bookmark\.cpp:792.*ruler traits"),
     ("ACCEPTED", "MINOR_RULERS child-ruler info (1659)",
      r"initialize_from_bookmark\.cpp:1659.*child as a ruler"),
-    ("ACCEPTED", "characters without scripted birth (410)",
-     r"initialize_from_bookmark\.cpp:410.*no birth scripted"),
     ("ACCEPTED", "vanilla formatter tag 'l' (807)",
      r"pdx_text_formatter\.cpp:807"),
     ("ACCEPTED", "scripted war end has no winner (toast loc)",
      r"GetWinnerCountry|WAR_WON_OTHER_COUNTRY"),
-    ("ACCEPTED", "Middle-Kingdom interaction links (our IO strip)",
+    # our IO strips: interactions referencing a stripped IO instance
+    # log an invalid-object link + scope errors per evaluation. The
+    # Celestial pair DIED with the Middle Kingdom restore; the big
+    # remaining source is lordship_of_ireland (5 interactions x ~107).
+    # Zero impact — the interactions cannot be taken. An exists-guard
+    # override is BANKED if the noise ever matters (decoder).
+    ("ACCEPTED", "stripped-IO interaction links (lordship_of_ireland etc.)",
      r"Event target link 'international_organization' returned"),
+    ("ACCEPTED", "stripped-IO interaction scope refs (jomini 252 family)",
+     r"Scoped object of type 'international_organization' is not valid"
+     r"|jomini_script_system\.cpp:252"),
+    # law fails the including government's own gates and self-heals
+    # (the KAZ-polygyny family; YEM/ABS heir_same_religion 2026-08-01).
+    ("ACCEPTED", "law-vs-government mismatch self-heal (3544)",
+     r"government\.cpp:3544"),
+    # town/market setup on locations LOCATION_VACATED emptied
+    # (sarayjuk, chimgi_tura — the Kipchak/Siberia vacate).
+    ("ACCEPTED", "buildings on vacated locations (2065)",
+     r"initialize_from_bookmark\.cpp:2065"),
+    ("ACCEPTED", "stranded owner-buildings (844)",
+     r"building\.cpp:844"),
+    ("ACCEPTED", "unused-modifier waste (static_modifier 516)",
+     r"static_modifier\.cpp:516"),
+    ("ACCEPTED", "input/UI environment noise (pdxinput 2896)",
+     r"pdxinput_context\.cpp:2896"),
+    ("ACCEPTED", "UI tooltip build hiccup (tooltips_utils)",
+     r"tooltips_utils\.h:85"),
     ("ACCEPTED", "stale MR game-rule keys in settings",
      r"mr_railroad_on|MR_mongol_resurgence"),
     ("ACCEPTED", "stale-settings empty key refs (persistent_reader 289)",
-     r"Failed to read key reference: :"),
+     r"Failed to read key reference: (:|\"\")"),
     ("ACCEPTED", "system/hardware noise (VRAM, mipmaps, gui perf)",
      r"interface_application\.cpp|icondatabase\.h|Not enough dedicated"
      r"|minimum requirements|poor performance"),
@@ -81,10 +122,19 @@ KNOWN = [
      r"international_organizations/hre\.txt:328"),
     ("WATCH", "vanilla dominion null target (dominion.txt:152)",
      r"subject_types/dominion\.txt:152"),
-    ("WATCH", "army-based country shatters (2477)",
+    # QUN alone as of 2026-08-01 — HLG/SLD's lines died with their
+    # landless retirement, proving landless is the class's cure.
+    ("WATCH", "army-based country shatters (2477 — QUN only now)",
      r"initialize_from_bookmark\.cpp:2477"),
     ("WATCH", "DUB inherits the Pale's forts (9778)",
      r"country\.cpp:9778"),
+    # one line at init while the restored IO's floods stay dead — the
+    # leader_modifier demonstrably applies; decode further only if a
+    # second symptom appears.
+    ("WATCH", "restored Middle Kingdom leader-validity line (io 1557)",
+     r"international_organization\.cpp:1557"),
+    ("WATCH", "markets on vacated locations (2388 — trade impact unmeasured)",
+     r"initialize_from_bookmark\.cpp:2388"),
     ("WATCH", "engine-derived loc key missing (103) — often OURS",
      r"localization_util\.cpp:103"),
 ]

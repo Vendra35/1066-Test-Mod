@@ -1472,6 +1472,30 @@ TEST — one glance + two clicks:
    active.
 4. Regression: the two Seljuk CHA/DAI-class tributary screens open.
 
+**ITEMS 27-30 CONFIRMED IN GAME (2026-08-01, the accumulated test,
+screenshots + a full scan_log pass).** Map overview: five Rus states,
+the EMPTY Kipchak steppe/West Siberia (the vacate renders), both
+Kara-Khanid blues, al-Hasa, the deliberate Golden Horde remnant west
+of the Volga. Probes: "Ibrahim I" and ordinal-less "Mahmud";
+**"Grand Principality of Kyiv" — the $PREFIX$ probe PASSED (new law,
+KNOWLEDGE)**; Novgorod a monarchy AND Kyiv's tributary; Medina under
+FAT; Go-Reizei seated. **The log: every target class DEAD** — ABS/FAT
+:1719, :592, the ~128-line tusi/3702 flood, CHA/DAI, CHI's 9635, the
+birth/conception classes — zero regressions, zero unknown lines after
+the scan_log upgrade (tools/scan_log.py now carries a REGRESSION
+bucket for the dead classes and the new accepted classes: vacated
+towns/markets ×28 (2065/2388 — markets are a WATCH), law-vs-gov
+self-heal ×4 (3544), lordship_of_ireland interaction refs ×~1200
+(jomini-252 family, zero impact, exists-guard override banked),
+io.cpp:1557 MK leader line ×1 (WATCH — floods stay dead so the
+leader_modifier demonstrably applies), :2477 down to QUN alone
+(landless retirement PROVED the cure on HLG/SLD).
+**One real defect found and FIXED same session:** Go-Reizei ruled an
+"Ashikaga Empire" — vanilla JAP carries `country_name = "ASK"` +
+`flag = "ASK"` (the 1337 shogunal branding, CHI's "YUA" class);
+both stripped via FIELD_FIXES, renders "Japan" with JAP's own arms
+NEXT LAUNCH (one click to confirm).
+
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
    re-verify key file:line claims before trusting anything), then give
