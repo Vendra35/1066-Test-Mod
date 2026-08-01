@@ -970,6 +970,152 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
 check("coat of arms references resolve", _coa_count, probs, min_count=96)
 
+# ---- audit 2026-07-31: the four class-closing checks -----------------------
+# From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
+# 1-4). Each closes the CLASS one of the confirmed D-findings landed in.
+
+# (1) Identity <-> start-block bijection. A registered tag without a start
+# block NEVER EXISTS in game — it cannot catch up later (MR, live
+# 2026-07-31); vanilla's only blockless registry entries are the three
+# engine placeholders. The reverse is the PYS lesson: a start block whose
+# tag is unregistered is rejected whole and its land goes ownerless. The
+# effective registry is vanilla's setup/countries overlaid by same-name mod
+# files (iberia/italy), plus mod-only files (zz_1066_new_countries).
+probs = []
+_ID_TAG = re.compile(r"^([A-Z][A-Z0-9_]{1,7})\s*=\s*\{", re.M)
+_id_files = {os.path.basename(_p): read(_p) for _p in
+             glob.glob(os.path.join(VAN, "in_game", "setup", "countries", "*.txt"))}
+for _p, _s in code.items():
+    if "/in_game/setup/countries/" in _p:
+        _id_files[os.path.basename(_p)] = _s
+_id_tags = set()
+for _s in _id_files.values():
+    _id_tags |= set(_ID_TAG.findall(strip_comments(_s)))
+_start_tags = set(re.findall(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{",
+                             strip_comments(_countries10), re.M))
+_PLACEHOLDERS = {"DUMMY", "MER", "PIR"}  # _default.txt engine placeholders
+for _t in sorted(_id_tags - _start_tags - _PLACEHOLDERS):
+    probs.append(f"registry tag {_t} has NO 10_countries block — it will "
+                 "never exist in game, not even as a landless shell")
+for _t in sorted(_start_tags - _id_tags):
+    probs.append(f"10_countries block {_t} has NO registry identity block — "
+                 "the engine rejects the whole block (PYS lesson)")
+check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
+      len(_id_tags), probs, min_count=2385)
+
+# (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
+# and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
+# the authoring check had compared rgb VALUES, and a word-boundary tag scan
+# cannot see a map_TAG key at all (underscore is a word character). Compare
+# KEY NAMES, mod against vanilla.
+probs = []
+_CKEY = re.compile(r"^\s*([A-Za-z0-9_]+)\s*=\s*(?:rgb|hsv|hex|\{)", re.M)
+_van_ckeys = set()
+for _p in glob.glob(os.path.join(VAN, "main_menu", "common",
+                                 "named_colors", "*.txt")):
+    _van_ckeys |= set(_CKEY.findall(strip_comments(read(_p))))
+_mod_ckeys = set()
+for _p, _s in code.items():
+    if "/main_menu/common/named_colors/" in _p:
+        _mod_ckeys |= set(_CKEY.findall(strip_comments(_s)))
+_van_ckeys.discard("colors"); _mod_ckeys.discard("colors")
+_INTENTIONAL_COLOR_OVERRIDES = set()  # none today — only ever deliberate
+for _k in sorted((_mod_ckeys & _van_ckeys) - _INTENTIONAL_COLOR_OVERRIDES):
+    probs.append(f"named colour {_k} redefines a vanilla key (zz_ loads "
+                 "last, vanilla consumers move with it) — rename it "
+                 f"{_k}_1066 or add to _INTENTIONAL_COLOR_OVERRIDES")
+for _k in sorted(_INTENTIONAL_COLOR_OVERRIDES - _mod_ckeys):
+    probs.append(f"_INTENTIONAL_COLOR_OVERRIDES lists {_k}, which our "
+                 "named_colors files no longer define — stale entry")
+check("mod named colours shadow no vanilla key", len(_mod_ckeys), probs,
+      min_count=42)
+
+# (3) .gui references resolve, and the hint-pair rule. using =
+# fontsize_medium resolved to NOTHING anywhere and failed silently (D4).
+# Blanking visible_hint flips the template default visible = no, so the
+# hint button APPEARS; blanking onaction_hint kills its action — together
+# a visible dead button (D5; vanilla: 19/19 panels that blank visible_hint
+# supply a real onaction_hint, 8 more cards override neither).
+probs = []
+_gui_defs, _gui_blocks = set(), set()
+for _root in (VAN,):
+    for _p in glob.glob(os.path.join(_root, "*", "gui", "**", "*.gui"),
+                        recursive=True):
+        _s = open(_p, encoding="utf-8-sig", errors="replace").read()
+        _gui_defs |= set(re.findall(r"^\s*template\s+([A-Za-z0-9_]+)", _s, re.M))
+        _gui_defs |= set(re.findall(r"^\s*type\s+([A-Za-z0-9_]+)\s*=", _s, re.M))
+        _gui_blocks |= set(re.findall(r'\bblock\s+"([^"]+)"', _s))
+for _p in gui_files:
+    _s = open(_p, encoding="utf-8-sig").read()
+    _gui_defs |= set(re.findall(r"^\s*template\s+([A-Za-z0-9_]+)", _s, re.M))
+    _gui_defs |= set(re.findall(r"^\s*type\s+([A-Za-z0-9_]+)\s*=", _s, re.M))
+    _gui_blocks |= set(re.findall(r'\bblock\s+"([^"]+)"', _s))
+_gui_refs = 0
+for _p in gui_files:
+    _rel = os.path.relpath(_p, MOD)
+    _clean = re.sub(r"#.*", "", open(_p, encoding="utf-8-sig").read())
+    for _u in re.findall(r"using\s*=\s*([A-Za-z0-9_]+)", _clean):
+        _gui_refs += 1
+        if _u not in _gui_defs:
+            probs.append(f"{_rel}: using = {_u} is defined nowhere (mod or "
+                         "vanilla gui trees) — widget silently keeps defaults")
+    for _b in re.findall(r'blockoverride\s+"([^"]+)"', _clean):
+        _gui_refs += 1
+        if _b not in _gui_blocks:
+            probs.append(f'{_rel}: blockoverride "{_b}" matches no declared '
+                         "block name anywhere — silently ignored")
+    _gui_refs += len(re.findall(r'blockoverride\s+"visible_hint"', _clean))
+    if (re.search(r'blockoverride\s+"visible_hint"\s*\{\s*\}', _clean)
+            and not re.search(
+                r'blockoverride\s+"onaction_hint"\s*\{[^{}]*\S[^{}]*\}',
+                _clean)):
+        probs.append(f"{_rel}: blanks visible_hint (default visible = no — "
+                     "the button APPEARS) without a non-empty onaction_hint: "
+                     "a visible dead button; drop the override instead (D5)")
+check(".gui using/blockoverride references resolve", _gui_refs, probs,
+      min_count=13)
+
+# (4) Every LANDED country reaches a parliament_type — inline or through
+# its include chain (templates may nest includes; 8 vanilla templates
+# inherit it that way). ABS/FAT were the only two blocks in mod OR vanilla
+# without one (D2): initialize_from_bookmark.cpp:1719, silent defaults.
+probs = []
+_tpl_paths = {}
+for _root in (MOD, VAN):  # mod first: a mod template would override
+    for _f in glob.glob(os.path.join(_root, "main_menu", "setup",
+                                     "templates", "**", "*.txt"),
+                        recursive=True):
+        _tpl_paths.setdefault(os.path.splitext(os.path.basename(_f))[0], _f)
+_tpl_cache = {}
+def _tpl_has_parl(name, _seen=None):
+    _seen = _seen if _seen is not None else set()
+    if name in _seen or name not in _tpl_paths:
+        return False
+    _seen.add(name)
+    if name not in _tpl_cache:
+        _s = strip_comments(read(_tpl_paths[name]))
+        _tpl_cache[name] = ("parliament_type" in _s or any(
+            _tpl_has_parl(_n, _seen)
+            for _n in re.findall(r'include\s*=\s*"([^"]+)"', _s)))
+    return _tpl_cache[name]
+_landed = 0
+for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
+                      strip_comments(_countries10), re.M | re.S):
+    _tag, _body = _m.group(1), _m.group(2)
+    # landed = any own* ownership list with content (our_cores_* is claims)
+    if not re.search(r"^\t\town\w*\s*=\s*\{[^}]*\w", _body, re.M):
+        continue
+    _landed += 1
+    if "parliament_type" in _body:
+        continue
+    if any(_tpl_has_parl(_n)
+           for _n in re.findall(r'include\s*=\s*"([^"]+)"', _body)):
+        continue
+    probs.append(f"{_tag}: landed with no parliament_type inline or via "
+                 "its include chain — the :1719 class (D2), silent default")
+check("landed countries reach a parliament_type", _landed, probs,
+      min_count=1460)
+
 print()
 if fails:
     print(f"RESULT: {len(fails)} check(s) with findings: {', '.join(fails)}")
