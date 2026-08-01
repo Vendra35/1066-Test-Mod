@@ -2636,8 +2636,8 @@ FIELD_FIXES = {
              # Song-defining institution, gate passes on the
              # Chinese court + MK leadership) and the civil-
              # service capacity reform (grand-test fix).
-             "\n\t\t\t\tthree_departments_system"
-             "\n\t\t\t\tsong_civil_service_reform"),
+             "\n\t\t\t\tsong_civil_service_reform"
+             "\n\t\t\t\tthree_departments_system"),
             ("\n\t\t\t\tstatus_of_the_han_law = limit_the_han_powers", ""),
             # Yuan cosmopolitan tolerance the Song court never
             # kept: the eleven steppe/Inner-Asian entries go

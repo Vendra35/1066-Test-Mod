@@ -26422,8 +26422,8 @@ countries = {
 			}
 
 			reforms = {
-				three_departments_system
 				song_civil_service_reform
+				three_departments_system
 			}
 			ruler = chi_zhao_shu_yingzong
 			ruler_term = { character = chi_zhao_shu_yingzong start_date = 1063.5.1 regnal_number = 0 regnal_name = Yingzong }
