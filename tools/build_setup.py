@@ -5619,6 +5619,45 @@ def build_countries(src):
     report.append(("displaced tags verified landless, claims-backed",
                    len(LANDLESS_AFTER)))
 
+    # THE BALTIC BREAK-TEST'S FINDING (e), 2026-08-01: the guard above
+    # inspects only LANDLESS_AFTER members — a tag EMPTIED by grants
+    # but never listed shipped a green build as a claimless shell the
+    # engine rejects at start (RIG, observed deliberately; KLB nearly
+    # shipped the same way from the Arabia package). Delta sweep,
+    # validate-ours/report-theirs: every tag that holds land in
+    # PRISTINE vanilla must either still hold land or sit in
+    # LANDLESS_AFTER. Pop countries and vanilla's own landless shells
+    # hold nothing in pristine and are excluded by construction.
+    # Proven by breaking: RIG removed from BALTIC_LANDLESS -> this
+    # exit, restored (same day).
+    def _held_index(s):
+        out = {}
+        blocks_hi = list(re.finditer(COUNTRY_RE, s, re.M))
+        for i, b in enumerate(blocks_hi):
+            end = blocks_hi[i + 1].start() if i + 1 < len(blocks_hi) else len(s)
+            body = s[b.start():end]
+            n = 0
+            for key in OWN_KEYS:
+                for m in re.finditer(r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{",
+                                     body, re.M):
+                    bo = body.index("{", m.start())
+                    inner = re.sub(r"#[^\n]*", "",
+                                   body[bo + 1:find_block_end(body, bo)])
+                    n += len(re.findall(r"[a-z][A-Za-z0-9_]*", inner))
+            out[b.group(1)] = out.get(b.group(1), 0) + n
+        return out
+    _held_pre = _held_index(_pristine)
+    _emptied = sorted(t for t, n in _held_index(src).items()
+                      if not n and _held_pre.get(t, 0)
+                      and t not in LANDLESS_AFTER)
+    if _emptied:
+        sys.exit(f"emptied but not in LANDLESS_AFTER: {_emptied} — these "
+                 "tags held land in vanilla, hold none now, and carry no "
+                 "derived claims; the engine rejects them at start "
+                 "(initialize_from_bookmark.cpp:592, the RIG/KLB class)")
+    report.append(("tags emptied by us verified listed (delta)",
+                   len(_held_pre)))
+
     # TRE surgery: the 1204.4.1 themata bureaucracy records the founding
     # of an empire that does not exist in 1066, and the Grand-Komnenoi
     # regnal counts are the same 1204+ inflation the BYZ REGNAL_FIXES
