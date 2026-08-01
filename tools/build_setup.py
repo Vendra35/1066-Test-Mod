@@ -1769,6 +1769,20 @@ CAPITAL_FIXES = {
     "SIC": ("palermo", "messina"),    # Roger holds Palermo only from 1072; Messina is the 1061 beachhead (Italy slice)
     "OGK": ("aachen", "goslar"),      # Henry III's Kaiserpfalz, Heinrich IV's birthplace [U]; culture matches OGK's registry (HRE slice)
     "PAL": ("heidelberg", "kaiserslautern"), # Heidelberg is first attested 1196; Kaiserslautern is a Salian palace PAL already holds (Germany II)
+    # The audit-D1 nine (AUDIT-2026-07-31): capitals stripped by earlier
+    # sweeps/grants with no repoint — six arrived through area/province
+    # sweeps that never name locations, which is why nobody reviewed them.
+    # Mechanical seats on the tag's own remaining holdings; the Arabia and
+    # Central Asia packages refine the Mongol-era relics properly later.
+    "ETA": ("etampes", "gien"),           # etampes went to FRA (France slice); gien is ETA's only holding
+    "AAL": ("qutayfah", "dumat_al_jandal"),  # qutayfah went to FAT; Dumat al-Jandal is the Jawf's historical oasis seat
+    "FDL": ("tadmur", "zubala"),          # tadmur went to HLB; Zubala is the Darb Zubaydah station among FDL's wells
+    "FRI": ("groningen", "leeuwarden"),   # groningen went to UTR (Germany II); Leeuwarden is Frisia's chief town
+    "JLM": ("van", "baskale"),            # van went to BYZ; Baskale is the Hakkari highland seat JLM keeps (JLM = Julamerk)
+    "ORM": ("hormuz", "qalhat"),          # hormuz went to SEL (fars sweep); Qalhat is the Hormuzi realm's attested twin city on the Oman shore
+    "HLG": ("basra", "kazimah"),          # basra went to SEL (iraq sweep); kazimah is HLG's only holding
+    "QUN": ("kabul", "kulob"),            # kabul went to GHZ; Kulob is the Khuttal region's town among QUN's holdings (QUN = Qara'unas)
+    "SLD": ("balkh", "termez"),           # balkh went to SEL (khorasan sweep); Termez is Tokharistan's city among SLD's holdings (SLD = Suldus)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -3757,6 +3771,10 @@ def build_countries(src):
     report = []
     _assert_new_block_discovery()
     before = len(re.findall(COUNTRY_RE, src, re.M))
+    # Pristine vanilla text, kept for the orphan-capital delta in validate():
+    # only violations WE introduce fail the build (vanilla ships 10 of its
+    # own — report-only, per the validate-ours/report-theirs rule).
+    _pristine = src
 
     for key in COUNTRY_BLOCKS:
         src, n = strip_blocks(src, key)
@@ -4480,6 +4498,44 @@ def build_countries(src):
         if starts_seen != len(HISTORICAL_RULERS):
             return (f"{starts_seen} start_dates survived, expected exactly "
                     f"{len(HISTORICAL_RULERS)} (one per generated ruler_term)")
+
+        # No capital may be stripped without a CAPITAL_FIXES repoint. The
+        # audit-D1 nine all arrived exactly this way — six through
+        # area/province sweeps that never name a location, so no reviewer
+        # ever saw the capital go. Delta against PRISTINE vanilla: a tag
+        # vanilla already ships orphaned (10 of them) is theirs to fix,
+        # not a build failure here.
+        def _orphan_capitals(text):
+            t_nc = re.sub(r"#[^\n]*", "", text)
+            t_bs = list(re.finditer(COUNTRY_RE, t_nc, re.M))
+            orphans = {}
+            for i, m in enumerate(t_bs):
+                e = t_bs[i + 1].start() if i + 1 < len(t_bs) else len(t_nc)
+                body = t_nc[m.start():e]
+                # [A-Za-z0-9_]: location ids can embed uppercase tag
+                # suffixes (trgoviste_SER) — a lowercase-only class split
+                # the token and produced a false orphan on first run.
+                capm = re.search(r"^[ \t]*capital[ \t]*=[ \t]*([A-Za-z0-9_]+)",
+                                 body, re.M)
+                if not capm:
+                    continue
+                held = []
+                for key in OWN_KEYS:
+                    for om in re.finditer(
+                            r"^[ \t]*" + key + r"[ \t]*=[ \t]*\{", body, re.M):
+                        bo = body.index("{", om.start())
+                        held.extend(re.findall(r"[a-z][A-Za-z0-9_]*",
+                                               body[bo + 1:find_block_end(body, bo)]))
+                if held and capm.group(1) not in held:
+                    orphans[m.group(1)] = capm.group(1)
+            return orphans
+        _van_orph = _orphan_capitals(_pristine)
+        _mod_orph = {t: c for t, c in _orphan_capitals(src).items()
+                     if _van_orph.get(t) != c}
+        if _mod_orph:
+            return ("capitals stripped without a CAPITAL_FIXES repoint: "
+                    + ", ".join(f"{t}->{c}"
+                                for t, c in sorted(_mod_orph.items())[:8]))
         return None
 
     return src, report, validate, (f"{before} vanilla country blocks kept"

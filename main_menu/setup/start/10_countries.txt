@@ -14236,7 +14236,7 @@ countries = {
 			}
 		}
 
-		capital = etampes
+		capital = gien
 	}
 
 	#Forez (Vassal, Fief Mouvant)
@@ -30028,7 +30028,7 @@ countries = {
 			syriac_culture
 		}
 
-		capital = van
+		capital = baskale
 		dynasty = jolemark_dynasty
 		religious_school = maturidi_school #Widespread among the Turks together with Hanafi
 	}
@@ -31027,7 +31027,7 @@ countries = {
 			ruler = random
 		}
 
-		capital = qutayfah
+		capital = dumat_al_jandal
 		tolerated_cultures = {
 			levantine_culture
 			najdi_culture
@@ -31084,7 +31084,7 @@ countries = {
 			ruler = random
 		}
 
-		capital = tadmur
+		capital = zubala
 		tolerated_cultures = {
 			levantine_culture
 		}
@@ -36610,7 +36610,7 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_western_europe"
-		capital = groningen
+		capital = leeuwarden
 		government = {
 			type = republic
 			heir_selection = oligarchic_elective
@@ -53553,7 +53553,7 @@ countries = {
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
 		
-		capital = hormuz
+		capital = qalhat
 	}
 
 	FAL = {
@@ -54386,7 +54386,7 @@ countries = {
 		government = { mysticism_vs_jurisprudence = 20 }
 		
 		country_rank = rank_kingdom
-		capital = basra
+		capital = kazimah
 	}
 
 	NGD = {
@@ -54465,7 +54465,7 @@ countries = {
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
 		
-		capital = kabul
+		capital = kulob
 	}
 
 	BSD = {
@@ -54617,7 +54617,7 @@ countries = {
 		religious_school = shafii_school
 		government = { mysticism_vs_jurisprudence = 20 }
 		
-		capital = balkh
+		capital = termez
 	}
 
 	BRL = { #Barlas
