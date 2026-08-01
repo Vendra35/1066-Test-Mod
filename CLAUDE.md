@@ -179,14 +179,23 @@ will not surface it. Going up more than one hop: `save_scope_as` + `scope:x`,
 never `prev.prev` (zero vanilla uses). Mongol Resurgence's harness has a scope
 walker with a canary for this; port it.
 
-**A tag that is DEFINED but holds no land is brought onto the map by
-`change_location_owner` alone.** No formable, no `create_country_from_location`.
-Vanilla revives SKE — landless at 1337, identity-only block in
-`setup/countries/_scandinavia.txt` — with a plain
-`location:asbo = { change_location_owner = c:SKE }`
-(`events/DHE/flavor_swe_dan.txt:4`). The `culture_definition` and
-`religion_definition` fields in a `setup/countries` block exist precisely so the
-engine can instantiate a tag that comes into existence later.
+**A new tag needs TWO registrations — and the "SKE law" this paragraph once
+stated is DEAD (audited 2026-08-01, AUDIT-2026-07-31 §4.1).** SKE never
+demonstrated anything: it is LANDED at 1337 — eleven locations and a throne
+(`10_countries.txt:308-318`), a SWE fiefdom from setup (`12_diplomacy.txt:51`) —
+and `flavor_swe_dan.txt` merely returns two core locations to that living
+vassal. Vanilla's 2340 identity tags contain ZERO registered-but-landless
+countries (the only blockless registry entries are the DUMMY/MER/PIR
+placeholders). What IS measured: an identity block in
+`in_game/setup/countries/` (the tag registry — mandatory, the PYS lesson) AND
+a `10_countries` start block, claims-backed landless if the tag must wait
+(this mod ships 180 such shells); a tag without a start block never exists at
+all and cannot catch up later (MR, live, 2026-07-31). Runtime arrival is the
+vanilla TRIPLE — `change_location_owner` + `add_core` +
+`change_integration_level = core` (`fall_of_delhi.txt:299-301`; without the
+third the land sits at `integration_conquered`) — plus religion and culture
+set BY HAND: the registry's `culture_definition`/`religion_definition` are
+read at bookmark init only, never on a runtime handover (MR, measured twice).
 `create_country_from_location` (`effects.log:1230`) is the OTHER tool: it makes
 a country with a GENERATED tag, which is what vanilla wants for Red Turban
 splinters and wokou republics and what you do NOT want when the successor must

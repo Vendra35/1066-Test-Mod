@@ -45,14 +45,18 @@ Empire pass (F6, formables-without-identity), all in KNOWLEDGE.md.
 2. **Territory taken FROM existing owners.** A new tag's locations must be
    REMOVED from whoever holds them at 1337 — ownership must stay
    exclusive. This is the mechanism's real work and its real risk.
-3. **An identity block in `in_game/setup/countries/` — PROBABLY OPTIONAL
-   for landed tags.** Load-bearing observation from the Levant pass:
-   **SIC has NO identity block anywhere and lives as a landed 1337
-   kingdom.** Identity blocks (`culture_definition`, `religion_definition`)
-   exist so LANDLESS tags can be instantiated later (the SKE law). A new
-   tag born WITH land plausibly needs none — cheap to try first, add if
-   the game disagrees. If needed: additive file, KOJ (`crescent.txt:45`)
-   as the shape.
+3. **An identity block in `in_game/setup/countries/` — MANDATORY, landed
+   or not.** Answered the hard way by the PYS probe (see Open questions
+   below): a tag absent from the identity files does not exist — the
+   engine rejects the whole 10_countries block and the transferred
+   locations end up OWNERLESS. (The Levant pass's "SIC has no identity
+   block" observation was a search miss — it is at `italy.txt:462`. The
+   "SKE law" once cited here is dead: SKE is landed at 1337,
+   AUDIT-2026-07-31 §4.1.) The `culture_definition`/`religion_definition`
+   fields are bookmark-init fields only — a runtime spawn must be handed
+   its faith and culture explicitly (MR, measured 2026-07-31). Additive
+   file, KOJ (`crescent.txt:45`) as the shape; ours is
+   `in_game/setup/countries/zz_1066_new_countries.txt`.
 4. **A named color** — additive `main_menu/common/named_colors/` file
    (ours exists). `map_egypt` already ships for EGY (`02_map.txt:885`).
 5. **Loc: `TAG` and `TAG_ADJ` keys** — our loc file. For Muslim
@@ -89,7 +93,8 @@ New assertions (each to be proven by breaking, as always):
   HISTORICAL_RULERS, its historical ruler landed in it;
 - every NEW tag has a named color and TAG/TAG_ADJ loc keys (harness side).
 
-Displaced 1337 tags are EMPTIED, never deleted — the SKE landless road —
+Displaced 1337 tags are EMPTIED, never deleted — the landless-shell road:
+identity block kept, `10_countries` block kept claims-backed —
 because events and formables reference them by name
 (rise_of_the_ottomans.txt names TUR; deleting blocks breaks references
 silently). Their `our_cores_conquered_by_others` claims stay, which is

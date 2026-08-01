@@ -170,7 +170,7 @@ the Gregorian reform's own slogan, no date gate
 | `start_civil_war` | 10471 | **rebels** → country | Byzantine 1077-81, Sancho/Alfonso |
 | `start_revolt` | 10493 | rebels | lesser risings |
 | `set_rebel_demands` / `support_rebel` / `destroy_rebel` | 10304 / 10523 / 1465 | | |
-| `change_location_owner` | 911 | location → country | brings a landless tag onto the map (the SKE law) |
+| `change_location_owner` | 911 | location → country | ownership handover — HALF of vanilla's triple (+ `add_core` + `change_integration_level = core`, fall_of_delhi.txt:299-301); the "SKE law" is dead (AUDIT-2026-07-31 §4.1) |
 | `create_country_from_location` | 1230 | location → country | generated-tag splinters only |
 | `change_location_controller` / `change_control` / `change_siege_progress` | 901 / 750 / 1036 | location | sieges as events |
 | `make_subject_of` / `change_subject_type` / `cancel_subject` | 3610 / 1044 / 678 | country | tributary/vassal surgery |
@@ -579,11 +579,19 @@ in a single day".
 Cuman khan, a Pecheneg house. Vanilla has ZERO Pecheneg content.
 
 **Mechanics:** **PEC instantiated BY EVENTS** (the banked philosophy:
-a state earned, not set up) — NEW_COUNTRIES-style identity block
-required (PYS law), change_location_owner in, annihilated back out in
-1091; the "Hire the Cumans" situation action WITH A PRICE is the
-centerpiece; a permanent the_scythians_are_no_more modifier. Map gaps
-recorded: silistra, sofia, pliska, adrianople, levounion.
+a state earned, not set up) — BOTH registrations shipped at setup:
+identity block (PYS law) AND a claims-backed landless `10_countries`
+shell, because a start-blockless tag never exists at all and cannot
+catch up (MR, live 2026-07-31; AUDIT-2026-07-31 §4.1/§4.15). Arrival
+is the vanilla triple — change_location_owner + add_core +
+change_integration_level = core (fall_of_delhi.txt:299-301) — with
+religion/culture set by hand (registry fields are bookmark-init only);
+annihilated back out in 1091. NOTE: the full runtime-arrival
+combination is UNOBSERVED in game — probe it on a throwaway before
+building the situation on it. The "Hire the Cumans" situation action
+WITH A PRICE is the centerpiece; a permanent the_scythians_are_no_more
+modifier. Map gaps recorded: silistra, sofia, pliska, adrianople,
+levounion.
 
 **Flavour:** the frontier already inside; Tzachas the emperor-emir;
 the April ditty; buying the steppe with the steppe; the massacre,

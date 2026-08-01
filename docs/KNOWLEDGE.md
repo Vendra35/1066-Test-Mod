@@ -914,8 +914,10 @@ landing; the structural claims below carry vanilla file:line cites.
   (item 25), inheriting name/adjective/color/ARMS free; the cost is
   that the formable becomes unreachable (its target exists from day 1).
   EGY's rejection still stands — that was identity mismatch (Fatimids
-  are not "Egypt"), not formable status. CRH/STY are the SKE case
-  proper (landless WITH identity blocks).
+  are not "Egypt"), not formable status. CRH/STY are plain landless
+  shells (identity block + claims-backed `10_countries` block — the
+  shape once misattributed to SKE, which is in fact LANDED at 1337;
+  AUDIT-2026-07-31 §4.1).
 - The electors (`elector = { BOH SWB BRA PAL }` + three archbishops) are
   the 1356 Golden Bull read backwards; vanilla ships
   `no_golden_bull_policy` so a pre-Bull state is modelled.
@@ -948,8 +950,8 @@ the East is the inverse: **the rulers are free, the territory is the job.**
   born before 1210) hold 253. BYZ's own `our_cores_conquered_by_others`
   (:13023-13060) is a Paradox-written 63-location reconquest manifest
   with loss-year comments. Balkans add ~130 more (BUL's 63 Byzantine
-  since 1018, Latin Greece…). Dissolve-vs-empty (the SKE landless road)
-  is the slice's one real design call — parked.
+  since 1018, Latin Greece…). Dissolve-vs-empty (the landless-shell
+  road) is the slice's one real design call — parked.
 - **Three vanilla bugs, citable:** BYZ regnal_numbers carries
   `name_andonikos = 3` (:13282) — a typo, zero loc keys match
   (`name_andronikos` is the key); `byz_romanos_iv_diogenes` wears

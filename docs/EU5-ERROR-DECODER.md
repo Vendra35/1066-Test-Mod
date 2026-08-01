@@ -608,17 +608,21 @@ second bug. 1066 is full of hordes, so this disaster CAN fire here —
 when the signature appears, it is this.
 **Fix:** none — accepted, harmless no-op.
 
-### `initialize_from_bookmark.cpp:495-1719 — Country '<TAG>' has no government type / heir-selection / capital / society values / parliament_type…` (12-line barrage per tag)
-**Means:** a registry identity block with NO presence at bookmark init.
-Measured on MR's KAZ (2026-07-30): the initializer accepts any ONE of
-three things — a 10_countries block, revolter cores (vanilla SKE,
-10_countries.txt:308), or `is_historic = yes` on the identity block
-(vanilla's idiom, 58 uses, balkans.txt:40). Our landless shells all
-carry 10_countries claim blocks, which is why this never fired here.
-**Fix:** if a future slice ships a PURE identity block (no 10_countries
-presence at all), add `is_historic = yes` — and test that
-`change_location_owner` still instantiates it (unobserved combination,
-flagged in MR's Great Partition test).
+### `initialize_from_bookmark.cpp:495-1719 — Country '<TAG>' has no government type / heir-selection / capital / society values / parliament_type…` (10-line barrage per tag: :495 :498 :517 :520 :525 :528 :1558 :1576 :169 :1719)
+**Means:** a registry identity block with NO `10_countries` presence at
+bookmark init. The ONLY silencer is a start block — landed or
+claims-backed landless. Corrected 2026-08-01 (AUDIT-2026-07-31 §4.3):
+an earlier version of this entry conflated this signature with `:592`
+below — `is_historic = yes` belongs to THAT one and does NOT silence
+this barrage (MR, live, 2026-07-31: three is_historic tags produced
+the full barrage anyway). Vanilla corroborates: all 55 of its
+`is_historic = yes` tags ALSO carry a start block, and SKE — once
+cited here as "revolter cores instead of a block" — is a landed
+kingdom whose block IS `10_countries.txt:308`. Our landless shells all
+carry claims-backed 10_countries blocks, which is why this never
+fired here.
+**Fix:** give the tag a start block — a claims-backed landless shell
+is enough. There is no alternative route; vanilla ships none.
 
 ### `initialize_from_bookmark.cpp:592 — Country '<TAG>' does not exist, nor has cores as a revolter at start… add 'is_historic = yes'`
 **Means:** a landless tag shipped with NO claims list — the engine
@@ -682,9 +686,15 @@ were the only tags in this state.
 **Fix:** FIXED 2026-07-30 — both blocks restate
 `marriage_law = muslim_marriage`, `heir_religion_law =
 heir_same_religion` and the muslim family's thirteen sliders
-(setup/templates/muslim_monarchy_no_abrahamic_dhimmi.txt values). Rule
-for future template-less blocks: restate BOTH laws and the sliders, or
-the engine logs all three classes and defaults silently.
+(setup/templates/muslim_monarchy_no_abrahamic_dhimmi.txt values). That
+fix was one item SHORT: a template supplies FOUR things, and the
+nested `parliament = { parliament_type = council }` block
+(muslim_monarchy_no_abrahamic_dhimmi.txt:19-21) was missed — the
+engine kept answering with `:1719` for ABS and FAT until it was added
+2026-08-01 (AUDIT-2026-07-31 D2). Rule for future template-less
+blocks: restate both laws, the thirteen sliders, AND the nested
+`parliament = { parliament_type = X }` block, or the engine logs the
+classes and defaults silently.
 
 ### `character_manager.cpp:287 — <parent> has less than 10 years in <date> when Child (<key>) was conceived`
 **Means:** the engine back-computes conception (birth minus nine
