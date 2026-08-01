@@ -30523,7 +30523,7 @@ countries = {
 	HLL = {
 		#Ruler Title: Sharifate (Sharif)
 		own_control_core = {
-			kufa al_udayb ayn_tamr hillah karbala qadisiyyah an_nil
+			kufa al_udayb ayn_tamr hillah karbala qadisiyyah an_nil zubala al_labbah al_thulayma al_waqbi linah lowqah
 			   
 		}
 
@@ -31073,9 +31073,12 @@ countries = {
 
 	#Al 'Alī - AAL
 	AAL = {
+		our_cores_conquered_by_others = {
+			burraq jayrud qutayfah sakaka dumat_al_jandal aba_al_qur al_hamad arar
+		}
+
 		own_control_core = {
-			  
-			sakaka dumat_al_jandal aba_al_qur al_hamad arar
+
 		}
 
 		starting_technology_level = 3
@@ -31126,12 +31129,15 @@ countries = {
 
 	#Al Fadl - FDL
 	FDL = {
+		our_cores_conquered_by_others = {
+			ithriya sukhnah taybah khanaser qastal salamiyya marrat arak huwwarin qaryatayn tadmur zubala al_labbah al_thulayma al_waqbi linah lowqah al_anbar hit ayn_tamr karbala anah abu_kemal haditha deir_ez_zor tabqah rahba
+		}
+
 		own_control_core = {
 
 		}
 
 		own_control_integrated = {
-			zubala al_labbah al_thulayma al_waqbi linah lowqah
 
 		}
 
@@ -53142,13 +53148,13 @@ countries = {
 
 	KRM = { #Kerman https://en.wikipedia.org/wiki/Kerman
 		own_control_core = {
-			bam fahraj_narmashir narmashir rayen rigan sepeh jiroft baft dowlatabad_esfandaqeh rabor sarduiyeh zakht kahnuj mardehek qaleh_ganj shahabad_kerman kerman ghobeyra mahan shahdad minab golashkerd manujan nowdezh rudkhaneh shaqrud senderk sirik rafsanjan anar baghin bahreman bardsir dehaj ernan negar sirjan arzu hajjiabad khabr qatruyeh saadatabad soghan zarand_iran bafq behabad kuhbanan ravar
+			bam fahraj_narmashir narmashir rayen rigan sepeh jiroft baft dowlatabad_esfandaqeh rabor sarduiyeh zakht kahnuj mardehek qaleh_ganj shahabad_kerman kerman ghobeyra mahan shahdad minab golashkerd manujan nowdezh rudkhaneh shaqrud senderk sirik rafsanjan anar baghin bahreman bardsir dehaj ernan negar sirjan arzu hajjiabad khabr qatruyeh saadatabad soghan zarand_iran bafq behabad kuhbanan ravar suhar al_khaburah khor_fakkan nakhal rustaq saham shinas masqat al_kamil_wal_wafi as_sib jalan_buani_buali masirah qalhat sur
 
 		}
 
 		include = "expl_middle_east"
 		starting_technology_level = 3
-		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
@@ -53557,19 +53563,17 @@ countries = {
 		capital = izeh
 	}
 
-	ORM = { #Ormus
+	ORM = {
+		our_cores_conquered_by_others = {
+			hormuz gamrun bandar_charak bandar_khamir bandar_lengeh kish minab manujan nowdezh rudkhaneh shaqrud senderk sirik julfar al_dhaid khor_fakkan shinas machul abu_dhabi al_ayn dubai sharjah masqat al_kamil_wal_wafi as_sib jalan_buani_buali masirah qalhat sur suhar al_khaburah nakhal rustaq saham manama sayhat
+		}
+ #Ormus
 		own_control_core = {
 
 		}
 
 		own_control_conquered = {
-			julfar al_dhaid
-			khor_fakkan shinas
-			
-			abu_dhabi al_ayn dubai sharjah
-			masqat al_kamil_wal_wafi as_sib jalan_buani_buali masirah qalhat sur
-			suhar al_khaburah nakhal rustaq saham
-			manama sayhat
+
 		}
 		include = "expl_middle_east"
 		starting_technology_level = 3
@@ -54390,11 +54394,14 @@ countries = {
 		capital = salameh
 	}
 
-	HLG = { #Huleguids
+	HLG = {
+		our_cores_conquered_by_others = {
+			dayr_aqul badra ilam wasit abdanan al_tib arkvaz bakusaya dehloran meymeh basra abadan abdas al_madar al_qatr zuwayr an_nil nasiriyah numaniyyah rusafa khalafabad quban ahvaz dowraq hamidiyeh hoveyzeh mosharahat muhammerah samawa suq_al_shuyukh kazimah
+		}
+ #Huleguids
 		type = army
 		own_control_core = {
 
-			  kazimah
 		}
 
 		include = "expl_middle_east"
@@ -55541,7 +55548,7 @@ countries = {
 		government = { mysticism_vs_jurisprudence = 20 }
 
 		country_rank = rank_kingdom
-		capital = zabid
+		capital = sana_yemen
 	}
 
 	DHF = { #Dhofar
@@ -55575,14 +55582,11 @@ countries = {
 
 	JRW = { #Jarwanids
 		own_control_core = {
-			al_qatif al_ahsa al_jubayl al_uqayr baqqa
-			ar_rukai ash_shuaybah qurain
-			nita_arabia al_suman al_uyayna jannah jarrarah qaryat_ulya
-			al_bidda al_huwaila al_mashqar al_udayd eglat_faisal zubarah
-			al_hunayy harad_al_ahsa khurays rumah urayrah
+
 		}
 
 		our_cores_conquered_by_others = {
+			al_qatif al_ahsa al_jubayl al_uqayr baqqa ar_rukai ash_shuaybah qurain nita_arabia al_suman al_uyayna jannah jarrarah qaryat_ulya al_bidda al_huwaila al_mashqar al_udayd eglat_faisal zubarah al_hunayy harad_al_ahsa khurays rumah urayrah
 			manama sayhat
 		}
 
@@ -55607,6 +55611,7 @@ countries = {
 
 	OMA = { #Oman
 		own_control_core = {
+			julfar abu_dhabi al_ayn al_dhaid dubai sharjah
 			nizwa bahla ibra ibri izki sinaw yanqul
 		}
 
@@ -55707,6 +55712,7 @@ countries = {
 
 	ANZ = { #Anizah
 		own_control_core = {
+			dumat_al_jandal aba_al_qur al_hamad arar sakaka
 			al_ayn_khaybar khaybar
 			al_huwayyit fadak darghat
 		}
@@ -55964,7 +55970,7 @@ countries = {
 			ranyah
 			muzahmiyah
 			asila_arabia saqra dhurma
-			ad_dilam naam
+			 naam
 			al_quway ar_rayn al_mardamah al_maslum halaban rawdat_al_ard
 			tabalah
 			al_abala al_amlah ash_shaqiqah qalat_bishah
@@ -56086,23 +56092,27 @@ countries = {
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
-			ruler = random
+			ruler = mda_al_husayn_ibn_muhanna
+			ruler_term = { character = mda_al_husayn_ibn_muhanna start_date = 1060.1.1 regnal_number = 0 }
 
 			laws = {
-				sharia_law = zaidi_policy
+				sharia_law = jafari_policy
 			}
 		}
 
-		religious_school = zaidi_school
+		religious_school = imamiya_school
 
 		capital = medina
 
 	}
 
-	KLB = { #Banu Kilab
+	KLB = {
+		our_cores_conquered_by_others = {
+			al_hajr diriyah malham thadiq al_yamamah
+		}
+ #Banu Kilab
 		own_control_core = {
-			al_hajr diriyah malham thadiq
-			al_yamamah
+
 		}
 
 		include = "expl_middle_east"
@@ -59060,6 +59070,36 @@ countries = {
 		country_rank = rank_duchy
 	}
 
+	QMT = {
+		own_control_core = {
+			al_ahsa al_jubayl al_qatif al_uqayr baqqa manama sayhat ar_rukai ash_shuaybah kazimah qurain nita_arabia al_suman al_uyayna jannah jarrarah qaryat_ulya al_bidda al_huwaila al_mashqar al_udayd eglat_faisal zubarah al_hunayy harad_al_ahsa khurays rumah urayrah
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi"
+		government = {
+			ruler = qmt_yahya_ibn_al_abbas
+			ruler_term = { character = qmt_yahya_ibn_al_abbas start_date = 1058.1.1 regnal_number = 0 }
+			type = monarchy
+			heir_selection = elective_succession
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = ismaili_policy
+			}
+		}
+		religious_school = ismaili_school
+		tolerated_cultures = {
+			kaliji_culture
+			najdi_culture
+			iraqi_culture
+		}
+
+		country_rank = rank_duchy
+
+		capital = al_ahsa
+	}
+
 	QRA = {
 		own_control_core = {
 			chach almalik_chach altyntobe bogiston burchmullo fanakat nuket isbijab arsubaniket badam karabulak kazatlyk shymkent akhsikath asht karasuu kasan kerben pop_fargana andijan arslanbob gulcha jalalabad_fergana uzkand fergana marghinan osh quva rishton koshoy_korgon cholok_kaiyn chon_naryn jumgal ketmen_tobe naryn otrar artyk_ata kyr_uzkand mardankuyik sutkent zemukh zhaushikumtobe turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik sighnaq asanas barchkend jand kamyskala yangikent buzikkala jubara karmakshi tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan almaliq gulja narat nilka tokkuztara almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir balasagun dzhul harandzuvan kysmyci nuzket sargau soltobe ilibalyk charyn chundzha kegen koktal lavar shelek barskoon balykchy kochkor san_tash kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli merki aspara khantau kulan sretenskoe tasuktul tolekskoe sozak aksumbe gulshara kyzylkorgan ran tasty talas dzhulsub sarvaslyk tekabket yangi zherkorgan kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga yarkand guma kargilik poskam khotan karakax keriya lop qira charchan niya mazar_tagh
@@ -59396,6 +59436,29 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = lucca
+	}
+
+	UKH = {
+		own_control_core = {
+			al_yamamah al_hajr diriyah malham thadiq ad_dilam
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		government = {
+			ruler = random
+			heir_selection = cognatic_primogeniture
+			laws = {
+				legal_code_law = sharia_law_policy
+				sharia_law = zaidi_policy
+			}
+		}
+		religious_school = zaidi_school
+
+		country_rank = rank_duchy
+
+		capital = al_yamamah
 	}
 
 	ULD = {

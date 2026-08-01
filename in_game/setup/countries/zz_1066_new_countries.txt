@@ -475,3 +475,25 @@ BLH = { #Volga Bulgaria (Bolghar)
 	culture_definition = bolghar_culture
 	religion_definition = sunni
 }
+
+# Arabia (two tags; freeness verified by word-boundary AND substring
+# scans, zero vanilla hits). bahrani is vanilla's own registry choice
+# for this exact ground (JRW); najdi is al-Yamama's template culture.
+# There is no ismaili RELIGION — Ismailism is a school; shia is the
+# religion for both.
+
+QMT = { #Qarmatians of al-Hasa
+	color = map_QMT
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = bahrani_culture
+	religion_definition = shia
+}
+
+UKH = { #Ukhaydirids of al-Yamama
+	color = map_UKH
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = najdi_culture
+	religion_definition = shia
+}

@@ -83,4 +83,10 @@
 	map_QRK = rgb { 40 90 160 }     # W. Karakhanids  steppe blue
 	map_QRA = rgb { 96 150 205 }    # E. Karakhanids  pale blue (branch)
 	map_BLH = rgb { 150 100 60 }    # Volga Bulgaria  Volga bronze
+	# Arabia: the Qarmatian state of al-Hasa and the Ukhaydirid emirate
+	# of al-Yamama. Checked against map_kaliji, map_omani, map_hijazi
+	# and map_seljukids; both keys verified absent from vanilla BY KEY
+	# NAME (zero substring hits — the D3 lesson).
+	map_QMT = rgb { 168 62 78 }     # al-Hasa       Gulf carmine
+	map_UKH = rgb { 122 104 176 }   # al-Yamama     Alid violet
 }

@@ -240,7 +240,6 @@ diplomacy_manager = {
     dependency = { first = MKR second = BLA subject_type = vassal }
     dependency = { first = MKR second = BMP subject_type = vassal }
     dependency = { first = MKR second = KLW subject_type = vassal }
-    dependency = { first = ORM second = JSK subject_type = vassal }
     
     #-------------East Africa------------
     #Ethiopia
@@ -570,7 +569,6 @@ diplomacy_manager = {
     #------------Levant-------------
 
     #------------Arabia-------------
-    dependency = { first = ORM second = JRW subject_type = vassal }
     
     scripted_mutual = { first = QHT second = DWS type = alliance }
 
@@ -605,6 +603,7 @@ diplomacy_manager = {
 	# 1066: the Fatimid clients under the khutba (generated)
 	dependency = { first = FAT second = MEC subject_type = tributary }
 	dependency = { first = FAT second = BKZ subject_type = tributary }
+	dependency = { first = FAT second = MDA subject_type = tributary }
 
 	# 1066: the Capetian homage ring (generated)
 	dependency = { first = FRA second = FLA subject_type = tributary }

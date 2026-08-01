@@ -245,6 +245,13 @@ HISTORICAL_RULERS = {
     "QRK": ("qrk_ibrahim_tamghach_khan", "1040.1.1", 1),  # Ibrahim ibn Nasr, Tamghach Bughra Khan, Samarkand c.1040-1068 [U]
     "QRA": ("qra_mahmud_toghrul_khan", "1059.1.1", 0),    # Mahmud Toghrul Qara Khan [D — the eastern list is unstable]
 
+    # Arabia (package 2026-07-30, landed 2026-08-01). Both authored,
+    # both dates [U]; Yahya is [D] on whether a single ruler is even the
+    # right model for the Qarmatian council — he is the man attested
+    # holding and losing Awal and Qatif at the state's fall.
+    "QMT": ("qmt_yahya_ibn_al_abbas", "1058.1.1", 0),     # Yahya ibn al-Abbas, the council's face [U/D]
+    "MDA": ("mda_al_husayn_ibn_muhanna", "1060.1.1", 0),  # al-Husayn ibn Muhanna, Husaynid emir of Medina [U]
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -1260,6 +1267,117 @@ RUS_LANDLESS = ("BLO", "BRY", "DMI", "DRU", "FMB", "KAS", "KCH", "KLN",
 # triumvirs are partners, not subjects (user decision 12).
 RUS_TRIBUTARIES = (("KIE", "NOV"),)
 
+# ================================ ARABIA ====================================
+# The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
+# user-approved same day, all recommendations incl. UKH Tier B). One
+# new tag QMT (the Qarmatian state of al-Hasa — a MONARCHY with
+# elective_succession carrying the council of six: the theocracy shape
+# would hit country_ranks' rank_duchy_theocracy branch FIRST and render
+# "High Priest", measured static fact), one optional tag UKH (the Zaydi
+# Ukhaydirids of al-Yamama, Nasir Khusraw's 1051 eyewitness anchor —
+# ruler random, no 11th-c. name survives). Five 13th-century-plus tags
+# retire landless: ORM (Hormuzi Oman is 14th c.), JRW (Jarwanids
+# 1305+), HLG (Ilkhanate remnant), FDL/AAL (Mamluk-era amirates).
+# Their four audit-D1 CAPITAL_FIXES entries from this morning become
+# VESTIGIAL (capital on a landless tag — the POR/guimaraes precedent,
+# user decision; kept so a vanilla patch still fails loudly).
+_ARABIA_RULES = {
+    # THE QARMATIAN STATE — Bahrayn proper: al-Ahsa, Qatif, Awal
+    # (manama/sayhat return from ORM — vanilla itself marks them JRW's
+    # cores), Qatar, the Nita/Yabrin edge, kazimah from HLG. The four
+    # minus-singles are desert-tribe ground deliberately left (AAD ×2,
+    # YAS, MRH).
+    "QMT": (["al_ahsa_province", "batin_province", "nita_province",
+             "qatar_province", "yabrin_province"],
+            [], [],
+            ["hafar_al_batin", "mashdhubah", "sir_bani_yas", "yabrin"],
+            28),
+}
+_ARABIA_GRANTS = {
+    # Oman decision O-1: Kerman takes the Batinah + Muscat (Qavurt's
+    # conquest, 1053 or 1063 [D] — before 1066 either way; Seljuk
+    # dominance to 1154); the Ibadi imamate takes the Trucial six.
+    # NOTE: OMA's existing claims list is exactly the KRM 14 — kept
+    # DELIBERATELY as the imamate's permanent irredenta on the coast
+    # (user-approved; historically the Nabhani future).
+    "KRM": ["suhar", "al_khaburah", "khor_fakkan", "nakhal", "rustaq",
+            "saham", "shinas",
+            "masqat", "al_kamil_wal_wafi", "as_sib", "jalan_buani_buali",
+            "masirah", "qalhat", "sur"],
+    "OMA": ["julfar", "abu_dhabi", "al_ayn", "al_dhaid", "dubai",
+            "sharjah"],
+    # The Darb Zubayda to the Mazyadids of Hilla (decision 3: HLL —
+    # the Bedouin power of the Kufa desert, seated Dubays I).
+    "HLL": ["zubala", "al_labbah", "al_thulayma", "al_waqbi",
+            "linah", "lowqah"],
+    # The Jawf to ANZ: retires AAL AND fixes ANZ's VANILLA-side orphan
+    # capital (dumat_al_jandal was never ANZ's in vanilla either —
+    # this grant closes a Paradox defect for free).
+    "ANZ": ["dumat_al_jandal", "aba_al_qur", "al_hamad", "arar",
+            "sakaka"],
+    # UKH (Tier B): the six Wadi Hanifa locations, KLB 5 + SBY 1.
+    "UKH": ["al_yamamah", "al_hajr", "diriyah", "malham", "thadiq",
+            "ad_dilam"],
+}
+# KLB was CAUGHT AT IMPLEMENTATION (2026-08-01): its total holding IS
+# the five Wadi Hanifa locations UKH takes — the package's own donor
+# table said "KLB 5" without noticing that empties the tag. Landless
+# with claims is the coherent answer: the sources say "the Banu Kilab
+# eventually took control sometime after 1051" — the claims ARE that
+# future, the GRA shape exactly.
+ARABIA_LANDLESS = ("ORM", "JRW", "HLG", "FDL", "AAL", "KLB")
+
+# QMT — Emirate of al-Ahsa. COASTAL include (al_qatif/manama/al_bidda);
+# the coastal variant keeps heir_selection, restated anyway for the
+# elective override. ismaili_policy + ismaili_school is vanilla's own
+# pairing (QHT and seven others); nizari/mustali are post-1094.
+# tolerated: JRW's own pair + iraqi_culture (kazimah arrives from HLG
+# with iraqi template culture — coverage gap found at review).
+NEW_COUNTRIES["QMT"] = (
+    "\tQMT = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_middle_east"\n'
+    '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi"\n'
+    "\t\tgovernment = {\n"
+    "\t\t\ttype = monarchy\n"
+    # elective_succession (government_types/00_default.txt:9, the
+    # monarchy list) carries Nasir Khusraw's council of six — the
+    # least-bad shape for a state with no dynastic succession at all.
+    "\t\t\their_selection = elective_succession\n"
+    "\t\t\tlaws = {\n"
+    "\t\t\t\tlegal_code_law = sharia_law_policy\n"
+    "\t\t\t\tsharia_law = ismaili_policy\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    "\t\treligious_school = ismaili_school\n"
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tkaliji_culture\n"
+    "\t\t\tnajdi_culture\n"
+    "\t\t\tiraqi_culture\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = al_ahsa\n\t}\n")
+
+# UKH — Emirate of al-Yamama (Tier B, taken by user decision 4).
+# Inland: the _no_coast variant drops heir_selection — restated.
+# Zaydi (the Banu Ukhaydhir were Zaydi Alids); ruler random — no
+# 11th-century Ukhaydirid is named in any source found.
+NEW_COUNTRIES["UKH"] = (
+    "\tUKH = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_middle_east"\n'
+    '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"\n'
+    "\t\tgovernment = {\n"
+    "\t\t\their_selection = cognatic_primogeniture\n"
+    "\t\t\tlaws = {\n"
+    "\t\t\t\tlegal_code_law = sharia_law_policy\n"
+    "\t\t\t\tsharia_law = zaidi_policy\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    "\t\treligious_school = zaidi_school\n\n"
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = al_yamamah\n\t}\n")
+
 # VMD — the county of Vermandois, the France slice's one new tag (see
 # the registry file's comment for the PIC-reuse rejection). Inland →
 # catholic_monarchy_no_coast; the catholic no_coast variant KEEPS
@@ -1394,7 +1512,10 @@ _EGYPT_RULES = {
 # Kanz client emirate at Aswan. MDA is left independent (lower
 # confidence); YEM stays independent (al-Sulayhi is a Fatimid da'i but
 # chaining MEC under YEM would need a second reform — parked).
-FATIMID_TRIBUTARIES = ("MEC", "BKZ")
+# MDA joined 2026-08-01 (Arabia slice): the Sharifate of Medina read
+# the Fatimid khutba continuously 974-1151 — the same tie, from the
+# same caliph, that MEC and BKZ already model in game.
+FATIMID_TRIBUTARIES = ("MEC", "BKZ", "MDA")
 
 # The one donor this slice empties. MAM must be emptied, NEVER deleted:
 # 103 DHE references and the EGY formable's potential lean on the tag.
@@ -1884,6 +2005,19 @@ BYZ_LANDLESS = (
 # - MLL: the 1276 kingdom; its islands are DYA's, its Roussillon residual
 #   is CDY/RSL's, montpellier FRA's. Vanilla's full 9-location list.
 DISPLACED_CLAIMS = {
+    # ORM (Arabia slice, user decision 12): the automatic snapshot would
+    # be its 22 Arabian holdings only — a Kingdom of Hormuz whose
+    # irredenta excludes Hormuz itself. Vanilla's own 36, byte-for-byte.
+    # HLG/FDL keep the automatic snapshot: their vanilla holdings are
+    # mostly Iraq/Syria and belong to nobody's 1066 irredenta.
+    "ORM": ["hormuz", "gamrun", "bandar_charak", "bandar_khamir",
+            "bandar_lengeh", "kish", "minab", "manujan", "nowdezh",
+            "rudkhaneh", "shaqrud", "senderk", "sirik", "julfar",
+            "al_dhaid", "khor_fakkan", "shinas", "machul", "abu_dhabi",
+            "al_ayn", "dubai", "sharjah", "masqat", "al_kamil_wal_wafi",
+            "as_sib", "jalan_buani_buali", "masirah", "qalhat", "sur",
+            "suhar", "al_khaburah", "nakhal", "rustaq", "saham",
+            "manama", "sayhat"],
     "GRA": ["granada", "adra", "almunecar", "guadix", "huescar", "illora",
             "loja", "pinar", "orgiva", "malaga", "antequera", "velez_malaga",
             "almeria", "almanzora", "baza", "gergal", "mojacar",
@@ -1910,7 +2044,8 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
-    + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS
+    + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
+    + ARABIA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2069,8 +2204,27 @@ FIELD_FIXES = {
     "SER": [("country_rank = rank_kingdom", "country_rank = rank_duchy")],
     "ZTA": [("dynasty = balsic_dynasty", "dynasty = vojislavljevic_dynasty")],
     # Kerman's block carries the 14th-century Nikruzi house; Qavurt is a
-    # Seljukid.
-    "KRM": [("dynasty = nikruzi_dynasty", "dynasty = seljukids_dynasty")],
+    # Seljukid. The include swap (Arabia slice): Oman's Batinah makes
+    # Kerman a maritime power — and KRM already held minab/sirik/senderk
+    # on the Strait under the _no_coast include, so this is arguably a
+    # pre-Arabia bug fix too (the government.cpp:3662 class in reverse).
+    # KRM's block states heir_selection explicitly, so the coastal
+    # variant's own line is a harmless duplicate (vanilla ORM does the
+    # same).
+    "KRM": [("dynasty = nikruzi_dynasty", "dynasty = seljukids_dynasty"),
+            ('include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"',
+             'include = "muslim_monarchy_no_abrahamic_dhimmi"')],
+    # Al-Sulayhi moved his capital to Sana'a in 1063; Zabid (taken 1060)
+    # is the Najahid seat, not his. sana_yemen is already YEM's own and
+    # sulayhid_dynasty's home.
+    "YEM": [("capital = zabid", "capital = sana_yemen")],
+    # The Husaynid sharifs of Medina were Twelvers [D — the Zaydi/Imami
+    # line among 11th-c. Hejazi Alids is not sharp; user decision 6].
+    # MEC's zaidi_school is CORRECT and stays — the Meccan sharifs were
+    # Zaydi until the Ayyubids.
+    "MDA": [("sharia_law = zaidi_policy", "sharia_law = jafari_policy"),
+            ("religious_school = zaidi_school",
+             "religious_school = imamiya_school")],
     # France demesne slice: the three landless-to-landed tags swap the
     # _not_present include for the landed variant (the POR entry in
     # reverse). The catholic no_coast variant KEEPS heir_selection
@@ -2937,6 +3091,33 @@ NEW_CHARACTERS = """
 		birth = bar_cg
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
+	}
+
+	# --- 1066 Arabia ------------------------------------------------------
+	# Both dates [U]. name_yahya ships with a vanilla .arabic_language
+	# row ("Yahya"/"Yaḥyā", dynamic loc :18702-18703) — bahrani_culture's
+	# peninsular_dialect nests in arabic_language, so he renders "Yaḥyā";
+	# name_husayn likewise ("Ḥusayn", :9276-9277). Nothing invented.
+	# Yahya carries NO dynasty (the council of six had none — the
+	# AQU/RAV/PAR precedent); the Husaynid sharif carries the new
+	# muhanna_dynasty.
+	qmt_yahya_ibn_al_abbas = {
+		first_name = { name = name_yahya }
+		culture = bahrani_culture
+		religion = shia
+		birth_date = 1020.1.1
+		birth = al_ahsa
+		tag = QMT
+	}
+
+	mda_al_husayn_ibn_muhanna = {
+		first_name = { name = name_husayn }
+		culture = hijazi_culture
+		religion = shia
+		birth_date = 1025.1.1
+		birth = medina
+		dynasty = muhanna_dynasty
+		tag = MDA
 	}
 
 	# --- 1066 Central Asia (the Kara-Khanid slice) ------------------------
@@ -4269,6 +4450,24 @@ def build_countries(src):
             sys.exit(f"_RUS_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
+    # Arabia resolves the same way (package count re-verified: QMT 28 =
+    # JRW's 25 whole + ORM's manama/sayhat + HLG's kazimah); the plain
+    # grant lists land as-is. EXTEND is REQUIRED, not caution: HLL is
+    # already a Seljuk-resolution recipient (its kufa_province 7) and a
+    # bare assign here would silently drop that list — the France
+    # lesson, this time load-bearing.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_ARABIA_RULES.items()):
+        got = _resolve_ruleset(f"_ARABIA_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_ARABIA_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, locs in sorted(_ARABIA_GRANTS.items()):
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + list(locs)
+    for _t, _cap in (("QMT", "al_ahsa"), ("UKH", "al_yamamah")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_ARABIA: {_t} capital {_cap} not in its list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5537,8 +5736,12 @@ def build_diplomacy(src):
     # RYA/SMO/TVE/YAR subject lines (incl. vanilla's Chernihiv-under-
     # Bryansk absurdity), GLH's BRY/HAL/VOL tributaries, LIT's seven
     # Black-Ruthenia vassals and NOV->ORE with the ORE fold.
-    if n_landless_deps != 152:
-        sys.exit(f"expected exactly 152 landless-tag dependencies, stripped {n_landless_deps}")
+    # 152 -> 155 with Arabia (observed failing first, 2026-08-01):
+    # ORM->JSK, ORM->JRW, and HLG->HLL — the last MIGRATED here from
+    # the retired dedicated strip below (HLG is landless now, the sweep
+    # sees it first). KLB has no diplomacy lines (grep-verified).
+    if n_landless_deps != 155:
+        sys.exit(f"expected exactly 155 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
@@ -5563,19 +5766,11 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 7 landless-tag pacts, stripped {n_pacts}")
     report.append(("pacts naming a landless tag stripped", n_pacts))
 
-    # HLL kept vanilla's Mongol-era overlord: the Hüleguid vassalage
-    # (vanilla 12_diplomacy) survived the landless strip because HLG
-    # still holds kazimah, and with our SEL tributary on top the engine
-    # asserted "Country with multiple overlords" every few ticks
-    # (diplomacy.cpp:4796 + pdx_assert.cpp:214, in game 2026-07-29).
-    # Hillah under the Hüleguids is a 1337 relation with no 1066
-    # defense; SEL's khutba is the historical tie.
-    src, n_hlg = re.subn(
-        r"^[ \t]*dependency = \{ first = HLG second = HLL [^}\n]*\}[ \t]*(?:#[^\n]*)?\n",
-        "", src, flags=re.M)
-    if n_hlg != 1:
-        sys.exit(f"expected exactly 1 HLG->HLL dependency, stripped {n_hlg}")
-    report.append(("Mongol-era HLG->HLL vassalage stripped", n_hlg))
+    # The dedicated HLG->HLL strip is RETIRED (2026-08-01): HLG joined
+    # LANDLESS_AFTER with the Arabia slice, so the generic landless
+    # sweep above now owns that line — the PAP->FAE precedent. Its
+    # history (the multiple-overlords assert of 2026-07-29,
+    # diplomacy.cpp:4796) lives in the decoder.
 
     # The Seljuk khutba: nine clients as TRIBUTARY subjects —
     # war-capable (tributary.txt:88), own color and name. MEASURED

@@ -943,6 +943,9 @@ _GENERATOR_OK = {
     # Central Asia — deferred (tier 3): no Karakhanid or Volga-Bulgar
     # heraldry is attested; eyeball the generated flags before investing.
     "QRK", "QRA", "BLH",
+    # Arabia — tier 4, permanent: the Qarmatian council and the
+    # Ukhaydirid emirate had no heraldry.
+    "QMT", "UKH",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -1117,10 +1120,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
     probs.append(f"{_tag}: landed with no parliament_type inline or via "
                  "its include chain — the :1719 class (D2), silent default")
 # 1464 at birth; 1461 after Central Asia (6 landless, 3 new landed);
-# 1420 after Rus Tier 1 (42 landless, ORE fold included) — each drop
+# 1420 after Rus Tier 1 (42 landless, ORE fold included); 1416 after
+# Arabia (6 landless incl. the KLB catch, 2 new landed) — each drop
 # tripped the vacuous-scan guard first and was moved deliberately.
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1420)
+      min_count=1416)
 
 print()
 if fails:

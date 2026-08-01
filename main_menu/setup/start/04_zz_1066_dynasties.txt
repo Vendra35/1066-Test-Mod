@@ -314,4 +314,11 @@ dynasty_manager = {
 		name = { name = qarakhanid_dynasty }
 		home = samarkand
 	}
+	# Arabia: the Banu Muhanna, Husaynid sharifs of Medina from the late
+	# 10th century, readers of the Fatimid khutba. Vanilla ships no
+	# Husaynid house at all.
+	muhanna_dynasty = {
+		name = { name = muhanna_dynasty }
+		home = medina
+	}
 }

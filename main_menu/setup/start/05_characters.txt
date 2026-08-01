@@ -104932,6 +104932,33 @@ character_db={
 		tag = ZTA
 	}
 
+	# --- 1066 Arabia ------------------------------------------------------
+	# Both dates [U]. name_yahya ships with a vanilla .arabic_language
+	# row ("Yahya"/"Yaḥyā", dynamic loc :18702-18703) — bahrani_culture's
+	# peninsular_dialect nests in arabic_language, so he renders "Yaḥyā";
+	# name_husayn likewise ("Ḥusayn", :9276-9277). Nothing invented.
+	# Yahya carries NO dynasty (the council of six had none — the
+	# AQU/RAV/PAR precedent); the Husaynid sharif carries the new
+	# muhanna_dynasty.
+	qmt_yahya_ibn_al_abbas = {
+		first_name = { name = name_yahya }
+		culture = bahrani_culture
+		religion = shia
+		birth_date = 1020.1.1
+		birth = al_ahsa
+		tag = QMT
+	}
+
+	mda_al_husayn_ibn_muhanna = {
+		first_name = { name = name_husayn }
+		culture = hijazi_culture
+		religion = shia
+		birth_date = 1025.1.1
+		birth = medina
+		dynasty = muhanna_dynasty
+		tag = MDA
+	}
+
 	# --- 1066 Central Asia (the Kara-Khanid slice) ------------------------
 	# Both dates [U]. Ibrahim is a vanilla LITERAL row
 	# (character_names_l_english.yml:1364 — the Alp_Arslan class);
