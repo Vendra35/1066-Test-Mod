@@ -1766,7 +1766,64 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
 9. Yoruba country: Ife holds the core, no Oyo.
 10. scan_log.py: REGRESSION 0 expected; landless flood must NOT grow.
 
-**NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
+**NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
+BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
+
+WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
+test of 2026-08-01 passed). Items 35 (Baltic) and 36 (Africa) are
+LANDED, COMMITTED and HARNESS-GREEN but **NOT YET GAME-TESTED** — the
+user is accumulating tests deliberately ("testi en son yapalım").
+HEAD after the Africa day: `170c944`; the five commits of 2026-08-01/02
+are `cb81a85` (Baltic slice), `6ce8ed7` (emptied-shape delta guard),
+`3d19206` (item 35 + KNOWLEDGE), `5a2977d` (African registry
+overrides), `ef51eb4` (Africa slice), `170c944` (item 36 + KNOWLEDGE).
+Constants right now: registry 67 blocks, country blocks 2404, thrones
+176, deps 253, pacts 9, IO ghosts 145, parliament min 1376, harness
+all green, working tree clean.
+
+1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
+   before.** It is items 33+34 leftovers + 35 + 36 in one sitting:
+   the click tours are written inside each item above. One-glance
+   musts: Song panel 2/3 reforms ACTIVE; scan_log.py REGRESSION 0;
+   the Baltic tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-
+   King probes; landless flood NOT grown. **During that test the user
+   will send an HRE close-up screenshot** — audit Germany density
+   against items 23/25 (promised follow-up, still owed).
+2. **The SEA (Southeast Asia) research agent was STOPPED mid-flight
+   on 2026-08-02** (user limit economy) BEFORE it wrote anything —
+   there is NO docs/SEA-PACKAGE.md and nothing partial anywhere.
+   Re-launch it fresh when work resumes. Scope it was given: Pagan
+   under Anawrahta (r. 1044-1077, Thaton conquered 1057), the Mon
+   states, Arakan; maritime — Srivijaya/San-fo-qi weakened post-1025
+   Chola raids (Palembang vs Jambi [D]), Java SPLIT 1049 into
+   Janggala + Panjalu/Kediri (Airlangga died 1049), Bali, Sunda, the
+   Chola-pressured Malay peninsula, Butuan (1003/1011 China missions),
+   Brunei/Po-ni. EXCLUDED as done-slice seams: Dai Viet, Champa, KHM,
+   Korea, Japan (China-East + Northern Dynasties), Chola world (India
+   Tier 1). Likely 1337 deaths to verify: Majapahit 1293, Ayutthaya
+   1351, Sukhothai 1238, Lan Na 1292, Lan Xang 1353, Malacca c. 1400,
+   Muslim Sumatra (Pasai, 13th c.), Singhasari 1222. Format exemplars:
+   AFRICA-PACKAGE.md and BALTIC-PACKAGE.md; agents research ONLY, the
+   main session writes (user decision 2026-07-30).
+3. **Theater queue after SEA:** Tibet, Perm/Vyatka, Mesoamerica-lite,
+   the China D2-D7 leftovers; then the pop phase (its inherited
+   correction lists live in BALTIC-PACKAGE §H and AFRICA-PACKAGE §H —
+   Baltic religion, Ghana/Kanem paganism, Hausa ground already done),
+   then the situations backlog (Norman Conquest v2 owed, the
+   SITUATION-SPECS report — but its Pecheneg route cites the DEAD SKE
+   law, re-derive before use).
+4. **Standing rhythm with the user (unchanged):** research package →
+   main-session verification of its claims (every package so far
+   contained implementation-level errors the review caught — KBR,
+   banamba, ankober, SXM's monarchy shell, the (e) break-test
+   refutation; treat "the package says" as a hypothesis) → Turkish
+   AÇIK KARARLAR table → wait for "onay" → implement with
+   observe-then-move constants and break-tests → HANDOFF item +
+   Turkish click tour → commit. Conversation in Turkish, repo in
+   English. The user protects their usage limit: one step at a time,
+   no parallel agent fleets unless asked.
+
+**(HISTORICAL) NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
    re-verify key file:line claims before trusting anything), then give
    the user a per-package decision list IN TURKISH and wait for onay.
