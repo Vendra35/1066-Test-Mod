@@ -2025,6 +2025,43 @@ byte-order fact from the engine's side (SWE on line 1 behind the BOM).
 **Means:** never conclude "identifier does not exist" from an anchored
 grep alone — re-run unanchored before declaring a package claim false.
 
+### Granting vanilla-UNOWNED land needs its own path — the grant machinery demands exactly-one ownership
+**Established:** Africa slice, 2026-08-02: SNH's nine Adrar/Arguin
+locations are ownerless in vanilla, and `_remove_owned_many`'s
+exactly-once assert (the Sardinia guard) died with `occurrences != 1
+for ['arguin(0)', …]` on the first dry-run — the machinery was built
+for owner-to-owner moves and had never filled empty land. Closed by
+`UNOWNED_GRANTS` (build_setup.py): each location zero-asserted against
+the source (a vanilla patch that lands an owner fails loudly), asserted
+present in its tag's resolved grant list, removal skipped, ownership
+write included. Break-tested with an owned location (awlil → abort).
+**Means:** any future slice that settles vanilla-empty ground (steppe,
+Sahara, taiga) lists it in UNOWNED_GRANTS; never loosen the
+exactly-once assert itself. Filling unowned settled land SHRINKS the
+~504-line vacated-pop error class — the only mechanism that does.
+
+### The African rank/name lattice: culture-gated RANK branches, and a tag branch whose MAP string is the FULL string
+**Established:** Africa package, re-verified at implementation.
+`country_name_construction.txt:79-89` is gated `tag = MAL` + monarchy +
+kingdom-or-empire and its `_map` loc string is `"$PREFIX$ $NAME$
+$RANK$"` — the full string, so a 1066 MAL at rank_empire reads "Mali
+Empire" ON THE MAP; only the rank line escapes (rank_duchy → the
+muslim fallback, map reads bare "Mali"). Deeper than the LIT trap:
+`country_ranks.txt`'s African branches are CULTURE- or court-language-
+gated, not tag-gated — `rank_*_mali` follows `culture:mandinka`
+(ruler "Mansa"), `rank_*_kanem` follows `kanembu_culture` ("Mai"/
+"Shehu"), `rank_*_ethiopia` follows `court_language ?=
+ethiopic_language` ("Negus") — so ANY tag of that culture inherits the
+title. And first-match order flips by rank: at duchy, tribe (`:1606`)
+beats muslim (`:1743`) which beats mali/kanem/ethiopia
+(`:1887-1907`); at kingdom, kanem (`:957`) and mali (`:967`) BEAT
+muslim (`:1060`). That asymmetry set KBO at rank_kingdom (renders
+"Mai") and MAL at rank_duchy. Also measured: `rank_county_muslim`
+does not exist — a county-rank Muslim state renders "County"/"Count".
+**Means:** rank choices for non-European tags are RENDER choices;
+walk both files at the exact rank before declaring one, and grep for
+culture-gated branches, not just tag-gated ones.
+
 ## Template for new entries
 
 ```

@@ -1714,6 +1714,58 @@ TEST — click tour, ~8 minutes:
 8. DURING THIS TEST the user sends the HRE close-up screenshot →
    Germany-density audit against items 23/25 (promised follow-up).
 
+**ITEM 36 — SUB-SAHARAN AFRICA (LANDED 2026-08-02, needs game test).**
+docs/AFRICA-PACKAGE.md, all decisions user-approved incl. the main
+session's own call to SEAT TUNKA MANIN (al-Bakri, writing 1067-68 —
+the theater's one near-contemporary attested ruler; thrones 175→176,
+cisse_dynasty authored). THE HEADLINE: vanilla's 13 MAL vassals are
+ten of al-Bakri's own 1068 polities — the fix was mostly diplomacy.
+Repoint MAL→GHA ×4 (BBK DFN TFK ZGH); named strips 4+7+12+4 (Mali
+web, Bornu-era Hausa ring, Kilwa's Mahdali thalassocracy incl. six
+Madagascar ties, Amda Seyon's southern ring); deps 244→253 observed
+first; pacts 9 unchanged. Reshapes: MAL→duchy Kangaba (tag-gated name
+branch whose MAP string is the full string — see KNOWLEDGE), GHA→
+kingdom + matrilineal + Tunka Manin, KBO→Duguwa kingdom ("Mai" via
+the culture-gated branch), MAK Christianised (+registry override
+commit 5a2977d) + Coptic liturgy + Alexandria patriarchate grows to
+ETH MAK ALO, ETH de-Solomonised (capital kubar, court_language
+ethiopic = the Negus probe, OWED in game), ZAN→Shirazi town at duchy
+(rank_county_muslim does NOT exist, measured), Hausa seven→bori
+(registry override + FIELD_FIXES de-Islamisation). Territory: 200
+grants, ZERO vacates, 9 unowned Adrar locations FILLED via the NEW
+UNOWNED_GRANTS mechanism (zero-asserted, break-tested); TKR takes
+Senegal+Gambia (36), DJN+SNH new (registry 65→67), BTI/SOA/ADA
+revived, 10 tags landless (BMR JOL KAB IFA ABW OYO + side-effect SGH
+KBR HRL TDE — the delta guard's first real workout). Review catches:
+KBR repoint/landless contradiction, banamba double-grant, ETH's
+ankober orphaned by SOA sweep, AJU reseated merca→kelafo, IFA's
+14-location residue (Haud→WAR, Mora→AFA, Mudug→AJU). Constants:
+registry 67, blocks 2404, deps 253, pacts 9, parliament 1376,
+IO ghosts 145.
+TEST — click tour, ~10 minutes (accumulates with items 33-35):
+1. Map West Africa: NO Mali Empire. Ghana large in the west, Takrur
+   on both rivers, Sanhaja over the western Sahara (the Adrar gap on
+   the map is FILLED), Djenne on the inland delta, a small "Mali" at
+   Kangaba; no Segou, no Jolof, no Kaabu.
+2. Click Koumbi Saleh → "Sultanate of Ghana", Sultan **Tunka Manin**,
+   house Cissé (the seat + invented-literal probes).
+3. Click Niani → map label "Mali", long form "Emirate of Mali",
+   ruler 'Amīr, house still Keita.
+4. Click Njimi → "Kingdom of Kanem" under a **"Mai"** (the
+   culture-gated rank branch probe).
+5. Click Dongola → Makuria is CHRISTIAN (miaphysite); the Alexandria
+   patriarchate panel lists ETH + MAK + ALO.
+6. Click Kano and Katsina → pagan (bori) countries, no sharia laws.
+7. Horn: no Ifat; Shewa, Adal and Jewish Simien (BTI) on the map;
+   Ethiopia smaller with capital Kubar — ruler title: report whether
+   it reads **"Negus"** or "King" (the court_language OWED check).
+8. Swahili coast: Kilwa a one-town emirate with NO tributary web —
+   Zanzibar, Mombasa, Malindi, Mogadishu all independent; Mogadishu
+   grown on the Benadir. Somalia: Warsangali across the north + Haud,
+   Ajuran inland at Kelafo.
+9. Yoruba country: Ife holds the core, no Oyo.
+10. scan_log.py: REGRESSION 0 expected; landless flood must NOT grow.
+
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
    re-verify key file:line claims before trusting anything), then give
