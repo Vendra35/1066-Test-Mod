@@ -1,3 +1,7 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF items 28 and 31 (Tier 1 +
+> the Cumans, landed 2026-08-01).** Research record, not the state — the
+> landing and deviations live in HANDOFF items 28/31; code and HANDOFF win.
+
 # THE RUS LANDS AND THE PONTIC STEPPE — research package (DRAFT)
 
 **STATUS: DRAFT pending main-session review.** Nothing here has been written

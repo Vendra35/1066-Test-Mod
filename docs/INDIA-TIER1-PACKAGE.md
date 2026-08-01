@@ -1,3 +1,6 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 34 (landed 2026-08-01).**
+> Research record, not the state; code and HANDOFF item 34 win.
+
 # INDIA TIER 1, 1066 — research package (DRAFT)
 
 **DRAFT — pending main-session review. Nothing here has been written into the

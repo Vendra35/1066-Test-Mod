@@ -164,14 +164,14 @@ for p in yml_files:
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: not a `key: value` line -> {t[:50]}")
         elif re.match(r'^ [A-Za-z0-9_.]+:\s*"', line) and not line.rstrip().endswith('"'):
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: value opens a quote it never closes")
-check("loc lines are well formed", count, probs, min_count=40)  # Norman Conquest loc
+check("loc lines are well formed", count, probs, min_count=359)  # raised with Africa (2026-08-02): 359 rows live
 
 keys, dupes = set(), []
 for p in yml_files:
     for m in re.finditer(r"^ ([A-Za-z0-9_.]+):", read(p), re.M):
         if m.group(1) in keys: dupes.append(m.group(1))
         keys.add(m.group(1))
-check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=40)  # Norman Conquest loc
+check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=359)  # raised with Africa (2026-08-02)
 
 # -------------------------------------------------------- dates and ages ---
 # The start date is mirrored into three defines trees because the evidence for
@@ -285,7 +285,7 @@ else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
 # Armed at 290: 145 named rulers + 145 terms after Germany II.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=310)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=352)  # 176 thrones (2026-08-02)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -373,7 +373,7 @@ for _c in sorted(_PLURALISTS):
 # Armed at 540 after Italy North: 89 authored characters + 48 dynasties
 # + 153 seats
 # (512 measured after Germany II).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=549)
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=636)  # +Tunka Manin/cisse (2026-08-02)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -403,7 +403,7 @@ print(f"       accessions cross-checked against vanilla's own terms: {_compared}
 # ships zero Muslim characters born before 1054 and zero Germans alive
 # in 1066 outside Heinrich IV's line, so none of those rulers is
 # comparable.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=155)
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=176)  # 2026-08-02
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would
@@ -419,7 +419,7 @@ if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
 # Armed at 116 authored characters after Italy North (+7: Beatrice,
 # Matilda, Ulric, the three prelates, Adelaide).
-check("authored character keys collide with nothing", count, probs, min_count=118)
+check("authored character keys collide with nothing", count, probs, min_count=137)  # 2026-08-02
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on

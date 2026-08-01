@@ -1,3 +1,8 @@
+> **STATUS (2026-08-02): ACTED ON as HANDOFF items 30 and 32 (Route B, the
+> JAP fix, the Song reskin — landed 2026-08-01).** Two of its claims were
+> REFUTED at review (the 18-claim-list cost, the name-key-language check
+> premise) — see HANDOFF; code and HANDOFF win where they disagree.
+
 # INDIA, CHINA AND THE REST OF ASIA AT 1066 — review and triage
 
 > **DRAFT — pending main-session review.** Nothing here is approved and nothing

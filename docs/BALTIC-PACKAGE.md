@@ -1,3 +1,14 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 35 (landed 2026-08-01,
+> commits cb81a85 / 6ce8ed7 / 3d19206) — NOT yet game-tested.** Research
+> record, not the state. KNOWN DEVIATIONS, code wins: LIT's derived claims
+> are its FULL 1337 holdings (103, not the post-Rus 70 — the snapshot runs
+> before all grants); NO named strips were written (the landless sweep owns
+> LIT's lines under option 2 — deps 244, pacts 9, contra §G.2/§E.3); SXM
+> needed a FIELD_FIXES tribal reskin this document never prescribed (its
+> vanilla block is a catholic-monarchy shell); and break-test (e)'s claim
+> that :5401 catches an unlisted retiree was REFUTED — the emptied-shape
+> delta guard (commit 6ce8ed7) exists because of it.
+
 # THE BALTIC 1066 — the pagan shore before the crusade (DRAFT)
 
 **DRAFT — pending main-session review. Nothing here has been written into any

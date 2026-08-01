@@ -1,3 +1,16 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 36 (commits 5a2977d /
+> ef51eb4 / 170c944) — NOT yet game-tested.** Research record, not the
+> state. KNOWN DEVIATIONS, code wins: the repoint batch is FOUR (KBR is
+> landless in this same slice — §G.2's five was a contradiction); GHA
+> resolves 21 (diara AND banamba carved — banamba sat in two grant lists);
+> IFA's 14-location residue went Haud->WAR, Mora->AFA, Mudug->AJU;
+> CAPITAL_FIXES gained ETH ankober->kubar (§E.4 missed it) and AJU
+> merca->kelafo; n_landless_deps is 253, not 252; ZAN is rank_duchy
+> (rank_county_muslim does not exist — OWED check 2 settled); Tunka Manin
+> IS seated (decision 8, the user's call); and the UNOWNED_GRANTS
+> mechanism was born for SNH's nine ownerless locations, which §I did not
+> anticipate.
+
 # SUB-SAHARAN AFRICA 1066 — Ghana's world, Christian Nubia, the Zanj coast (DRAFT)
 
 **Research agent model ID: `claude-opus-5`.**

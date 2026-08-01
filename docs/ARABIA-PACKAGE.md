@@ -1,3 +1,7 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 29 (landed 2026-08-01,
+> incl. the KLB catch the package missed).** Research record, not the state;
+> code and HANDOFF item 29 win where they disagree.
+
 # ARABIA — research package (DRAFT, pending main-session review)
 
 Research pass 2026-07-30 (Opus subagent). **DRAFT — nothing here is

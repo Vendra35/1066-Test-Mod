@@ -1,3 +1,10 @@
+> **STATUS (2026-08-02): the Baltic (item 35) and sub-Saharan Africa (item
+> 36) TERRITORIAL slices have landed — BALTIC-PACKAGE §H and AFRICA-PACKAGE
+> §H now carry the authoritative pop-correction lists for those theaters
+> (Baltic religion, Ghana/Kanem paganism; the Hausa GROUND was already
+> right and the seven COUNTRIES were flipped in the registry override).
+> Re-measure the tables below before acting on them.**
+
 # THE POP PHASE — decoded data layer + generator design brief
 
 > Produced by the pop-conversion research pass (Opus agent, 2026-07-29

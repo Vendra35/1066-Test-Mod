@@ -1,3 +1,6 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 33 (landed 2026-08-01).**
+> Research record, not the state; code and HANDOFF item 33 win.
+
 # THE NORTHERN DYNASTIES 1066 — the Liao and Western Xia (DRAFT)
 
 **DRAFT — pending main-session review. Nothing here has been written into any

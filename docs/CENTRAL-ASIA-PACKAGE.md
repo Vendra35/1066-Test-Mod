@@ -1,3 +1,8 @@
+> **STATUS (2026-08-02): IMPLEMENTED as HANDOFF item 27 (landed 2026-08-01).**
+> This document is the research record, not the state: the landing and its
+> deviations live in docs/HANDOFF.md item 27 and the build_setup.py comments.
+> Where this document and the landed code disagree, the code and HANDOFF win.
+
 # CENTRAL ASIA 1066 — research package (DRAFT)
 
 **DRAFT — pending main-session review. Nothing here has been written into
