@@ -22,7 +22,7 @@ PYS = {
 # by every entry in vanilla iberia.txt (GRA :57, LON :65, MLL :77).
 
 SEV = { #Taifa of Seville
-	color = map_SEV
+	color = map_SEV_1066
 	color2 = rgb { 16 41 202 }
 
 	culture_definition = andalusi
@@ -38,7 +38,7 @@ BDJ = { #Taifa of Badajoz
 }
 
 TOL = { #Taifa of Toledo
-	color = map_TOL
+	color = map_TOL_1066
 	color2 = rgb { 16 41 202 }
 
 	culture_definition = andalusi

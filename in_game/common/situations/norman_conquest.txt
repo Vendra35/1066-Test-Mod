@@ -187,7 +187,8 @@ norman_conquest = {
 
 	# Map layer, cloned from hundred_years_war.txt's branches: sides by
 	# owner-or-subject, allies unhandled (they keep the default), colors
-	# from named_colors (map_ENG vanilla, map_NRM/map_NOR ours).
+	# from named_colors (map_ENG vanilla, map_NRM_1066/map_NOR ours —
+	# _1066 because vanilla's own map_NRM is live: AUDIT-2026-07-31 D3).
 	map_color = {
 		if = {
 			limit = { owner ?= c:ENG }
@@ -199,11 +200,11 @@ norman_conquest = {
 		}
 		else_if = {
 			limit = { owner ?= c:NRM }
-			value = map_NRM
+			value = map_NRM_1066
 		}
 		else_if = {
 			limit = { owner ?= { is_subject_or_below_of = c:NRM } }
-			value = map_NRM
+			value = map_NRM_1066
 		}
 		else_if = {
 			limit = { owner ?= c:NOR }
@@ -224,7 +225,7 @@ norman_conquest = {
 	}
 	legend_key = {
 		desc = "NRM"
-		color = map_NRM
+		color = map_NRM_1066
 	}
 	legend_key = {
 		desc = "NOR"
@@ -238,7 +239,7 @@ norman_conquest = {
 		}
 		else_if = {
 			limit = { owner ?= c:NRM }
-			value = map_NRM
+			value = map_NRM_1066
 		}
 		else_if = {
 			limit = { owner ?= c:NOR }

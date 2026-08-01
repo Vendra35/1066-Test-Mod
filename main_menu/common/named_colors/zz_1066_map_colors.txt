@@ -1,19 +1,26 @@
 ﻿colors = {
 	# Norman Conquest situation map-mode side colors. map_ENG already exists
 	# (named_colors/02_map.txt:15); these two follow its hsv360 form.
-	map_NRM = hsv360 { 45 85 90 }
+	# _1066 suffix: vanilla ships a map_NRM of its OWN (02_map.txt:217) and
+	# CONSUMES it — NRM's country color (france.txt:169) and the norman
+	# CULTURE's color (cultures/french.txt:492). An unsuffixed key here
+	# silently repainted both (AUDIT-2026-07-31 D3). Tag-named keys must be
+	# checked against vanilla KEY NAMES, not just rgb values.
+	map_NRM_1066 = hsv360 { 45 85 90 }
 	map_NOR = hsv360 { 215 70 55 }
 	# Pereyaslavl, the first NEW_COUNTRIES tag.
 	map_PYS = hsv360 { 190 55 65 }
 	# The thirteen taifas. All rgb triples verified absent from vanilla
 	# 02_map.txt (3744 map_* entries); chosen against their actual 1066
 	# neighbors — CAS orange-gold, ARA dark red, POR blue, MOR tan,
-	# map_GRA pale sage.
-	map_SEV = rgb { 34 110 74 }     # Seville      deep green
+	# map_GRA pale sage. map_SEV and map_TOL exist in vanilla as KEYS
+	# (02_map.txt:88/:155 — zero consumers, but shadowing a vanilla key
+	# is the D3 class) — renamed _1066 (AUDIT-2026-07-31 D3).
+	map_SEV_1066 = rgb { 34 110 74 } # Seville      deep green
 	map_CRD = rgb { 96 178 128 }    # Cordoba      light green (enclave in SEV)
 	map_QRM = rgb { 158 200 150 }   # Carmona      pale green  (enclave in SEV)
 	map_BDJ = rgb { 122 158 88 }    # Badajoz      olive
-	map_TOL = rgb { 176 146 48 }    # Toledo       ochre
+	map_TOL_1066 = rgb { 176 146 48 } # Toledo     ochre
 	map_ALP = rgb { 120 200 200 }   # Alpuente     cyan        (enclave in TOL)
 	map_ZGZ = rgb { 70 130 150 }    # Zaragoza     teal
 	map_LRD = rgb { 200 210 90 }    # Lerida       chartreuse

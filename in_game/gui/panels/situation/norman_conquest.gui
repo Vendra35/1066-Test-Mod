@@ -31,7 +31,9 @@ situation_panel = {
 					max_width = 460
 					autoresize = yes
 					text = "norman_conquest_desc"
-					using = fontsize_medium
+					# Font_Size_Medium: preload/fonts.gui:21; the old
+					# fontsize_medium had ZERO vanilla uses (AUDIT D4).
+					using = Font_Size_Medium
 				}
 			}
 			blockoverride "bottom_content_onclick" {
@@ -61,8 +63,12 @@ situation_panel = {
 					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
 				}
 			}
-			blockoverride "visible_hint" {}
-			blockoverride "onaction_hint" {}
+			# No hint blockoverrides: this situation has no scriptable
+			# hint, and blanking visible_hint would SHOW the hint button
+			# (template default is visible = no, cards.gui:2537-2539)
+			# while blanking onaction_hint killed its action — a visible
+			# dead button (AUDIT D5). Leaving both alone is the shape 8
+			# vanilla cards use; CARD 1 above already does the same.
 			blockoverride "bottom_content_onclick" {
 				visible = "[LateralView.Vars.Exists( 'nc_req_toggled' )]"
 			}

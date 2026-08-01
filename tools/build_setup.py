@@ -985,6 +985,14 @@ NEW_COUNTRIES["ABS"] = (
     "\t\t\tcapital_economy_vs_traditional_economy = 70\n"
     "\t\t\tindividualism_vs_communalism = 50\n"
     "\t\t\toutward_vs_inward = -20\n"
+    # The FOURTH template item — missed by the 2026-07-30 restatement;
+    # the engine kept answering initialize_from_bookmark.cpp:1719 for
+    # ABS/FAT until it was added (AUDIT-2026-07-31 D2). Value and
+    # position are the muslim template's own
+    # (muslim_monarchy_no_abrahamic_dhimmi.txt:19-21).
+    "\t\t\tparliament = {\n"
+    "\t\t\t\tparliament_type = council\n"
+    "\t\t\t}\n"
     "\t\t}\n"
     "\t\treligious_school = hanbali_school\n\n"
     "\t\tcountry_rank = rank_empire\n\n"
@@ -1041,6 +1049,11 @@ NEW_COUNTRIES["FAT"] = (
     "\t\t\tcapital_economy_vs_traditional_economy = 70\n"
     "\t\t\tindividualism_vs_communalism = 50\n"
     "\t\t\toutward_vs_inward = -20\n"
+    # The fourth template item, exactly as in ABS (the decoder's :1719
+    # rule — a template supplies FOUR things).
+    "\t\t\tparliament = {\n"
+    "\t\t\t\tparliament_type = council\n"
+    "\t\t\t}\n"
     "\t\t}\n"
     "\t\treligious_school = ismaili_school\n\n"
     "\t\tcountry_rank = rank_empire\n\n"
