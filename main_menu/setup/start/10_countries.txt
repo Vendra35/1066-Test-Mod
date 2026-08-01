@@ -3685,17 +3685,6 @@ countries = {
 		type = army
 		own_control_core = {
 
-			qirq_yer qarasuvbazar seyitler kalay kezlev aqmecit or_qapi solkhat jurchi khadjibey teligol kuyanlik ananiv iagorlic dashev
-			balikley aqmecit_prybuzhzhya argamakli_sarai vithold_hammami harbuzynka oleshia bereznehuvate bashtanka tavan velyka_oleksandrivka qalancaq aslan_horod
-			ordu_bazar rohat_kermen enice velyka_lepetykha melitopol kyrylivka tokmak konski_vody kuchugur berdiansk yelanets
-			mala_vyska umanske ingul sofiivka kryvyi_rih tomakivka mykytyn_rih kichkas rozdory hryshyne
-			kupiansk posad velyka_novosilka domakha huliaipole shyrokyne vasylivka taganrog bakhmut sloviansk lysychansk
-			kreminna oleksandrivka bielska_sloboda bilovodsk novopskov kalnivka konstantinovka krasny_sulin
-			shakhty rovenky kalmius kamenskaya azok bagayevskaya shcherbinovka balzimachi kanevskaya starominskaya yegorlykskaya semikarakorsk
-			yundin mityakinskaya luhansk novoaidar belaya_kalitva millerovo oblivskaya
-			kashary chertkovo bokovskaya milyutinskaya boguchar ostrogozhsk
-			kalach uryupin mikhaylovka novoanninsky alexeyevskaya veesky kumylzhenskaya
-			yelan machekha novonikolayevsky samoylovka
 			novopavlovsk yessentuq alexandrovskoye blagodarnoye novoselitskoye
 			kalininskaya bryukhovetskaya bzhedygu_kal ust_labinsk pavlovskaya tbilisskaya romanovsky_khutor
 			adyukh stavropol grigoropolisskaya uspenskoye shad_kirman petrovskoye_pontic privolnoye belaya_glina peschanokopskoye
@@ -3703,16 +3692,11 @@ countries = {
 
 		}
 		own_control_integrated = {
-			usivka petrove kodak myshuryn_rih samarchyk pavlohrad oril ternivka adalaga berestyn 
-			karlivka izium barvinkove donets_kharkiv zmiiv chuhuiv vovchansk nyzhnia_duvanka 
-			bol_shaya_martynovka cheplak bolshoy_gashun dubovskoye ust_tsimla konstantinovsk 
-			tatsinskaya tormosin kremenskaya kletskaya ust_medveditskaya nizhny_chir anna_russia 
-			novaya_pokrovka semidesyatnoye zemlyansk rossosh borisoglebsk bannoye sadovoye 
-			bolshaya_gribanovka buturlinovka verkhny_mamon zimnyatsky malodelskaya ilovlya 
+
 			atkarsk lysye_gory yekaterinovka balanda rtishchevo balashov turki arkadak 
-			sosnovy_ostrov malykovka novye_burasy tereshka petrovsk mechet stepanevka 
-			sarai_al_jadid beljamen zenzevatka nagavskaya aksay rudnya_pontic danilovka 
-			kotovo kamyshin goly_karamysh pologoye_zaymishche srednyaya_akhtuba bykovo 
+			sosnovy_ostrov malykovka novye_burasy tereshka petrovsk   
+			       
+			   pologoye_zaymishche srednyaya_akhtuba bykovo 
 			elton zolotari berezhnovka     
 			         
 			astrakhan khosheutovo krasny_yar ganyushkino zamyany yenotayevka sapara 
@@ -3724,7 +3708,7 @@ countries = {
 			iki_burul priyutnoye elista remontnoye gorodovikovsk raguli majar zelenokumsk arzgir levokumskoye 
 			naurskaya kara_bazaar terekli_mekteb kurskaya kamysh_burun   
 
-			orhei chilia cetatea_alba gura_galbenei sarata tighina chatyun    
+			      chatyun    
 
 			  ufa askino baltas
 
@@ -3743,11 +3727,10 @@ countries = {
 
 			samara shigony morkvash  
 
-			ismail
-			    donkov yelets talitsa_yelets gogol teshevka voronezh ukek
+			    donkov    teshevka  ukek
 			lipetsk usman mordovo zherdevka uvarovo kirsanov rasskazovo izberdey tambov ust_stanovykh_ryas
-			kozlov ust_livny terbuny kastornoye chernyanka alexeyevka 
-			rovenki valuyki korocha belgorod rakitnoye muzhech sudzha oboyan
+			kozlov      
+			       
 			staroyuryevo morsha sasovo nikolskoye bazarny_syzgan karsun 
 			mokshan chembar
 			serdobinskaya malaya_serdoba shemysheyka
@@ -3759,9 +3742,6 @@ countries = {
 
 			 burayevo
 
-			bratslav balta bershad drahushiv karabul savran
-			torhovytsia teplyk tsybuliv uman zavallia
-			vinnytsia buzhskyi pohrebyshche sokilets
 			armavir 
 
 			#Principality of Kursk
@@ -3793,7 +3773,7 @@ countries = {
 				sharia_law = hanafi_policy
 			}
 		}
-		capital = sarai_al_jadid
+		capital = astrakhan
 		religious_school = hanafi_school
 		government = { mysticism_vs_jurisprudence = -15 }
 		
@@ -3938,13 +3918,17 @@ countries = {
 		include = "eastern_european_monarchy"
 	}
 
-	GAZ = {	# Gazaria
+	GAZ = {
+		our_cores_conquered_by_others = {
+			kaffa vosporo tana
+		}
+	# Gazaria
 		own_control_core = {
-			kaffa  #Black Sea
+			  #Black Sea
 		}
 
 		own_control_integrated = {
-			tana 
+			 
 		}
 
 		starting_technology_level = 3
@@ -16154,17 +16138,13 @@ countries = {
 		}
 	}
 
-	WAL = {	#Wallachia
+	WAL = {
+		our_cores_conquered_by_others = {
+			targoviste ploesti valenii_de_munte campulung_muscel arges zimnicea severin stramba targu_jiu targu_bengai ramnicu_valcea craiova caracal calafat slatina turnu_magurele giurgiu rusii_de_vede comana bucharest buzau orasul_de_floci braila ramnicu_sarat lichiresti strehaia corabia dragasani radovanu plenita cozia glavacioc gratia pitesti poenari bukov cegani cetateni gaiseni meteleu parscov slanic slobozia viziru
+		}
+	#Wallachia
 		own_control_core = {
-			targoviste ploesti valenii_de_munte campulung_muscel arges zimnicea
-			severin stramba targu_jiu targu_bengai ramnicu_valcea craiova
-			caracal calafat slatina turnu_magurele
-			giurgiu rusii_de_vede comana bucharest
-			buzau orasul_de_floci braila ramnicu_sarat
-			lichiresti strehaia
-			corabia dragasani radovanu plenita
-			cozia glavacioc gratia pitesti poenari
-			bukov cegani cetateni gaiseni meteleu parscov slanic slobozia viziru
+
 		}
 
 		starting_technology_level = 3
@@ -16200,9 +16180,13 @@ countries = {
 		capital = targoviste
 	}
 
-	BIA = {	#Baia
-		own_control_core = {
+	BIA = {
+		our_cores_conquered_by_others = {
 			suceava adjud campulung_moldovenesc focsani hangu_romania piatra_lui_craciun targu_neamt targu_trotus tulnici vatra_dornei
+		}
+	#Baia
+		own_control_core = {
+			         
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16218,9 +16202,13 @@ countries = {
 		capital = suceava
 	}
 
-	BLD = {	#Bârlad
-		own_control_core = {
+	BLD = {
+		our_cores_conquered_by_others = {
 			barlad cahul cudalbi galati oancea palada reni targul_saratii tecuci
+		}
+	#Bârlad
+		own_control_core = {
+			        
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16236,9 +16224,13 @@ countries = {
 		capital = barlad
 	}
 
-	HSC = {	#Hansca
-		own_control_core = {
+	HSC = {
+		our_cores_conquered_by_others = {
 			chisinau targu_lapusnei tuzara
+		}
+	#Hansca
+		own_control_core = {
+			  
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16254,9 +16246,13 @@ countries = {
 		capital = chisinau
 	}
 
-	HTN = {	#Hotin
-		own_control_core = {
+	HTN = {
+		our_cores_conquered_by_others = {
 			hotin cernauti cetatea_tetina
+		}
+	#Hotin
+		own_control_core = {
+			  
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16272,9 +16268,13 @@ countries = {
 		capital = hotin
 	}
 
-	IAS = {	#Iaşi
-		own_control_core = {
+	IAS = {
+		our_cores_conquered_by_others = {
 			iasi bacau cotnari dorohoi harlau husi roman stefanesti tutova ungheni vaslui
+		}
+	#Iaşi
+		own_control_core = {
+			          
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16290,9 +16290,13 @@ countries = {
 		capital = iasi
 	}
 
-	SRC = {	#Soroca
-		own_control_core = {
+	SRC = {
+		our_cores_conquered_by_others = {
 			soroca balti lipnic viadineti
+		}
+	#Soroca
+		own_control_core = {
+			   
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -16308,9 +16312,13 @@ countries = {
 		capital = soroca
 	}
 
-	SSI = {	#Străşineţ
-		own_control_core = {
+	SSI = {
+		our_cores_conquered_by_others = {
 			storozhynets putna siret
+		}
+	#Străşineţ
+		own_control_core = {
+			  
 		}
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
@@ -37832,12 +37840,14 @@ countries = {
 		dynasty = piast_dynasty
 	}
 
-	HAL = {	#Halych
+	HAL = {
+		our_cores_conquered_by_others = {
+			halych bohorodchany buchach rohatyn lubaczow drohobych sambir stryi turka kolomyia kosiv sniatyn tysmenytsia lviv bereschany zhovkva yavoriv zvenyhorod przemysl piskorowice rzeszow yaroslav_poland sanok krosno lesko terebovlia khorostkiv ternopil zhydachiv bolekhiv dolyna ushytsia khmilnyk letychiv mezhybozhe mohyliv_podilskyi rov bakota horodok kamianets_podilskyi zalishchyky
+		}
+	#Halych
 		own_control_core = {
 			#Halych
 
-			ushytsia khmilnyk letychiv mezhybozhe mohyliv_podilskyi rov
-			bakota horodok kamianets_podilskyi zalishchyky
 		}
 
 		starting_technology_level = 3
@@ -38400,16 +38410,10 @@ countries = {
 			bila_tserkva bohuslav kaharlyk kaniv sherbiv skvyra cherkasy chyhyryn korsun lebedyn rozkishna smila zvenyhorodka chornobyl belaya_soroka brahin khoiniki kholmyech kyiv dymer fastiv zdvizhen olevsk kopyshche viry yemilchyne ovruch bilokorovychi korosten malyn narodychi stodolichi zhytomyr berdychiv chudniv chortolisy korostyshiv mychesk chelm krasnystaw liuboml ratne shatsk ugrovesk kremenets dubno zbarazh tykhomel lutsk chortoryisk peremyl rozhyshche stepan volodymyrets rivne kostopil ostroh peresopnytsya volodymyr kamin kovel melnytsya turiisk novohrad_volynskyi iziaslav korets liubar polonne belz busk grabowiec lubaczow sokal drohobych sambir stryi turka halych bohorodchany buchach rohatyn kolomyia kosiv sniatyn tysmenytsia lviv bereschany brody zhovkva yavoriv zvenyhorod przemysl piskorowice rzeszow yaroslav_poland sanok krosno lesko terebovlia khorostkiv ternopil zhydachiv bolekhiv dolyna brest_litowsk biala_podlaska chernyany malaryta wlodawa kobryn dabuchyn hajnowka kamyenyets pinsk drahichyn liubeshiv motal nobel turov davyd_haradok dubrovytsia hlynne stolin bely bolshevo fomin_gorodok shoptovo verkhovye yotkino dorogobuzh demensk gorodechnya mozhino shui yartsevo kozlov_vyazma orekhovna pogoreloye trufany zhulino roslavl izyaslavl pustosel rognedino zaroy smolensk belik berezhnyany dukhovshchina krasny yelnya toropets andreapol bibirevo dubrovna ilyino nizhelskoe zhizhets verzhavsk demidov katyn luchani shchuchye_smolensk vetlitsy vyazma izdeshkovo khlepen kholm_zhirkovsky sychyovka mazyr buinovichi lelchytsy kalinkavichy pietrykaw rudobelka zhytkavichy rechytsa babruysk luchin rahachow streshyn svietlahorsk kletsk bolshie_krugovichi kapyl lakhva luninets slutsk hlusk starobin staryya_darohi
 			#Ukraine
 
-			    kotelva
-
 			#Black Ruthenia
 			    
 			#Chernihiv
 
-			   sumy okhtyrka krasnopillia 
-			glushkovo  khotmyzh vilshana
-
-			     kolomak
 		} 
 
 		include = "expl_eastern_europe"
@@ -58600,6 +58604,22 @@ countries = {
 		}
 
 		capital = cordoba
+	}
+
+	CUM = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			khadjibey teligol kuyanlik ananiv iagorlic dashev balikley aqmecit_prybuzhzhya argamakli_sarai vithold_hammami harbuzynka oleshia bereznehuvate bashtanka tavan velyka_oleksandrivka qalancaq aslan_horod ordu_bazar rohat_kermen enice velyka_lepetykha kichkas rozdory hryshyne pavlohrad yelanets usivka mala_vyska umanske ingul petrove karlivka kolomak berestyn samarchyk oril ternivka kodak myshuryn_rih sofiivka kryvyi_rih tomakivka mykytyn_rih melitopol kyrylivka tokmak konski_vody kuchugur berdiansk taganrog velyka_novosilka domakha huliaipole shyrokyne vasylivka bakhmut lysychansk kreminna oleksandrivka posad azok bagayevskaya shcherbinovka balzimachi kanevskaya starominskaya yegorlykskaya tana krasny_sulin shakhty rovenky kalmius kamenskaya semikarakorsk bol_shaya_martynovka cheplak bolshoy_gashun dubovskoye yundin ust_tsimla konstantinovsk tatsinskaya tormosin luhansk mityakinskaya novoaidar belaya_kalitva millerovo bielska_sloboda bilovodsk novopskov kalnivka nyzhnia_duvanka konstantinovka izium adalaga barvinkove kupiansk sloviansk vovchansk sumy glushkovo krasnopillia vilshana donets_kharkiv chuhuiv khotmyzh kotelva okhtyrka zmiiv belgorod korocha oboyan muzhech rakitnoye sudzha yelets gogol talitsa_yelets terbuny ust_livny zemlyansk alexeyevka rovenki valuyki chernyanka kastornoye voronezh anna_russia novaya_pokrovka semidesyatnoye ostrogozhsk rossosh bratslav balta bershad drahushiv karabul savran ushytsia khmilnyk letychiv mezhybozhe mohyliv_podilskyi rov torhovytsia teplyk tsybuliv uman zavallia vinnytsia buzhskyi pohrebyshche sokilets bakota horodok kamianets_podilskyi zalishchyky qirq_yer qarasuvbazar kaffa seyitler solkhat kalay kezlev aqmecit jurchi or_qapi kremenskaya kletskaya ust_medveditskaya oblivskaya nizhny_chir kashary chertkovo bokovskaya milyutinskaya boguchar borisoglebsk bannoye kalach sadovoye bolshaya_gribanovka buturlinovka verkhny_mamon uryupin mikhaylovka novoanninsky alexeyevskaya veesky kumylzhenskaya zimnyatsky malodelskaya ilovlya mechet stepanevka sarai_al_jadid beljamen zenzevatka nagavskaya aksay yelan machekha novonikolayevsky samoylovka rudnya_pontic danilovka kotovo kamyshin goly_karamysh
+		}
+
+		starting_technology_level = 3
+		include = "expl_eastern_europe"
+		include = "eurasian_tribe"
+		country_rank = rank_duchy
+
+		capital = izium
 	}
 
 	CUP = {

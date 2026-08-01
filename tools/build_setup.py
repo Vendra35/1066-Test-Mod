@@ -1188,7 +1188,7 @@ _CENTRALASIA_RULES = {
 # empty land far more easily than it can take it off a horde (user
 # decision 9). CHG's 21 (Dzungaria 15 + Emin 6) make CHG landless
 # (vacated, not granted to QCH — user decision 11).
-_CENTRALASIA_VACATE = {
+LOCATION_VACATED = {
     "GLH": ["desht_kipchak_area", "lower_yik_area", "bashkiria_area",
             "yaransk_province", "mangistau_province", "mangyshlak_province",
             "ust_yurt_province",
@@ -1196,7 +1196,7 @@ _CENTRALASIA_VACATE = {
             "bursol_area", "suzun_area", "tomsk_area", "surgut_area"],
     "CHG": ["dzungaria_area", "emin_province"],
 }
-_CENTRALASIA_VACATE_EXPECT = {"GLH": 284, "CHG": 21}
+LOCATION_VACATED_EXPECT = {"GLH": 284, "CHG": 21}
 
 # Six Mongol-era tags reduced to zero by the grants + the vacate —
 # landless with claims, the established terminal state. Also the SAFE
@@ -1273,6 +1273,61 @@ RUS_LANDLESS = ("BLO", "BRY", "DMI", "DRU", "FMB", "KAS", "KCH", "KLN",
 # KIE -> NOV only: Mstislav is his father's placeman. The other two
 # triumvirs are partners, not subjects (user decision 12).
 RUS_TRIBUTARIES = (("KIE", "NOV"),)
+
+# ============================ RUS TIER 2 (CUM) ==============================
+# The Cumans (Rus/steppe package §E.4/§B, user decisions 7+8 approved
+# 2026-08-01; implemented after the accumulated test closed items
+# 27-30). ONE new tag: CUM, a TRIBE, not a horde — the naming trap is
+# escaped exactly as the British slice measured (country_name_
+# construction has ZERO tribe branches; the recipient assert bans only
+# steppe_horde; landed Gaelic tribes render their names in game).
+# ruler = random DELIBERATELY: no 1066 Cuman khan is attested well
+# enough to name, and all ten steppe name keys are missing — the
+# ARB/GAL/COR honesty. Capital izium [U] — the Donets crossing at the
+# traditional site of Sharukan's winter camp; not attested as a TOWN
+# in 1066, the package's stated weakness.
+# Decision 8: the Danube zone (moldavia+wallachia, 94) goes EMPTY —
+# Cuman domination there is an 1080s-90s fact and PEC is banked for
+# that ground — but WAL and the seven Moldavian boyar tags are wrong
+# under EVERY reading (Wallachia is 1330) and retire landless anyway.
+# HAL's Podolian remainder rides to CUM (the package's stated Tier-2
+# fate — HAL empties, its morning CAPITAL_FIXES entry goes vestigial);
+# GAZ (Genoese Gazaria, founded 1266) empties into CUM's Crimea.
+_RUS2_RULES = {
+    # CUM-core (169) + CUM-don (42) = 211. minus kursk_province (CHR's
+    # Tier-1 outpost) and the four BYZ Cherson-theme coastal singles.
+    "CUM": (["yedisan_area", "zaporizhzhia_area", "pryazovia_area",
+             "azov_area", "sloboda_ukraine_area", "kursk_area",
+             "podolia_area", "crimea_area", "lower_don_area"],
+            [],
+            ["kursk_province"],
+            ["theodoro", "lusta", "soldaia", "vosporo"], 211),
+}
+RUS2_LANDLESS = ("GAZ", "HAL", "WAL", "IAS", "BIA", "BLD", "SRC",
+                 "HTN", "HSC", "SSI")
+
+# eurasian_tribe: type = tribe, tribal_oldest_male, assembly
+# parliament, polygyny — a Tengri nomad confederation exactly
+# (27 vanilla users). It supplies NO discovery — expl_eastern_europe
+# is KIE/PYS's own bundle and covers the capital.
+NEW_COUNTRIES["CUM"] = (
+    "\tCUM = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_eastern_europe"\n'
+    '\t\tinclude = "eurasian_tribe"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = izium\n\t}\n")
+
+# The Danube vacate rides the general mechanism: each owner's holdings
+# inside the two areas go to NOBODY (WAL 44, IAS 11, BIA 10, BLD 9,
+# SRC 4, HTN 3, HSC 3, SSI 3 — package counts; GLH's 7 extend its
+# existing Tier A+B entry, 284 -> 291).
+LOCATION_VACATED["GLH"] += ["moldavia_area", "wallachia_area"]
+LOCATION_VACATED_EXPECT["GLH"] = 291
+for _t, _n in (("WAL", 44), ("IAS", 11), ("BIA", 10), ("BLD", 9),
+               ("SRC", 4), ("HTN", 3), ("HSC", 3), ("SSI", 3)):
+    LOCATION_VACATED[_t] = ["moldavia_area", "wallachia_area"]
+    LOCATION_VACATED_EXPECT[_t] = _n
 
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
@@ -2052,7 +2107,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
-    + ARABIA_LANDLESS
+    + ARABIA_LANDLESS + RUS2_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2130,6 +2185,11 @@ CAPITAL_FIXES = {
     # KIE with red_ruthenia_area — the review caught this (the package
     # had not); Kamianets is the Ponizzia's fortress seat [U].
     "HAL": ("lviv", "kamianets_podilskyi"),
+    # Rus Tier 2: CUM's lower_don sweep takes sarai_al_jadid (New
+    # Sarai sits in beljamen_province, the Volga-Don portage — the
+    # guard caught it). GLH keeps the Volga corridor; the delta town
+    # is the honest stand-in seat (1066's Saqsin [U]).
+    "GLH": ("sarai_al_jadid", "astrakhan"),
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -4493,6 +4553,17 @@ def build_countries(src):
         if _cap not in LOCATION_GRANTS[_t]:
             sys.exit(f"_ARABIA: {_t} capital {_cap} not in its list")
 
+    # Rus Tier 2: the Cumans resolve the same way (package counts:
+    # core 169 + don 42 = 211; donors GLH/HAL/KIE/GAZ).
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_RUS2_RULES.items()):
+        got = _resolve_ruleset(f"_RUS2_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_RUS2_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    if "izium" not in LOCATION_GRANTS["CUM"]:
+        sys.exit("_RUS2_RULES: CUM capital izium not in its resolved list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -4658,7 +4729,7 @@ def build_countries(src):
     # members and trip _remove_owned_many's exactly-once assert.
     _members_v, _ = _defs()
     _vac_resolved = {}
-    for _t, _names in sorted(_CENTRALASIA_VACATE.items()):
+    for _t, _names in sorted(LOCATION_VACATED.items()):
         _pool = set()
         for _n in _names:
             if _n not in _members_v:
@@ -4666,10 +4737,10 @@ def build_countries(src):
                          "area/province in definitions.txt")
             _pool |= set(_members_v[_n])
         got = sorted(_pool & set(_owned_by(src, _t)))
-        if len(got) != _CENTRALASIA_VACATE_EXPECT[_t]:
+        if len(got) != LOCATION_VACATED_EXPECT[_t]:
             sys.exit(f"LOCATION_VACATED[{_t}]: resolved {len(got)} owned "
                      f"locations, expected "
-                     f"{_CENTRALASIA_VACATE_EXPECT[_t]}")
+                     f"{LOCATION_VACATED_EXPECT[_t]}")
         for l in got:
             if l in _list_owner:
                 sys.exit(f"LOCATION_VACATED[{_t}]: {l} is also in "
@@ -5393,9 +5464,14 @@ def build_ios(src):
         + ["LUC", "SIE", "MAN", "PST", "VLT", "COT", "CHX", "ABA",
            "MND", "ASD"]
         + ["FLO", "PRA", "SAL", "CEV", "AOS"] * 2
-        + list(RUS_LANDLESS))
-    if n_ghosts != 113 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 113 landless IO list entries, "
+        + list(RUS_LANDLESS)
+        # Rus Tier 2 adds 9 (observed failing first): HAL + the eight
+        # Danube tags, one Orthodox-world membership each; GAZ (the
+        # Genoese republic) sits in no IO. 113 -> 122.
+        + ["HAL", "WAL", "IAS", "BIA", "BLD", "SRC", "HTN", "HSC",
+           "SSI"])
+    if n_ghosts != 122 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 122 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -5791,8 +5867,11 @@ def build_diplomacy(src):
     # ORM->JSK, ORM->JRW, and HLG->HLL — the last MIGRATED here from
     # the retired dedicated strip below (HLG is landless now, the sweep
     # sees it first). KLB has no diplomacy lines (grep-verified).
-    if n_landless_deps != 155:
-        sys.exit(f"expected exactly 155 landless-tag dependencies, stripped {n_landless_deps}")
+    # 155 -> 164 with Rus Tier 2 (observed failing first, 2026-08-01):
+    # GEN->GAZ, GLH's seven Moldavian boyar tributaries
+    # (BIA BLD HTN HSC IAS SRC SSI) and GLH->HAL.
+    if n_landless_deps != 164:
+        sys.exit(f"expected exactly 164 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

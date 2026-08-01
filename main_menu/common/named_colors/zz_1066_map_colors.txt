@@ -89,4 +89,10 @@
 	# NAME (zero substring hits — the D3 lesson).
 	map_QMT = rgb { 168 62 78 }     # al-Hasa       Gulf carmine
 	map_UKH = rgb { 122 104 176 }   # al-Yamama     Alid violet
+	# The Cumans. NOT the package's ochre-gold suggestion: CUM borders
+	# GLH's saturated amber (map_golden_horde, hsv360 42 77 81) along
+	# its whole eastern edge — the Cagliari/Gallura lesson. A reddish
+	# steppe dun, distinct from both GLH gold and BLH bronze; key
+	# verified absent from vanilla BY NAME (the D3 lesson).
+	map_CUM = rgb { 176 124 92 }    # Cumania       steppe dun
 }

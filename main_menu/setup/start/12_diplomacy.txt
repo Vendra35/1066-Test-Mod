@@ -64,20 +64,11 @@ diplomacy_manager = {
     dependency = { first = NOV second = LYA subject_type = tributary }
     dependency = { first = NOV second = TBY subject_type = tributary }
 
-    dependency = { first = GEN second = GAZ subject_type = vassal }
 
     # Golden Horde
         #Moldova
-    dependency = { first = GLH second = BIA subject_type = tributary }
-    dependency = { first = GLH second = BLD subject_type = tributary }
-    dependency = { first = GLH second = HTN subject_type = tributary }
-    dependency = { first = GLH second = HSC subject_type = tributary }
-    dependency = { first = GLH second = IAS subject_type = tributary }
-    dependency = { first = GLH second = SRC subject_type = tributary }
-    dependency = { first = GLH second = SSI subject_type = tributary }
     
         #Ruthenia
-    dependency = { first = GLH second = HAL subject_type = tributary }
 
     # Hanseatic League
     dependency = { first = HSA second = LUB subject_type = hanseatic_member }

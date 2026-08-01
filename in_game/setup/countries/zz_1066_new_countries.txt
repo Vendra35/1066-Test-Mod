@@ -497,3 +497,17 @@ UKH = { #Ukhaydirids of al-Yamama
 	culture_definition = najdi_culture
 	religion_definition = shia
 }
+
+# Rus Tier 2 (freeness verified by word-boundary AND substring scans,
+# zero vanilla hits). cuman_culture is vanilla's own, placed on zero
+# 1337 locations — exactly what a culture_definition is for; tengri
+# likewise. color2 is the shared steppe secondary every steppes.txt
+# entry uses.
+
+CUM = { #The Cumans (Polovtsy) — the Pontic steppe
+	color = map_CUM
+	color2 = rgb { 61 8 81 }
+
+	culture_definition = cuman_culture
+	religion_definition = tengri
+}

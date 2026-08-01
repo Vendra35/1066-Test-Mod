@@ -1496,6 +1496,36 @@ leader_modifier demonstrably applies), :2477 down to QUN alone
 both stripped via FIELD_FIXES, renders "Japan" with JAP's own arms
 NEXT LAUNCH (one click to confirm).
 
+**ITEM 31 — RUS TIER 2: THE CUMANS (LANDED 2026-08-01, needs game
+test).** One new tag: CUM, a TRIBE (the measured no-tribe-branch
+escape from the horde naming trap), 211 locations (core 169 + lower
+Don 42; donors GLH/HAL/KIE/GAZ), ruler random DELIBERATELY (no 1066
+khan is attested; all ten steppe name keys missing), capital izium
+[U]. Ten more tags landless: GAZ (Genoese Kaffa, 1266), HAL's
+Podolian remainder (its morning capital fix now vestigial), WAL and
+the seven Moldavian boyar tags — whose 94 Danube locations go EMPTY
+by decision 8 (PEC's banked ground). GLH's capital guard fired AGAIN
+(sarai_al_jadid sits on the Volga-Don portage inside the Don sweep)
+-> GLH seats at astrakhan (Saqsin's stand-in [U]); GLH now ~199 on
+the Volga corridor + North Caucasus only. Constants: deps 155->164
+(GEN->GAZ, the seven Moldavian tributaries, GLH->HAL), IO ghosts
+113->122, landed-parliament 1416->1407.
+TEST — click tour, ~5 minutes:
+1. Map: the whole Pontic steppe from the Dniester's east bank to the
+   Don in ONE steppe-dun color (CUM), labeled "Cumania" (the tribe
+   name-render probe); Moldavia+Wallachia EMPTY (no WAL, no boyar
+   states); GLH shrunk to the lower Volga + North Caucasus.
+2. Click Izium/the Donets → "Cumania", a random Tengri ruler, tribe
+   government.
+3. Crimea: interior CUM, the four coastal towns still BYZ; Kaffa CUM
+   (Gazaria gone).
+4. Kursk province still Chernihiv's (the Tier-1 outpost survived the
+   sweep).
+5. error.log via scan_log.py: landless trims +10, vacated-location
+   classes may grow by Danube towns (2065/2388 — known), NEW classes
+   only; watch that KIE/CHR/PYS borders did not move.
+
+
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
    re-verify key file:line claims before trusting anything), then give
