@@ -331,4 +331,15 @@ dynasty_manager = {
 		name = { name = ly_dynasty }
 		home = thang_long
 	}
+	# Northern Dynasties: the Yelu of the Liao and the Weiming of the
+	# Tangut (the imperial clan's OWN name; "Li" was the Tang-granted
+	# surname the sources use for the men [D]).
+	yelu_dynasty = {
+		name = { name = yelu_dynasty }
+		home = linhuang
+	}
+	weiming_dynasty = {
+		name = { name = weiming_dynasty }
+		home = ningxia
+	}
 }

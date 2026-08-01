@@ -1586,6 +1586,38 @@ TEST — click tour, ~8 minutes:
    leader; CHA/DAI tributaries live; JAP "Japan"; QRK/QRA/CUM
    unchanged.
 
+**ITEM 33 — NORTHERN DYNASTIES: THE LIAO AND WESTERN XIA (LANDED
+2026-08-01, needs game test).** docs/NORTHERN-DYNASTIES-PACKAGE.md,
+all recommendations user-approved. Two new tags: LIA (310 — the Five
+Capitals + Tier B eastern steppe; Daozong seated, yelu_dynasty, jin
+court language for the "Great Liao" render; the 46-tag Jurchen ring
+repointed CHI→LIA as tributaries — all 46 measured type=tribe, the
+Irish law, liao_ordo_reform as insurance) and XIA (48 — Ordos/
+Ningxia/Hexi; Yizong seated at 19 with NO regency, weiming_dynasty;
+rank_empire per decision 1). SYG landless (the Yuan Shenyang Wang as
+future). Western Mongolia (64) stays EMPTY — Pecheneg discipline.
+No Chanyuan tie (situation material, banked); no Liao-Xia tie.
+Vacate constants moved per the package's exact table (CHI 113,
+CRS 24, BAT 14, OTC 8; HCN/QAS/BGT now reach landless via the grant).
+Package corrections banked: yanbei is the Khitan heartland NOT the
+Sixteen Prefectures; linhuang existed unowned; TNG is Toungoo.
+2390 blocks, 167 thrones. Pop-line class shrinks ~174 locations.
+TEST — click tour, ~6 minutes:
+1. Map: "Great Liáo" (the jin-court render probe — if "Khitan
+   Empire", the court language lost) indigo from the Wall to the
+   Kerulen; "Great Xià" rose over Ordos-Ningxia-Hexi; western
+   Mongolia still empty; Manchuria mostly Liao with the tribal
+   fringe.
+2. Click Linhuang → capital, "Emperor Daozong", house "Yelü".
+3. Click Ningxia → "Yizong", house "Weiming", NO regent (he is 19).
+4. Liao subject list: ~46 tributaries (spot-check one Jurchen tribe's
+   war screen opens); Shenyang GONE as a state.
+5. Kaifeng CHI unchanged; KOR untouched; the Great Wall line is now
+   a real border.
+6. scan_log.py: pop-line class should SHRINK (~174 re-owned steppe
+   locations); watch for 3702 naming LIA (= the ordo ring failed —
+   fallback vassal decision) and any class naming LIA/XIA.
+
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —

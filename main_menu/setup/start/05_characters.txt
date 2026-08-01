@@ -104932,6 +104932,34 @@ character_db={
 		tag = ZTA
 	}
 
+	# --- 1066 Northern Dynasties ------------------------------------------
+	# Cultures/religions from the tags' own registry blocks. kharchin is
+	# the best-available Khitan proxy (vanilla paints it on the Khitan
+	# heartland; khitan_culture is banked for the pop phase); mi_niah IS
+	# vanilla's Tangut culture, on zero locations. The Weiming were the
+	# Tangut imperial clan's own name; "Li" was the Tang-granted surname
+	# the sources still use for the men — hence Li_Liangzuo the person,
+	# weiming_dynasty the house [D].
+	lia_yelu_hongji_daozong = {
+		first_name = { name = Yelu_Hongji }
+		culture = kharchin_culture
+		religion = mahayana
+		birth_date = 1032.1.1
+		birth = linhuang
+		dynasty = yelu_dynasty
+		tag = LIA
+	}
+
+	xia_li_liangzuo_yizong = {
+		first_name = { name = Li_Liangzuo }
+		culture = mi_niah_culture
+		religion = mahayana
+		birth_date = 1047.1.1
+		birth = ningxia
+		dynasty = weiming_dynasty
+		tag = XIA
+	}
+
 	# --- 1066 China-East --------------------------------------------------
 	# All literals with loc rows (invented-literal route, proven nine
 	# times); cultures/religions copied from each tag's own registry

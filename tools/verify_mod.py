@@ -756,7 +756,8 @@ _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
 # investiture; a vanilla overlord is invisible to the registry scan
 # but its tributaries fail the same visible gate without a passing
 # branch).
-_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP", "KIE"}
+_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP", "KIE",
+                       "LIA"}
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
     strip_comments(_diplo))
@@ -948,6 +949,9 @@ _GENERATOR_OK = {
     "QMT", "UKH",
     # Rus Tier 2 — tier 4, permanent: the Cumans had none.
     "CUM",
+    # Northern Dynasties — tier 4, permanent: neither dynasty used
+    # European-style heraldry.
+    "LIA", "XIA",
 }
 for _t in sorted(_newtags):
     _coa_count += 1

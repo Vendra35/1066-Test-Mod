@@ -21789,18 +21789,17 @@ countries = {
 		}
 	}
 
-	SYG = { #Shenyang
+	SYG = {
+		our_cores_conquered_by_others = {
+			liaoyang fushun_liaoyang hetu_ala jabiyan qinhe shenyang dingliao dandong donggo kuandian wanggika gaizhou fuzhou_liaoyang jinzhou_dalian xiuyan zhuanghe guangning kaicheng wangping yizhou_jinzhou jinzhou_liaoyang dalinghe haizhou_liaoyang ningyuan_jinzhou kaiyuan_jurchen tieling qiantun
+		}
+ #Shenyang
 		own_control_core = {
-			liaoyang fushun_liaoyang hetu_ala jabiyan qinhe shenyang 
-			dingliao dandong donggo kuandian wanggika
-			gaizhou fuzhou_liaoyang jinzhou_dalian xiuyan zhuanghe
-			guangning kaicheng wangping yizhou_jinzhou
-			jinzhou_liaoyang dalinghe haizhou_liaoyang ningyuan_jinzhou
-			kaiyuan_jurchen tieling
+
 		}
 
 		own_control_integrated = {
-			qiantun
+			
 		}
 
 		tolerated_cultures = {
@@ -26312,16 +26311,14 @@ countries = {
 			jiande chunan suian tonglu
 
 			ansu dingxing gaoyang_baoding laishui boye mancheng wanzhou_baoding qingyuan_baoding puyin tangxian gecheng xincheng_baoding shulu guixin yixian_yizhou
-			baochang songzhou shangdu dongliangting yixingzhou enhua fuzhou kuanhe_xingzhou niushan limin baitan weining chagannur taipingzhuang liuyuan xiabancheng huanzhou gaoyuan zhangsanying zhongdu
+			                   
 			changyuan yuancheng baima_daming dongming nanle neihuang puyang qingfeng weixian xunxian
-			xiankang xingzhong lizhou daning_pingquan longshan huihe hezhong naiman pingquan chuanzhou wuping_daning shenshui fushu  
+			              
 			qinghe guangping handan yongnian mingshui quzhou 
 			  
 			jiaohe qingchi dongguang fucheng_hejian liguo hejian jinghai tiaoxian leshou nanpi ningjin qingyun huichuan renqiu wuqiao suning dagu zhigu yanshan gucheng_jingzhou
 			guangzong renxian julu neiqiu shahe xingtai
-			luanyang banbishan baodi yijin dadu changping fangshan fengrun guan huairou daxing yuyang sanhe_tongzhou shicheng_jizhou dongan_shuntian lutai miyun pinggu dacheng shunyi xianghe luxian wenan wuqing wanping yongqing yutian fanyang zunhua
-			huaian yunzhou dushikou xuanping longmen_chicheng huailai shunsheng longqing xuande baoan_baoan
-			macheng_luanzhou changli funing laoting longwangmiao yifeng lulong qianan sanchakou
+
 			anping xinle anxi_dingzhou ningjin_zhaozhou fuping gaocheng hengshui yuanshi_zhending huolu gucheng_zhending xindu_jizhou lincheng lingshou longping_zhaozhou nangong pingshan_zhending quyang jingan_shenzhou jingxing wuji wuyi xingtang zanhuang zaoqiang pingji zhending
 
 			yique dengfeng gongxian yiyang_songzhou lingbao luanchuan yongning_shanzhou luoyang lushi mengjin mianchi shanxian songzhou_songzhou wenxiang xinan yanshi yiyang zhuyang
@@ -26339,7 +26336,6 @@ countries = {
 			anqiu boxing changle yiyuan gegou lean juxian linqu mengyin yidu_qingzhou rizhao shizilu shouguang wulian yishui zhucheng zichuan
 			chuqiu chengwu dingtao xucheng feixian yutai jiyin jiaxiang tengdong rencheng jinxiang juye shouzhang linyi ningyang pingyin qufu shagou shansu sishui tancheng tengxian donge wenshang yanggu_yanzhou ziyang yuncheng yizhou_tengzhou zouxian
 
-			yinshan shanyin datong_datong hebin erdao xuanning guangling zhenwu huairen fengzhou hunyuan zhongling jining feihu lingqiu shenwu ningbian yunnei shanyang_yingzhou tiancheng liangcheng dongsheng wuchuan baideng jincheng yulin_datong lingxian_shanxi pingdi yunchuan
 			xihe jiexiu pingyao xiaoyi heshun yushe liaoshan
 			shangdang huguan licheng_luan lucheng_luan qingyang_luan tunliu xiangyuan zhangzi
 			jishi_anze daning fenxi fushan hejin hongtong huoyi jiangxian jishan jizhou linfen lingshi linjin pinglu puxian quwo ruicheng shilou wanquan wenxi xiaxian taiping_jiangzhou xiangning yuanqu zhengping xichuan_xizhou yicheng_pingyang yonghe hedong yueyang_anze xiexian tongdi qinyuan wuxiang
@@ -26365,19 +26361,19 @@ countries = {
 			bazhai_duyun dushan
 			bafan
 			qingjiang_liping taigong
-			ganzhou gaotai hongshui liyuan qidaban qilian sanjiaocheng shandan yongchang_ganzhou
-			anding_suzhou dangcheng kuyu_shazhou guazhou jinta shazhou suzhou_gansu chijin yangguan
-			anyuan datong_xining gulang gushan jinchang xiliang haomen nianbo xining baiting zhuanglang zhenfan
+			      sanjiaocheng  
+			        
+			 datong_xining  gushan   haomen nianbo xining  zhuanglang 
 			baoji fengxiang fufeng linyou longzhou_fengxiang meixian qianyang qishan longan
 			chengzhou dingxi fuqiang longxi_gongchang xihe_huizhou huizhou_gongchang huizhou jiezhou liangdang ningyuan_gongchang baimaguan tongwei qinan chengji sancha qingshui zhangxian
 			chenggu liuba lueyang duoshui nanzheng daan liangquan xixiang yangyuan yangzhou foping guochuan
 			didao kangu lanzhou lutang weiyuan_lintao
-			fuchuan_ningxia lingzhou dingyuan_lingzhou lingwu yanchi ningxia mingsha yingli
+			       
 			huating_pingliang guangan kaicheng_guyuan xianzhou jingning jingchuan chongxin longde pingliang sanchuan zhenrong zhenyuan lingtai shuiluo
-			anhua baimachen dingbian huachi huanzhou_qingyang zhenning_qingyang heshui anbian ningzhou
+			anhua baimachen  huachi huanzhou_qingyang zhenning_qingyang heshui  ningzhou
 			jingzhao baishui xinping xianning_xian chengcheng chunhua tongzhou zhouzhi fuping_xian huxian hancheng heyang_xian huayin huazhou yongshou jingyang lantian liquan lintong shangluo luonan pucheng qianyou qianzhou sanyao sanyuan shangnan shangzhou shanyang fucheng tongguan_tongchuan weinan xianyang sanshui_binzhou huayuan zhenan
 			xicheng hanyin ningshan pingli shiquan xunyang ziyang_xingan goupingguan
-			anding baoan yichuan fugu fuzhou_yanan ganquan kaiguang huaiyuan_mizhi jiazhou luochuan dingrong suide mizhi zhongbu qingjian shenmu fushi yanchang yanchuan yijun yulin jingbian ansai
+			anding baoan yichuan fugu fuzhou_yanan ganquan kaiguang  jiazhou luochuan    zhongbu  shenmu fushi yanchang yanchuan yijun   ansai
 			langzhong jiachuan huacheng miangu zhangming zengkou cangxi nanjiang nanbu tongjiang puan zhaohua zitong
 			chengdu anzhou zixian jinyuan deyang guanzhou shifang jianzhou mianzhou mianzhu neijiang pixian shiquan_maozhou shuangliu pengshan renshou xindu jingyan jintang ziyang_zizhong
 			baxian tongliang banan bishan changshou_changshou rongchang fuzhou_sichuan dianjiang pengshui shizhao jiangjin qianjiang_shaoqing dazu nanchuan fengdu wulong dingyuan yongchuan linjiang
@@ -26394,10 +26390,6 @@ countries = {
 			mingshan yandao rongjing
 
 			#Mongolia
-
-			bayannur uraqai xinhure
-			 
-			ordos aerzhai otog tongwancheng
 
 		}
 
@@ -58860,6 +58852,29 @@ countries = {
 		capital = yazd
 	}
 
+	LIA = {
+		own_control_core = {
+			baoan_baoan huailai longqing yijin dacheng wenan changping huairou miyun shunyi yuyang luanyang banbishan fengrun shicheng_jizhou pinggu yutian zunhua yifeng macheng_luanzhou laoting dadu fangshan guan daxing dongan_shuntian wanping yongqing fanyang luxian baodi sanhe_tongzhou lutai xianghe wuqing huaian yunzhou dushikou xuanping longmen_chicheng shunsheng xuande lulong changli funing longwangmiao qianan sanchakou daning_pingquan huihe hezhong naiman pingquan wuping_daning fushu xingzhong xiankang lizhou longshan chuanzhou shenshui quanning songzhou pingdisonglin enhua yingchang dongliangting shangdu chagannur huanzhou baitan yixingzhou kuanhe_xingzhou niushan limin taipingzhuang liuyuan xiabancheng zhangsanying gaoyuan baochang fuzhou weining zhongdu dingliao dandong donggo kuandian wanggika gaizhou fuzhou_liaoyang jinzhou_dalian xiuyan zhuanghe guangning fuxin kaicheng wangping yizhou_jinzhou jinzhou_liaoyang dalinghe haizhou_liaoyang ningyuan_jinzhou qiantun liaoyang fushun_liaoyang hetu_ala jabiyan qinhe shenyang yizhou_jurchen kaiyuan_jurchen ningchang tieling tongliao yehe datong_datong xuanning huairen tiancheng baideng yulin_datong yunchuan jining erdao liangcheng pingdi fengzhou yinshan hebin zhenwu ningbian yunnei dongsheng wuchuan jincheng shanyin zhongling shenwu shanyang_yingzhou lingxian_shanxi guangling hunyuan feihu lingqiu zhengjiatun haihaer kailu linhuang qingzhou_mongol xinkai chaghankhot gorlos huolin taluhe tuliemao wafang taizhou_jurchen buteha chol hurle buir_nuur barun_xiabaer khalkh tamsabulag bars_khot bayan_tumen bayantsagaan dalai_nuur menen hailar bayan_ula hulun xuguit yimin avraga kherlen rahsaan_khad uguumur undurkhaan enhe_hada jiliu lower_gazimur merelka upper_gazimur urov abagaita gegen hasar khirkhira talman_boorj choyrin_datsan bayan gazrin_chuluu takhilyn ulziit tavan_tolgoi matad sharga_uul sumtiin zara_uul jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod bishreit dalay doloodyn_gobi ikh_narttin_chuluu saikhandulaan ulaanbadrakh avnagar chono khuuchid sangiin_dalai sorin_nuur ulgain uzemchin bayankhot alxa bagh bayannurhong urad del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan khara_khoto banzart_khairkhan naraan_chilaun noyon_uul zag_suujiyn_gobi kyakhta khadanzaa khan_khentii tsokh selenge khimni ulenkhe zed zelterijin amarbayas_galang bornuur eroo sulkhari khilgo khilgoson ung ude_baikal anaa bureen khudan khurbe khatgal eringiin uur karakorum khar_balgas orkhon tsetserleg baibalyk alyanbulag kharkhul mori_baridag tarvagatai urga kedun khar_bukhyn kharuukh manzushir tuul zagzuugiin_balgas altan_gadas chuluutyn delger_moron ider nibuchu chit ingedei nurchuu tura uldurga qorqonaq_yubur aga boorj unda silkari kara_shilka kuenga uryum tsagaan baruun_tar_nuur lower_ulz upper_ulz yakhi zyyn_tar_nuur onon balj baldan_bereeven kyra
+		}
+
+		starting_technology_level = 3
+		include = "far_east_asia_monarchy"
+		include = "expl_mongols"
+		government = {
+			ruler = lia_yelu_hongji_daozong
+			ruler_term = { character = lia_yelu_hongji_daozong start_date = 1055.8.28 regnal_number = 0 regnal_name = Daozong }
+			heir_selection = cognatic_primogeniture
+			reforms = {
+				liao_ordo_reform
+			}
+		}
+		court_language = jin_language
+
+		country_rank = rank_empire
+
+		capital = linhuang
+	}
+
 	LRD = {
 		own_control_core = {
 			lleida flix fraga balaguer
@@ -59504,6 +59519,26 @@ countries = {
 		country_rank = rank_county
 
 		capital = saint_quentin
+	}
+
+	XIA = {
+		own_control_core = {
+			lingzhou dingyuan_lingzhou yanchi ningxia mingsha fuchuan_ningxia lingwu yingli yulin dingbian huaiyuan_mizhi anbian jingbian suide dingrong mizhi qingjian ordos aerzhai otog tongwancheng bayannur uraqai xinhure ganzhou hongshui liyuan qidaban qilian shandan suzhou_gansu gaotai jinta chijin shazhou anding_suzhou dangcheng kuyu_shazhou guazhou niuquanzi yangguan yongchang_ganzhou anyuan gulang jinchang xiliang baiting zhenfan
+		}
+
+		starting_technology_level = 3
+		include = "east_asia_monarchy_no_coast"
+		include = "expl_china"
+		government = {
+			ruler = xia_li_liangzuo_yizong
+			ruler_term = { character = xia_li_liangzuo_yizong start_date = 1048.1.19 regnal_number = 0 regnal_name = Yizong }
+			heir_selection = cognatic_primogeniture
+		}
+		court_language = northern_mandarin_dialect
+
+		country_rank = rank_empire
+
+		capital = ningxia
 	}
 
 	ZAH = {

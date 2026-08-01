@@ -95,4 +95,11 @@
 	# steppe dun, distinct from both GLH gold and BLH bronze; key
 	# verified absent from vanilla BY NAME (the D3 lesson).
 	map_CUM = rgb { 176 124 92 }    # Cumania       steppe dun
+	# Northern Dynasties. LIA against CHI's crimson and KOR's blue
+	# (map_KOR 26 53 177 — indigo shifted darker to stay distinct);
+	# XIA takes vanilla's own map_tangut VALUE (02_map.txt:2434) so the
+	# state reads as its culture. Keys verified absent from vanilla BY
+	# NAME (zero substring hits — the D3 lesson).
+	map_LIA = rgb { 40 60 110 }     # the Liao       Khitan indigo
+	map_XIA = rgb { 170 95 126 }    # Western Xia    Tangut rose
 }

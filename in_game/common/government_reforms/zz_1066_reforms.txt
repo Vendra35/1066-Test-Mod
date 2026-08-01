@@ -156,3 +156,25 @@ kyivan_seniority_reform = {
 
 	years = 4
 }
+
+# The Liao periphery (Northern Dynasties, 2026-08-01) — sixth use of
+# the khutba pattern, shipped as INSURANCE: all 46 Jurchen subjects
+# are type = tribe (measured through their include chains), so the
+# tributary gate passes on the subject branch alone — the Irish law —
+# but the reform guarantees the ring against a vanilla template change
+# and satisfies the harness's overlord check, at the cost of nothing
+# (the slot is refunded).
+liao_ordo_reform = {
+	potential = {
+		tag = LIA
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
+	}
+
+	years = 4
+}

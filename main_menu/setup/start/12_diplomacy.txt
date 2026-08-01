@@ -308,7 +308,6 @@ diplomacy_manager = {
     dependency = { first = CHI second = SIB subject_type = vassal }
     dependency = { first = CHI second = SNP subject_type = vassal }
     dependency = { first = CHI second = SSG subject_type = vassal }
-    dependency = { first = CHI second = SYG subject_type = vassal }
     dependency = { first = CHI second = TAZ subject_type = vassal }
     dependency = { first = CHI second = TIB subject_type = vassal }
     dependency = { first = CHI second = TMN subject_type = vassal }
@@ -385,54 +384,54 @@ diplomacy_manager = {
     
 
     #-------------Manchuria----------
-    dependency = { first = CHI second = AAR subject_type = vassal }
-    dependency = { first = CHI second = AID subject_type = vassal }
-    dependency = { first = CHI second = ASU subject_type = vassal }
-    dependency = { first = CHI second = BAY subject_type = vassal }
-    dependency = { first = CHI second = DLA subject_type = vassal }
-    dependency = { first = CHI second = EJI subject_type = vassal }
-    dependency = { first = CHI second = FLN subject_type = vassal }
-    dependency = { first = CHI second = FUT subject_type = vassal }
-    dependency = { first = CHI second = FUY subject_type = vassal }
-    dependency = { first = CHI second = GIL subject_type = vassal }
-    dependency = { first = CHI second = HIJ subject_type = vassal }
+    dependency = { first = LIA second = AAR subject_type = tributary }
+    dependency = { first = LIA second = AID subject_type = tributary }
+    dependency = { first = LIA second = ASU subject_type = tributary }
+    dependency = { first = LIA second = BAY subject_type = tributary }
+    dependency = { first = LIA second = DLA subject_type = tributary }
+    dependency = { first = LIA second = EJI subject_type = tributary }
+    dependency = { first = LIA second = FLN subject_type = tributary }
+    dependency = { first = LIA second = FUT subject_type = tributary }
+    dependency = { first = LIA second = FUY subject_type = tributary }
+    dependency = { first = LIA second = GIL subject_type = tributary }
+    dependency = { first = LIA second = HIJ subject_type = tributary }
     dependency = { first = CHI second = HIY subject_type = vassal }
     dependency = { first = CHI second = HLN subject_type = vassal }
-    dependency = { first = CHI second = HNC subject_type = vassal }
-    dependency = { first = CHI second = HOT subject_type = vassal }
-    dependency = { first = CHI second = HRO subject_type = vassal }
-    dependency = { first = CHI second = HUI subject_type = vassal }
-    dependency = { first = CHI second = HUR subject_type = vassal }
-    dependency = { first = CHI second = ILU subject_type = vassal }
-    dependency = { first = CHI second = IMN subject_type = vassal }
-    dependency = { first = CHI second = ITU subject_type = vassal }
-    dependency = { first = CHI second = JHT subject_type = vassal }
-    dependency = { first = CHI second = JUS subject_type = vassal }
-    dependency = { first = CHI second = LAL subject_type = vassal }
-    dependency = { first = CHI second = LLU subject_type = vassal }
-    dependency = { first = CHI second = MAH subject_type = vassal }
-    dependency = { first = CHI second = MIC subject_type = vassal }
-    dependency = { first = CHI second = MRE subject_type = vassal }
-    dependency = { first = CHI second = MUH subject_type = vassal }
-    dependency = { first = CHI second = NAL subject_type = vassal }
-    dependency = { first = CHI second = NEM subject_type = vassal }
-    dependency = { first = CHI second = NEY subject_type = vassal }
-    dependency = { first = CHI second = NRO subject_type = vassal }
-    dependency = { first = CHI second = SHI subject_type = vassal }
-    dependency = { first = CHI second = SIR subject_type = vassal }
-    dependency = { first = CHI second = SMN subject_type = vassal }
-    dependency = { first = CHI second = SNC subject_type = vassal }
-    dependency = { first = CHI second = SUI subject_type = vassal }
-    dependency = { first = CHI second = TAS subject_type = vassal }
-    dependency = { first = CHI second = TOD subject_type = vassal }
-    dependency = { first = CHI second = TOX subject_type = vassal }
-    dependency = { first = CHI second = USS subject_type = vassal }
-    dependency = { first = CHI second = WEJ subject_type = vassal }
-    dependency = { first = CHI second = WEK subject_type = vassal }
-    dependency = { first = CHI second = WUY subject_type = vassal }
-    dependency = { first = CHI second = YRN subject_type = vassal }
-    dependency = { first = CHI second = YIM subject_type = vassal }
-    dependency = { first = CHI second = YOO subject_type = vassal }
+    dependency = { first = LIA second = HNC subject_type = tributary }
+    dependency = { first = LIA second = HOT subject_type = tributary }
+    dependency = { first = LIA second = HRO subject_type = tributary }
+    dependency = { first = LIA second = HUI subject_type = tributary }
+    dependency = { first = LIA second = HUR subject_type = tributary }
+    dependency = { first = LIA second = ILU subject_type = tributary }
+    dependency = { first = LIA second = IMN subject_type = tributary }
+    dependency = { first = LIA second = ITU subject_type = tributary }
+    dependency = { first = LIA second = JHT subject_type = tributary }
+    dependency = { first = LIA second = JUS subject_type = tributary }
+    dependency = { first = LIA second = LAL subject_type = tributary }
+    dependency = { first = LIA second = LLU subject_type = tributary }
+    dependency = { first = LIA second = MAH subject_type = tributary }
+    dependency = { first = LIA second = MIC subject_type = tributary }
+    dependency = { first = LIA second = MRE subject_type = tributary }
+    dependency = { first = LIA second = MUH subject_type = tributary }
+    dependency = { first = LIA second = NAL subject_type = tributary }
+    dependency = { first = LIA second = NEM subject_type = tributary }
+    dependency = { first = LIA second = NEY subject_type = tributary }
+    dependency = { first = LIA second = NRO subject_type = tributary }
+    dependency = { first = LIA second = SHI subject_type = tributary }
+    dependency = { first = LIA second = SIR subject_type = tributary }
+    dependency = { first = LIA second = SMN subject_type = tributary }
+    dependency = { first = LIA second = SNC subject_type = tributary }
+    dependency = { first = LIA second = SUI subject_type = tributary }
+    dependency = { first = LIA second = TAS subject_type = tributary }
+    dependency = { first = LIA second = TOD subject_type = tributary }
+    dependency = { first = LIA second = TOX subject_type = tributary }
+    dependency = { first = LIA second = USS subject_type = tributary }
+    dependency = { first = LIA second = WEJ subject_type = tributary }
+    dependency = { first = LIA second = WEK subject_type = tributary }
+    dependency = { first = LIA second = WUY subject_type = tributary }
+    dependency = { first = LIA second = YRN subject_type = tributary }
+    dependency = { first = LIA second = YIM subject_type = tributary }
+    dependency = { first = LIA second = YOO subject_type = tributary }
 
     #-------------Mongolia----------
 

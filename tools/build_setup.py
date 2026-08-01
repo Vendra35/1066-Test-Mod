@@ -274,6 +274,15 @@ HISTORICAL_RULERS = {
     "KHM": ("khm_harshavarman_iii", "1066.1.1", 3),                # Harshavarman III of Angkor [D on the month]
     "HSL": ("hsl_vinayaditya_i_hoysala", "1047.1.1", 0),           # Vinayaditya the Hoysala — vanilla character, zero authoring
 
+    # Northern Dynasties (package 2026-08-01, user-approved same day).
+    # Temple names on the regnal_name literal route; both accessions
+    # [U on the day]. Yizong: NO regency — 19 at start, personal rule
+    # since he destroyed the Mozang in 1061; he dies 1067, as does
+    # CHI's Yingzong — two northern successions inside sixteen months,
+    # banked situation material.
+    "LIA": ("lia_yelu_hongji_daozong", "1055.8.28", 0, "Daozong"),  # Daozong (Yelu Hongji), 8th Liao emperor, r. 1055-1101
+    "XIA": ("xia_li_liangzuo_yizong", "1048.1.19", 0, "Yizong"),    # Yizong (Li Liangzuo), 2nd Xia emperor, r. 1048-1067
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -1359,14 +1368,20 @@ for _t, _n in (("WAL", 44), ("IAS", 11), ("BIA", 10), ("BLD", 9),
 # brother/son hordes retire landless with auto-derived claims.
 CHINA_LANDLESS = ("LNG", "CRS", "QAS", "BAT", "BGT", "KHD", "HCN",
                   "OTC", "OGE")
+# 198 -> 113 with Northern Dynasties: LIA's grants take CHI's 5
+# liaodong + 80 Tier-B steppe locations OUT of the vacate pool before
+# the vacate resolves (grants run first; the pool intersects
+# post-grant holdings). Package-measured, self-asserting.
 LOCATION_VACATED["CHI"] = ["mongolia_region", "manchuria_region"]
-LOCATION_VACATED_EXPECT["CHI"] = 198
-# The eight hordes' WHOLE holdings vacate (counts measured on the
-# built file 2026-08-01; OGE is 18, not the review's 19 — ayagoz went
-# to QRA with Central Asia). The broad name list is intersection fuel;
-# a holding OUTSIDE it would fail the landless still-owns guard.
-for _t, _n in (("CRS", 37), ("QAS", 19), ("BAT", 18), ("BGT", 17),
-               ("KHD", 16), ("HCN", 21), ("OTC", 23), ("OGE", 18)):
+LOCATION_VACATED_EXPECT["CHI"] = 113
+# The hordes' REMAINING holdings vacate after LIA's grants (Northern
+# Dynasties): CRS 37->24, BAT 18->14 (3 Tier-B + niuquanzi to XIA),
+# OTC 23->8, OGE/KHD untouched by LIA. HCN/QAS/BGT lose their WHOLE
+# holdings to the grant and reach landless that way — no vacate entry
+# (an empty-list vacate would be a no-op; the landless verifier still
+# guards them via CHINA_LANDLESS).
+for _t, _n in (("CRS", 24), ("BAT", 14),
+               ("KHD", 16), ("OTC", 8), ("OGE", 18)):
     # gansu_area: BAT's one Gobi-edge outlier (niuquanzi) — 1066 Gansu
     # is Western Xia ground (deferred slice); empty beats a Chinggisid.
     LOCATION_VACATED[_t] = ["mongolia_region", "manchuria_region",
@@ -1383,6 +1398,80 @@ _CHINA_GRANTS = {
             "dingyuan_chuxiong", "weichu", "nanan", "heyang",
             "jiangchuan", "lunan", "xinxing"],
 }
+
+# ========================= NORTHERN DYNASTIES ===============================
+# The Liao and Western Xia (docs/NORTHERN-DYNASTIES-PACKAGE.md,
+# user-approved 2026-08-01 with all recommendations: XIA at rank_empire
+# per decision 1 — "Great Xia"; LIA Tier A+B; kharchin/jin_language;
+# weiming_dynasty; no Liao-Xia or Chanyuan ties — the Chanyuan silver
+# is SITUATION material: a subject arrow would invert the treaty's own
+# brotherly fiction and collide with CHI's Middle Kingdom leadership).
+# yanbei_area is NOT the Sixteen Prefectures (the package corrected
+# the brief): those are beiping+datong; yanbei is the Khitan heartland.
+# All five Liao capitals exist as locations; linhuang (Shangjing) was
+# UNOWNED in the item-32 build and becomes the seat.
+_NORTH_RULES = {
+    # THE LIAO — the Five Capitals and their circuits (Tier A, 161) +
+    # the eastern steppe the Liao garrisoned through them (Tier B,
+    # 149; the Zubu "administration" is a claim rendered as ownership,
+    # the same fiction every nomad suzerainty on this map wears).
+    # Western Mongolia (64: Naimans/Merkits/Kyrgyz) stays EMPTY — the
+    # Pecheneg discipline. KOR keeps linjiang_jurchen (its Yalu
+    # bridgehead); Ordos/Hetao are Tangut (XIA's).
+    "LIA": (["beiping_area", "yanbei_area", "liaodong_area",
+             "datong_area", "xiliao_province", "taoer_province",
+             "chol_province",
+             "argun_area", "eastern_gobi_area", "southern_gobi_area",
+             "lower_selenga_area", "upper_selenga_area",
+             "shilkari_area"],
+            [], ["ordos_province", "hetao_province"],
+            ["linjiang_jurchen"], 310),
+    # WESTERN XIA — Ordos (tongwancheng, the Tuoba-Tangut ancestral
+    # seat), Ningxia (the capital; no xingqing/yinchuan location
+    # exists) and the real Hexi Corridor (gansu_area, NOT hexi_area).
+    # xining_province is EXCLUDED: Qingtang/Tsongkha, the Song-allied
+    # Tibetan kingdom, unconquered until 1099+ [U] — a different
+    # slice's wrong.
+    "XIA": (["lingzhou_province", "ningxia_province", "yulin_province",
+             "suide_province", "ordos_province", "hetao_province",
+             "ganzhou_gansu_province", "suzhou_gansu_province",
+             "shazhou_province", "yongchang_gansu_province"],
+            [], [], [], 48),
+}
+NORTH_LANDLESS = ("SYG",)  # the Yuan Shenyang Wang is a FUTURE object
+
+NEW_COUNTRIES["LIA"] = (
+    "\tLIA = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "far_east_asia_monarchy"\n'
+    '\t\tinclude = "expl_mongols"\n'
+    "\t\tgovernment = {\n"
+    "\t\t\their_selection = cognatic_primogeniture\n"
+    "\t\t\treforms = {\n"
+    "\t\t\t\tliao_ordo_reform\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    # jin_language (chinese_language_family) is the single token that
+    # makes the map read "Great Liao" instead of "Khitan Empire" —
+    # country_name_construction's empire-dynasty branch needs a
+    # Chinese-family court (package §F, verified to the string).
+    "\t\tcourt_language = jin_language\n\n"
+    "\t\tcountry_rank = rank_empire\n\n"
+    "\t\tcapital = linhuang\n\t}\n")
+
+NEW_COUNTRIES["XIA"] = (
+    "\tXIA = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "east_asia_monarchy_no_coast"\n'
+    '\t\tinclude = "expl_china"\n'
+    "\t\tgovernment = {\n"
+    # the no_coast diff was run: only maritime/piracy laws drop, the
+    # heir line survives — restated anyway, the house rule.
+    "\t\t\their_selection = cognatic_primogeniture\n"
+    "\t\t}\n"
+    "\t\tcourt_language = northern_mandarin_dialect\n\n"
+    "\t\tcountry_rank = rank_empire\n\n"
+    "\t\tcapital = ningxia\n\t}\n")
 
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
@@ -2162,7 +2251,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
-    + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS
+    + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -3249,6 +3338,34 @@ NEW_CHARACTERS = """
 		birth = bar_cg
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
+	}
+
+	# --- 1066 Northern Dynasties ------------------------------------------
+	# Cultures/religions from the tags' own registry blocks. kharchin is
+	# the best-available Khitan proxy (vanilla paints it on the Khitan
+	# heartland; khitan_culture is banked for the pop phase); mi_niah IS
+	# vanilla's Tangut culture, on zero locations. The Weiming were the
+	# Tangut imperial clan's own name; "Li" was the Tang-granted surname
+	# the sources still use for the men — hence Li_Liangzuo the person,
+	# weiming_dynasty the house [D].
+	lia_yelu_hongji_daozong = {
+		first_name = { name = Yelu_Hongji }
+		culture = kharchin_culture
+		religion = mahayana
+		birth_date = 1032.1.1
+		birth = linhuang
+		dynasty = yelu_dynasty
+		tag = LIA
+	}
+
+	xia_li_liangzuo_yizong = {
+		first_name = { name = Li_Liangzuo }
+		culture = mi_niah_culture
+		religion = mahayana
+		birth_date = 1047.1.1
+		birth = ningxia
+		dynasty = weiming_dynasty
+		tag = XIA
 	}
 
 	# --- 1066 China-East --------------------------------------------------
@@ -4718,6 +4835,24 @@ def build_countries(src):
     for _t, locs in sorted(_CHINA_GRANTS.items()):
         LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + list(locs)
 
+    # Northern Dynasties resolve the same way (package counts: LIA
+    # Tier A 161 + Tier B 149 = 310; XIA 48 — donors CHI 242, SYG 27,
+    # the hordes 88, BAT's niuquanzi to XIA).
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_NORTH_RULES.items()):
+        got = _resolve_ruleset(f"_NORTH_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_NORTH_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, _cap in (("LIA", "linhuang"), ("XIA", "ningxia")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_NORTH_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+    for _must in ("dadu", "liaoyang", "daning_pingquan", "datong_datong"):
+        if _must not in LOCATION_GRANTS["LIA"]:
+            sys.exit(f"_NORTH_RULES: LIA must hold {_must} — the Five "
+                     "Capitals are the slice's spine")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5628,9 +5763,12 @@ def build_ios(src):
         # Chinggisid hordes leave the RESTORED Middle Kingdom's member
         # list (209 -> 200 members). 122 -> 131.
         + ["LNG", "CRS", "QAS", "BAT", "BGT", "KHD", "HCN", "OTC",
-           "OGE"])
-    if n_ghosts != 131 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 131 landless IO list entries, "
+           "OGE"]
+        # Northern Dynasties adds 1: SYG leaves the restored Middle
+        # Kingdom's member list (200 -> 199). 131 -> 132.
+        + ["SYG"])
+    if n_ghosts != 132 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 132 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -5987,6 +6125,32 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 1 CHI->KOR strip, stripped {_k}")
     report.append(("Goryeo freed from the 1337 vassalage", _k))
 
+    # Northern Dynasties: the 46-tag Manchurian bloc repoints CHI->LIA
+    # as TRIBUTARIES — in 1066 the "wild Jurchen" of the Songhua and
+    # Ussuri paid the Liao Eastern Capital, not Kaifeng; the Song's
+    # writ never crossed the Wall. All 46 are type = tribe (measured
+    # through their include chains 2026-08-01), so the tributary gate
+    # passes on the subject branch — the Irish law; liao_ordo_reform
+    # rides as insurance regardless. SYG's own line dies with SYG
+    # landless in the sweep above. Runs BEFORE the landless sweep so
+    # the repointed lines are LIA's when it looks.
+    _JURCHEN = ("AAR AID ASU BAY DLA EJI FLN FUT FUY GIL HIJ HNC HOT "
+                "HRO HUI HUR ILU IMN ITU JHT JUS LAL LLU MAH MIC MRE "
+                "MUH NAL NEM NEY NRO SHI SIR SMN SNC SUI TAS TOD TOX "
+                "USS WEJ WEK WUY YRN YIM YOO").split()
+    n_liao = 0
+    for _j in _JURCHEN:
+        src, _k = re.subn(
+            r"^([ \t]*)dependency = \{ first = CHI second = " + _j
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            lambda m, j=_j: (m.group(1) + "dependency = { first = LIA "
+                             f"second = {j} subject_type = tributary }}\n"),
+            src, flags=re.M)
+        n_liao += _k
+    if n_liao != 46:
+        sys.exit(f"expected exactly 46 Jurchen repoints to LIA, got {n_liao}")
+    report.append(("Jurchen tribes repointed to the Liao", n_liao))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -6045,8 +6209,11 @@ def build_diplomacy(src):
     # (CHI->five hordes, OGE->BAT/CRS/KHD/TRH, CRS->TVA — freeing
     # TRH and TVA, both correctly independent in 1066). 74 lines,
     # grep-verified against vanilla.
-    if n_landless_deps != 238:
-        sys.exit(f"expected exactly 238 landless-tag dependencies, stripped {n_landless_deps}")
+    # 238 -> 239 with Northern Dynasties (observed failing first):
+    # CHI->SYG dies with SYG landless — the 46 Jurchen lines were
+    # repointed to LIA BEFORE this sweep and survive as its ring.
+    if n_landless_deps != 239:
+        sys.exit(f"expected exactly 239 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

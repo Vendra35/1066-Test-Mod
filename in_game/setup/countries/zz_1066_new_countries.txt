@@ -511,3 +511,25 @@ CUM = { #The Cumans (Polovtsy) — the Pontic steppe
 	culture_definition = cuman_culture
 	religion_definition = tengri
 }
+
+# Northern Dynasties (freeness verified both scan modes, zero hits).
+# kharchin is the best-available Khitan proxy (vanilla paints it on
+# the Khitan heartland; khitan_culture invention banked for the pop
+# phase); mi_niah IS vanilla's Tangut culture, on zero locations —
+# the cuman_culture shape exactly. Both courts aggressively Buddhist.
+
+LIA = { #The Liao — the Khitan empire (Shangjing/Linhuang)
+	color = map_LIA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = kharchin_culture
+	religion_definition = mahayana
+}
+
+XIA = { #Western Xia — the Tangut state (Xingqing, seat ningxia)
+	color = map_XIA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = mi_niah_culture
+	religion_definition = mahayana
+}
