@@ -237,6 +237,14 @@ HISTORICAL_RULERS = {
     "HLL": ("hll_dubays_i", "1018.1.1", 0),               # Dubays I the Mazyadid — a 63-year reign, attested [U]
     "KKY": ("kky_ali_ibn_faramurz", "1063.1.1", 0),       # Ali ibn Faramurz the Kakuyid of Yazd
 
+    # Central Asia (package 2026-07-30, landed 2026-08-01). Both authored.
+    # QRK regnal 1: "Ibrahim I" is attested Karakhanid historiography.
+    # QRA regnal 0 DEVIATES from the package table's 1 — no attested
+    # ordinal for Mahmud Toghrul Qara Khan (the Cadalus precedent:
+    # ordinal only when the numbering is real); flagged for user review.
+    "QRK": ("qrk_ibrahim_tamghach_khan", "1040.1.1", 1),  # Ibrahim ibn Nasr, Tamghach Bughra Khan, Samarkand c.1040-1068 [U]
+    "QRA": ("qra_mahmud_toghrul_khan", "1059.1.1", 0),    # Mahmud Toghrul Qara Khan [D — the eastern list is unstable]
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -1059,6 +1067,130 @@ NEW_COUNTRIES["FAT"] = (
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = cairo\n\t}\n")
 
+# ============================ CENTRAL ASIA ==================================
+# The Kara-Khanid slice (docs/CENTRAL-ASIA-PACKAGE.md, re-verified and
+# user-approved 2026-08-01). Three new tags: the two Kara-Khanid
+# kaghanates and Volga Bulgaria. QRK/QRA ride _seljuk_block — the same
+# inland Muslim monarchy the Seljuk slice proved in game (the no_coast
+# include supplies legal_code_law and parliament_type; heir_selection
+# is restated by the block builder). Muslim MONARCHIES, not hordes: by
+# 1066 the Karakhanids mint coin, endow Hanafi madrasas and hold the
+# khutba — and the horde name branch would kill their NAME keys (the
+# JAL law). They will render "Sultanate"/"Sultan" — historically wrong
+# (khans and khaqans), accepted by user decision 2026-08-01 and banked
+# with SEL for the one country_ranks.txt Muslim-styling override.
+# The package's KTT ruleset was DROPPED at review: KTT is a
+# steppe_horde (the recipient assert forbids it) and its kulab_province
+# sweep stripped QUN's capital kulob — one drop cleared both blockers;
+# Khuttal keeps its 4, QUN keeps its 6.
+_CENTRALASIA_TAGS = {
+    # tag: (capital, rank, sharia policy, school, court language) — the
+    # _SELJUK_TAGS shape. Transoxiana was the Hanafi heartland; the
+    # karluk court is vanilla's own on CHG, and the Kutadgu Bilig
+    # (1069, written for a Karakhanid khan) is three years out.
+    "QRK": ("samarkand", "rank_kingdom", "hanafi_policy", "hanafi_school",
+            "karluk_language"),
+    "QRA": ("balasagun", "rank_kingdom", "hanafi_policy", "hanafi_school",
+            "karluk_language"),
+}
+for _t, (_cap, _rank, _pol, _sch, _crt) in _CENTRALASIA_TAGS.items():
+    NEW_COUNTRIES[_t] = _seljuk_block(_t, _cap, _rank, _pol, _sch, _crt)
+
+# BLH — Volga Bulgaria, hand-written: bolghar sits in ural_region,
+# which expl_middle_east does NOT grant, so the block carries inline
+# discovered_regions (attested 176 times in vanilla's own
+# 10_countries.txt; OBD nearby is the shape — its block grants four
+# regions, ours three). ruler stays random DELIBERATELY: the Bulgar
+# king-list is blank for the whole 11th century — the ARB/GAL/COR
+# precedent. rank_duchy + muslim renders "Emirate"/"'Amir", which is
+# the amir/malik of the Arabic sources — no styling debt here.
+NEW_COUNTRIES["BLH"] = (
+    "\tBLH = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_middle_east"\n'
+    '\t\tinclude = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"\n'
+    "\t\tdiscovered_regions = {\n"
+    "\t\t\tural_region\n"
+    "\t\t\trussian_region\n"
+    "\t\t\truthenia_region\n"
+    "\t\t}\n"
+    "\t\tgovernment = {\n"
+    # The _no_coast variant carries no heir_selection (diff-measured,
+    # Seljuk slice) — restated, as everywhere.
+    "\t\t\their_selection = cognatic_primogeniture\n"
+    "\t\t\tlaws = {\n"
+    "\t\t\t\tsharia_law = hanafi_policy\n"
+    "\t\t\t}\n"
+    "\t\t}\n"
+    "\t\treligious_school = hanafi_school\n\n"
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = bolghar\n\t}\n")
+
+# The definitions-resolved grants (the _SELJUK_RULES 5-tuple shape).
+# Counts are the package's, independently reproduced at review.
+_CENTRALASIA_RULES = {
+    # Western Kara-Khanid Khanate — Transoxiana proper: the Zarafshan
+    # (Samarkand, Bukhara), Kish/Nasaf, Amul on the Oxus, Ustrushana,
+    # Khujand, Chaghaniyan/Termez. The four Chagatai amir-houses that
+    # hold western Transoxiana at 1337 (YSU 15, BRL 13, JLY 9, SLD 9)
+    # are EXACTLY the Western Kaghanate, to the location.
+    "QRK": (["samarkand_province", "bukhara_province", "nurota_province",
+             "amol_province", "kelif_province", "jizzakh_province",
+             "khujand_province", "hissar_province"],
+            [], [], [], 46),
+    # Eastern Kara-Khanid Khanate — Chach, Isfijab, Ferghana, the
+    # middle and lower Syr Darya, Semirechye, the Tian Shan, Kashgaria
+    # (the Syr Darya reading of the 1040s division, user decision 5).
+    # emin_province is subtracted from zhetysu_area: Tarbagatai is
+    # Kimek country, not Karakhanid — its six join the vacate list.
+    "QRA": (["chach_province", "isbijab_province", "akhsikath_province",
+             "andijan_province", "farghana_province", "naryn_province",
+             "otrar_province", "turkestan_province",
+             "sighnaq_province", "yangikent_province",
+             "zhetysu_area",
+             "kashgar_province", "yarkand_province", "khotan_province"],
+            ["charchan", "niya", "mazar_tagh"],
+            ["emin_province"], [], 142),
+    # Volga Bulgaria — the Volga-Kama triangle: Bolghar, Bilyar, Suvar,
+    # the Kazan bank. The Mari forest and Bashkiria stay unowned.
+    "BLH": (["bolghar_area", "kazan_province"], [], [], [], 28),
+}
+
+# LOCATION_VACATED — the new mechanism (user-approved 2026-08-01):
+# remove a location from its owner and give it to NOBODY. Unowned land
+# is vanilla-attested 7334 times (of 20922 ownable locations —
+# identical figure in vanilla and our build). Resolution is
+# SNAPSHOT-based inside build_countries — (members of these names) ∩
+# (the tag's holdings at that point) — so already-unowned members
+# cannot trip the exactly-once assert. Tier A, the Kipchak steppe and
+# the Volga-Ural forest edge (168): the Desht-i Kipchak in 1066 had no
+# khan, no capital and no attested ruler — the Pecheneg precedent, a
+# state is EARNED by events (user decision 2). Tier B, West Siberia
+# (116): the Golden Horde holding Tomsk in 1066 is absurd; empty is
+# strictly closer to the truth, and a later Siberia slice can fill
+# empty land far more easily than it can take it off a horde (user
+# decision 9). CHG's 21 (Dzungaria 15 + Emin 6) make CHG landless
+# (vacated, not granted to QCH — user decision 11).
+_CENTRALASIA_VACATE = {
+    "GLH": ["desht_kipchak_area", "lower_yik_area", "bashkiria_area",
+            "yaransk_province", "mangistau_province", "mangyshlak_province",
+            "ust_yurt_province",
+            "chimgi_tura_area", "qashliq_area", "omsk_area", "kulykol_area",
+            "bursol_area", "suzun_area", "tomsk_area", "surgut_area"],
+    "CHG": ["dzungaria_area", "emin_province"],
+}
+_CENTRALASIA_VACATE_EXPECT = {"GLH": 284, "CHG": 21}
+
+# Six Mongol-era tags reduced to zero by the grants + the vacate —
+# landless with claims, the established terminal state. Also the SAFE
+# state for type = army tags: the mod already ships 14 landless army
+# tags and the 2477 class names only tiny-but-LANDED ones (HLG/QUN/
+# SLD); if the next error.log shows 2477 lines naming any of these
+# six, the fallback is a FIELD_FIXES strip of their type = army line.
+# GLH is NOT here: it keeps 404 Pontic/Don/Kuban/Astrakhan locations —
+# the Rus/steppe package's seam, a stated compromise.
+CENTRALASIA_LANDLESS = ("CHG", "YSU", "BRL", "JLY", "SLD", "DGH")
+
 # VMD — the county of Vermandois, the France slice's one new tag (see
 # the registry file's comment for the PIC-reuse rejection). Inland →
 # catholic_monarchy_no_coast; the catholic no_coast variant KEEPS
@@ -1709,7 +1841,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
-    + NITALY_LANDLESS
+    + NITALY_LANDLESS + CENTRALASIA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2670,6 +2802,41 @@ NEW_CHARACTERS = """
 		birth = bar_cg
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
+	}
+
+	# --- 1066 Central Asia (the Kara-Khanid slice) ------------------------
+	# Both dates [U]. Ibrahim is a vanilla LITERAL row
+	# (character_names_l_english.yml:1364 — the Alp_Arslan class);
+	# name_mahmud is a vanilla key with arabic/persian/turkish rows.
+	# NO invented name key in this slice — a first at this size.
+	#
+	# Ibrahim ibn Nasr (Buri Tigin, TAMGHACH Bughra Khan), khan of the
+	# western kaghanate at Samarkand c.1040-1068: madrasa and hospital
+	# founder, coin issuer, the best-attested man in the theater.
+	qrk_ibrahim_tamghach_khan = {
+		first_name = { name = Ibrahim }
+		culture = khorezmian_culture
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = samarkand
+		dynasty = qarakhanid_dynasty
+		tag = QRK
+	}
+
+	# Mahmud ibn Yusuf, TOGHRUL Qara Khan, eastern khan c.1059-1075.
+	# The eastern regnal list is genuinely unstable [D]: Sulayman/
+	# Muhammad/Ibrahim b. Muhammad appear with different dates by
+	# authority; Mahmud is the majority reading for 1066. The throne-name
+	# literal Toghrul also ships in vanilla (:15547) if ever preferred —
+	# the Alp Arslan precedent.
+	qra_mahmud_toghrul_khan = {
+		first_name = { name = name_mahmud }
+		culture = khorezmian_culture
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = kashgar
+		dynasty = qarakhanid_dynasty
+		tag = QRA
 	}
 
 	# --- 1066 Seljuk world ------------------------------------------------
@@ -3933,6 +4100,22 @@ def build_countries(src):
             sys.exit(f"_EGYPT_RULES: FAT must hold {_must} — the slice's "
                      "whole Levant claim rests on it")
 
+    # The Central Asia slice resolves the same way (package counts
+    # independently reproduced at review 2026-08-01: QRK 46 / QRA 142 /
+    # BLH 28; QRK's donors are exactly YSU+BRL+JLY+SLD whole).
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_CENTRALASIA_RULES.items()):
+        got = _resolve_ruleset(f"_CENTRALASIA_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_CENTRALASIA_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = got
+    for _t, (_cap, _rank, _pol, _sch, _crt) in _CENTRALASIA_TAGS.items():
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_CENTRALASIA_TAGS: {_t} capital {_cap} not in its "
+                     "resolved list")
+    if "bolghar" not in LOCATION_GRANTS["BLH"]:
+        sys.exit("_CENTRALASIA_RULES: BLH must hold bolghar")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -4088,6 +4271,39 @@ def build_countries(src):
     report.append(("locations granted to existing tags", n_granted))
     if n_unclaimed:
         report.append(("  of those, not in the target's claims", n_unclaimed))
+
+    # LOCATION_VACATED (user-approved 2026-08-01): remove from the owner,
+    # write NOTHING back — the location ends owned by nobody, a state
+    # vanilla ships 7334 times. Runs AFTER the _landless_claims snapshot
+    # (CHG's claims must include its vacated Dzungarian holdings) and
+    # after the grants. Resolution is (name members) ∩ (the tag's CURRENT
+    # holdings): a definitions-resolved list would include already-unowned
+    # members and trip _remove_owned_many's exactly-once assert.
+    _members_v, _ = _defs()
+    _vac_resolved = {}
+    for _t, _names in sorted(_CENTRALASIA_VACATE.items()):
+        _pool = set()
+        for _n in _names:
+            if _n not in _members_v:
+                sys.exit(f"LOCATION_VACATED[{_t}]: {_n} is not a region/"
+                         "area/province in definitions.txt")
+            _pool |= set(_members_v[_n])
+        got = sorted(_pool & set(_owned_by(src, _t)))
+        if len(got) != _CENTRALASIA_VACATE_EXPECT[_t]:
+            sys.exit(f"LOCATION_VACATED[{_t}]: resolved {len(got)} owned "
+                     f"locations, expected "
+                     f"{_CENTRALASIA_VACATE_EXPECT[_t]}")
+        for l in got:
+            if l in _list_owner:
+                sys.exit(f"LOCATION_VACATED[{_t}]: {l} is also in "
+                         f"{_list_owner[l]}'s transfer/grant list — vacate "
+                         "and grant lists must be disjoint")
+        _vac_resolved[_t] = got
+    n_vacated = 0
+    for _t, locs in sorted(_vac_resolved.items()):
+        src = _remove_owned_many(src, locs, f"LOCATION_VACATED[{_t}]")
+        n_vacated += len(locs)
+    report.append(("locations vacated to no owner", n_vacated))
 
     # Displaced-tag bookkeeping. Claims are written into the tag's EXISTING
     # our_cores_conquered_by_others (GRA has one, holding olvera), and the
@@ -4398,6 +4614,20 @@ def build_countries(src):
             n_now = len(_midx.get(loc, []))
             if n_now != 1:
                 return f"{loc}: {n_now} owners after the move — must be exactly 1"
+        # Vacated locations are the ONE class the exactly-once rule must
+        # NOT cover: they must end owned by NOBODY. Kept separate from
+        # `moved` above by construction (disjointness asserted at
+        # resolution). Proven by breaking BOTH ways (2026-08-01): a bogus
+        # name aborts at resolution, and skipping GLH's removal made THIS
+        # line fire — GLH stays landed, so this is its only catcher (a
+        # landless donor like CHG is caught earlier by the LANDLESS_AFTER
+        # still-owns guard, which the same break test also exercised).
+        _vac_all = [l for ls in _vac_resolved.values() for l in ls]
+        _vidx = _ownership_index(src, set(_vac_all))
+        for loc in _vac_all:
+            if _vidx.get(loc):
+                return (f"vacated location {loc} still has an owner — the "
+                        "vacate pass did not run or something re-granted it")
         for key in COUNTRY_BLOCKS + COUNTRY_LINES:
             if key == "ruler_term":
                 continue    # vanilla's are stripped; OURS are re-added and audited below
@@ -5120,8 +5350,13 @@ def build_diplomacy(src):
     # plus PAP->FAE — the HRE slice stripped that one by name, but FAE
     # itself is landless now, so this sweep eats it first and the
     # dedicated strip below is RETIRED. 112->115 observed failing.
-    if n_landless_deps != 115:
-        sys.exit(f"expected exactly 112 landless-tag dependencies, stripped {n_landless_deps}")
+    # 115 -> 127 with Central Asia (observed failing first, 2026-08-01):
+    # CHG's ten 1337 ulus vassals (BKH BRL DGH JLY KRG KTT QCH QUN SLD
+    # YSU) + DGH's two (MNL SRL) die with their overlords landless. The
+    # message used to say 112 while the constant said 115 — a stale
+    # string two agents flagged independently; now both move together.
+    if n_landless_deps != 127:
+        sys.exit(f"expected exactly 127 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

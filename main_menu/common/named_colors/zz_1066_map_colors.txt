@@ -75,4 +75,12 @@
 	# The HRE slice: Zähringen in the Breisgau (neighbors BDE/KYB
 	# greys, ALS, the Swiss patchwork).
 	map_ZAH = rgb { 178 60 60 }     # Zähringen    Breisgau red
+	# Central Asia. QRK/QRA must read related-but-distinct (the
+	# Cagliari/Gallura lesson); BLH bronze against map_golden_horde's
+	# gold (hsv360 42 77 81) and SEL's map_seljukids cyan. All three
+	# keys verified absent from vanilla named_colors BY KEY NAME
+	# (zero substring hits — the D3 lesson).
+	map_QRK = rgb { 40 90 160 }     # W. Karakhanids  steppe blue
+	map_QRA = rgb { 96 150 205 }    # E. Karakhanids  pale blue (branch)
+	map_BLH = rgb { 150 100 60 }    # Volga Bulgaria  Volga bronze
 }

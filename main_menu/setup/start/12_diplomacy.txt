@@ -484,19 +484,7 @@ diplomacy_manager = {
     dependency = { first = SZH second = XSY subject_type = tusi }
 
     #-------------Xinjiang----------
-    dependency = { first = CHG second = BKH subject_type = vassal }
-    dependency = { first = CHG second = BRL subject_type = vassal }
-    dependency = { first = CHG second = DGH subject_type = vassal }
-    dependency = { first = CHG second = JLY subject_type = vassal }
-    dependency = { first = CHG second = KRG subject_type = vassal }
-    dependency = { first = CHG second = KTT subject_type = vassal }
-    dependency = { first = CHG second = QCH subject_type = vassal }
-    dependency = { first = CHG second = QUN subject_type = vassal }
-    dependency = { first = CHG second = SLD subject_type = vassal }
-    dependency = { first = CHG second = YSU subject_type = vassal }
     
-    dependency = { first = DGH second = MNL subject_type = vassal }
-    dependency = { first = DGH second = SRL subject_type = vassal }
 
     #-------------Manchuria----------
     dependency = { first = CHI second = AAR subject_type = vassal }

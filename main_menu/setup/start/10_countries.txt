@@ -3591,13 +3591,8 @@ countries = {
 			novopavlovsk yessentuq alexandrovskoye blagodarnoye novoselitskoye
 			kalininskaya bryukhovetskaya bzhedygu_kal ust_labinsk pavlovskaya tbilisskaya romanovsky_khutor
 			adyukh stavropol grigoropolisskaya uspenskoye shad_kirman petrovskoye_pontic privolnoye belaya_glina peschanokopskoye
-			novo_alexandrovskoye bezopasnoye ipatovo bakanas ashchyozek dagandely koksala sayak
-			irgiz chet_irgiz karasay kayrakty sazanbay
-			zhuban_ana kaip_ata karagau korgan maulimberdy gebergeyel khaiylmysh khaqmar shikashin yuldibay tagatay dandybay karabay smai_samkai yegindybulak
-			sarykopa karasu saryozen ulkayak bolgan_ana aitbulat belen_ana talmas_ata tengiz kon_tengiz kulanotpes sonaly tokrau espe kusak zhamankul
-			aybas kabyrga karaturgay turgay zhaldama orda_bazar alashakhan baskamyr ulytau namjan atach ishkul kumak suyunduk tanalyk yaik
-			zhamshy kashkanteniz kyzylsay moiynty mukur yangikent buzikkala jubara karmakshi
-			sighnaq asanas barchkend jand kamyskala sozak aksumbe gulshara kyzylkorgan ran tasty
+			novo_alexandrovskoye bezopasnoye ipatovo     
+
 		}
 		own_control_integrated = {
 			usivka petrove kodak myshuryn_rih samarchyk pavlohrad oril ternivka adalaga berestyn 
@@ -3610,42 +3605,23 @@ countries = {
 			sosnovy_ostrov malykovka novye_burasy tereshka petrovsk mechet stepanevka 
 			sarai_al_jadid beljamen zenzevatka nagavskaya aksay rudnya_pontic danilovka 
 			kotovo kamyshin goly_karamysh pologoye_zaymishche srednyaya_akhtuba bykovo 
-			elton zolotari berezhnovka kalmyk karatobe shyngyrlau aksay_pointic zhympity
-			terekti oral ryn saryadyn ushtagan sarayjuk kisikkamys kulagin talowski 
+			elton zolotari berezhnovka     
+			         
 			astrakhan khosheutovo krasny_yar ganyushkino zamyany yenotayevka sapara 
 			chernyye_zemli ikryanoye chyorny_yar nikolskoye_pontic malye_derbety 
 			sadovoye_kalmykia ded_khulsun zavetnoye bolkhuny mikhaylovka_pontic 
-			rechnoye bokey botkul zhanybek piterka krasny_kut_pontic mokrous 
-			savinka rovnoye pokrovsk baronsk taskala dergachi chertanla alexandrov_gay 
-			ozinki mechetnaya perelyub ivanteyevka balakovo dukhovnitskoye 
-			sakminskoye_vodokhranilishche yershov dardeling mekletin kok_usn yashkul 
-			iki_burul priyutnoye elista remontnoye gorodovikovsk raguli majar zelenokumsk arzgir levokumskoye 
-			naurskaya kara_bazaar terekli_mekteb kurskaya kamysh_burun baytak ilek 
-			kargaly_aktobe kobda irek tas_kichu kaynar shagiz tenteksor mavliberda 
-			kiyl koptam uil emba atzhaksy shatyrlysay temir or_aktobe
+			rechnoye bokey botkul zhanybek    
 
-			orhei chilia cetatea_alba gura_galbenei sarata tighina chatyun kutarka sernur morki urzhum
-			  
-			zainsk syun verkhneyarkeyevo
-			menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush chishmy
-			ulukulevo davlekanovo bizhbulyak turkmenevo sterlibashevo
-			sterlitamak bavly bugulma abdulino aznakayevo
-			sadak gorkovskoye okoneshnikovo
-			qashliq siberia_abalak turtas yukonda
-			tara znamenskoye ust_ishim omsk kamyshnoye cherlak tyukalinsk kolosovka
-			siletiteniz zhalauly
-			tuzdysor imakia zhelezin lebyazhye
-			chastoozerye polovinnoye armizonskoye berdyuzhye korkina_sloboda
-			tarankol kyzylzhar presnowka staroye stanitsa_kokchetavskaya
-			shish muromtsevo ufa askino baltas
-			sartlan taskayevo kargat kainsky_pas kyshtovka
-			bursol kuchukskoye volchikha butyrskoe 
-			krivoshchekovo kamen dovolnoye kozhevnikovo bolotnye
-			suzun berdsk chesnokovka kalmanka barnaul verkhotomsk kolchugino
-			mayma biysk
-			kuznetsk salair kytmanovo ust_kabyrza askiz abakasnk beya shushenskoye
-			tomsk melnikovo molchanovo kargasok vasyugan kolpashevo
-			surgut bolshoy_balyk irtysh megion bolshoy_yugan upper_ob
+			  dardeling mekletin kok_usn yashkul 
+			iki_burul priyutnoye elista remontnoye gorodovikovsk raguli majar zelenokumsk arzgir levokumskoye 
+			naurskaya kara_bazaar terekli_mekteb kurskaya kamysh_burun   
+
+			orhei chilia cetatea_alba gura_galbenei sarata tighina chatyun    
+
+			  ufa askino baltas
+
+			     abakasnk beya shushenskoye
+
 			alkhan_kala nazran dzhulat tatartup
 			promsa alatyr batyrevo
 			atrat altyshevo bolshoye_boldino shatki arzamas sarov lukoyanov krasnoslobodsk ruzayevka
@@ -3657,19 +3633,8 @@ countries = {
 			cheboksary kozmodemyansk alikovo vasilsursk pavlovo
 			vetluga semyonov khakhaly kovernino krasnye_baki raznezhye voskresenskoye varnavino
 			kadom ardatov 
-			ushkan koskuduk manysai shagan zhaksy_karasay
-			ketik_kala kabakty karatobe_mangyshlak kyzylkala
-			masat_ata beket_ata beki kenderli_kayasan koshkar_ata temir_baba
-			beleuli kyushe sam shuruk sisem_ata uchkuduk
 
-			kazan laish calli mamadysh bogatye_saby oli_baraza dobyaz
-			yaransk kiknur kabachischi yoshkar_ola
-			bolghar cukataw bilyar almetyevsk 
-			tabynsky ishimbay beloretsk 
-			buguruslan sergiyevsk
-			koshki kamyshla bolshoy_cheremshan staryi_amanak
-			samara shigony morkvash chebarkul miass
-			krasnaya_gorka belekes 
+			samara shigony morkvash  
 
 			ismail
 			tula_russia bogoroditsk arkhangelskoye kurkino donkov yelets talitsa_yelets gogol teshevka voronezh ukek
@@ -3683,21 +3648,10 @@ countries = {
 			troitskoye_kuroedovo 
 			kasimov azeevo
 
-			meleuz kapova_pesera
 			khvorostyanka stavropol_na_volge kondurcha pestravka
-			poganovka sorochinskaya buzuluk grachevka bol_shoy_uran malyy_uran
-			s_ezzaja bogatoye
-			tobolsk vagay tavdinsky_sloboda yurginskoye vikulovo
-			bayanaul shybyndy bozok_astana akkol
-			karasor karkaraly takhir
-			arykbalyk kak kokshetau shoindykol atbasar
-			kulykol zhetykol shoptikol siberia_tenteksor konildi
-			zharkol sasykkol kartaly alakol almenevo safkul shchuchye kargapolye kurtamysh
-			yetkul troitsk uyskoye 
-			bolshoy_ik ust_katav mesyagutovo zlatoust
-			chimgi_tura tugulym yalutorovsk shadrinsk
-			tsaryovo_gorodishche burayevo
-			zhanaarka balyktykol kaynar_atbai
+			poganovka     
+
+			 burayevo
 
 			bratslav balta bershad drahushiv karabul savran
 			torhovytsia teplyk tsybuliv uman zavallia
@@ -26874,7 +26828,7 @@ countries = {
 		}
 
 		own_control_integrated = {
-			ayagoz 
+			 
 			burqin jeminay 
 			tsagaan_usun
 		}
@@ -27205,13 +27159,14 @@ countries = {
 		capital = boorj
 	}
 
-	DGH = { #Dughlats
+	DGH = {
+		our_cores_conquered_by_others = {
+			kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga khotan karakax keriya lop mazar_tagh qira yarkand guma kargilik poskam charchan niya
+		}
+ #Dughlats
 		type = army
 		own_control_core = {
-			kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga
-			khotan karakax keriya lop mazar_tagh qira
-			yarkand guma kargilik poskam
-			charchan niya 
+
 		}
 
 		starting_technology_level = 3
@@ -44184,35 +44139,18 @@ countries = {
 		}
 	}
 
-	CHG = { #Chagatai
+	CHG = {
+		our_cores_conquered_by_others = {
+			urumqi manas tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir balasagun dzhul harandzuvan kysmyci nuzket sargau soltobe charyn chundzha kegen lavar shelek barskoon balykchy kochkor san_tash dungene lepsy sagabuyen tekeli merki aspara khantau kulan sretenskoe tasuktul tolekskoe talas dzhulsub sarvaslyk tekabket yangi zherkorgan akhsikath asht karasuu kasan kerben pop_fargana andijan arslanbob gulcha jalalabad_fergana uzkand chach almalik_chach altyntobe bogiston burchmullo fanakat nuket fergana marghinan osh quva rishton isbijab arsubaniket badam karabulak kazatlyk shymkent koshoy_korgon cholok_kaiyn chon_naryn jumgal ketmen_tobe naryn otrar artyk_ata kyr_uzkand mardankuyik sutkent zemukh zhaushikumtobe turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik almaliq gulja narat nilka tokkuztara bortala jing kuytun urghtbulaq usu_xinjiang yangjibaliq kutubi ulan_us qanbalik hoboksar gonganbao utbulaq zhekdeliq targabatay dahra_sasykkol emin ilanbalyk koktuma toli ilibalyk koktal kayalyk tansyk
+		}
+ #Chagatai
 		type = army
 		own_control_core = {
-			urumqi
-			manas
-			tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan
-			almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir
-			balasagun dzhul harandzuvan kysmyci nuzket sargau soltobe
-			charyn chundzha kegen lavar shelek
-			barskoon balykchy kochkor san_tash
-			dungene lepsy sagabuyen tekeli
-			merki aspara khantau kulan sretenskoe tasuktul tolekskoe
-			talas dzhulsub sarvaslyk tekabket yangi zherkorgan
-			akhsikath asht karasuu kasan kerben pop_fargana
-			andijan arslanbob gulcha jalalabad_fergana uzkand
-			chach almalik_chach altyntobe bogiston burchmullo fanakat nuket
-			fergana marghinan osh quva rishton
-			isbijab arsubaniket badam karabulak kazatlyk shymkent
-			koshoy_korgon cholok_kaiyn chon_naryn jumgal ketmen_tobe naryn
-			otrar artyk_ata kyr_uzkand mardankuyik sutkent zemukh zhaushikumtobe
-			turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik
+
 		}
 
 		own_control_integrated = {
-			almaliq gulja narat nilka tokkuztara bortala jing 
-			kuytun urghtbulaq usu_xinjiang yangjibaliq kutubi ulan_us qanbalik 
-			hoboksar gonganbao utbulaq zhekdeliq targabatay dahra_sasykkol emin 
-			ilanbalyk koktuma toli 
-			ilibalyk koktal kayalyk tansyk
+
 		}
 
 		starting_technology_level = 3
@@ -54583,12 +54521,14 @@ countries = {
 		capital = andkhoy
 	}
 
-	SLD = { #Suldus
+	SLD = {
+		our_cores_conquered_by_others = {
+			balkh aqca boyena_qara khamyab khulm mazar_i_sharif samangan zadian kelif hissar aiwanj basand darzanji denov qubodijon shuman termez
+		}
+ #Suldus
 		type = army
 		own_control_core = {
-			       
-			kelif
-			hissar aiwanj basand darzanji denov qubodijon shuman termez
+
 		}
 
 		include = "expl_middle_east"
@@ -54620,12 +54560,14 @@ countries = {
 		capital = termez
 	}
 
-	BRL = { #Barlas
+	BRL = {
+		our_cores_conquered_by_others = {
+			akhsisek guzor kerki khoja_idat_kala nasaf navidakh amol_turkmenabad chiroqchi firabr kish_shahrisabz koson muborak paikend
+		}
+ #Barlas
 		type = army
 		own_control_core = {
-			akhsisek guzor kerki khoja_idat_kala nasaf navidakh
-			amol_turkmenabad
-			chiroqchi firabr kish_shahrisabz koson muborak paikend
+
 		}
 
 		include = "expl_middle_east"
@@ -54656,14 +54598,14 @@ countries = {
 		capital = akhsisek
 	}
 
-	YSU = { #Yasa'uri
+	YSU = {
+		our_cores_conquered_by_others = {
+			samarkand ayni dimishk panjakent bukhara tim_samarkand darganata hazarasp alat daya_kathyn paykend vardanzi nurota ishtixon karmana primkent yangirabod khiva kyat_kala nyzvar kath
+		}
+ #Yasa'uri
 		type = army
 		own_control_core = {
-			samarkand ayni dimishk panjakent
-			bukhara tim_samarkand
-			 
-			alat daya_kathyn paykend vardanzi
-			nurota ishtixon karmana primkent yangirabod
+
 		}
 
 		own_control_integrated = {
@@ -54733,11 +54675,14 @@ countries = {
 		capital = vakhs
 	}
 
-	JLY = { #Jalayirs
+	JLY = {
+		our_cores_conquered_by_others = {
+			jizzakh pishagar ura_tyube zomin khujand dakhkat isfara kokand konibodom
+		}
+ #Jalayirs
 		type = army
 		own_control_core = {
-			jizzakh pishagar ura_tyube zomin
-			khujand dakhkat isfara kokand konibodom
+
 		}
 
 		include = "expl_middle_east"
@@ -58450,6 +58395,33 @@ countries = {
 		capital = badajoz
 	}
 
+	BLH = {
+		own_control_core = {
+			bolghar cukataw bilyar almetyevsk zainsk sergiyevsk koshki kamyshla bolshoy_cheremshan staryi_amanak bavly bugulma buguruslan abdulino aznakayevo syun verkhneyarkeyevo menzelinsk lower_aktanyshbash chalninsky_pochinok chekmagush kazan laish calli mamadysh bogatye_saby oli_baraza dobyaz
+		}
+
+		starting_technology_level = 3
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+		discovered_regions = {
+			ural_region
+			russian_region
+			ruthenia_region
+		}
+		government = {
+			ruler = random
+			heir_selection = cognatic_primogeniture
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+		religious_school = hanafi_school
+
+		country_rank = rank_duchy
+
+		capital = bolghar
+	}
+
 	BSL = {
 		government = {
 			ruler = bsl_bernat_ii_bellonid
@@ -58983,6 +58955,64 @@ countries = {
 		include = "ruthenian_principality_no_coast"
 		capital = pereiaslav
 		country_rank = rank_duchy
+	}
+
+	QRA = {
+		own_control_core = {
+			chach almalik_chach altyntobe bogiston burchmullo fanakat nuket isbijab arsubaniket badam karabulak kazatlyk shymkent akhsikath asht karasuu kasan kerben pop_fargana andijan arslanbob gulcha jalalabad_fergana uzkand fergana marghinan osh quva rishton koshoy_korgon cholok_kaiyn chon_naryn jumgal ketmen_tobe naryn otrar artyk_ata kyr_uzkand mardankuyik sutkent zemukh zhaushikumtobe turkestan aktas_kystagy baydibek_ata ikan karnak sawran shilik sighnaq asanas barchkend jand kamyskala yangikent buzikkala jubara karmakshi tamdy akkesene baba_ata nurlykent saudakent shavgar sholakkorgan almaliq gulja narat nilka tokkuztara almaty boyauli karakastek karamergen kargaly kurty shengeldy talkhir balasagun dzhul harandzuvan kysmyci nuzket sargau soltobe ilibalyk charyn chundzha kegen koktal lavar shelek barskoon balykchy kochkor san_tash kayalyk ayagoz dungene lepsy sagabuyen tansyk tekeli merki aspara khantau kulan sretenskoe tasuktul tolekskoe sozak aksumbe gulshara kyzylkorgan ran tasty talas dzhulsub sarvaslyk tekabket yangi zherkorgan kashgar artush barchuk maralbexi payzawat tokkuzak yingisar yopurga yarkand guma kargilik poskam khotan karakax keriya lop qira charchan niya mazar_tagh
+		}
+
+		starting_technology_level = 3
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+
+		government = {
+			ruler = qra_mahmud_toghrul_khan
+			ruler_term = { character = qra_mahmud_toghrul_khan start_date = 1059.1.1 regnal_number = 0 }
+			heir_selection = cognatic_primogeniture
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+		court_language = karluk_language
+		religious_school = hanafi_school
+
+		country_rank = rank_kingdom
+
+		capital = balasagun
+	}
+
+	QRK = {
+		own_control_core = {
+			samarkand ayni dimishk panjakent bukhara chiroqchi firabr kish_shahrisabz koson muborak paikend tim_samarkand nurota ishtixon karmana primkent yangirabod amol_turkmenabad alat daya_kathyn paykend vardanzi kelif akhsisek guzor kerki khoja_idat_kala nasaf navidakh jizzakh pishagar ura_tyube zomin khujand dakhkat isfara kokand konibodom hissar aiwanj basand darzanji denov qubodijon shuman termez
+		}
+
+		starting_technology_level = 3
+		include = "expl_silk_road_west"
+		include = "expl_silk_road_center"
+		include = "expl_silk_road_east"
+		include = "expl_indian_trade_route"
+		include = "expl_middle_east"
+		include = "muslim_monarchy_no_abrahamic_dhimmi_no_coast"
+
+		government = {
+			ruler = qrk_ibrahim_tamghach_khan
+			ruler_term = { character = qrk_ibrahim_tamghach_khan start_date = 1040.1.1 regnal_number = 1 }
+			heir_selection = cognatic_primogeniture
+			laws = {
+				sharia_law = hanafi_policy
+			}
+		}
+		court_language = karluk_language
+		religious_school = hanafi_school
+
+		country_rank = rank_kingdom
+
+		capital = samarkand
 	}
 
 	QRM = {

@@ -285,7 +285,7 @@ else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
 # Armed at 290: 145 named rulers + 145 terms after Germany II.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=290)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=310)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -373,7 +373,7 @@ for _c in sorted(_PLURALISTS):
 # Armed at 540 after Italy North: 89 authored characters + 48 dynasties
 # + 153 seats
 # (512 measured after Germany II).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=500)
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=549)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -403,7 +403,7 @@ print(f"       accessions cross-checked against vanilla's own terms: {_compared}
 # ships zero Muslim characters born before 1054 and zero Germans alive
 # in 1066 outside Heinrich IV's line, so none of those rulers is
 # comparable.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=145)
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=155)
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would
@@ -419,7 +419,7 @@ if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
 # Armed at 116 authored characters after Italy North (+7: Beatrice,
 # Matilda, Ulric, the three prelates, Adelaide).
-check("authored character keys collide with nothing", count, probs, min_count=116)
+check("authored character keys collide with nothing", count, probs, min_count=118)
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
@@ -856,7 +856,7 @@ for _i, _b in enumerate(_blk_starts):
     if _n != 1:
         probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
 check("exactly one ruler key per country block", _rblocks, probs,
-      min_count=2300)
+      min_count=2385)
 
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
@@ -940,6 +940,9 @@ _GENERATOR_OK = {
     # NOT here: it has VANILLA arms (the SAX/SWA formable-reuse class —
     # TUS_f ships flag = TUS) and passes through the _van_coa_keys branch.
     "ISR",
+    # Central Asia — deferred (tier 3): no Karakhanid or Volga-Bulgar
+    # heraldry is attested; eyeball the generated flags before investing.
+    "QRK", "QRA", "BLH",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -968,7 +971,7 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
                  "files define no such key")
 # 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 45
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
-check("coat of arms references resolve", _coa_count, probs, min_count=96)
+check("coat of arms references resolve", _coa_count, probs, min_count=99)
 
 # ---- audit 2026-07-31: the four class-closing checks -----------------------
 # From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
@@ -1001,7 +1004,7 @@ for _t in sorted(_start_tags - _id_tags):
     probs.append(f"10_countries block {_t} has NO registry identity block — "
                  "the engine rejects the whole block (PYS lesson)")
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
-      len(_id_tags), probs, min_count=2385)
+      len(_id_tags), probs, min_count=2388)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
@@ -1028,7 +1031,7 @@ for _k in sorted(_INTENTIONAL_COLOR_OVERRIDES - _mod_ckeys):
     probs.append(f"_INTENTIONAL_COLOR_OVERRIDES lists {_k}, which our "
                  "named_colors files no longer define — stale entry")
 check("mod named colours shadow no vanilla key", len(_mod_ckeys), probs,
-      min_count=42)
+      min_count=45)
 
 # (3) .gui references resolve, and the hint-pair rule. using =
 # fontsize_medium resolved to NOTHING anywhere and failed silently (D4).

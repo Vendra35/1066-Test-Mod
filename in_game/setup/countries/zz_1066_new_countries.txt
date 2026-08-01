@@ -443,3 +443,35 @@ ISR = { #March of Istria (Ulric of Weimar)
 	culture_definition = croatian
 	religion_definition = catholic
 }
+
+# Central Asia (three tags; freeness verified by word-boundary AND
+# substring scans — the map_TAG blind-spot lesson, AUDIT-2026-07-31 D3:
+# zero substring hits for all three across the vanilla tree). The
+# culture_definition IS the tag's primary culture at bookmark init
+# (measured, country.cpp:6166): khorezmian matches the Transoxiana pops;
+# bolghar_culture is the 1066 identity over kazani pops — the al-Andalus
+# precedent, user decision 6 (2026-08-01).
+
+QRK = { #Western Kara-Khanid Khanate (Samarkand)
+	color = map_QRK
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = khorezmian_culture
+	religion_definition = sunni
+}
+
+QRA = { #Eastern Kara-Khanid Khanate (Balasagun)
+	color = map_QRA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = khorezmian_culture
+	religion_definition = sunni
+}
+
+BLH = { #Volga Bulgaria (Bolghar)
+	color = map_BLH
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = bolghar_culture
+	religion_definition = sunni
+}

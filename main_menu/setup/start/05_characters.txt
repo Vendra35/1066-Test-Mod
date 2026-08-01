@@ -104932,6 +104932,41 @@ character_db={
 		tag = ZTA
 	}
 
+	# --- 1066 Central Asia (the Kara-Khanid slice) ------------------------
+	# Both dates [U]. Ibrahim is a vanilla LITERAL row
+	# (character_names_l_english.yml:1364 — the Alp_Arslan class);
+	# name_mahmud is a vanilla key with arabic/persian/turkish rows.
+	# NO invented name key in this slice — a first at this size.
+	#
+	# Ibrahim ibn Nasr (Buri Tigin, TAMGHACH Bughra Khan), khan of the
+	# western kaghanate at Samarkand c.1040-1068: madrasa and hospital
+	# founder, coin issuer, the best-attested man in the theater.
+	qrk_ibrahim_tamghach_khan = {
+		first_name = { name = Ibrahim }
+		culture = khorezmian_culture
+		religion = sunni
+		birth_date = 1000.1.1
+		birth = samarkand
+		dynasty = qarakhanid_dynasty
+		tag = QRK
+	}
+
+	# Mahmud ibn Yusuf, TOGHRUL Qara Khan, eastern khan c.1059-1075.
+	# The eastern regnal list is genuinely unstable [D]: Sulayman/
+	# Muhammad/Ibrahim b. Muhammad appear with different dates by
+	# authority; Mahmud is the majority reading for 1066. The throne-name
+	# literal Toghrul also ships in vanilla (:15547) if ever preferred —
+	# the Alp Arslan precedent.
+	qra_mahmud_toghrul_khan = {
+		first_name = { name = name_mahmud }
+		culture = khorezmian_culture
+		religion = sunni
+		birth_date = 1010.1.1
+		birth = kashgar
+		dynasty = qarakhanid_dynasty
+		tag = QRA
+	}
+
 	# --- 1066 Seljuk world ------------------------------------------------
 	# All dates [U]. Alp_Arslan/Ibrahim/Muslim are vanilla LITERALS
 	# (character_names_l_english.yml:12559/:1364/:26123 — the

@@ -306,4 +306,12 @@ dynasty_manager = {
 		name = { name = arduinici_dynasty }
 		home = turin
 	}
+	# Central Asia: the one Karakhanid house (Al-i Afrasiyab; the
+	# Alid/Hasanid branch split is carried by the two TAGS, not by two
+	# near-identical Arabic house names — user decision 3, 2026-08-01).
+	# Vanilla ships 1276 dynasties and not one Karakhanid.
+	qarakhanid_dynasty = {
+		name = { name = qarakhanid_dynasty }
+		home = samarkand
+	}
 }
