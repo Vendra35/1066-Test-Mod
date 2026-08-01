@@ -21905,10 +21905,11 @@ countries = {
 		include = "japanese_clan"
 		government = {
 
-			ruler = random
+			ruler = jap_go_reizei_tenno
+			ruler_term = { character = jap_go_reizei_tenno start_date = 1045.2.5 regnal_number = 0 }
 
 			reforms = {
-				shogunate
+				japanese_imperial_family
 			}
 
 			laws = {

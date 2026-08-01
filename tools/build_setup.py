@@ -252,6 +252,13 @@ HISTORICAL_RULERS = {
     "QMT": ("qmt_yahya_ibn_al_abbas", "1058.1.1", 0),     # Yahya ibn al-Abbas, the council's face [U/D]
     "MDA": ("mda_al_husayn_ibn_muhanna", "1060.1.1", 0),  # al-Husayn ibn Muhanna, Husaynid emir of Medina [U]
 
+    # India/China review, the JAP half (2026-08-01): vanilla's own
+    # Go-Reizei, 41 at start, yamato_dynasty, no death_date — the
+    # japanese_imperial_family reform's locked block DEMANDS a Yamato
+    # ruler, so this seat is mandatory with the reform swap, not
+    # optional. Accession day [U] (enthroned 1045).
+    "JAP": ("jap_go_reizei_tenno", "1045.2.5", 0),        # Go-Reizei Tenno — vanilla character, resurrected by the death-strip
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -2225,6 +2232,15 @@ FIELD_FIXES = {
     "MDA": [("sharia_law = zaidi_policy", "sharia_law = jafari_policy"),
             ("religious_school = zaidi_school",
              "religious_school = imamiya_school")],
+    # JAP (India/China review): the shogunate reform is gated on BEING
+    # LEADER of the japanese_shogunate IO (country_specific.txt:2067 +
+    # locked :2069-2071) — an IO created 1192 that our strip removes,
+    # so the reform is invalid at every start (the JAP half of the old
+    # "~25 invalid reform" class; decoder entry 2026-08-01).
+    # japanese_imperial_family (:1952) is the 1066 truth; its own
+    # locked block (:1968-1976) demands a yamato_dynasty ruler — hence
+    # the mandatory Go-Reizei seat in HISTORICAL_RULERS.
+    "JAP": [("\t\t\t\tshogunate", "\t\t\t\tjapanese_imperial_family")],
     # France demesne slice: the three landless-to-landed tags swap the
     # _not_present include for the landed variant (the POR entry in
     # reverse). The catholic no_coast variant KEEPS heir_selection
@@ -5143,6 +5159,30 @@ def build_ios(src):
     # an underscore. The blocks go whole; the IO TYPES stay defined in
     # in_game/common, and later centuries can script them back when their
     # years arrive.
+    # THE MIDDLE KINGDOM RESTORE (India/China review Route B, verified
+    # and user-approved 2026-08-01). The tusi gate is on the IO's
+    # EXISTENCE — country_triggers.txt:1287 `exists =
+    # international_organization:middle_kingdom` is the trigger body's
+    # first statement, OUTSIDE the OR — so no reform can substitute:
+    # Route A is provably dead. One re-date keeps the instance out of
+    # the future-date strip below. 960.2.4 is the Song proclamation [U];
+    # any pre-START_DATE value works mechanically, and this keeps the
+    # IOs-dated-at-their-founding convention (catholic_church ships
+    # 33.1.1). Its 12 ruler_terms died in the strip above; leader = CHI
+    # and all 209 members stay (0 in LANDLESS_AFTER, verified). This
+    # single restore closes THREE decoded classes at the root: the
+    # CHA/DAI tributary downgrades (government.cpp:3702), the ~128 tusi
+    # lines, and CHI's accepted-culture flood (country.cpp:9635 — the
+    # leader_modifier's cultures_capacity = 50 returns).
+    src, n_mk = re.subn(
+        r"creation_date = 1271\.12\.18",
+        "creation_date = 960.2.4 # 1271.12.18 re-dated: the Song founding [U]",
+        src)
+    if n_mk != 1:
+        sys.exit(f"middle_kingdom re-date: expected exactly one "
+                 f"creation_date = 1271.12.18, found {n_mk}")
+    report.append(("middle_kingdom re-dated to the Song founding", n_mk))
+
     start = _start_date()
     cuts, removed = [], 0
     for m in re.finditer(r"^\tadd_international_organization = \{", src, re.M):
@@ -5356,10 +5396,12 @@ def build_ios(src):
     def validate():
         if re.search(r"^[ \t]*ruler_term[ \t]*=", src, re.M):
             return "ruler_term survived the strip"
-        # Exactly 18 in vanilla 1.3.11 — a patch changing the number fails
-        # loudly and a human re-reads the file.
-        if removed != 18:
-            return f"expected exactly 18 future-dated IO removals, removed {removed}"
+        # Exactly 18 in vanilla 1.3.11; 17 since the middle_kingdom
+        # re-date (2026-08-01, Route B — the instance now predates
+        # START_DATE and survives on purpose). A patch changing the
+        # number fails loudly and a human re-reads the file.
+        if removed != 17:
+            return f"expected exactly 17 future-dated IO removals, removed {removed}"
         nc = re.sub(r"#[^\n]*", "", src)
         for mm in re.finditer(r"creation_date[ \t]*=[ \t]*([0-9.]+)", nc):
             if date_tuple(mm.group(1)) >= start:
