@@ -1659,6 +1659,61 @@ TEST — click tour, ~10 minutes:
    crimson, MK panel.
 
 
+**ITEM 35 — THE BALTIC (LANDED 2026-08-01, needs game test).**
+docs/BALTIC-PACKAGE.md, all 12 recommendations user-approved incl.
+option 2 for Lithuania (rank_kingdom_grand_duchy_LIT at
+country_ranks.txt:1355 is tag-gated ABOVE the tribe branches — see
+KNOWLEDGE). Twelve tags retired landless with claims: TEU LIV + nine
+satellites (ERM CHL PMS SMD ARR RIG BID BIO KUR) + LIT. Seven tribes
+ride CUM's shape (eurasian_tribe, tech 2, rank_duchy, ruler = random —
+ZERO rulers/dynasties/characters, deliberately: the Pecheneg
+discipline on people; the dynasty/character harness checks stay put
+BY DESIGN): PRS 26 fischhausen, SUD 12 suwalki, KUO 8 grobina, ZEM 7
+dobele, LTG 17 koknese, ESO 24 tartu (incl. DAN's seven — Danish
+Estonia is 1219; DAN 40→33), AUK 37 kernave. SXM revived 16 raseiniai
+AND reskinned tribal by FIELD_FIXES (package gap caught at
+implementation: vanilla ships it as a catholic-monarchy shell). POL
++21 (Pomerelia/Culmerland/Dobrzyn), RAW +5 Podlasie, NRK +2, UFF +1
+mergentheim. 176 moved, ZERO vacated. NEW MECHANISM: CONTROL_STRIPS
+(TEU's six Samogitian control entries stripped before the claims
+snapshot; MOR/TLE is the recorded twin). NEW GUARD (own commit
+6ce8ed7): emptied-but-unlisted delta sweep — break-test (e) REFUTED
+the package's claim that :5401 catches it. NOTE the honest deviation:
+LIT's derived claims are 103 (its FULL 1337 holdings — the snapshot
+runs before all grants, every prior slice's semantics), not the
+package's post-Rus 70. Constants: registry 65, blocks 2402, deps 244,
+pacts 9, IO ghosts 145, parliament 1381, thrones 175 (unchanged).
+KNOWN anachronism BANKED, not a bug: vanilla's un-overridden
+07_cities_and_buildings.txt keeps a level-2 Hanseatic kontor on riga
+(now LTG's) and visby — decision 6, buildings/pops phase. Religion on
+the ground stays template-catholic in Livonia/Estonia (pop-phase
+correction, package §H list).
+TEST — click tour, ~8 minutes:
+1. Map Baltic: the ORDER IS GONE — no Teutonic/Livonian state, no
+   bishopric confetti; instead Prussia (blue), Sudovia (olive),
+   Curonia (blue), Semigallia (cream), Latgalia (brown), Estonia
+   (green), Samogitia (green), Aukštaitija (pink); NO "Lithuania" on
+   the map at all.
+2. Click Kernavė → "Tribe of Aukštaitija" (the CUM render law), ruler
+   "Chief", house = some generated name (no Gediminids). Click
+   Raseiniai → "Tribe of Samogitia", ruler "Chief" NOT "Duke" (the
+   FIELD_FIXES probe).
+3. Click Tallinn → Estonia's, not Denmark's; Denmark itself intact at
+   Roskilde. Click Riga → Latgalia (the city does not exist; the
+   kontor building there is the BANKED decision-6 anachronism — do
+   not report it).
+4. Click Malbork and Königsberg → Prussia; Gdańsk and Toruń → Poland;
+   Mergentheim (Franconia, far south-west) → Uffenheim/Hohenlohe.
+5. Diplomacy: Novogrudok (NRK) has NO overlord; Poland has NO
+   Lithuanian alliance; Bohemia has NO Teutonic alliance.
+6. scan_log.py: REGRESSION must be 0 (the jimi and Song-reform fixes
+   from the last launch land in this same build); landless flood must
+   NOT grow.
+7. Regression probes: Song panel 2/3 reforms ACTIVE (the outstanding
+   item-33 check), Liao ring, MK panel, India thrones.
+8. DURING THIS TEST the user sends the HRE close-up screenshot →
+   Germany-density audit against items 23/25 (promised follow-up).
+
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
    re-verify key file:line claims before trusting anything), then give

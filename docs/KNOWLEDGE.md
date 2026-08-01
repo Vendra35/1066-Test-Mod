@@ -1976,6 +1976,55 @@ foremost) that iterates countries or compares scope objects needs its
 custom_tooltip wrap from day one; "Sweden" appearing in a tooltip is
 THIS, not a tag error. Fixed in MR 3f082c5.
 
+### Ten locations game-wide live in TWO ownership blocks — vanilla's occupation model
+**Established:** Baltic package measurement, confirmed at implementation
+2026-08-01: `palanga rietavas silale skuodas taurage mazeikiai` sit in
+LIT's `own_core` AND TEU's `control` (vanilla 10_countries.txt:726-734);
+`arshgul madinat_alawiyyin ras_al_ain saida` sit in TLE's `own_core`
+AND MOR's `control`. `control` is the last member of the build's
+OWN_KEYS, so `_remove_owned_many`'s exactly-once assert, the
+LANDLESS_AFTER guard and the orphan-capital guard all read the
+occupation as a holding. `FIELD_FIXES` runs after all three and cannot
+help.
+**Means:** any slice that grants, vacates or retires TEU/LIT (done) or
+MOR/TLE (the Maghreb slice's day one) must clear the occupation first —
+`CONTROL_STRIPS` in build_setup.py, exact-count asserted, placed BEFORE
+the `_landless_claims` snapshot so the retiree's claims are its real
+holdings, not its conquests.
+
+### A tag-gated RANK branch can sit above the generic ones — the LIT instance of the horde-name law
+**Established:** `country_ranks.txt:1355-1362` triggers on `tag = LIT` +
+`country_rank_is_duchy` and resolves "Grand Duchy" / "Grand Duke" — 249
+lines above `rank_duchy_tribe` (`:1606`). First-match: a LIT reskinned
+to `type = tribe` but keeping `rank_duchy` still renders "Grand Duchy of
+Lithuania"; only `rank_county` escapes, at the price of
+`rank_county_tribe`'s "Minor Tribe of ..." (`:2279`).
+**Means:** before reskinning ANY tag, grep `country_ranks.txt` for the
+tag name — the name-composition trap (CLAUDE.md horde law) extends to
+the RANK word, and it is hard-coded on the tag. The Baltic slice retired
+LIT rather than fight the branch (user decision, option 2).
+
+### A tag emptied by grants but absent from LANDLESS_AFTER ships a GREEN build the engine rejects
+**Established:** Baltic break-test (e), 2026-08-01: RIG removed from
+BALTIC_LANDLESS produced a full green build with RIG as an emptied,
+claimless shell — the `initialize_from_bookmark.cpp:592` state. The
+:5401 guard loops only LANDLESS_AFTER members; KLB nearly shipped the
+same way from the Arabia package. Closed by the delta sweep (commit
+6ce8ed7): every tag holding land in PRISTINE vanilla must still hold
+land or be listed; proven against the RIG known positive.
+**Means:** the guard class to trust is delta-vs-pristine, not
+list-membership; and a package's "the verifier catches this" claim is
+itself a break-test target, not a fact.
+
+### A `^`-anchored grep misses a file's FIRST identifier when the file carries a BOM
+**Established:** 2026-08-01, nearly a false refutation: `grep
+"^aukstaitian" cultures/baltic.txt` returns nothing because
+`aukstaitian` is the file's first block and sits BEHIND the BOM
+(baltic.txt:1). The Sweden-tooltip entry above records the same
+byte-order fact from the engine's side (SWE on line 1 behind the BOM).
+**Means:** never conclude "identifier does not exist" from an anchored
+grep alone — re-run unanchored before declaring a package claim false.
+
 ## Template for new entries
 
 ```
