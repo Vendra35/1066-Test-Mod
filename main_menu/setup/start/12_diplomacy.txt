@@ -79,15 +79,6 @@ diplomacy_manager = {
     dependency = { first = PDU second = VDK subject_type = samanta } #Cochin - > Vadakkumkur
 
     #Delhi Subjects:
-    dependency = { first = DLH second = GWA subject_type = samanta }
-    dependency = { first = DLH second = HAD subject_type = samanta }
-    dependency = { first = DLH second = MEW subject_type = samanta }
-    dependency = { first = DLH second = JLR subject_type = samanta }
-    dependency = { first = DLH second = IDR subject_type = samanta }
-    dependency = { first = DLH second = CMN subject_type = samanta }
-    dependency = { first = DLH second = SGN subject_type = samanta }
-    dependency = { first = DLH second = GAU subject_type = samanta }
-    dependency = { first = DLH second = STN subject_type = samanta }
 
     #Kashmiri Subjects:
     #Rajouri
@@ -104,7 +95,6 @@ diplomacy_manager = {
     dependency = { first = ORI second = PTN subject_type = samanta }
     dependency = { first = ORI second = MJU subject_type = samanta }
 
-    dependency = { first = GAU second = TRF subject_type = samanta }
 
     dependency = { first = SRM second = JBL subject_type = samanta }
 

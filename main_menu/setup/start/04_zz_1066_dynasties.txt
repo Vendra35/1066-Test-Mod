@@ -342,4 +342,34 @@ dynasty_manager = {
 		name = { name = weiming_dynasty }
 		home = ningxia
 	}
+	# India Tier 1: vanilla ships thirteen Indian houses and not one of
+	# the five imperial dynasties of 1066 (grep over 04_dynasties.txt
+	# AND the dynasty loc returns zero for all six below).
+	# paramara_dynasty and chandela_dynasty DO ship and are reused
+	# (paramara's pal_lahara home is the Orissa branch - cosmetic, the
+	# Granadan-Zirid precedent).
+	chola_dynasty = {
+		name = { name = chola_dynasty }
+		home = thanjavur
+	}
+	chalukya_dynasty = {
+		name = { name = chalukya_dynasty }
+		home = kalyani
+	}
+	pala_dynasty = {
+		name = { name = pala_dynasty }
+		home = monghyr
+	}
+	solanki_dynasty = {
+		name = { name = solanki_dynasty }
+		home = patan
+	}
+	kalachuri_dynasty = {
+		name = { name = kalachuri_dynasty }
+		home = ratnapura
+	}
+	sinhala_dynasty = {
+		name = { name = sinhala_dynasty }
+		home = tissamaharama
+	}
 }

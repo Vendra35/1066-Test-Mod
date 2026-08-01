@@ -1618,6 +1618,46 @@ TEST — click tour, ~6 minutes:
    locations); watch for 3702 naming LIA (= the ordo ring failed —
    fallback vassal decision) and any class naming LIA/XIA.
 
+**ITEM 34 — INDIA TIER 1 (LANDED 2026-08-01, needs game test; the
+QUEUE IS COMPLETE).** docs/INDIA-TIER1-PACKAGE.md, all
+recommendations user-approved. Five new tags — COZ Chola 83 (incl.
+Chola Lanka), CLK Chalukya 180, PAA Pala 80 (Buddhist identity over
+hindu pops — the al-Andalus law), PMR Paramara 38, CHU Solanki 16 —
+plus the DELHI BEHEAD: DLH's 272 fully distributed (zero vacates,
+zero orphans), nineteen tags landless (incl. the Bengal-Sultanate
+trio and YDR the review missed), DBD SURVIVES as Vijayabahu's
+Ruhuna. Eight seats (one invented literal in the whole slice:
+Virarajendra — Tamil has ONE name key in the whole game); RTP=Chedi
+under Lakshmi-Karna (94!), GWA reused as the Tomaras of Dhillika,
+JJK's Kirtivarman is attested by VANILLA'S OWN block comment. Four
+renames (Chedi/Ruhuna/Shakambhari/Tomara); five capital repoints,
+all historical upgrades; four Shaiva powers join the shaivism
+branch, PAA joins no sect. Six new dynasties. 2395 blocks, 175
+thrones. Constants: deps 249, IO ghosts 145, parliament 1385.
+TEST — click tour, ~10 minutes:
+1. Map India: FIVE great powers — Chola crimson Thanjavur-to-Lanka,
+   Chalukya ochre across the whole Deccan, Pala saffron over Bengal-
+   Bihar, Paramara green in Malwa, Solanki sea-blue in Gujarat;
+   Chedi (RTP) large in the center; NO Delhi Sultanate, NO
+   Vijayanagara, NO Bengal Sultanate.
+2. Click Thanjavur → "Mahārājya of Chola" or similar (the
+   rank_kingdom_indian branch probe), "Mahārājā Vīrarājendra"
+   (the invented-literal render), house "Chola".
+3. Click Kalyani → "Someshvara I"; Monghyr → "Vigrahapala III" of
+   house "Pala"; Dhar → "Jayasimha I" (the name_jayasimha KEY
+   probe); Patan → "Karna" of house "Solanki".
+4. Click Kalinjar → "Kirtivarman I" (vanilla-attested); RTP center →
+   "Chedi" (the rename probe) under another "Karna" — TWO Karnas is
+   correct history, not a bug; Ceylon → "Ruhuna" south under
+   "Vijayabahu I", Chola north.
+5. Punjab still Ghazna's; TNK renders "Pandya" untouched; Delhi city
+   under Tomara gold.
+6. scan_log.py: landless trims +19; hindu_branch ghost lines
+   expected; NEW classes only — paste anything naming the five or a
+   samanta line.
+7. Regression: KOR/DAI/CHA/CDL/KHM thrones, the Liao ring, Song
+   crimson, MK panel.
+
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —

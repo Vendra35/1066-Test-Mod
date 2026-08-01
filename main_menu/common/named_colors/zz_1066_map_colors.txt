@@ -102,4 +102,13 @@
 	# NAME (zero substring hits — the D3 lesson).
 	map_LIA = rgb { 40 60 110 }     # the Liao       Khitan indigo
 	map_XIA = rgb { 170 95 126 }    # Western Xia    Tangut rose
+	# India Tier 1. COZ vs map_pandya violet (TNK borders it); CLK vs
+	# map_hoysala crimson and map_orissa orange; PAA vs map_GAU's
+	# orange, which it replaces. Keys verified absent from vanilla BY
+	# NAME (zero substring hits).
+	map_COZ = rgb { 176 30 46 }     # Chola      tiger crimson
+	map_CLK = rgb { 216 152 40 }    # Chalukya   Deccan ochre
+	map_PAA = rgb { 190 108 30 }    # Pala       kasaya saffron-brown
+	map_PMR = rgb { 92 132 60 }     # Paramara   Malwa green
+	map_CHU = rgb { 60 128 176 }    # Solanki    Gujarat sea-blue
 }

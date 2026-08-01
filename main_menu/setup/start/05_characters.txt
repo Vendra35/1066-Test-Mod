@@ -104932,6 +104932,96 @@ character_db={
 		tag = ZTA
 	}
 
+	# --- 1066 India Tier 1 ------------------------------------------------
+	# Naming routes chosen by MEASURING the pools: tamil_language has ONE
+	# name_* key in the whole game, so the Chola is the package's single
+	# invented literal (Virarajendra, loc row ours); Someshvara /
+	# Vigrahapala / Karna / Kirtivarman / Jayasimha / Vijayabahu are all
+	# vanilla rows. Cultures/religions from each tag's registry; PAA's
+	# mahayana over hindu pops is the al-Andalus law, deliberate.
+	coz_virarajendra_chola = {
+		first_name = { name = Virarajendra }
+		culture = tamil
+		religion = hindu
+		birth_date = 1010.1.1
+		birth = thanjavur
+		dynasty = chola_dynasty
+		tag = COZ
+	}
+
+	clk_someshvara_i_ahavamalla = {
+		first_name = { name = Someshvara }
+		culture = kannadiga
+		religion = hindu
+		birth_date = 1015.1.1
+		birth = kalyani
+		dynasty = chalukya_dynasty
+		tag = CLK
+	}
+
+	paa_vigrahapala_iii = {
+		first_name = { name = Vigrahapala }
+		culture = bengali
+		religion = mahayana
+		birth_date = 1020.1.1
+		birth = monghyr
+		dynasty = pala_dynasty
+		tag = PAA
+	}
+
+	# name_jayasimha is a VANILLA KEY present in malvi_language itself —
+	# the one seat in the five that rides a key, not a literal.
+	pmr_jayasimha_i_paramara = {
+		first_name = { name = name_jayasimha }
+		culture = malvi
+		religion = hindu
+		birth_date = 1025.1.1
+		birth = dhar
+		dynasty = paramara_dynasty
+		tag = PMR
+	}
+
+	chu_karna_solanki = {
+		first_name = { name = Karna }
+		culture = gujarati
+		religion = hindu
+		birth_date = 1035.1.1
+		birth = patan
+		dynasty = solanki_dynasty
+		tag = CHU
+	}
+
+	jjk_kirtivarman_chandela = {
+		first_name = { name = Kirtivarman }
+		culture = bundeli
+		religion = hindu
+		birth_date = 1025.1.1
+		birth = kalinjar
+		dynasty = chandela_dynasty
+		tag = JJK
+	}
+
+	rtp_lakshmi_karna = {
+		first_name = { name = Karna }
+		culture = chhattisgarhi
+		religion = hindu
+		birth_date = 1010.1.1
+		birth = ratnapura
+		dynasty = kalachuri_dynasty
+		tag = RTP
+	}
+
+	# name_vijayabahu: one of sinhala_language's three keys, vanilla.
+	dbd_vijayabahu_i = {
+		first_name = { name = name_vijayabahu }
+		culture = sinhalese
+		religion = theravada
+		birth_date = 1030.1.1
+		birth = tissamaharama
+		dynasty = sinhala_dynasty
+		tag = DBD
+	}
+
 	# --- 1066 Northern Dynasties ------------------------------------------
 	# Cultures/religions from the tags' own registry blocks. kharchin is
 	# the best-available Khitan proxy (vanilla paints it on the Khitan

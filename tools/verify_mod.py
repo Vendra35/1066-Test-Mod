@@ -952,6 +952,10 @@ _GENERATOR_OK = {
     # Northern Dynasties — tier 4, permanent: neither dynasty used
     # European-style heraldry.
     "LIA", "XIA",
+    # India Tier 1 — tier 3, DEFERRED not permanent: Indian dynastic
+    # emblems ARE attested (the Chola tiger, the Chalukya boar, the
+    # Paramara eagle) — eyeball the generated flags before investing.
+    "COZ", "CLK", "PAA", "PMR", "CHU",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -1129,10 +1133,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # 1420 after Rus Tier 1 (42 landless, ORE fold included); 1416 after
 # Arabia (6 landless incl. the KLB catch, 2 new landed); 1407 after
 # Rus Tier 2 (10 landless, CUM landed); 1398 after China-East (9
-# landless: LNG + the eight Chinggisid hordes) — each drop tripped
+# landless); 1399 after Northern Dynasties (+2 new, -1 SYG); 1385
+# after India Tier 1 (19 landless, 5 new landed) — each drop tripped
 # the vacuous-scan guard first and was moved deliberately.
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1398)
+      min_count=1385)
 
 print()
 if fails:

@@ -283,6 +283,20 @@ HISTORICAL_RULERS = {
     "LIA": ("lia_yelu_hongji_daozong", "1055.8.28", 0, "Daozong"),  # Daozong (Yelu Hongji), 8th Liao emperor, r. 1055-1101
     "XIA": ("xia_li_liangzuo_yizong", "1048.1.19", 0, "Yizong"),    # Yizong (Li Liangzuo), 2nd Xia emperor, r. 1048-1067
 
+    # India Tier 1 (package 2026-08-01, user-approved). Eight seats;
+    # TNK/DRW/GWA stay random deliberately (no agreed king — the
+    # Pandya five, the bardic Tomara list, the decade-swinging
+    # Chahamana dates). TWO KARNAS rule 1066 India — Chedi (RTP) and
+    # Gujarat (CHU) — historically true, not a copy-paste.
+    "COZ": ("coz_virarajendra_chola", "1063.1.1", 0),      # Virarajendra Chola, r. 1063-1070 [U]
+    "CLK": ("clk_someshvara_i_ahavamalla", "1042.1.1", 1), # Someshvara I Ahavamalla, r. 1042-1068 (drowns himself in the Tungabhadra — a hook)
+    "PAA": ("paa_vigrahapala_iii", "1054.1.1", 3),         # Vigrahapala III [D — the Pala tables disagree on the year, never on 1066]
+    "PMR": ("pmr_jayasimha_i_paramara", "1055.1.1", 1),    # Jayasimha I [D — the hardest identification; both majority readings seat him 1055]
+    "CHU": ("chu_karna_solanki", "1064.1.1", 0),           # Karna Chaulukya, r. 1064-1092 [U]; founds Karnavati
+    "JJK": ("jjk_kirtivarman_chandela", "1060.1.1", 1),    # Kirtivarman — VANILLA'S OWN block comment attests him (10_countries JJK block)
+    "RTP": ("rtp_lakshmi_karna", "1041.1.1", 0),           # Lakshmi-Karna of Chedi, r. 1041-1073 [U]
+    "DBD": ("dbd_vijayabahu_i", "1055.1.1", 1),            # Vijayabahu I in Ruhuna from 1055; all Lanka 1073 [U]
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -1459,6 +1473,146 @@ NEW_COUNTRIES["LIA"] = (
     "\t\tcountry_rank = rank_empire\n\n"
     "\t\tcapital = linhuang\n\t}\n")
 
+# ============================ INDIA TIER 1 ==================================
+# The five great powers of 1066 India (docs/INDIA-TIER1-PACKAGE.md,
+# user-approved 2026-08-01, all recommendations incl. the GWA-Tomara
+# reuse, the five collateral retirements, PAA's Buddhist identity over
+# hindu pops — the al-Andalus law — and the four renames). The Delhi
+# behead lands here WITH recipients: zero LOCATION_VACATED anywhere,
+# every one of DLH's 272 accounted (the settled-plain pop-flood is why
+# item 32 deferred it). Nineteen tags retire landless; DBD SURVIVES as
+# Vijayabahu's Ruhuna — the review wanted it retired, but it is
+# vanilla's only sinhalese+theravada block AND the Mahavihara sect's
+# seat. The package's proposed name-key-language harness check is NOT
+# taken: its premise (a key must exist in the culture's language pool)
+# is refuted by measurement — scripted names resolve from the loc
+# registry (Go-Reizei's name_chikahito rendered in game with zero
+# language-pool presence); the literal routes chosen are safe anyway.
+_INDIA_RULES = {
+    # COZ — Virarajendra's Chola: the mandalams, the Vengi clientage,
+    # Chola Lanka (Polonnaruva since 1017). TNK's four Pandya
+    # locations are minus'd: the Pandyas survive as feudatories.
+    "COZ": (["cola_nadu", "pandya_nadu", "tondai_nadu", "kongu_nadu",
+             "baramahal", "jaffna_province", "vanni", "pihiti",
+             "kosta", "kamma_nadu", "vengi_nadu"],
+            [], [], ["kayal", "tenkasi", "thoothukudi", "tirunelveli"],
+            83),
+    # CLK — Someshvara I's Western Chalukya: the Deccan whole, Tapti
+    # to Tungabhadra; the Kakatiyas/Seunas/Shilaharas ride inside as
+    # territory, not ties.
+    "CLK": (["kalyana_karnakassala", "raichur_doab", "kampili",
+             "chitradurga_province", "banavasi", "bangalore_province",
+             "northern_rayalaseema", "southern_rayalaseema",
+             "golconda_province", "warangal_province",
+             "khammamet_province", "sirpur_province",
+             "northern_desh", "southern_desh", "upper_marathwada",
+             "lower_marathwada", "malnad", "baglana",
+             "north_konkan", "malvana", "lower_vidarbha"],
+            ["karwar", "bhadrachalam"], [], [], 180),
+    # PAA — Vigrahapala III's Pala: Gauda, Varendra, Vanga, Radha,
+    # Magadha, Anga. Kamarupa keeps its three (a real 1066 kingdom).
+    "PAA": (["gaur_province", "devkot_province", "bogra_province",
+             "jalpaiguri_province", "pandua_province", "nadia_province",
+             "khulna_province", "sonargaon_province",
+             "mymensingh_province", "khalifatabad_province",
+             "bhagalpur_province", "patna_province", "dumka_province",
+             "hazaribagh_province"],
+            [], [], ["birpara", "kamatapur", "koch_bihar"], 80),
+    # PMR — the Paramaras of Malwa; bhojpur is Bhoja's own foundation.
+    "PMR": (["western_malwa", "eastern_malwa", "nimar", "khandesh"],
+            ["hoshangabad", "bhojpur"], [], [], 38),
+    # CHU — the Chaulukyas of Anahilavada (patan IS Anahilavada).
+    # Saurashtra stays Chudasama, Kutch stays KUT — defensible 1066.
+    "CHU": (["lata", "khekassala", "sarasvata"], [], [], [], 16),
+    # ---- the survivors that absorb Delhi ----
+    # RTP — Lakshmi-Karna's Kalachuris of Chedi: Dahala, Kashi, the
+    # lower doab, Awadh, Rohilkhand. The six arrah locations are
+    # protected (UJJ/CER are real hill lineages).
+    "RTP": (["akara", "central_doab_province", "lower_doab_province",
+             "awadh_area", "rokhilkhand_area", "bhojpur_area"],
+            [], [], ["arrah", "ballia", "buxar", "jaund", "rohtas",
+                     "sasaram"], 76),
+    # GWA reused as the TOMARAS of Dhillika (decision 2): Delhi, the
+    # upper doab, Braj, Mewat, and Gwalior itself.
+    "GWA": (["delhi_province", "upper_doab_province", "puadh_province",
+             "braj_province", "mewat_province", "gird"],
+            ["bayana"], [], [], 35),
+    # JJK — Kirtivarman's Chandelas restored to Bundelkhand (vanilla's
+    # own block comment attests the man AND the ground).
+    "JJK": (["upper_bundelkhand_province",
+             "lower_bundelkhand_province"], [], [], [], 17),
+    # SND — the Soomras take all Sindh (SMA, 1351, empties into them).
+    "SND": (["upper_sindh_province", "northern_sindh_province",
+             "sibi_province"], [], [], [], 25),
+    # The Rajput and Baghelkhand edges of Delhi's demesne.
+    "MEW": (["mewar"], [], [], [], 8),
+    "HAD": (["hadoti"], [], [], [], 6),
+    "MRW": ([], ["mandore", "osian", "kurki"], [], [], 3),
+    "DRW": ([], ["sambhar", "ajmer", "ranthambore",
+                 "merta", "nagaur", "makrana"], [], [], 6),
+    "BGK": ([], ["sidhi", "agori", "vijaygarh"], [], [], 3),
+}
+INDIA_LANDLESS = ("DLH",
+                  "VIJ", "MAB", "SMA", "RDY", "RCH", "JFN", "SMV", "MSN",
+                  "YDR",
+                  "GAU", "SGN", "STN",
+                  "BND", "IDR", "RJI", "BGL", "DRP", "JWR")
+
+# The five imperial blocks ride vanilla's own India templates —
+# diff-measured: the Hindu _no_coast variant KEEPS heir_selection
+# (unlike the Muslim family), so nothing is restated. CHU rides the
+# _jain variant, which includes expl_india_hindu itself. tolerated
+# lists are the measured minority profile of each resolved territory.
+NEW_COUNTRIES["COZ"] = (
+    "\tCOZ = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_india_hindu"\n'
+    '\t\tinclude = "indian_hindu_monarchy"\n'
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tsinhalese\n\t\t\ttelugu\n\t\t\tkannadiga\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = thanjavur\n\t}\n")
+NEW_COUNTRIES["CLK"] = (
+    "\tCLK = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_india_hindu"\n'
+    '\t\tinclude = "indian_hindu_monarchy"\n'
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tmarathi_culture\n\t\t\ttelugu\n\t\t\tkonkani\n\t\t\tgond\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = kalyani\n\t}\n")
+NEW_COUNTRIES["PAA"] = (
+    "\tPAA = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_india_hindu"\n'
+    '\t\tinclude = "indian_hindu_monarchy"\n'
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tbhojpuri_culture\n\t\t\tmagahi\n\t\t\tmaithili_culture\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = monghyr\n\t}\n")
+NEW_COUNTRIES["PMR"] = (
+    "\tPMR = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_india_hindu"\n'
+    '\t\tinclude = "indian_hindu_monarchy_no_coast"\n'
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tkhandeshi\n\t\t\tbhil\n\t\t\tbundeli\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = dhar\n\t}\n")
+NEW_COUNTRIES["CHU"] = (
+    "\tCHU = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "indian_hindu_monarchy_jain"\n'
+    "\t\ttolerated_cultures = {\n"
+    "\t\t\tbhil\n\t\t\tmewari\n"
+    "\t\t}\n\n"
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = patan\n\t}\n")
+
 NEW_COUNTRIES["XIA"] = (
     "\tXIA = {\n"
     "\t\tstarting_technology_level = 3\n"
@@ -2251,7 +2405,8 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
-    + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS
+    + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
+    + INDIA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2337,6 +2492,13 @@ CAPITAL_FIXES = {
     # China-East: Khanbaliq is Kublai's 1267 foundation; the Northern
     # Song capital is Kaifeng (Bianjing), which CHI already holds.
     "CHI": ("dadu", "kaifeng"),
+    # India Tier 1: three forced (sweeps take the old seats) — all
+    # three historical upgrades — plus two riding the approved renames.
+    "HSL": ("tiruvannamalai", "dvarasamudra"),  # the hoysala_dynasty's own home
+    "DBD": ("kurunegala", "tissamaharama"),     # Mahagama, Ruhuna's historic seat
+    "GHL": ("danduka", "sihor"),                # the Gohil seat before Bhavnagar
+    "DRW": ("taranagar", "sambhar"),            # Shakambhari — the dynasty's namesake
+    "GWA": ("gwalior", "delhi"),                # the Tomaras of Dhillika (decision 2)
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -3338,6 +3500,96 @@ NEW_CHARACTERS = """
 		birth = bar_cg
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
+	}
+
+	# --- 1066 India Tier 1 ------------------------------------------------
+	# Naming routes chosen by MEASURING the pools: tamil_language has ONE
+	# name_* key in the whole game, so the Chola is the package's single
+	# invented literal (Virarajendra, loc row ours); Someshvara /
+	# Vigrahapala / Karna / Kirtivarman / Jayasimha / Vijayabahu are all
+	# vanilla rows. Cultures/religions from each tag's registry; PAA's
+	# mahayana over hindu pops is the al-Andalus law, deliberate.
+	coz_virarajendra_chola = {
+		first_name = { name = Virarajendra }
+		culture = tamil
+		religion = hindu
+		birth_date = 1010.1.1
+		birth = thanjavur
+		dynasty = chola_dynasty
+		tag = COZ
+	}
+
+	clk_someshvara_i_ahavamalla = {
+		first_name = { name = Someshvara }
+		culture = kannadiga
+		religion = hindu
+		birth_date = 1015.1.1
+		birth = kalyani
+		dynasty = chalukya_dynasty
+		tag = CLK
+	}
+
+	paa_vigrahapala_iii = {
+		first_name = { name = Vigrahapala }
+		culture = bengali
+		religion = mahayana
+		birth_date = 1020.1.1
+		birth = monghyr
+		dynasty = pala_dynasty
+		tag = PAA
+	}
+
+	# name_jayasimha is a VANILLA KEY present in malvi_language itself —
+	# the one seat in the five that rides a key, not a literal.
+	pmr_jayasimha_i_paramara = {
+		first_name = { name = name_jayasimha }
+		culture = malvi
+		religion = hindu
+		birth_date = 1025.1.1
+		birth = dhar
+		dynasty = paramara_dynasty
+		tag = PMR
+	}
+
+	chu_karna_solanki = {
+		first_name = { name = Karna }
+		culture = gujarati
+		religion = hindu
+		birth_date = 1035.1.1
+		birth = patan
+		dynasty = solanki_dynasty
+		tag = CHU
+	}
+
+	jjk_kirtivarman_chandela = {
+		first_name = { name = Kirtivarman }
+		culture = bundeli
+		religion = hindu
+		birth_date = 1025.1.1
+		birth = kalinjar
+		dynasty = chandela_dynasty
+		tag = JJK
+	}
+
+	rtp_lakshmi_karna = {
+		first_name = { name = Karna }
+		culture = chhattisgarhi
+		religion = hindu
+		birth_date = 1010.1.1
+		birth = ratnapura
+		dynasty = kalachuri_dynasty
+		tag = RTP
+	}
+
+	# name_vijayabahu: one of sinhala_language's three keys, vanilla.
+	dbd_vijayabahu_i = {
+		first_name = { name = name_vijayabahu }
+		culture = sinhalese
+		religion = theravada
+		birth_date = 1030.1.1
+		birth = tissamaharama
+		dynasty = sinhala_dynasty
+		tag = DBD
 	}
 
 	# --- 1066 Northern Dynasties ------------------------------------------
@@ -4853,6 +5105,22 @@ def build_countries(src):
             sys.exit(f"_NORTH_RULES: LIA must hold {_must} — the Five "
                      "Capitals are the slice's spine")
 
+    # India Tier 1 resolves the same way (fourteen rule sets, package
+    # counts independently reproduced; 13 of the 576 are same-tag
+    # no-op re-grants, 563 change owner; zero pairwise overlaps).
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_INDIA_RULES.items()):
+        got = _resolve_ruleset(f"_INDIA_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_INDIA_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, _cap in (("COZ", "thanjavur"), ("CLK", "kalyani"),
+                     ("PAA", "monghyr"), ("PMR", "dhar"),
+                     ("CHU", "patan")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_INDIA_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5766,11 +6034,42 @@ def build_ios(src):
            "OGE"]
         # Northern Dynasties adds 1: SYG leaves the restored Middle
         # Kingdom's member list (200 -> 199). 131 -> 132.
-        + ["SYG"])
-    if n_ghosts != 132 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 132 landless IO list entries, "
+        + ["SYG"]
+        # India Tier 1 adds 13 (observed failing first): the
+        # hindu_branch ghosts — vaishnavism loses VIJ YDR BGL DRP JWR
+        # BND, shaivism loses JFN SMV RDY MSN RCH RJI, shaktism loses
+        # IDR. The six Muslim retirees (DLH MAB SMA GAU SGN STN) sit
+        # in no IO list; DBD contributes none BECAUSE it survives —
+        # its Mahavihara seat is a reason it was kept. 132 -> 145.
+        + ["VIJ", "YDR", "BGL", "DRP", "JWR", "BND",
+           "JFN", "SMV", "RDY", "MSN", "RCH", "RJI", "IDR"])
+    if n_ghosts != 145 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 145 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
+
+    # India Tier 1, decision 11: the four Shaiva powers join the
+    # shaivism hindu_branch (the Cholas ARE the Shaiva dynasty par
+    # excellence; Kalyani, Bhojeshwar, Somnath). PAA joins NO sect —
+    # the mulasarvastivada instance is doctrinally right but its
+    # members and provinces are all Indonesian. Exactly one instance
+    # carries the shaivism law; asserted.
+    _sh_blocks = [m for m in re.finditer(
+        r"^\tadd_international_organization = \{", src, re.M)
+        if "shaivism" in src[m.start():find_block_end(src, src.index("{", m.start()))]]
+    if len(_sh_blocks) != 1:
+        sys.exit(f"expected exactly 1 shaivism hindu_branch instance, "
+                 f"found {len(_sh_blocks)}")
+    _sb = _sh_blocks[0]
+    _send = find_block_end(src, src.index("{", _sb.start()))
+    _mem = re.search(r"^([ \t]*)members[ \t]*=[ \t]*\{",
+                     src[_sb.start():_send], re.M)
+    if not _mem:
+        sys.exit("shaivism instance has no members block")
+    _at = _sb.start() + src[_sb.start():_send].index("{", _mem.start()) + 1
+    src = (src[:_at] + "\n" + _mem.group(1) + "\tCOZ CLK PMR CHU"
+           + src[_at:])
+    report.append(("Shaiva powers joined the shaivism branch", 4))
 
     leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src = tidy(src)
@@ -6212,8 +6511,11 @@ def build_diplomacy(src):
     # 238 -> 239 with Northern Dynasties (observed failing first):
     # CHI->SYG dies with SYG landless — the 46 Jurchen lines were
     # repointed to LIA BEFORE this sweep and survive as its ring.
-    if n_landless_deps != 239:
-        sys.exit(f"expected exactly 239 landless-tag dependencies, stripped {n_landless_deps}")
+    # 239 -> 249 with India Tier 1 (observed failing first): DLH's
+    # nine samanta ties + GAU->TRF. The twelve surviving samantas are
+    # all defensible 1066 hill/coastal clientages (package G.1).
+    if n_landless_deps != 249:
+        sys.exit(f"expected exactly 249 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

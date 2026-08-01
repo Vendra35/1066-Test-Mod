@@ -526,6 +526,54 @@ LIA = { #The Liao — the Khitan empire (Shangjing/Linhuang)
 	religion_definition = mahayana
 }
 
+# India Tier 1 (freeness proven both scan modes over 16,290 vanilla
+# files, zero hits; the obvious ids are all consumed - CHO is Kongo,
+# SOL is vanilla's commented Solon with live Russian loc rows).
+# culture_definition matches the measured template-pop plurality of
+# each resolved territory; PAA's mahayana is the ONE deliberate
+# mismatch (the last Buddhist dynasty over hindu pops - the
+# al-Andalus law, user decision 4).
+
+COZ = { #Chola Empire (Thanjavur)
+	color = map_COZ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = tamil
+	religion_definition = hindu
+}
+
+CLK = { #Western Chalukyas of Kalyani
+	color = map_CLK
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = kannadiga
+	religion_definition = hindu
+}
+
+PAA = { #Pala Empire (Bengal and Magadha)
+	color = map_PAA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = bengali
+	religion_definition = mahayana
+}
+
+PMR = { #Paramaras of Malwa (Dhar)
+	color = map_PMR
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = malvi
+	religion_definition = hindu
+}
+
+CHU = { #Chaulukyas (Solankis) of Gujarat (Anahilavada = patan)
+	color = map_CHU
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = gujarati
+	religion_definition = hindu
+}
+
 XIA = { #Western Xia — the Tangut state (Xingqing, seat ningxia)
 	color = map_XIA
 	color2 = rgb { 16 41 202 }

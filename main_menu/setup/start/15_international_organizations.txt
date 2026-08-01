@@ -1174,13 +1174,7 @@ international_organization_manager = {
 		type = hindu_branch
 		creation_date = 1.1.1
 		members = {
-			#Clearly vaishnavism
-			BHP KHR
-			#Probably vaishnavism
-			KKR GWL KMN HSL VIJ YDR JNG JSL BWL DHU SRG BNA MJU
-			#Not clear ones
-			KMA DIM TWI CUT JNT LUR CER ONW DTI SRM JBL LWA CDD ZMR KLT PDU VND KTN KDU KYA ELA TKU VDK KNK BST JPO BGL CHD BGR WRG
-			DRP JWR DGR MEW KLI DRW JHI PNA GWA JJK BND MAU PRT PLA NAG NRP
+			BHP KHR KKR GWL KMN HSL JNG JSL BWL DHU SRG BNA MJU KMA DIM TWI CUT JNT LUR CER ONW DTI SRM JBL LWA CDD ZMR KLT PDU VND KTN KDU KYA ELA TKU VDK KNK BST JPO CHD BGR WRG DGR MEW KLI DRW JHI PNA GWA JJK MAU PRT PLA NAG NRP
 		}
 		laws = { 
 			vaishnavism
@@ -1192,13 +1186,8 @@ international_organization_manager = {
 		type = hindu_branch
 		creation_date = 1.1.1
 		members = {
-			#Clearly shaivism
-			CHA MAJ SUN KRP ALU ORI GOA JFN KSH
-			#Probably shaivism
-			SNG SMV TNK RDY KPL BGK GHR BAD PNC CBH
-			#Not clear ones
-			LGK BES MNJ TJP MRP KKG SMB BEI SBG SGU LNK SBU SUL CEB TDO MNA BTU SML VLD MSN RCH JLR CMN RJI MRW GDA NRS KJA PTN CRL
-			CAB KLU KSW SKT BSP KTL
+			COZ CLK PMR CHU
+			CHA MAJ SUN KRP ALU ORI GOA KSH SNG TNK KPL BGK GHR BAD PNC CBH LGK BES MNJ TJP MRP KKG SMB BEI SBG SGU LNK SBU SUL CEB TDO MNA BTU SML VLD JLR CMN MRW GDA NRS KJA PTN CRL CAB KLU KSW SKT BSP KTL
 		}
 		laws = { 
 			shaivism
@@ -1210,10 +1199,7 @@ international_organization_manager = {
 		type = hindu_branch
 		creation_date = 1.1.1
 		members = {
-			#Clearly shaktism
-			KUT PGL KLH
-			#Not clear ones
-			UJJ RKS IDR RNP GHL PLT BHD JLW HAD SHR BHA DOG KGR
+			KUT PGL KLH UJJ RKS RNP GHL PLT BHD JLW HAD SHR BHA DOG KGR
 		}
 		laws = { 
 			shaktism
