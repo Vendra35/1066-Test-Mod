@@ -1925,6 +1925,29 @@ CAPITAL_FIXES = {
 # aragonese_dialect exists (languages/00_iberia.txt:131),
 # catholic_monarchy_not_present is the landless include LON/GLC/CAT/GRA use.
 FIELD_FIXES = {
+    # NOV: the 1136 veche republic un-anachronized (the Rus package's
+    # second LIVE defect, user-approved 2026-08-01). In 1066 Novgorod is
+    # a Rurikid principality under Mstislav — the veche deposes its
+    # first prince only in 1136. type -> monarchy; veche_selection is
+    # republic-only (government_types/00_default.txt:46) ->
+    # partition_inheritance, the Rurikid rota itself, legal for monarchy
+    # (:7) — user decision 13; both republic-only reforms removed
+    # (country_specific.txt:383 / republic.txt:30 gate them to
+    # government = republic); and the republic-GATED law line removed
+    # (00_republic.txt:4-8 — the package missed this fourth item: a
+    # monarchy carrying it would ship a dead law). The tag-gated
+    # pyatina/Ivan's-Hundred/tysiatskii/ryad privileges stay — all four
+    # verified tag- or culture-gated, not government-gated. NOV's inline
+    # block already carries marriage/heir laws, the thirteen sliders and
+    # parliament_type, so nothing needs restating.
+    "NOV": [("\t\t\ttype = republic", "\t\t\ttype = monarchy"),
+            ("heir_selection = veche_selection",
+             "heir_selection = partition_inheritance"),
+            ("\n\t\t\t\tveche_republic", ""),
+            ("\n\t\t\t\tmerchant_republic", ""),
+            ("\n\t\t\treforms = {\n\t\t\t}", ""),
+            ("\n\t\t\t\trepublican_foundation_law = political_dynasties_policy",
+             "")],
     "CAT": [("country_rank = rank_duchy", "country_rank = rank_county")],
     "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
             ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
@@ -5313,6 +5336,25 @@ def build_diplomacy(src):
     if n_brit != 7:
         sys.exit(f"expected exactly 7 British vassal strips, stripped {n_brit}")
     report.append(("British vassal ties removed", n_brit))
+
+    # The Rus live-defect patch (package re-verified, user-approved
+    # 2026-08-01; both defects USER-CONFIRMED in game 2026-07-30):
+    # GLH->KIE is the Tatar Yoke 271 years early — it made Iziaslav a
+    # Golden-Horde tributary at 1066 — and LIT->POK is the 14th-century
+    # Lithuanian overlordship over Polotsk. The generic landless sweep
+    # provably cannot catch either (both partners stay LANDED), so they
+    # are stripped by name, the British batch's shape.
+    n_rus = 0
+    for _pair, _st in (("GLH second = KIE", "tributary"),
+                       ("LIT second = POK", "vassal")):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = " + _pair
+            + r" subject_type = " + _st + r" \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_rus += _k
+    if n_rus != 2:
+        sys.exit(f"expected exactly 2 Rus dependency strips, stripped {n_rus}")
+    report.append(("Rus 1337 overlordships removed", n_rus))
 
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency

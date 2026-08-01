@@ -1764,12 +1764,8 @@ countries = {
 		include = "expl_novgorod"
 
 		government = {
-			type = republic
-			heir_selection = veche_selection
-			reforms = {
-				veche_republic
-				merchant_republic
-			}
+			type = monarchy
+			heir_selection = partition_inheritance
 			ruler = nov_mstislav_izyaslavich_rurikovich
 			ruler_term = { character = nov_mstislav_izyaslavich_rurikovich start_date = 1054.2.20 regnal_number = 1 }
 
@@ -1824,7 +1820,6 @@ countries = {
 			#Laws
 			laws = {
 				administrative_system = pyatina_policy
-				republican_foundation_law = political_dynasties_policy
 				patriarchate_law = separated_patriarchate_policy
 				censorship = limited_censorship
 				education_masses_law = basic_religious_education

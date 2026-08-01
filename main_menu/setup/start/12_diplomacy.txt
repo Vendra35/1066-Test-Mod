@@ -96,7 +96,6 @@ diplomacy_manager = {
         #Ruthenia
     dependency = { first = GLH second = BRY subject_type = tributary }
     dependency = { first = GLH second = HAL subject_type = tributary }
-    dependency = { first = GLH second = KIE subject_type = tributary }
     dependency = { first = GLH second = VOL subject_type = tributary }
 
     # Hanseatic League
@@ -217,7 +216,6 @@ diplomacy_manager = {
     dependency = { first = LIT second = DRU subject_type = vassal }
     dependency = { first = LIT second = NRK subject_type = vassal }
     dependency = { first = LIT second = PNK subject_type = vassal }
-    dependency = { first = LIT second = POK subject_type = vassal }
     dependency = { first = LIT second = SSK subject_type = vassal }
     dependency = { first = LIT second = TPS subject_type = vassal }
     dependency = { first = LIT second = TUV subject_type = vassal }
