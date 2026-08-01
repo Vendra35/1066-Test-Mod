@@ -1058,10 +1058,12 @@ same day it landed, all seven test points; item 19).
 20), ~~British Isles~~ (item 21), ~~HRE/HAB breakup~~ (item 23),
 ~~southern Italy 1066~~ (item 22), ~~Germany II~~ (item 25),
 ~~Italy North~~ (item 26 — ALL confirmed in game and closed as of
-2026-07-30). ~~Central Asia (Kara-Khanids)~~ (item 27, LANDED
-2026-08-01, needs game test). Left: Arabia, the Rus/steppe east,
-India/China review — all with research packages agent-reverified
-2026-08-01 (decision lists delivered, pending user decisions) — then the pop phase (al-Andalus owes 222 locations;
+2026-07-30). ~~Central Asia~~ (item 27),
+~~Rus patch + Tier 1~~ (item 28), ~~Arabia~~ (item 29), ~~India/China
+MUSTs~~ (item 30) — ALL LANDED 2026-08-01, one accumulated game test
+pending. Left: Rus Tier 2 (the Cumans — waits on the accumulated
+test), China D2-D7 (needs 18 authored claim lists), the Baltic,
+the Caucasus (ALN anchor) — then the pop phase (al-Andalus owes 222 locations;
 Persia owes none).
 
 ## Next, in order
@@ -1399,6 +1401,76 @@ TEST — click tour, ~8 minutes:
    nine tributaries live, Norman opening, plus the audit-fix
    expectations in the block above (ABS/FAT :1719 gone, colors,
    no stray hint button).
+
+**ITEM 28 — RUS PATCH + TIER 1 (LANDED 2026-08-01, needs game test;
+commits b437605 + cf6a5b5).** The patch: GLH→KIE (the Tatar Yoke 271
+years early) and LIT→POK stripped by name; NOV un-republic'd by six
+FIELD_FIXES line surgeries incl. the republic-gated
+republican_foundation_law the package missed. Tier 1: five rule sets
+(finals 191/127/131/152/56), 42 tags landless with claims (41 + the
+ORE fold), KIE 74→199 / NOV 171→210 / PYS 5→135 / CHR 15→128 /
+POK 11→56; zero new tags/characters/dynasties. KIE: Rurikovich house,
+rank_kingdom (the "Grand Principality" $PREFIX$ probe), Cossack
+privilege stripped, partition_inheritance + kyivan_seniority_reform;
+KIE→NOV tributary (khutba #5); POK swapped off lithuanian_monarchy
+with belarusian court restated; partition on all five (user decision
+13); HAL capital lviv→kamianets_podilskyi (guard-caught).
+TEST — click tour, ~8 minutes:
+1. Map: FIVE Rus states only — Kyiv HUGE (Volhynia+Smolensk+Cherven
+   inside), Novgorod north, Chernihiv+Murom-Ryazan, Pereiaslavl
+   stretching to Rostov-Suzdal-Beloozero, Polotsk whole. NO Moscow,
+   NO Tver, NO Pskov, NO Halych as states.
+2. Click Kyiv → "Grand Principality of Kyiv" (if "Principality of
+   Kyiv", the $PREFIX$ probe failed — report), Grand Prince Iziaslav,
+   house Rurikovich, NO Golden Horde overlord.
+3. Click Novgorod → a MONARCHY (no veche/merchant republic), Prince
+   Mstislav, subject line: tributary of Kyiv (own color, war screen
+   opens).
+4. Click Polotsk → Vseslav, house Rurikovich (not Gediminid), a
+   Ruthenian principality.
+5. Chernihiv holds Murom; Pereiaslavl holds Rostov/Suzdal; both
+   partition heirs visible in the succession panel.
+6. error.log: landless trims +42 (known class), the :592 lines ZERO,
+   watch 3702 naming NOV (= the seniority reform lost — fallback
+   vassal decision needed).
+
+**ITEM 29 — ARABIA (LANDED 2026-08-01, needs game test; commit
+f3ae48c).** QMT Emirate of al-Hasa (28; Yahya ibn al-Abbas, elective
+council), UKH al-Yamama (6, Zaydi, random), KRM +14 Batinah/Muscat
+(coastal include swap), OMA +6 Trucial, HLL +6 Darb Zubayda, ANZ +5
+Jawf (fixes ANZ's VANILLA orphan capital), MDA seated (al-Husayn,
+Banū Muhannā, Twelver) + FAT tributary #3, YEM capital →Sana'a, six
+landless (ORM JRW HLG FDL AAL + the KLB catch), ORM keeps vanilla's
+36-claim irredenta incl. Hormuz.
+TEST — click tour, ~7 minutes:
+1. Map: eastern Arabia carmine (QMT from Qatif to Qatar), al-Yamama
+   violet (UKH), the Batinah coast Kerman's color, interior Oman
+   OMA's, Jawf under ANZ.
+2. Click al-Hasa → "Qarmatian Emirate"/"al-Hasa", "'Amīr Yaḥyā"
+   (arabic render probe), ismaili school.
+3. Click Medina → al-Husayn renders "Ḥusayn", house "Banū Muhannā",
+   subject line: tributary of FAT (THREE Fatimid tributaries now).
+4. Click Sana'a → YEM capital there (not Zabid); Nizwa → OMA
+   independent with claims on the Kerman coast (intended).
+5. Ormus/Jarwanids/Hüleguids GONE from the map.
+6. error.log: landless trims +6, the 2477 line for HLG should be
+   GONE or renamed (decoder decision 11 — read and decide the
+   type=army strip); 3702 naming MDA = the FAT ring regressed.
+
+**ITEM 30 — INDIA/CHINA MUSTS (LANDED 2026-08-01, needs game test;
+commit 7377bec).** The Middle Kingdom RESTORED re-dated 1271→960 (the
+tusi gate is on IO EXISTENCE — no reform could substitute); JAP's
+shogunate reform → japanese_imperial_family + Go-Reizei seated
+(mandatory pair — the reform's locked block demands a Yamato ruler).
+TEST — one glance + two clicks:
+1. error.log: the ~128-line tusi/3702 flood GONE, CHA/DAI tributary
+   lines GONE, CHI's 9635 culture flood GONE, JAP's invalid-reform
+   line GONE. These four classes dying together IS the Route B pass.
+2. Click China → the Celestial Empire IO panel exists, leader CHI
+   (still Yuan-named/blue — the Song reskin is deferred D2-D7 work).
+3. Click Kyoto → Go-Reizei Tennō ruling (41), imperial family reform
+   active.
+4. Regression: the two Seljuk CHA/DAI-class tributary screens open.
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —

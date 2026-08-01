@@ -434,6 +434,12 @@ log. **Known ours, parked for the China review:** CHA Champa and DAI
 Đại Việt (tributary), and ~30 Guizhou-area tags whose `tusi` subject
 type fails the same way (Reason: country_triggers.txt:1288-1298, a
 scripted trigger leaning on the Middle Kingdom IO our strip removed).
+**FIXED 2026-08-01 (Route B):** the tusi gate is on the IO's EXISTENCE
+(`country_triggers.txt:1287`, OUTSIDE the OR the engine cites — the
+engine's Reason line names 1288-1298 while the fatal line is 1287, one
+above) — so no reform could substitute; the vanilla instance is
+restored re-dated `1271.12.18 → 960.2.4`. NEXT LAUNCH: the CHA/DAI
+lines and all ~126 tusi lines must be GONE.
 
 ### `country.cpp:9635 — Country CHI Yuán starts with <N> out of <M> accepted or tolerated cultures…` + `ACCEPTED_CULTURE_SETUP_ERROR_IF_ABOVE_MAX` culture-list tooltip
 **DECODED (2026-07-29, third Seljuk launch) — our Middle Kingdom strip
@@ -449,6 +455,29 @@ the China review; the fix there is restoring an equivalent modifier
 source for 1066 China (an ABS-style setup reform is the attested
 shape), not patching tags one by one. Count these lines OUT of the
 error budget until that review.
+**FIXED 2026-08-01 — but NOT by a reform:** the review measured that
+the tusi third of the triple is gated on the IO's *existence*, which
+no modifier can satisfy, so the fix is the Middle Kingdom instance
+RESTORED re-dated to 960.2.4 (the Song founding [U]) — the
+leader_modifier and its `cultures_capacity = 50` +
+`allow_tributary_subject` return with it. NEXT LAUNCH: this flood must
+be gone entirely.
+
+### `country_specific.txt:2063-2071 — JAP's shogunate reform invalid at start` (the JAP half of the old "~25 invalid reform" class)
+**DECODED 2026-08-01 (India/China review, re-verified).** HANDOFF's
+old 48-error table blamed `ruler = random` for the whole
+appanage/imperial-reform class; the JAP half is actually the
+`shogunate` reform's allow AND locked blocks both requiring
+`is_leader_of_international_organization = international_organization:
+japanese_shogunate` (`country_specific.txt:2067`, `:2069-2071`) — an
+IO created 1192.1.1 that our future-date strip removes. No 1066 state
+can ever satisfy it.
+**Fix, FIXED same day:** `FIELD_FIXES["JAP"]` swaps the reform to
+`japanese_imperial_family` (`:1952`) — whose own locked block
+(`:1968-1976`) demands a `yamato_dynasty` ruler with NO tag
+alternative, so vanilla's Go-Reizei (41 at start, resurrected by the
+death-strip) is seated as a mandatory pair. NEXT LAUNCH: the JAP
+reform line must be gone; Go-Reizei on the throne.
 
 ### `initialize_from_bookmark.cpp:528 — Country '<TAG>' does not know its capital, need a discover_areas = or discovered_regions = .`
 **DECODED+FIXED — the block has no discovery source CONTAINING its
