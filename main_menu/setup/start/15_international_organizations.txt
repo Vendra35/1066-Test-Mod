@@ -229,7 +229,7 @@ international_organization_manager = {
 		type = autocephalous_patriarchate
 		creation_date = 330.1.1
 		members = {
-			BYZ VBK NOV SER WAL PSK ORE SMO FMB MOS VLR UGL YRV TPS BLO YAR RSO TVE KAS KLN ZUB DMI GLM RZH VYA TRB BRY CHR STS NVS RYL NSL KCH KZK TRS RYA PRK SKY NZH GRS SZL MRM KOS MOG BIA BLD HTN HSC IAS SRC SSI VOL HAL KIE POK TUV PNK SSK MSV NRK DRU
+			BYZ NOV SER WAL GLM CHR NZH GRS BIA BLD HTN HSC IAS SRC SSI HAL KIE POK NRK
 		}
 		variables = { 
 			religion = religion:orthodox

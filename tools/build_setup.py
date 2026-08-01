@@ -420,6 +420,9 @@ NEW_COUNTRIES = {
 \t\tstarting_technology_level = 3
 \t\tinclude = "expl_eastern_europe"
 \t\tinclude = "ruthenian_principality_no_coast"
+\t\tgovernment = {
+\t\t\their_selection = partition_inheritance
+\t\t}
 \t\tcapital = pereiaslav
 \t\tcountry_rank = rank_duchy
 \t}
@@ -1191,6 +1194,72 @@ _CENTRALASIA_VACATE_EXPECT = {"GLH": 284, "CHG": 21}
 # the Rus/steppe package's seam, a stated compromise.
 CENTRALASIA_LANDLESS = ("CHG", "YSU", "BRL", "JLY", "SLD", "DGH")
 
+# ================================ THE RUS ===================================
+# Tier 1 of the Rus/steppe package (docs/RUS-STEPPE-PACKAGE.md,
+# re-verified 2026-08-01, user-approved same day; the two LIVE defects
+# landed separately as the Rus patch). The inverse of inventing: the
+# 1066 Rus is FIVE states, all already seated with vanilla Rurikids —
+# vanilla ships exactly six adult Rurikids and the sixth (Yaropolk) is
+# deliberately unseated (user decision 6). 41 12th-14th-century
+# principalities go landless with claims (their claim lists ARE the
+# future: Moscow 1147, Tver 1135, Pskov 1348, Halych 1141), plus ORE
+# folded whole into NOV at review — its capital oreshek sits inside
+# NOV's sweep and the fold beats a repoint — for 42. Tier 2 (the
+# Cuman steppe) waits on the Central Asia Volga line per user decision
+# 15. expected = the resolved sweep size (the tag's FINAL holdings
+# inside these areas); grants overlapping a recipient's own land are
+# no-ops by construction (the KRM/MZN/HLL precedent).
+_RUS_RULES = {
+    # Kyiv: the right bank, Volhynia (Igor's, reverted 1060), the
+    # Cherven towns (Rus since 1031; Halych town is first MENTIONED
+    # 1141), Turov-Pinsk (Iziaslav's own patrimony), princeless
+    # Smolensk (held in common 1060-73), southern Black Ruthenia.
+    # desnyanskyi_horodok sits in kyiv_province (measured) but is PYS's
+    # Desna fort from the item-11 probe — minus'd so KIE's sweep does
+    # not take it back.
+    "KIE": (["right_bank_ukraine_area", "volhynia_area",
+             "red_ruthenia_area", "polesia_area", "smolensk_area",
+             "mazyr_province", "rechytsa_province",
+             "kletsk_province", "slutsk_province"],
+            [], [], ["desnyanskyi_horodok"], 191),
+    # Chernihiv: Severia, Murom-Ryazan (the testament's grant), the
+    # Vyatichi [D], Kursk on the steppe edge.
+    "CHR": (["severia_area", "ryazan_area", "oka_area",
+             "kursk_province"],
+            [], [], [], 127),
+    # Pereiaslavl: Vsevolod's split realm — the Dnieper AND Zalesye
+    # (Rostov, Suzdal, Beloozero; Moscow is founded 1147). His five
+    # original left-bank locations arrived via LOCATION_TRANSFERS at
+    # the tag's creation (item 11) and are minus'd here so the
+    # transfer and grant lists stay disjoint (the assert demands it).
+    "PYS": (["left_bank_ukraine_area", "suzdal_area", "vladimir_area",
+             "yaroslavl_area", "beloozero_area", "moscow_area"],
+            [],
+            [], ["pereiaslav", "desnyanskyi_horodok", "boryspil",
+                 "oster", "kozelets"], 131),
+    # Novgorod: its own two areas, Torzhok's Tver corner (Tver founded
+    # 1135), the Zavolochye tribute land. totma_area ships TWO unowned
+    # locations (vyya, malaya_ilesha — found at review; the package's
+    # "no location unowned" claim was wrong there) — minus'd or the
+    # exactly-once assert dies. korela/konevets are the ORE fold
+    # (outside the sweeps).
+    "NOV": (["east_novgorod_area", "west_novgorod_area", "tver_area",
+             "totma_area"],
+            ["korela", "konevets"],
+            [], ["vyya", "malaya_ilesha"], 152),
+    # Polotsk: Vseslav the Sorcerer's own land, whole.
+    "POK": (["white_ruthenia_area"], [], [], [], 56),
+}
+RUS_LANDLESS = ("BLO", "BRY", "DMI", "DRU", "FMB", "KAS", "KCH", "KLN",
+                "KOS", "KZK", "MOG", "MOS", "MRM", "MSV", "NSL", "NVS",
+                "ORE", "PNK", "PRK", "PSK", "RSO", "RYA", "RYL", "RZH",
+                "SKY", "SMO", "SSK", "STS", "SZL", "TPS", "TRB", "TRS",
+                "TUV", "TVE", "UGL", "VBK", "VLR", "VOL", "VYA", "YAR",
+                "YRV", "ZUB")
+# KIE -> NOV only: Mstislav is his father's placeman. The other two
+# triumvirs are partners, not subjects (user decision 12).
+RUS_TRIBUTARIES = (("KIE", "NOV"),)
+
 # VMD — the county of Vermandois, the France slice's one new tag (see
 # the registry file's comment for the PIC-reuse rejection). Inland →
 # catholic_monarchy_no_coast; the catholic no_coast variant KEEPS
@@ -1841,7 +1910,7 @@ if len(DISPLACED_CLAIMS["POR"]) != 67:
 LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
-    + NITALY_LANDLESS + CENTRALASIA_LANDLESS
+    + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -1915,6 +1984,10 @@ CAPITAL_FIXES = {
     "HLG": ("basra", "kazimah"),          # basra went to SEL (iraq sweep); kazimah is HLG's only holding
     "QUN": ("kabul", "kulob"),            # kabul went to GHZ; Kulob is the Khuttal region's town among QUN's holdings (QUN = Qara'unas)
     "SLD": ("balkh", "termez"),           # balkh went to SEL (khorasan sweep); Termez is Tokharistan's city among SLD's holdings (SLD = Suldus)
+    # Rus Tier 1: HAL keeps its 10 Podolian locations but lviv goes to
+    # KIE with red_ruthenia_area — the review caught this (the package
+    # had not); Kamianets is the Ponizzia's fortress seat [U].
+    "HAL": ("lviv", "kamianets_podilskyi"),
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -1948,6 +2021,45 @@ FIELD_FIXES = {
             ("\n\t\t\treforms = {\n\t\t\t}", ""),
             ("\n\t\t\t\trepublican_foundation_law = political_dynasties_policy",
              "")],
+    # --- Rus Tier 1 surgeries (package §F, re-verified; user-approved
+    # 2026-08-01). KIE and POK wear the GEDIMINIDS — the Lithuanian
+    # house of the 1300s (the ZTA wrong-house shape); KIE carries a
+    # Cossack privilege four centuries early; KIE rank_duchy ->
+    # rank_kingdom reaches country_ranks.txt:1136
+    # rank_duchy_grand_principality_slavic -> "Grand Principality of
+    # Kyiv"/"Grand Prince" ($PREFIX$ composition is a LAUNCH PROBE).
+    # heir_selection = partition_inheritance is the Rurikid rota (user
+    # decision 13), injected INSIDE the government block so it lands
+    # AFTER the include and wins the merge (later-key-wins, the ABS
+    # probe); KIE's injection also carries kyivan_seniority_reform —
+    # the KIE->NOV tributary's visible gate, khutba pattern #5. The
+    # ruler = random anchor is safe: FIELD_FIXES runs before the
+    # HISTORICAL_RULERS seating and every block has exactly one.
+    "KIE": [("dynasty = gediminid_dynasty", "dynasty = rurikovich_dynasty"),
+            ("country_rank = rank_duchy", "country_rank = rank_kingdom"),
+            ("\n\t\t\t\tcossack_identity", ""),
+            ("\t\t\truler = random",
+             "\t\t\their_selection = partition_inheritance\n"
+             "\t\t\treforms = {\n"
+             "\t\t\t\tkyivan_seniority_reform\n"
+             "\t\t\t}\n"
+             "\t\t\truler = random")],
+    "CHR": [("heir_selection = cognatic_primogeniture",
+             "heir_selection = partition_inheritance")],
+    # POK: the Lithuanian government of the 1300s swapped for KIE's own
+    # Ruthenian principality. Diff-measured: the ONE cross-cutting
+    # field lithuanian_monarchy supplies that the Ruthenian template
+    # does not is court_language = belarusian_dialect — restated, and
+    # historically right for Polotsk anyway; its two Lithuanian
+    # privileges (land_of_commerce, peasants_free_peasantry) and the
+    # all_cultures levy line are deliberately not carried.
+    "POK": [("dynasty = gediminid_dynasty", "dynasty = rurikovich_dynasty"),
+            ('include = "lithuanian_monarchy"',
+             'include = "ruthenian_principality_no_coast"\n'
+             "\t\tcourt_language = belarusian_dialect"),
+            ("\t\t\truler = random",
+             "\t\t\their_selection = partition_inheritance\n"
+             "\t\t\truler = random")],
     "CAT": [("country_rank = rank_duchy", "country_rank = rank_county")],
     "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
             ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
@@ -4139,6 +4251,24 @@ def build_countries(src):
     if "bolghar" not in LOCATION_GRANTS["BLH"]:
         sys.exit("_CENTRALASIA_RULES: BLH must hold bolghar")
 
+    # Rus Tier 1 resolves the same way (package counts re-verified at
+    # review: sweep finals 192/127/130/152/56; the recipients' own
+    # holdings inside the sweeps are no-op re-grants). EXTEND, never
+    # assign — the France lesson.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_RUS_RULES.items()):
+        got = _resolve_ruleset(f"_RUS_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_RUS_RULES[{_t}]: resolved {len(got)} locations, "
+                     f"package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    # PYS is absent below: its capital pereiaslav rides its own
+    # NEW_COUNTRIES block + LOCATION_TRANSFERS, minus'd from the sweep.
+    for _t, _cap in (("KIE", "kyiv"), ("CHR", "chernihiv"),
+                     ("NOV", "novgorod"), ("POK", "polotsk")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_RUS_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5000,6 +5130,10 @@ def build_ios(src):
     # and five of them (FLO/PRA/SAL/CEV/AOS) also hold imperial_prince
     # seats. The count moved 1 -> 4 -> 6 -> 28 -> 51 -> 71, every
     # transition observed failing before its constant moved.
+    # Rus Tier 1 adds 42 (observed failing first, 2026-08-01): every
+    # one of the 42 landless principalities sits in exactly ONE IO
+    # list — the Orthodox-world membership — and each appears once.
+    # The count moved 1 -> 4 -> 6 -> 28 -> 51 -> 71 -> 113.
     _expected_ghosts = sorted(
         ["ARM", "ATZ", "CIL", "EPI", "FEO", "TRE",
          "NHS", "MLH"]
@@ -5010,9 +5144,10 @@ def build_ios(src):
         + ["WDB"]
         + ["LUC", "SIE", "MAN", "PST", "VLT", "COT", "CHX", "ABA",
            "MND", "ASD"]
-        + ["FLO", "PRA", "SAL", "CEV", "AOS"] * 2)
-    if n_ghosts != 71 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 71 landless IO list entries, "
+        + ["FLO", "PRA", "SAL", "CEV", "AOS"] * 2
+        + list(RUS_LANDLESS))
+    if n_ghosts != 113 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 113 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -5397,8 +5532,13 @@ def build_diplomacy(src):
     # YSU) + DGH's two (MNL SRL) die with their overlords landless. The
     # message used to say 112 while the constant said 115 — a stale
     # string two agents flagged independently; now both move together.
-    if n_landless_deps != 127:
-        sys.exit(f"expected exactly 127 landless-tag dependencies, stripped {n_landless_deps}")
+    # 127 -> 152 with Rus Tier 1 (observed failing first, same day):
+    # the 42 landless principalities' web — the BRY/CHR/KCH/LIT/NOV/
+    # RYA/SMO/TVE/YAR subject lines (incl. vanilla's Chernihiv-under-
+    # Bryansk absurdity), GLH's BRY/HAL/VOL tributaries, LIT's seven
+    # Black-Ruthenia vassals and NOV->ORE with the ORE fold.
+    if n_landless_deps != 152:
+        sys.exit(f"expected exactly 152 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
@@ -5480,6 +5620,21 @@ def build_diplomacy(src):
            + "\n\t# 1066: the Capetian homage ring (generated)\n"
            + _htribs + src[_wrap:])
     report.append(("Capetian homage tributaries added", len(FRANCE_TRIBUTARIES)))
+
+    # The Kyivan seniority: Mstislav rules Novgorod for his father —
+    # KIE -> NOV as a war-capable TRIBUTARY (Rus package §G.4, user
+    # decision 12; the CHR/PYS triumvirs are partners, no ties). KIE
+    # carries kyivan_seniority_reform for the visible gate (khutba
+    # pattern #5). NOV's old NOV->ORE vassal died with ORE landless in
+    # the strip above, so no collision is possible.
+    _wrap = src.rindex("\n}")
+    _rtribs = "".join(
+        f"\tdependency = {{ first = {o} second = {s} subject_type = tributary }}\n"
+        for o, s in RUS_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Kyivan seniority over Novgorod (generated)\n"
+           + _rtribs + src[_wrap:])
+    report.append(("Rus tributaries added", len(RUS_TRIBUTARIES)))
 
     # The Irish khutba needs no khutba: every subject is a gaelic
     # TRIBE, and tributary.txt:21's visible gate passes on the

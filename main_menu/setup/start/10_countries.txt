@@ -1733,26 +1733,25 @@ countries = {
 	#Novgorod
 	NOV = {
 		own_control_core = {
-			martyshkino koporye soikino yama burga khotsy kulotino megrino moloskovitsa khotchino lisino markovo lyady mezhutka
-			novgorod golino staropolye staraya_russa chudovo kosichkoj zaplyusye kresttsy yazhelbitsy berezovets nebolchi
-			kholm velikiye_luki demon soltsy nalyuchi dolchinyo vlitsy sumino nadvoitsy
-			staraya_ladoga tikhvin lipno_nov borovichi pikalyovo soltsy_kirishi maselga spirkovo lyubytino
-			olonets vazhiny shuya_karelia kondpoga kizhi shyoltozero lindjarvi semcojarvi lodenoye_pole vytegra vinnitsy
-			gorodetsk maksatikha udomlya smerdyn moshenskoye okhona belye_kresty ozerevo troshovo babayevo pudoga iksa village_onega
+			izboishchi babayevo belye_kresty megrino okhona ozerevo lyubytino borovichi moshenskoye troshovo demon berezovets lyakhovichy lyubno maryovo nalyuchi zhabny tikhvin burga khotsy lipno_nov nebolchi pashozero pikalyovo tervenichi megra lodenoye_pole maselga spirkovo vinnitsy voznesenye vyshny_volochyok maksatikha mikshino smerdyn udomlya novgorod gruzino mezhutka soltsy_kirishi staraya_ladoga yazhelbitsy bologoye bronnitsa kresttsy kulotino rakitnya valday veliky_porog staraya_russa dolchinyo golino kosichkoj kuretsk soltsy svinort visokoye oreshek chudovo lisino lyuban markovo martyshkino neva toksovo porkhov dubronjo gorodets_luga lyady plyussa pribuzh staropolye zaplyusye pskov gdov izborsk kobyle meletovo prudy rzheva_pustaya ashevo bezhanitsy kholm podberezye velikiye_luki vlitsy ostrov opochka sebech slavkovitchi volodimerets voronich koporye ivangorod izori khotchino moloskovitsa soikino tesov yama kashin kimra kesova_gora kalyazin rzhev bor_volgo khotoshino molodoi_tud ostashkov torzhok bernovo kuvshinovo mednoye tver brody_tver dubna klin vertyazin zubtsov gorodok kholm_tver lotoshino mikulino_tver totma ust_kuloy vekshenga tarnogsky_gorodok nyuksenitsa gorodishna ledengskoye kunozh veliky_ustyug porog kichmengsky_gorodok nikolsk pyras krasavino uftyuga verkhnyaya_toyma koryazhma yarensk ilyinsko_podomskoye zaostrovskoye alferovskaya ileza shangaly krasny_bor nizhnyaya_toyma shenga_kurya voznesenskoye korela konevets
+
+			        nadvoitsy
+			        
+			olonets vazhiny shuya_karelia kondpoga kizhi shyoltozero lindjarvi semcojarvi  vytegra 
+			          pudoga iksa village_onega
 			luda malye_oserki nyonoksa priluky pomorye arkhangelsk kholmogory vaymuga brin_navolok siya ust_pinega vershinino sheleksa yemetsk
-			ramenki mednoye vyshny_volochyok bologoye zhabny torzhok kuvshinovo ostashkov
-			volosovskaya kargopol konyovo navolok shalakusha ves_yogonskaya vologda arkhangelskoye_vologda ustye
-			vozhega tavrenga tarnogsky_gorodok totma kubenskoye ust_kuloy shenga_kurya
-			verkhovazhye velsk rovdino vaga bereznik sogra nizhnyaya_toyma verkhnyaya_toyma
-			uftyuga koryazhma yarensk
-			ilyinsko_podomskoye ust_vayenga
-			porkhov plyussa dubronjo spas_na_kholmu
-			rzheva_pustaya ashevo bezhanitsy podberezye visokoye kuretsk lyakhovichy maryovo lyubno svinort gorodets_luga izori tesov
-			bronnitsa gruzino veliky_porog valday pribuzh ivangorod izboishchi pashozero tervenichi megra voznesenye ostrechiny andomsky_pogost
+			       
+			volosovskaya kargopol konyovo navolok shalakusha    
+			      
+			  rovdino vaga bereznik sogra  
+			  
+			 ust_vayenga
+
+			           ostrechiny andomsky_pogost
 			kinerma pryazha salmi loimola sordavala kurkijoki sellinkyla karhumagi puatane saarijoki sumsky_posad unezhma vygozero maloshuyka
-			chelmuzhi vodlozero shalskii rakitnya mikshino bernovo yezsk lyuban
+			chelmuzhi vodlozero shalskii     
 			#Principality of Volokolansk
-			volok
+			
 		}
 
 		starting_technology_level = 3
@@ -1848,8 +1847,12 @@ countries = {
 
 	#Principality of Toropets
 	TPS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			toropets andreapol dubrovna nizhelskoe
+		}
+
+		own_control_core = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -1875,10 +1878,12 @@ countries = {
 
 	#Principality of Beloozero
 	BLO = {
+		our_cores_conquered_by_others = {
+			beloozero vashki kirillov nikolskoye_andoma cherepoves ustyuzhna_zheleznopolskaya lukoves poshekhonye beloe knyazhich_gorodok pokrovskoye_yaroslav spasskoye yorga ust_ugla vognema goroditse_megra georgievskoye chuzboy koloshma badozhsky nikolskoye_kema charonda svir_beloozero
+		}
+
 		own_control_core = {
-			beloozero vashki kirillov nikolskoye_andoma cherepoves ustyuzhna_zheleznopolskaya lukoves poshekhonye
-			beloe knyazhich_gorodok pokrovskoye_yaroslav spasskoye yorga ust_ugla vognema goroditse_megra georgievskoye
-			chuzboy koloshma badozhsky nikolskoye_kema charonda svir_beloozero
+
 		}
 
 		starting_technology_level = 3
@@ -1905,8 +1910,12 @@ countries = {
 
 	#Principality of Yaroslavl
 	YAR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			yaroslavl bolshoye_selo danilov kurba romanov sol_velikaya ust_sheksna
+		}
+
+		own_control_core = {
+			      
 		}
 
 		starting_technology_level = 3
@@ -1928,11 +1937,12 @@ countries = {
 
 	#Principality of Rostov
 	RSO = {
+		our_cores_conquered_by_others = {
+			rostov borisogleb petrovsk_rostov veliky_ustyug krasny_bor pyras porog alferovskaya nyuksenitsa gorodishna ledengskoye shuyskoye kichmengsky_gorodok voznesenskoye vekshenga zaostrovskoye krasavino ileza shangaly
+		}
+
 		own_control_core = {
-			rostov borisogleb petrovsk_rostov
-			veliky_ustyug krasny_bor pyras porog alferovskaya nyuksenitsa gorodishna
-			ledengskoye shuyskoye kichmengsky_gorodok voznesenskoye
-			vekshenga zaostrovskoye krasavino ileza shangaly
+
 		}
 
 		starting_technology_level = 3
@@ -1958,8 +1968,12 @@ countries = {
 
 	#Principality of Tver
 	TVE = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			tver brody_tver vertyazin
+		}
+
+		own_control_core = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -1981,8 +1995,12 @@ countries = {
 	#Principality of Kashin	(Ruler: Prince Vasily of Kashin (https://en.wikipedia.org/wiki/Mikhail_of_Tver#Family_and_children)
 	#Appanage of Tver
 	KAS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			kashin kalyazin kesova_gora kimra
+		}
+
+		own_control_core = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -2004,8 +2022,12 @@ countries = {
 	#Principality of Klin
 	#Appanage of Tver
 	KLN = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			klin dubna
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -2027,8 +2049,12 @@ countries = {
 	#Principality of Zubtsov
 	#Appanage of Tver
 	ZUB = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			zubtsov gorodok kholm_tver lotoshino mikulino_tver
+		}
+
+		own_control_core = {
+			    
 		}
 
 		starting_technology_level = 3
@@ -2048,8 +2074,12 @@ countries = {
 
 	#Principality of Dmitrov
 	DMI = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			dmitrov rogachevo
+		}
+
+		own_control_core = {
+			 
 		}
 
 		starting_technology_level = 3
@@ -2075,7 +2105,7 @@ countries = {
 		}
 
 		own_control_integrated = {
-			kologriv kunozh kuzhbal manturovo nikolo_dor pyshchug 
+			kologriv  kuzhbal manturovo nikolo_dor pyshchug 
 		}
 
 		starting_technology_level = 3
@@ -2097,8 +2127,12 @@ countries = {
 
 	#Principality of Rzhev - Vassal of Lithuania
 	RZH = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			rzhev bor_volgo khotoshino molodoi_tud
+		}
+
+		own_control_core = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -2124,8 +2158,12 @@ countries = {
 
 	#Principality of Vyazma - Vassal of Smolensk
 	VYA = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			vyazma izdeshkovo khlepen kholm_zhirkovsky kozlov_vyazma orekhovna medyn sychyovka trufany zhulino
+		}
+
+		own_control_core = {
+			         
 		}
 
 		starting_technology_level = 3
@@ -2151,8 +2189,12 @@ countries = {
 
 	#Principality of Fomin-Berezuesk - Vassal of Smolensk
 	FMB = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			fomin_gorodok
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -2174,8 +2216,12 @@ countries = {
 
 	#Principality of Trubchevsk
 	TRB = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			trubchevsk
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -2197,10 +2243,12 @@ countries = {
 
 	#Principality of Bryansk	(Брянское княжество)
 	BRY = {
+		our_cores_conquered_by_others = {
+			bryansk foshnya pochep dmitriyev boldyzh vshchizh knyazhichi revny sevsk
+		}
+
 		own_control_core = {
-			bryansk foshnya pochep
-			dmitriyev boldyzh
-			vshchizh knyazhichi revny sevsk
+
 		}
 
 		starting_technology_level = 3
@@ -2228,11 +2276,8 @@ countries = {
 	#Grand Duchy of Chernihiv
 	CHR = {
 		own_control_core = {
-			taman
-			chernihiv liubech horodnia snovsk
-			rechytsa streshyn
-			gomel chachersk dobrush tereshkovichy volosovichy
-			bakhmach sosnytsia nizhyn 
+			taman bryansk foshnya knyazhichi pochep revny vshchizh chernihiv horodnia liubech lutava sosnytsia snovsk gomel chachersk dobrush tereshkovichy volosovichy nizhyn buryn bakhmach melnya putyvl novhorod_siverskyi hlukhiv verba voronizh_chernihiv znobov starodub_siverskyi drokov klintsy mglin popowa_gora ropsk radogosch trubchevsk boldyzh dmitriyev rylsk sevsk kasimov ardatov azeevo kadom tuma murom gorbatovo klepiki melenki shatur starodub_votsky rostislavl_ryazansky lyubichi lopasnya perevitska serebryanye_prudy venyov ryazan kazari koponovo putyatino shilovo staraya_ryazan pronsk dubok karniki knyazhoye mikhaylov skopin ryazhsk mokhcha nizhny_lomov zemetchino insar tarbeevka zubova_polyana sarov bolshoye_boldino temnikov krasnoslobodsk lukoyanov shatki arzamas pavlovo ruzayevka odoyev belyov rzhavets vorotynsk masalsk fominichi lyubun pogostishche yukhnov karachev bolkhov khotiml kromy zvenihorod_siverskyi kozelsk khvastovichi ktsyn meshchovsk usty novosil bogorodskoye kolpny mikhailovka mtsensk plavsk tagin vorotynsk_novosil tarusa kaluga obolensk volkona tula_russia arkhangelskoye bogoroditsk kurkino kursk fatezh opalkova kosozhichi manturovo_kursk olgov oskol troitskoye_na_shchigrakh
+
 		}
 
 		starting_technology_level = 3
@@ -2240,7 +2285,7 @@ countries = {
 
 		government = {
 			type = monarchy
-			heir_selection = cognatic_primogeniture
+			heir_selection = partition_inheritance
 			ruler = kie_sviatoslav_ii_rurikovich
 			ruler_term = { character = kie_sviatoslav_ii_rurikovich start_date = 1054.2.20 regnal_number = 1 }
 
@@ -2260,8 +2305,12 @@ countries = {
 
 	#Principality of Starodub Siverskyi
 	STS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			starodub_siverskyi klintsy ropsk radogosch
+		}
+
+		own_control_core = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -2287,8 +2336,12 @@ countries = {
 
 	#Principality of Novgorod Siverskyi
 	NVS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			novhorod_siverskyi hlukhiv verba voronizh_chernihiv znobov
+		}
+
+		own_control_core = {
+			    
 		}
 
 		starting_technology_level = 3
@@ -2315,8 +2368,12 @@ countries = {
 
 	#Principality of Rylsk
 	RYL = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			rylsk
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -2338,9 +2395,12 @@ countries = {
 
 	#Principality of Novosil	(Новосильское княжество)
 	NSL = {
+		our_cores_conquered_by_others = {
+			novosil kolpny plavsk belyov odoyev tagin mtsensk bogorodskoye mikhailovka vorotynsk vorotynsk_novosil rzhavets
+		}
+
 		own_control_core = {
-			novosil kolpny plavsk belyov odoyev tagin mtsensk
-			bogorodskoye mikhailovka vorotynsk vorotynsk_novosil rzhavets
+
 		}
 
 		starting_technology_level = 3
@@ -2366,9 +2426,12 @@ countries = {
 
 	#Principality of Karachev	(Карачевское княжество)
 	KCH = {
+		our_cores_conquered_by_others = {
+			karachev zvenihorod_siverskyi kromy bolkhov khvastovichi usty meshchovsk masalsk fominichi yukhnov lyubun pogostishche khotiml ktsyn pogoreloye
+		}
+
 		own_control_core = {
-			karachev zvenihorod_siverskyi kromy bolkhov khvastovichi usty meshchovsk masalsk fominichi yukhnov
-			lyubun pogostishche khotiml ktsyn pogoreloye
+
 		}
 
 		starting_technology_level = 3
@@ -2389,8 +2452,12 @@ countries = {
 
 	#Principality of Kozelsk
 	KZK = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			kozelsk
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -2411,8 +2478,12 @@ countries = {
 
 	#Principality of Tarusa
 	TRS = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			tarusa kaluga obolensk volkona
+		}
+
+		own_control_core = {
+			   
 		}
 
 		starting_technology_level = 3
@@ -2439,16 +2510,15 @@ countries = {
 	#Principality of Ryazan
 	RYA = {
 		own_control_core = {
-			ryazan perevitska rostislavl_ryazansky venyov
-			staraya_ryazan shilovo lopasnya
-			koponovo kazari putyatino
+
 		}
 
 		own_control_integrated = {
-			lyubichi
+			
 		}
 
 		our_cores_conquered_by_others = {
+			ryazan perevitska rostislavl_ryazansky venyov staraya_ryazan shilovo lopasnya koponovo kazari putyatino lyubichi
 			#Principality of Kolomna
 			kolomna borovsk khatun koshira maloyaroslavets serpukhov vereya vysokoye
 		}
@@ -2489,8 +2559,12 @@ countries = {
 
 	#Principality of Pronsk
 	PRK = {
+		our_cores_conquered_by_others = {
+			pronsk dubok karniki knyazhoye mikhaylov ryazhsk serebryanye_prudy skopin
+		}
+
 		own_control_core = {
-			pronsk  dubok karniki knyazhoye mikhaylov ryazhsk serebryanye_prudy skopin
+			        
 		}
 
 		starting_technology_level = 3
@@ -2518,8 +2592,12 @@ countries = {
 
 	#Principality of Starodub (-on-the-Klyazma)
 	SKY = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			starodub_on_the_klyazma palekh rozhdestveno
+		}
+
+		own_control_core = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -2568,9 +2646,12 @@ countries = {
 
 	#Principality of Suzdal
 	SZL = {
+		our_cores_conquered_by_others = {
+			suzdal gavrilovskoye ilyinskoye_khovanskoye shuya ivanovo lezhnevo vichuga
+		}
+
 		own_control_core = {
-			suzdal gavrilovskoye ilyinskoye_khovanskoye
-			shuya ivanovo lezhnevo vichuga
+
 		}
 
 		starting_technology_level = 3
@@ -2616,12 +2697,16 @@ countries = {
 	#Principality of Kostroma
 	#Personal Union under Moscovy
 	KOS = {
+		our_cores_conquered_by_others = {
+			kostroma buy demyanovo gryazovets lyubim nerekhta sudislavl yakovlevskoye_bolshoye ostrovskoye
+		}
+
 		own_control_core = {
-			kostroma buy demyanovo gryazovets lyubim nerekhta sudislavl yakovlevskoye_bolshoye
+			       
 		}
 
 		own_control_integrated = {
-			ostrovskoye
+			
 		}
 
 		starting_technology_level = 3
@@ -2642,12 +2727,16 @@ countries = {
 
 	#Principality of Murom
 	MRM = {
+		our_cores_conquered_by_others = {
+			murom gorbatovo melenki tuma starodub_votsky shatur klepiki
+		}
+
 		own_control_core = {
-			murom gorbatovo melenki tuma starodub_votsky shatur 
+			      
 		}
 
 		own_control_integrated = {
-			klepiki
+			
 		}
 
 		starting_technology_level = 3
@@ -2682,8 +2771,12 @@ countries = {
 
 	#Principality of Mologa
 	MOG = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			mologa ilovna prozorovo
+		}
+
+		own_control_core = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -2704,17 +2797,19 @@ countries = {
 
 	#Principality of Muscovy
 	MOS = {
+		our_cores_conquered_by_others = {
+			moscow zvenigorod ruza pushkino vokhna bronnitsy rogozh mozhaysk vetza odintsovo przemysl_moscow mushkov_pogost pereyaslavl alexandrovskaya_sloboda bogorodskoye_pereyaslavl kirzhach poreevo yanovo kolomna borovsk khatun koshira maloyaroslavets serpukhov vereya vysokoye
+		}
+
 		own_control_core = {
-			moscow zvenigorod ruza pushkino vokhna bronnitsy rogozh
-			mozhaysk vetza odintsovo
-			przemysl_moscow mushkov_pogost
+
 			#Principality of Pereyaslavl-Zalessky
-			pereyaslavl alexandrovskaya_sloboda bogorodskoye_pereyaslavl kirzhach poreevo yanovo
+			     
 		}
 
 		own_control_conquered = {
 			#Principality of Kolomna
-			kolomna borovsk khatun koshira maloyaroslavets serpukhov vereya vysokoye
+			       
 		}
 
 		starting_technology_level = 3
@@ -2782,12 +2877,16 @@ countries = {
 	#Grand Principality of Vladimir
 	#Personal Union under Moscovy
 	VLR = {
+		our_cores_conquered_by_others = {
+			vladimir moshok muromtsevo_murom osovets sudogda vlasovo yaropolch zolotkovo
+		}
+
 		own_control_core = {
-			vladimir moshok muromtsevo_murom osovets sudogda vlasovo yaropolch 
+			       
 		}
 
 		own_control_integrated = {
-			zolotkovo
+			
 		}
 
 		starting_technology_level = 3
@@ -2816,8 +2915,12 @@ countries = {
 	#Principality of Uglich
 	#Personal Union under Moscovy
 	UGL = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			uglich koi rozhalovo
+		}
+
+		own_control_core = {
+			  
 		}
 
 		starting_technology_level = 3
@@ -2843,8 +2946,12 @@ countries = {
 
 	#Principality of Yuriev
 	YRV = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			yuryev_polsky
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -2866,8 +2973,12 @@ countries = {
 	}
 
 	ORE = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			oreshek toksovo korela konevets neva
+		}
+
+		own_control_core = {
+			    
 		}
 		starting_technology_level = 3
 		government = {
@@ -2891,9 +3002,11 @@ countries = {
 	}
 
 	PSK = {
+		our_cores_conquered_by_others = {
+			pskov gdov izborsk kobyle meletovo prudy ostrov opochka sebech slavkovitchi volodimerets voronich
+		}
+
 		own_control_core = {
-			pskov gdov izborsk kobyle meletovo prudy
-			ostrov opochka sebech slavkovitchi volodimerets voronich
 
 		}
 
@@ -2974,7 +3087,7 @@ countries = {
 
 	VYT = {
 		own_control_core = {
-			nikolsk
+			
 		}
 
 		own_control_integrated = {
@@ -3619,29 +3732,27 @@ countries = {
 
 			alkhan_kala nazran dzhulat tatartup
 			promsa alatyr batyrevo
-			atrat altyshevo bolshoye_boldino shatki arzamas sarov lukoyanov krasnoslobodsk ruzayevka
-			insar temnikov tarbeevka zubova_polyana mokhcha nizhny_lomov zemetchino bondari 
+			atrat altyshevo       
+			       bondari 
 			sergach chamzinka saransk lunino 
 			pokrovskoye simbirsk cherdakly staraya_mayna melekess tetyushi sviyazhsk
 			atishchevo tsivilsk sharanga uren tonshayevo
 			bolshoye_murashkino kurmysh lyskovo perevoz sechenovo spasskoye_lyskovo
-			cheboksary kozmodemyansk alikovo vasilsursk pavlovo
+			cheboksary kozmodemyansk alikovo vasilsursk 
 			vetluga semyonov khakhaly kovernino krasnye_baki raznezhye voskresenskoye varnavino
-			kadom ardatov 
 
 			samara shigony morkvash  
 
 			ismail
-			tula_russia bogoroditsk arkhangelskoye kurkino donkov yelets talitsa_yelets gogol teshevka voronezh ukek
+			    donkov yelets talitsa_yelets gogol teshevka voronezh ukek
 			lipetsk usman mordovo zherdevka uvarovo kirsanov rasskazovo izberdey tambov ust_stanovykh_ryas
-			kozlov ust_livny terbuny kastornoye chernyanka alexeyevka opalkova
+			kozlov ust_livny terbuny kastornoye chernyanka alexeyevka 
 			rovenki valuyki korocha belgorod rakitnoye muzhech sudzha oboyan
 			staroyuryevo morsha sasovo nikolskoye bazarny_syzgan karsun 
 			mokshan chembar
 			serdobinskaya malaya_serdoba shemysheyka
 			penza gorodishche russky_kameshkir staraya_kulatka solovtsovo
 			troitskoye_kuroedovo 
-			kasimov azeevo
 
 			khvorostyanka stavropol_na_volge kondurcha pestravka
 			poganovka     
@@ -3654,8 +3765,7 @@ countries = {
 			armavir 
 
 			#Principality of Kursk
-			kursk fatezh kosozhichi olgov
-			manturovo_kursk oskol troitskoye_na_shchigrakh
+
 		}
 		starting_technology_level = 3
 		include = "expl_mongols"
@@ -37720,15 +37830,7 @@ countries = {
 	HAL = {	#Halych
 		own_control_core = {
 			#Halych
-			halych bohorodchany buchach rohatyn
-			lubaczow
-			drohobych sambir stryi turka
-			kolomyia kosiv sniatyn tysmenytsia
-			lviv bereschany zhovkva yavoriv zvenyhorod
-			przemysl piskorowice rzeszow yaroslav_poland
-			sanok krosno lesko
-			terebovlia khorostkiv ternopil
-			zhydachiv bolekhiv dolyna
+
 			ushytsia khmilnyk letychiv mezhybozhe mohyliv_podilskyi rov
 			bakota horodok kamianets_podilskyi zalishchyky
 		}
@@ -37758,24 +37860,22 @@ countries = {
 			moldovan
 		}
 
-		capital = lviv
+		capital = kamianets_podilskyi
 		country_rank = rank_kingdom
 	}
 
-	VOL = {	#Volhynia
+	VOL = {
+		our_cores_conquered_by_others = {
+			chelm krasnystaw liuboml ratne shatsk ugrovesk kremenets dubno zbarazh tykhomel lutsk chortoryisk peremyl rozhyshche stepan volodymyrets rivne kostopil ostroh peresopnytsya volodymyr kamin kovel melnytsya turiisk novohrad_volynskyi iziaslav korets liubar polonne belz busk grabowiec sokal brody liubeshiv dubrovytsia
+		}
+	#Volhynia
 		own_control_core = {
 			#Volhynia
-			chelm krasnystaw liuboml ratne shatsk ugrovesk
-			kremenets dubno zbarazh tykhomel
-			lutsk chortoryisk peremyl rozhyshche stepan volodymyrets
-			rivne kostopil ostroh peresopnytsya
-			volodymyr kamin kovel melnytsya turiisk
-			novohrad_volynskyi iziaslav korets liubar polonne
+
 			#Halych
-			belz busk grabowiec sokal
-			brody
+
 			#Polesia
-			liubeshiv dubrovytsia
+			 
 		}
 
 		starting_technology_level = 3
@@ -37820,19 +37920,15 @@ countries = {
 			#Black Ruthenia
 			grodno bershty masty sokolka
 			nyasvizh
-			babruysk luchin rahachow svietlahorsk
+			   
 			#Polesia
-			brest_litowsk biala_podlaska chernyany malaryta wlodawa
-			kobryn dabuchyn hajnowka kamyenyets
+
 			#Samogitia
 			medininkai
 			raseiniai jurbarkas kedainiai panemune tendziogala
 			siauliai kraziai papile zagare
 			#White Ruthenia
-			barysaw klichaw krupki lukolm lyubashany
-			lahoysk begoml byerazino ilya krasnoe smalyavichy
-			minsk chervyen koidanova marjina_horka rakau stowbtsy svislach
-			mogilev bykhaw
+
 		}
 		own_control_integrated = {
 			grodek
@@ -37935,13 +38031,15 @@ countries = {
 
 	POK = {	#Polotsk - Vassal of LIT
 		own_control_core = {
-			polotsk bocheikovo lyepyel ulla ushachy zabore
-			dzisna asvieja nekloch rasony vydritsa
+			barysaw bobr krupki lukolm lyubashany dzisna asvieja nevel nekloch rasony vydritsa lahoysk begoml byerazino ilya krasnoe smalyavichy minsk chervyen koidanova marjina_horka rakau stowbtsy svislach mogilev bykhaw chavusy klichaw novy_bykhaw slawharad mstsislaw kastsyukovichy khotsimsk krychaw monastyrshchina shumyachi orsha drutsk horki kopys rudnya tyatseryn polotsk bocheikovo lyepyel ulla ushachy zabore vitebsk haradok jeziarysca mikulino syanno usvyaty velizh vydreya
+
 		}
 
 		include = "expl_eastern_europe"
-		include = "lithuanian_monarchy"
+		include = "ruthenian_principality_no_coast"
+		court_language = belarusian_dialect
 		government = {
+			heir_selection = partition_inheritance
 			ruler = pok_vseslav_bryachislavich_rurikovich
 			ruler_term = { character = pok_vseslav_bryachislavich_rurikovich start_date = 1044.1.1 regnal_number = 1 }
 
@@ -37982,7 +38080,7 @@ countries = {
 		}
 
 		capital = polotsk
-		dynasty = gediminid_dynasty
+		dynasty = rurikovich_dynasty
 		country_rank = rank_duchy
 	}
 
@@ -38015,11 +38113,14 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	DRU = {	#Drutsk - Vassal of LIT
+	DRU = {
+		our_cores_conquered_by_others = {
+			drutsk tyatseryn bobr
+		}
+	#Drutsk - Vassal of LIT
 		own_control_core = {
 			#Black Ruthenia
-			drutsk tyatseryn
-			bobr
+
 		}
 
 		starting_technology_level = 3
@@ -38057,11 +38158,13 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	PNK = {	#Pinsk - Vassal of LIT
+	PNK = {
+		our_cores_conquered_by_others = {
+			pinsk drahichyn motal nobel stolin luninets
+		}
+	#Pinsk - Vassal of LIT
 		own_control_core = {
-			pinsk drahichyn motal nobel
-			stolin
-			luninets
+
 		}
 
 		starting_technology_level = 3
@@ -38109,11 +38212,13 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	TUV = {	#Turov - Vassal of LIT
+	TUV = {
+		our_cores_conquered_by_others = {
+			turov davyd_haradok hlynne lakhva lelchytsy zhytkavichy
+		}
+	#Turov - Vassal of LIT
 		own_control_core = {
-			turov davyd_haradok hlynne
-			lakhva
-			lelchytsy zhytkavichy
+
 		}
 
 		starting_technology_level = 3
@@ -38158,10 +38263,13 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	SSK = {	#Slutsk - Vassal of LIT
+	SSK = {
+		our_cores_conquered_by_others = {
+			slutsk hlusk starobin staryya_darohi kletsk bolshie_krugovichi kapyl
+		}
+	#Slutsk - Vassal of LIT
 	own_control_core = {
-			slutsk hlusk starobin staryya_darohi
-			kletsk bolshie_krugovichi kapyl
+
 		}
 
 		starting_technology_level = 3
@@ -38180,12 +38288,13 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	VBK = {	#Vitebsk - Vassal of LIT
+	VBK = {
+		our_cores_conquered_by_others = {
+			vitebsk haradok jeziarysca mikulino syanno usvyaty velizh vydreya nevel orsha horki kopys rudnya ilyino zhizhets
+		}
+	#Vitebsk - Vassal of LIT
 		own_control_core = {
-			vitebsk haradok jeziarysca mikulino syanno usvyaty velizh vydreya
-			nevel
-			orsha horki kopys rudnya
-			ilyino zhizhets
+
 		}
 
 		include = "expl_eastern_europe"
@@ -38224,12 +38333,13 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	MSV = {	#Mstislavl - Vassal of LIT
+	MSV = {
+		our_cores_conquered_by_others = {
+			mstsislaw kastsyukovichy khotsimsk krychaw monastyrshchina shumyachi novy_bykhaw slawharad chavusy drokov mglin popowa_gora
+		}
+	#Mstislavl - Vassal of LIT
 		own_control_core = {
-			mstsislaw kastsyukovichy khotsimsk krychaw monastyrshchina shumyachi
-			novy_bykhaw slawharad
-			chavusy drokov
-			mglin popowa_gora
+
 		}
 
 		starting_technology_level = 3
@@ -38248,14 +38358,15 @@ countries = {
 		country_rank = rank_duchy
 	}
 
-	SMO = {	#Smolensk - Vassal of LIT
+	SMO = {
+		our_cores_conquered_by_others = {
+			smolensk krasny demidov luchani dorogobuzh yartsevo dukhovshchina yelnya belik roslavl zaroy rognedino demensk shchuchye_smolensk verzhavsk vetlitsy katyn berezhnyany izyaslavl pustosel shui gorodechnya mozhino bely bibirevo bolshevo shoptovo verkhovye yotkino
+		}
+	#Smolensk - Vassal of LIT
 		own_control_core = {
-			smolensk krasny demidov luchani
-			dorogobuzh yartsevo dukhovshchina yelnya belik roslavl zaroy
-			rognedino demensk
-			shchuchye_smolensk verzhavsk vetlitsy katyn berezhnyany izyaslavl pustosel shui gorodechnya mozhino
+
 			#Principality of Bely
-			bely bibirevo bolshevo shoptovo verkhovye yotkino
+			     
 		}
 
 		include = "expl_eastern_europe"
@@ -38281,32 +38392,28 @@ countries = {
 
 	KIE = {	#Kyiv - Vassal of LIT
 		own_control_core = {
+			bila_tserkva bohuslav kaharlyk kaniv sherbiv skvyra cherkasy chyhyryn korsun lebedyn rozkishna smila zvenyhorodka chornobyl belaya_soroka brahin khoiniki kholmyech kyiv dymer fastiv zdvizhen olevsk kopyshche viry yemilchyne ovruch bilokorovychi korosten malyn narodychi stodolichi zhytomyr berdychiv chudniv chortolisy korostyshiv mychesk chelm krasnystaw liuboml ratne shatsk ugrovesk kremenets dubno zbarazh tykhomel lutsk chortoryisk peremyl rozhyshche stepan volodymyrets rivne kostopil ostroh peresopnytsya volodymyr kamin kovel melnytsya turiisk novohrad_volynskyi iziaslav korets liubar polonne belz busk grabowiec lubaczow sokal drohobych sambir stryi turka halych bohorodchany buchach rohatyn kolomyia kosiv sniatyn tysmenytsia lviv bereschany brody zhovkva yavoriv zvenyhorod przemysl piskorowice rzeszow yaroslav_poland sanok krosno lesko terebovlia khorostkiv ternopil zhydachiv bolekhiv dolyna brest_litowsk biala_podlaska chernyany malaryta wlodawa kobryn dabuchyn hajnowka kamyenyets pinsk drahichyn liubeshiv motal nobel turov davyd_haradok dubrovytsia hlynne stolin bely bolshevo fomin_gorodok shoptovo verkhovye yotkino dorogobuzh demensk gorodechnya mozhino shui yartsevo kozlov_vyazma orekhovna pogoreloye trufany zhulino roslavl izyaslavl pustosel rognedino zaroy smolensk belik berezhnyany dukhovshchina krasny yelnya toropets andreapol bibirevo dubrovna ilyino nizhelskoe zhizhets verzhavsk demidov katyn luchani shchuchye_smolensk vetlitsy vyazma izdeshkovo khlepen kholm_zhirkovsky sychyovka mazyr buinovichi lelchytsy kalinkavichy pietrykaw rudobelka zhytkavichy rechytsa babruysk luchin rahachow streshyn svietlahorsk kletsk bolshie_krugovichi kapyl lakhva luninets slutsk hlusk starobin staryya_darohi
 			#Ukraine
-			kyiv dymer fastiv zdvizhen
-			bila_tserkva bohuslav kaharlyk kaniv sherbiv skvyra
-			cherkasy chyhyryn korsun lebedyn rozkishna smila zvenyhorodka
-			chornobyl belaya_soroka brahin khoiniki kholmyech
-			olevsk kopyshche viry yemilchyne
-			ovruch bilokorovychi korosten malyn narodychi stodolichi
-			zhytomyr berdychiv chudniv chortolisy korostyshiv mychesk
 
-			poltava kremenchuk myrhorod velyki_sorochyntsi kotelva
-			lubny pyriatyn horodyshche horoshino zolotonosha
-			    
+			    kotelva
+
 			#Black Ruthenia
-			mazyr buinovichi kalinkavichy pietrykaw rudobelka
+			    
 			#Chernihiv
-			melnya 
-			ichnia pryluky chornukhy
-			lypova_dolyna romen buryn sumy okhtyrka krasnopillia hadiach
-			glushkovo putyvl khotmyzh vilshana
 
-			yaroslavka yahotyn lutava opishnya hovtva kolomak
+			   sumy okhtyrka krasnopillia 
+			glushkovo  khotmyzh vilshana
+
+			     kolomak
 		} 
 
 		include = "expl_eastern_europe"
 		include = "ruthenian_principality_no_coast"
 		government = {
+			heir_selection = partition_inheritance
+			reforms = {
+				kyivan_seniority_reform
+			}
 			ruler = kie_iziaslav_rurikovich
 			ruler_term = { character = kie_iziaslav_rurikovich start_date = 1054.2.20 regnal_number = 1 }
 
@@ -38315,7 +38422,6 @@ countries = {
 				clergy_powerful_dioceses
 				#Burghers
 				market_fairs
-				cossack_identity
 			}
 		}
 
@@ -38327,8 +38433,8 @@ countries = {
 		}
 
 		capital = kyiv
-		dynasty = gediminid_dynasty
-		country_rank = rank_duchy
+		dynasty = rurikovich_dynasty
+		country_rank = rank_kingdom
 	}
 
 	ZAZ = { #Zaporozhia
@@ -58937,17 +59043,19 @@ countries = {
 	}
 
 	PYS = {
-		government = {
-			ruler = kie_vsevolod_rurikovich
-			ruler_term = { character = kie_vsevolod_rurikovich start_date = 1054.2.20 regnal_number = 1 }
-		}
 		own_control_core = {
+			ichnia hadiach romen pryluky chornukhy lypova_dolyna lubny pyriatyn horodyshche horoshino zolotonosha yahotyn yaroslavka poltava kremenchuk myrhorod velyki_sorochyntsi hovtva opishnya shuya ivanovo lezhnevo vichuga starodub_on_the_klyazma palekh rozhdestveno suzdal gavrilovskoye ilyinskoye_khovanskoye yuryev_polsky pereyaslavl alexandrovskaya_sloboda bogorodskoye_pereyaslavl kirzhach poreevo yanovo rostov borisogleb petrovsk_rostov uglich koi rozhalovo vladimir moshok muromtsevo_murom osovets sudogda vlasovo yaropolch zolotkovo yaroslavl bolshoye_selo danilov kurba romanov sol_velikaya ust_sheksna gorodetsk ramenki spas_na_kholmu ves_yogonskaya yezsk buy demyanovo gryazovets lyubim kostroma nerekhta ostrovskoye sudislavl yakovlevskoye_bolshoye mologa ilovna prozorovo beloe knyazhich_gorodok lukoves pokrovskoye_yaroslav poshekhonye beloozero badozhsky chuzboy goroditse_megra koloshma cherepoves georgievskoye nikolskoye_andoma spasskoye ust_ugla ustyuzhna_zheleznopolskaya yorga vashki charonda kirillov nikolskoye_kema svir_beloozero vognema vologda arkhangelskoye_vologda kubenskoye shuyskoye ustye velsk sumino tavrenga verkhovazhye vozhega moscow bronnitsy odintsovo pushkino rogozh vokhna mozhaysk borovsk medyn maloyaroslavets vereya vetza kolomna khatun przemysl_moscow serpukhov koshira vysokoye zvenigorod dmitrov mushkov_pogost rogachevo ruza volok
 			pereiaslav desnyanskyi_horodok boryspil oster kozelets
 		}
 
 		starting_technology_level = 3
 		include = "expl_eastern_europe"
 		include = "ruthenian_principality_no_coast"
+		government = {
+			ruler = kie_vsevolod_rurikovich
+			ruler_term = { character = kie_vsevolod_rurikovich start_date = 1054.2.20 regnal_number = 1 }
+			heir_selection = partition_inheritance
+		}
 		capital = pereiaslav
 		country_rank = rank_duchy
 	}

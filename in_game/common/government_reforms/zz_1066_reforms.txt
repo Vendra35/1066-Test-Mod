@@ -135,3 +135,24 @@ papal_investiture_reform = {
 
 	years = 4
 }
+
+# The Kyivan seniority (Rus Tier 1, 2026-08-01) — fifth use of the
+# khutba pattern. Mstislav rules Novgorod as his father's placeman;
+# KIE -> NOV rides as a TRIBUTARY (war-capable, cancellable), and the
+# visible gate (tributary.txt:20-25) wants this modifier on the
+# overlord because NOV is a monarchy, not a tribe. The other two
+# triumvirs are PARTNERS, not subjects — CHR/PYS carry no tie.
+kyivan_seniority_reform = {
+	potential = {
+		tag = KIE
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
+	}
+
+	years = 4
+}

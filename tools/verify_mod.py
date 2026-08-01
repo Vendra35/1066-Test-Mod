@@ -756,7 +756,7 @@ _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
 # investiture; a vanilla overlord is invisible to the registry scan
 # but its tributaries fail the same visible gate without a passing
 # branch).
-_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP"}
+_MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP", "KIE"}
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
     strip_comments(_diplo))
@@ -1116,8 +1116,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
         continue
     probs.append(f"{_tag}: landed with no parliament_type inline or via "
                  "its include chain — the :1719 class (D2), silent default")
+# 1464 at birth; 1461 after Central Asia (6 landless, 3 new landed);
+# 1420 after Rus Tier 1 (42 landless, ORE fold included) — each drop
+# tripped the vacuous-scan guard first and was moved deliberately.
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1460)
+      min_count=1420)
 
 print()
 if fails:

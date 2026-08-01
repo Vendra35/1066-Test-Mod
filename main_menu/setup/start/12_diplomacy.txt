@@ -52,24 +52,7 @@ diplomacy_manager = {
     scripted_mutual = { first = DAN second = BRA type = alliance }
 
     # Russia
-    dependency = { first = BRY second = CHR subject_type = vassal }
-    dependency = { first = BRY second = TRB subject_type = vassal }
-    dependency = { first = CHR second = NVS subject_type = vassal }
-    dependency = { first = CHR second = RYL subject_type = vassal }
-    dependency = { first = CHR second = STS subject_type = vassal }
-    dependency = { first = KCH second = KZK subject_type = vassal }
-    dependency = { first = LIT second = RZH subject_type = vassal }
-    dependency = { first = NOV second = PSK subject_type = vassal }
-    dependency = { first = NOV second = ORE subject_type = vassal }
     dependency = { first = NZH second = GRS subject_type = vassal }
-    dependency = { first = RYA second = PRK subject_type = vassal }
-    dependency = { first = SMO second = FMB subject_type = vassal }
-    dependency = { first = SMO second = MSV subject_type = vassal }
-    dependency = { first = SMO second = VYA subject_type = vassal }
-    dependency = { first = TVE second = KAS subject_type = vassal }
-    dependency = { first = TVE second = KLN subject_type = vassal }
-    dependency = { first = TVE second = ZUB subject_type = vassal }
-    dependency = { first = YAR second = MOG subject_type = vassal }
     dependency = { first = NOV second = OBD subject_type = tributary }
     dependency = { first = NOV second = PLY subject_type = tributary }
     dependency = { first = NOV second = BAK subject_type = tributary }
@@ -94,9 +77,7 @@ diplomacy_manager = {
     dependency = { first = GLH second = SSI subject_type = tributary }
     
         #Ruthenia
-    dependency = { first = GLH second = BRY subject_type = tributary }
     dependency = { first = GLH second = HAL subject_type = tributary }
-    dependency = { first = GLH second = VOL subject_type = tributary }
 
     # Hanseatic League
     dependency = { first = HSA second = LUB subject_type = hanseatic_member }
@@ -213,13 +194,7 @@ diplomacy_manager = {
     scripted_mutual = { first = TEU second = BOH type = alliance }
 
     #-------Lithuania-------
-    dependency = { first = LIT second = DRU subject_type = vassal }
     dependency = { first = LIT second = NRK subject_type = vassal }
-    dependency = { first = LIT second = PNK subject_type = vassal }
-    dependency = { first = LIT second = SSK subject_type = vassal }
-    dependency = { first = LIT second = TPS subject_type = vassal }
-    dependency = { first = LIT second = TUV subject_type = vassal }
-    dependency = { first = LIT second = VBK subject_type = vassal }
     scripted_mutual = { first = LIT second = POL type = alliance }
 
     #-------Bohemia-------
@@ -638,6 +613,9 @@ diplomacy_manager = {
 	dependency = { first = FRA second = VLS subject_type = tributary }
 	dependency = { first = FRA second = VMD subject_type = tributary }
 	dependency = { first = FRA second = ANJ subject_type = tributary }
+
+	# 1066: the Kyivan seniority over Novgorod (generated)
+	dependency = { first = KIE second = NOV subject_type = tributary }
 
 	# 1066: the Irish client ties (generated)
 	dependency = { first = LEI second = DUB subject_type = tributary }
