@@ -104932,6 +104932,73 @@ character_db={
 		tag = ZTA
 	}
 
+	# --- 1066 China-East --------------------------------------------------
+	# All literals with loc rows (invented-literal route, proven nine
+	# times); cultures/religions copied from each tag's own registry
+	# block (guaranteed-valid). Births [U] except where the year is
+	# firm (Munjong 1019, Ly Nhat Ton 1023, Zhao Shu 1032).
+	chi_zhao_shu_yingzong = {
+		first_name = { name = Zhao_Shu }
+		culture = zhongyuan_culture
+		religion = sanjiao
+		birth_date = 1032.1.1
+		birth = kaifeng
+		dynasty = zhao_dynasty
+		tag = CHI
+	}
+
+	kor_wang_hwi_munjong = {
+		first_name = { name = Wang_Hwi }
+		culture = korean_culture
+		religion = mahayana
+		birth_date = 1019.1.1
+		birth = kaesong
+		dynasty = wang_dynasty
+		tag = KOR
+	}
+
+	dai_ly_nhat_ton = {
+		first_name = { name = Ly_Nhat_Ton }
+		culture = vietnamese_culture
+		religion = mahayana
+		birth_date = 1023.1.1
+		birth = thang_long
+		dynasty = ly_dynasty
+		tag = DAI
+	}
+
+	# No dynasty on the two southern kings (the QMT/AQU precedent).
+	cha_rudravarman_iii = {
+		first_name = { name = Rudravarman }
+		culture = cham_culture
+		religion = hindu
+		birth_date = 1030.1.1
+		birth = vijaya
+		tag = CHA
+	}
+
+	cdl_duan_silian = {
+		first_name = { name = Duan_Silian }
+		culture = bai_culture
+		religion = mahayana
+		birth_date = 1015.1.1
+		birth = taihe_dali
+		dynasty = duan_dynasty
+		tag = CDL
+	}
+
+	# Shaiva Angkor: the ruler is hindu over KHM's theravada registry —
+	# a ruler-vs-country religion split, legal and historical (the
+	# Buddhist turn is Jayavarman VII, 1181).
+	khm_harshavarman_iii = {
+		first_name = { name = Harshavarman }
+		culture = khmer_culture
+		religion = hindu
+		birth_date = 1035.1.1
+		birth = angkor
+		tag = KHM
+	}
+
 	# --- 1066 Arabia ------------------------------------------------------
 	# Both dates [U]. name_yahya ships with a vanilla .arabic_language
 	# row ("Yahya"/"Yaḥyā", dynamic loc :18702-18703) — bahrani_culture's

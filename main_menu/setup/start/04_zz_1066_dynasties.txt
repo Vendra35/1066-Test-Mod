@@ -321,4 +321,14 @@ dynasty_manager = {
 		name = { name = muhanna_dynasty }
 		home = medina
 	}
+	# China-East: the Northern Song house and the Ly of Dai Viet.
+	# wang_dynasty and duan_dynasty ship in vanilla; these two do not.
+	zhao_dynasty = {
+		name = { name = zhao_dynasty }
+		home = kaifeng
+	}
+	ly_dynasty = {
+		name = { name = ly_dynasty }
+		home = thang_long
+	}
 }

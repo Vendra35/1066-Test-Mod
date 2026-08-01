@@ -300,8 +300,6 @@ diplomacy_manager = {
     dependency = { first = CHI second = EVK subject_type = vassal }
     dependency = { first = CHI second = HEZ subject_type = vassal }
     dependency = { first = CHI second = JIZ subject_type = vassal }
-    dependency = { first = CHI second = KOR subject_type = vassal }
-    dependency = { first = CHI second = LNG subject_type = vassal }
     dependency = { first = CHI second = MMA subject_type = vassal }
     dependency = { first = CHI second = MNZ subject_type = vassal }
     dependency = { first = CHI second = NVK subject_type = vassal }
@@ -336,69 +334,6 @@ diplomacy_manager = {
     dependency = { first = CHI second = AMD subject_type = tusi }
     dependency = { first = CHI second = CKL subject_type = tusi }
     #Vassals of Liang
-    dependency = { first = LNG second = CDL subject_type = vassal }
-    dependency = { first = LNG second = BZU subject_type = tusi }
-    dependency = { first = LNG second = SZH subject_type = tusi }
-    dependency = { first = LNG second = YGS subject_type = tusi }
-    dependency = { first = LNG second = SDG subject_type = tusi }
-    dependency = { first = LNG second = PDN subject_type = tusi }
-    dependency = { first = LNG second = QYN subject_type = tusi }
-    dependency = { first = LNG second = LIN subject_type = tusi }
-    dependency = { first = LNG second = PAN subject_type = tusi }
-    dependency = { first = LNG second = TNZ subject_type = tusi }
-    dependency = { first = LNG second = SMG subject_type = tusi }
-    dependency = { first = LNG second = GNN subject_type = tusi }
-    dependency = { first = LNG second = GGX subject_type = tusi }
-    dependency = { first = LNG second = QJG subject_type = tusi }
-    dependency = { first = LNG second = MHU subject_type = tusi }
-    dependency = { first = LNG second = BZH subject_type = tusi }
-    dependency = { first = LNG second = YNJ subject_type = tusi }
-    dependency = { first = LNG second = MGK subject_type = tusi }
-    dependency = { first = LNG second = MWO subject_type = tusi }
-    dependency = { first = LNG second = NGZ subject_type = tusi }
-    dependency = { first = LNG second = SPG subject_type = tusi }
-    dependency = { first = LNG second = JSI subject_type = tusi }
-    dependency = { first = LNG second = AGN subject_type = tusi }
-    dependency = { first = LNG second = NNN subject_type = tusi }
-    dependency = { first = LNG second = NLU subject_type = tusi }
-    dependency = { first = LNG second = NYZ subject_type = tusi }
-    dependency = { first = LNG second = SZI subject_type = tusi }
-    dependency = { first = LNG second = LZI subject_type = tusi }
-    dependency = { first = LNG second = WDG subject_type = tusi }
-    dependency = { first = LNG second = YAN subject_type = tusi }
-    dependency = { first = LNG second = XLG subject_type = tusi }
-    dependency = { first = LNG second = CGZ subject_type = tusi }
-    dependency = { first = LNG second = YJI subject_type = tusi }
-    dependency = { first = LNG second = LLS subject_type = tusi }
-    dependency = { first = LNG second = HQG subject_type = tusi }
-    dependency = { first = LNG second = LJG subject_type = tusi }
-    dependency = { first = LNG second = GYT subject_type = tusi }
-    dependency = { first = LNG second = RND subject_type = tusi }
-    dependency = { first = LNG second = DCN subject_type = tusi }
-    dependency = { first = LNG second = ZYI subject_type = tusi }
-    dependency = { first = LNG second = WSA subject_type = tusi }
-    dependency = { first = LNG second = WNG subject_type = tusi }
-    dependency = { first = LNG second = ZNX subject_type = tusi }
-    dependency = { first = LNG second = YNL subject_type = tusi }
-    dependency = { first = LNG second = GNG subject_type = tusi }
-    dependency = { first = LNG second = RNG subject_type = tusi }
-    dependency = { first = LNG second = CLE subject_type = tusi }
-    dependency = { first = LNG second = SXI subject_type = tusi }
-    dependency = { first = LNG second = DYN subject_type = tusi }
-    dependency = { first = LNG second = LTU subject_type = tusi }
-    dependency = { first = LNG second = PDG subject_type = tusi }
-    dependency = { first = LNG second = ZNN subject_type = tusi }
-    dependency = { first = LNG second = TPG subject_type = tusi }
-    dependency = { first = LNG second = PCD subject_type = tusi }
-    dependency = { first = LNG second = YYG subject_type = tusi }
-    dependency = { first = LNG second = DWG subject_type = tusi }
-    dependency = { first = LNG second = TGY subject_type = tusi }
-    dependency = { first = LNG second = ZGL subject_type = tusi }
-    dependency = { first = LNG second = SZU subject_type = tusi }
-    dependency = { first = LNG second = GLU subject_type = tusi }
-    dependency = { first = LNG second = SGZ subject_type = tusi }
-    dependency = { first = LNG second = RGM subject_type = tusi }
-    dependency = { first = LNG second = TNP subject_type = tusi }
     #Vassals of Tusi
     dependency = { first = BZH second = YNG subject_type = tusi }
     dependency = { first = YNJ second = NWU subject_type = tusi }
@@ -500,16 +435,6 @@ diplomacy_manager = {
     dependency = { first = CHI second = YOO subject_type = vassal }
 
     #-------------Mongolia----------
-    dependency = { first = CHI second = OGE subject_type = vassal }
-    dependency = { first = OGE second = BAT subject_type = vassal }
-    dependency = { first = OGE second = CRS subject_type = vassal }
-    dependency = { first = OGE second = KHD subject_type = vassal }
-    dependency = { first = OGE second = TRH subject_type = vassal }
-    dependency = { first = CRS second = TVA subject_type = vassal }
-    dependency = { first = CHI second = BGT subject_type = vassal }
-    dependency = { first = CHI second = HCN subject_type = vassal }
-    dependency = { first = CHI second = OTC subject_type = vassal }
-    dependency = { first = CHI second = QAS subject_type = vassal }
 
     #------------Tibet-------------
     dependency = { first = TIB second = GUG subject_type = vassal }

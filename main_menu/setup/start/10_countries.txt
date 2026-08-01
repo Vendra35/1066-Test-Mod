@@ -5705,17 +5705,17 @@ countries = {
 			alwar narnaul bharatpur #Mewat
 			agra mathura jalesar_doab kol dholpur chandwar #Braj
 			sirhind sadhaura samana_india thanesar kaithal karnal #Puadh
-			hisar dadri hansi #Bhattiana
-			hajner sunam raikot faridkot bathinda firozpur muktsar #Punjabi Malwa
-			tulamba #Bari Doab Province
-			gugera kasur virkgarh sialkot eminabad pasrur #Mahja
-			jalandhar rahon bajwara milwat kapurthala #Doaba
-			pindi_bhattian shorkot dijkot #Rechna Doab
-			gujrat busal bhera lalian shahpur sillanwali #Jech Doab
-			harrand mithankot omerkot #Derajat
-			dinkot isakhel #Karman
-			chakwal dina khewra khushab pindi_gheb rawalpindi sangni #Pothwar
-			attock #Peshawar
+			   #Bhattiana
+			       #Punjabi Malwa
+			 #Bari Doab Province
+			      #Mahja
+			     #Doaba
+			   #Rechna Doab
+			      #Jech Doab
+			   #Derajat
+			  #Karman
+			       #Pothwar
+			 #Peshawar
 			shishgarh chandpur_uttar_pradesh nagina seohara shahabad_uttar_pradesh
 		}
 
@@ -5748,13 +5748,8 @@ countries = {
 			gagraun aklera guna khaniadhana
 			bhind konch kalpi lalitpur deogarh bhilsa
 			damoh singorgarh ujargarh sugaur
-			nawakot bijnot derawar channan_pir kot_marot uch mir_garh_qila dunga_bunga chishtian khairpur aror #Cholistan
-			multan mailsi chichawatni dipalpur pakpattan karur_punjab jalalpur_pirwala
-			lahore sultanwind fatehabad batala kalanaur
-			chiniot kamalia talwandi jaranwala jhang
-			dajal dera_ghazi_khan dera_ismail_khan kot_addu
-			sitpur karor karor_2 bhakkar mankera
-			daraban
+			           #Cholistan
+
 			manikpur bhadohi mungra raebareli unnao
 			awadh akbarpur kishi sultanpur_uttar_pradesh
 			varanasi chunar ghazipur jaunpur mau_jaunpur kantit
@@ -5773,12 +5768,10 @@ countries = {
 			hazaribagh chai gobindpur katrasgarh shergarh urda
 			dumka deoghar jangipur mandar_parvat rajmahal teliagarhi
 			manyakheta chitapur bhalki
-			peshawar kohat bannu
-			akora hangu khost tank thal_daman
 
 			#Koh e-Sulayman
 			#Questionable if this shoudl actually be under Delhi. Likely better off independent.
-			zhob duki rakni lorelai kahan wana urgun
+			      
 		}
 
 		court_language = persian_language
@@ -7879,7 +7872,8 @@ countries = {
 				name_narasimha = 3
 				name_vira.name_ballala = 3
 			}
-			ruler = random
+			ruler = hsl_vinayaditya_i_hoysala
+			ruler_term = { character = hsl_vinayaditya_i_hoysala start_date = 1047.1.1 regnal_number = 0 }
 
 			reforms = {
 				nayankara_system
@@ -21728,7 +21722,8 @@ countries = {
 
 		include = "far_east_asia_monarchy"
 		government = {
-			ruler = random
+			ruler = kor_wang_hwi_munjong
+			ruler_term = { character = kor_wang_hwi_munjong start_date = 1046.1.1 regnal_number = 0 regnal_name = Munjong }
 
 			regnal_numbers = {
 				name_chungnyeol = 1
@@ -26319,9 +26314,9 @@ countries = {
 			ansu dingxing gaoyang_baoding laishui boye mancheng wanzhou_baoding qingyuan_baoding puyin tangxian gecheng xincheng_baoding shulu guixin yixian_yizhou
 			baochang songzhou shangdu dongliangting yixingzhou enhua fuzhou kuanhe_xingzhou niushan limin baitan weining chagannur taipingzhuang liuyuan xiabancheng huanzhou gaoyuan zhangsanying zhongdu
 			changyuan yuancheng baima_daming dongming nanle neihuang puyang qingfeng weixian xunxian
-			xiankang xingzhong lizhou daning_pingquan longshan huihe hezhong naiman pingquan chuanzhou wuping_daning shenshui fushu yizhou_jurchen 
+			xiankang xingzhong lizhou daning_pingquan longshan huihe hezhong naiman pingquan chuanzhou wuping_daning shenshui fushu  
 			qinghe guangping handan yongnian mingshui quzhou 
-			ningchang tongliao yehe
+			  
 			jiaohe qingchi dongguang fucheng_hejian liguo hejian jinghai tiaoxian leshou nanpi ningjin qingyun huichuan renqiu wuqiao suning dagu zhigu yanshan gucheng_jingzhou
 			guangzong renxian julu neiqiu shahe xingtai
 			luanyang banbishan baodi yijin dadu changping fangshan fengrun guan huairou daxing yuyang sanhe_tongzhou shicheng_jizhou dongan_shuntian lutai miyun pinggu dacheng shunyi xianghe luxian wenan wuqing wanping yongqing yutian fanyang zunhua
@@ -26399,56 +26394,17 @@ countries = {
 			mingshan yandao rongjing
 
 			#Mongolia
-			avraga rahsaan_khad 
-			enhe_hada jiliu lower_gazimur merelka urov
-			choyrin_datsan bayan gazrin_chuluu takhilyn ulziit
-			tavan_tolgoi sumtiin zara_uul
-			jingzhou_dorbod bathahalak chahar muumyangan ulan_hua ulanchab
-			erenkhot avga baganuur khobootsar shuluun_khoboot_tsagaan sonod
-			bishreit dalay doloodyn_gobi ikh_narttin_chuluu saikhandulaan ulaanbadrakh
-			kyakhta khadanzaa 
-			selenge khimni ulenkhe zed zelterijin
-			amarbayas_galang bornuur eroo
-			sulkhari khilgo khilgoson ung
-			ude_baikal anaa bureen khudan khurbe
-			silkari kara_shilka
-			bayankhot alxa bagh bayannurhong urad
-			del_khad galbyn_gobi khatanbulag oiyin_korken ooshiyn_gobi zhavklant_khairkhan
+
 			bayannur uraqai xinhure
-			banzart_khairkhan zag_suujiyn_gobi
+			 
 			ordos aerzhai otog tongwancheng
-			karakorum orkhon
-			alyanbulag tarvagatai
-			urga kedun khar_bukhyn kharuukh manzushir tuul
-			ongiin_khiid gimpil_darjaalan shaazan_khot shaazan_tolgoi suriig
-			ulaan bogd khadat ukhaa_khudag
-			fuxin
+
 		}
 
 		own_control_integrated = {
-			nurchuu kuenga uryum
+			  
 			lingfang xuanhua_nanning ningpu
 
-			amgun dukin dzhuk imilen kerbi suluk 
-			nurgan bulava shantar torom tugur usalgin
-			achan nemptu simmi uninka xungake
-			kedar bitki evur pilda uschu
-			nanghaer idy_sakhalin porokotan wuliehe
-			guohuo boluohe kushunkotan nayoro
-			datta deren kema koppi samarginka tumzhdin
-			urmi bidzhan bira kukan kur sutara
-			namunka noto_ussuri
-			bikinka xunka
-			chalin
-			mergen dobkuri gan kuile menlu non
-			yakesa amazar emuer mohe ollo urka
-			gilyuy bryante mogot tukuringra tynda urkan
-			humar bir_amur kuanhe pangu sahar tahe
-			aigun arkhara chenqing jiajin taowen nioman xunhe zhanhe
-			gromatukha birma tehcha tom tygde yor
-			selemde burunda buse kogan mamyn nehru ulma
-			upper_nioman akishma olongki tujun tyrma urgal
-			djee argi dep kupuri mulmuga tok
 		}
 
 		own_control_conquered = {
@@ -26461,16 +26417,13 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		government = {
-			sinicized_vs_unsinicized = -50 # Bayan's policies
+			sinicized_vs_unsinicized = 50 # the Song court [magnitude ours; positive = sinicized, asia templates +10]
 
 			laws = {
-				status_of_the_han_law = limit_the_han_powers
 			}
 
-			reforms = {
-				legacy_of_kublai_khan
-			}
-			ruler = random
+			ruler = chi_zhao_shu_yingzong
+			ruler_term = { character = chi_zhao_shu_yingzong start_date = 1063.5.1 regnal_number = 0 regnal_name = Yingzong }
 
 		}
 		court_language = northern_mandarin_dialect
@@ -26559,10 +26512,10 @@ countries = {
 			lahu_culture
 			hmong_culture
 		}
-		capital = dadu
+		capital = kaifeng
 		country_rank = rank_empire
-		flag = "YUA"
-		country_name = "YUA"
+		flag = "CSO"
+		country_name = "CSO"
 
 		currency_data = {
 			complacency = 25
@@ -26930,19 +26883,18 @@ countries = {
 		capital = liaoyang
 	}
 
-	OGE = { #Ögedei Horde
+	OGE = {
+		our_cores_conquered_by_others = {
+			kurchum kandysu kokpekty shar zyryan arkat sarybulak zmeinogorsk shemonayevskoye oskemen ust_kalmanka altayskoye onguday ust_koksa smolenskoye ayagoz burqin jeminay tsagaan_usun
+		}
+ #Ögedei Horde
 		type = army
 		own_control_core = {
-			kurchum kandysu kokpekty shar zyryan
-			arkat sarybulak 
-			zmeinogorsk shemonayevskoye oskemen ust_kalmanka
-			altayskoye onguday ust_koksa smolenskoye 
+
 		}
 
 		own_control_integrated = {
-			 
-			burqin jeminay 
-			tsagaan_usun
+
 		}
 
 		starting_technology_level = 3
@@ -26968,17 +26920,17 @@ countries = {
 		capital = kurchum
 	}
 
-	BAT = { #Baatud Horde
+	BAT = {
+		our_cores_conquered_by_others = {
+			altayn_ovor_gobi naomao zuun_garyn_gobi otegu_qulan bugat chikhan_agui tevsh_uul tsogt tost_uul gaxun_gobi shargyn_gobi shira_qulusun noyon_uul niuquanzi barkul santokhe khara_khoto naraan_chilaun
+		}
+ #Baatud Horde
 		type = army
 		own_control_core = {
-			altayn_ovor_gobi naomao zuun_garyn_gobi
-			otegu_qulan bugat chikhan_agui tevsh_uul tsogt
-			tost_uul gaxun_gobi shargyn_gobi shira_qulusun
-			noyon_uul 
-			niuquanzi 
+
 		}
 		own_control_integrated = {
-			barkul santokhe khara_khoto naraan_chilaun 
+			    
 		}
 
 		starting_technology_level = 3
@@ -27002,23 +26954,18 @@ countries = {
 		capital = naomao
 	}
 
-	CRS = { #Choros Horde
+	CRS = {
+		our_cores_conquered_by_others = {
+			khovd achit_nuur khurgan ulaagchiin airag_nuur hunguy khyargas_nuur telmen ulaamgom dzaigil erzin tes turuum zagzuugiin_balgas altan_gadas chuluutyn delger_moron ider khatgal eringiin uur baibalyk kharkhul mori_baridag khar_balgas tsetserleg kaa bii choigan systyg balyktyg buren_khem busiyn den_terek khemchik ulug usun
+		}
+ #Choros Horde
 		type = army
 		own_control_core = {
-			khovd achit_nuur khurgan
-			ulaagchiin airag_nuur hunguy khyargas_nuur telmen
-			ulaamgom dzaigil erzin tes turuum
-			zagzuugiin_balgas altan_gadas chuluutyn delger_moron ider
-			khatgal eringiin uur
-			baibalyk kharkhul mori_baridag 
-			khar_balgas tsetserleg
-			kaa 
+
 		}
 
 		own_control_integrated = {
-			bii choigan systyg
-			balyktyg buren_khem busiyn
-			den_terek khemchik ulug usun
+
 		}
 
 		starting_technology_level = 3
@@ -27042,13 +26989,14 @@ countries = {
 		capital = khar_balgas
 	}
 
-	KHD = { #Khoid Horde
+	KHD = {
+		our_cores_conquered_by_others = {
+			khalzan_shireg baidrag biger boontsagaan khangal naran orog tuin uliastai ogomoor teel zavkhan haerhhana huysiyn tahiltyn_khotgot tsagaan_agui
+		}
+ #Khoid Horde
 		type = army
 		own_control_core = {
-			khalzan_shireg baidrag biger boontsagaan khangal naran orog tuin
-			uliastai ogomoor teel zavkhan
-			haerhhana huysiyn tahiltyn_khotgot 
-			tsagaan_agui 
+
 		}
 
 		starting_technology_level = 3
@@ -27125,15 +27073,14 @@ countries = {
 		capital = buren_khem
 	}
 
-	BGT = { #Belgutei Horde
+	BGT = {
+		our_cores_conquered_by_others = {
+			onon balj baldan_bereeven kyra bars_khot bayan_tumen bayantsagaan menen lower_ulz upper_ulz yakhi kherlen uguumur undurkhaan khan_khentii tsokh ingedei
+		}
+ #Belgutei Horde
 		type = army
 		own_control_core = {
-			onon balj baldan_bereeven kyra
-			bars_khot bayan_tumen bayantsagaan menen
-			lower_ulz upper_ulz yakhi
-			kherlen uguumur undurkhaan
-			khan_khentii tsokh
-			ingedei 
+
 		}
 
 		starting_technology_level = 3
@@ -27158,15 +27105,14 @@ countries = {
 		capital = balj
 	}
 
-	HCN = { #Hachiun Horde
+	HCN = {
+		our_cores_conquered_by_others = {
+			avnagar chono khuuchid sangiin_dalai sorin_nuur ulgain uzemchin haihaer kailu linhuang qingzhou_mongol xinkai pingdisonglin quanning yingchang tuliemao buir_nuur barun_xiabaer tamsabulag matad sharga_uul
+		}
+ #Hachiun Horde
 		type = army
 		own_control_core = {
-			avnagar chono khuuchid sangiin_dalai sorin_nuur ulgain uzemchin
-			haihaer kailu linhuang qingzhou_mongol xinkai
-			pingdisonglin quanning yingchang 
-			tuliemao 
-			buir_nuur barun_xiabaer tamsabulag
-			matad sharga_uul 
+
 		}
 
 		starting_technology_level = 3
@@ -27191,23 +27137,18 @@ countries = {
 		capital = qingzhou_mongol
 	}
 	
-	OTC = { #Otchigin Horde
+	OTC = {
+		our_cores_conquered_by_others = {
+			chaghankhot gorlos huolin taluhe wafang taizhou_jurchen buteha chol hurle bayan_ula xuguit yimin zhengjiatun khalkh hailar talaha sart nongan zhaozhou_jurchen zhalong arun bila nuomin
+		}
+ #Otchigin Horde
 		type = army
 		own_control_core = {
-			chaghankhot gorlos huolin taluhe wafang
-			taizhou_jurchen buteha chol hurle
-			bayan_ula xuguit yimin
-			zhengjiatun 
-			khalkh 
-			hailar 
-			talaha sart 
+
 		}
 		
 		own_control_integrated = {
-			nongan
-			zhaozhou_jurchen
-			zhalong
-			arun bila nuomin
+
 		}
 
 		starting_technology_level = 3
@@ -27233,19 +27174,18 @@ countries = {
 		capital = taizhou_jurchen
 	}
 	
-	QAS = { #Qasar Horde
+	QAS = {
+		our_cores_conquered_by_others = {
+			chit nibuchu tura uldurga qorqonaq_yubur aga boorj unda upper_gazimur baruun_tar_nuur tsagaan zyyn_tar_nuur abagaita gegen hasar khirkhira talman_boorj dalai_nuur hulun
+		}
+ #Qasar Horde
 		type = army
 		own_control_core = {
-			chit nibuchu tura uldurga 
-			qorqonaq_yubur aga boorj unda
-			upper_gazimur 
-			baruun_tar_nuur tsagaan zyyn_tar_nuur 
-			abagaita gegen hasar khirkhira talman_boorj
-			dalai_nuur 
+
 		}
 
 		own_control_integrated = {
-			hulun 
+			 
 		}
 
 		starting_technology_level = 3
@@ -27391,12 +27331,14 @@ countries = {
 		capital = luchuan_mangshi
 	}
 
-	LNG = { #Liang
+	LNG = {
+		our_cores_conquered_by_others = {
+			kunming lufeng yiliang kunyang anning chenggong yimen songming fumin zhennan dingyuan_chuxiong weichu nanan heyang jiangchuan lunan xinxing
+		}
+ #Liang
 
 		own_control_core = {
-			kunming lufeng yiliang kunyang anning chenggong yimen songming fumin
-			zhennan dingyuan_chuxiong weichu nanan
-			heyang jiangchuan lunan xinxing
+
 		}
 
 		own_control_integrated = {
@@ -27427,6 +27369,7 @@ countries = {
 	CDL = { #Dali
 
 		own_control_core = {
+			kunming lufeng yiliang kunyang anning chenggong yimen songming fumin zhennan dingyuan_chuxiong weichu nanan heyang jiangchuan lunan xinxing
 			taihe_dali menghua yunlong binchuan yangbei wujing yunnan langqiong
 			midu dingbian_shunning
 			yongping_yongchang
@@ -27442,7 +27385,8 @@ countries = {
 		court_language = southern_mandarin_dialect
 		government = {
 
-			ruler = random
+			ruler = cdl_duan_silian
+			ruler_term = { character = cdl_duan_silian start_date = 1041.1.1 regnal_number = 0 }
 		}
 		tolerated_cultures = {
 			yi_culture
@@ -46227,7 +46171,8 @@ countries = {
 
 		include = "south_east_asia_monarchy"
 		government = {
-			ruler = random
+			ruler = khm_harshavarman_iii
+			ruler_term = { character = khm_harshavarman_iii start_date = 1066.1.1 regnal_number = 3 }
 
 			#Ruler History
 
@@ -46265,7 +46210,8 @@ countries = {
 		our_cores_conquered_by_others = {}
 		include = "vietnamese_champa_monarchy"
 		government = {
-			ruler = random
+			ruler = cha_rudravarman_iii
+			ruler_term = { character = cha_rudravarman_iii start_date = 1061.1.1 regnal_number = 3 }
 			heir_selection = matrilineal_salic_law
 
 			centralization_vs_decentralization = 40
@@ -46321,7 +46267,8 @@ countries = {
 		our_cores_conquered_by_others = {}
 		include = "vietnamese_champa_monarchy"
 		government = {
-			ruler = random
+			ruler = dai_ly_nhat_ton
+			ruler_term = { character = dai_ly_nhat_ton start_date = 1054.11.1 regnal_number = 0 regnal_name = Ly_Thanh_Tong }
 			centralization_vs_decentralization = -35
 			mercantilism_vs_free_trade = -20
 			sinicized_vs_unsinicized = -25
@@ -58772,7 +58719,7 @@ countries = {
 
 	GHZ = {
 		own_control_core = {
-			ghazni gardez muqur nawah wazakhwa zarghun_shahr kabul alishang chak gandamak jalalabad logar kohi_safi kandahar arghestan chaman deychopan maruf qalat_ghilji bost baghran deh_kundi gereshk kajran musa_qala tarinkot garmsir banader khanashin maiwand pangvay gulistan quetta shorabak
+			ghazni gardez muqur nawah wazakhwa zarghun_shahr kabul alishang chak gandamak jalalabad logar kohi_safi kandahar arghestan chaman deychopan maruf qalat_ghilji bost baghran deh_kundi gereshk kajran musa_qala tarinkot garmsir banader khanashin maiwand pangvay gulistan quetta shorabak akora aror attock bajwara bannu batala bathinda bhakkar bhera bijnot busal chakwal channan_pir chichawatni chiniot chishtian dadri dajal daraban dera_ghazi_khan dera_ismail_khan derawar dijkot dina dinkot dipalpur duki dunga_bunga eminabad faridkot fatehabad firozpur gugera gujrat hajner hangu hansi harrand hisar isakhel jalalpur_pirwala jalandhar jaranwala jhang kahan kalanaur kamalia kapurthala karor karor_2 karur_punjab kasur khairpur khewra khost khushab kohat kot_addu kot_marot lahore lalian lorelai mailsi mankera milwat mir_garh_qila mithankot muktsar multan nawakot omerkot pakpattan pasrur peshawar pindi_bhattian pindi_gheb rahon raikot rakni rawalpindi sangni shahpur shorkot sialkot sillanwali sitpur sultanwind sunam talwandi tank thal_daman tulamba uch urgun virkgarh wana zhob
 		}
 
 		starting_technology_level = 3

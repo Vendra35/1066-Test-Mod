@@ -1538,6 +1538,54 @@ is unsettled, ours has towns — decoder entry; shrinks as the steppe
 gains owners). scan_log.py: UNKNOWN 0, REGRESSION 0.
 ITEM 31 IS CLOSED.**
 
+**ITEM 32 — CHINA-EAST: THE SONG RESKIN + THE STEPPE DROP (LANDED
+2026-08-01, needs game test).** The India/China review's approved
+package (D2/D3/D5a/D7 + the LNG inversion; two REASONED DIVERGENCES
+from the review, both user-approved: the DLH behead and the nine
+Indian retirements WAIT for Tier 1 India — no recipients exist and
+vacating the settled Gangetic/Deccan would be an AI-colonization
+magnet). CHI becomes the NORTHERN SONG by the proven JAP/ASK route:
+flag/country_name "YUA"->"CSO" (vanilla's own Song identity),
+Kublai's legacy reform + Bayan's anti-Han law dropped, sinicization
+flipped to +50 [magnitude ours], capital dadu->kaifeng, YINGZONG
+seated (Zhao Shu, regnal_name literal, new zhao_dynasty) — and the
+registry color moves to map_CSO crimson via a whole-file
+east_asia.txt override (ONE change, header-documented, the
+iberia/italy class). Mongolia+Manchuria VACATED (CHI's 198 + the
+eight Chinggisid hordes' 169 — Liao and unconsolidated tribes in
+1066; the deferred Liao slice fills empty land). Punjab's 97 to GHZ
+(Ibrahim's Indian half — Delhi evicted from the Punjab; DLH keeps
+272 for now). LNG landless, CDL freed and grown by Yunnan's 17.
+Six seats: Yingzong, Munjong (wang_dynasty ships), Ly Thanh Tong
+(new ly_dynasty), Rudravarman III, Duan Silian (duan_dynasty ships),
+Harshavarman III [D], + HSL's vanilla Vinayaditya. Goryeo freed from
+the 1337 CHI vassalage (named strip; its celestial_governor seat in
+the restored IO IS the historical tie). Constants: deps 164->238
+(LNG's 62 tusi + the Chinggisid web 11, grep-verified 74), IO ghosts
+122->131 (MK members 209->200), parliament 1407->1398. 2388 blocks,
+165 thrones.
+TEST — click tour, ~8 minutes:
+1. Map China: "Great Sòng" (or "Sòng") CRIMSON from Kaifeng — if
+   still "Great Yuán" blue, the CSO branding or the east_asia
+   override failed, say which color you see; Mongolia+Manchuria
+   EMPTY; no Chinggisid horde names anywhere.
+2. Click Kaifeng → capital, ruler "Yingzong" (the temple-name
+   literal probe), house "Zhao".
+3. Click Kaesong → Munjong of "Wang", NO overlord line (the IO panel
+   may still show the celestial tie — correct); Thang Long → "Lý
+   Thánh Tông" of house "Lý"; Vijaya → "Rudravarman III".
+4. Click Kunming → DALI's color (CDL grown), Duan Silian at
+   Taihe/Dali; Angkor → "Harshavarman III"; Dwarasamudra →
+   Vinayaditya (no ordinal).
+5. Lahore/Multan/Peshawar → GHAZNA's color (GHZ at 131); Delhi
+   still DLH at 272 (known, waits for Tier 1 India).
+6. scan_log.py: vacated-pop class GROWS (settled Mongolia/Manchuria
+   towns — known); tusi lines for LNG's 62 GONE with their overlord;
+   watch for NEW classes naming CHI/CSO/zhao or a seat tag.
+7. Regression: the Middle Kingdom IO panel still lists CHI as
+   leader; CHA/DAI tributaries live; JAP "Japan"; QRK/QRA/CUM
+   unchanged.
+
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —

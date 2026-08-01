@@ -1124,10 +1124,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # 1464 at birth; 1461 after Central Asia (6 landless, 3 new landed);
 # 1420 after Rus Tier 1 (42 landless, ORE fold included); 1416 after
 # Arabia (6 landless incl. the KLB catch, 2 new landed); 1407 after
-# Rus Tier 2 (10 landless, CUM landed) — each drop tripped the
-# vacuous-scan guard first and was moved deliberately.
+# Rus Tier 2 (10 landless, CUM landed); 1398 after China-East (9
+# landless: LNG + the eight Chinggisid hordes) — each drop tripped
+# the vacuous-scan guard first and was moved deliberately.
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1407)
+      min_count=1398)
 
 print()
 if fails:

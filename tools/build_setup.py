@@ -259,6 +259,21 @@ HISTORICAL_RULERS = {
     # optional. Accession day [U] (enthroned 1045).
     "JAP": ("jap_go_reizei_tenno", "1045.2.5", 0),        # Go-Reizei Tenno — vanilla character, resurrected by the death-strip
 
+    # China-East (review D7, user-approved 2026-08-01). All accessions
+    # [U]; temple names ride the regnal_name literal route (the papal/
+    # Mustansir mechanism); regnal 0 = no ordinal (Cadalus rule) except
+    # where historiography numbers the man. HSL is a VANILLA character
+    # (the review's "Vinayaditya I" ordinal is not standard usage — 0
+    # shipped, flagged). KHM: Udayadityavarman II dies IN 1066 [D] —
+    # Harshavarman III is the safer seat, accession read as early 1066.
+    "CHI": ("chi_zhao_shu_yingzong", "1063.5.1", 0, "Yingzong"),   # Yingzong of Song (Zhao Shu), r. 1063-1067
+    "KOR": ("kor_wang_hwi_munjong", "1046.1.1", 0, "Munjong"),     # Munjong of Goryeo (Wang Hwi), r. 1046-1083
+    "DAI": ("dai_ly_nhat_ton", "1054.11.1", 0, "Ly_Thanh_Tong"),   # Ly Thanh Tong (Ly Nhat Ton), r. 1054-1072
+    "CHA": ("cha_rudravarman_iii", "1061.1.1", 3),                 # Rudravarman III of Champa, r. 1061-1074
+    "CDL": ("cdl_duan_silian", "1041.1.1", 0),                     # Duan Silian of Dali, r. 1041-1075 [D]
+    "KHM": ("khm_harshavarman_iii", "1066.1.1", 3),                # Harshavarman III of Angkor [D on the month]
+    "HSL": ("hsl_vinayaditya_i_hoysala", "1047.1.1", 0),           # Vinayaditya the Hoysala — vanilla character, zero authoring
+
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
     # freeness, the ismaili_policy pairing, cairo, the discovery
     # templates and both name registries re-verified by the main
@@ -1329,6 +1344,46 @@ for _t, _n in (("WAL", 44), ("IAS", 11), ("BIA", 10), ("BLD", 9),
     LOCATION_VACATED[_t] = ["moldavia_area", "wallachia_area"]
     LOCATION_VACATED_EXPECT[_t] = _n
 
+# ============================ CHINA-EAST ====================================
+# The India/China review's approved package (D2/D3/D5a/D7 + the LNG
+# inversion; user-approved 2026-08-01 with two divergences from the
+# review's D5b/D6: the DLH behead and the nine Indian retirements WAIT
+# for Tier 1 India — vacating the settled Gangetic plain and Deccan
+# with no recipients would be an AI-colonization magnet and a
+# pop-log flood; the Punjab grant alone evicts Delhi from the
+# Ghaznavid half). CHI becomes the SONG by the proven JAP/ASK route
+# (flag/country_name are dynasty branding, the state tag stays);
+# Mongolia and Manchuria are VACATED (in 1066 that ground is Liao and
+# unconsolidated tribes — the Liao slice, deferred, fills empty land
+# far more easily than it strips a horde); the eight Chinggisid
+# brother/son hordes retire landless with auto-derived claims.
+CHINA_LANDLESS = ("LNG", "CRS", "QAS", "BAT", "BGT", "KHD", "HCN",
+                  "OTC", "OGE")
+LOCATION_VACATED["CHI"] = ["mongolia_region", "manchuria_region"]
+LOCATION_VACATED_EXPECT["CHI"] = 198
+# The eight hordes' WHOLE holdings vacate (counts measured on the
+# built file 2026-08-01; OGE is 18, not the review's 19 — ayagoz went
+# to QRA with Central Asia). The broad name list is intersection fuel;
+# a holding OUTSIDE it would fail the landless still-owns guard.
+for _t, _n in (("CRS", 37), ("QAS", 19), ("BAT", 18), ("BGT", 17),
+               ("KHD", 16), ("HCN", 21), ("OTC", 23), ("OGE", 18)):
+    # gansu_area: BAT's one Gobi-edge outlier (niuquanzi) — 1066 Gansu
+    # is Western Xia ground (deferred slice); empty beats a Chinggisid.
+    LOCATION_VACATED[_t] = ["mongolia_region", "manchuria_region",
+                            "west_siberia_region", "xinjiang_region",
+                            "steppes_region", "ural_region", "gansu_area",
+                            "yanbei_area"]
+    LOCATION_VACATED_EXPECT[_t] = _n
+# LNG's Yunnan appanage inverts: in 1066 Dali is the sovereign and
+# Yunnan is not Chinese — CDL takes LNG's 17 (measured list, the
+# Sardinia shape) and LNG's 62 tusi ties die with it landless.
+_CHINA_GRANTS = {
+    "CDL": ["kunming", "lufeng", "yiliang", "kunyang", "anning",
+            "chenggong", "yimen", "songming", "fumin", "zhennan",
+            "dingyuan_chuxiong", "weichu", "nanan", "heyang",
+            "jiangchuan", "lunan", "xinxing"],
+}
+
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
 # user-approved same day, all recommendations incl. UKH Tier B). One
@@ -2107,7 +2162,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + EGYPT_LANDLESS + FRANCE_LANDLESS + BRITISH_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
-    + ARABIA_LANDLESS + RUS2_LANDLESS
+    + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2190,6 +2245,9 @@ CAPITAL_FIXES = {
     # guard caught it). GLH keeps the Volga corridor; the delta town
     # is the honest stand-in seat (1066's Saqsin [U]).
     "GLH": ("sarai_al_jadid", "astrakhan"),
+    # China-East: Khanbaliq is Kublai's 1267 foundation; the Northern
+    # Song capital is Kaifeng (Bianjing), which CHI already holds.
+    "CHI": ("dadu", "kaifeng"),
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -2310,6 +2368,21 @@ FIELD_FIXES = {
     "JAP": [("\t\t\t\tshogunate", "\t\t\t\tjapanese_imperial_family"),
             ('\n\t\tcountry_name = "ASK"', ""),
             ('\n\t\tflag = "ASK"', "")],
+    # CHI: the Yuan becomes the Northern Song (India/China review D2,
+    # user-approved 2026-08-01). flag/country_name are DYNASTY branding
+    # on the CHI state tag (the proven JAP/ASK class, in reverse:
+    # vanilla itself ships CSO "Song" identity + loc + map_CSO for the
+    # Crisis events). Kublai's legacy reform and Bayan's anti-Han law
+    # go; the sinicization slider flips to the Song court's side
+    # (positive = sinicized — asia templates ship +10; the magnitude
+    # 50 is ours, flagged).
+    "CHI": [('flag = "YUA"', 'flag = "CSO"'),
+            ('country_name = "YUA"', 'country_name = "CSO"'),
+            ("\n\t\t\t\tlegacy_of_kublai_khan", ""),
+            ("\n\t\t\treforms = {\n\t\t\t}", ""),
+            ("\n\t\t\t\tstatus_of_the_han_law = limit_the_han_powers", ""),
+            ("sinicized_vs_unsinicized = -50 # Bayan's policies",
+             "sinicized_vs_unsinicized = 50 # the Song court [magnitude ours; positive = sinicized, asia templates +10]")],
     # France demesne slice: the three landless-to-landed tags swap the
     # _not_present include for the landed variant (the POR entry in
     # reverse). The catholic no_coast variant KEEPS heir_selection
@@ -3176,6 +3249,73 @@ NEW_CHARACTERS = """
 		birth = bar_cg
 		dynasty = vojislavljevic_dynasty
 		tag = ZTA
+	}
+
+	# --- 1066 China-East --------------------------------------------------
+	# All literals with loc rows (invented-literal route, proven nine
+	# times); cultures/religions copied from each tag's own registry
+	# block (guaranteed-valid). Births [U] except where the year is
+	# firm (Munjong 1019, Ly Nhat Ton 1023, Zhao Shu 1032).
+	chi_zhao_shu_yingzong = {
+		first_name = { name = Zhao_Shu }
+		culture = zhongyuan_culture
+		religion = sanjiao
+		birth_date = 1032.1.1
+		birth = kaifeng
+		dynasty = zhao_dynasty
+		tag = CHI
+	}
+
+	kor_wang_hwi_munjong = {
+		first_name = { name = Wang_Hwi }
+		culture = korean_culture
+		religion = mahayana
+		birth_date = 1019.1.1
+		birth = kaesong
+		dynasty = wang_dynasty
+		tag = KOR
+	}
+
+	dai_ly_nhat_ton = {
+		first_name = { name = Ly_Nhat_Ton }
+		culture = vietnamese_culture
+		religion = mahayana
+		birth_date = 1023.1.1
+		birth = thang_long
+		dynasty = ly_dynasty
+		tag = DAI
+	}
+
+	# No dynasty on the two southern kings (the QMT/AQU precedent).
+	cha_rudravarman_iii = {
+		first_name = { name = Rudravarman }
+		culture = cham_culture
+		religion = hindu
+		birth_date = 1030.1.1
+		birth = vijaya
+		tag = CHA
+	}
+
+	cdl_duan_silian = {
+		first_name = { name = Duan_Silian }
+		culture = bai_culture
+		religion = mahayana
+		birth_date = 1015.1.1
+		birth = taihe_dali
+		dynasty = duan_dynasty
+		tag = CDL
+	}
+
+	# Shaiva Angkor: the ruler is hindu over KHM's theravada registry —
+	# a ruler-vs-country religion split, legal and historical (the
+	# Buddhist turn is Jayavarman VII, 1181).
+	khm_harshavarman_iii = {
+		first_name = { name = Harshavarman }
+		culture = khmer_culture
+		religion = hindu
+		birth_date = 1035.1.1
+		birth = angkor
+		tag = KHM
 	}
 
 	# --- 1066 Arabia ------------------------------------------------------
@@ -4564,6 +4704,20 @@ def build_countries(src):
     if "izium" not in LOCATION_GRANTS["CUM"]:
         sys.exit("_RUS2_RULES: CUM capital izium not in its resolved list")
 
+    # China-East: the Punjab to the Ghaznavids — DLH's 97 punjab_area
+    # holdings, Ibrahim's Indian half (Lahore was the second capital
+    # and the raid engine). SNAPSHOT-intersected: a bare area sweep
+    # would also strip SND and the other Punjab holders. EXTEND — GHZ
+    # already carries its Seljuk-slice 34.
+    _m_all, _ = _defs()
+    _punjab = sorted(set(_m_all["punjab_area"]) & set(_owned_by(src, "DLH")))
+    if len(_punjab) != 97:
+        sys.exit(f"CHINA-EAST: DLH's punjab holdings resolved to "
+                 f"{len(_punjab)}, expected 97")
+    LOCATION_GRANTS["GHZ"] = LOCATION_GRANTS.get("GHZ", []) + _punjab
+    for _t, locs in sorted(_CHINA_GRANTS.items()):
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + list(locs)
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5469,9 +5623,14 @@ def build_ios(src):
         # Danube tags, one Orthodox-world membership each; GAZ (the
         # Genoese republic) sits in no IO. 113 -> 122.
         + ["HAL", "WAL", "IAS", "BIA", "BLD", "SRC", "HTN", "HSC",
-           "SSI"])
-    if n_ghosts != 122 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 122 landless IO list entries, "
+           "SSI"]
+        # China-East adds 9 (observed failing first): LNG + the eight
+        # Chinggisid hordes leave the RESTORED Middle Kingdom's member
+        # list (209 -> 200 members). 122 -> 131.
+        + ["LNG", "CRS", "QAS", "BAT", "BGT", "KHD", "HCN", "OTC",
+           "OGE"])
+    if n_ghosts != 131 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 131 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -5817,6 +5976,17 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 2 Rus dependency strips, stripped {n_rus}")
     report.append(("Rus 1337 overlordships removed", n_rus))
 
+    # China-East: Goryeo is nobody's hard vassal in 1066 — the
+    # celestial tributary tie lives in the restored Middle Kingdom IO
+    # (KOR keeps its celestial_governor seat there, which IS the
+    # historical relationship); the dependency line is 1337's.
+    src, _k = re.subn(
+        r"^[ \t]*dependency = \{ first = CHI second = KOR subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if _k != 1:
+        sys.exit(f"expected exactly 1 CHI->KOR strip, stripped {_k}")
+    report.append(("Goryeo freed from the 1337 vassalage", _k))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -5870,8 +6040,13 @@ def build_diplomacy(src):
     # 155 -> 164 with Rus Tier 2 (observed failing first, 2026-08-01):
     # GEN->GAZ, GLH's seven Moldavian boyar tributaries
     # (BIA BLD HTN HSC IAS SRC SSI) and GLH->HAL.
-    if n_landless_deps != 164:
-        sys.exit(f"expected exactly 164 landless-tag dependencies, stripped {n_landless_deps}")
+    # 164 -> 238 with China-East (observed failing first, same day):
+    # LNG's 62 tusi ties + LNG->CDL, and the Chinggisid web's 11
+    # (CHI->five hordes, OGE->BAT/CRS/KHD/TRH, CRS->TVA — freeing
+    # TRH and TVA, both correctly independent in 1066). 74 lines,
+    # grep-verified against vanilla.
+    if n_landless_deps != 238:
+        sys.exit(f"expected exactly 238 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
