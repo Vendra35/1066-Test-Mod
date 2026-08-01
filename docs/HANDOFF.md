@@ -1058,10 +1058,10 @@ same day it landed, all seven test points; item 19).
 20), ~~British Isles~~ (item 21), ~~HRE/HAB breakup~~ (item 23),
 ~~southern Italy 1066~~ (item 22), ~~Germany II~~ (item 25),
 ~~Italy North~~ (item 26 — ALL confirmed in game and closed as of
-2026-07-30). Left: Central Asia (Kara-Khanids), Arabia, the
-Rus/steppe east, India/China review — ALL FOUR now hold decision-ready
-research packages in docs/ (2026-07-30, pending main-session review +
-user decisions) — then the pop phase (al-Andalus owes 222 locations;
+2026-07-30). ~~Central Asia (Kara-Khanids)~~ (item 27, LANDED
+2026-08-01, needs game test). Left: Arabia, the Rus/steppe east,
+India/China review — all with research packages agent-reverified
+2026-08-01 (decision lists delivered, pending user decisions) — then the pop phase (al-Andalus owes 222 locations;
 Persia owes none).
 
 ## Next, in order
@@ -1346,6 +1346,59 @@ row confirmed live), and the Rus package's two live-defect claims
 were USER-CONFIRMED on sight (Kyiv tributary of a 15-subject Golden
 Horde; Novgorod a republic) — both queued with the Rus decisions.
 VMD loyalty still ~47% — the WATCH stands. **ITEM 26 IS CLOSED.**
+
+**ITEM 27 — CENTRAL ASIA: THE KARA-KHANIDS (LANDED 2026-08-01, needs
+game test).** The first theater package implemented (agent-reverified,
+user-approved same day; commit 4941780). 3 new tags, 216 locations
+change owner, **305 VACATED to no owner — the NEW LOCATION_VACATED
+mechanism**, 6 Mongol-era tags landless (CHG YSU BRL JLY SLD DGH),
+2385 blocks, 155 thrones. QRK = Western Kara-Khanids 46 (exactly
+YSU+BRL+JLY+SLD whole — the four Chagatai amir houses ARE the western
+kaghanate, to the location), Ibrahim Tamghach Khan (vanilla literal,
+regnal 1). QRA = Eastern Kara-Khanids 142 (CHG 106, DGH 20, GLH 15,
+OGE 1), Mahmud Toghrul Qara Khan (name_mahmud; **regnal 0 — DEVIATION
+from the package's 1**, no attested ordinal, the Cadalus precedent —
+flagged for user). BLH = Volga Bulgaria 28, ruler random DELIBERATELY
+(the king-list is blank for the whole 11th century), rank_duchy →
+"Emirate". One new house (qarakhanid_dynasty), ZERO invented name
+keys — a first at this size. LOCATION_VACATED: snapshot-resolved
+(members ∩ current holdings), exact counts (GLH 284 = Tier A 168
+Kipchak steppe + Tier B 116 West Siberia; CHG 21 Dzungaria+Emin),
+0-owner validate SEPARATE from the exactly-once rule, proven by
+breaking both ways. The package's KTT ruleset was DROPPED at review:
+KTT is a steppe_horde (recipient assert) AND its sweep stripped QUN's
+capital kulob — the day-old capital guard caught it BEFORE
+implementation, its first live catch. GLH stays LANDED at 404 west of
+the Volga (the Rus/steppe seam, deliberate). "Sultanate" styling
+accepted, banked with SEL for the one country_ranks override. All 12
+package decisions taken per recommendation (decision 6 re-argued:
+culture_definition IS primary culture — bolghar over kazani
+knowingly).
+TEST — click tour, ~8 minutes:
+1. Map overview: Transoxiana in TWO blues (west steppe blue, east
+   pale blue) from Bukhara to Kashgar; the Volga elbow bronze (BLH);
+   the Kipchak steppe and West Siberia EMPTY (uncolored) — if the
+   steppe is still Golden-Horde gold north of the Aral, the vacate
+   failed. GLH still visible WEST of the Volga (deliberate).
+2. Click Samarkand → "Sultanate of the Kara-Khanids" (accepted
+   styling), ruler "Ibrahim I" (literal + regnal probe), house
+   "Qarakhanid" renders.
+3. Click Balasagun → Eastern Kara-Khanids, "Mahmud" with NO ordinal
+   (if "Mahmud I" shows, the regnal deviation needs re-judging).
+   Kashgar, Khotan and Ferghana inside QRA.
+4. Click Bolghar → "Emirate of Volga Bulgaria", a random Muslim
+   ruler.
+5. Chagatai GONE, Dughlats GONE from Kashgar; Qocho (QCH) still at
+   Turfan; KTT still 4 at Khuttal; QUN still 6 WITH kulob.
+6. error.log: watch for initialize_from_bookmark.cpp:2477 naming
+   CHG/YSU/BRL/JLY/SLD/DGH — that is the army-tag fallback trigger
+   (a FIELD_FIXES type-strip on those six); landless trims grow ~6
+   blocks (known class); NEW classes only — paste anything naming
+   QRK/QRA/BLH or a vacated location.
+7. Regression: SEL untouched at 463 (the Oxus border stands), the
+   nine tributaries live, Norman opening, plus the audit-fix
+   expectations in the block above (ABS/FAT :1719 gone, colors,
+   no stray hint button).
 
 **NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
