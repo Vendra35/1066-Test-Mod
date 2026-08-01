@@ -372,4 +372,11 @@ dynasty_manager = {
 		name = { name = sinhala_dynasty }
 		home = tissamaharama
 	}
+	# Africa slice (2026-08-02): the Soninke house tradition names the
+	# ruling clan of Wagadu as the Cisse [D] — the one dynasty the
+	# theater authors, carried by Tunka Manin's seat alone.
+	cisse_dynasty = {
+		name = { name = cisse_dynasty }
+		home = koumbi_saleh
+	}
 }

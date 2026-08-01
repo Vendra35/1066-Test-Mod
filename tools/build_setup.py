@@ -295,6 +295,15 @@ HISTORICAL_RULERS = {
     "CHU": ("chu_karna_solanki", "1064.1.1", 0),           # Karna Chaulukya, r. 1064-1092 [U]; founds Karnavati
     "JJK": ("jjk_kirtivarman_chandela", "1060.1.1", 1),    # Kirtivarman — VANILLA'S OWN block comment attests him (10_countries JJK block)
     "RTP": ("rtp_lakshmi_karna", "1041.1.1", 0),           # Lakshmi-Karna of Chedi, r. 1041-1073 [U]
+    # Africa (2026-08-02, decision 8 — the main session's own call,
+    # user-approved over the package's "seat nobody"): al-Bakri,
+    # WRITING 1067-68, describes the reigning king of Ghana as Tunka
+    # Manin, acceded 1063 after his maternal uncle Basi [D — "Tunka"
+    # may be the Soninke word for king; vanilla itself ships bare
+    # `Tunka` in the mande male-name pool, 00_sahel.txt:110]. The one
+    # near-contemporary attested name in the theater; nobody else in
+    # sub-Saharan Africa is seated, deliberately.
+    "GHA": ("gha_tunka_manin", "1063.1.1", 0),             # Tunka Manin of Wagadu, al-Bakri's king [D]
     "DBD": ("dbd_vijayabahu_i", "1055.1.1", 1),            # Vijayabahu I in Ruhuna from 1055; all Lanka 1073 [U]
 
     # Fatimid Egypt + the southern Levant (Opus package 2026-07-29; tag
@@ -1769,6 +1778,148 @@ for _t, _cap in (("PRS", "fischhausen"), ("SUD", "suwalki"),
         "\t\tcountry_rank = rank_duchy\n\n"
         "\t\tcapital = " + _cap + "\n\t}\n")
 
+# ================================ AFRICA ====================================
+# The sub-Saharan Africa package (docs/AFRICA-PACKAGE.md, user-approved
+# 2026-08-02, all decisions; review corrections applied at
+# implementation: KBR cannot be both repointed to GHA and landless —
+# its MAL line dies in the landless sweep instead, so the repoint batch
+# is FOUR tags; ETH's ankober IS orphaned by SOA's argobba sweep, so
+# ETH joins CAPITAL_FIXES; rank_county_muslim does NOT exist — measured,
+# zero hits in country_ranks.txt and government_names — so ZAN drops to
+# rank_duchy "Emirate of Kilwa", never county).
+# THE HEADLINE (package §0.1): vanilla's thirteen MAL vassals are ten
+# of al-Bakri's own 1068 polities hung off a Mali that is 170 years
+# away — the Sahel correction is mostly DIPLOMACY (a repoint and four
+# strip batches), not territory. Two whole-file registry overrides ride
+# with it (MAK miaphysite, the Hausa seven bori_religion), landed in
+# their own commit and break-tested against the bijection check.
+
+# Same 5-tuple shape as _BALTIC_RULES. All counts resolved from
+# definitions.txt by the package and re-asserted here; nothing is
+# vacated — the nine unowned Adrar/Arguin locations SNH absorbs
+# SHRINK the pop-line class rather than growing it.
+_AFRICA_RULES = {
+    # THE SENEGAL. Takrur under Labi takes the lower river and (decision
+    # 2) the Gambia: JOL is Ndiadiane Ndiaye's c. 1350, KAB a Mali
+    # province of c. 1235 — the one power the eleventh-century sources
+    # name on these rivers is Takrur. kodiam/kerbatch are BBK's two
+    # gambia_area holdings (resolved 2026-08-02) and stay BBK's.
+    "TKR": (["jolof_area", "gambia_area"], [],
+            [], ["kodiam", "kerbatch"], 38),
+    # THE INLAND DELTA. BMR (Segou, c. 1712) dissolves. Djenne-Jeno
+    # takes the Djenne bend; Zagha (Dia) takes Masina and the
+    # escarpment.
+    "DJN": (["djenne_province", "safare_province"], [], [], [], 11),
+    "ZGH": (["macina_province", "hayre_province"], [], [], [], 12),
+    # THE NIGER BEND. Timbuktu is founded c. 1100; TMB stays landless
+    # on its vanilla claim list (a free correctness win).
+    "SON": (["timbuktu_province"], [], [], [], 5),
+    # THE SANHAJA OF THE VEIL (decision 3, with the salt): the western
+    # Sahara at the moment the Almoravids own it — Awdaghust sacked
+    # 1054/55 [U]. Nine of the seventeen are already unowned.
+    "SNH": (["tagant_province", "arguin_province", "adrar_province",
+             "taghaza_province"], [], [], [], 17),
+    # WAGADU. Ghana proper plus Kaarta, Khaaso and Sosso. diara is
+    # carved out (package §E.4): Zafun IS Diara — DFN keeps its seat
+    # and needs no CAPITAL_FIXES. banamba too (caught by the
+    # _list_owner disjointness assert at implementation — the package's
+    # "zero overlaps" missed it): it sits in the swept ground AND in
+    # MAL's singles, and the package's own donor table gives it to MAL.
+    "GHA": (["ghana_province", "kaarta_province", "khaaso_province",
+             "sosso_province"], [], [], ["diara", "banamba"], 21),
+    # BAMBARA's remaining Niger reach folds into Manden (Kangaba).
+    "MAL": (["bambara_province"], ["koutiala", "banamba"], [], [], 8),
+    # ETHIOPIA sheds Shewa and Simien (decision 9: land both shells).
+    "SOA": (["argobba_province", "shewa_province", "wej_province"],
+            [], [], [], 12),
+    "BTI": (["semien_province"], ["gonder", "shire"], [], [], 5),
+    # THE HORN. IFA (1285) dissolves; AJU survives SHRUNK inland
+    # (decision 5b — MDI takes the Benadir coast, no WAR stretch).
+    "ADA": (["adal_province"],
+            ["siyara", "zeila", "amud", "el_sheikh", "hargeisa",
+             "ali_sabieh"], [], [], 12),
+    # WAR takes the Haud too — IFA's residue, resolved at
+    # implementation (the package left it inside OPEN DECISION 5 and
+    # the landless guard caught the gap): the Haud is the northern
+    # pastoral clans' grazing commons [U], the same clan-polity model
+    # vanilla itself uses for WAR's own ground.
+    # kelafo/el_dhere are AJU's two haud_province holdings — Shebelle
+    # towns, they stay with the surviving inland Ajuran (5b).
+    "WAR": (["maakhir_province", "ciid_province", "majerteen_province",
+             "guban_province", "haud_province"], [], [],
+            ["siyara", "zeila", "kelafo", "el_dhere"], 29),
+    "MDI": (["banaadir_province", "ajan_province"], [], [], [], 10),
+    # The rest of IFA's residue, same catch: the Mora/Aussa three are
+    # Afar anayurt and go to the kept AFA; the Mudug three go to the
+    # surviving inland AJU (decision 5b), whose sphere Mudug is.
+    "AFA": ([], ["asaita", "killelu", "mora_eth"], [], [], 3),
+    "AJU": ([], ["awrtable", "el_hamurre", "galkayo"], [], [], 3),
+    # NUBIA. Al-Abwab (a 1270s breakaway) folds back into the two
+    # Christian kingdoms.
+    "MAK": ([], ["el_metemma"], [], [], 1),
+    "ALO": ([], ["ed_damer", "shendi"], [], [], 2),
+}
+
+# Static grants, the _ARABIA_GRANTS shape. Decision 7: OYO (c. 1300,
+# the one clearly-late Guinea-forest tag) retires; Ife — the Yoruba
+# ritual capital, whose priority over Oyo is the tradition's own claim
+# [U] — takes its eleven. List copied from OYO's own_control_core.
+_AFRICA_GRANTS = {
+    "IFE": ["oyo_ile", "kisi", "igboho", "ikoyi", "ogbomosho", "ede",
+            "tede", "saki", "irawo", "agbonle", "ilorin"],
+}
+
+# Locations that are UNOWNED in vanilla and receive an owner from a
+# grant (the SNH Adrar/Arguin fill — the machinery's first such case:
+# _remove_owned_many demands exactly ONE ownership entry and these
+# have ZERO, measured when the first Africa dry-run died on all nine).
+# Each is asserted to (a) still be ownerless in the source — a vanilla
+# patch that lands an owner fails loudly, the CONTROL_STRIPS
+# discipline — and (b) sit in its tag's resolved grant list; removal
+# is skipped for them and the ownership write includes them. This is
+# the one place the build SHRINKS the vacated-pop error class instead
+# of growing it.
+UNOWNED_GRANTS = {
+    "SNH": ["arguin", "nouamghar", "nouakchott", "akjoujt", "atar",
+            "azougui", "chingetti", "wadan", "idjil"],
+}
+
+# BMR Segou c. 1712, JOL c. 1350, KAB c. 1235, IFA (Walashma) c. 1285,
+# ABW a 1270s Makurian breakaway, OYO c. 1300 — and four SIDE-EFFECT
+# retirements the grants empty (SGH to SNH's Arguin sweep, KBR to
+# ZGH's macina, HRL to ADA's harar, TDE to WAR's majerteen), listed
+# because the emptied-but-unlisted delta guard demands it — this slice
+# is that guard's first real workout. AJU is NOT here (decision 5b:
+# it survives inland at 20). Claims are the snapshot's, i.e. each
+# tag's FULL vanilla holdings — the Walashma's Ifat and Segou's Niger
+# as future objects.
+AFRICA_LANDLESS = ("BMR", "JOL", "KAB", "IFA", "ABW", "SGH", "KBR",
+                   "HRL", "TDE", "OYO")
+
+# DJN — Djenne-Jeno, the Middle Niger's oldest city, occupied from
+# c. 250 BC [U]; a Muslim monarchy in the local template idiom (the
+# no_coast parent declares type and heir_selection — read in full).
+# SNH — the Sanhaja of the veil, Lamtuna and Gudala, the Almoravid
+# heartland; a Muslim TRIBE (subsaharan_muslim_tribe -> subsaharan_
+# tribe, type = tribe), renders "Tribe of the Sanhaja" via the
+# tribe-beats-muslim first-match order (country_ranks.txt:1606 before
+# :1743, measured). Tech 3 = the measured Sahel convention (every
+# landed Sahel tag ships 3).
+NEW_COUNTRIES["DJN"] = (
+    "\tDJN = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_west_africa_muslim"\n'
+    '\t\tinclude = "subsaharan_muslim_monarchy_no_coast"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = djenne\n\t}\n")
+NEW_COUNTRIES["SNH"] = (
+    "\tSNH = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_west_africa_muslim"\n'
+    '\t\tinclude = "subsaharan_muslim_tribe"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = aoudaghost\n\t}\n")
+
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
 # user-approved same day, all recommendations incl. UKH Tier B). One
@@ -2548,7 +2699,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
-    + INDIA_LANDLESS + BALTIC_LANDLESS
+    + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2608,6 +2759,20 @@ CAPITAL_FIXES = {
     "SIC": ("palermo", "messina"),    # Roger holds Palermo only from 1072; Messina is the 1061 beachhead (Italy slice)
     "OGK": ("aachen", "goslar"),      # Henry III's Kaiserpfalz, Heinrich IV's birthplace [U]; culture matches OGK's registry (HRE slice)
     "PAL": ("heidelberg", "kaiserslautern"), # Heidelberg is first attested 1196; Kaiserslautern is a Salian palace PAL already holds (Germany II)
+    # Africa (2026-08-02): BBK's kayes goes to GHA in the khaaso sweep —
+    # diawara is Bambuk's own name-place, BBK-held. ETH's ankober goes
+    # to SOA in the argobba sweep (the package's E.4 MISSED this one —
+    # caught at implementation); kubar is al-Yaqubi's name for the
+    # Ethiopian capital [U], amhara_province, ETH keeps it — and it is
+    # the package's own B.2 prescription anyway.
+    "BBK": ("kayes", "diawara"),
+    "ETH": ("ankober", "kubar"),
+    # AJU survives INLAND (decision 5b) but its vanilla seat merca is a
+    # Benadir coast town and goes to MDI — caught by this guard at
+    # implementation. kelafo: the Shebelle valley, the river the Ajuran
+    # tradition is about [U]; a mechanical seat on the tag's own
+    # holdings, not an attested capital.
+    "AJU": ("merca", "kelafo"),
     # The audit-D1 nine (AUDIT-2026-07-31): capitals stripped by earlier
     # sweeps/grants with no repoint — six arrived through area/province
     # sweeps that never name locations, which is why nobody reviewed them.
@@ -2729,6 +2894,117 @@ FIELD_FIXES = {
             ("type = monarchy", "type = tribe"),
             ("heir_selection = cognatic_primogeniture",
              "heir_selection = tribal_oldest_male")],
+    # ---- Africa (2026-08-02, docs/AFRICA-PACKAGE.md §B.2) ----
+    # MAL down to the Manden chiefdom of Kangaba: the tag-gated name
+    # branch (country_name_construction.txt:79-89, map string = FULL
+    # string, "Mali Empire") requires kingdom-or-empire — rank_duchy
+    # escapes it structurally and the map reads bare "Mali". Sundiata's
+    # 1235 constitution goes with it: the reform, the Gbara assembly
+    # law and the hunter-levy law; Mansa Musa's 2500 gold likewise.
+    # MINIMAL surgery, deliberately narrower than the package's full
+    # apparatus-drop: the remaining inline laws/sliders/privileges are
+    # accepted 1337 tuning, recorded here, not silently.
+    "MAL": [("country_rank = rank_empire", "country_rank = rank_duchy"),
+            ("\t\t\treforms = {\n\t\t\t\tmanden_kurufa_reform\n\t\t\t}\n",
+             ""),
+            ("\t\t\t\tdistribution_of_power_law = dop_law_gbara\n", ""),
+            ("\t\t\t\tmedieval_levy_law = ton_ta_jon_ta_ni_woro\n", ""),
+            ("\t\tcurrency_data = {\n"
+             "\t\t\tgold = 2500\t#Mansa Mūsā's wealth\n"
+             "\t\t\tprestige = 50\n\t\t}\n", "")],
+    # GHA promoted to the hegemon: rank_kingdom ("Sultanate of Ghana",
+    # the muslim kingdom branch), and al-Bakri's own succession law —
+    # the king is succeeded by his sister's son [U];
+    # matrilineal_non_exclusive is attested in-file (MAK and ALO).
+    "GHA": [("heir_selection = cognatic_primogeniture",
+             "heir_selection = matrilineal_non_exclusive"),
+            ("\t\tcapital = koumbi_saleh",
+             "\t\tcountry_rank = rank_kingdom\n\t\tcapital = koumbi_saleh")],
+    # KBO back to the Duguwa's Kanem: Hummay is c. 1075 [D] — the
+    # Sayfawa house and his amendments are nine years in the future.
+    # rank_kingdom renders "Kingdom of Kanem" under a "Mai"
+    # (rank_kingdom_kanem beats muslim at kingdom rank, measured).
+    "KBO": [("country_rank = rank_empire", "country_rank = rank_kingdom"),
+            ("\t\t\treforms = {\n\t\t\t\tbanu_hummay_amendments\n\t\t\t}\n",
+             ""),
+            ("\t\tdynasty = sayfawa_dynasty\n", "")],
+    # MAK Christianised — the single most important correction in the
+    # theater (registry flip rides in the horn_of_africa.txt override):
+    # the Islamic kit goes, the Coptic liturgy arrives. Dongola falls
+    # in 1317, not 1066.
+    "MAK": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = shafii_policy\n\t\t\t}\n",
+             ""),
+            ("\t\treligious_school = shafii_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = 20 }\n", ""),
+            ("\t\tcapital = dongola",
+             "\t\tliturgical_language = coptic_language\n\t\tcapital = dongola")],
+    # ETH de-Solomonised (the restoration is 1270) and sized to the
+    # northern highlands; court_language = ethiopic_language is what
+    # can make rank_kingdom_ethiopia's "Negus" fire — an OWED in-game
+    # check, harmless if the branch needs more (capital -> kubar rides
+    # CAPITAL_FIXES).
+    "ETH": [("country_rank = rank_empire", "country_rank = rank_kingdom"),
+            ("\t\tdynasty = solomonid_dynasty\n", ""),
+            ("\t\tliturgical_language = geez_language\n",
+             "\t\tliturgical_language = geez_language\n"
+             "\t\tcourt_language = ethiopic_language\n")],
+    # ZAN down to the Shirazi town: the Mahdali sultanate (1277+) goes —
+    # both its reforms and its coinage-stability windfall. rank_duchy,
+    # NOT county: rank_county_muslim does not exist (measured, zero
+    # hits), so county would render "County of Kilwa" under a "Count".
+    # court_language = persian_language stays — the Shirazi claim is
+    # the town's own founding tradition [D].
+    "ZAN": [("country_rank = rank_kingdom", "country_rank = rank_duchy"),
+            ("\t\t\treforms = {\n\t\t\t\tkilwan_trade_communities\n"
+             "\t\t\t\tcontrol_of_the_mahdali_coinage_reform\n\t\t\t}\n",
+             ""),
+            ("\t\tcurrency_data = {\n"
+             "\t\t\tstability = 40 #Smooth and voluntary transition of power from previous Sultan\n"
+             "\t\t\tprestige = 25\n"
+             "\t\t\tgovernment_power = 90 #Smooth and voluntary transition of power from previous Sultan\n"
+             "\t\t}\n", "")],
+    # The Hausa seven de-Islamised (registry flip to bori_religion in
+    # the west_africa.txt override; Islam reaches the Hausa courts in
+    # the 14th century [U] and vanilla's own map data already says so —
+    # all 41 hausa locations are bori_religion in location_templates).
+    # Same four cuts per tag, copied from each built block.
+    "ZAM": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "KAN": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "KTS": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "GOB": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "RAN": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "DAA": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
+    "ZZZ": [('include = "subsaharan_muslim_monarchy_no_coast"',
+             'include = "subsaharan_monarchy_no_coast"'),
+            ("\t\t\tlaws = {\n\t\t\t\tsharia_law = maliki_policy\n\t\t\t}\n", ""),
+            ("\t\treligious_school = maliki_school\n", ""),
+            ("\t\tgovernment = { mysticism_vs_jurisprudence = -5 }\n", "")],
     "CAT": [("country_rank = rank_duchy", "country_rank = rank_county")],
     "ARA": [("court_language = catalan_dialect", "court_language = aragonese_dialect"),
             ("accepted_cultures = { aragonese }", "accepted_cultures = { catalan }")],
@@ -3769,6 +4045,27 @@ NEW_CHARACTERS = """
 		birth = tissamaharama
 		dynasty = sinhala_dynasty
 		tag = DBD
+	}
+
+	# --- 1066 Africa ------------------------------------------------------
+	# The theater's one seat (decision 8): al-Bakri, writing 1067-68,
+	# names the reigning king of Ghana — the single near-contemporary
+	# attested ruler in sub-Saharan Africa. Invented literal + loc row
+	# (the Virarajendra route): vanilla's mande pool ships bare `Tunka`
+	# (00_sahel.txt:110), which supports the title-reading [D]; the
+	# seat uses the full historiographical form. Religion sunni follows
+	# the tag's registry (decision 4 — al-Bakri's king was NOT Muslim,
+	# banked for the pop phase with the ground correction). Birth year
+	# estimated [U]. cisse_dynasty: the Soninke house tradition names
+	# the Cisse [D]; authored in 04_zz_1066_dynasties.txt.
+	gha_tunka_manin = {
+		first_name = { name = Tunka_Manin }
+		culture = soninke
+		religion = sunni
+		birth_date = 1030.1.1
+		birth = koumbi_saleh
+		dynasty = cisse_dynasty
+		tag = GHA
 	}
 
 	# --- 1066 Northern Dynasties ------------------------------------------
@@ -5320,6 +5617,24 @@ def build_countries(src):
             sys.exit(f"_BALTIC_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
+    # Africa resolves the same way (fourteen rule sets, 176 total with
+    # the Gambia; zero vacates — the nine unowned Adrar locations SNH
+    # absorbs SHRINK the pop-line class). EXTEND, never assign — GHA,
+    # MAL, TKR, SON, ZGH, MDI, WAR, MAK, ALO are landed recipients.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_AFRICA_RULES.items()):
+        got = _resolve_ruleset(f"_AFRICA_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_AFRICA_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, locs in sorted(_AFRICA_GRANTS.items()):
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + list(locs)
+    for _t, _cap in (("DJN", "djenne"), ("SNH", "aoudaghost"),
+                     ("GHA", "koumbi_saleh"), ("MDI", "mogadishu")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_AFRICA_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -5466,9 +5781,28 @@ def build_countries(src):
     # Grants to EXISTING tags: remove from the current owner, write into
     # the target's own_control_core (created when the tag is landless),
     # and drop the granted locations from the target's own claims list.
+    # UNOWNED_GRANTS members skip the removal (they have no owner to
+    # remove from) after both asserts below.
+    _uidx = _ownership_index(src, {l for v in UNOWNED_GRANTS.values()
+                                   for l in v})
+    for _t, _locs in sorted(UNOWNED_GRANTS.items()):
+        _bad = [l for l in _locs if len(_uidx.get(l, [])) != 0]
+        if _bad:
+            sys.exit(f"UNOWNED_GRANTS[{_t}]: {_bad[:8]} already have an "
+                     "owner — vanilla changed, re-verify (the strip "
+                     "belongs in the normal grant path now)")
+        _miss = [l for l in _locs if l not in LOCATION_GRANTS.get(_t, [])]
+        if _miss:
+            sys.exit(f"UNOWNED_GRANTS[{_t}]: {_miss[:8]} not in the "
+                     "tag's resolved grant list — stale entry")
+    _unowned_all = {l for v in UNOWNED_GRANTS.values() for l in v}
+    report.append(("unowned locations granted an owner",
+                   len(_unowned_all)))
     n_granted, n_unclaimed = 0, 0
     for _t, locs in sorted(LOCATION_GRANTS.items()):
-        src = _remove_owned_many(src, locs, f"LOCATION_GRANTS[{_t}]")
+        src = _remove_owned_many(src, [l for l in locs
+                                       if l not in _unowned_all],
+                                 f"LOCATION_GRANTS[{_t}]")
         blocks_g = list(re.finditer(COUNTRY_RE, src, re.M))
         for i, b in enumerate(blocks_g):
             if b.group(1) != _t:
@@ -6091,6 +6425,22 @@ def build_ios(src):
         sys.exit(f"middle_kingdom re-date: expected exactly one "
                  f"creation_date = 1271.12.18, found {n_mk}")
     report.append(("middle_kingdom re-dated to the Song founding", n_mk))
+
+    # The Coptic patriarchate of Alexandria (Africa slice, 2026-08-02):
+    # at 1066 the bishops of Makuria and Alodia were consecrated in
+    # Alexandria [U] — the Nubian church was a province of the Coptic
+    # see for six centuries. members = { ETH } is the file's only
+    # African IO membership (measured, all 80 theater tags scanned by
+    # the package); depends on MAK's miaphysite registry flip, which
+    # rides the horn_of_africa.txt override.
+    src, n_alex = re.subn(
+        r"^(\t+members = \{ )ETH( \})",
+        lambda m: m.group(1) + "ETH MAK ALO" + m.group(2),
+        src, flags=re.M)
+    if n_alex != 1:
+        sys.exit(f"Alexandria patriarchate: expected exactly one "
+                 f"`members = {{ ETH }}` line, found {n_alex}")
+    report.append(("Nubia joined the see of Alexandria", n_alex))
 
     start = _start_date()
     cuts, removed = [], 0
@@ -6746,6 +7096,90 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 16 jimi repoints to CHI, got {n_jimi}")
     report.append(("jimi lords repointed to the Song", n_jimi))
 
+    # THE SAHEL REPOINT (Africa slice, 2026-08-02): vanilla's thirteen
+    # MAL vassals are ten of al-Bakri's own 1068 polities hung off a
+    # Mali 170 years away. FOUR repoint MAL->GHA — Wagadu is the 1066
+    # hegemon and al-Bakri describes exactly this overlordship [U].
+    # NOT five: the package's G.2 listed KBR, but KBR goes LANDLESS in
+    # this same slice (its macina to ZGH) — a landless vassal is the
+    # incoherence the review caught; its MAL line dies in the landless
+    # sweep below instead, like SGH's. Runs BEFORE that sweep so the
+    # repointed lines are GHA's when it looks.
+    _GHANA_VASSALS = ("BBK", "DFN", "TFK", "ZGH")
+    n_ghana = 0
+    for _g in _GHANA_VASSALS:
+        src, _k = re.subn(
+            r"^([ \t]*)dependency = \{ first = MAL second = " + _g
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            lambda m, g=_g: (m.group(1) + "dependency = { first = GHA "
+                             f"second = {g} subject_type = vassal }}\n"),
+            src, flags=re.M)
+        n_ghana += _k
+    if n_ghana != 4:
+        sys.exit(f"expected exactly 4 Sahel repoints to GHA, got {n_ghana}")
+    report.append(("al-Bakri's polities repointed to Ghana", n_ghana))
+
+    # Four MAL ties DELETED by name, not repointed: GHA becomes the
+    # overlord, and al-Bakri treats Kawkaw (SON), Takrur and Tadmakka
+    # as kingdoms apart from Ghana [U] — Takrur in particular is
+    # Ghana's rival and the Almoravids' ally. (MAL->BMR/JOL/KAB/SGH/KBR
+    # die in the landless sweep, not here.)
+    n_mali_free = 0
+    for _g in ("GHA", "SON", "TKR", "TMK"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = MAL second = " + _g
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_mali_free += _k
+    if n_mali_free != 4:
+        sys.exit(f"expected exactly 4 MAL deletions, got {n_mali_free}")
+    report.append(("kingdoms freed from the 1337 Mali web", n_mali_free))
+
+    # Kanem's Hausa tributaries: a BORNU-era relation [U] — the Sayfawa
+    # do not cross to the west shore of Lake Chad until the 1380s; at
+    # 1066 Kanem's reach is north (Kawar, the Fezzan road — KBO->FZA
+    # is KEPT for exactly that reason).
+    n_hausa = 0
+    for _g in ("DAA", "GOB", "KAN", "KTS", "RAN", "ZAM", "ZZZ"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = KBO second = " + _g
+            + r" subject_type = tributary \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_hausa += _k
+    if n_hausa != 7:
+        sys.exit(f"expected exactly 7 KBO->Hausa strips, got {n_hausa}")
+    report.append(("Hausa states freed from Bornu-era Kanem", n_hausa))
+
+    # Kilwa's thalassocracy — including six Madagascar tributaries —
+    # is the Mahdali sultanate's, 1277+ [U]. The largest single strip
+    # in the Africa slice: it turns "Kilwa's empire" into a coast of
+    # independent city-states, which IS the 1066 Zanj coast.
+    n_kilwa = 0
+    for _g in ("MLI", "MBA", "GED", "PEM", "NTL", "MTO", "AHY", "MHL",
+               "VOH", "NYM", "MOZ", "ZZB"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = ZAN second = " + _g
+            + r" subject_type = tributary \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_kilwa += _k
+    if n_kilwa != 12:
+        sys.exit(f"expected exactly 12 ZAN tributary strips, got {n_kilwa}")
+    report.append(("Kilwa's Mahdali thalassocracy dissolved", n_kilwa))
+
+    # Ethiopia's southern ring — Ennarea, Hadiya, Bale, Dawaro — is
+    # Amda Seyon's, 1320s-30s [U]. ETH->IFA dies in the landless sweep.
+    n_eth = 0
+    for _g, _st in (("ENN", "tributary"), ("HDY", "vassal"),
+                    ("BLE", "vassal"), ("DAW", "vassal")):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = ETH second = " + _g
+            + r" subject_type = " + _st + r" \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_eth += _k
+    if n_eth != 4:
+        sys.exit(f"expected exactly 4 ETH southern strips, got {n_eth}")
+    report.append(("Amda Seyon's southern ring dissolved", n_eth))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -6821,7 +7255,14 @@ def build_diplomacy(src):
     # under option 2 LIT is landless and this sweep owns its lines
     # (the PAP->FAE law). LIT->POK still dies by name in the Rus strip
     # ABOVE this sweep, so it lands in n_rus, not here.
-    if n_landless_deps != 244:
+    # 244 -> 253 with Africa (observed failing first, 2026-08-02, the
+    # predicted arithmetic): MAL->BMR/JOL/KAB (the 1337 Mali web's
+    # landless side), ETH->IFA, IFA->HRL/WAR/TDE (the Walashma ring),
+    # plus MAL->SGH and MAL->KBR — the two side-effect retirees whose
+    # lines die here rather than by name (KBR is the review's
+    # repoint-vs-landless catch; OYO has zero diplomacy lines,
+    # grep-verified).
+    if n_landless_deps != 253:
         sys.exit(f"expected exactly 233 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 

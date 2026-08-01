@@ -211,29 +211,9 @@ diplomacy_manager = {
     
     #-------------East Africa------------
     #Ethiopia
-    dependency = { first = ETH second = IFA subject_type = tributary }
-    dependency = { first = ETH second = ENN subject_type = tributary }
-    dependency = { first = ETH second = HDY subject_type = vassal }
-    dependency = { first = ETH second = BLE subject_type = vassal }
-    dependency = { first = ETH second = DAW subject_type = vassal }
 
-    dependency = { first = IFA second = HRL subject_type = vassal }
-    dependency = { first = IFA second = WAR subject_type = tributary }
-    dependency = { first = IFA second = TDE subject_type = tributary }
 
     #Kilwa
-    dependency = { first = ZAN second = MLI subject_type = tributary }
-    dependency = { first = ZAN second = MBA subject_type = tributary }
-    dependency = { first = ZAN second = GED subject_type = tributary }
-    dependency = { first = ZAN second = PEM subject_type = tributary }
-    dependency = { first = ZAN second = NTL subject_type = tributary }
-    dependency = { first = ZAN second = MTO subject_type = tributary }
-    dependency = { first = ZAN second = AHY subject_type = tributary }
-    dependency = { first = ZAN second = MHL subject_type = tributary }
-    dependency = { first = ZAN second = VOH subject_type = tributary }
-    dependency = { first = ZAN second = NYM subject_type = tributary }
-    dependency = { first = ZAN second = MOZ subject_type = tributary }
-    dependency = { first = ZAN second = ZZB subject_type = tributary }
 
     #Zimbabwe
     dependency = { first = ZMW second = KLG subject_type = tributary }
@@ -246,27 +226,11 @@ diplomacy_manager = {
     dependency = { first = ZMW second = VED subject_type = tributary }
 
     #West africa
-    dependency = { first = MAL second = BBK subject_type = vassal }
-    dependency = { first = MAL second = BMR subject_type = vassal }
-    dependency = { first = MAL second = DFN subject_type = vassal }
-    dependency = { first = MAL second = GHA subject_type = vassal }
-    dependency = { first = MAL second = JOL subject_type = vassal }
-    dependency = { first = MAL second = KAB subject_type = vassal }
-    dependency = { first = MAL second = KBR subject_type = vassal }
-    dependency = { first = MAL second = SGH subject_type = vassal }
-    dependency = { first = MAL second = SON subject_type = vassal }
-    dependency = { first = MAL second = TFK subject_type = vassal }
-    dependency = { first = MAL second = TKR subject_type = vassal }
-    dependency = { first = MAL second = TMK subject_type = vassal }
-    dependency = { first = MAL second = ZGH subject_type = vassal }
+    dependency = { first = GHA second = BBK subject_type = vassal }
+    dependency = { first = GHA second = DFN subject_type = vassal }
+    dependency = { first = GHA second = TFK subject_type = vassal }
+    dependency = { first = GHA second = ZGH subject_type = vassal }
 
-    dependency = { first = KBO second = DAA subject_type = tributary }
-    dependency = { first = KBO second = GOB subject_type = tributary }
-    dependency = { first = KBO second = KAN subject_type = tributary }
-    dependency = { first = KBO second = KTS subject_type = tributary }
-    dependency = { first = KBO second = RAN subject_type = tributary }
-    dependency = { first = KBO second = ZAM subject_type = tributary }
-    dependency = { first = KBO second = ZZZ subject_type = tributary }
 
     #-------------Mesoamerica------------
     dependency = { first = TEP second = TNC subject_type = vassal }

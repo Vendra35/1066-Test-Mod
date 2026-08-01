@@ -857,7 +857,7 @@ for _i, _b in enumerate(_blk_starts):
     if _n != 1:
         probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
 check("exactly one ruler key per country block", _rblocks, probs,
-      min_count=2402)  # 2395 + 7 Baltic tribes (2026-08-01)
+      min_count=2404)  # 2395 + 7 Baltic + 2 Africa (2026-08-02)
 
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
@@ -961,6 +961,11 @@ _GENERATOR_OK = {
     # belong to the tags that slice retires, not to these. SXM is NOT
     # here: it has vanilla arms (the _van_coa_keys branch).
     "PRS", "SUD", "KUO", "ZEM", "LTG", "ESO", "AUK",
+    # Africa — tier 4, permanent: neither Djenne-Jeno nor the Sanhaja
+    # confederations had heraldry; the generator's religion-gated
+    # Islamic designs are the taifa rationale exactly. Every OTHER
+    # Africa-slice tag is vanilla with vanilla arms.
+    "DJN", "SNH",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -989,8 +994,9 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
                  "files define no such key")
 # 9 blocks (10 textures + 9 patterns + 23 colours + 9 keys) + 45
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
-# 116 after the Baltic's 7 registry tags (2026-08-01).
-check("coat of arms references resolve", _coa_count, probs, min_count=116)
+# 116 after the Baltic's 7 registry tags (2026-08-01); 118 after
+# Africa's DJN + SNH (2026-08-02).
+check("coat of arms references resolve", _coa_count, probs, min_count=118)
 
 # ---- audit 2026-07-31: the four class-closing checks -----------------------
 # From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
@@ -1023,7 +1029,7 @@ for _t in sorted(_start_tags - _id_tags):
     probs.append(f"10_countries block {_t} has NO registry identity block — "
                  "the engine rejects the whole block (PYS lesson)")
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
-      len(_id_tags), probs, min_count=2405)  # +7 Baltic (2026-08-01)
+      len(_id_tags), probs, min_count=2407)  # +7 Baltic, +2 Africa (2026-08-02)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
@@ -1144,8 +1150,11 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # the vacuous-scan guard first and was moved deliberately; 1381 after
 # the Baltic (12 landless — the crusader state and LIT — against 7 new
 # tribes + SXM revived, all eight reaching assembly via eurasian_tribe).
+# 1376 after Africa (10 landless — the Mali/Walashma/Mahdali webs and
+# the four side-effect retirees — against DJN + SNH new and BTI, SOA,
+# ADA revived, all five reaching a parliament through their templates).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1381)
+      min_count=1376)
 
 print()
 if fails:

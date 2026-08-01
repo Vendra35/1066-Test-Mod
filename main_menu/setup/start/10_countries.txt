@@ -17584,10 +17584,12 @@ countries = {
 	#West africa
 
 	JOL = {
+		our_cores_conquered_by_others = {
+			linguere tuubaa mboune ndar dagana koki tivaouane beer_dun ndiaganiao portudal fandene diourbel joal tattaguine diakhao albreda juffure djilor kahone sine_ngayene wanar sorokogne
+		}
+
 		own_control_core = {
-			linguere tuubaa mboune ndar dagana koki
-			tivaouane beer_dun ndiaganiao portudal fandene diourbel
-			joal tattaguine diakhao albreda juffure djilor kahone sine_ngayene wanar sorokogne
+
 		}
 
 		starting_technology_level = 3
@@ -17756,23 +17758,18 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		tolerated_cultures = {
 			benue
 		}
 
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 		capital = zazzau
 	}
 
@@ -17834,8 +17831,12 @@ countries = {
 	}
 
 	OYO = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			oyo_ile kisi igboho ikoyi ogbomosho ede tede saki irawo agbonle ilorin
+		}
+
+		own_control_core = {
+			          
 		}
 
 		starting_technology_level = 3
@@ -17852,6 +17853,7 @@ countries = {
 
 	IFE = {
 		own_control_core = {
+			oyo_ile kisi igboho ikoyi ogbomosho ede tede saki irawo agbonle ilorin
 			ife
 		}
 
@@ -18089,15 +18091,16 @@ countries = {
 	}
 
 	KAB = {
+		our_cores_conquered_by_others = {
+			kaabu salemata iwol bafata farim marsassoum geregia gambia bintang diaboudior casamance tankular bissau cacheu wassu kabakama
+		}
+
 		own_control_core = {
-			kaabu salemata iwol bafata farim
-			marsassoum geregia 
+
 		}
 
 		own_control_integrated = {
-			gambia bintang diaboudior casamance tankular
-			bissau cacheu
-			wassu kabakama 
+
 		}
 
 		starting_technology_level = 3
@@ -18119,12 +18122,12 @@ countries = {
 	DFN = {
 		own_control_core = {
 			diara
-			nioro tourougoumbe diangounte_camara dioumara kolokani kourouninkoto
-			sandare kita
+			     
+			 kita
 		}
 		own_control_integrated = {
-			tichit aoudaghost tidjikja
-			banamba narena tabou_m 
+			  
+			 narena tabou_m 
 		}
 
 		starting_technology_level = 3
@@ -18152,19 +18155,17 @@ countries = {
 
 	GHA = {
 		own_control_core = {
-			koumbi_saleh timbedra nema balle
-			sosso sagala mourdiah guire goumbou
-			sokolo timbuktu kare 
+			koumbi_saleh timbedra nema walata balle nioro tourougoumbe diangounte_camara dioumara kolokani kourouninkoto kayes maghana bakel sandare diamou sosso sagala mourdiah guire goumbou
+
 		}
 		own_control_integrated = {
-			walata 
-			taghaza taoudenni araouane
+
 		}
 		our_cores_conquered_by_others = {
 			diara
 			tichit aoudaghost tidjikja
-			nioro tourougoumbe diangounte_camara dioumara kolokani kourouninkoto
-			sandare banamba 
+			     
+			 banamba 
 			kita narena tabou_m
 		}
 
@@ -18173,8 +18174,9 @@ countries = {
 		include = "subsaharan_muslim_monarchy_no_coast"
 		government = {
 			type = monarchy
-			heir_selection = cognatic_primogeniture
-			ruler = random
+			heir_selection = matrilineal_non_exclusive
+			ruler = gha_tunka_manin
+			ruler_term = { character = gha_tunka_manin start_date = 1063.1.1 regnal_number = 0 }
 
 			laws = {
 				sharia_law = maliki_policy
@@ -18190,23 +18192,22 @@ countries = {
 			tuareg
 		}
 
+		country_rank = rank_kingdom
 		capital = koumbi_saleh
 		religious_school = maliki_school
 		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	BMR = {
+		our_cores_conquered_by_others = {
+			djenne san sanekuy bai segou bla koulikoro nyamina sansanding dioila niono tenenkou arlal bambara_maounde ngouma dogo gargando korientze ras_el_ma safare soumpi tindirma kabara goundam kanibonzon sanga douentza bore koutiala
+		}
+
 		own_control_core = {
-			djenne san sanekuy bai 
-			segou bla koulikoro nyamina sansanding dioila
-			niono tenenkou 
-			arlal bambara_maounde ngouma 
-			dogo gargando korientze ras_el_ma safare soumpi 
-			tindirma kabara goundam 
-			kanibonzon sanga douentza bore 
+
 		}
 		own_control_integrated = {
-			koutiala
+			
 		}
 
 		starting_technology_level = 3
@@ -18233,8 +18234,12 @@ countries = {
 	}
 
 	KBR = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			macina
+		}
+
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -18257,7 +18262,8 @@ countries = {
 	
 	ZGH = {
 		own_control_core = {
-			dia
+			macina niono sokolo dia tenenkou sanga kare douentza bore ngouma arlal bambara_maounde
+			
 		}
 
 		starting_technology_level = 3
@@ -18280,7 +18286,7 @@ countries = {
 
 	BBK = {
 		own_control_core = {
-			kayes diamou
+			 
 			diawara ballou saraya
 			bafoulabe diakha 
 		}
@@ -18306,7 +18312,7 @@ countries = {
 			fulbe
 		}
 
-		capital = kayes
+		capital = diawara
 		religious_school = maliki_school
 		government = { mysticism_vs_jurisprudence = -5 }
 	}
@@ -18317,7 +18323,7 @@ countries = {
 		}
 
 		own_control_integrated = {
-			gourma_rharous
+			
 		}
 
 		starting_technology_level = 3
@@ -18344,6 +18350,7 @@ countries = {
 
 	MAL = {
 		own_control_core = {
+			segou bla koulikoro nyamina sansanding dioila koutiala banamba
 			niani dakadjalan kirina bamako dieribakoro siguiri kaba
 			niagassola 
 			tengrela niena garalo massigui niantjila
@@ -18365,9 +18372,6 @@ countries = {
 			parliament = {
 				parliament_type = council
 			}
-			reforms = {
-				manden_kurufa_reform
-			}
 			laws = {
 				administrative_system = feudal_administration
 				immigration_law = open_borders_law
@@ -18377,8 +18381,6 @@ countries = {
 				education_masses_law = uneducated_masses_education
 				feudal_de_jure_law = by_tradition
 				legal_code_law = sharia_law_policy
-				distribution_of_power_law = dop_law_gbara
-				medieval_levy_law = ton_ta_jon_ta_ni_woro
 				marriage_law = muslim_marriage
 				sharia_law = maliki_policy
 				iqta_law = efficient_tax_farming
@@ -18430,11 +18432,6 @@ countries = {
 			}
 		}
 
-		currency_data = {
-			gold = 2500	#Mansa Mūsā's wealth
-			prestige = 50
-		}
-
 		accepted_cultures = {
 			soninke
 		}
@@ -18447,7 +18444,7 @@ countries = {
 			kpelle
 		}
 
-		country_rank = rank_empire
+		country_rank = rank_duchy
 		capital = niani
 		dynasty = keita_dynasty
 		religious_school = maliki_school
@@ -18456,9 +18453,10 @@ countries = {
 
 	SGH = {
 		own_control_core = {
-			awlil rosso
+			 
 		}
 		our_cores_conquered_by_others = {
+			awlil rosso
 		}
 
 		starting_technology_level = 3
@@ -18481,9 +18479,10 @@ countries = {
 
 	TKR = {
 		own_control_core = {
+			ndar dagana koki beer_dun tivaouane ndiaganiao portudal fandene diourbel joal tattaguine diakhao albreda djilor juffure sine_ngayene kahone wanar sorokogne linguere tuubaa mboune gambia bintang diaboudior casamance marsassoum geregia tankular wassu kabakama cacheu farim bissau kaabu bafata iwol salemata
 			podor walalde sioure golere salde agnam_civol silla
 			nguidjilone thilogne kanel waounde moudery kaedi matam
-			maghana bakel 
+			  
 		}
 		our_cores_conquered_by_others = {
 		}
@@ -18584,6 +18583,7 @@ countries = {
 
 	SON = {
 		own_control_core = {
+			timbuktu kabara goundam gourma_rharous tindirma
 			gao tondibi ansongo kukiya 
 			hombori dorey 
 			deou tessit kissi_loc gorouol mondoro aribinda
@@ -18775,20 +18775,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = kano
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	KTS = {
@@ -18798,20 +18793,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = katsina
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	ZAM = {
@@ -18823,20 +18813,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = birnin_zamfara
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	KEB = {
@@ -18869,20 +18854,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = rano
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	GOB = {
@@ -18893,20 +18873,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = alkalawa
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	DAA = {
@@ -18916,20 +18891,15 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_west_africa_muslim"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			type = monarchy
 			heir_selection = cognatic_primogeniture
 			ruler = random
 
-			laws = {
-				sharia_law = maliki_policy
-			}
 		}
 
 		capital = daura
-		religious_school = maliki_school
-		government = { mysticism_vs_jurisprudence = -5 }
 	}
 
 	KBO = {
@@ -18976,10 +18946,6 @@ countries = {
 				clergy_land_rights
 			}
 
-			reforms = {
-				banu_hummay_amendments
-			}
-
 			laws = {
 				sharia_law = maliki_policy
 			}
@@ -18993,10 +18959,9 @@ countries = {
 			mandara_culture
 		}
 
-		country_rank = rank_empire
+		country_rank = rank_kingdom
 
 		capital = njimi
-		dynasty = sayfawa_dynasty
 		religious_school = maliki_school
 		government = { mysticism_vs_jurisprudence = -5 }
 	}
@@ -19205,22 +19170,22 @@ countries = {
 	ETH = {
 		own_control_core = {
 			kubar aheyya_fagg gannata_giyorgis tadbaba #amhara_province
-			kombolcha #argobba_province
+			 #argobba_province
 			tsana debre_tabor #begemder_province
 			lalibela antalo sokota #lasta_province
 			senafe yeha #serae_province
-			axum abiy_addi adwa shire #tigray_province
-			debre_libanos ambat badabedi wej #wej_province
-			debra_berhan #wej_province
-			ankober gendebelo nora_eth #argobba_province
+			axum abiy_addi adwa  #tigray_province
+			    #wej_province
+			 #wej_province
+			   #argobba_province
 			dima bahir_dar dangila debra_warq enjebara #gojjam_province
-			gonder #begemder_province
+			 #begemder_province
 		}
 
 		own_control_integrated = {
 			maldarede gambo #damot_province
-			barara ziqwala #shewa_province
-			waldeba debarq kosoge #semien_province
+			  #shewa_province
+			   #semien_province
 		}
 
 		own_control_conquered = {
@@ -19255,12 +19220,11 @@ countries = {
 			offensive_vs_defensive = -30
 			outward_vs_inward = 0
 		}
-		capital = ankober #Marade/Tegulet, made capital by Amda Seyon I
-		country_rank = rank_empire
+		capital = kubar #Marade/Tegulet, made capital by Amda Seyon I
+		country_rank = rank_kingdom
 
 		liturgical_language = geez_language
-
-		dynasty = solomonid_dynasty
+		court_language = ethiopic_language
 
 		tolerated_cultures = {
 			agaw_culture gurage
@@ -19345,8 +19309,12 @@ countries = {
 
 	#Simien - BTI (Revolter)
 	BTI = {
+		own_control_core = {
+			waldeba debarq kosoge gonder shire
+		}
+
 		our_cores_conquered_by_others = {
-			gonder kosoge debarq waldeba shire
+			    
 		}
 
 		starting_technology_level = 3
@@ -19363,6 +19331,7 @@ countries = {
 	#Dankali - AFA (Denkelia)
 	AFA = {
 		own_control_core = {
+			asaita killelu mora_eth
 			tadjoura assab balho obock rahayta #afar_province
 			bayul dallol edd #denkelia_province
 			afrera #dobea_province
@@ -19417,20 +19386,21 @@ countries = {
 	#Ifat - IFA
 	IFA = { #Tributary of Ethiopia
 		own_control_core = {
-			garacad #ajan_province
-			burao garoowe maduna qardho #ciid_province
-			aware buhoodle degehabur geledi gode hargaya limey oodweyne #haud_province
-			zeila ali_sabieh amud el_sheikh hargeisa #ifat_province
-			berbera el_darad fardawsa ruguda siyara xagal #guban_province
-			bandarbeyla barbacadle #majerteen_province
-			awrtable el_hamurre galkayo #mudugh_province
+			 #ajan_province
+			    #ciid_province
+			        #haud_province
+			     #ifat_province
+			      #guban_province
+			  #majerteen_province
+			   #mudugh_province
 			# own_control_integrated, but culture accepted
-			arabi awbare dakkar dire_dawa jeldesa #adal_province
-			asaita killelu mora_eth #mora_province
+			     #adal_province
+			   #mora_province
 
 		}
 
 		our_cores_conquered_by_others = {
+			garacad burao garoowe maduna qardho aware buhoodle degehabur geledi gode hargaya limey oodweyne zeila ali_sabieh amud el_sheikh hargeisa berbera el_darad fardawsa ruguda siyara xagal bandarbeyla barbacadle awrtable el_hamurre galkayo arabi awbare dakkar dire_dawa jeldesa asaita killelu mora_eth
 			ankober gendebelo nora_eth #argobba_province
 		}
 
@@ -19458,9 +19428,13 @@ countries = {
 	}
 
 	#Harla - HRL
-	HRL = { #https://en.wikipedia.org/wiki/Harla_kingdom
-		own_control_core = {
+	HRL = {
+		our_cores_conquered_by_others = {
 			harar
+		}
+ #https://en.wikipedia.org/wiki/Harla_kingdom
+		own_control_core = {
+			
 		}
 
 		starting_technology_level = 3
@@ -19588,7 +19562,7 @@ countries = {
 	DAW = {
 		own_control_core = {
 			sheikh_hussein #bale_province
-			sharka #shewa_province
+			 #shewa_province
 		}
 
 		starting_technology_level = 3
@@ -19664,8 +19638,12 @@ countries = {
 
 	#Shewa - SOA (Revolter)
 	SOA = {
+		own_control_core = {
+			ankober gendebelo kombolcha nora_eth barara sharka ziqwala debre_libanos ambat badabedi debra_berhan wej
+		}
+
 		our_cores_conquered_by_others = {
-			ankober gendebelo nora_eth #argobba_province
+			   #argobba_province
 		}
 
 		starting_technology_level = 3
@@ -19688,8 +19666,12 @@ countries = {
 
 	#Adal - ADA (Bookmark/Vassal?)
 	ADA = {
+		own_control_core = {
+			harar arabi awbare dakkar dire_dawa jeldesa siyara zeila amud el_sheikh hargeisa ali_sabieh
+		}
+
 		our_cores_conquered_by_others = {
-			siyara harar arabi awbare dakkar dire_dawa jeldesa
+			      
 		}
 
 		starting_technology_level = 3
@@ -19709,8 +19691,9 @@ countries = {
 	#Ajuran - AJU
 	AJU = {
 		own_control_core = {
-			hobyo harardhere mareeg warsheikh #ajan_province
-			barawa haranka merca qoryooley #banaadir_province
+			awrtable el_hamurre galkayo
+			    #ajan_province
+			    #banaadir_province
 			kelafo el_dhere #haud_province
 			kismayo afmadow bardera buale garbahare jilib luuq rasini #jubaland_province
 			dusmareb ceeldheer el_buur #mudugh_province
@@ -19733,13 +19716,14 @@ countries = {
 		government = { mysticism_vs_jurisprudence = 20 }
 
 		country_rank = rank_kingdom
-		capital = merca
+		capital = kelafo
 	}
 
 	#Mogadishu - MDI
 	MDI = { #Vassal of Ajuran
 		own_control_core = {
-			mogadishu
+			mogadishu barawa haranka merca qoryooley hobyo garacad harardhere mareeg warsheikh
+			
 		}
 
 		starting_technology_level = 3
@@ -19765,8 +19749,9 @@ countries = {
 	#Warsangali - WAR
 	WAR = {
 		own_control_core = {
-			haylan erigavo #ciid_province
-			bosaso el_ayum las_khorey maydh #maakhir_province
+			bosaso el_ayum las_khorey maydh haylan burao erigavo garoowe maduna qardho alula bandarbeyla barbacadle bargaal qandala ras_hafun berbera el_darad fardawsa ruguda xagal aware buhoodle degehabur geledi gode hargaya limey oodweyne
+			  #ciid_province
+			    #maakhir_province
 		}
 
 		starting_technology_level = 3
@@ -19789,8 +19774,12 @@ countries = {
 
 	#Tanade - TDE https://en.wikipedia.org/wiki/Leelkase
 	TDE = {
+		our_cores_conquered_by_others = {
+			alula bargaal qandala ras_hafun
+		}
+
 		own_control_core = {
-			alula  bargaal qandala ras_hafun #majerteen_province
+			     #majerteen_province
 		}
 
 		starting_technology_level = 3
@@ -19836,9 +19825,13 @@ countries = {
 
 	#Al-Abwab - ABW
 	ABW = {
+		our_cores_conquered_by_others = {
+			el_metemma ed_damer shendi
+		}
+
 		own_control_core = {
-			el_metemma #bayuda_province
-			ed_damer shendi #lower_butana_province
+			 #bayuda_province
+			  #lower_butana_province
 		}
 
 		starting_technology_level = 3
@@ -19858,6 +19851,7 @@ countries = {
 	#Alodia - ALO
 	ALO = {
 		own_control_core = {
+			ed_damer shendi
 			atbara kassala #atbai_province
 			omdurman #bayuda_province
 			kosa waylula #kordofan_province
@@ -19869,7 +19863,7 @@ countries = {
 
 		our_cores_conquered_by_others = {
 			el_metemma #bayuda_province
-			ed_damer shendi #lower_butana_province
+			  #lower_butana_province
 		}
 
 		starting_technology_level = 3
@@ -19980,6 +19974,7 @@ countries = {
 	#Makuria - MAK
 	MAK = {
 		own_control_core = {
+			el_metemma
 			ed_debba al_jeblien korti shemkhiya #bayuda_province
 			wadi_el_melik #kordofan_province
 			dongola abu_hamed berber kerma karima #makuria_province
@@ -19989,23 +19984,19 @@ countries = {
 
 		starting_technology_level = 3
 		include = "expl_horn_of_africa_no_coast"
-		include = "subsaharan_muslim_monarchy_no_coast"
+		include = "subsaharan_monarchy_no_coast"
 		government = {
 			heir_selection = matrilineal_non_exclusive
 			ruler = random
 
-			laws = {
-				sharia_law = shafii_policy
-			}
 		}
-		religious_school = shafii_school
-		government = { mysticism_vs_jurisprudence = 20 }
 
 		tolerated_cultures = {
 			sudanese_arab
 		}
 
 		country_rank = rank_kingdom
+		liturgical_language = coptic_language
 		capital = dongola
 	}
 
@@ -20348,7 +20339,7 @@ countries = {
 			somana ibo gomene memba nacala
 		}
 
-		country_rank = rank_kingdom
+		country_rank = rank_duchy
 
 		starting_technology_level = 3
 		include = "expl_east_africa"
@@ -20361,10 +20352,6 @@ countries = {
 			heir_selection = cognatic_primogeniture
 			parliament = {
 				parliament_type = council
-			}
-			reforms = {
-				kilwan_trade_communities
-				control_of_the_mahdali_coinage_reform
 			}
 
 			laws = {
@@ -20438,12 +20425,6 @@ countries = {
 		tolerated_cultures = {
 			yao_culture
 			swahili_culture
-		}
-
-		currency_data = {
-			stability = 40 #Smooth and voluntary transition of power from previous Sultan
-			prestige = 25
-			government_power = 90 #Smooth and voluntary transition of power from previous Sultan
 		}
 
 		capital = kilwa_kisiwani
@@ -58681,6 +58662,22 @@ countries = {
 		capital = caserta
 	}
 
+	DJN = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			djenne san sanekuy bai kanibonzon safare dogo soumpi korientze ras_el_ma gargando
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_monarchy_no_coast"
+		country_rank = rank_duchy
+
+		capital = djenne
+	}
+
 	DUB = {
 		government = {
 			ruler = lei_murchad_mac_diarmata
@@ -59558,6 +59555,22 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = salerno
+	}
+
+	SNH = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			tichit aoudaghost tidjikja arguin nouamghar nouakchott akjoujt awlil rosso atar azougui chingetti wadan idjil taghaza taoudenni araouane
+		}
+
+		starting_technology_level = 3
+		include = "expl_west_africa_muslim"
+		include = "subsaharan_muslim_tribe"
+		country_rank = rank_duchy
+
+		capital = aoudaghost
 	}
 
 	SUD = {
