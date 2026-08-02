@@ -1,3 +1,16 @@
+> **STATUS (2026-08-02): HISTORICAL PLANNING RECORD.** Written before any
+> Phase 2 slice landed; the MAP half of Phase 2 is now CLOSED (41 HANDOFF
+> items — every region's borders, rulers and diplomacy at 1066; 179
+> thrones seated through the very mechanisms § below describes as "not
+> yet exercised"). The mechanisms sections are superseded by the living
+> code (`tools/build_setup.py`) and the per-theater package docs. **The
+> still-live part of this file is the SITUATION BACKLOG** — the
+> 1066-1337 content list — which the situations phase will consume;
+> cross-check it against `docs/SITUATION-SPECS.md` (whose Pecheneg route
+> cites the DEAD SKE law — re-derive before use) and the banked
+> situation material in the package §H sections (Second Diffusion,
+> Chola-Srivijaya 1025, Yugra 1096, Vinland).
+
 # Phase 2 — making 1066 historical
 
 > Phase 1 made the world *work*: full map, sane rulers, no error flood. It makes

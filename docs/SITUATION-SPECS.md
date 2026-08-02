@@ -1,3 +1,17 @@
+> **STATUS (2026-08-02): UNIMPLEMENTED — the situations phase's primary
+> input, now NEXT-BUT-ONE in the queue (after the pop phase; the map
+> phase closed with item 41).** Two cautions before building from this:
+> (1) **its Pecheneg route cites the DEAD SKE law** (AUDIT-2026-07-31
+> §4.1 killed it — a tag needs BOTH a registry identity block AND a
+> claims-backed landless start block; re-derive that spec before use);
+> (2) the world under it has changed — 41 items landed since it was
+> written; re-verify every tag/holding claim against the build. New
+> banked situation material since: the Second Diffusion (TIBET §H —
+> re-create the Sakya 1073/Jonang 1120 sect instances on schedule), the
+> 1025 Chola-Srivijaya raid (SEA §H), Novgorod's Yugra tribute c. 1096
+> (PERM-VYATKA §H), a Vinland/Markland thread (AMERICAS §0.8/§H), and
+> the MEC khutba switch of 1071 + the Mustansirite Hardship (item 19).
+
 # SITUATION SPECS — the 1066 backlog, ready to build
 
 > Produced by the situation-spec research pass (Opus agent, 2026-07-29),

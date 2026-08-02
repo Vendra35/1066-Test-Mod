@@ -2,6 +2,16 @@
 > JAP fix, the Song reskin — landed 2026-08-01).** Two of its claims were
 > REFUTED at review (the 18-claim-list cost, the name-key-language check
 > premise) — see HANDOFF; code and HANDOFF win where they disagree.
+> **CLOSING AUDIT (item 41, `docs/CHINA-RESIDUE-PACKAGE.md` §0.1):** D3,
+> D4, D5b, D6, D7 and five of §5.2's seven items landed with ZERO
+> residue; D2's prescription named the wrong tokens (the CHI identity
+> pair — `mongolian_culture`/`tibetan_buddhism` — was the real miss,
+> fixed in item 41), §5.2/4's KOR governorship was taken after all
+> (item 32's divergence overturned once item 33 created the Liao), and
+> §5.2/7's QUN retired. Also corrected en route: §2.3's "56 tags" is 57
+> (SEA package) and its VTN 32 was RIGHT (the SEA package's "correction"
+> withdrawn). This document is fully consumed; nothing in it remains
+> actionable.
 
 # INDIA, CHINA AND THE REST OF ASIA AT 1066 — review and triage
 

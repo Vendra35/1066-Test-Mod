@@ -15,10 +15,16 @@ inside a single age, so 1066 spends 276 years in `age_1_traditions` and will
 most likely need an age of its own eventually.
 
 This file holds the RULES. Current state and architecture live in
-`docs/HANDOFF.md`: Phase 1 is built, measured in a running game, and generated
-by `tools/build_setup.py`; the first Phase 2 slice (five North Sea rulers) is
-written but not yet observed in game. Read this file, then `docs/HANDOFF.md`,
-then `docs/KNOWLEDGE.md`, in that order, before writing anything.
+`docs/HANDOFF.md` — read its "NEXT SESSION STARTS WITH" block first; it is
+kept current at every session close. As of 2026-08-02: Phase 1 is done and
+**Phase 2's MAP half is CLOSED** — 41 HANDOFF items, every region of the
+world at 1066 (borders, rulers, diplomacy), items 1-34 game-tested and
+35-41 committed awaiting the accumulated test. What remains of Phase 2:
+the POP phase (populations are still 1337 in the corrected regions — the
+inherited §H lists in the package docs), then the SITUATIONS backlog
+(the 271-year gap: Manzikert first). Read this file, then
+`docs/HANDOFF.md`, then `docs/KNOWLEDGE.md`, in that order, before
+writing anything.
 
 **Scope: the whole map, historically, in two phases.** The target is a real
 overhaul — every region at 1066, not one region deep and the rest borrowed. That

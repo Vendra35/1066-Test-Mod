@@ -1,9 +1,16 @@
-> **STATUS (2026-08-02): the Baltic (item 35) and sub-Saharan Africa (item
-> 36) TERRITORIAL slices have landed — BALTIC-PACKAGE §H and AFRICA-PACKAGE
-> §H now carry the authoritative pop-correction lists for those theaters
-> (Baltic religion, Ghana/Kanem paganism; the Hausa GROUND was already
-> right and the seven COUNTRIES were flipped in the registry override).
-> Re-measure the tables below before acting on them.**
+> **STATUS (2026-08-02, end of the map phase): SUPERSEDED as the design —
+> `docs/POP-PHASE-PACKAGE.md` is now the pop phase's decision-ready
+> package** (DRAFT, unreviewed — the next session's first job). This file
+> remains the banked-traps record it consumed. CRITICAL refinement the
+> package established: several §H corrections in the theater packages
+> were measured on the SEED layer (`location_templates.txt`) rather than
+> the STATE (`06_pops.txt` pops) — five of them RETIRE outright
+> (PERM-VYATKA §0.5's eleven Uralic religions sit on 71/63/84 POP
+> locations; AMERICAS' CLM teco is on CLM's own six; Kedah shrinks to
+> one line). Re-measure against POPS, not templates. Also note its
+> anchor-class find: `location_templates.txt` is a ONE-LINE-BLOCK file —
+> a line-anchored parser returns a confident zero. This file's :79
+> Basileia citation says `mozarab`; the actual key is `mozarabic`.
 
 # THE POP PHASE — decoded data layer + generator design brief
 
