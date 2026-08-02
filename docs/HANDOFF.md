@@ -1766,62 +1766,123 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
 9. Yoruba country: Ife holds the core, no Oyo.
 10. scan_log.py: REGRESSION 0 expected; landless flood must NOT grow.
 
+37. **SOUTHEAST ASIA (LANDED `b3f3665`, untested — test accumulates).**
+   The SEA package reviewed (its reader missed `own_control_integrated`
+   — the STATUS band carries every correction), decisions 1-13
+   user-approved. 4 new tags (PGN Pagan, HPJ Haripunjaya, KDR Kediri,
+   JGL Janggala), 249 locations over 16 rule sets, 16 tags landless
+   (PIN SAG PEG TSM BPR TNG SUK ADH LNA VTN MAJ ARU ATJ PSA MNA MGD),
+   zero vacates, zero UNOWNED_GRANTS. Thrones 176→178: **Anawrahta**
+   authored on PGN (vanilla literal + pagan_dynasty), vanilla
+   **adh_narai** cross-tag on LAV — vanilla's own LAV block terms him
+   from 1082 (`_ACC_EXEMPT` born, the [D] 1052 reading ours). PLB
+   promoted `rank_kingdom` (FIELD_FIXES); the five-tributary Srivijayan
+   mandala (JMB INR SGT BUS PNI) rides **vanilla's own
+   `mandala_system`** — the first reform-free-for-us tributary ring;
+   BEI's five vassals + JMB→PNI stripped by name; ARK capital →
+   weithali; KHM +24 Khorat (the one item-32 seam touch); PGN's sect
+   seat: the Burmese Buddhism IO would have EMPTIED (all four vanilla
+   members retire) — PGN joins it, KDR/JGL join shaivism. Harness:
+   the tributary-gate check was blind to template-carried and
+   vanilla-defined reforms — now walks nested include chains and
+   vanilla government_reforms (proven: PLB out of the set fails
+   vacuous 73<78); NEW check pins the empty-members IO count at
+   vanilla's own 9 (the drained-sect probe passed green before it —
+   proven by breaking); stale 233/7 assert strings fixed. Deps 265,
+   ghosts 155, pacts 9 — all observed failing first. POP-PHASE
+   inherits SEA-PACKAGE §H + decision 4 (HPJ's Khon Muang pops under
+   the Mon identity; Kedah's sunni trio).
+   TEST — click tour, ~12 minutes (accumulates with items 33-36):
+   1. Burma: ONE large Pagan over the Irrawaddy + delta ("Kingdom of
+      Pagan", map "Pagan"); **Anawrahta** on the throne, 52, house
+      Pagan, capital Bagan; NO Pinya/Sagaing/Hanthawaddy/Toungoo/
+      Prome/Tenasserim; tiny Kale (KAL) alive in the hills; Arakan's
+      capital is **Weithali**, Shan hills untouched.
+   2. Thailand: NO Sukhothai/Lan Na/Ayutthaya. Lavo big in the basin
+      (28), **Narai** ruling from Lopburi (46 — the vanilla-character
+      seat probe); Haripunjaya at Lamphun (check the panel: MON
+      primary culture over Tai pops — expected, the PAA shape);
+      Suphanburi + Phetchaburi alive; Khmer holds the Khorat plateau
+      (~104 total).
+   3. **THE MAHĀRĀJĀ PROBE (OWED CHECK 1, the slice's headline):**
+      click Palembang → does it read **"Mahārājya of Palembang"**
+      under a **"Mahārājā"**? If it reads plain "Kingdom"/"King", the
+      dialect→language scope-link inference failed — record EITHER
+      way in KNOWLEDGE (it decides every Malay-culture rank render).
+   4. The mandala: five tributaries under PLB (Melayu, Indragiri,
+      Siguntur, Barus, Pannai) with OWN colors and OPEN war screens —
+      if any shows as vassal, the vanilla-template reform lost at
+      init and error.log has government.cpp:3702 lines naming them
+      (the SEL fallback decision would then apply).
+   5. Java: NO Majapahit; **Kediri** (west, MAJ's crimson) and
+      **Janggala** (east, light blue) split at the Brantas; Bali and
+      Sunda unchanged (Sunda's capital still Kawali — decision 11).
+   6. Philippines/Borneo: Brunei has NO subjects; Butuan independent
+      AND six locations (the Agusan coast was always its — review
+      find); Ma-i free, Tondo holds Maynila; no Maguindanao (KIM
+      grew); Sulu alive with its two vassals.
+   7. Aceh: no Pasai, no Aceh Darussalam — Linge holds the coast
+      (LGE, the decision-7 invention; eyeball its render).
+   8. Sects: the Burmese Buddhism IO exists with Pagan as its member
+      (the would-have-emptied probe); Mūlasarvāstivāda intact.
+   9. error.log: landless trims grow by ~16 tags (known class 3);
+      NO new classes; specifically zero 3702 lines naming the five
+      mandala subjects (probe 4's log side).
+   10. scan_log.py REGRESSION 0; the landless flood must not grow
+      beyond the known class.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
 WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
-test of 2026-08-01 passed). Items 35 (Baltic) and 36 (Africa) are
-LANDED, COMMITTED and HARNESS-GREEN but **NOT YET GAME-TESTED** — the
-user is accumulating tests deliberately ("testi en son yapalım").
-HEAD after the Africa day: `170c944`; the five commits of 2026-08-01/02
-are `cb81a85` (Baltic slice), `6ce8ed7` (emptied-shape delta guard),
-`3d19206` (item 35 + KNOWLEDGE), `5a2977d` (African registry
-overrides), `ef51eb4` (Africa slice), `170c944` (item 36 + KNOWLEDGE).
-Constants right now: registry 67 blocks, country blocks 2404, thrones
-176, deps 253, pacts 9, IO ghosts 145, parliament min 1376, harness
-all green, working tree clean.
+test of 2026-08-01 passed). Items 35 (Baltic), 36 (Africa) and **37
+(Southeast Asia)** are LANDED, COMMITTED and HARNESS-GREEN but **NOT
+YET GAME-TESTED** — the user is accumulating tests deliberately
+("testi en son yapalım"). HEAD after the SEA day: see git log —
+`b3f3665` (SEA slice) + the docs commit carrying this block; the
+Africa-day commits before them: `cb81a85` `6ce8ed7` `3d19206`
+`5a2977d` `ef51eb4` `170c944`. Constants right now: registry 71
+blocks, country blocks 2408, thrones 178, landless-dep strips 265
+(294 kept), pacts 9, IO ghosts 155, parliament min 1364, loc rows
+367, harness all green (+1 new check: IO empty-members pinned at 9),
+working tree clean.
 
 1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
-   before.** It is items 33+34 leftovers + 35 + 36 in one sitting:
-   the click tours are written inside each item above. One-glance
-   musts: Song panel 2/3 reforms ACTIVE; scan_log.py REGRESSION 0;
-   the Baltic tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-
-   King probes; landless flood NOT grown. **During that test the user
+   before.** It is items 33+34 leftovers + 35 + 36 + 37 in one
+   sitting: the click tours are written inside each item above.
+   One-glance musts: Song panel 2/3 reforms ACTIVE; scan_log.py
+   REGRESSION 0; the Baltic tribes and no Teutons; Tunka Manin /
+   "Mai" / Negus-or-King probes; **the Mahārājā probe (item 37.3 —
+   OWED CHECK 1 rides on it) and the five mandala tributaries
+   (37.4)**; landless flood NOT grown. **During that test the user
    will send an HRE close-up screenshot** — audit Germany density
    against items 23/25 (promised follow-up, still owed).
-2. **The SEA (Southeast Asia) research agent was STOPPED mid-flight
-   on 2026-08-02** (user limit economy) BEFORE it wrote anything —
-   there is NO docs/SEA-PACKAGE.md and nothing partial anywhere.
-   Re-launch it fresh when work resumes. Scope it was given: Pagan
-   under Anawrahta (r. 1044-1077, Thaton conquered 1057), the Mon
-   states, Arakan; maritime — Srivijaya/San-fo-qi weakened post-1025
-   Chola raids (Palembang vs Jambi [D]), Java SPLIT 1049 into
-   Janggala + Panjalu/Kediri (Airlangga died 1049), Bali, Sunda, the
-   Chola-pressured Malay peninsula, Butuan (1003/1011 China missions),
-   Brunei/Po-ni. EXCLUDED as done-slice seams: Dai Viet, Champa, KHM,
-   Korea, Japan (China-East + Northern Dynasties), Chola world (India
-   Tier 1). Likely 1337 deaths to verify: Majapahit 1293, Ayutthaya
-   1351, Sukhothai 1238, Lan Na 1292, Lan Xang 1353, Malacca c. 1400,
-   Muslim Sumatra (Pasai, 13th c.), Singhasari 1222. Format exemplars:
-   AFRICA-PACKAGE.md and BALTIC-PACKAGE.md; agents research ONLY, the
-   main session writes (user decision 2026-07-30).
-3. **Theater queue after SEA:** Tibet, Perm/Vyatka, Mesoamerica-lite,
+2. **SEA is DONE (item 37).** The research agent ran 2026-08-02
+   (relaunched fresh after the earlier stop), docs/SEA-PACKAGE.md
+   landed and was reviewed — its reader missed
+   `own_control_integrated` blocks (the STATUS band carries every
+   correction; the phantom-unowned law went to KNOWLEDGE) — and the
+   slice shipped same day as `b3f3665`, decisions 1-13 user-approved.
+3. **Theater queue next:** Tibet, Perm/Vyatka, Mesoamerica-lite,
    the China D2-D7 leftovers; then the pop phase (its inherited
-   correction lists live in BALTIC-PACKAGE §H and AFRICA-PACKAGE §H —
-   Baltic religion, Ghana/Kanem paganism, Hausa ground already done),
-   then the situations backlog (Norman Conquest v2 owed, the
-   SITUATION-SPECS report — but its Pecheneg route cites the DEAD SKE
-   law, re-derive before use).
+   correction lists live in BALTIC-PACKAGE §H, AFRICA-PACKAGE §H and
+   now SEA-PACKAGE §H + decision 4 — HPJ's Khon Muang pops, Kedah's
+   sunni trio), then the situations backlog (Norman Conquest v2 owed,
+   the SITUATION-SPECS report — but its Pecheneg route cites the DEAD
+   SKE law, re-derive before use; the 1025 Chola-Srivijaya raid is
+   banked situation material, SEA-PACKAGE §H).
 4. **Standing rhythm with the user (unchanged):** research package →
    main-session verification of its claims (every package so far
    contained implementation-level errors the review caught — KBR,
    banamba, ankober, SXM's monarchy shell, the (e) break-test
-   refutation; treat "the package says" as a hypothesis) → Turkish
-   AÇIK KARARLAR table → wait for "onay" → implement with
-   observe-then-move constants and break-tests → HANDOFF item +
-   Turkish click tour → commit. Conversation in Turkish, repo in
-   English. The user protects their usage limit: one step at a time,
-   no parallel agent fleets unless asked.
+   refutation, and now the SEA reader's integrated-block blindness +
+   the G.2/G.4 double-overlord contradiction; treat "the package
+   says" as a hypothesis) → Turkish AÇIK KARARLAR table → wait for
+   "onay" → implement with observe-then-move constants and
+   break-tests → HANDOFF item + Turkish click tour → commit.
+   Conversation in Turkish, repo in English. The user protects their
+   usage limit: one step at a time, no parallel agent fleets unless
+   asked.
 
 **(HISTORICAL) NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —

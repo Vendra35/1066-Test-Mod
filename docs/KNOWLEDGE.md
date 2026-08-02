@@ -2062,6 +2062,54 @@ does not exist — a county-rank Muslim state renders "County"/"Count".
 walk both files at the exact rank before declaring one, and grep for
 culture-gated branches, not just tag-gated ones.
 
+### A country reader missing an OWN_KEYS member reports phantom unowned land
+
+**Established:** SEA package review, 2026-08-02. The build's ownership
+model is exactly TEN list keys (`tools/build_setup.py:5388`,
+`own_control_core` … `control`); the SEA research agent's independent
+reader counted a subset that missed **`own_control_integrated`**, and
+every conclusion downstream of it was confidently wrong: ten
+"vanilla-unowned" Khorat/Mekong locations (VTN's 7 + MUA's 3 integrated
+holdings) grew a whole UNOWNED_GRANTS design for land that had owners;
+VTN "25" (real 32) "corrected" INDIA-CHINA-REVIEW's correct figure;
+BTU "1 location" actually holds the Agusan coast (6) — mooting a
+grow-Butuan decision argument; MGD "1" was 5. In-theater, 62 locations
+sat invisible. The review caught it by re-running the counts with the
+build's own reader — same class as the `^`-anchored-BOM and
+one-line-block blind spots: a partial reader does not error, it lies.
+**Means:** a package's "unowned" / "holds N" claims are hypotheses
+until reproduced with the full OWN_KEYS set; any UNOWNED_GRANTS
+proposal must first re-prove the zero with `_ownership_index`, and any
+reader written outside `build_setup.py` should import its parsers
+rather than reimplement them.
+
+### The tributary visible gate can ride a VANILLA reform — and the gate check had to learn templates
+
+**Established:** SEA slice, 2026-08-02. `mandala_system`
+(`VAN/in_game/common/government_reforms/country_specific.txt:3894-3915`)
+carries `allow_tributary_subject = yes` and sits in the `reforms = { }`
+block of all four SEA monarchy templates — so the five-pair Srivijayan
+ring (PLB → JMB/INR/SGT/BUS/PNI) ships with NO authored reform: gate
+pattern #4 after the authored-khutba reforms, the tribe branch, and
+the setup-assigned-reform-beats-validator law. Exposing it exposed the
+HARNESS: the tributary-gate check read only the overlord block's
+INLINE `reforms = { }` and looked the key up only in MOD reform files
+— both blind because every earlier ring was mod-authored and inline.
+The check now walks the overlord's include chain (NESTED, cached — the
+welsh_releasable lesson again) and searches vanilla's
+government_reforms too; proven both directions (the five PLB ties
+flagged before the fix, green after; PLB removed from
+`_MOD_TRIB_OVERLORDS` fails the vacuous-scan floor 73<78). Rider from
+the same day: vanilla ships **11 legitimately EMPTY IO member lists**,
+so "zero members" is not an error class — a sect DRAINED by our
+landless sweep is, and no check noticed a hand-drained Burmese
+Buddhism sect until the pinned-count check (9 empties, proven by
+breaking) was added.
+**Means:** before authoring a gate reform for a new tributary ring,
+read the parties' template chains — vanilla may already pay the gate;
+and any check that reads a country block's fields must follow
+includes, or it sees only what vanilla chose to inline.
+
 ## Template for new entries
 
 ```
