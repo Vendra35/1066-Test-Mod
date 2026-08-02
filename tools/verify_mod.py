@@ -164,14 +164,14 @@ for p in yml_files:
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: not a `key: value` line -> {t[:50]}")
         elif re.match(r'^ [A-Za-z0-9_.]+:\s*"', line) and not line.rstrip().endswith('"'):
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: value opens a quote it never closes")
-check("loc lines are well formed", count, probs, min_count=367)  # raised with SEA (2026-08-02): 367 rows live
+check("loc lines are well formed", count, probs, min_count=375)  # raised with Tibet (2026-08-02): 375 rows live
 
 keys, dupes = set(), []
 for p in yml_files:
     for m in re.finditer(r"^ ([A-Za-z0-9_.]+):", read(p), re.M):
         if m.group(1) in keys: dupes.append(m.group(1))
         keys.add(m.group(1))
-check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=367)  # raised with SEA (2026-08-02)
+check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=375)  # raised with Tibet (2026-08-02)
 
 # -------------------------------------------------------- dates and ages ---
 # The start date is mirrored into three defines trees because the evidence for
@@ -285,7 +285,7 @@ else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
 # Armed at 290: 145 named rulers + 145 terms after Germany II.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=356)  # 178 thrones (SEA, 2026-08-02)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=358)  # 179 thrones (Tibet, 2026-08-02)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -373,7 +373,7 @@ for _c in sorted(_PLURALISTS):
 # Armed at 540 after Italy North: 89 authored characters + 48 dynasties
 # + 153 seats
 # (512 measured after Germany II).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=641)  # +Anawrahta (SEA, 2026-08-02)
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=646)  # +Dongzhan/tsongkha (Tibet, 2026-08-02)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -410,7 +410,7 @@ print(f"       accessions cross-checked against vanilla's own terms: {_compared}
 # ships zero Muslim characters born before 1054 and zero Germans alive
 # in 1066 outside Heinrich IV's line, so none of those rulers is
 # comparable.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=178)  # SEA, 2026-08-02
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=179)  # Tibet, 2026-08-02
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would
@@ -426,7 +426,7 @@ if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
 # Armed at 116 authored characters after Italy North (+7: Beatrice,
 # Matilda, Ulric, the three prelates, Adelaide).
-check("authored character keys collide with nothing", count, probs, min_count=138)  # SEA, 2026-08-02
+check("authored character keys collide with nothing", count, probs, min_count=139)  # Tibet, 2026-08-02
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
@@ -935,7 +935,7 @@ for _i, _b in enumerate(_blk_starts):
     if _n != 1:
         probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
 check("exactly one ruler key per country block", _rblocks, probs,
-      min_count=2408)  # + 4 SEA (2026-08-02)
+      min_count=2411)  # + 3 Tibet (2026-08-02)
 
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
@@ -1049,6 +1049,10 @@ _GENERATOR_OK = {
     # shields — no heraldry existed to reproduce. Every other
     # SEA-slice tag is vanilla with vanilla arms.
     "PGN", "HPJ", "KDR", "JGL",
+    # Tibet — tier 4, permanent: Tibetan polities used seals, banners
+    # and monastic emblems, not shields. TIB itself keeps vanilla's
+    # arms as a landless shell (_van_coa_keys branch).
+    "DBU", "GTS", "TKA",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -1079,7 +1083,7 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
 # 116 after the Baltic's 7 registry tags (2026-08-01); 118 after
 # Africa's DJN + SNH (2026-08-02).
-check("coat of arms references resolve", _coa_count, probs, min_count=122)  # + 4 SEA (2026-08-02)
+check("coat of arms references resolve", _coa_count, probs, min_count=125)  # + 3 Tibet (2026-08-02)
 
 # ---- audit 2026-07-31: the four class-closing checks -----------------------
 # From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
@@ -1112,7 +1116,7 @@ for _t in sorted(_start_tags - _id_tags):
     probs.append(f"10_countries block {_t} has NO registry identity block — "
                  "the engine rejects the whole block (PYS lesson)")
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
-      len(_id_tags), probs, min_count=2411)  # +4 SEA (2026-08-02)
+      len(_id_tags), probs, min_count=2414)  # +3 Tibet (2026-08-02)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
@@ -1237,7 +1241,7 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # the four side-effect retirees — against DJN + SNH new and BTI, SOA,
 # ADA revived, all five reaching a parliament through their templates).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1364)  # 1376 - 16 SEA landless + 4 new, observed (2026-08-02)
+      min_count=1366)  # -1 TIB +3 Tibet new, observed (2026-08-02)
 
 print()
 if fails:

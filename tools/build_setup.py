@@ -460,6 +460,22 @@ HISTORICAL_RULERS = {
     # the Cadalus honesty rule), ARK/HPJ (chronicle king-lists [D]).
     "PGN": ("pgn_anawrahta", "1044.8.11", 0),             # Anawrahta of Pagan, r. 1044-1077 [D on the day]; d. 1077 left to the engine — NEW_CHARACTERS
     "LAV": ("adh_narai", "1052.1.1", 0),                  # Narai of Lavo [D] — VANILLA character (b. 1020 at lopburi, lavo_dynasty, death already stripped), cross-tag seat like PAD/PYS
+
+    # Tibet, 1066 (docs/TIBET-PACKAGE.md §C + open decision 4, main-
+    # session call under the user's direct-implement authorization,
+    # 2026-08-02). ONE seat: Dongzhan of Tsongkha, r. 1065-1086 [D] —
+    # the only ruler in or near the theater whose accession is dated
+    # to the year and covers 1066.9.15. The package recommended nobody
+    # because "Dongzhan" is the Song shi's Chinese transcription of an
+    # unsettled Tibetan name [D]; overruled on the Tunka Manin
+    # precedent — an attested ruler known only through an external
+    # source's transcription, seated by user decision in the Africa
+    # slice (AFRICA-PACKAGE STATUS band, decision 8). Everyone else on
+    # the plateau stays random: Guge's Tsede-vs-Jangchub-Ö reading is
+    # disputed [D], Maryul's king-list is a late chronicle [D], and Ü/
+    # Tsang had no ruler at all to name (package §C — the honest
+    # silence is the point).
+    "TKA": ("tka_dongzhan", "1065.1.1", 0),               # Dongzhan of Tsongkha [D on the day] — NEW_CHARACTERS; d. 1086 left to the engine
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -1408,6 +1424,16 @@ CHINA_LANDLESS = ("LNG", "CRS", "QAS", "BAT", "BGT", "KHD", "HCN",
 # post-grant holdings). Package-measured, self-asserting.
 LOCATION_VACATED["CHI"] = ["mongolia_region", "manchuria_region"]
 LOCATION_VACATED_EXPECT["CHI"] = 113
+# Tibet slice (2026-08-02): the Changthang — the uninhabited northern
+# plateau. 9 of changtang_area's 16 are ALREADY unowned in vanilla;
+# vacating TIB's 7 makes it 16/16, the honest picture at 1066 and
+# arguably at 1337. The snapshot intersection excludes the
+# already-unowned zagya (8 members, 7 held) — the EXPECT pins that.
+# Cost: 15 pop-class lines, the cheapest vacate the project has run.
+# Runs AFTER _landless_claims, so the seven stay in TIB's claim list —
+# Tibet claims the Changthang.
+LOCATION_VACATED["TIB"] = ["naktsang_province", "namru_province"]
+LOCATION_VACATED_EXPECT["TIB"] = 7
 # The hordes' REMAINING holdings vacate after LIA's grants (Northern
 # Dynasties): CRS 37->24, BAT 18->14 (3 Tier-B + niuquanzi to XIA),
 # OTC 23->8, OGE/KHD untouched by LIA. HCN/QAS/BGT lose their WHOLE
@@ -2084,6 +2110,79 @@ NEW_COUNTRIES["JGL"] = (
     '\t\tinclude = "indonesia_monarchy"\n'
     "\t\tcountry_rank = rank_duchy\n\n"
     "\t\tcapital = surabaya\n\t}\n")
+
+# ================================= TIBET ====================================
+# THE TIBET SLICE (docs/TIBET-PACKAGE.md, every mechanical claim
+# re-verified 2026-08-02 — the FIRST package to survive review with
+# zero implementation-level errors; decisions taken by the main
+# session under the user's direct-implement authorization, recorded
+# in the STATUS band and HANDOFF item 38). Vanilla already ships the
+# Era of Fragmentation — Guge, Purang, Maryul, Zanskar, Mangyül
+# Gungthang and the Kham patchwork by name — and then hangs all of it
+# off TIB, a Sakya theocracy whose own school vanilla DATES to 1073
+# (15_IO creation_date; our future-date strip already deleted the
+# Sakya and Jonang sects months ago). Retiring TIB dissolves the
+# whole 15-line web through the generic landless sweep: zero named
+# strips, zero repoints. Ü and Tsang land as region-tags in vanilla's
+# own AMD/GOL/HOR grammar (decision 1); Tsongkha rises on the six
+# xining_province locations NORTHERN-DYNASTIES-PACKAGE.md:1035 banked
+# for exactly this pass (decision 3 — the one CHI touch, signed off).
+_TIBET_RULES = {
+    # Ü (dBus). u_area minus POO's pemako_province — the four TIB
+    # provinces are named instead of sweeping the area, so POO's three
+    # stay POO's without a carve-out (sweeping u_area would be the KAL
+    # class). Lhasa, Yarlung, Marpa's Lhodrak, Kongpo.
+    "DBU": (["kongpo_province", "lhokha_province", "u_province",
+             "yarlung_province"], [], [], [], 25),
+    # TSANG (gTsang). The whole area plus phari, the Chumbi valley
+    # head vanilla parks in bengal_region/monyul_area — an explicit
+    # single BECAUSE no tibet_region sweep reaches it; dropping it
+    # leaves TIB landed and the landless guard fires. NOTE sakya the
+    # LOCATION is Tsang's at any date; the monastery on it is 1073.
+    "GTS": (["tsang_area"], ["phari"], [], [], 19),
+    # GUGE. TIB's Ngari residue: lungkha_province whole plus the two
+    # rutok outliers adjacent to GUG's own gartok/rala.
+    "GUG": (["lungkha_province"], ["tsherlung", "ormogang"], [], [], 5),
+    # NUBHOR. nakchukha_province is khampa_culture beside NBH's Biru.
+    "NBH": (["nakchukha_province"], [], [], [], 3),
+    # TSONGKHA. xining_province IS Qingtang, Gusiluo's seat, under its
+    # Chinese name (no qingtang/tsongkha location exists — probed).
+    # Song-painted liang/monguor pops under a Tibetan identity: the
+    # al-Andalus/PAA/HPJ law, banked for POP-PHASE.
+    "TKA": (["xining_province"], [], [], [], 6),
+}
+
+# ONE retirement, deliberate: TIB is the MAJ class (a post-1066
+# object — Sakya capital, theocracy, Yuan-era web, and a live
+# "Grand Theocracy of Tibet"/"Grand Priest" render), not the NOV
+# class (a real 1066 polity with a dated constitution). Claims go
+# 131 -> 190 (its own 59 join; overlap measured ZERO), i.e. the whole
+# plateau — and vanilla's own TIB_f formable (0.6 of tibet_region,
+# tibetan_group culture) becomes the reunification path, the Pecheneg
+# philosophy with the machinery already shipped.
+TIBET_LANDLESS = ("TIB",)
+
+NEW_COUNTRIES["DBU"] = (
+    "\tDBU = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "east_asia_monarchy_no_coast"\n\n'
+    "\t\tcapital = lhasa\n\t}\n")
+NEW_COUNTRIES["GTS"] = (
+    "\tGTS = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "east_asia_monarchy_no_coast"\n\n'
+    "\t\tcapital = shigatse\n\t}\n")
+NEW_COUNTRIES["TKA"] = (
+    "\tTKA = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "east_asia_monarchy_no_coast"\n\n'
+    "\t\tcapital = xining\n\t}\n")
+# NO country_rank on any of the three — deliberate: 21 of the
+# theater's 22 landed tags declare none (TIB, retired, was the one),
+# and the template (read in full: monarchy, cognatic_primogeniture,
+# council parliament, tech 3, NO reforms block) declares none either.
+# The engine derives ranks by rules no file settles — OWED CHECK,
+# inherited from SEA; the click tour reads the result either way.
 
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
@@ -2864,7 +2963,8 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
-    + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS
+    + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS \
+    + TIBET_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -5373,6 +5473,25 @@ NEW_CHARACTERS = """
 		dynasty = pagan_dynasty
 		tag = PGN
 	}
+
+	# --- 1066 Tibet -------------------------------------------------------
+	# Dongzhan, son of Gusiluo, ruler of Tsongkha/Qingtang 1065-1086 [D] —
+	# the Song's Tibetan ally against Xia; succeeded his father the year
+	# before start. NO death date (alive on 1066.9.15; d. 1086 [D] left to
+	# the engine). "Dongzhan" is the Song shi's transcription and the name
+	# scholarship uses; it is an authored LITERAL with its own loc row (the
+	# Tamim precedent). tsongkha_dynasty is authored in
+	# 04_zz_1066_dynasties.txt (realm-named, vanilla's own pagan/purang/
+	# lavo grammar); birth year 1032 [D].
+	tka_dongzhan = {
+		first_name = { name = Dongzhan }
+		culture = amdowa_culture
+		religion = tibetan_buddhism
+		birth_date = 1032.1.1
+		birth = xining
+		dynasty = tsongkha_dynasty
+		tag = TKA
+	}
 """
 
 
@@ -5850,6 +5969,24 @@ def build_countries(src):
                      ("KDR", "daha"), ("JGL", "surabaya")):
         if _cap not in LOCATION_GRANTS[_t]:
             sys.exit(f"_SEA_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
+    # Tibet resolves the same way (five rule sets, 58 total; zero
+    # UNOWNED_GRANTS — every granted location measured at exactly one
+    # ownership entry with the full ten-key reader, by the package AND
+    # by the review independently). EXTEND, never assign — GUG and NBH
+    # are landed recipients. 52 from TIB + 6 from CHI; TIB's other 7
+    # go through LOCATION_VACATED, and 52 + 7 = 59 = its whole holding.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_TIBET_RULES.items()):
+        got = _resolve_ruleset(f"_TIBET_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_TIBET_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, _cap in (("DBU", "lhasa"), ("GTS", "shigatse"),
+                     ("TKA", "xining")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_TIBET_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
     # The France demesne resolves the same way. STRICT construction:
@@ -6889,9 +7026,15 @@ def build_ios(src):
         # SUK and LNA, shaivism loses MAJ and (decision 9) MNA. VTN,
         # ARU, ADH, ATJ, PSA and MGD sit in no IO list. 145 -> 155.
         + ["PEG", "TSM", "PIN", "SAG", "TNG", "BPR", "SUK", "LNA",
-           "MAJ", "MNA"])
-    if n_ghosts != 155 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 155 landless IO list entries, "
+           "MAJ", "MNA"]
+        # Tibet adds 1 (observed failing first, same day): TIB leaves
+        # the restored Middle Kingdom's member list (199 -> 198). It
+        # sits in NO sect — the Sakya instance it belonged to was
+        # already deleted by the future-date strip (creation_date
+        # 1073.1.1, vanilla's own dating of the anachronism). 155 -> 156.
+        + ["TIB"])
+    if n_ghosts != 156 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 156 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -7485,6 +7628,26 @@ def build_diplomacy(src):
     report.append(("Melayu's Pannai tie dissolved into the mandala",
                    n_jmb_pni))
 
+    # The four DEEP-PLATEAU tusi ties (Tibet slice, decision 6): the
+    # Song in authority over the Golog, Amdo, the Horpa of Kandze and
+    # the Nyag valley is the same error class as Yuan Tibet, one
+    # province east — the Song's writ in 1066 stopped at the
+    # Gansu-Sichuan rim, whose fourteen jimi/vassal ties are KEPT (the
+    # item-30 frontier reading). None of the four has sub-tusi of its
+    # own (measured), so the can_country_have_tusi knock-on that bit
+    # the LNG retirement cannot recur. TIB's own fifteen lines die in
+    # the landless sweep below, not here.
+    n_tibet_tusi = 0
+    for _g in ("HOR", "NYA", "GOL", "AMD"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = CHI second = " + _g
+            + r" subject_type = tusi \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_tibet_tusi += _k
+    if n_tibet_tusi != 4:
+        sys.exit(f"expected exactly 4 deep-plateau tusi strips, got {n_tibet_tusi}")
+    report.append(("the Song freed of the deep plateau", n_tibet_tusi))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -7574,8 +7737,13 @@ def build_diplomacy(src):
     # line names the first two, and the BEI web died by name above.
     # (The old message string said 233 while the constant said 253 —
     # the stale-string class again; both move together now.)
-    if n_landless_deps != 265:
-        sys.exit(f"expected exactly 265 landless-tag dependencies, stripped {n_landless_deps}")
+    # 265 -> 280 with Tibet (observed failing first, same day): the
+    # entire Sakya web — CHI->TIB plus TIB's fourteen vassals (GUG PUR
+    # MGG POO LGT DRG NCN GNJ BTG NBH LTN LMN MAR ZNK) — dies on TIB's
+    # retirement alone. The cheapest diplomacy correction in the
+    # project's history: fifteen lines for three characters in a tuple.
+    if n_landless_deps != 280:
+        sys.exit(f"expected exactly 280 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

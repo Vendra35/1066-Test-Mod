@@ -250,7 +250,6 @@ diplomacy_manager = {
     dependency = { first = CHI second = SNP subject_type = vassal }
     dependency = { first = CHI second = SSG subject_type = vassal }
     dependency = { first = CHI second = TAZ subject_type = vassal }
-    dependency = { first = CHI second = TIB subject_type = vassal }
     dependency = { first = CHI second = TMN subject_type = vassal }
     dependency = { first = CHI second = UDE subject_type = vassal }
     dependency = { first = CHI second = ULC subject_type = vassal }
@@ -267,11 +266,7 @@ diplomacy_manager = {
     dependency = { first = CHI second = MTG subject_type = tusi }
     dependency = { first = CHI second = MGN subject_type = tusi }
     dependency = { first = CHI second = MHA subject_type = tusi }
-    dependency = { first = CHI second = HOR subject_type = tusi }
-    dependency = { first = CHI second = NYA subject_type = tusi }
     dependency = { first = CHI second = GYE subject_type = tusi }
-    dependency = { first = CHI second = GOL subject_type = tusi }
-    dependency = { first = CHI second = AMD subject_type = tusi }
     dependency = { first = CHI second = CKL subject_type = tusi }
     #Vassals of Liang
     dependency = { first = CHI second = BZU subject_type = tusi }
@@ -393,20 +388,6 @@ diplomacy_manager = {
     #-------------Mongolia----------
 
     #------------Tibet-------------
-    dependency = { first = TIB second = GUG subject_type = vassal }
-    dependency = { first = TIB second = PUR subject_type = vassal }
-    dependency = { first = TIB second = MGG subject_type = vassal }
-    dependency = { first = TIB second = POO subject_type = vassal }
-    dependency = { first = TIB second = LGT subject_type = vassal }
-    dependency = { first = TIB second = DRG subject_type = vassal }
-    dependency = { first = TIB second = NCN subject_type = vassal }
-    dependency = { first = TIB second = GNJ subject_type = vassal }
-    dependency = { first = TIB second = BTG subject_type = vassal }
-    dependency = { first = TIB second = NBH subject_type = vassal }
-    dependency = { first = TIB second = LTN subject_type = vassal }
-    dependency = { first = TIB second = LMN subject_type = vassal }
-    dependency = { first = TIB second = MAR subject_type = vassal }
-    dependency = { first = TIB second = ZNK subject_type = vassal }
 
     #------------South East Asia-------------
     dependency = { first = CHI second = CHA subject_type = tributary }

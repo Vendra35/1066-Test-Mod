@@ -106169,4 +106169,23 @@ character_db={
 		dynasty = pagan_dynasty
 		tag = PGN
 	}
+
+	# --- 1066 Tibet -------------------------------------------------------
+	# Dongzhan, son of Gusiluo, ruler of Tsongkha/Qingtang 1065-1086 [D] —
+	# the Song's Tibetan ally against Xia; succeeded his father the year
+	# before start. NO death date (alive on 1066.9.15; d. 1086 [D] left to
+	# the engine). "Dongzhan" is the Song shi's transcription and the name
+	# scholarship uses; it is an authored LITERAL with its own loc row (the
+	# Tamim precedent). tsongkha_dynasty is authored in
+	# 04_zz_1066_dynasties.txt (realm-named, vanilla's own pagan/purang/
+	# lavo grammar); birth year 1032 [D].
+	tka_dongzhan = {
+		first_name = { name = Dongzhan }
+		culture = amdowa_culture
+		religion = tibetan_buddhism
+		birth_date = 1032.1.1
+		birth = xining
+		dynasty = tsongkha_dynasty
+		tag = TKA
+	}
 }

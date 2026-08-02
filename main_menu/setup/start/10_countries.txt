@@ -26370,8 +26370,7 @@ countries = {
 			bafan
 			qingjiang_liping taigong
 			      sanjiaocheng  
-			        
-			 datong_xining  gushan   haomen nianbo xining  zhuanglang 
+
 			baoji fengxiang fufeng linyou longzhou_fengxiang meixian qianyang qishan longan
 			chengzhou dingxi fuqiang longxi_gongchang xihe_huizhou huizhou_gongchang huizhou jiezhou liangdang ningyuan_gongchang baimaguan tongwei qinan chengji sancha qingshui zhangxian
 			chenggu liuba lueyang duoshui nanzheng daan liangquan xixiang yangyuan yangzhou foping guochuan
@@ -44005,23 +44004,11 @@ countries = {
 	#-------------------------- Tibet and Xinjiang ----------------------------
 	TIB = { #Tibet
 		own_control_core = {
-			sakya ganden_delingshar lhadrak ngamring tagmo_lingkha
-			shigatse jonang namling tropu tsangdram
-			lhasa damzhung drigung galo gyama taklung tsora tsurphu
-			nedong densatil gongkar nyemo rinpung_yarlung samye
-			dingri chorten_nyima gonga_chode nyalam pelmo
-			gyantse nenying ralung
-			trigu chikchar gonpatsi lhodrak lho_taklung tragor zangchen
-			gyamda buchu daklha_gampo zhokha
-			nakchu barom rongpo
-			namtso_doring tsedzong ronglung gonkri
-			serzhik shantsa zangdan
-			mendong samten selephu
-			phari
-			tsherlung ormogang
+
 		}
 
 		our_cores_conquered_by_others = {
+			sakya ganden_delingshar lhadrak ngamring tagmo_lingkha shigatse jonang namling tropu tsangdram lhasa damzhung drigung galo gyama taklung tsora tsurphu nedong densatil gongkar nyemo rinpung_yarlung samye dingri chorten_nyima gonga_chode nyalam pelmo gyantse nenying ralung trigu chikchar gonpatsi lhodrak lho_taklung tragor zangchen gyamda buchu daklha_gampo zhokha nakchu barom rongpo namtso_doring tsedzong ronglung gonkri serzhik shantsa zangdan mendong samten selephu phari tsherlung ormogang
 			toling dungkar tsaparang
 			gartok rala
 			gyanema khyunglung
@@ -44120,6 +44107,7 @@ countries = {
 
 	GUG = { #Guge
 		own_control_core = {
+			mendong samten selephu tsherlung ormogang
 			toling dungkar tsaparang
 			gartok rala
 			gyanema khyunglung
@@ -44463,6 +44451,7 @@ countries = {
 
 	NBH = { #Nubhor
 		own_control_core = {
+			nakchu barom rongpo
 			biru pembar riwoche samda shopando sok tengchen yangdzong
 		}
 
@@ -58713,6 +58702,20 @@ countries = {
 		capital = caserta
 	}
 
+	DBU = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			gyamda buchu daklha_gampo zhokha trigu chikchar gonpatsi lhodrak lho_taklung tragor zangchen lhasa damzhung drigung galo gyama taklung tsora tsurphu nedong densatil gongkar nyemo rinpung_yarlung samye
+		}
+
+		starting_technology_level = 3
+		include = "east_asia_monarchy_no_coast"
+
+		capital = lhasa
+	}
+
 	DJN = {
 		government = {
 			ruler = random
@@ -58935,6 +58938,20 @@ countries = {
 		}
 
 		capital = granada
+	}
+
+	GTS = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			dingri chorten_nyima gonga_chode nyalam pelmo sakya ganden_delingshar lhadrak ngamring tagmo_lingkha gyantse nenying ralung shigatse jonang namling tropu tsangdram phari
+		}
+
+		starting_technology_level = 3
+		include = "east_asia_monarchy_no_coast"
+
+		capital = shigatse
 	}
 
 	HLB = {
@@ -59721,6 +59738,21 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = ulm
+	}
+
+	TKA = {
+		government = {
+			ruler = tka_dongzhan
+			ruler_term = { character = tka_dongzhan start_date = 1065.1.1 regnal_number = 0 }
+		}
+		own_control_core = {
+			xining datong_xining gushan haomen nianbo zhuanglang
+		}
+
+		starting_technology_level = 3
+		include = "east_asia_monarchy_no_coast"
+
+		capital = xining
 	}
 
 	TOL = {

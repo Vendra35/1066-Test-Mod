@@ -685,3 +685,27 @@ JGL = { #Janggala — the eastern half of the 1049 partition (seat Kahuripan; su
 	culture_definition = javanese_culture
 	religion_definition = hindu
 }
+
+DBU = { #Ü (dBus) — central Tibet east of the Tsangpo bend, seat Lhasa; a region-tag in vanilla's own AMD/GOL/HOR grammar
+	color = map_TIB
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = utsang_culture
+	religion_definition = tibetan_buddhism
+}
+
+GTS = { #Tsang (gTsang) — central Tibet west of Ü, seat Shigatse
+	color = map_GTS
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = utsang_culture
+	religion_definition = tibetan_buddhism
+}
+
+TKA = { #Tsongkha — Gusiluo's Amdo kingdom, seat Qingtang (xining); Tibetan identity over Song-painted pops, the PAA law
+	color = map_TKA
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = amdowa_culture
+	religion_definition = tibetan_buddhism
+}

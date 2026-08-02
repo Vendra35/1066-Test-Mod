@@ -111,4 +111,11 @@
 	map_PAA = rgb { 190 108 30 }    # Pala       kasaya saffron-brown
 	map_PMR = rgb { 92 132 60 }     # Paramara   Malwa green
 	map_CHU = rgb { 60 128 176 }    # Solanki    Gujarat sea-blue
+	# Tibet. DBU wears vanilla's own map_TIB (02_map.txt:2596, freed by
+	# TIB's retirement â the PGN/map_burmese precedent). GTS against DBU's
+	# pale sage, GUG's ochre and POO's violet; TKA against XIA's Tangut
+	# rose, CHI's map_CSO crimson, AMD green and GOL sand. Both key names
+	# verified absent from vanilla BY NAME (zero substring hits â D3).
+	map_GTS = rgb { 62 118 130 }    # Tsang       plateau teal
+	map_TKA = rgb { 196 126 44 }    # Tsongkha    Kokonor amber
 }

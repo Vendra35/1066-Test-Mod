@@ -379,4 +379,11 @@ dynasty_manager = {
 		name = { name = cisse_dynasty }
 		home = koumbi_saleh
 	}
+	# Tibet slice (2026-08-02): Gusiluo's line at Qingtang — the realm-
+	# named house, vanilla's own grammar (pagan/purang/lavo dynasties
+	# are all seat-named). Carried by Dongzhan's seat alone.
+	tsongkha_dynasty = {
+		name = { name = tsongkha_dynasty }
+		home = xining
+	}
 }
