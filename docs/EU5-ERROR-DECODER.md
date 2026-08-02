@@ -683,6 +683,19 @@ promotion/assimilation check just fails); the two one-shot
 pdx_assert:214 Lookup lines in the same launch are WATCH-paired with
 it. The class shrinks as future slices land owners on the steppe.
 **Fix:** none — accepted; scan_log.py classifies it.
+**MODEL CORRECTED 2026-08-02 (Perm/Vyatka package §E.4, arithmetic on
+recorded numbers — NOT an in-game observation).** "One line per pop"
+over-predicts: the 2026-08-01 launch's 305 vacated locations carry 911
+`define_pop` and produced ~504 lines — ratio ≈0.55. The candidate
+filters were tested and REFUTED: not pop presence (vanilla's 7,334
+unowned carry 8,245 pops with no such class), not town presence (only
+8 of the vacated appear in 07_cities), not `type = pop` coverage
+(4,515 vanilla-unowned locations lack it). **The true filter is
+UNKNOWN — an OWED in-game question.** Forecast for the next launch:
+the build now vacates 625 locations carrying ~1,895 pops, so expect
+this class near **~1,000 lines**, not 504 — scan_log.py's baseline
+must move with it, and a count near 1,000 is EXPECTED, not a
+regression.
 
 ### `country_database.cpp:107 — The following two countries have the same name 'GRZ' & 'GRA' = 'Granada'` (and `'NEA' & 'NAP' = 'Naples'`)
 **Means:** by design. The landless irredenta tag IS the future of the

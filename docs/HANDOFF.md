@@ -1892,64 +1892,127 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
       3702/tusi lines.
    9. scan_log.py REGRESSION 0.
 
+39. **PERM/VYATKA (LANDED `2c9a76d`, untested — test accumulates;
+   direct-authorization, decisions by the main session, recorded
+   here).** PERM-VYATKA-PACKAGE.md reviewed — **the second consecutive
+   zero-error package** (22/22; both donor tables reproduced per the
+   delta-guard law). The smallest slice ever, because vanilla already
+   ships the stateless north COMPLETE: 19 type=pop Siberian identities
+   + Bjarmia + Bashkirs all landless by design, 116 Ob-Ugric/Samoyed
+   locations 100% unowned. Two Russian shells corrected: **VYT retired
+   + its 19 vacated** (the 1174 Novgorodian colony; "Republic of
+   Vyatka"/"Consul" render dies; PRM's four vyatka_area locations
+   protected by the snapshot intersection — proven by break-test);
+   **PRM de-Russified in place** (four FIELD_FIXES, the SXM shape:
+   eurasian_tribe, Rurikid dynasty dropped — its own registry already
+   said komi + komi_paganism; tech 3 kept, decision 6). **Novgorod's
+   ten trans-Ural Yugra tributaries stripped by name** (PVL's first
+   recorded expedition 1096 [D]; Bjarmia's no-tie shape was vanilla's
+   own line and is kept; NOTE this removes the build's only two-level
+   tributary chain — OWED CHECK 2 unmeasured, stays open). GLH's two
+   leftover provinces vacated (ufa 4 + minusinsk 3 — completions of
+   the bashkiria/tomsk decisions; GLH survives at 168, so ONLY the
+   count assert guards those two rules — the KNOWLEDGE law's live
+   case). GLM/GRS/NZH (1152/1221/1237) LEFT for the Volga seam per
+   RUS-STEPPE §H — **the internal inconsistency with VYT's retirement
+   is recorded, not hidden**. Constants: vacated 625, parliament 1365,
+   deps/pacts/ghosts 280/9/156 unchanged. DECODER UPDATED: the vacate
+   pop-line model is corrected (ratio ≈0.55, filter UNKNOWN — OWED);
+   **expect ~1,000 lines of that class at the next launch, not 504 —
+   that is EXPECTED, not a regression.**
+   TEST — click tour, ~5 minutes (accumulates with items 33-38):
+   1. The Vyatka basin: NO Vyatka on the map — unowned forest joining
+      the stateless north; VYT gone, no "Republic of Vyatka" anywhere.
+   2. Click Cherdyn → **Perm is a TRIBE** (panel: tribe government,
+      assembly parliament, no Rurikid house); report what rank/title
+      it renders ("Tribe of Perm"/"Chief" vs "Minor Tribe"/
+      "Chieftain" — OWED CHECK 1, no file settles the derived rank).
+   3. Novgorod: NO tributaries beyond the Urals (the ten Yugra ties
+      gone); NOV still holds its Dvina/Zavolochye north directly;
+      NOV still shows as KIE's tributary.
+   4. The Urals east: no owned land east of the mountains at all
+      (minusinsk vacated); Bashkiria and the Ob 100% stateless.
+   5. error.log: **the vacated-pop class near ~1,000 lines is
+      EXPECTED** (decoder entry updated — the model was corrected);
+      landless trims grow by VYT's block (known class 3); NO new
+      classes.
+   6. scan_log.py: REGRESSION 0 after its vacate-class baseline is
+      moved per the decoder correction.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
 WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
-test of 2026-08-01 passed). Items 35 (Baltic), 36 (Africa), 37
-(Southeast Asia) and **38 (Tibet)** are LANDED, COMMITTED and
-HARNESS-GREEN but **NOT YET GAME-TESTED** — the user is accumulating
-tests deliberately ("testi en son yapalım"). HEAD after the
-SEA+Tibet day: see git log — `b3f3665` (SEA slice), `35ecdf6` (SEA
-docs), `e63c255` (Tibet slice) + the docs commit carrying this
-block. Constants right now: registry 74 blocks, country blocks 2411,
-thrones 179, landless-dep strips 280, pacts 9, IO ghosts 156,
-vacated 599, parliament min 1366, loc rows 375, harness all green,
+test of 2026-08-01 passed). Items **35 (Baltic), 36 (Africa), 37
+(Southeast Asia), 38 (Tibet) and 39 (Perm/Vyatka)** are LANDED,
+COMMITTED and HARNESS-GREEN but **NOT YET GAME-TESTED** — the user
+is accumulating tests deliberately ("testi en son yapalım"). The
+2026-08-02 marathon shipped THREE theaters in one day: `b3f3665` /
+`35ecdf6` (SEA), `e63c255` / `e027550` (Tibet), `2c9a76d` + the docs
+commit carrying this block (Perm/Vyatka). Constants right now:
+registry 74 blocks, country blocks 2411, thrones 179, landless-dep
+strips 280, pacts 9, IO ghosts 156, **vacated 625**, parliament min
+1365, loc rows 375, CoA 125, harness all green (34 result lines),
 working tree clean.
 
 1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
-   before.** It is items 33+34 leftovers + 35 + 36 + 37 + 38 in one
-   sitting: the click tours are written inside each item above.
-   One-glance musts: Song panel 2/3 reforms ACTIVE; scan_log.py
-   REGRESSION 0; the Baltic tribes and no Teutons; Tunka Manin /
-   "Mai" / Negus-or-King probes; **the Mahārājā probe (item 37.3 —
-   OWED CHECK 1 rides on it) and the five mandala tributaries
-   (37.4)**; **the "Ü" render and Dongzhan probes (38.2-38.3)**;
-   landless flood NOT grown. **During that test the user will send
-   an HRE close-up screenshot** — audit Germany density against
-   items 23/25 (promised follow-up, still owed).
-2. **SEA and Tibet are DONE (items 37, 38 — one day, 2026-08-02).**
-   SEA's package needed thirteen corrections (the
-   `own_control_integrated` phantom law, now in KNOWLEDGE); Tibet's
-   was the FIRST to survive review clean (58/58), and its slice was
-   implemented under the user's direct-authorization with the
-   decisions recorded in item 38 — including the one package
-   overrule (Dongzhan seated, the Tunka Manin precedent).
-3. **Theater queue next:** Perm/Vyatka, Mesoamerica-lite, the China
-   D2-D7 leftovers (D2 Song reskin done as item 32's color/name move
-   — check the doc's residue; D3 steppe releases partly done via
-   CHI's vacates; Dali/Yunnan remains); then the pop phase (its
-   inherited correction lists live in BALTIC-PACKAGE §H,
-   AFRICA-PACKAGE §H, SEA-PACKAGE §H + decision 4, and now
-   TIBET-PACKAGE §A.3 — TKA's Song-painted xining pops), then the
-   situations backlog (Norman Conquest v2 owed; the Second Diffusion
-   situation is newly banked — TIBET-PACKAGE §H: re-create the Sakya
-   1073 and Jonang 1120 sect instances on schedule, the mod's own
-   strip left the dated instances ready; the 1025 Chola-Srivijaya
-   raid likewise banked, SEA-PACKAGE §H; SITUATION-SPECS' Pecheneg
-   route cites the DEAD SKE law, re-derive before use).
-4. **Standing rhythm with the user (unchanged):** research package →
-   main-session verification of its claims (every package so far
-   contained implementation-level errors the review caught — KBR,
-   banamba, ankober, SXM's monarchy shell, the (e) break-test
-   refutation, and now the SEA reader's integrated-block blindness +
-   the G.2/G.4 double-overlord contradiction; treat "the package
-   says" as a hypothesis) → Turkish AÇIK KARARLAR table → wait for
-   "onay" → implement with observe-then-move constants and
-   break-tests → HANDOFF item + Turkish click tour → commit.
-   Conversation in Turkish, repo in English. The user protects their
-   usage limit: one step at a time, no parallel agent fleets unless
-   asked.
+   before.** It is items 33+34 leftovers + 35 + 36 + 37 + 38 + 39 in
+   one sitting (~50 min): the click tours are written inside each
+   item above. One-glance musts: Song panel 2/3 reforms ACTIVE;
+   scan_log.py REGRESSION 0 — **after moving its vacate-class
+   baseline: ~1,000 lines of the vacated-pop class are now EXPECTED,
+   not a regression (decoder entry updated 2026-08-02)**; the Baltic
+   tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-King
+   probes; the Mahārājā probe (37.3 — OWED CHECK 1 rides on it) and
+   the five mandala tributaries (37.4); the "Ü" render and Dongzhan
+   probes (38.2-38.3); **tribal Perm and the empty Vyatka basin
+   (39.1-39.2)**; landless flood NOT grown beyond the known classes.
+   **During that test the user will send an HRE close-up
+   screenshot** — audit Germany density against items 23/25
+   (promised follow-up, still owed).
+2. **The map phase is nearly CLOSED.** Remaining theater work, in
+   order: **Mesoamerica-lite** (the whole Americas' light pass: no
+   Aztecs — Tenochtitlan 1325, no Inca — Cusco ~1200s, Toltec
+   collapse, Cahokia rising, Chimú real; fix the worst, keep
+   vanilla's model) and **the China D2-D7 leftovers**
+   (INDIA-CHINA-REVIEW.md: D2 Song reskin landed as item 32's
+   color/name move — audit the residue; D3 steppe releases partly
+   done via CHI's vacates; Dali/Yunnan remains). After those two,
+   every region is 1066.
+3. **Then the two cross-cutting phases:** the POP PHASE (inherited
+   correction lists: BALTIC-PACKAGE §H, AFRICA-PACKAGE §H,
+   SEA-PACKAGE §H + decision 4, TIBET-PACKAGE §A.3 — TKA's
+   Song-painted xining pops, PERM-VYATKA-PACKAGE §0.5/§H — eleven
+   registry entries name religions that sit on ZERO locations
+   game-wide, the Mari have no pop-country identity), then the
+   SITUATIONS BACKLOG (Manzikert is five years from start — the
+   obvious first; Norman Conquest v2 owed; banked with dated
+   instances ready: the Second Diffusion — re-create Sakya 1073 /
+   Jonang 1120, TIBET-PACKAGE §H — the 1025 Chola-Srivijaya raid,
+   SEA-PACKAGE §H, and Novgorod's Yugra tribute c.1096,
+   PERM-VYATKA-PACKAGE §H; SITUATION-SPECS' Pecheneg route cites the
+   DEAD SKE law, re-derive before use).
+4. **OWED in-game checks, collected** (all ride the grand test):
+   dialect→language resolution (the Mahārājā render, SEA); derived
+   country_rank thresholds (SEA/Tibet/Perm — every no-rank tag);
+   two-level tributary chains (now unmeasured again — the Yugra
+   strip removed the only instance); sect-less countries of a
+   max_sects religion (28 Tibetan tags); the vacated-pop class's
+   true filter (decoder, OWED CHECK 3); reforms-vs-potential setup
+   validation (Africa/SEA, still open); the "Negus" render (Africa).
+5. **Standing rhythm with the user:** research package →
+   main-session verification (LAWS: reproduce ownership with
+   build_setup's own parsers and the FULL ten-key OWN_KEYS; reproduce
+   the package's DONOR TABLES — the delta guard cannot see a
+   surviving donor's losses; check IO drain against the pinned-9;
+   the last two packages survived review clean, but "the package
+   says" is still a hypothesis) → Turkish AÇIK KARARLAR table →
+   wait for "onay" (or direct-implement when the user pre-authorizes,
+   as on 2026-08-02 — decisions then recorded in the HANDOFF item) →
+   observe-then-move constants + break-tests → HANDOFF item +
+   Turkish click tour → commit (slice, then docs). Conversation in
+   Turkish, repo in English. The user protects their usage limit:
+   one step at a time, no parallel agent fleets unless asked.
 
 **(HISTORICAL) NEXT SESSION STARTS WITH (updated 2026-07-30, end of day):**
 1. Main-session review of the four theater packages (they are DRAFTS —
