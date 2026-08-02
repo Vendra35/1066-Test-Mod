@@ -2110,6 +2110,47 @@ read the parties' template chains — vanilla may already pay the gate;
 and any check that reads a country block's fields must follow
 includes, or it sees only what vanilla chose to inline.
 
+### Vanilla DATES its own anachronisms in IO creation_dates — and the future-date strip has been quietly correcting history since item 10
+
+**Established:** Tibet slice review, 2026-08-02. The five Tibetan
+`type = sect` instances carry vanilla's own founding dates — Kadam
+`1030.1.1`, Kagyu `1050.1.1`, **Sakya `1073.1.1`**, Jonang `1120.1.1`
+(`VAN/main_menu/setup/start/15_international_organizations.txt:1435
+:1454 :1472 :1494`) — so the mod's future-dated-IO strip
+(`build_setup.py`, `creation_date >= START_DATE`) had already deleted
+the two post-1066 schools months before anyone researched Tibet,
+leaving exactly the two that existed on 1066.9.15. The same date was
+the strongest argument for retiring TIB itself (a theocracy capitaled
+at a monastery vanilla says is founded seven years after start).
+**Means:** an IO instance's `creation_date` is vanilla's own testimony
+about when an institution begins — cite it before any external source
+when arguing a tag or web is post-start; and when a theater "already
+looks right", check whether the future-date strip silently did the
+work, then write it down (this one went unrecorded for three weeks).
+Corollary for situations: the deleted instances are DATED and intact
+in vanilla's file — a script can re-create them on schedule (the
+banked Second Diffusion situation re-adds Sakya in 1073).
+
+### The emptied-but-unlisted delta guard does NOT catch an over-sweep whose donor survives elsewhere
+
+**Established:** Tibet slice break-test (i), 2026-08-02 — the test
+REFUTED its own package's prediction. Sweeping `u_area` whole (28)
+instead of naming TIB's four provinces (25) takes POO's three
+`pemako_province` locations — and NO guard fires: POO keeps its seven
+Kham locations, so the delta guard (which only knows
+held-land-then-emptied) stays silent, disjointness holds (the three
+enter one list once), and exactly-once holds (each had one owner). The
+build ran GREEN with stolen land. The only guard that catches the
+mistake is the per-rule **exact-count assert** — which a designer who
+mis-measured once will set wrong too (28 was "correct" for the wrong
+design).
+**Means:** the count assert is the ONLY line of defence against
+taking land from a surviving donor, so a rule set's DONOR TABLE must
+be verified against ownership (who loses what, summing to the
+expected count per donor) at review time, every slice — the resolver
+cannot know intent. When a package prints a donor table, reproduce
+it; when it doesn't, demand it.
+
 ## Template for new entries
 
 ```

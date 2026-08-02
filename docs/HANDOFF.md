@@ -1831,46 +1831,113 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
    10. scan_log.py REGRESSION 0; the landless flood must not grow
       beyond the known class.
 
+38. **TIBET (LANDED `e63c255`, untested — test accumulates; implemented
+   under the user's direct-authorization, decisions taken by the main
+   session and recorded here).** TIBET-PACKAGE.md reviewed — **the
+   first package with ZERO implementation errors** (58/58 probes; the
+   SEA reader-law held). Vanilla ships the Era of Fragmentation (Guge,
+   Purang, Maryul, Zanskar, Mangyül Gungthang, the Kham patchwork BY
+   NAME) and hangs it off TIB — a Sakya theocracy vanilla itself dates
+   to 1073 via the sect instance our future-date strip deleted months
+   ago. **TIB retired landless**: the whole 15-line web died in the
+   generic sweep (zero strips, zero repoints — the cheapest diplomacy
+   correction yet), claims 131→190, `TIB_f` (0.6 of tibet_region,
+   tibetan_group) is the reunification path, and the live "Grand
+   Theocracy of Tibet"/"Grand Priest" render dies with it. 3 new tags:
+   **DBU "Ü"** 25 (Lhasa — region-tag, vanilla's own AMD/GOL grammar),
+   **GTS "Tsang"** 19 (Shigatse; `phari` explicit single from
+   bengal_region), **TKA "Tsongkha"** 6 from CHI (the xining_province
+   seam item 33 explicitly banked for this pass). GUG +5, NBH +3;
+   7 Changthang locations VACATED (15 pops, cheapest vacate yet;
+   changtang_area now 16/16 unowned). **Dongzhan of Tsongkha seated
+   (thrones 179)** — the package said nobody ("Chinese transcription");
+   overruled on the Tunka Manin precedent, `tsongkha_dynasty` authored.
+   Four deep-plateau tusi ties (CHI→HOR/NYA/GOL/AMD) stripped by name
+   — Song Amdo is Yuan Tibet's error class; the fourteen rim ties keep
+   the item-30 jimi reading. PUR registry religion hindu→
+   tibetan_buddhism (vanilla's own Kadam sect contradicted its own
+   registry; east_asia.txt override, second intended deviation).
+   Kham/Amdo's fifteen late-named tags LEFT (the Shan/Philippines
+   model); no sect adds (28 sect-less siblings; OWED: does a sect-less
+   max_sects=1 country log?). Break-tests: 7/9 fired exactly; **(i)
+   REFUTED the package** — a u_area over-sweep is guarded ONLY by the
+   exact-count assert (POO survives on Kham land, the delta guard
+   stays quiet). POP-PHASE inherits TKA's Song-painted pops (§A.3).
+   TEST — click tour, ~8 minutes (accumulates with items 33-37):
+   1. The plateau: NO "Tibet" on the map — instead **Ü and Tsang** in
+      central Tibet (Ü wears Tibet's pale sage), Guge/Purang/Maryul/
+      Zanskar/Mangyül Gungthang in the west, the Kham patchwork east,
+      all INDEPENDENT (no vassal lines to anyone).
+   2. **THE "Ü" PROBE (decision 5):** does the single-character label
+      "Ü" render legibly on the map and in the panel? If it reads as
+      a glyph fault, the banked fallback is "Uru" or "Lhasa" (one loc
+      row).
+   3. Click Xining → **"Tsongkha"** under **Dongzhan** (34, house
+      Tsongkha — the transcription-seat probe); CHI no longer owns
+      the Huangshui valley.
+   4. Click Lhasa → Ü, random ruler; Shigatse → Tsang; Sakya the
+      LOCATION belongs to Tsang (no theocracy anywhere on the
+      plateau).
+   5. The Changthang: the northern plateau reads UNOWNED end to end
+      (16/16 — seven newly emptied).
+   6. Rank/render sweep: whatever ranks the engine derives (OWED
+      CHECK — no file settles the thresholds), NO "Grand Priest" and
+      no "Grand Theocracy" anywhere; report what Ü/Tsang/Tsongkha
+      actually render as (King/Duke/Count) for the record.
+   7. Bhutan (Lho Mon) and Sikkim independent; Ladakh's capital Shey;
+      Guge's capital Tholing.
+   8. error.log: landless trims may grow by TIB's block (known class
+      3); the 15-pop vacate class grows by exactly the Changthang
+      seven; NO new classes; the four stripped tusi must produce zero
+      3702/tusi lines.
+   9. scan_log.py REGRESSION 0.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
 WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
-test of 2026-08-01 passed). Items 35 (Baltic), 36 (Africa) and **37
-(Southeast Asia)** are LANDED, COMMITTED and HARNESS-GREEN but **NOT
-YET GAME-TESTED** — the user is accumulating tests deliberately
-("testi en son yapalım"). HEAD after the SEA day: see git log —
-`b3f3665` (SEA slice) + the docs commit carrying this block; the
-Africa-day commits before them: `cb81a85` `6ce8ed7` `3d19206`
-`5a2977d` `ef51eb4` `170c944`. Constants right now: registry 71
-blocks, country blocks 2408, thrones 178, landless-dep strips 265
-(294 kept), pacts 9, IO ghosts 155, parliament min 1364, loc rows
-367, harness all green (+1 new check: IO empty-members pinned at 9),
+test of 2026-08-01 passed). Items 35 (Baltic), 36 (Africa), 37
+(Southeast Asia) and **38 (Tibet)** are LANDED, COMMITTED and
+HARNESS-GREEN but **NOT YET GAME-TESTED** — the user is accumulating
+tests deliberately ("testi en son yapalım"). HEAD after the
+SEA+Tibet day: see git log — `b3f3665` (SEA slice), `35ecdf6` (SEA
+docs), `e63c255` (Tibet slice) + the docs commit carrying this
+block. Constants right now: registry 74 blocks, country blocks 2411,
+thrones 179, landless-dep strips 280, pacts 9, IO ghosts 156,
+vacated 599, parliament min 1366, loc rows 375, harness all green,
 working tree clean.
 
 1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
-   before.** It is items 33+34 leftovers + 35 + 36 + 37 in one
+   before.** It is items 33+34 leftovers + 35 + 36 + 37 + 38 in one
    sitting: the click tours are written inside each item above.
    One-glance musts: Song panel 2/3 reforms ACTIVE; scan_log.py
    REGRESSION 0; the Baltic tribes and no Teutons; Tunka Manin /
    "Mai" / Negus-or-King probes; **the Mahārājā probe (item 37.3 —
    OWED CHECK 1 rides on it) and the five mandala tributaries
-   (37.4)**; landless flood NOT grown. **During that test the user
-   will send an HRE close-up screenshot** — audit Germany density
-   against items 23/25 (promised follow-up, still owed).
-2. **SEA is DONE (item 37).** The research agent ran 2026-08-02
-   (relaunched fresh after the earlier stop), docs/SEA-PACKAGE.md
-   landed and was reviewed — its reader missed
-   `own_control_integrated` blocks (the STATUS band carries every
-   correction; the phantom-unowned law went to KNOWLEDGE) — and the
-   slice shipped same day as `b3f3665`, decisions 1-13 user-approved.
-3. **Theater queue next:** Tibet, Perm/Vyatka, Mesoamerica-lite,
-   the China D2-D7 leftovers; then the pop phase (its inherited
-   correction lists live in BALTIC-PACKAGE §H, AFRICA-PACKAGE §H and
-   now SEA-PACKAGE §H + decision 4 — HPJ's Khon Muang pops, Kedah's
-   sunni trio), then the situations backlog (Norman Conquest v2 owed,
-   the SITUATION-SPECS report — but its Pecheneg route cites the DEAD
-   SKE law, re-derive before use; the 1025 Chola-Srivijaya raid is
-   banked situation material, SEA-PACKAGE §H).
+   (37.4)**; **the "Ü" render and Dongzhan probes (38.2-38.3)**;
+   landless flood NOT grown. **During that test the user will send
+   an HRE close-up screenshot** — audit Germany density against
+   items 23/25 (promised follow-up, still owed).
+2. **SEA and Tibet are DONE (items 37, 38 — one day, 2026-08-02).**
+   SEA's package needed thirteen corrections (the
+   `own_control_integrated` phantom law, now in KNOWLEDGE); Tibet's
+   was the FIRST to survive review clean (58/58), and its slice was
+   implemented under the user's direct-authorization with the
+   decisions recorded in item 38 — including the one package
+   overrule (Dongzhan seated, the Tunka Manin precedent).
+3. **Theater queue next:** Perm/Vyatka, Mesoamerica-lite, the China
+   D2-D7 leftovers (D2 Song reskin done as item 32's color/name move
+   — check the doc's residue; D3 steppe releases partly done via
+   CHI's vacates; Dali/Yunnan remains); then the pop phase (its
+   inherited correction lists live in BALTIC-PACKAGE §H,
+   AFRICA-PACKAGE §H, SEA-PACKAGE §H + decision 4, and now
+   TIBET-PACKAGE §A.3 — TKA's Song-painted xining pops), then the
+   situations backlog (Norman Conquest v2 owed; the Second Diffusion
+   situation is newly banked — TIBET-PACKAGE §H: re-create the Sakya
+   1073 and Jonang 1120 sect instances on schedule, the mod's own
+   strip left the dated instances ready; the 1025 Chola-Srivijaya
+   raid likewise banked, SEA-PACKAGE §H; SITUATION-SPECS' Pecheneg
+   route cites the DEAD SKE law, re-derive before use).
 4. **Standing rhythm with the user (unchanged):** research package →
    main-session verification of its claims (every package so far
    contained implementation-level errors the review caught — KBR,
