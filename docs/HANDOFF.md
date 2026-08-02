@@ -1982,44 +1982,89 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
       landless trims grow by TNC+CSU blocks — known class 3).
    6. scan_log.py REGRESSION 0.
 
+41. **CHINA RESIDUE (LANDED `401952b`, untested — test accumulates;
+   user-approved, decisions 5 and 6-Alt-Q the review's own calls).
+   THE MAP PHASE CLOSES WITH THIS ITEM — every region of the world is
+   now 1066.** CHINA-RESIDUE-PACKAGE.md audited D2-D7: five closed
+   with zero residue; the genuine leftovers all landed here. **THE
+   HEADLINE: the Northern Song's registry identity was still the
+   Yuan's** (item 32 changed the colour and left `mongolian_culture`/
+   `tibetan_buddhism` seven lines below — ground measured 96.1%
+   sanjiao / 0.0002% mongolian) — fixed to vanilla's own CSO pair
+   (`zhongyuan_culture`/`sanjiao`) in the east_asia.txt override
+   (now FOUR intended deviations, header updated), zhongyuan out of
+   accepted (the ARA law), the sign-inverted sinicization line
+   DELETED. **Dali:** CDL absorbed heqing+yaoan → 34 on vanilla's own
+   821-dated Azhaliism sect roster (HQG/YAN landless; both were ALSO
+   MK members — ghosts 160 observed, MK 198→196). **The Song jimi
+   frontier completed:** the 28 orphaned ex-LNG hill lords joined CHI
+   as tusi (31→59). **Goryeo re-oriented:** item 32's governorship
+   divergence OVERTURNED (item 33 created the Liao under it) —
+   celestial seat stripped, `num_of_celestial_governors` 0, **LIA→KOR
+   tributary** (gate paid by liao_ordo_reform, observed passing at
+   79). **QUN retired** (the last `legacy_of_genghis` army; the
+   `:2477` decoder class should now be ZERO): araska→BKH, kafiristan
+   + kulob/munk VACATED (630) — **the package's kulob→KTT rule was
+   REFUTED by `_bad_recip` at first run: KTT is a steppe_horde** (the
+   first package error after three clean ones, caught by the build's
+   own guard; KTT's horde state banked for a Central-Asia polish).
+   Harness: weakest floor 27→850 proven by breaking; parliament 1360.
+   TEST — click tour, ~6 minutes (accumulates with items 33-40):
+   1. **THE SONG PROBE:** open CHI's panel — primary culture
+      Zhongyuan, religion Sanjiao (NOT Tibetan Buddhism), "Great Sòng
+      Dynasty" render intact, capital Kaifeng; society panel: NO
+      sinicization value shown (the allow now refuses CHI).
+   2. Yunnan: Dali at 34 including Heqing and Yaozhou; no HQG/YAN;
+      the Sichuan-Guizhou hills show ~59 tusi arrows under CHI (28
+      new); LJG and GYT untouched beside each other.
+   3. Korea: Goryeo shows as LIAO's tributary (own colour, war screen
+      opens); the Middle Kingdom panel lists NO celestial governor.
+   4. Badakhshan: no Qara'unas; araska under BKH; Kulob/Munk and all
+      Kafiristan UNOWNED.
+   5. error.log: `initialize_from_bookmark.cpp:2477` at ZERO (QUN was
+      the last producer); landless trims +3 blocks (HQG YAN QUN —
+      known class); vacated-pop class grows by ~3 (the ≈0.55 ratio);
+      NO new classes — decision 1's religion half is the one change
+      static analysis cannot reach, watch for surprises there.
+   6. scan_log.py REGRESSION 0.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
 WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
 test of 2026-08-01 passed). Items **35 (Baltic), 36 (Africa), 37
-(Southeast Asia), 38 (Tibet), 39 (Perm/Vyatka) and 40 (the
-Americas)** are LANDED, COMMITTED and HARNESS-GREEN but **NOT YET
-GAME-TESTED** — the user is accumulating tests deliberately ("testi
-en son yapalım"). The 2026-08-02 marathon shipped FOUR theaters in
-one day: `b3f3665`/`35ecdf6` (SEA), `e63c255`/`e027550` (Tibet),
-`2c9a76d`/`ee9dbf3` (Perm/Vyatka), `32293c3` + the docs commit
-carrying this block (Americas). Constants right now: registry 74
-blocks, country blocks 2411, thrones 179, landless-dep strips
-**281**, pacts 9, IO ghosts 156, vacated 625, parliament min
-**1363**, loc rows 375, CoA 125, harness all green, working tree
-clean.
+(Southeast Asia), 38 (Tibet), 39 (Perm/Vyatka), 40 (the Americas)
+and 41 (China residue)** are LANDED, COMMITTED and HARNESS-GREEN but
+**NOT YET GAME-TESTED** — the user is accumulating tests
+deliberately ("testi en son yapalım"). The 2026-08-02 marathon
+shipped FIVE theaters in one day: `b3f3665`/`35ecdf6` (SEA),
+`e63c255`/`e027550` (Tibet), `2c9a76d`/`ee9dbf3` (Perm/Vyatka),
+`32293c3`/`0a39b5f` (Americas), `401952b` + the docs commit carrying
+this block (China residue). **THE MAP PHASE IS CLOSED: every region
+of the world is 1066.** Constants right now: registry 74 blocks,
+country blocks 2411, thrones 179, landless-dep strips 281, pacts 9,
+IO ghosts **160**, vacated **630**, parliament min **1360**, loc
+rows 375, CoA 125, gate 79, IO-members floor **850**, harness all
+green, working tree clean.
 
 1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
-   before.** It is items 33+34 leftovers + 35 + 36 + 37 + 38 + 39 in
-   one sitting (~50 min): the click tours are written inside each
-   item above. One-glance musts: Song panel 2/3 reforms ACTIVE;
-   scan_log.py REGRESSION 0 — **after moving its vacate-class
-   baseline: ~1,000 lines of the vacated-pop class are now EXPECTED,
-   not a regression (decoder entry updated 2026-08-02)**; the Baltic
-   tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-King
-   probes; the Mahārājā probe (37.3 — OWED CHECK 1 rides on it) and
-   the five mandala tributaries (37.4); the "Ü" render and Dongzhan
-   probes (38.2-38.3); **tribal Perm and the empty Vyatka basin
-   (39.1-39.2)**; landless flood NOT grown beyond the known classes.
-   **During that test the user will send an HRE close-up
-   screenshot** — audit Germany density against items 23/25
-   (promised follow-up, still owed).
-2. **The map phase is ONE slice from CLOSED.** The Americas landed
-   (item 40); the sole remaining theater work is **the China D2-D7
-   leftovers** (INDIA-CHINA-REVIEW.md: D2 Song reskin landed as item
-   32's color/name move — audit the residue; D3 steppe releases
-   partly done via CHI's vacates; Dali/Yunnan remains). After that,
-   every region is 1066.
+   before.** It is items 33+34 leftovers + 35 through 41 in one
+   sitting (~60 min): the click tours are written inside each item
+   above. One-glance musts: **the Song identity probe (41.1 —
+   Zhongyuan/Sanjiao, decision 1's religion half is the one change
+   static analysis cannot reach)**; scan_log.py REGRESSION 0 —
+   **after moving its vacate-class baseline: ~1,000 lines of the
+   vacated-pop class are now EXPECTED (decoder entry updated), and
+   `:2477` must be ZERO (QUN was the last producer)**; the Baltic
+   tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-King;
+   the Mahārājā probe (37.3) and the five mandala tributaries
+   (37.4); the "Ü" render and Dongzhan (38.2-38.3); tribal Perm and
+   the empty Vyatka basin (39.1-39.2); Killke Cusco and the TEP
+   island (40.1-40.3); **Goryeo under the Liao (41.3)**; landless
+   flood NOT grown beyond the known classes. **During that test the
+   user will send an HRE close-up screenshot** — audit Germany
+   density against items 23/25 (promised follow-up, still owed).
+2. **The map phase is CLOSED (item 41).** No theater work remains.
 3. **Then the two cross-cutting phases:** the POP PHASE (inherited
    correction lists: BALTIC-PACKAGE §H, AFRICA-PACKAGE §H,
    SEA-PACKAGE §H + decision 4, TIBET-PACKAGE §A.3 — TKA's
