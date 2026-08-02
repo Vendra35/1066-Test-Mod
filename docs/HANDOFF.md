@@ -1939,21 +1939,65 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
    6. scan_log.py: REGRESSION 0 after its vacate-class baseline is
       moved per the decoder correction.
 
+40. **THE AMERICAS (LANDED `32293c3`, untested — test accumulates;
+   user-approved on the review's table, decision 4 the review's own
+   divergence).** AMERICAS-PACKAGE.md reviewed — **the THIRD
+   consecutive zero-error package.** The largest "already right"
+   finding ever: the mod had never touched a single American tag,
+   88.9% of 4,441 locations unowned by design, 321 of the game's 448
+   type=pop identities are American, zero IO members (the
+   creation-date strip deleted the 1142 Haudenosaunee League months
+   ago), exactly FOUR dependency lines in the hemisphere — all
+   post-1066, all now gone. The smallest slice in project history:
+   **TNC retired** (Tenochtitlan 1325; the island to TEP — rank=city
+   keeps an owner, `AZT_f` gated on owns=tenochtitlan stays open to
+   be EARNED), **CSU retired into KKE** (decision 4b: Manco Cápac
+   b. 1170 is vanilla's own dating — the TIB/Sakya class — and KKE
+   "Killke" IS the archaeological pre-Inca Cusco; INC_f reachable via
+   KKE's Quechua), **COC capital → chichen_itza** + the Mayapán-league
+   strips (COC→XIU, COC→HEL) + TEP→TCP. NO Toltec tag (decision 1:
+   toltec_culture on zero locations, extent [D] — tollan stays
+   TEP's); **Cahokia untouched — 1066 is its PEAK and vanilla's own
+   "Sunset of Cahokia" DHE (1337-1356) lands the terminus on the
+   archaeology: the strongest our-date-improves-vanilla finding on
+   record.** Constants: deps 281, parliament 1363, pacts/ghosts 9/156
+   unchanged. KNOWLEDGE gained the loose-registry-regex law (94
+   hidden blocks — anchor class #5). Break-test note: (h) as
+   specified was unfireable (a foreign-owner vacate resolves to zero
+   through the snapshot intersection — itself a guard); reproven in
+   the proper recipient-ground shape.
+   TEST — click tour, ~5 minutes (accumulates with items 33-39):
+   1. Valley of Mexico: NO Tenōchtitlan on the map — TEP
+      "Tepanecapan" holds the island (4 locations); the ~26 altepetl
+      independent; no hegemon anywhere.
+   2. Yucatán: COC's capital panel reads **Chich'en Itza**; XIU and
+      HEL independent (no league lines); map label still "Cocom"
+      (rename refused — unattested key-shadowing).
+   3. Cusco basin: NO "Qusqu" tag — **KKE "Killke" holds 5** incl.
+      the city; AYA/PIG/CNC ring it (report what rank/title KKE
+      renders — the derived-rank OWED check again).
+   4. Cahokia: untouched, 23 locations, "Tribe of Cahokia" class
+      render; the five Haudenosaunee independent with NO league.
+   5. error.log: NO new classes (the hemisphere had no IO, no pacts;
+      landless trims grow by TNC+CSU blocks — known class 3).
+   6. scan_log.py REGRESSION 0.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
 WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
 test of 2026-08-01 passed). Items **35 (Baltic), 36 (Africa), 37
-(Southeast Asia), 38 (Tibet) and 39 (Perm/Vyatka)** are LANDED,
-COMMITTED and HARNESS-GREEN but **NOT YET GAME-TESTED** — the user
-is accumulating tests deliberately ("testi en son yapalım"). The
-2026-08-02 marathon shipped THREE theaters in one day: `b3f3665` /
-`35ecdf6` (SEA), `e63c255` / `e027550` (Tibet), `2c9a76d` + the docs
-commit carrying this block (Perm/Vyatka). Constants right now:
-registry 74 blocks, country blocks 2411, thrones 179, landless-dep
-strips 280, pacts 9, IO ghosts 156, **vacated 625**, parliament min
-1365, loc rows 375, CoA 125, harness all green (34 result lines),
-working tree clean.
+(Southeast Asia), 38 (Tibet), 39 (Perm/Vyatka) and 40 (the
+Americas)** are LANDED, COMMITTED and HARNESS-GREEN but **NOT YET
+GAME-TESTED** — the user is accumulating tests deliberately ("testi
+en son yapalım"). The 2026-08-02 marathon shipped FOUR theaters in
+one day: `b3f3665`/`35ecdf6` (SEA), `e63c255`/`e027550` (Tibet),
+`2c9a76d`/`ee9dbf3` (Perm/Vyatka), `32293c3` + the docs commit
+carrying this block (Americas). Constants right now: registry 74
+blocks, country blocks 2411, thrones 179, landless-dep strips
+**281**, pacts 9, IO ghosts 156, vacated 625, parliament min
+**1363**, loc rows 375, CoA 125, harness all green, working tree
+clean.
 
 1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
    before.** It is items 33+34 leftovers + 35 + 36 + 37 + 38 + 39 in
@@ -1970,14 +2014,11 @@ working tree clean.
    **During that test the user will send an HRE close-up
    screenshot** — audit Germany density against items 23/25
    (promised follow-up, still owed).
-2. **The map phase is nearly CLOSED.** Remaining theater work, in
-   order: **Mesoamerica-lite** (the whole Americas' light pass: no
-   Aztecs — Tenochtitlan 1325, no Inca — Cusco ~1200s, Toltec
-   collapse, Cahokia rising, Chimú real; fix the worst, keep
-   vanilla's model) and **the China D2-D7 leftovers**
-   (INDIA-CHINA-REVIEW.md: D2 Song reskin landed as item 32's
-   color/name move — audit the residue; D3 steppe releases partly
-   done via CHI's vacates; Dali/Yunnan remains). After those two,
+2. **The map phase is ONE slice from CLOSED.** The Americas landed
+   (item 40); the sole remaining theater work is **the China D2-D7
+   leftovers** (INDIA-CHINA-REVIEW.md: D2 Song reskin landed as item
+   32's color/name move — audit the residue; D3 steppe releases
+   partly done via CHI's vacates; Dali/Yunnan remains). After that,
    every region is 1066.
 3. **Then the two cross-cutting phases:** the POP PHASE (inherited
    correction lists: BALTIC-PACKAGE §H, AFRICA-PACKAGE §H,

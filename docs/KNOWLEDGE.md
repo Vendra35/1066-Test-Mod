@@ -2151,6 +2151,26 @@ expected count per donor) at review time, every slice — the resolver
 cannot know intent. When a package prints a donor table, reproduce
 it; when it doesn't, demand it.
 
+### A single-space registry regex misses 94 of vanilla's 2,340 identity blocks
+
+**Established:** Americas package, 2026-08-02 — the anchor class's
+FIFTH incident. `^TAG = {` (one space) returns 2,246 over
+`VAN/in_game/setup/countries/`; vanilla's real count is **2,340**
+(CLAUDE.md's own constant). The 94-block gap: 92 declarations use two
+or more spaces (`HIR  = {`, `ZIP  = {` …) and 2 use a tab (HNV, YDR,
+india.txt). Four of the 94 are American, and `ZIP` is LANDED — under
+the strict regex it reported as holding land with no registry entry,
+a phantom. The Perm/Vyatka package's "2,320 tags indexed" was this
+regex (2,246 + 74 mod); its published freeness VERDICTS survive
+(word-boundary scans catch collisions by count) but its registry
+file:line column was blind to the 94. The loose form
+`^([A-Z0-9]{2,6})[ \t]*=[ \t]*\{` reproduces 2,340/2,414 exactly.
+**Means:** every registry scan uses the loose whitespace form, always
+— joining BOM-behind-`^`, one-line blocks, trailing comments and
+tab-anchored pops as the anchor class's members. A "no registry
+entry" verdict from a strict scan is a hypothesis about the scanner
+first.
+
 ## Template for new entries
 
 ```
