@@ -1,12 +1,17 @@
 ﻿# 1066 Test Mod OVERRIDE of vanilla east_asia.txt (whole-file law:
-# same filename = total replacement). EXACTLY TWO intended changes:
+# same filename = total replacement). EXACTLY FOUR intended changes:
 # CHI's color map_YUA -> map_CSO (the Yuan -> Song reskin, item 32;
-# flag/country_name move in the generated 10_countries.txt), and
+# flag/country_name move in the generated 10_countries.txt);
 # PUR's religion_definition hindu -> tibetan_buddhism (Tibet slice,
 # 2026-08-02: all four purang_province locations are tibetan_buddhism
-# and vanilla's OWN Kadam sect lists PUR as a member — the registry
-# contradicted vanilla's own data). Diff against vanilla after every
-# game patch.
+# and vanilla's OWN Kadam sect lists PUR as a member); and CHI's
+# culture_definition mongolian_culture -> zhongyuan_culture plus
+# religion_definition tibetan_buddhism -> sanjiao (China residue,
+# 2026-08-02: item 32 changed the colour and left the Yuan's identity
+# pair — vanilla's own CSO block prescribes exactly this pair, and
+# CHI's ground is 96.1% sanjiao / 0.0002% mongolian. YUA's identical
+# lines below are the Mongol future and are DELIBERATELY untouched).
+# Diff against vanilla after every game patch.
 KOR = {
 	color = map_KOR
 	color2 = rgb { 16 41 202 }
@@ -1153,8 +1158,8 @@ CHI = { #China
 	unit_color1 = rgb {	142 16 16 }
 	unit_color2 = rgb {	223 175 69 }
 
-	culture_definition = mongolian_culture
-	religion_definition = tibetan_buddhism
+	culture_definition = zhongyuan_culture
+	religion_definition = sanjiao
 
 	description_category = diplomatic
 	difficulty = 5

@@ -452,6 +452,39 @@ diplomacy_manager = {
 	dependency = { first = PLB second = BUS subject_type = tributary }
 	dependency = { first = PLB second = PNI subject_type = tributary }
 
+	# 1066: the Song jimi frontier completed (generated)
+	dependency = { first = CHI second = CGZ subject_type = tusi }
+	dependency = { first = CHI second = CLE subject_type = tusi }
+	dependency = { first = CHI second = DCN subject_type = tusi }
+	dependency = { first = CHI second = GNG subject_type = tusi }
+	dependency = { first = CHI second = LLS subject_type = tusi }
+	dependency = { first = CHI second = RNG subject_type = tusi }
+	dependency = { first = CHI second = WNG subject_type = tusi }
+	dependency = { first = CHI second = WSA subject_type = tusi }
+	dependency = { first = CHI second = XLG subject_type = tusi }
+	dependency = { first = CHI second = YJI subject_type = tusi }
+	dependency = { first = CHI second = YNL subject_type = tusi }
+	dependency = { first = CHI second = ZNX subject_type = tusi }
+	dependency = { first = CHI second = DYN subject_type = tusi }
+	dependency = { first = CHI second = LTU subject_type = tusi }
+	dependency = { first = CHI second = PDG subject_type = tusi }
+	dependency = { first = CHI second = SXI subject_type = tusi }
+	dependency = { first = CHI second = DWG subject_type = tusi }
+	dependency = { first = CHI second = GLU subject_type = tusi }
+	dependency = { first = CHI second = RGM subject_type = tusi }
+	dependency = { first = CHI second = SGZ subject_type = tusi }
+	dependency = { first = CHI second = TGY subject_type = tusi }
+	dependency = { first = CHI second = TNP subject_type = tusi }
+	dependency = { first = CHI second = ZGL subject_type = tusi }
+	dependency = { first = CHI second = TPG subject_type = tusi }
+	dependency = { first = CHI second = ZNN subject_type = tusi }
+	dependency = { first = CHI second = PCD subject_type = tusi }
+	dependency = { first = CHI second = SZU subject_type = tusi }
+	dependency = { first = CHI second = YYG subject_type = tusi }
+
+	# 1066: Goryeo in the Liao orbit (generated)
+	dependency = { first = LIA second = KOR subject_type = tributary }
+
 	# 1066: the march of Tuscany (generated)
 	dependency = { first = TUS second = PIS subject_type = vassal }
 

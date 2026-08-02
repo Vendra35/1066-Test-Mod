@@ -1448,6 +1448,12 @@ LOCATION_VACATED_EXPECT["TIB"] = 7
 # (reproduced at review) are the guard.
 LOCATION_VACATED["VYT"] = ["vyatka_area", "lalsk_province"]
 LOCATION_VACATED_EXPECT["VYT"] = 19
+# China residue (2026-08-02, decision 6 Alt Q): Kafiristan/Nuristan —
+# unconquered pagan hill country until 1896 [U]; the Qara'unas
+# garrison stamp goes and nobody replaces it. QUN's other three go to
+# BKH/KTT by grant; 3/3 single-owner, so raw resolve = intersection.
+LOCATION_VACATED["QUN"] = ["kafiristan", "kulab_province"]
+LOCATION_VACATED_EXPECT["QUN"] = 5  # 3 kafiristan + kulob/munk (the KTT horde catch — see _CHINA2_RULES)
 LOCATION_VACATED["GLH"] += ["ufa_province", "minusinsk_province"]
 # The hordes' REMAINING holdings vacate after LIA's grants (Northern
 # Dynasties): CRS 37->24, BAT 18->14 (3 Tier-B + niuquanzi to XIA),
@@ -2227,6 +2233,55 @@ _AMERICAS_RULES = {
 }
 
 AMERICAS_LANDLESS = ("TNC", "CSU")
+
+# ============================== CHINA RESIDUE ===============================
+# THE CLOSING SLICE OF THE MAP PHASE (docs/CHINA-RESIDUE-PACKAGE.md,
+# every claim re-verified 2026-08-02 — the FOURTH consecutive
+# zero-error package; decisions 1-8 user-approved, 5 and 6-Alt-Q the
+# review's own calls). The audit found D3/D4/D5/D6/D7 closed with
+# zero residue; what remained: D2's unnamed half (the CHI identity
+# pair — fixed in the east_asia.txt override, decision 1), the
+# inverted sinicization line (deleted, decision 2 — see the CHI
+# FIELD_FIXES entry), Dali's orphaned world, the KOR governorship and
+# QUN. CDL absorbs the two provinces vanilla's OWN Azhaliism sect
+# (creation_date 821 — the creation-date law CONFIRMING for once)
+# names as Dali's community: heqing (HQG 2/2) and yaoan (YAN 3/3),
+# both bai_culture single-owner blocks beside dali_province. QUN —
+# the last legacy_of_genghis army in the build and the sole remaining
+# :2477 producer — retires: araska to BKH, kulob/munk to KTT, and
+# kafiristan VACATED (decision 6 Alt Q: the Ghaznavids raided but
+# never held Nuristan; pagan to 1896 [U]). NEVER sweep
+# lijiang_province here — it is LJG 3 / GYT 3 and GYT is the Tibet
+# slice's protected Kham seam.
+_CHINA2_RULES = {
+    "CDL": (["heqing_province", "yaoan_province"], [], [], [], 5),
+    "BKH": ([], ["araska"], [], [], 1),
+    # NO KTT rule: the package prescribed kulob/munk -> KTT claiming
+    # "BKH, KTT and GHZ are all monarchies" — the build's own
+    # _bad_recip guard REFUTED it at first run (KTT resolves to
+    # steppe_horde; the first error after three clean packages, caught
+    # by the guard, not the review). Feeding a horde is the JAL
+    # name-law violation; kulob/munk join the Alt-Q vacate below, and
+    # KTT's own horde government is BANKED as a flag for a future
+    # Central-Asia polish pass (it survived that slice's review).
+}
+
+CHINA2_LANDLESS = ("HQG", "YAN", "QUN")
+
+# The 28 Song-side orphans of LNG's retirement (decision 3): the same
+# cultures on the same Sichuan-Guizhou-Wuling-Guangxi ground as the
+# sixteen jimi lords item 32's grand-test fix repointed — sovereign
+# only because they sat on a different row of vanilla's Yuan subject
+# tree. They join CHI as tusi (branch 1 of can_country_have_tusi, MK
+# leadership — proven live 2026-08-01); every one passes the
+# statically checkable clauses of is_country_valid_for_tusi_subject
+# and vanilla itself shipped all 28 as tusi at these exact sizes.
+CHINA2_TUSI = ("CGZ", "CLE", "DCN", "GNG", "LLS", "RNG", "WNG", "WSA",
+               "XLG", "YJI", "YNL", "ZNX",
+               "DYN", "LTU", "PDG", "SXI",
+               "DWG", "GLU", "RGM", "SGZ", "TGY", "TNP", "ZGL",
+               "TPG", "ZNN",
+               "PCD", "SZU", "YYG")
 
 # ============================= PERM / VYATKA ================================
 # THE FINNO-UGRIC NORTH (docs/PERM-VYATKA-PACKAGE.md, every claim
@@ -3027,7 +3082,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
     + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS \
-    + TIBET_LANDLESS + PERM_LANDLESS + AMERICAS_LANDLESS
+    + TIBET_LANDLESS + PERM_LANDLESS + AMERICAS_LANDLESS + CHINA2_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -3452,8 +3507,17 @@ FIELD_FIXES = {
             ("\n\t\t\tyugur_culture", ""),
             ("\n\t\t\tmonguor_culture", ""),
             ("\n\t\t\tamdowa_culture", ""),
-            ("sinicized_vs_unsinicized = -50 # Bayan's policies",
-             "sinicized_vs_unsinicized = 50 # the Song court [magnitude ours; positive = sinicized, asia templates +10]")],
+            # China residue (2026-08-02, decision 1's cure + decision 2):
+            # zhongyuan becomes the PRIMARY (registry fix in
+            # east_asia.txt), so it leaves the accepted list — the ARA
+            # duplicate law; accepted 9 -> 8, capacity returned.
+            ("\n\t\t\tzhongyuan_culture", ""),
+            # And the sinicization line DIES rather than flips: item
+            # 32's +50 had the sign inverted (00_default.txt:389-421,
+            # left=Sinicized; vanilla's own China template is -70), and
+            # with a chinese_group primary the value's allow refuses
+            # CHI outright — the engine would not read any number here.
+            ("\n\t\t\tsinicized_vs_unsinicized = -50 # Bayan's policies", "")],
     # France demesne slice: the three landless-to-landed tags swap the
     # _not_present include for the landed variant (the POR entry in
     # reverse). The catholic no_coast variant KEEPS heir_selection
@@ -6088,6 +6152,16 @@ def build_countries(src):
                      f"locations, package count is {_exp}")
         LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
 
+    # China residue resolves the same way (three rules, 8 total; QUN's
+    # kafiristan goes through LOCATION_VACATED instead). EXTEND, never
+    # assign — CDL, BKH and KTT are landed recipients.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_CHINA2_RULES.items()):
+        got = _resolve_ruleset(f"_CHINA2_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_CHINA2_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -6879,6 +6953,23 @@ def build_ios(src):
                  f"creation_date = 1271.12.18, found {n_mk}")
     report.append(("middle_kingdom re-dated to the Song founding", n_mk))
 
+    # China residue (decision 5): the KOR governorship goes with the
+    # vassalage item 32 already stripped — Song-Goryeo relations were
+    # suspended 1022-1071 [D] and the 1066 tie is the LIA->KOR
+    # tributary added in build_diplomacy. Item 32's recorded
+    # divergence is overturned, with the reason, not silently.
+    src, n_gov = re.subn(
+        r"[ \t]*celestial_governor = \{\n[ \t]*KOR\n[ \t]*\}\n",
+        "", src)
+    if n_gov != 1:
+        sys.exit(f"expected exactly one celestial_governor block, got {n_gov}")
+    src, n_num = re.subn(
+        r"num_of_celestial_governors = 1",
+        "num_of_celestial_governors = 0", src)
+    if n_num != 1:
+        sys.exit(f"expected exactly one num_of_celestial_governors, got {n_num}")
+    report.append(("the Korean governorship returned to history", n_gov + n_num))
+
     # The Coptic patriarchate of Alexandria (Africa slice, 2026-08-02):
     # at 1066 the bishops of Makuria and Alodia were consecrated in
     # Alexandria [U] — the Nubian church was a province of the Coptic
@@ -7131,9 +7222,16 @@ def build_ios(src):
         # sits in NO sect — the Sakya instance it belonged to was
         # already deleted by the future-date strip (creation_date
         # 1073.1.1, vanilla's own dating of the anachronism). 155 -> 156.
-        + ["TIB"])
-    if n_ghosts != 156 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 156 landless IO list entries, "
+        + ["TIB"]
+        # China residue adds 4 (observed failing first, same day —
+        # the package predicted 158, forgetting its OWN §4.2: HQG and
+        # YAN are Yunnan tags and therefore Middle Kingdom members
+        # too). Each leaves TWO lists: Azhaliism (3 -> 1 members, does
+        # not empty — the pinned-9 stands) and the MK (198 -> 196).
+        # QUN sits in no IO. 156 -> 160.
+        + ["HQG", "HQG", "YAN", "YAN"])
+    if n_ghosts != 160 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 160 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -8022,6 +8120,33 @@ def build_diplomacy(src):
            + _stribs + src[_wrap:])
     report.append(("Srivijayan mandala tributaries added",
                    len(SRIVIJAYA_TRIBUTARIES)))
+
+    # China residue (decision 3): the 28 Song-side orphans join CHI as
+    # tusi — the jimi frontier completed. Gate: branch 1 of
+    # can_country_have_tusi (MK leadership), proven live in the
+    # 2026-08-01 grand test on the sixteen. CHI's tusi 31 -> 59.
+    _wrap = src.rindex("\n}")
+    _ctusi = "".join(
+        f"\tdependency = {{ first = CHI second = {t} subject_type = tusi }}\n"
+        for t in CHINA2_TUSI)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Song jimi frontier completed (generated)\n"
+           + _ctusi + src[_wrap:])
+    report.append(("Song jimi frontier completed", len(CHINA2_TUSI)))
+
+    # China residue (decision 5, overturning item 32's recorded
+    # divergence BECAUSE THE WORLD CHANGED under it: the divergence
+    # was recorded before item 33 created the Liao. At 1066 Goryeo is
+    # a LIAO tributary — Song relations suspended 1022-1071 [D] — and
+    # the celestial-governor seat is stripped in build_ios in the same
+    # slice. Gate: liao_ordo_reform's allow_tributary_subject, already
+    # on LIA; KOR carries zero dependencies, no double overlord.
+    _wrap = src.rindex("\n}")
+    src = (src[:_wrap]
+           + "\n\t# 1066: Goryeo in the Liao orbit (generated)\n"
+           + "\tdependency = { first = LIA second = KOR subject_type = tributary }\n"
+           + src[_wrap:])
+    report.append(("Goryeo bound to the Liao", 1))
 
     # Aragon guaranteeing Sicily is the 1282 Vespers — gone. The
     # PAP->SIC guarantee STAYS: a papal guarantee over Roger's county

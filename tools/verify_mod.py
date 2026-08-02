@@ -837,10 +837,10 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
 # Nine Seljuk + two Fatimid + six Capetian + six Irish + two Melfi
 # (=25), + 46 Jurchen + KIE->NOV + ETH-ring residue (73 measured
-# 2026-08-02), + five Srivijayan (SEA) = 78; raise if a future slice
-# adds more.
+# 2026-08-02), + five Srivijayan (SEA) = 78, + LIA->KOR (China
+# residue) = 79; raise if a future slice adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=78)
+      len(_gate_deps), probs, min_count=79)
 
 # Landless tags are not IO members — Paradox's own rule: vanilla's
 # high_kingship list pointedly omits landless MTH and PLE. A member a
@@ -881,7 +881,7 @@ for _mm in re.finditer(r"members[ \t]*=[ \t]*\{([^}]*)\}",
             # patriarchate — now stripped by build_ios.
             probs.append(f"IO member {_t} holds no land — landless tags "
                          "are not IO members (vanilla's own rule)")
-check("IO members hold land", _members_checked, probs, min_count=27)
+check("IO members hold land", _members_checked, probs, min_count=850)  # was 27 vs 854 scanned — the harness's weakest floor, raised with the China residue (2026-08-02), proven by breaking
 
 # ---- no IO instance EMPTIED by the build -----------------------------------
 # Vanilla legitimately ships empty members lists (11 of its 53
@@ -1241,7 +1241,7 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # the four side-effect retirees — against DJN + SNH new and BTI, SOA,
 # ADA revived, all five reaching a parliament through their templates).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1363)  # -TNC -CSU (Americas), observed (2026-08-02)
+      min_count=1360)  # -HQG -YAN -QUN (China residue), observed (2026-08-02)
 
 print()
 if fails:

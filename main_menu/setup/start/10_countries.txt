@@ -26410,7 +26410,6 @@ countries = {
 		include = "expl_silk_road_center"
 		include = "expl_silk_road_east"
 		government = {
-			sinicized_vs_unsinicized = 50 # the Song court [magnitude ours; positive = sinicized, asia templates +10]
 
 			laws = {
 			}
@@ -26426,7 +26425,6 @@ countries = {
 		court_language = northern_mandarin_dialect
 		accepted_cultures = {
 			jilu_culture
-			zhongyuan_culture
 			qin_culture
 			jianghuai_culture
 			liang_culture
@@ -27233,6 +27231,7 @@ countries = {
 
 	BKH = { #Badakhshan
 		own_control_core = {
+			araska
 			fayzabad jurm sar_sang zebak 
 			qalai_khumb kham_bahar ragh vanch
 			shighnan gunt murghab oksu shiveh vamar
@@ -27355,7 +27354,7 @@ countries = {
 	CDL = { #Dali
 
 		own_control_core = {
-			kunming lufeng yiliang kunyang anning chenggong yimen songming fumin zhennan dingyuan_chuxiong weichu nanan heyang jiangchuan lunan xinxing
+			kunming lufeng yiliang kunyang anning chenggong yimen songming fumin zhennan dingyuan_chuxiong weichu nanan heyang jiangchuan lunan xinxing heqing jianchuan yaozhou dayao juque
 			taihe_dali menghua yunlong binchuan yangbei wujing yunnan langqiong
 			midu dingbian_shunning
 			yongping_yongchang
@@ -27606,9 +27605,13 @@ countries = {
 		capital = ningfan
 	}
 
-	YAN = { #Yáo'ān
-		own_control_core = {
+	YAN = {
+		our_cores_conquered_by_others = {
 			yaozhou dayao juque
+		}
+ #Yáo'ān
+		own_control_core = {
+			  
 		}
 
 		include = "south_east_asia_monarchy_no_mandala_no_coast"
@@ -27621,9 +27624,13 @@ countries = {
 		capital = yaozhou
 	}
 
-	HQG = { #Heqing
-		own_control_core = {
+	HQG = {
+		our_cores_conquered_by_others = {
 			heqing jianchuan
+		}
+ #Heqing
+		own_control_core = {
+			 
 		}
 
 		include = "south_east_asia_monarchy_no_mandala_no_coast"
@@ -54459,16 +54466,18 @@ countries = {
 		capital = ghazni
 	}
 
-	QUN = { #Qara'unas
+	QUN = {
+		our_cores_conquered_by_others = {
+			kabul chak gandamak kohi_safi andarab bagram charikar istalif panjshir kunduz ashkamesh baghlan kishim taleqan araska kulob munk alishang jalalabad parun logar asadabad_kunar hajiabad kahmard bamyan yakawlang
+		}
+ #Qara'unas
 		type = army
 		own_control_core = {
 
-			araska
 		}
 
 		own_control_integrated = {
-			kulob munk
-			  parun  asadabad_kunar hajiabad   
+
 		}
 
 		include = "expl_middle_east"
