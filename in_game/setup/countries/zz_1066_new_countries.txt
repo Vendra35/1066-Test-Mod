@@ -653,3 +653,35 @@ SNH = { #The Sanhaja of the veil — Lamtuna and Gudala, the Almoravid heartland
 	culture_definition = lamtuna_culture
 	religion_definition = sunni
 }
+
+PGN = { #Pagan (Bagan) — Anawrahta's kingdom, the Irrawaddy united after Thaton 1057
+	color = map_burmese
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = burmese_culture
+	religion_definition = theravada
+}
+
+HPJ = { #Haripunjaya — the Mon kingdom of the Ping valley (Lamphun); Mon identity over 1337-painted Khon Muang pops, the PAA law
+	color = map_mon
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = mon_culture
+	religion_definition = theravada
+}
+
+KDR = { #Panjalu/Kediri — the western half of Airlangga's 1049 partition (seat Daha)
+	color = map_MAJ
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = javanese_culture
+	religion_definition = hindu
+}
+
+JGL = { #Janggala — the eastern half of the 1049 partition (seat Kahuripan; surabaya stands in)
+	color = map_tai
+	color2 = rgb { 16 41 202 }
+
+	culture_definition = javanese_culture
+	religion_definition = hindu
+}

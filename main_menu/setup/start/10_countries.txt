@@ -27389,10 +27389,10 @@ countries = {
 
 	CHH = { #Chiang Hung
 		own_control_core = {
+			muang_sing chom_khao_maneerat hongsa muang_luang_phukha muang_xay vieng_phouka
 			jinglong
 			daolong gengdang mengban_jihong menghai mengla sime yot_ou
-			mong_yang mong_yawng
-			muang_sing
+
 		}
 
 		include = "south_east_asia_monarchy_no_mandala_no_coast"
@@ -46149,10 +46149,11 @@ countries = {
 
 	KHM = { #Khmer
 		own_control_core = {
+			roi_et kham_muang khon_kaen muang_khemarat mueng_fa_daet yasothon chaiyaphum kaset_sombun khon_san mancha_khiri nong_bua_lamphu phu_wiang muang_nakhon kut_ling muang_nong_han_luang mukdahan pak_huei_lang that_phanom thakhek keutkeut khamkeut mahaxay ngoc_ma nong_bok
 			angkor
 			angkor_borei angkor_knong apui ban_don ban_phone banlung banon banteay_chhmar battambang beng_mealea buriram champasak chhmuoh_thmei damrey_trom doh_kromum
 			idkabue indrapura_khmer ishanapura kampong_saom koh_ker koh_kong khorat kracheh longvek lumphat kampong_roessei kon_tum khukhan kramuon_sa
-			mahaxay muang_mang muang_phalan muang_phin muang_ta_oi muang_tam mueng_thung_yai nokor_reach_seyma nong_bok or_keo peam phanom_rung phimai phnom_penh phnom_santuk phnom_srok phsar_dek phutthaisong pouthi_loeu prathai_saman preah_ko prasat_andet prasat_don_an prasat_don_kau prasat_pram_lovet prasat_thong_lang
+			 muang_mang muang_phalan muang_phin muang_ta_oi muang_tam mueng_thung_yai nokor_reach_seyma  or_keo peam phanom_rung phimai phnom_penh phnom_santuk phnom_srok phsar_dek phutthaisong pouthi_loeu prathai_saman preah_ko prasat_andet prasat_don_an prasat_don_kau prasat_pram_lovet prasat_thong_lang
 			preah_khan_kompong_svay preah_vihear prey_nokor pursat rattanaburi rong_damrel sampheak_borak samxay sandan sangkha savannakhet sdok_kok_thom sepon song_be srey_sarchhor srok_khleang stung_treng suwannaphum tboung_khmum thuan_binh toek_khmau tonle_kong tuol_ta_mouk thung_samrit vat_phou vyadhapura
 		}
 
@@ -46287,10 +46288,13 @@ countries = {
 		capital = thang_long
 	}
 
-	SUK = { #Sukhothai
+	SUK = {
+		our_cores_conquered_by_others = {
+			sukhothai ban_pa_la_ta chai_nat chakangrao mae_sot mueng_bang_yom mueng_rat nakhon_chum nakhon_sawan nakhon_thai phayuhakhiri phrae phraek phuenchapura song_khwae sra_luang sri_satchanalai sri_thep tak thung_yang
+		}
+ #Sukhothai
 		own_control_core = {
-			sukhothai
-			ban_pa_la_ta chai_nat chakangrao mae_sot mueng_bang_yom mueng_rat nakhon_chum nakhon_sawan nakhon_thai phayuhakhiri phrae phraek phuenchapura song_khwae sra_luang sri_satchanalai sri_thep tak thung_yang
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46311,11 +46315,13 @@ countries = {
 		capital = sukhothai
 	}
 
-	LNA = { #Lan Na
+	LNA = {
+		our_cores_conquered_by_others = {
+			chiang_mai chiang_dao chiang_khong chiang_rai chiang_saen chom_khao_maneerat hot lampang lamphun mae_hong_son muang_jam muang_luang_phukha muang_wang muang_yuam mueng_thoen omkoi sariang vieng_phouka wiang_fang mong_hpayak mong_hsat
+		}
+ #Lan Na
 		own_control_core = {
-			chiang_mai
-			chiang_dao chiang_khong chiang_rai chiang_saen chom_khao_maneerat hot lampang lamphun mae_hong_son muang_jam muang_luang_phukha muang_wang muang_yuam mueng_thoen omkoi sariang vieng_phouka wiang_fang
-			mong_hpayak mong_hsat
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46339,11 +46345,12 @@ countries = {
 
 	LAV = { #Lavo
 		own_control_core = {
-			dong_lakhon dong_si_maha_phot lopburi muang_khuan_kra_buri phanat prachinburi rayong sa_kaeo saraburi
+			ayodhya dong_lakhon lopburi prachinburi saraburi phraek chai_nat chakangrao nakhon_sawan phayuhakhiri sri_thep mueng_rat phuenchapura sukhothai mueng_bang_yom nakhon_thai song_khwae sra_luang sri_satchanalai tak ban_pa_la_ta mae_sot nakhon_chum rayong dong_si_maha_phot muang_khuan_kra_buri phanat sa_kaeo
+			        
 		}
 
 		our_cores_conquered_by_others = {
-			ayodhya
+			
 		}
 
 		include = "south_east_asia_monarchy"
@@ -46351,7 +46358,8 @@ countries = {
 		capital = lopburi
 		government = {
 
-			ruler = random
+			ruler = adh_narai
+			ruler_term = { character = adh_narai start_date = 1052.1.1 regnal_number = 0 }
 			laws = {
 				education_masses_law = uneducated_masses_education
 			}
@@ -46370,10 +46378,11 @@ countries = {
 
 	ADH = { #Lavo
 		own_control_core = {
-			ayodhya
+			
 		}
 
 		our_cores_conquered_by_others = {
+			ayodhya
 			dong_lakhon dong_si_maha_phot lopburi muang_khuan_kra_buri phanat prachinburi rayong sa_kaeo saraburi
 		}
 
@@ -46394,10 +46403,13 @@ countries = {
 		}
 	}
 
-	PEG = { #Pegu / Hanthawaddy
+	PEG = {
+		our_cores_conquered_by_others = {
+			martaban dagon dala danubyu donwun haungtharaw hinthada hmawbi hpa_an ingapu kawliya kyainseikgyi kyaukkyi maubin mawlamyine myanaung myaungmya naungyo ngaputaw papun pathein pegu phyu sittaung thanlyin thaton twante ye
+		}
+ #Pegu / Hanthawaddy
 		own_control_core = {
-			martaban
-			dagon dala danubyu donwun haungtharaw hinthada hmawbi hpa_an ingapu kawliya kyainseikgyi kyaukkyi maubin mawlamyine myanaung myaungmya naungyo ngaputaw papun pathein pegu phyu sittaung thanlyin thaton twante ye
+
 		}
 
 		include = "south_east_asia_monarchy"
@@ -46567,13 +46579,16 @@ countries = {
 			chakma_culture
 		}
 
-		capital = launggyet
+		capital = weithali
 	}
 
-	PIN = { #Pinya
+	PIN = {
+		our_cores_conquered_by_others = {
+			pinya htilin kanna kyaukse laungshe lewe magway mindon mingin myede ngape nwamethin nyaungyan pagan pakokku pindale pinle pyinmana sagu salay salin saw talok taungdwingyi thayet wetwin
+		}
+ #Pinya
 		own_control_core = {
-			pinya
-			htilin kanna kyaukse laungshe lewe magway mindon mingin myede ngape nwamethin nyaungyan pagan pakokku pindale pinle pyinmana sagu salay salin saw talok taungdwingyi thayet wetwin
+
 		}
 
 		tolerated_cultures = {
@@ -46587,10 +46602,13 @@ countries = {
 		capital = pinya
 	}
 
-	SAG = { #Sagaing
+	SAG = {
+		our_cores_conquered_by_others = {
+			sagaing amyint butalin dhipaesyin moksobo myedu ngasingu takawng
+		}
+ #Sagaing
 		own_control_core = {
-			sagaing
-			amyint butalin dhipaesyin moksobo myedu ngasingu takawng
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46601,10 +46619,13 @@ countries = {
 		capital = sagaing
 	}
 
-	TNG = { #Toungoo
+	TNG = {
+		our_cores_conquered_by_others = {
+			taungoo thandaunggyi
+		}
+ #Toungoo
 		own_control_core = {
-			taungoo
-			thandaunggyi
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46615,10 +46636,13 @@ countries = {
 		capital = taungoo
 	}
 
-	BPR = { #Prome
+	BPR = {
+		our_cores_conquered_by_others = {
+			pyay paungde tharrawaddy
+		}
+ #Prome
 		own_control_core = {
-			pyay
-			paungde tharrawaddy
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46631,7 +46655,8 @@ countries = {
 
 	PHY = { #Phayao
 		own_control_core = {
-			phayao
+			chiang_rai chiang_khong chiang_saen phayao wiang_fang
+			
 			muang_ngao
 		}
 
@@ -46645,8 +46670,8 @@ countries = {
 
 	PUA = { #Pua / Nan
 		own_control_core = {
-			pua
-			nan
+			phrae nan pua thung_yang
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46659,12 +46684,13 @@ countries = {
 
 	MUA = { #Muang Sua
 		own_control_core = {
-			muang_sua ban_luang_cheng hongsa muang_et muang_kham muang_lang muang_thaeng muang_xay nam_xuang phongsali
-			phonsavan xam_neua 
+			loei chiang_khan dan_sai nong_khay udon_thani vientiane ban_khon phon_hong sayniabuli vang_vieng muang_phuan bolikham phonsavan thoulakhom
+			muang_sua ban_luang_cheng  muang_et muang_kham muang_lang muang_thaeng  nam_xuang phongsali
+			 xam_neua 
 		}
 
 		own_control_integrated = {
-			ban_khon sayniabuli vang_vieng
+			  
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46682,20 +46708,17 @@ countries = {
 		capital = muang_sua
 	}
 
-	VTN = { #Vientiane
+	VTN = {
+		our_cores_conquered_by_others = {
+			vientiane phon_hong loei chiang_khan dan_sai nong_khay udon_thani nong_bua_lamphu phu_wiang kham_muang khon_kaen mueng_fa_daet muang_nakhon kut_ling muang_nong_han_luang mukdahan pak_huei_lang that_phanom muang_phuan bolikham thoulakhom thakhek keutkeut khamkeut ngoc_ma muang_khemarat yasothon roi_et chaiyaphum kaset_sombun khon_san mancha_khiri
+		}
+ #Vientiane
 		own_control_core = {
-			vientiane phon_hong
-			loei  chiang_khan dan_sai nong_khay udon_thani
-			nong_bua_lamphu phu_wiang
-			kham_muang khon_kaen mueng_fa_daet
-			muang_nakhon   kut_ling muang_nong_han_luang mukdahan pak_huei_lang that_phanom
-			muang_phuan  bolikham thoulakhom
-			thakhek  keutkeut khamkeut ngoc_ma
+
 		}
 
 		own_control_integrated = {
-			muang_khemarat yasothon roi_et
-			chaiyaphum kaset_sombun khon_san mancha_khiri
+
 		}
 
 		include = "south_east_asia_monarchy_no_coast"
@@ -46959,7 +46982,8 @@ countries = {
 
 	KTG = { #Kengtung
 		own_control_core = {
-			kengtung mongping
+			kengtung mong_hpayak mong_hsat mong_yang mong_yawng mongping
+			 
 		}
 
 		own_control_integrated = {
@@ -47202,9 +47226,13 @@ countries = {
 		}
 	}
 
-	TSM = { #Tenasserim
-		own_control_core = {
+	TSM = {
+		our_cores_conquered_by_others = {
 			tenasserim kawthaung mergui myitta singkhon tavoy thayetchaung
+		}
+ #Tenasserim
+		own_control_core = {
+			      
 		}
 
 		include = "south_east_asia_monarchy"
@@ -48401,13 +48429,13 @@ countries = {
 
 	#-------------------------- Indonesia ----------------------------
 
-	MAJ = { #Majapahit
+	MAJ = {
+		our_cores_conquered_by_others = {
+			trowulan bajrajinaparamitapura balambangan lumajang malang pakembangan sadeng surabaya bangkalan bawean gresik kangean sugeneb tuban_java pajang daha jagaraga matahun tulungagung wengker mataram bagaluhan borobudur dieng pacitan purwalingga demak jepara pandansalas pati pekalongan semarang
+		}
+ #Majapahit
 		own_control_core = {
-			trowulan bajrajinaparamitapura balambangan lumajang malang pakembangan sadeng
-			surabaya bangkalan bawean gresik kangean sugeneb tuban_java
-			pajang daha jagaraga matahun tulungagung wengker
-			mataram bagaluhan borobudur dieng pacitan purwalingga
-			demak jepara pandansalas pati pekalongan semarang
+
 		}
 		include = "expl_indonesian_trade_route"
 		include = "expl_indonesia"
@@ -48528,9 +48556,13 @@ countries = {
 		capital = jambi
 	}
 
-	ATJ = { #Lambri/Lamuri/Aceh
-		own_control_core = {
+	ATJ = {
+		our_cores_conquered_by_others = {
 			bandar_aceh daya calang meulaboh susoh tapaktuan
+		}
+ #Lambri/Lamuri/Aceh
+		own_control_core = {
+			     
 		}
 
 		religious_school = shafii_school
@@ -48556,9 +48588,13 @@ countries = {
 		capital = bandar_aceh
 	}
 
-	PSA = { #Pasai
-		own_control_core = {
+	PSA = {
+		our_cores_conquered_by_others = {
 			pasai peureulak semerlanga sigli tamiang
+		}
+ #Pasai
+		own_control_core = {
+			    
 		}
 
 		religious_school = shafii_school
@@ -48588,12 +48624,13 @@ countries = {
 		capital = pasai
 	}
 
-	ARU = { #Aru
+	ARU = {
+		our_cores_conquered_by_others = {
+			kota_rentang deli asahan karo pakpak perbaungan silou bagansiapipi kubu_rokan kunto rokan tambusai tanah_putih siak bengkalis buantan dumai sakai_riau senapelan pangkalan_kerinci gunung_sahilan kampar pelalawan singingi
+		}
+ #Aru
 		own_control_core = {
-			kota_rentang deli asahan karo pakpak perbaungan silou
-			bagansiapipi kubu_rokan kunto rokan tambusai tanah_putih
-			siak bengkalis buantan dumai sakai_riau senapelan
-			pangkalan_kerinci gunung_sahilan kampar pelalawan singingi
+
 		}
 
 		religious_school = shafii_school
@@ -48625,6 +48662,7 @@ countries = {
 
 	PNI = { #Pannai
 		own_control_core = {
+			deli asahan karo kota_rentang pakpak perbaungan silou bagansiapipi kubu_rokan kunto rokan tambusai tanah_putih siak bengkalis buantan dumai sakai_riau senapelan
 			pannai bahal balige bilah kota_pinang kualuh tanjung_balai
 		}
 
@@ -48672,8 +48710,9 @@ countries = {
 
 	INR = { #Indragiri
 		own_control_core = {
+			pangkalan_kerinci gunung_sahilan kampar kuala_kampar pelalawan singingi
 			rengat baru kuantan_riau peranap talang_mamak
-			kuala_kampar
+			
 		}
 
 		include = "expl_china"
@@ -48747,12 +48786,14 @@ countries = {
 			orang_rimba_culture
 		}
 
+		country_rank = rank_kingdom
 		capital = palembang
 	}
 
 	LGE = { #Linge
 		own_control_core = {
-			linge gayo_lues
+			bandar_aceh linge pasai peureulak semerlanga sigli tamiang daya calang gayo_lues meulaboh susoh tapaktuan
+			 
 		}
 
 		religious_school = shafii_school
@@ -49914,6 +49955,7 @@ countries = {
 
 	TDO = { #Tondo
 		own_control_core = {
+			maynila
 			tondo botolan hubek pulilan
 			magalo
 		}
@@ -49937,9 +49979,13 @@ countries = {
 		capital = tondo
 	}
 
-	MNA = { #Maynila
-		own_control_core = {
+	MNA = {
+		our_cores_conquered_by_others = {
 			maynila
+		}
+ #Maynila
+		own_control_core = {
+			
 		}
 
 		include = "expl_china"
@@ -50036,13 +50082,17 @@ countries = {
 		capital = butuan
 	}
 
-	MGD = { #Wenduling (Maguindanao)
+	MGD = {
+		our_cores_conquered_by_others = {
+			kuta_watu kabacan kalalaw kalamansig minduso
+		}
+ #Wenduling (Maguindanao)
 		own_control_core = {
-			kuta_watu 
+			 
 		}
 
 		own_control_integrated = {
-			kabacan kalalaw kalamansig minduso
+			   
 		}
 
 		include = "expl_china"
@@ -50065,6 +50115,7 @@ countries = {
 
 	KIM = { #Kiliman (Buayan)
 		own_control_core = {
+			kabacan kalalaw kalamansig kuta_watu minduso
 			buayan makar buluan tboli
 		}
 
@@ -58914,6 +58965,21 @@ countries = {
 		capital = aleppo
 	}
 
+	HPJ = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			chiang_mai chiang_dao lampang lamphun muang_wang mueng_thoen muang_yuam hot mae_hong_son muang_jam omkoi sariang
+		}
+
+		starting_technology_level = 3
+		include = "south_east_asia_monarchy_no_coast"
+		country_rank = rank_duchy
+
+		capital = lamphun
+	}
+
 	ISR = {
 		own_control_core = {
 			pola rovinj pazin buzet metlika kocevje postojna novo_mesto
@@ -58938,6 +59004,40 @@ countries = {
 		country_rank = rank_county
 
 		capital = pazin
+	}
+
+	JGL = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			surabaya bangkalan bawean gresik kangean sugeneb tuban_java trowulan bajrajinaparamitapura balambangan lumajang malang pakembangan sadeng
+		}
+
+		starting_technology_level = 3
+		include = "expl_indonesian_trade_route"
+		include = "expl_indonesia"
+		include = "indonesia_monarchy"
+		country_rank = rank_duchy
+
+		capital = surabaya
+	}
+
+	KDR = {
+		government = {
+			ruler = random
+		}
+		own_control_core = {
+			pajang daha jagaraga matahun tulungagung wengker mataram bagaluhan borobudur dieng pacitan purwalingga demak jepara pandansalas pati pekalongan semarang
+		}
+
+		starting_technology_level = 3
+		include = "expl_indonesian_trade_route"
+		include = "expl_indonesia"
+		include = "indonesia_monarchy"
+		country_rank = rank_kingdom
+
+		capital = daha
 	}
 
 	KKY = {
@@ -59156,6 +59256,22 @@ countries = {
 		country_rank = rank_kingdom
 
 		capital = monghyr
+	}
+
+	PGN = {
+		government = {
+			ruler = pgn_anawrahta
+			ruler_term = { character = pgn_anawrahta start_date = 1044.8.11 regnal_number = 0 }
+		}
+		own_control_core = {
+			htilin kanna mingin pakokku saw pagan magway salay talok taungdwingyi pinya kyaukse nyaungyan pindale pinle pyay mindon myede paungde tharrawaddy thayet sagaing amyint butalin dhipaesyin moksobo salin laungshe ngape sagu taungoo lewe nwamethin pyinmana thandaunggyi martaban haungtharaw hpa_an kyainseikgyi mawlamyine ye myaungmya dala maubin naungyo ngaputaw twante pathein danubyu hinthada ingapu myanaung pegu dagon hmawbi kawliya phyu thanlyin tenasserim kawthaung mergui myitta singkhon tavoy thayetchaung thaton donwun kyaukkyi papun sittaung wetwin myedu ngasingu takawng
+		}
+
+		starting_technology_level = 3
+		include = "south_east_asia_monarchy"
+		country_rank = rank_kingdom
+
+		capital = pagan
 	}
 
 	PLJ = {

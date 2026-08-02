@@ -449,6 +449,17 @@ HISTORICAL_RULERS = {
     "PIE": ("pie_adelaide_susa", "1034.1.1", 0),          # Adelaide of Susa, margravine of Turin — NEW_CHARACTERS
     "MFA": ("mfa_ottone_ii_monferrato", "1045.1.1", 2),   # Otto II of Montferrat — vanilla character, vanilla's own term values
     "PAD": ("mlo_alberto_azzo_ii_este", "1029.1.1", 2),   # Albert Azzo II d'Este on his real county — vanilla character, cross-tag seat
+
+    # Southeast Asia, 1066 (docs/SEA-PACKAGE.md §C, user-approved
+    # 2026-08-02). TWO seats — the attested set; the rest of the theater
+    # stays random, the Pecheneg discipline. Held back with reasons
+    # recorded: PLB (the 1067 San-fo-qi mission's ruler-name
+    # Ti-hua-kia-lo is a disputed Chinese transcription [D]), KDR/JGL
+    # (the post-1049 Javanese king-lists have decade-wide gaps [D]),
+    # BLI (Anak Wungsu is a title-form, not a name — package decision 6,
+    # the Cadalus honesty rule), ARK/HPJ (chronicle king-lists [D]).
+    "PGN": ("pgn_anawrahta", "1044.8.11", 0),             # Anawrahta of Pagan, r. 1044-1077 [D on the day]; d. 1077 left to the engine — NEW_CHARACTERS
+    "LAV": ("adh_narai", "1052.1.1", 0),                  # Narai of Lavo [D] — VANILLA character (b. 1020 at lopburi, lavo_dynasty, death already stripped), cross-tag seat like PAD/PYS
 }
 
 # Tags whose 1066 ruler was HISTORICALLY a minor. The adult-age check skips
@@ -1920,6 +1931,160 @@ NEW_COUNTRIES["SNH"] = (
     "\t\tcountry_rank = rank_duchy\n\n"
     "\t\tcapital = aoudaghost\n\t}\n")
 
+# ============================ SOUTHEAST ASIA ================================
+# THE SEA SLICE (docs/SEA-PACKAGE.md, key claims re-verified 2026-08-02,
+# user-approved same day, decisions 1-13). Anawrahta's Pagan unifies the
+# Irrawaddy, Java splits into Airlangga's 1049 halves, the Srivijayan
+# mandala repoints off a Majapahit founded 227 years late. REVIEW
+# CORRECTION baked in throughout: the package's country reader missed
+# `own_control_integrated` blocks, so its "10 vanilla-unowned Khorat/
+# Mekong locations" (and VTN 25 / PLB 34 / BTU 1...) were phantoms —
+# every location granted below carries exactly ONE ownership entry,
+# measured with THIS file's own reader, and UNOWNED_GRANTS gains
+# nothing. Same 5-tuple shape as _BALTIC_RULES/_AFRICA_RULES.
+_SEA_RULES = {
+    # PAGAN. Anawrahta's kingdom: the whole Irrawaddy valley and the
+    # Mon delta he took with Thaton in 1057 [D], Tenasserim included
+    # (decision 12 — the chronicle tradition's reach to Mergui). The
+    # four singles are the Shan-hill outliers PIN and SAG hold outside
+    # the two areas, granted so both empty cleanly. `kale` is carved
+    # out: KAL is a one-location tai_nua hill muang and retiring it
+    # buys nothing — without the carve-out PGN resolves 75 and KAL
+    # dies emptied-but-unlisted (the delta guard's third workout).
+    "PGN": (["irrawady_area", "irrawady_delta_area"],
+            ["wetwin", "myedu", "ngasingu", "takawng"],
+            [], ["kale"], 74),
+    # LAVO. The Chao Phraya basin minus the two western Mon survivors
+    # (decision 8: SPN and PTC stay alive — LAV conquering Suphanburi
+    # is exactly what vanilla's own flavor_ayu.1 third trigger branch
+    # expects for the 1337 Ayutthaya formation). Sukhothai is 1238,
+    # Ayodhya 1351; Lavo is the basin's continuous polity. Self-grant
+    # of LAV's own nine rides the GHA/koumbi_saleh precedent.
+    "LAV": (["ayutthaya_province", "phraek_province", "sri_thep_province",
+             "sukhothai_province", "tak_province", "rayong_province"],
+            [], [], [], 28),
+    # HARIPUNJAYA. The Ping valley — Lamphun, Chiang Mai, the Karen
+    # west. Mangrai takes it only in 1292; at 1066 it is the Mon
+    # kingdom's (decision 4: Mon identity over 1337-painted Khon Muang
+    # pops, the PAA law — POP-PHASE inherits the correction).
+    "HPJ": (["chiang_mai_province", "muang_yuam_province"], [], [], [], 12),
+    # NGOENYANG'S GROUND (decision 5): chiang_rai_province is Chiang
+    # Saen and Phayao — vanilla's own singhanavati_dynasty sits at
+    # chiang_saen. Grown PHY stands in; its 1094 foundation [U] is 28
+    # years early and this comment is where that honesty lives.
+    "PHY": (["chiang_rai_province"], [], [], [], 5),
+    # NAN. muang_ngao is PHY's and stays PHY's.
+    "PUA": (["phrae_province"], [], [], ["muang_ngao"], 4),
+    # LNA's eastern residue.
+    "KTG": (["kengtung_province"], [], [], [], 6),
+    "CHH": (["muang_sing_province"], [], [], [], 6),
+    # THE KHORAT PLATEAU. Lan Xang is 1353; the plateau at 1066 is
+    # Khmer (Phimai, Phanom Rung) and Kuy/Bru tribal — the ONE touch on
+    # the item-32 seam, territory only, no rank/ruler/capital change.
+    # thakhek_proivnce is vanilla's own definitions.txt typo — verbatim.
+    "KHM": (["roi_et_province", "chaiyaphum_province",
+             "muang_nakhon_province", "thakhek_proivnce"], [], [], [], 24),
+    # THE UPPER MEKONG. Vientiane, Loei, Muang Phuan to Muang Sua —
+    # pre-Lan-Xang and plausibly 11th-c. [D].
+    "MUA": (["loei_province", "vientiane_province",
+             "muang_phuan_province"], [], [], [], 14),
+    # JAVA, SPLIT IN 1049. Panjalu/Kediri west of the Brantas (its
+    # seat daha sits in pajang_province), Janggala east. There is no
+    # kediri, kahuripan, panjalu or janggala location (probed) —
+    # daha IS Kediri's capital name [D], surabaya stands in for
+    # Kahuripan [U].
+    "KDR": (["pajang_province", "mataram_province", "demak_province"],
+            [], [], [], 18),
+    "JGL": (["surabaya_province", "trowulan_province"], [], [], [], 14),
+    # NORTH SUMATRA. Aru is 13th-century [D]; Pannai is the polity the
+    # 1030 Tanjore inscription names on this coast [D].
+    "PNI": (["deli_province", "riau_rokan_province",
+             "riau_siak_province"], [], [], [], 19),
+    "INR": (["riau_kampar_province"], [], [], [], 6),
+    # MUSLIM SUMATRA (decision 7): Pasai is c. 1267, Aceh Darussalam
+    # 1496 [both U]; LGE — the Gayo highland tag, already adjacent,
+    # already holding linge/gayo_lues — takes the coast. Self-grant of
+    # its own two rides the same precedent; singkil is BUS's and
+    # carved out.
+    "LGE": (["northern_aceh_province", "southern_aceh_province"],
+            [], [], ["singkil"], 13),
+    # THE PHILIPPINES (decision 9): Maynila as a state is 16th-c. [U] —
+    # maynila crosses the river to Tondo (the Laguna Copperplate's
+    # polity, 900 [D]); Wenduling/Maguindanao is c. 1520 [U] — its five
+    # go to neighbouring KIM. SUL stays: Lupah Sug is older than its
+    # 1405 sultanate [D]. REVIEW CORRECTION: MGD holds FIVE locations,
+    # not the package's one — the integrated-block blindness again.
+    "TDO": ([], ["maynila"], [], [], 1),
+    "KIM": ([], ["kabacan", "kalalaw", "kalamansig", "kuta_watu",
+                 "minduso"], [], [], 5),
+}
+
+# Sixteen retirements, every one a deliberate post-1066 state whose
+# whole holding is granted away by name — zero side effects, the delta
+# guard stays silent throughout (if it fires, the design is wrong).
+# Claims are the snapshot's, i.e. each tag's FULL holdings — Pinya's
+# Upper Burma, Hanthawaddy's delta, Sukhothai's Yom, Lan Na's Ping,
+# Lan Xang's Mekong, Majapahit's Java and Aru's Deli coast as future
+# objects. VTN's claims are its measured 32 (not the package's 25).
+SEA_LANDLESS = ("PIN", "SAG", "PEG", "TSM", "BPR", "TNG",
+                "SUK", "ADH", "LNA", "VTN",
+                "MAJ", "ARU", "ATJ", "PSA", "MNA", "MGD")
+
+# The Srivijayan mandala (decisions 1, 2, 13): Palembang over the
+# Malay ports as war-capable TRIBUTARIES — the loose bond the Chinese
+# sources describe (San-fo-qi as a confederation of ports [D]), and
+# vanilla's own Mūlasarvāstivāda sect lists exactly this world as one
+# Buddhist web (15_IO:1014). NO reform: every party's template reforms
+# block carries vanilla's mandala_system (allow_tributary_subject =
+# yes, country_specific.txt:3894-3915) — the first tributary ring in
+# the project gated by a VANILLA reform. PLB rather than JMB (decision
+# 2): the larger tag, Srivijaya's own capital, and rank_kingdom +
+# malay_culture renders "Mahārājya of Palembang"/"Mahārājā"
+# (country_ranks.txt:1072 — LAUNCH PROBE: the dialect->language
+# resolution is a scope-link inference, OWED CHECK 1).
+SRIVIJAYA_TRIBUTARIES = (("PLB", "JMB"), ("PLB", "INR"), ("PLB", "SGT"),
+                         ("PLB", "BUS"), ("PLB", "PNI"))
+
+# PGN rides the COASTAL parent (decision 12 — it takes the whole
+# Irrawaddy delta: dagon, pathein, martaban). Both SEA parents declare
+# type + heir_selection and carry reforms = { mandala_system } (read
+# in full); KDR/JGL ride indonesia_monarchy like every landed Javanese
+# tag — expl_china (line 2 of every SEA template) already discovers
+# both theater regions, the expl_indonesia* pair is the local
+# convention. Tech 3 = the measured convention across all four
+# templates. Ranks (decision 3): PGN kingdom — Anawrahta's own title;
+# empire would print "Pagan Empire" via the adjective branch. HPJ/JGL
+# duchy renders plain "Duchy"/"Duke" — no Mon or Javanese rank branch
+# exists anywhere in country_ranks.txt (measured).
+NEW_COUNTRIES["PGN"] = (
+    "\tPGN = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "south_east_asia_monarchy"\n'
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = pagan\n\t}\n")
+NEW_COUNTRIES["HPJ"] = (
+    "\tHPJ = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "south_east_asia_monarchy_no_coast"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = lamphun\n\t}\n")
+NEW_COUNTRIES["KDR"] = (
+    "\tKDR = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_indonesian_trade_route"\n'
+    '\t\tinclude = "expl_indonesia"\n'
+    '\t\tinclude = "indonesia_monarchy"\n'
+    "\t\tcountry_rank = rank_kingdom\n\n"
+    "\t\tcapital = daha\n\t}\n")
+NEW_COUNTRIES["JGL"] = (
+    "\tJGL = {\n"
+    "\t\tstarting_technology_level = 3\n"
+    '\t\tinclude = "expl_indonesian_trade_route"\n'
+    '\t\tinclude = "expl_indonesia"\n'
+    '\t\tinclude = "indonesia_monarchy"\n'
+    "\t\tcountry_rank = rank_duchy\n\n"
+    "\t\tcapital = surabaya\n\t}\n")
+
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
 # user-approved same day, all recommendations incl. UKH Tier B). One
@@ -2699,7 +2864,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + ITALY_LANDLESS + EMPIRE_LANDLESS + GERMANY_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
-    + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS
+    + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -2806,6 +2971,12 @@ CAPITAL_FIXES = {
     "GHL": ("danduka", "sihor"),                # the Gohil seat before Bhavnagar
     "DRW": ("taranagar", "sambhar"),            # Shakambhari — the dynasty's namesake
     "GWA": ("gwalior", "delhi"),                # the Tomaras of Dhillika (decision 2)
+    # SEA (2026-08-02): Launggyet is a 1237 foundation [U]; weithali
+    # (Wethali/Vesali) is the Arakanese seat to c. 1018 and the only
+    # pre-Lemro capital that exists as a location — the 1066 Pyinsa has
+    # none. SUN's kawali stays put (decision 11: the 1066 Sunda seat is
+    # genuinely unrecorded, unlike this one).
+    "ARK": ("launggyet", "weithali"),
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -2920,6 +3091,14 @@ FIELD_FIXES = {
              "heir_selection = matrilineal_non_exclusive"),
             ("\t\tcapital = koumbi_saleh",
              "\t\tcountry_rank = rank_kingdom\n\t\tcapital = koumbi_saleh")],
+    # PLB promoted to the mandala's centre (SEA decisions 1-2): vanilla
+    # declares no rank on it, and rank_kingdom + malay_culture reaches
+    # rank_kingdom_indian (country_ranks.txt:1072, muslim branch passes
+    # first-match at :1060 — PLB is mahayana) -> "Mahārājya of
+    # Palembang" under a "Mahārājā", Srivijaya's own style shipped by
+    # Paradox. The GHA/koumbi_saleh insertion shape.
+    "PLB": [("\t\tcapital = palembang",
+             "\t\tcountry_rank = rank_kingdom\n\t\tcapital = palembang")],
     # KBO back to the Duguwa's Kanem: Hummay is c. 1075 [D] — the
     # Sayfawa house and his amendments are nine years in the future.
     # rank_kingdom renders "Kingdom of Kanem" under a "Mai"
@@ -5176,6 +5355,24 @@ NEW_CHARACTERS = """
 		dynasty = arduinici_dynasty
 		tag = PIE
 	}
+
+	# --- 1066 Southeast Asia ----------------------------------------------
+	# Anawrahta Minsaw, king of Pagan 1044-1077 [D]. Took Thaton in 1057
+	# and brought Shin Arahan's Theravada north — the reason the Irrawaddy
+	# delta is Pagan's at start. NO death date (alive on 1066.9.15;
+	# d. 1077 [D] is left to the engine). The name is a vanilla LITERAL
+	# (character_names_l_english.yml:18682, the Ravenger route);
+	# pagan_dynasty ships (04_dynasties.txt:8354, home = pagan);
+	# birth year 1014 or 1015 [D] — either is well past ADULT_AGE.
+	pgn_anawrahta = {
+		first_name = { name = Anawrahta }
+		culture = burmese_culture
+		religion = theravada
+		birth_date = 1014.1.1
+		birth = pagan
+		dynasty = pagan_dynasty
+		tag = PGN
+	}
 """
 
 
@@ -5633,6 +5830,26 @@ def build_countries(src):
                      ("GHA", "koumbi_saleh"), ("MDI", "mogadishu")):
         if _cap not in LOCATION_GRANTS[_t]:
             sys.exit(f"_AFRICA_RULES: {_t} capital {_cap} not in its "
+                     "resolved list")
+
+    # Southeast Asia resolves the same way (sixteen rule sets, 249
+    # total; zero vacates, zero UNOWNED_GRANTS — the review measured
+    # every granted location at exactly ONE ownership entry with this
+    # file's own reader, refuting the package's ten "unowned" Khorat/
+    # Mekong phantoms). EXTEND, never assign — KHM, LAV, MUA, PNI,
+    # INR, PHY, PUA, KTG, CHH, LGE, TDO and KIM are landed recipients,
+    # and LAV/PHY/PUA/KTG/CHH/MUA/INR/LGE self-grants ride the
+    # GHA/koumbi_saleh precedent.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_SEA_RULES.items()):
+        got = _resolve_ruleset(f"_SEA_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_SEA_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+    for _t, _cap in (("PGN", "pagan"), ("HPJ", "lamphun"),
+                     ("KDR", "daha"), ("JGL", "surabaya")):
+        if _cap not in LOCATION_GRANTS[_t]:
+            sys.exit(f"_SEA_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
     # The France demesne resolves the same way. STRICT construction:
@@ -6664,9 +6881,17 @@ def build_ios(src):
         # in no IO list; DBD contributes none BECAUSE it survives —
         # its Mahavihara seat is a reason it was kept. 132 -> 145.
         + ["VIJ", "YDR", "BGL", "DRP", "JWR", "BND",
-           "JFN", "SMV", "RDY", "MSN", "RCH", "RJI", "IDR"])
-    if n_ghosts != 145 or sorted(_ghost_names) != _expected_ghosts:
-        sys.exit(f"expected exactly 145 landless IO list entries, "
+           "JFN", "SMV", "RDY", "MSN", "RCH", "RJI", "IDR"]
+        # Southeast Asia adds 10 (observed failing first): the sect
+        # ghosts — Mahavihara loses PEG and TSM, the Burmese Buddhism
+        # sect loses ALL FOUR members (PIN SAG TNG BPR — PGN joins
+        # below or the slice ships an empty IO), Thai Buddhism loses
+        # SUK and LNA, shaivism loses MAJ and (decision 9) MNA. VTN,
+        # ARU, ADH, ATJ, PSA and MGD sit in no IO list. 145 -> 155.
+        + ["PEG", "TSM", "PIN", "SAG", "TNG", "BPR", "SUK", "LNA",
+           "MAJ", "MNA"])
+    if n_ghosts != 155 or sorted(_ghost_names) != _expected_ghosts:
+        sys.exit(f"expected exactly 155 landless IO list entries, "
                  f"stripped {n_ghosts}: {sorted(_ghost_names)}")
     report.append(("landless IO list entries stripped", n_ghosts))
 
@@ -6692,6 +6917,52 @@ def build_ios(src):
     src = (src[:_at] + "\n" + _mem.group(1) + "\tCOZ CLK PMR CHU"
            + src[_at:])
     report.append(("Shaiva powers joined the shaivism branch", 4))
+
+    # SEA §G.6: the Burmese Buddhism sect's four members ALL retire —
+    # without a new member the slice ships a zero-member IO. PGN joins:
+    # Anawrahta's Theravada reform through Shin Arahan of conquered
+    # Thaton [D] is this tradition's own root, and the sect's provinces
+    # block (pagan/pinya/pyay/sagaing/taungoo) is precisely PGN's new
+    # ground. Exactly one instance carries burmese_buddhism_policy;
+    # asserted, the Shaiva-powers shape.
+    _bb_blocks = [m for m in re.finditer(
+        r"^\tadd_international_organization = \{", src, re.M)
+        if "burmese_buddhism_policy" in
+        src[m.start():find_block_end(src, src.index("{", m.start()))]]
+    if len(_bb_blocks) != 1:
+        sys.exit(f"expected exactly 1 Burmese Buddhism sect instance, "
+                 f"found {len(_bb_blocks)}")
+    _sb = _bb_blocks[0]
+    _send = find_block_end(src, src.index("{", _sb.start()))
+    _mem = re.search(r"^([ \t]*)members[ \t]*=[ \t]*\{",
+                     src[_sb.start():_send], re.M)
+    if not _mem:
+        sys.exit("Burmese Buddhism instance has no members block")
+    _at = _sb.start() + src[_sb.start():_send].index("{", _mem.start()) + 1
+    src = src[:_at] + "\n" + _mem.group(1) + "\tPGN" + src[_at:]
+    report.append(("Pagan joined the Burmese Buddhism sect", 1))
+
+    # KDR and JGL join the shaivism hindu_branch beside their
+    # neighbours (SUN, KRP, BLI's web all sit in the Hindu branches;
+    # MAJ leaves the same list landless) — Javanese kingship is
+    # Shiva-Buddha syncretic [U]. Same block the India add found; the
+    # exactly-one assert re-runs on the updated source.
+    _sh2_blocks = [m for m in re.finditer(
+        r"^\tadd_international_organization = \{", src, re.M)
+        if "shaivism" in
+        src[m.start():find_block_end(src, src.index("{", m.start()))]]
+    if len(_sh2_blocks) != 1:
+        sys.exit(f"expected exactly 1 shaivism hindu_branch instance, "
+                 f"found {len(_sh2_blocks)} (SEA add)")
+    _sb = _sh2_blocks[0]
+    _send = find_block_end(src, src.index("{", _sb.start()))
+    _mem = re.search(r"^([ \t]*)members[ \t]*=[ \t]*\{",
+                     src[_sb.start():_send], re.M)
+    if not _mem:
+        sys.exit("shaivism instance has no members block (SEA add)")
+    _at = _sb.start() + src[_sb.start():_send].index("{", _mem.start()) + 1
+    src = src[:_at] + "\n" + _mem.group(1) + "\tKDR JGL" + src[_at:]
+    report.append(("Javanese kingdoms joined the shaivism branch", 2))
 
     leaders = len(re.findall(r"^[ \t]*leader[ \t]*=", src, re.M))
     src = tidy(src)
@@ -7180,6 +7451,40 @@ def build_diplomacy(src):
         sys.exit(f"expected exactly 4 ETH southern strips, got {n_eth}")
     report.append(("Amda Seyon's southern ring dissolved", n_eth))
 
+    # Brunei's archipelagic overlordship of Sulu, Ma-i, Maynila, Butuan
+    # and Maguindanao is the SULTANATE's, 15th-16th c. [U] — at 1066
+    # Po-ni is one Song tributary among several and Butuan is another
+    # (its own missions of 1001-1011 and the 1003 precedence protest
+    # [D] are why it cannot be Brunei's vassal 400 years early). MNA
+    # and MGD go landless in this slice; their lines die HERE by name,
+    # before the landless sweep, like the rest of the web.
+    n_brunei = 0
+    for _g in ("SUL", "MYI", "MNA", "BTU", "MGD"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = BEI second = " + _g
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_brunei += _k
+    if n_brunei != 5:
+        sys.exit(f"expected exactly 5 BEI vassal strips, got {n_brunei}")
+    report.append(("the Bruneian sultanate's web dissolved", n_brunei))
+
+    # Melayu over Pannai (vanilla 12_diplomacy.txt:425) — the one
+    # Srivijayan tie whose overlord survives. Deleted by NAME, not
+    # repointed (decision 13): the package prescribed BOTH a G.2
+    # repoint of this line AND a PLB->PNI pair in its G.4 tributary
+    # list — together they would give PNI two overlords, the HLL
+    # repeating-assert class; the review caught the contradiction. The
+    # mandala ships uniformly as the five PLB tributaries below.
+    src, n_jmb_pni = re.subn(
+        r"^[ \t]*dependency = \{ first = JMB second = PNI "
+        r"subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+        "", src, flags=re.M)
+    if n_jmb_pni != 1:
+        sys.exit(f"expected exactly 1 JMB->PNI strip, got {n_jmb_pni}")
+    report.append(("Melayu's Pannai tie dissolved into the mandala",
+                   n_jmb_pni))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -7262,8 +7567,15 @@ def build_diplomacy(src):
     # lines die here rather than by name (KBR is the review's
     # repoint-vs-landless catch; OYO has zero diplomacy lines,
     # grep-verified).
-    if n_landless_deps != 253:
-        sys.exit(f"expected exactly 233 landless-tag dependencies, stripped {n_landless_deps}")
+    # 253 -> 265 with Southeast Asia (observed failing first,
+    # 2026-08-02): PIN->TNG/BPR, SUK->PUA/PTC/TSM, LAV->ADH, and MAJ's
+    # six (JMB INR PLB TJP + the BAI/KAM tributaries) — package §G.1's
+    # exact twelve. ATJ/PSA/MNA/MGD contribute nothing here: no vanilla
+    # line names the first two, and the BEI web died by name above.
+    # (The old message string said 233 while the constant said 253 —
+    # the stale-string class again; both move together now.)
+    if n_landless_deps != 265:
+        sys.exit(f"expected exactly 265 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way
@@ -7289,8 +7601,11 @@ def build_diplomacy(src):
     # 1337 — and LIT<->POL, which is Krewo 1385 inverted (Boleslaw II
     # raided Yotvingia); the latter dies FREE via LIT's option-2
     # retirement, one of the package's own arguments for it.
+    # No SEA pact exists (measured: zero scripted_mutual/oneway lines
+    # name a theater tag) — 9 stands. The message string below said 7
+    # while the constant said 9; fixed with the SEA slice.
     if n_pacts != 9:
-        sys.exit(f"expected exactly 7 landless-tag pacts, stripped {n_pacts}")
+        sys.exit(f"expected exactly 9 landless-tag pacts, stripped {n_pacts}")
     report.append(("pacts naming a landless tag stripped", n_pacts))
 
     # The dedicated HLG->HLL strip is RETIRED (2026-08-01): HLG joined
@@ -7372,6 +7687,26 @@ def build_diplomacy(src):
            + "\n\t# 1066: the Irish client ties (generated)\n"
            + _btribs + src[_wrap:])
     report.append(("Irish tributaries added", len(BRITISH_TRIBUTARIES)))
+
+    # The Srivijayan mandala: Palembang over the Malay ports —
+    # war-capable TRIBUTARIES, the loose bond the Chinese sources
+    # describe. NO reform anywhere: every party's own vanilla template
+    # carries reforms = { mandala_system } (allow_tributary_subject =
+    # yes, country_specific.txt:3894-3915) — the first ring in the
+    # project gated by a VANILLA reform (SEL/FAT/FRA/KIE each needed an
+    # authored one; the Irish six rode the tribe branch). MAJ's three
+    # Sumatran vassal lines died in the landless sweep above and
+    # JMB->PNI died by name before it — no multiple-overlord collision
+    # is possible.
+    _wrap = src.rindex("\n}")
+    _stribs = "".join(
+        f"\tdependency = {{ first = {o} second = {s} subject_type = tributary }}\n"
+        for o, s in SRIVIJAYA_TRIBUTARIES)
+    src = (src[:_wrap]
+           + "\n\t# 1066: the Srivijayan mandala (generated)\n"
+           + _stribs + src[_wrap:])
+    report.append(("Srivijayan mandala tributaries added",
+                   len(SRIVIJAYA_TRIBUTARIES)))
 
     # Aragon guaranteeing Sicily is the 1282 Vespers — gone. The
     # PAP->SIC guarantee STAYS: a papal guarantee over Roger's county

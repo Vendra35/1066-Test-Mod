@@ -106151,4 +106151,22 @@ character_db={
 		dynasty = arduinici_dynasty
 		tag = PIE
 	}
+
+	# --- 1066 Southeast Asia ----------------------------------------------
+	# Anawrahta Minsaw, king of Pagan 1044-1077 [D]. Took Thaton in 1057
+	# and brought Shin Arahan's Theravada north — the reason the Irrawaddy
+	# delta is Pagan's at start. NO death date (alive on 1066.9.15;
+	# d. 1077 [D] is left to the engine). The name is a vanilla LITERAL
+	# (character_names_l_english.yml:18682, the Ravenger route);
+	# pagan_dynasty ships (04_dynasties.txt:8354, home = pagan);
+	# birth year 1014 or 1015 [D] — either is well past ADULT_AGE.
+	pgn_anawrahta = {
+		first_name = { name = Anawrahta }
+		culture = burmese_culture
+		religion = theravada
+		birth_date = 1014.1.1
+		birth = pagan
+		dynasty = pagan_dynasty
+		tag = PGN
+	}
 }

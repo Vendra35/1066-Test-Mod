@@ -1092,7 +1092,7 @@ international_organization_manager = {
 		creation_date = 1.1.1
 		icon = mahavihara
 		members = {
-			DBD PEG ARK TSM
+			DBD ARK
 		}
 		laws = { 
 			mahavihara_policy
@@ -1114,7 +1114,8 @@ international_organization_manager = {
 		creation_date = 1.1.1
 		icon = burmese_buddhism
 		members = {
-			PIN SAG TNG BPR
+			PGN
+			
 		}
 		laws = { 
 			burmese_buddhism_policy
@@ -1134,7 +1135,7 @@ international_organization_manager = {
 		creation_date = 1.1.1
 		icon = lankavong
 		members = {
-			SUK MMA CHH DDI LNA LAV LIG SPN PHY PUA PTC
+			MMA CHH DDI LAV LIG SPN PHY PUA PTC
 		}
 		laws = { 
 			lankavong_policy
@@ -1186,8 +1187,9 @@ international_organization_manager = {
 		type = hindu_branch
 		creation_date = 1.1.1
 		members = {
+			KDR JGL
 			COZ CLK PMR CHU
-			CHA MAJ SUN KRP ALU ORI GOA KSH SNG TNK KPL BGK GHR BAD PNC CBH LGK BES MNJ TJP MRP KKG SMB BEI SBG SGU LNK SBU SUL CEB TDO MNA BTU SML VLD JLR CMN MRW GDA NRS KJA PTN CRL CAB KLU KSW SKT BSP KTL
+			CHA SUN KRP ALU ORI GOA KSH SNG TNK KPL BGK GHR BAD PNC CBH LGK BES MNJ TJP MRP KKG SMB BEI SBG SGU LNK SBU SUL CEB TDO BTU SML VLD JLR CMN MRW GDA NRS KJA PTN CRL CAB KLU KSW SKT BSP KTL
 		}
 		laws = { 
 			shaivism

@@ -164,14 +164,14 @@ for p in yml_files:
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: not a `key: value` line -> {t[:50]}")
         elif re.match(r'^ [A-Za-z0-9_.]+:\s*"', line) and not line.rstrip().endswith('"'):
             probs.append(f"{os.path.relpath(p, MOD)}:{i}: value opens a quote it never closes")
-check("loc lines are well formed", count, probs, min_count=359)  # raised with Africa (2026-08-02): 359 rows live
+check("loc lines are well formed", count, probs, min_count=367)  # raised with SEA (2026-08-02): 367 rows live
 
 keys, dupes = set(), []
 for p in yml_files:
     for m in re.finditer(r"^ ([A-Za-z0-9_.]+):", read(p), re.M):
         if m.group(1) in keys: dupes.append(m.group(1))
         keys.add(m.group(1))
-check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=359)  # raised with Africa (2026-08-02)
+check("no duplicate loc keys", len(keys), sorted(set(dupes)), min_count=367)  # raised with SEA (2026-08-02)
 
 # -------------------------------------------------------- dates and ages ---
 # The start date is mirrored into three defines trees because the evidence for
@@ -285,7 +285,7 @@ else:
     probs.append("main_menu/setup/start/10_countries.txt is missing")
 # Armed at 290: 145 named rulers + 145 terms after Germany II.
 # Raise together with HISTORICAL_RULERS as Phase 2 regions land.
-check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=352)  # 176 thrones (2026-08-02)
+check("named rulers carry an open, past-dated ruler_term", count, probs, min_count=356)  # 178 thrones (SEA, 2026-08-02)
 
 # ------------------------------------------ authored-content cross-refs ---
 # Requested as the pre-test review pass and kept as permanent checks: every
@@ -373,7 +373,7 @@ for _c in sorted(_PLURALISTS):
 # Armed at 540 after Italy North: 89 authored characters + 48 dynasties
 # + 153 seats
 # (512 measured after Germany II).
-check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=636)  # +Tunka Manin/cisse (2026-08-02)
+check("authored identifiers resolve (dynasty, name, birthplace, loc)", count, probs, min_count=641)  # +Anawrahta (SEA, 2026-08-02)
 
 # Where vanilla ships its OWN ruler_term for the same character in the same
 # country block, our accession date must MATCH it — vanilla is ground truth
@@ -384,6 +384,13 @@ _van10 = read(_np(VAN + "/main_menu/setup/start/10_countries.txt"))
 _vblocks = list(re.finditer(r"^\t([A-Z0-9]{2,6}) = " + BS + "{", _van10, re.M))
 probs, count = [], 0
 _compared = 0
+# The check's FIRST exemption (SEA slice, 2026-08-02): vanilla's own
+# LAV block seats adh_narai with a term from 1082.1.1 — the late Lavo
+# king-list read as 1082-1087. The list's dates are reconstructions
+# and the other reading is c. 1052-1082 [D]; a 1082 accession cannot
+# rule at a 1066 start at all, so the seat and the [D] date stand and
+# the mismatch is EXPECTED, not an error. Any new mismatch still fails.
+_ACC_EXEMPT = {("LAV", "adh_narai")}
 for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
     _char, _acc = _row[0], _row[1]
     for _i, _b in enumerate(_vblocks):
@@ -394,7 +401,7 @@ for _tag, _row in sorted(_bs.HISTORICAL_RULERS.items()):
                             + r" start_date = ([0-9.]+)", _van10[_b.start():_e])
         if _terms:
             _compared += 1
-            if _acc not in _terms:
+            if _acc not in _terms and (_tag, _char) not in _ACC_EXEMPT:
                 probs.append(f"{_tag}/{_char}: our accession {_acc} vs vanilla's own term(s) {_terms}")
         break
 count = len(_bs.HISTORICAL_RULERS)
@@ -403,7 +410,7 @@ print(f"       accessions cross-checked against vanilla's own terms: {_compared}
 # ships zero Muslim characters born before 1054 and zero Germans alive
 # in 1066 outside Heinrich IV's line, so none of those rulers is
 # comparable.
-check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=176)  # 2026-08-02
+check("accessions match vanilla's own terms where vanilla has them", count, probs, min_count=178)  # SEA, 2026-08-02
 
 # Our authored character keys must not collide with vanilla's — repeated
 # keys MERGE inside character_db (the QAR law), so a collision would
@@ -419,7 +426,7 @@ if len(_ours_keys) != len(set(_ours_keys)):
     probs.append("duplicate key inside NEW_CHARACTERS itself")
 # Armed at 116 authored characters after Italy North (+7: Beatrice,
 # Matilda, Ulric, the three prelates, Adelaide).
-check("authored character keys collide with nothing", count, probs, min_count=137)  # 2026-08-02
+check("authored character keys collide with nothing", count, probs, min_count=138)  # SEA, 2026-08-02
 
 # A character ALIVE at start (born before START_DATE) must carry NO
 # death_date — a post-start one starts them DEAD, silently: reign closed on
@@ -753,32 +760,69 @@ _loc_all = "\n".join(open(p, encoding="utf-8-sig").read() for p in yml_files)
 # Overlords to gate-check: every new-registry tag PLUS the vanilla
 # tags we hand mod-added tributaries to (FRA — the Capetian homage
 # ring; LEI/TYR/TRY/MCM — the Irish ties; PAP — the Melfi
-# investiture; a vanilla overlord is invisible to the registry scan
-# but its tributaries fail the same visible gate without a passing
-# branch).
+# investiture; PLB — the Srivijayan mandala, SEA slice; a vanilla
+# overlord is invisible to the registry scan but its tributaries fail
+# the same visible gate without a passing branch).
 _MOD_TRIB_OVERLORDS = {"FRA", "LEI", "TYR", "TRY", "MCM", "PAP", "KIE",
-                       "LIA"}
+                       "LIA", "PLB"}
 _gate_deps = [(m.group(1), m.group(2)) for m in re.finditer(
     r"dependency = \{ first = (\w+) second = (\w+) subject_type = tributary \}",
     strip_comments(_diplo))
     if m.group(1) in _newtags or m.group(1) in _MOD_TRIB_OVERLORDS]
+# Reform definitions live in BOTH trees: ours, and vanilla's (the SEA
+# mandala rides vanilla's own mandala_system, country_specific.txt:3894
+# — the first ring gated by a reform this project did not write; until
+# then this lookup read mod files only and the gap was invisible).
+_van_reform_src = strip_comments("\n".join(
+    read(_p) for _p in glob.glob(_np(
+        VAN + "/in_game/common/government_reforms/*.txt"))))
+# A block's reforms may arrive through its TEMPLATE include chain, not
+# inline (PLB's mandala_system sits in indonesia_monarchy's own
+# reforms block) — and templates NEST includes, so a one-level reader
+# lies (the welsh_releasable lesson, KNOWLEDGE.md). Walked with a
+# cache, cycles guarded by the visited set.
+_TPL_REFORM_CACHE = {}
+def _tpl_reforms(_inc, _seen=None):
+    if _inc in _TPL_REFORM_CACHE:
+        return _TPL_REFORM_CACHE[_inc]
+    _seen = _seen or set()
+    if _inc in _seen:
+        return set()
+    _seen.add(_inc)
+    _out = set()
+    _tp = _np(VAN + "/main_menu/setup/templates/" + _inc + ".txt")
+    if os.path.isfile(_tp):
+        _tb = strip_comments(read(_tp))
+        for _rm in re.finditer(r"reforms = \{([^}]*)\}", _tb):
+            _out |= set(_rm.group(1).split())
+        for _im in re.finditer(
+                r'^[ \t]*include[ \t]*=[ \t]*"?([A-Za-z0-9_]+)"?', _tb, re.M):
+            _out |= _tpl_reforms(_im.group(1), _seen)
+    _TPL_REFORM_CACHE[_inc] = _out
+    return _out
 for _ov, _sub in _gate_deps:
     # The visible gate (tributary.txt:19-24) passes on EITHER branch:
     # the SUBJECT is a tribe/steppe_horde (the Gaelic ties — their
     # gaelic_tribe* includes carry type = tribe) or the overlord holds
-    # modifier:allow_tributary_subject from a setup reform.
+    # modifier:allow_tributary_subject from a setup reform (inline or
+    # template-carried).
     _sblk = re.search(rf"^\t{_sub} = \{{.*?^\t\}}", _countries10,
                       re.M | re.S)
     if _sblk and re.search(r'include = "gaelic_tribe', _sblk.group(0)):
         continue
     _blk = re.search(rf"^\t{_ov} = \{{.*?^\t\}}", _countries10, re.M | re.S)
-    _keys = " ".join(re.findall(r"reforms = \{([^}]*)\}",
-                                _blk.group(0) if _blk else "")).split()
+    _keys = set(" ".join(re.findall(r"reforms = \{([^}]*)\}",
+                                    _blk.group(0) if _blk else "")).split())
+    for _im in re.finditer(r'include = "([A-Za-z0-9_]+)"',
+                           _blk.group(0) if _blk else ""):
+        _keys |= _tpl_reforms(_im.group(1))
     _passes = False
-    for _k in _keys:
-        _def = re.search(rf"^{_k} = \{{.*?^\}}", _reform_src, re.M | re.S)
-        if _def and re.search(r"allow_tributary_subject\s*=\s*yes", _def.group(0)):
-            _passes = True
+    for _k in sorted(_keys):
+        for _rsrc in (_reform_src, _van_reform_src):
+            _def = re.search(rf"^{_k} = \{{.*?^\}}", _rsrc, re.M | re.S)
+            if _def and re.search(r"allow_tributary_subject\s*=\s*yes",
+                                  _def.group(0)):
+                _passes = True
     if not _passes:
         probs.append(f"{_ov} -> {_sub}: neither branch of the tributary "
                      "visible gate passes — no overlord reform granting "
@@ -791,10 +835,12 @@ for _k in re.findall(r"^([a-z0-9_]+) = \{", _reform_src, re.M):
         probs.append(f"reform {_k} has no loc name entry")
     if not re.search(rf"^\s*{_k}_desc:", _loc_all, re.M):
         probs.append(f"reform {_k} has no loc desc entry")
-# Nine Seljuk + two Fatimid + six Capetian + six Irish + two Melfi;
-# raise if a future slice adds more.
+# Nine Seljuk + two Fatimid + six Capetian + six Irish + two Melfi
+# (=25), + 46 Jurchen + KIE->NOV + ETH-ring residue (73 measured
+# 2026-08-02), + five Srivijayan (SEA) = 78; raise if a future slice
+# adds more.
 check("new-tag tributary overlords pass the subject-type gate",
-      len(_gate_deps), probs, min_count=25)
+      len(_gate_deps), probs, min_count=78)
 
 # Landless tags are not IO members — Paradox's own rule: vanilla's
 # high_kingship list pointedly omits landless MTH and PLE. A member a
@@ -837,6 +883,38 @@ for _mm in re.finditer(r"members[ \t]*=[ \t]*\{([^}]*)\}",
                          "are not IO members (vanilla's own rule)")
 check("IO members hold land", _members_checked, probs, min_count=27)
 
+# ---- no IO instance EMPTIED by the build -----------------------------------
+# Vanilla legitimately ships empty members lists (11 of its 53
+# instances — runtime-populated), so "empty" alone is not an error.
+# The failure class is an instance OUR landless sweep drains: the SEA
+# slice retired all four Burmese Buddhism members at once and only the
+# PGN member-add kept the sect alive — and the break-probe of
+# 2026-08-02 showed NO existing check would have noticed (harness
+# green with the list hand-emptied; only a silent 855->854). So the
+# empty-list COUNT is pinned: 9 in the current build. A slice that
+# empties another instance moves it to 10 and fails here — the
+# implementer either adds a member (the Shaiva/PGN shape) or
+# consciously moves this constant. Proven by breaking (the same
+# hand-emptied list -> 10).
+_io_blocks = list(re.finditer(r"^\tadd_international_organization = \{",
+                              strip_comments(_io15), re.M))
+_io_clean = strip_comments(_io15)
+_n_empty_io = 0
+probs = []
+for _b in _io_blocks:
+    _nb = _io_clean.find("\n\tadd_international_organization", _b.end())
+    _body = _io_clean[_b.start():_nb if _nb != -1 else len(_io_clean)]
+    _mm = re.search(r"members[ \t]*=[ \t]*\{([^}]*)\}", _body)
+    if _mm and not _mm.group(1).split():
+        _n_empty_io += 1
+if _n_empty_io != 9:
+    probs.append(f"{_n_empty_io} instances carry an empty members list "
+                 "(expected exactly 9, vanilla's own runtime-populated "
+                 "set) — a sweep has drained an IO, add a member or "
+                 "move the constant deliberately")
+check("no IO instance emptied by the build (9 vanilla empties pinned)",
+      len(_io_blocks), probs, min_count=36)
+
 # ---- exactly one ruler key per country block -------------------------------
 # Vanilla ships 23 one-line `government = { ruler = X }` blocks; every
 # line-anchored scan in the build was blind to them, and AOS shipped a
@@ -857,7 +935,7 @@ for _i, _b in enumerate(_blk_starts):
     if _n != 1:
         probs.append(f"{_b.group(1)}: {_n} ruler keys (exactly one required)")
 check("exactly one ruler key per country block", _rblocks, probs,
-      min_count=2404)  # 2395 + 7 Baltic + 2 Africa (2026-08-02)
+      min_count=2408)  # + 4 SEA (2026-08-02)
 
 # ---- coat of arms references resolve ---------------------------------------
 # The CoA database is additive and key-merged: a country with no
@@ -966,6 +1044,11 @@ _GENERATOR_OK = {
     # Islamic designs are the taifa rationale exactly. Every OTHER
     # Africa-slice tag is vanilla with vanilla arms.
     "DJN", "SNH",
+    # Southeast Asia — tier 4, permanent: Pagan, Haripunjaya, Kediri
+    # and Janggala sealed with inscriptions and royal seals, not
+    # shields — no heraldry existed to reproduce. Every other
+    # SEA-slice tag is vanilla with vanilla arms.
+    "PGN", "HPJ", "KDR", "JGL",
 }
 for _t in sorted(_newtags):
     _coa_count += 1
@@ -996,7 +1079,7 @@ for _k in sorted(_INTENTIONAL_COA_OVERRIDES - _our_coa_keys):
 # registry tags = 96 after Italy North (TUS + ISR); raise as arms land.
 # 116 after the Baltic's 7 registry tags (2026-08-01); 118 after
 # Africa's DJN + SNH (2026-08-02).
-check("coat of arms references resolve", _coa_count, probs, min_count=118)
+check("coat of arms references resolve", _coa_count, probs, min_count=122)  # + 4 SEA (2026-08-02)
 
 # ---- audit 2026-07-31: the four class-closing checks -----------------------
 # From the verified external audit (docs/AUDIT-2026-07-31.md, Part 5 items
@@ -1029,7 +1112,7 @@ for _t in sorted(_start_tags - _id_tags):
     probs.append(f"10_countries block {_t} has NO registry identity block — "
                  "the engine rejects the whole block (PYS lesson)")
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
-      len(_id_tags), probs, min_count=2407)  # +7 Baltic, +2 Africa (2026-08-02)
+      len(_id_tags), probs, min_count=2411)  # +4 SEA (2026-08-02)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
@@ -1154,7 +1237,7 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # the four side-effect retirees — against DJN + SNH new and BTI, SOA,
 # ADA revived, all five reaching a parliament through their templates).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1376)
+      min_count=1364)  # 1376 - 16 SEA landless + 4 new, observed (2026-08-02)
 
 print()
 if fails:
