@@ -2199,6 +2199,35 @@ NEW_COUNTRIES["TKA"] = (
 # The engine derives ranks by rules no file settles — OWED CHECK,
 # inherited from SEA; the click tour reads the result either way.
 
+# =============================== THE AMERICAS ===============================
+# THE WESTERN HEMISPHERE (docs/AMERICAS-PACKAGE.md, every claim
+# re-verified 2026-08-02 — the THIRD consecutive zero-error package;
+# decisions 1-6 user-approved, decision 4 the review's own divergence).
+# The largest "already right" theater by an order of magnitude: the
+# mod had never touched a single American tag, 88.9% of 4,441
+# locations are unowned by design, 321 of the game's 448 type=pop
+# identities are American, and the creation-date law already deleted
+# the Haudenosaunee League (vanilla dates it 1142.1.1) months ago.
+# Cahokia stays whole — 1066 is its PEAK and vanilla's own "Sunset of
+# Cahokia" DHE lands the 1337+ terminus on the archaeology. Two
+# retirements: TNC (Tenochtitlan is founded 1325 [D]; the island goes
+# to TEP, its own overlord in the same province, so the rank=city
+# keeps an owner and AZT_f — gated on owns=tenochtitlan, not the
+# tag — stays open to be EARNED) and CSU (decision 4, the review
+# overruling the package's low-confidence leave: vanilla's own
+# csu_manco_qhapaq is born 1170 — the TIB/Sakya-1073 evidence class —
+# and vanilla itself ships KKE "Killke", the archaeological name for
+# pre-Inca Cusco; INC_f stays reachable through KKE's own Quechua).
+# No Toltec tag (decision 1: toltec_culture sits on ZERO locations —
+# the tag would be a Nahua state wearing an ungrounded name; extent
+# unknowable [D]; tollan stays TEP's).
+_AMERICAS_RULES = {
+    "TEP": ([], ["tenochtitlan"], [], [], 1),
+    "KKE": ([], ["qusqu", "quillarumiyoc"], [], [], 2),
+}
+
+AMERICAS_LANDLESS = ("TNC", "CSU")
+
 # ============================= PERM / VYATKA ================================
 # THE FINNO-UGRIC NORTH (docs/PERM-VYATKA-PACKAGE.md, every claim
 # re-verified 2026-08-02 — the SECOND consecutive zero-error package;
@@ -2998,7 +3027,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
     + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS \
-    + TIBET_LANDLESS + PERM_LANDLESS
+    + TIBET_LANDLESS + PERM_LANDLESS + AMERICAS_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -3111,6 +3140,12 @@ CAPITAL_FIXES = {
     # none. SUN's kawali stays put (decision 11: the 1066 Sunda seat is
     # genuinely unrecorded, unlike this one).
     "ARK": ("launggyet", "weithali"),
+    # The Americas (2026-08-02): Mayapan is founded c. 1180-1220 [D]
+    # and its league is 1220-1441; at 1066 the Yucatan hegemon is
+    # Chichen Itza, which COC already holds. One token; the tag's
+    # "Cocom" NAME stays (a rename would shadow a vanilla key from our
+    # loc file — unattested, refused in decision 3).
+    "COC": ("mayapan", "chichen_itza"),
 }
 
 # tag -> [(expected old line, new line)] — single-line field surgery inside
@@ -6040,6 +6075,19 @@ def build_countries(src):
             sys.exit(f"_TIBET_RULES: {_t} capital {_cap} not in its "
                      "resolved list")
 
+    # The Americas resolve the same way (two singles rules, 3 total;
+    # zero vacates, zero UNOWNED_GRANTS — every granted location
+    # measured at exactly one ownership entry with the ten-key reader,
+    # by the package AND the review independently). EXTEND, never
+    # assign — TEP and KKE are landed recipients; both keep their
+    # capitals (azcapotzalco, yanahuara) untouched.
+    for _t, (_sw, _si, _ms, _ml, _exp) in sorted(_AMERICAS_RULES.items()):
+        got = _resolve_ruleset(f"_AMERICAS_RULES[{_t}]", _sw, _si, _ms, _ml)
+        if len(got) != _exp:
+            sys.exit(f"_AMERICAS_RULES[{_t}]: resolved {len(got)} "
+                     f"locations, package count is {_exp}")
+        LOCATION_GRANTS[_t] = LOCATION_GRANTS.get(_t, []) + got
+
     # The France demesne resolves the same way. STRICT construction:
     # the minus lists exclude every swept-province member the DONORS do
     # not own (including the recipients' own holdings — saintes and
@@ -7723,6 +7771,27 @@ def build_diplomacy(src):
                  f"got {n_yugra_tribute}")
     report.append(("Novgorod's Yugra tribute unwound", n_yugra_tribute))
 
+    # The Americas (2026-08-02): vanilla ships exactly FOUR dependency
+    # lines in the whole western hemisphere and all four are post-1066.
+    # TEP->TNC dies in the landless sweep below (TNC retired), so only
+    # three are stripped by name here: TEP->TCP (the Tepanec hegemony
+    # over Tlacopan, c. 1370-1428 [D]), COC->XIU (the Mayapan league,
+    # c. 1220-1441 [D]; Mani is a post-1441 seat) and COC->HEL (Ah Chel
+    # is a post-1441 cuchcabal [D]). The subjects stay LANDED (1, 3 and
+    # 6 locations), so the landless sweep cannot see these three.
+    n_americas_deps = 0
+    for _f, _s in (("TEP", "TCP"), ("COC", "XIU"), ("COC", "HEL")):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = " + _f + r" second = " + _s
+            + r" subject_type = vassal \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_americas_deps += _k
+    if n_americas_deps != 3:
+        sys.exit(f"expected exactly 3 American vassal strips, "
+                 f"got {n_americas_deps}")
+    report.append(("the Americas freed of their late hegemonies",
+                   n_americas_deps))
+
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency
     # naming one (first in-game observation: ~318-line start flood after
@@ -7817,8 +7886,11 @@ def build_diplomacy(src):
     # MGG POO LGT DRG NCN GNJ BTG NBH LTN LMN MAR ZNK) — dies on TIB's
     # retirement alone. The cheapest diplomacy correction in the
     # project's history: fifteen lines for three characters in a tuple.
-    if n_landless_deps != 280:
-        sys.exit(f"expected exactly 280 landless-tag dependencies, stripped {n_landless_deps}")
+    # 280 -> 281 with the Americas (observed failing first, same day):
+    # TEP->TNC — the Tepanec vassalage over a city founded in 1325.
+    # CSU names no dependency (grep-verified both trees).
+    if n_landless_deps != 281:
+        sys.exit(f"expected exactly 281 landless-tag dependencies, stripped {n_landless_deps}")
     report.append(("dependencies naming a landless tag stripped", n_landless_deps))
 
     # Alliances and guarantees naming a landless tag go the same way

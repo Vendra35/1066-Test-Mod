@@ -223,8 +223,6 @@ diplomacy_manager = {
 
 
     #-------------Mesoamerica------------
-    dependency = { first = TEP second = TNC subject_type = vassal }
-    dependency = { first = TEP second = TCP subject_type = vassal }
 
     #-------------China------------
     dependency = { first = CHI second = DUR subject_type = vassal }
@@ -399,8 +397,6 @@ diplomacy_manager = {
 
     #------------Maya-------------
     #Represents the League of Mayapan for the time being
-    dependency = { first = COC second = XIU subject_type = vassal }
-    dependency = { first = COC second = HEL subject_type = vassal }
 
     #------------Japan-------------
     dependency = { first = HSK second = KAG subject_type = vassal }

@@ -38501,8 +38501,12 @@ countries = {
 
 	#Tenōchtitlan (Aztec Empire) - TNC - Vassal of Azcapozalco
 	TNC = {
-		own_control_core = {
+		our_cores_conquered_by_others = {
 			tenochtitlan
+		}
+
+		own_control_core = {
+			
 		}
 
 		include = "amerindian_advanced_monarchy_no_coast"
@@ -38571,6 +38575,7 @@ countries = {
 	#Tepanecapan (Azcapotzalco) - TEP
 	TEP = {
 		own_control_core = {
+			tenochtitlan
 			azcapotzalco cuauhtitlan tollan
 		}
 
@@ -41132,7 +41137,7 @@ countries = {
 			ruler = random
 		}
 		court_language = maya_language
-		capital = mayapan
+		capital = chichen_itza
 		dynasty = cocom_dynasty
 	}
 
@@ -42928,9 +42933,13 @@ countries = {
 
 	#Qusqu - CSU
 	#Should ally Ayarmaca against the Charka
-	CSU = { #https://es.wikipedia.org/wiki/Curacazgo_incaico
-		own_control_core = {
+	CSU = {
+		our_cores_conquered_by_others = {
 			qusqu quillarumiyoc
+		}
+ #https://es.wikipedia.org/wiki/Curacazgo_incaico
+		own_control_core = {
+			 
 		}
 
 		include = "andean_monarchy"
@@ -43805,6 +43814,7 @@ countries = {
 	#Settled, NOTE transformed into normal tag for the sake of balance
 	KKE = {
 		own_control_core = {
+			qusqu quillarumiyoc
 			willka_pampa auccapana yanahuara
 		}
 		discovered_areas = {
