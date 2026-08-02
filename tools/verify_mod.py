@@ -1241,7 +1241,7 @@ for _m in re.finditer(r"^\t([A-Z][A-Z0-9_]{1,7}) = \{(.*?)^\t\}",
 # the four side-effect retirees — against DJN + SNH new and BTI, SOA,
 # ADA revived, all five reaching a parliament through their templates).
 check("landed countries reach a parliament_type", _landed, probs,
-      min_count=1366)  # -1 TIB +3 Tibet new, observed (2026-08-02)
+      min_count=1365)  # -1 VYT (Perm/Vyatka), observed (2026-08-02)
 
 print()
 if fails:

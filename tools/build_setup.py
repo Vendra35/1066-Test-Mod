@@ -1397,7 +1397,7 @@ NEW_COUNTRIES["CUM"] = (
 # SRC 4, HTN 3, HSC 3, SSI 3 — package counts; GLH's 7 extend its
 # existing Tier A+B entry, 284 -> 291).
 LOCATION_VACATED["GLH"] += ["moldavia_area", "wallachia_area"]
-LOCATION_VACATED_EXPECT["GLH"] = 291
+LOCATION_VACATED_EXPECT["GLH"] = 298  # 291 -> 298 with Perm/Vyatka (observed failing first, 2026-08-02): +ufa_province 4 + minusinsk 3
 for _t, _n in (("WAL", 44), ("IAS", 11), ("BIA", 10), ("BLD", 9),
                ("SRC", 4), ("HTN", 3), ("HSC", 3), ("SSI", 3)):
     LOCATION_VACATED[_t] = ["moldavia_area", "wallachia_area"]
@@ -1434,6 +1434,21 @@ LOCATION_VACATED_EXPECT["CHI"] = 113
 # Tibet claims the Changthang.
 LOCATION_VACATED["TIB"] = ["naktsang_province", "namru_province"]
 LOCATION_VACATED_EXPECT["TIB"] = 7
+# Perm/Vyatka slice (2026-08-02, decisions 1a and 3): the Vyatka basin
+# joins the stateless north around it — the 1174 Novgorodian colony
+# does not exist yet, and 14 of VYT's 19 are komi/udmurt shamanism in
+# vanilla's own map data. Raw pool is 23; PRM's four (afanasyevo kirs
+# koygorodok vizinga) are protected by the snapshot intersection, and
+# the EXPECT pins that. Plus GLH's two leftover provinces — ufa (4,
+# the bashkiria_area decision one province short: definitions.txt
+# files ufa_province under perm_area) and minusinsk (GLH 3 of raw 5,
+# the tomsk_area decision's missed corner and the last owned land
+# east of the Urals). GLH SURVIVES at 168 — the delta guard cannot
+# see a mistake in its two rules; the donor tables in the package
+# (reproduced at review) are the guard.
+LOCATION_VACATED["VYT"] = ["vyatka_area", "lalsk_province"]
+LOCATION_VACATED_EXPECT["VYT"] = 19
+LOCATION_VACATED["GLH"] += ["ufa_province", "minusinsk_province"]
 # The hordes' REMAINING holdings vacate after LIA's grants (Northern
 # Dynasties): CRS 37->24, BAT 18->14 (3 Tier-B + niuquanzi to XIA),
 # OTC 23->8, OGE/KHD untouched by LIA. HCN/QAS/BGT lose their WHOLE
@@ -2183,6 +2198,25 @@ NEW_COUNTRIES["TKA"] = (
 # council parliament, tech 3, NO reforms block) declares none either.
 # The engine derives ranks by rules no file settles — OWED CHECK,
 # inherited from SEA; the click tour reads the result either way.
+
+# ============================= PERM / VYATKA ================================
+# THE FINNO-UGRIC NORTH (docs/PERM-VYATKA-PACKAGE.md, every claim
+# re-verified 2026-08-02 — the SECOND consecutive zero-error package;
+# decisions 1a/2a/3/4/5a/6 by the main session under the user's
+# direct-implement authorization). The smallest slice yet, because
+# vanilla already ships the stateless north COMPLETE: nineteen
+# type=pop Siberian identities, Bjarmia and the Bashkirs all holding
+# zero land, 116 Ob-Ugric/Samoyed locations 100% unowned. Exactly two
+# things were wrong, both Russian shells over Finno-Ugric ground:
+# VYT — the 1174 Novgorodian Vyatka colony as a live veche republic
+# rendering "Republic of Vyatka" under a "Consul" (retired landless,
+# its 19 vacated: the basin joins the stateless forest around it) —
+# and PRM, a Rurikid principality whose own registry says komi +
+# komi_paganism (reshaped by FIELD_FIXES above). GLM/GRS/NZH (1152/
+# 1221/1237) are LEFT for the Volga seam per RUS-STEPPE §H's explicit
+# reservation — the internal inconsistency with VYT's retirement is
+# RECORDED, not hidden (package decision 5's counter).
+PERM_LANDLESS = ("VYT",)
 
 # ================================ ARABIA ====================================
 # The Arabia package (docs/ARABIA-PACKAGE.md, re-verified 2026-08-01,
@@ -2964,7 +2998,7 @@ LANDLESS_AFTER = ("GRA", "POR", "MLL") + BYZ_LANDLESS + SELJUK_LANDLESS \
     + NITALY_LANDLESS + CENTRALASIA_LANDLESS + RUS_LANDLESS \
     + ARABIA_LANDLESS + RUS2_LANDLESS + CHINA_LANDLESS + NORTH_LANDLESS \
     + INDIA_LANDLESS + BALTIC_LANDLESS + AFRICA_LANDLESS + SEA_LANDLESS \
-    + TIBET_LANDLESS
+    + TIBET_LANDLESS + PERM_LANDLESS
 
 # tag -> locations granted to an EXISTING tag: removed from their current
 # owner, written into the tag's own_control_core (created if absent — the
@@ -3199,6 +3233,23 @@ FIELD_FIXES = {
     # Paradox. The GHA/koumbi_saleh insertion shape.
     "PLB": [("\t\tcapital = palembang",
              "\t\tcountry_rank = rank_kingdom\n\t\tcapital = palembang")],
+    # ---- Perm/Vyatka (2026-08-02, docs/PERM-VYATKA-PACKAGE.md §B.1,
+    # decisions 2a/6 — main session under the user's direct-implement
+    # authorization). Great Perm de-Russified: vanilla's own registry
+    # already calls it komi + komi_paganism (russia.txt:309); only the
+    # start block dresses it as a Rurikid feudal principality. The SXM
+    # shape, one rung colder — the Komi/Udmurt world is 1066-real, the
+    # 15th-century constitution is not; 64/64 locations shamanism.
+    # limited_russian_principality declares no type= at all, so the
+    # explicit type/heir lines move with the include (later-key-wins).
+    # Tech stays 3 (decision 6 — a settled forest polity, no
+    # measurement justifies moving a live balance value).
+    "PRM": [('include = "limited_russian_principality"',
+             'include = "eurasian_tribe"'),
+            ("\t\t\ttype = monarchy", "\t\t\ttype = tribe"),
+            ("heir_selection = cognatic_primogeniture",
+             "heir_selection = tribal_oldest_male"),
+            ("\t\tdynasty = rurikovich_dynasty\n", "")],
     # KBO back to the Duguwa's Kanem: Hummay is c. 1075 [D] — the
     # Sayfawa house and his amendments are nine years in the future.
     # rank_kingdom renders "Kingdom of Kanem" under a "Mai"
@@ -7647,6 +7698,30 @@ def build_diplomacy(src):
     if n_tibet_tusi != 4:
         sys.exit(f"expected exactly 4 deep-plateau tusi strips, got {n_tibet_tusi}")
     report.append(("the Song freed of the deep plateau", n_tibet_tusi))
+
+    # Novgorod's Yugra tribute (vanilla 12_diplomacy.txt:50-59): ten
+    # tributary ties over the trans-Ural Ob-Ugric and Samoyed
+    # pop-countries. Vanilla's own geography is exact — all ten
+    # subjects are beyond the Urals, and BJARMIA, the Dvina tribute
+    # land NOV holds directly, has no tie at all. The first recorded
+    # Yugra expedition is the PVL's 1096 entry [D] — thirty years out.
+    # A named strip is REQUIRED: the subjects are type=pop countries
+    # that hold no land by design, so the landless sweep below can
+    # never see these lines. (This also removes the build's only
+    # two-level tributary chain, KIE->NOV->these — OWED CHECK 2 of the
+    # package stays open for a future case.)
+    n_yugra_tribute = 0
+    for _g in ("OBD", "PLY", "BAK", "KND", "BGJ", "KOD", "SVA", "KZY",
+               "LYA", "TBY"):
+        src, _k = re.subn(
+            r"^[ \t]*dependency = \{ first = NOV second = " + _g
+            + r" subject_type = tributary \}[ \t]*(?:#[^\n]*)?\n",
+            "", src, flags=re.M)
+        n_yugra_tribute += _k
+    if n_yugra_tribute != 10:
+        sys.exit(f"expected exactly 10 NOV->Yugra tributary strips, "
+                 f"got {n_yugra_tribute}")
+    report.append(("Novgorod's Yugra tribute unwound", n_yugra_tribute))
 
     # A landless tag cannot sit in the vassal web: the engine logs
     # "invalid subject / non-existent overlord" for every dependency

@@ -3106,15 +3106,16 @@ countries = {
 	}
 
 	VYT = {
+		our_cores_conquered_by_others = {
+			nikolsk vyatka ust_cheptsa suna verkhoshizhemye orlov belozerye slobodskoy oparino obyachevo lalsk vokhma podosinovets omutninsk kholunitsky kobra nagorsk nikolsky koksharov bolshaya_yakshanga
+		}
+
 		own_control_core = {
 			
 		}
 
 		own_control_integrated = {
-			vyatka ust_cheptsa suna verkhoshizhemye orlov belozerye slobodskoy
-			oparino obyachevo lalsk vokhma
-			podosinovets omutninsk kholunitsky kobra nagorsk
-			nikolsky koksharov bolshaya_yakshanga 
+
 		}
 
 		starting_technology_level = 3
@@ -3207,17 +3208,16 @@ countries = {
 
 		starting_technology_level = 3
 		government = {
-			type = monarchy
-			heir_selection = cognatic_primogeniture
+			type = tribe
+			heir_selection = tribal_oldest_male
 			ruler = random
 		}
 		tolerated_cultures = {
 			udmurt
 		}
 
-		dynasty = rurikovich_dynasty
 		capital = cherdyn
-		include = "limited_russian_principality"
+		include = "eurasian_tribe"
 		include = "expl_novgorod"
 		include = "expl_mongols"
 	}
@@ -3730,10 +3730,6 @@ countries = {
 
 			      chatyun    
 
-			  ufa askino baltas
-
-			     abakasnk beya shushenskoye
-
 			alkhan_kala nazran dzhulat tatartup
 			promsa alatyr batyrevo
 			atrat altyshevo       
@@ -3759,8 +3755,6 @@ countries = {
 
 			khvorostyanka stavropol_na_volge kondurcha pestravka
 			poganovka     
-
-			 burayevo
 
 			armavir 
 
