@@ -293,6 +293,12 @@ from its own court. This is vanilla's condition at 1337 too, it is not a 1066
 error, and it is **not this slice's to fix** — but it is the single most useful
 thing this theater hands the pop phase, and nobody has written it down (§H).
 
+> **✎RETIRED (POP-PHASE-PACKAGE §0.1, reviewed 2026-08-03): this finding was
+> measured on the SEED layer (`location_templates.txt`). On the STATE layer
+> (`06_pops.txt` pops) `komi_paganism` sits on **71** locations,
+> `samoyedic_paganism` **63**, `obian_paganism` **84** — PRM's own ground
+> carries komi_paganism pops on 53 of its 64. Nothing to fix.**
+
 ### 0.6 The sixth finding: Novgorod holds TEN Ob-Ugric tributaries — and vanilla pointedly did NOT give it Bjarmia
 
 `MOD/main_menu/setup/start/12_diplomacy.txt:50-59`, under the comment
@@ -960,7 +966,7 @@ a diplomatic line.
 | **`nizhny_novgorod_area`'s 31** (GLM 11, GLH 8, NZH 6, GRS 6) | 67 `define_pop`, 100% `muscovite`/`orthodox` | §D.3, OPEN DECISION 5. Reserved by `RUS-STEPPE-PACKAGE.md:744` |
 | **BLH's 28** | `bolghar_area` 21 + `kazan_province` 7 | Central Asia slice, closed |
 | **`yaransk_province`'s 8 unowned Mari locations** | 16 `define_pop`, `mari_culture`/`shamanism`, covered by NO pop-country | Already vacated by the Central Asia slice and correct. **Banked for POP-PHASE: the Mari have no `type = pop` identity anywhere in the game** (measured — no pop-country's `add_pops_from_locations` touches them), unlike the Khanty, Mansi, Nenets, Selkup, Bashkir and Bjarmians. Extending a pop-country's location list is a mechanism this build does not have, so it is not proposed here |
-| **PRM's `religion_definition = komi_paganism` over 64 `shamanism` locations** | `komi_paganism`, `samoyedic_paganism` and `obian_paganism` sit on **ZERO of 20,922 locations**; `shamanism` on 508 | §0.5. **The strongest thing this theater hands POP-PHASE.** Same class as the Tibet slice's PUR `hindu` finding, but larger and vanilla-wide: eleven registry entries name religions no location carries. Whether that costs religious unity at start is an in-game question, not a file question |
+| **PRM's `religion_definition = komi_paganism` over 64 `shamanism` locations** | `komi_paganism`, `samoyedic_paganism` and `obian_paganism` sit on **ZERO of 20,922 locations**; `shamanism` on 508 | **✎RETIRED (2026-08-03) — a `location_templates.txt` (SEED) artefact; on POPS the three religions sit on 71/63/84 locations and PRM's own 53 of 64. POP-PHASE-PACKAGE §0.1 has the re-measurement; nothing to fix** |
 | **A `country_rank` declaration on PRM** | vanilla declares none; 21 of Tibet's 22 landed tags likewise | §F.2. A styling choice made from a guess. Banked |
 | **A Komi ruler** | `permic_language` ships 11 male + 11 female names and `patronym_suffix_komi` (`00_ural.txt:83-102`) | §C. The machinery is ready; the person is not attested |
 | **`06_pops.txt` / `07_cities_and_buildings.txt`** | vanilla's, un-overridden | Note `KNOWLEDGE.md`'s "`tag = X … location = L` where X does not own L is FIRST-CLASS vanilla" — do **not** "fix" `07_cities` after the vacates. Only 8 of the build's 599 vacated locations are in it at all |

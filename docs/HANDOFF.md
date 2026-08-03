@@ -2064,34 +2064,38 @@ green, working tree clean.
    flood NOT grown beyond the known classes. **During that test the
    user will send an HRE close-up screenshot** — audit Germany
    density against items 23/25 (promised follow-up, still owed).
-2. **The map phase is CLOSED (item 41). No theater work remains. The
-   NEXT SESSION'S FIRST JOB is the pop-phase package review:**
-   `docs/POP-PHASE-PACKAGE.md` (DRAFT, banked 2026-08-02 UNREVIEWED —
-   the only package on disk not yet reviewed or implemented; produced
-   against HEAD `5000dbd`). Its shape: mechanism route (a) — a
-   generated whole-file `06_pops.txt` override as build_setup's sixth
-   target — gated on a 12-line PROBE (`50_1066_pop_probe.txt`, one
-   pop on `mistretta`, four outcomes each deciding the route);
-   17-item correction inventory, 2,726 `define_pop` = 5.4%; TEN open
-   decisions. Its headline: five inherited §H corrections were
-   measured on the SEED layer and RETIRE against POPS (POP-PHASE.md's
-   band has the list); two NEW finds (PRM's chiyalik/tengri slave
-   pockets; **CUM 211 locations vs `cuman_culture` on 5 in the world
-   — the largest registry/ground mismatch, banked nowhere**). Its
-   top-3 riskiest claims to attack at review: (1) route (d)'s
-   rejection rests on inferred on_game_start-after-init ordering,
-   (2) append-vs-replace for repeated define_pop is INFERRED, never
-   measured — the probe exists to answer it, do not skip the probe,
-   (3) "map/panel read pops, not templates" is implied by the data
-   types, never observed. Review with the standing laws (reproduce
-   counts with the build's parsers; donor-table rigor on every
-   rule), then AÇIK KARARLAR in Turkish, then onay.
-3. **Then the two cross-cutting phases:** the POP PHASE (inherited
-   correction lists: BALTIC-PACKAGE §H, AFRICA-PACKAGE §H,
-   SEA-PACKAGE §H + decision 4, TIBET-PACKAGE §A.3 — TKA's
-   Song-painted xining pops, PERM-VYATKA-PACKAGE §0.5/§H — eleven
-   registry entries name religions that sit on ZERO locations
-   game-wide, the Mari have no pop-country identity), then the
+2. **The pop-package review is DONE (2026-08-03) — THE TEN DECISIONS
+   ARE TAKEN.** The main session reproduced 180 mechanical checks with
+   `build_setup.py`'s own imported parsers, **177 exact**; every
+   master-table theatre count, all five retirements, B.8's two
+   mismatch lists (CUM 211 vs 5 included) and the probe's ground
+   truth (mistretta = SIC `own_control_core`, exactly two
+   sicilian/catholic pops) held to the decimal. The three diffs and
+   the errata are corrected IN the package, marked ✎REVIEW; the one
+   substantive find: the "Expected constant moves" `:205`/`:237`
+   rows were wrong-direction forecasts (`:205` does NOT shrink —
+   CMS/EWY are english-definition shells over Welsh cores and
+   deletion cannot feed them; DCI's mismatch is ENTRENCHED, not
+   fixed; GLC's portuguese line likely stays). Decision outcomes
+   live in the package's STATUS band (route (a) gated on the probe;
+   Baltic first; re-label-then-decide-conversion; invent `mozarabic`;
+   all-87 Wendish; MINIMAL Mongol strip with the steppe remainder
+   parked to a combined CUM/Steppe design; Egypt 0.40 [U]; identity
+   tests; commits per theater, launches in three batches, Anatolia
+   LAST). Riskiest-claims status: append-vs-replace and
+   map-reads-pops remain THE PROBE's questions — do not skip it;
+   route (d)'s ordering inference stands but carries no load. The
+   retired §H items are struck in PERM-VYATKA/AMERICAS with ✎ notes.
+   **NEXT: (i) the grand test on this probe-free build, (ii) the
+   probe mini-relaunch (§A.6 — the probe file is written ONLY after
+   the grand launch closes, and deleted in its result commit),
+   (iii) Batch 1: Baltic + Wales+Ireland + the four micros +
+   Ghana/Kanem, per-theater commits, one launch.**
+3. **Then the two cross-cutting phases:** the POP PHASE (the single
+   consolidated inventory is now POP-PHASE-PACKAGE §B — the theater
+   §H lists are consumed there, re-measured on POPS: Baltic/Africa/
+   SEA/TKA all confirmed, Kedah shrinks to one line, PERM-VYATKA's
+   eleven-registry claim RETIRED ✎, the Mari finding stands), then the
    SITUATIONS BACKLOG (Manzikert is five years from start — the
    obvious first; Norman Conquest v2 owed; banked with dated
    instances ready: the Second Diffusion — re-create Sakya 1073 /

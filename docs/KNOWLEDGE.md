@@ -2171,6 +2171,28 @@ tab-anchored pops as the anchor class's members. A "no registry
 entry" verdict from a strict scan is a hypothesis about the scanner
 first.
 
+### A vanilla `.info` file opens with a BOM-shadowed example block — and directory sweeps must enumerate `*.txt`
+
+**Established:** 2026-08-03, pop-package review. `VAN/in_game/setup/
+countries/00_readme.info` line 1 is a literal example block `TAG = {`
+sitting BEHIND a BOM (`ef bb bf 54 41 47`). Two independent readers
+mis-handled it the same morning, in opposite directions: a directory-wide
+registry count that read *every file in the folder* returned 2,415
+against the canonical 2,414 (the engine reads only `.txt`; `.info` is
+documentation — 2,340 vanilla + 74 mod is the real registry), and a
+`^`-anchored grep of the same file returned ZERO uppercase blocks
+because the BOM sits before the anchor. One file, both blind spots of
+the anchor class at once. The review's other instrument errata, for the
+record: `_TAIFAS` values are `(capital, [locations])` tuples, not bare
+lists — a reader that unions `values()` directly crashes.
+**Means:** registry/database sweeps enumerate `*.txt` explicitly, never
+"everything in the directory"; any surprising ±1 against a canonical
+count is FIRST a question about the scanner's file list; and the
+package-review law held again — of 180 reproduced checks the three
+diffs were two draft bookkeeping slips (Bronze `define_pop` 50,052 not
+46,119; `07_cities` has 1,023 location blocks not 1,129) and one
+reviewer-scanner bug, with every load-bearing number exact.
+
 ## Template for new entries
 
 ```

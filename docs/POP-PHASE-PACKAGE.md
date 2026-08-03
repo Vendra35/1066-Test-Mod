@@ -1,9 +1,30 @@
-> **DRAFT — research package, written against HEAD `5000dbd` ("Bank item 41
-> and CLOSE THE MAP PHASE"). Nothing here has been implemented, and nothing
-> here is a test result. Every mechanical claim carries a `file:line` or a
-> reproducible measurement; historical judgments carry `[U]` unsettled /
-> `[D]` debated flags collected in §VERIFICATION. Reviewed and decided by the
-> main session before one byte enters the repo.**
+> **STATUS (2026-08-03): REVIEWED AND DECIDED.** Main-session review against
+> HEAD `189c165` reproduced **180 mechanical checks with `build_setup.py`'s
+> own imported parsers — 177 exact**; the three diffs all resolved (two were
+> this package's bookkeeping, one was the reviewer's own scanner reading
+> `00_readme.info` — KNOWLEDGE has the trap). Errata are corrected in place
+> below, each marked **✎REVIEW**; the one substantive find is the
+> "Expected constant moves" table's `:205`/`:237` rows (wrong-direction
+> forecasts, corrected there). **THE TEN DECISIONS ARE TAKEN (user onay
+> 2026-08-03):** (1) route (a), gated on the probe; (2) first slice Baltic;
+> (3) al-Andalus RE-LABELS first — conversion is re-decided as its own
+> named-constant call after the mechanism is proven in game; (4) invent
+> `mozarabic`, WITHOUT Basileia's −0.25 conversion modifier; (5)
+> `slavic_paganism` takes all 87 locations incl. Brandenburg (knowing
+> extension past the banked 894.7u — recorded here); (6) Mongol strip
+> MINIMAL: Persia+Khorasan's 330 only (Anatolia's 24 die with its own
+> slice; the ~670-location steppe/Siberia/China remainder parks with
+> decision 8); (7) Egypt miaphysite → 0.40 as a named constant
+> [U 0.30-0.60]; (8) CUM parked — one combined "Steppe demography" design
+> owns it plus decision 6's remainder; (9) identity-only tests while
+> re-label holds; any size-changing slice's tour must say `-leavepops`;
+> (10) COMMITS per theater, LAUNCHES in three batches: Baltic+Wales+
+> Ireland+micros+Ghana/Kanem → al-Andalus+Sicily+Egypt → Mongol-minimal+
+> Anatolia LAST. Sequencing: the grand accumulated test runs FIRST on a
+> probe-free build; the probe gets its own two-minute relaunch in the same
+> sitting; the probe file is deleted in the commit that records its
+> outcome. Nothing here is a test result; historical judgments keep their
+> `[U]`/`[D]` flags. (Original draft: 2026-08-02, against `5000dbd`.)**
 
 # THE POP PHASE — the mechanism first, then a correction inventory that survived an audit (DRAFT)
 
@@ -161,10 +182,20 @@ All three ship a whole-file `06_pops.txt` override. All three are BOM-free.
 |---|---|---|---|---|---|
 | vanilla | 28,570 | 50,255 | 0 | — | — |
 | **Anno 1644** | 28,581 | **150,705** | **0** | 14 | 3 |
-| **Bronze Era** | 25,941 distinct / 28,574 occurrences | 46,119 | **417 names, 2,633 extra copies** | **502** | **3,131** |
+| **Bronze Era** | 25,941 distinct / 28,574 occurrences | **50,052** ✎REVIEW | **417 names, 2,633 extra copies** | **502** | **3,131** |
 | **Basileia** `06_pops.txt` | 22,399 | 46,072 | 0 | 0 | **6,174** |
 | Basileia `06_pops_north_america.txt` | 4,263 | 4,818 | 0 | 0 | — |
 | Basileia `06_pops_south_america.txt` | 1,911 | 1,719 | 0 | 0 | — |
+
+✎REVIEW corrections to this table (2026-08-03, all re-measured): Bronze's
+`define_pop` total is **50,052** (the draft's 46,119 matches no reading —
+raw and comment-masked are both 50,052, and first-wins/last-wins distinct
+counts are 50,048). Basileia's 46,072 is the RAW token count; 19 sit in
+comments, **46,053 live**. Basileia's override also carries blocks for the
+three template-locations vanilla's `06_pops.txt` lacks (`lake_hovz_soltan`,
+`lake_namak`, `zagros_mountains8`) — "phantom 0" holds under this table's
+not-a-vanilla-location definition. The 3,804/18,592 differ/identical split
+reproduces as 3,803/18,593 under whitespace normalization.
 
 Three things follow, and the third is the important one.
 
@@ -266,8 +297,10 @@ already use.
 `06_pops.txt` does **not** touch them. They are separate *files* in the same
 `locations = { }` manager, and override is by filename
 (`.claude/skills/write-eu5-setup/SKILL.md`, RULE 2). Measured: `07_cities_
-and_buildings.txt` has 1,129 location blocks carrying only `rank` /
-`town_setup` and **zero `define_pop`**; `08_institutions.txt` has 13,090
+and_buildings.txt` has **1,023** location blocks (✎REVIEW — the draft said
+1,129; the file's SECOND manager, `building_manager`, holds 2,646 blocks of
+its own, and every one of the 1,023 location blocks is also a `06_pops.txt`
+block) carrying only `rank` / `town_setup` and **zero `define_pop`**; `08_institutions.txt` has 13,090
 carrying only institution keys; `06_pops.txt` has zero `rank` or
 `town_setup`. The three files are disjoint in *fields* and overlapping in
 *keys* — which is exactly the proof §A.2 needs.
@@ -748,7 +781,9 @@ choice, already accepted at `EU5-ERROR-DECODER.md:546`), **HPJ 12**
 (`mon_culture` — §B.6), KIM 10 (`tagakaulo_culture`), SHD 6
 (`kurdish_culture`), BKZ 4 (`bedouin_culture`), ZAH 4 (`rhine_alemannic`),
 CEM 3 (`kurdish_culture`), JSK 2 (`farsi_culture`), DCI 1 (`anglo_irish` —
-the Ireland slice fixes it), EGL 1 (`kurdish_culture`).
+✎REVIEW: the Ireland deletion ENTRENCHES this mismatch rather than fixing
+it — a registry-side call, parked with the other registry questions),
+EGL 1 (`kurdish_culture`).
 
 **CUM is the one that should worry a reviewer:** 211 locations, and
 `cuman_culture` exists on **five** locations in the entire world's pops. A
@@ -1033,8 +1068,8 @@ Nothing below is authorised; it is the shape a decided version would take.
 | `06_pops.txt` block count | (vanilla's) 28,570 | **28,570 — must not move, ever** | D1 |
 | `06_pops.txt` `define_pop` | 50,255 | 50,255 ± the slice's declared delta | D2; the full inventory is **−/±2,726 at most**, 5.4 % |
 | registry 74 / country blocks 2,411 / thrones 179 / deps 281 / pacts 9 / ghosts 160 / vacated 630 / parliament 1,360 / loc 375 / CoA 125 / gate 79 / IO floor 850 | as `HANDOFF.md:2044-2048` | **UNCHANGED** | the pop phase touches no country block. Any movement means something else was edited |
-| error class `initialize_from_bookmark.cpp:237/:301` + `country.cpp:9778` | live, accepted | **RETIRES** with Ireland/Wales/al-Andalus | `EU5-ERROR-DECODER.md:539-548` |
-| error class `initialize_from_bookmark.cpp:205` | 8 lines | shrinks by the CMS/EWY/DCI members | `:530-537`; vanilla's own ATH line stays |
+| error class `initialize_from_bookmark.cpp:237/:301` + `country.cpp:9778` | live, accepted | **GDD/MWG/DUB retire; GLC's portuguese line is expected to STAY** (✎REVIEW — GLC's portuguese pops are its own county of Portugal, which no slice touches) | `EU5-ERROR-DECODER.md:539-548` |
+| error class `initialize_from_bookmark.cpp:205` | 8 lines | **UNCHANGED** (✎REVIEW — the draft forecast "shrinks by CMS/EWY/DCI", which is wrong-direction: CMS/EWY are `culture_definition = english` shells over Welsh cores (`british_isles.txt:474 :481`), and deleting english pops cannot feed them; DCI is not in this class at all) | `:530-537`; vanilla's own ATH line stays |
 | error class: accepted-culture both directions | none | **NEW, mod-wide, unpredictable** | `00_defines.txt:1508-1509`; Anatolia is the trigger. Budget for it before the launch, not after |
 | the vacated-pop class (`jomini_script_system.cpp:252`) | ~1,000 expected | **unchanged** — the pop phase vacates nothing | `:675-701` |
 
@@ -1059,7 +1094,7 @@ Nothing below is authorised; it is the shape a decided version would take.
 | `wari_culture` → `quechuan_language` → the Inca rank family | `VAN/in_game/common/cultures/peruvian.txt:693-694`; `customizable_localization/country_ranks.txt:345 :1173 :1917` |
 | the Uralic religions on pops (71 / 63 / 84); the eleven tags are `type = pop`; PRM's own 53 of 64 | `VAN/in_game/setup/countries/russia.txt:309`, `siberia.txt:1 :9 :17 :25 :32 :39 :46 :53 :60 :67 :74`; `06_pops.txt`; the mod's `10_countries.txt` |
 | `teco_culture` on 6 locations, all CLM's | `06_pops.txt`; `VAN/in_game/common/cultures/mesoamerican.txt:61`; CLM registry `mesoamerica.txt:383` |
-| `add_pops_from_locations` is a `10_countries.txt` field, not a `06_pops.txt` one; the mod ships 448 `type = pop` countries covering 4,011 locations | `docs/Setup modding …pdf` ("If you are creating a non-playable pops based country"); the mod's `10_countries.txt` |
+| `add_pops_from_locations` is a `10_countries.txt` field, not a `06_pops.txt` one; the mod ships 448 `type = pop` countries whose lists carry 4,011 entries with overlap = **3,736 distinct locations** (✎REVIEW) | `docs/Setup modding …pdf` ("If you are creating a non-playable pops based country"); the mod's `10_countries.txt` |
 | 32 `mari_culture` pop locations, 0 covered by any pop-country | `06_pops.txt` × the mod's 448 `add_pops_from_locations` sets |
 | every theatre count in §B.0 and §B.1-B.7 | `06_pops.txt` × `build_setup._TAIFAS` / `_defs()` / the ten-key ownership reader |
 
