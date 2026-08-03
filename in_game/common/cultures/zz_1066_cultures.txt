@@ -1,0 +1,26 @@
+﻿# BATCH 2 of the pop phase (docs/POP-PHASE-PACKAGE.md decision 4, user
+# onay 2026-08-03): the ONE invented identifier the whole phase needs.
+# Basileia's attested shape (br_iberia.txt:24) copied WITHOUT its
+# location_modifier block (-0.25 conversion speed — a balance effect the
+# decision explicitly declined). maghrebi_dialect is Basileia's reading of
+# Mozarabic ("Latin written in Arabic") and reuses a shipped language.
+# Loc row `mozarabic:` lives in 1066_norman_conquest_l_english.yml.
+
+mozarabic = {
+	language = maghrebi_dialect
+
+	color = rgb { 175 190 210 }
+
+	tags = { catalan_gfx iberian_gfx west_mediterranean_gfx mediterranean_gfx western_european_gfx european_gfx }
+
+	opinions = {
+		andalusi = positive
+		sephardi = kindred
+		castilian = positive
+		aragonese = positive
+	}
+
+	culture_groups = {
+		iberian_group
+	}
+}

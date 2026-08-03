@@ -8392,6 +8392,32 @@ def build_wars(src):
 
 TKA_AMDOWA_SHARE = 0.65  # [U 0.5-0.8] — amdowa share of the liang+amdowa peasant pair
 
+# --- BATCH 2 (2026-08-03, same session; decisions 3/4/7 + the HPJ micro) ---
+# al-Andalus RE-LABELS (decision 3's first stage): every catholic pop in the
+# 244 _TAIFAS locations becomes `mozarabic` (the invented culture,
+# in_game/common/cultures/zz_1066_cultures.txt) at unchanged size and
+# religion — a Mozarab-majority al-Andalus, knowingly [D]; the full
+# conversion is decision 3's OWN later call. The 69 zero-sunni locations
+# get one ANDALUS_SEED_SIZE andalusi/sunni peasant seed each (package
+# shape (i)'s amplify half; the engine inflates identity seeds).
+# Sicily CONVERTS by the three valli [D, POP-PHASE.md:81]: a share of every
+# sicilian/catholic pop splits into maltese/sunni (the shipped
+# Siculo-Arabic); girgenti rides mazara's 0.80 (both are Val di Mazara);
+# malta's own maltese pops flip sunni whole (Muslim until 1091 — item 22).
+# Egypt raises miaphysite to EGYPT_COPTIC_SHARE of egypt_region units
+# (decision 7, [U 0.30-0.60]) by converting a computed fraction of
+# lower/upper_egyptian sunni PEASANTS to coptic_culture/miaphysite — the
+# countryside stays Coptic, the cities and elites Muslim; bedouin and
+# libyan-arab pops untouched. HPJ's 14 khon_muang pops become mon_culture
+# (SEA-PACKAGE decision 4's deferred micro — retires HPJ's 237/301 line).
+ANDALUS_SEED_SIZE = 0.500   # [U] units per zero-sunni taifa location
+SICILY_SHARES = {"mazara_province": 0.80, "girgenti_province": 0.80,
+                 "noto_province": 0.55, "demena_province": 0.25}  # [D]
+EGYPT_COPTIC_SHARE = 0.40   # [U 0.30-0.60] — decision 7's named constant
+_HPJ_TWELVE = ("chiang_dao", "chiang_mai", "hot", "lampang", "lamphun",
+               "mae_hong_son", "muang_jam", "muang_wang", "muang_yuam",
+               "mueng_thoen", "omkoi", "sariang")
+
 _PRM_TEN = ("aspa", "kasevo", "orda", "osa", "saygatsky", "suksun",
             "tatyshly", "ust_kishert", "yanaul", "yelovo")
 _TKA_THREE = ("gushan", "nianbo", "xining")
@@ -8414,6 +8440,13 @@ _POP_EXPECT = {
     "PRM chiyalik slaves -> bashkir peasants":        10,
     "TKA mongol clergy deleted":                       3,
     "TKA liang/amdowa pairs re-balanced":              3,
+    # --- Batch 2 (every count observed on the first run, then pinned) ---
+    "taifas catholic -> mozarabic":                  554,
+    "taifas andalusi/sunni seeds":                    69,
+    "sicily sicilian/catholic split to maltese/sunni":  72,
+    "malta maltese catholic -> sunni":                  2,
+    "egypt egyptian sunni peasants split to coptic":   52,
+    "HPJ khon_muang -> mon":                          14,
 }
 
 
@@ -8501,6 +8534,14 @@ def build_pops(src):
                 out.append(p)
         return out
 
+    def expect(label, n):
+        want = _POP_EXPECT[label]
+        if want is None:
+            sys.exit(f"build_pops: {label}: MEASURED {n} — pin it in _POP_EXPECT")
+        if n != want:
+            sys.exit(f"build_pops: {label}: expected {want}, got {n}")
+        report.append((label, n))
+
     def convert(locs, label, match, change):
         n = 0
         for l in locs:
@@ -8513,9 +8554,54 @@ def build_pops(src):
             if hit:
                 after[l] = fold(after[l])
                 touched.add(l)
-        if n != _POP_EXPECT[label]:
-            sys.exit(f"build_pops: {label}: expected {_POP_EXPECT[label]}, got {n}")
-        report.append((label, n))
+        expect(label, n)
+
+    n_created = 0
+    seed_units = 0.0
+
+    n_split_skips = 0
+
+    def split(locs, label, match, share_fn, new_identity):
+        """Move share_fn(l) of each matching pop's units into a clone
+        carrying new_identity; fold so repeat identities merge. Conserving.
+        A clone that would push its TYPE past the merge safe zone
+        (max(vanilla's count, 3) — guard D5's rule) is SKIPPED whole: the
+        source pop stays intact rather than feeding the similar-merge
+        (messina ships 3 clergy already; a fourth would merge on load)."""
+        nonlocal n_created, n_split_skips
+        n = 0
+        for l in locs:
+            b_per = {}
+            for p in before[l]:
+                b_per[p["type"]] = b_per.get(p["type"], 0) + 1
+            cur_per = {}
+            for p in after[l]:
+                cur_per[p["type"]] = cur_per.get(p["type"], 0) + 1
+            clones = []
+            for p in after[l]:
+                if match(p):
+                    t = p["type"]
+                    if not any(q["type"] == t and all(q.get(k) == v for k, v in new_identity.items())
+                               for q in after[l]):
+                        if cur_per.get(t, 0) + 1 > max(b_per.get(t, 0), 3):
+                            n_split_skips += 1
+                            continue
+                    f = share_fn(l)
+                    mv = float(p["size"]) * f
+                    if mv < 0.0005:
+                        continue
+                    p["size"] = f"{float(p['size']) - mv:.3f}"
+                    q = dict(p)
+                    q.update(new_identity)
+                    q["size"] = f"{mv:.3f}"
+                    clones.append(q)
+                    cur_per[t] = cur_per.get(t, 0) + 1
+                    n += 1
+            if clones:
+                n_created += len(clones)
+                after[l] = fold(after[l] + clones)
+                touched.add(l)
+        expect(label, n)
 
     # --- the Baltic (decision 2's slice) ---
     bal = scope("baltic_area")
@@ -8593,8 +8679,74 @@ def build_pops(src):
     if n_pair != _POP_EXPECT["TKA liang/amdowa pairs re-balanced"]:
         sys.exit("build_pops: TKA pair count drifted")
     report.append(("TKA liang/amdowa pairs re-balanced", n_pair))
+
+    # ================= BATCH 2 =================
+    # al-Andalus: the flat re-label (all nine donor-culture catholics)...
+    t244 = sorted({l for v in _TAIFAS.values() for l in v[1]})
+    for l in t244:
+        if l not in spans:
+            sys.exit(f"build_pops: taifa location {l} missing from 06_pops")
+    convert(t244, "taifas catholic -> mozarabic",
+            lambda p: p["religion"] == "catholic",
+            lambda p, l: p.__setitem__("culture", "mozarabic"))
+    # ...then the seed half: one andalusi/sunni peasant seed per
+    # still-zero-sunni location (the engine inflates identity seeds).
+    n_seed = 0
+    for l in t244:
+        if not any(p["religion"] == "sunni" for p in after[l]):
+            after[l].append({"type": "peasants", "size": f"{ANDALUS_SEED_SIZE:.3f}",
+                             "culture": "andalusi", "religion": "sunni"})
+            n_created += 1
+            n_seed += 1
+            seed_units += ANDALUS_SEED_SIZE
+            touched.add(l)
+    expect("taifas andalusi/sunni seeds", n_seed)
+
+    # Sicily by the three valli; girgenti rides mazara's share.
+    sic_share = {}
+    for prov, sh in SICILY_SHARES.items():
+        for l in set(t for t in defs.get(prov, []) if t in own):
+            sic_share[l] = sh
+    sic_locs = scope("sicily_area")
+    missing_share = [l for l in sic_locs if l not in sic_share]
+    if missing_share:
+        sys.exit(f"build_pops: sicily locations outside the valli map: {missing_share}")
+    split(sic_locs, "sicily sicilian/catholic split to maltese/sunni",
+          lambda p: p["culture"] == "sicilian" and p["religion"] == "catholic",
+          lambda l: sic_share[l],
+          {"culture": "maltese", "religion": "sunni"})
+    convert(["malta"], "malta maltese catholic -> sunni",
+            lambda p: p["culture"] == "maltese" and p["religion"] == "catholic",
+            lambda p, l: p.__setitem__("religion", "sunni"))
+
+    # Egypt: computed fraction of the Egyptian sunni PEASANTRY to
+    # coptic/miaphysite so the region lands on the named share.
+    egy = scope("egypt_region")
+    egy_total = sum(float(p["size"]) for l in egy for p in after[l])
+    egy_mia = sum(float(p["size"]) for l in egy for p in after[l]
+                  if p["religion"] == "miaphysite")
+    _EG_SRC = ("lower_egyptian_culture", "upper_egyptian_culture")
+    egy_src = sum(float(p["size"]) for l in egy for p in after[l]
+                  if p["culture"] in _EG_SRC and p["religion"] == "sunni"
+                  and p["type"] == "peasants")
+    egy_f = (EGYPT_COPTIC_SHARE * egy_total - egy_mia) / egy_src
+    if not (0.0 < egy_f < 1.0):
+        sys.exit(f"build_pops: egypt fraction {egy_f:.3f} out of range")
+    split(egy, "egypt egyptian sunni peasants split to coptic",
+          lambda p: p["culture"] in _EG_SRC and p["religion"] == "sunni"
+          and p["type"] == "peasants",
+          lambda l: egy_f,
+          {"culture": "coptic_culture", "religion": "miaphysite"})
+
+    # HPJ: the deferred micro — Mon court over a Mon countryside.
+    convert(list(_HPJ_TWELVE), "HPJ khon_muang -> mon",
+            lambda p: p["culture"] == "khon_muang_culture",
+            lambda p, l: p.__setitem__("culture", "mon_culture"))
+
     report.append(("locations touched", len(touched)))
     report.append(("same-identity pops folded", n_folds))
+    report.append(("pops created (seeds + split clones)", n_created))
+    report.append(("split clones skipped at the merge ceiling", n_split_skips))
 
     # --- emit: splice touched blocks, keep every other byte vanilla ---
     out = src
@@ -8638,10 +8790,12 @@ def build_pops(src):
             i2 = be
         if set(seen) != set(spans):
             return f"D1: block set diverged by {len(set(seen) ^ set(spans))}"
-        # D2 — census: folds and the three deletions are the only count moves
+        # D2 — census: creations (seeds + split clones) minus folds minus the
+        # three TKA deletions are the only legal count moves
         delta = total - 50255
-        if delta != -(n_folds + 3):
-            return f"D2: define_pop delta {delta}, expected {-(n_folds + 3)}"
+        if delta != n_created - n_folds - 3:
+            return (f"D2: define_pop delta {delta}, "
+                    f"expected {n_created - n_folds - 3}")
         # D5 — merge safe zone. Batch 1 adds NO pops, so a touched location
         # may never end with MORE same-type pops than vanilla gave it (elk in
         # prussia_area ships at 4 peasants — vanilla's attested 4-6 practice,
@@ -8662,10 +8816,13 @@ def build_pops(src):
                 per[p["type"]] = per.get(p["type"], 0) + 1
             if per and max(per.values()) > 6:
                 return f"D5: {l} beyond vanilla's ceiling"
-        # D6 — unit conservation: only TKA's three 0.004u seeds may go
+        # D6 — unit conservation: the andalusi seeds ADD seed_units, TKA's
+        # three clergy REMOVE 0.012u, splits conserve (3dp rounding noise
+        # over a few hundred split pops stays well under the tolerance)
         before_units = sum(float(p["size"]) for ps in before.values() for p in ps)
-        if abs((before_units - units) - 0.012) > 0.01:
-            return f"D6: units drifted by {before_units - units:.3f}, budget 0.012"
+        drift = (units - before_units) - (seed_units - 0.012)
+        if abs(drift) > 1.0:
+            return f"D6: units drifted by {drift:.3f} beyond the declared budget"
         # D8 — no culture may be emptied world-wide unless DECLARED here.
         # MEASURED 2026-08-03 (the Batch 1 launch): emptying a culture is
         # ERROR-FREE — anglo_irish and german_baltic sat at zero pops with
@@ -8722,6 +8879,26 @@ def build_pops(src):
             amdo = sum(float(p["size"]) for p in seen[l] if p["culture"] == "amdowa_culture")
             if amdo <= liang:
                 return f"D9: {l} amdowa not dominant"
+        # --- Batch 2 bands ---
+        t244locs = sorted({l for v in _TAIFAS.values() for l in v[1]})
+        c = shares(t244locs, "culture")
+        if c.get("mozarabic", 0) < 0.60:
+            return f"D9: taifas mozarabic {c.get('mozarabic', 0):.2f} below band"
+        for l in t244locs:
+            if not any(p["religion"] == "sunni" for p in seen[l]):
+                return f"D9: taifa {l} still has zero sunni pops"
+            for p in seen[l]:
+                if p["religion"] == "catholic" and p["culture"] != "mozarabic":
+                    return f"D9: {l} kept a non-mozarabic catholic ({p['culture']})"
+        r = shares(scope("sicily_area"), "religion")
+        if not (0.45 <= r.get("sunni", 0) <= 0.75):
+            return f"D9: sicily sunni {r.get('sunni', 0):.2f} outside band"
+        r = shares(scope("egypt_region"), "religion")
+        if abs(r.get("miaphysite", 0) - EGYPT_COPTIC_SHARE) > 0.02:
+            return f"D9: egypt miaphysite {r.get('miaphysite', 0):.3f} missed the share"
+        for l in _HPJ_TWELVE:
+            if any(p["culture"] == "khon_muang_culture" for p in seen[l]):
+                return f"D9: {l} still carries khon_muang pops"
         # D10 — the uppercase keys survived
         for k in ("trgoviste_SER", "targoviste_BUL", "ratnapura_LKA", "tata_MOR",
                   "massa_MOR", "asir_ALG", "al_khadra_ALG", "constantine_ALG",
@@ -8731,8 +8908,8 @@ def build_pops(src):
         return None
 
     return out, report, validate, (
-        "Batch 1: the Baltic pagan again, Ireland/Wales native, "
-        "Ghana/Kanem mixed, the micros — untouched blocks byte-identical")
+        "Batches 1+2: the Baltic pagan, Ireland/Wales native, Mozarab "
+        "al-Andalus, the three valli, Coptic Egypt — remainder byte-identical")
 
 
 TARGETS = [
