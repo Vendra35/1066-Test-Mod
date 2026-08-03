@@ -58743,6 +58743,7 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = djenne
+		religious_school = maliki_school
 	}
 
 	DUB = {
@@ -59717,6 +59718,7 @@ countries = {
 		country_rank = rank_duchy
 
 		capital = aoudaghost
+		religious_school = maliki_school
 	}
 
 	SUD = {

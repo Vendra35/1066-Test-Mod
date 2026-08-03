@@ -759,6 +759,44 @@ conception, Ayyub eighteen at start — the seat threshold still
 passes). Rule for future cross-links: parent's birth + ~10y 9m must
 precede the child's birth.
 
+### `initialize_from_bookmark.cpp:520 — Country '<TAG>' has no religious_school specified.`
+**Means:** a landed Muslim country whose block AND template chain carry
+no `religious_school`. The subsaharan templates declare none; vanilla
+states the school inline in every landed Sahel sunni block, right after
+`capital` (MAL/TKR/KBO — `maliki_school` all three, 10_countries
+:20790/:20936/:21390). Fired 2026-08-03 for exactly DJN + SNH — the
+mod's only two school-less sunni blocks; every other new Muslim tag
+either states one or inherits one.
+**Fix:** FIXED same day — both NEW_COUNTRIES blocks gain
+`religious_school = maliki_school` in the vanilla position.
+`scan_log.py` carries the class as REGRESSION scoped to DJN|SNH
+(pattern observed matching the pre-fix log; must be zero next launch).
+
+### `utility.h:242 — Country definition <A> has same color as <B>` (×3, by design)
+**Means:** exactly three pairs, each a new tag deliberately wearing its
+retired landless twin's color: PGN/TNG (item 37 — TNG is Toungoo),
+KDR/MAJ (item 37 — Kediri in Majapahit's crimson), DBU/TIB (item 38 —
+Ü in Tibet's pale sage). Harmless while one of each pair is landless —
+no two LANDED countries share a color (the CAG/GAL lesson is about
+landed pairs).
+**Fix:** none — ACCEPTED, scan_log entry scoped to the three named
+pairs. If any twin ever LANDS (a Majapahit or Toungoo formable, a
+Tibet reunification), recolor in that same commit.
+
+### `government.cpp:512 — Skipping adding a reform - three_departments_system - for 'CHI ...' at game start because the country already has it.`
+**Means:** CHI's template chain already carries the reform the block
+also assigns; the engine skips the duplicate. One line, zero effect —
+the reform IS active (the item-35 tour's Song reform check passed).
+**Fix:** none — ACCEPTED. A polish commit may drop the redundant
+assignment line; not worth a build cycle alone.
+
+### `particle_event.h:114 waves_vfx` / `state_event.h:391 [boat_with_oars_unit] foam_stop`
+**Means:** vanilla boat-animation entity noise (a particle attachment
+point missing on a unit model's state machine), repeating while the
+map renders ships. The mod ships zero gfx entities — vanilla-side,
+confirmed by content.
+**Fix:** none — ACCEPTED as environment noise.
+
 ## Adding to this file
 
 When the game reports a signature that is not here, add a row **once you have

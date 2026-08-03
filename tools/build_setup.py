@@ -1969,14 +1969,21 @@ NEW_COUNTRIES["DJN"] = (
     '\t\tinclude = "expl_west_africa_muslim"\n'
     '\t\tinclude = "subsaharan_muslim_monarchy_no_coast"\n'
     "\t\tcountry_rank = rank_duchy\n\n"
-    "\t\tcapital = djenne\n\t}\n")
+    "\t\tcapital = djenne\n"
+    # The Sahel templates carry no religious_school; every landed
+    # vanilla Sahel sunni block states it inline after `capital`
+    # (MAL/TKR/KBO — maliki all three). Without it the engine logs
+    # initialize_from_bookmark.cpp:520 at start (2026-08-03 launch,
+    # exactly DJN+SNH, the only two school-less sunni blocks).
+    "\t\treligious_school = maliki_school\n\t}\n")
 NEW_COUNTRIES["SNH"] = (
     "\tSNH = {\n"
     "\t\tstarting_technology_level = 3\n"
     '\t\tinclude = "expl_west_africa_muslim"\n'
     '\t\tinclude = "subsaharan_muslim_tribe"\n'
     "\t\tcountry_rank = rank_duchy\n\n"
-    "\t\tcapital = aoudaghost\n\t}\n")
+    "\t\tcapital = aoudaghost\n"
+    "\t\treligious_school = maliki_school\n\t}\n")
 
 # ============================ SOUTHEAST ASIA ================================
 # THE SEA SLICE (docs/SEA-PACKAGE.md, key claims re-verified 2026-08-02,
