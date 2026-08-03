@@ -1,0 +1,25 @@
+﻿# BATCH 3 of the pop phase — the mod's first invented RELIGION (user
+# decision 2026-07-29: INVENT, on romuva's template shape; POP-PHASE.md:107).
+# The faith of the Wendish shore's Obodrites, Liutizi, Hevelli and Sorbs —
+# pagan again after the Great Slav Rising of 983, until the Wendish Crusade
+# (1147, banked situation material). Shape: romuva's block
+# (folk_european.txt) with an inline rgb color (attested:
+# folk_african.txt:744) and romuva's own modifier pair kept — the same
+# Baltic-Slavic forest world [D]. Loc row `slavic_paganism:` lives in
+# 1066_norman_conquest_l_english.yml.
+
+slavic_paganism = {
+	color = rgb { 122 62 62 }
+	group = folk_european_group
+
+	religious_aspects = 1
+
+	definition_modifier = {
+		expand_rgo_forestry_cost_modifier = -0.2
+		army_light_cavalry_power = 0.1
+	}
+
+	tags = {
+		folk_european_gfx pagan_gfx
+	}
+}

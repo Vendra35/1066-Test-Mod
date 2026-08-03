@@ -8418,6 +8418,37 @@ _HPJ_TWELVE = ("chiang_dao", "chiang_mai", "hot", "lampang", "lamphun",
                "mae_hong_son", "muang_jam", "muang_wang", "muang_yuam",
                "mueng_thoen", "omkoi", "sariang")
 
+# --- BATCH 3 (2026-08-03, the phase's close; user: "finish the whole pop,
+# then one test" — Anatolia's own-launch caution is superseded by that
+# instruction; ARA's single 9635 line was the class's preview and scan_log
+# now classifies it) ---
+# THE WENDISH SHORE (decision 5, all 87): the mod's first invented RELIGION
+# (`slavic_paganism`, in_game/common/religions/zz_1066_religions.txt) lands
+# on every Slavic catholic pop of mecklenburg/pomerania/brandenburg; the
+# GERMAN (Ostsiedlung, 12th c.+) pops FOLD into each location's largest
+# Slavic pop — and where a location has NO Slavic host, its Germans stay
+# whole: that is the west-of-Elbe Altmark, the 983 frontier drawing itself.
+# greater_polish keeps catholic (the Piast Lubusz frontier, the Pomerelia
+# precedent). MONGOL-MINIMAL (decision 6): mongolian_culture+nogai pops in
+# persia_region+khorasan_region fold into each location's largest local
+# pop; the ~50 hostless Aral-fringe steppe locations re-label
+# turkmen_culture (the 1066 Oghuz steppe [U]) keeping their religions.
+# ANATOLIA (the inventory's last item): all four turkic keys fold into the
+# location's largest non-turkic pop (the southeast folds Kurdish/Arab —
+# correct); the all-turkic locations RE-SEED as their AREA's largest
+# Christian culture (cilicia/cappadocia -> armenian_culture+miaphysite,
+# marmara/west -> greek+orthodox, pontus -> pontic_greek+orthodox), sizes
+# kept. mongolia_region's mongols are asserted UNTOUCHED. Stragglers
+# outside the scoped regions (turkish on genoa/kaffa etc., 15 locations)
+# are recorded residue, not touched.
+_WEND_SLAVS = ("western_pomeranian", "eastern_pomeranian", "polabian",
+               "kashubian", "sorbian")
+_WEND_GERMANS = ("markish", "brandenburgish", "saxon", "eastphalian",
+                 "lower_saxon", "german_silesian")
+_MG_KEYS = ("mongolian_culture", "nogai")
+_ANA_TURK = ("turkish_culture", "turkoman_culture", "mongolian_culture", "nogai")
+_ANA_REL_OF = {"armenian_culture": "miaphysite"}  # every other host is orthodox
+
 _PRM_TEN = ("aspa", "kasevo", "orda", "osa", "saygatsky", "suksun",
             "tatyshly", "ust_kishert", "yanaul", "yelovo")
 _TKA_THREE = ("gushan", "nianbo", "xining")
@@ -8447,6 +8478,14 @@ _POP_EXPECT = {
     "malta maltese catholic -> sunni":                  2,
     "egypt egyptian sunni peasants split to coptic":   52,
     "HPJ khon_muang -> mon":                          14,
+    # --- Batch 3 ---
+    "wendish slavic catholics -> slavic_paganism":   189,
+    "wendish german pops folded into Slavic hosts":  71,
+    "wendish German-kept locations (the Altmark)":   8,
+    "persia/khorasan mongol pops folded into locals": 428,
+    "hostless steppe fringe re-labeled turkmen":     104,
+    "anatolia turkic pops folded into locals":       424,
+    "anatolia all-turkic locations re-seeded":       37,
 }
 
 
@@ -8459,7 +8498,8 @@ def _pop_identifier_sets():
     cultures, religions = set(), set()
     for base, bucket in ((os.path.join(VAN, "in_game", "common", "cultures"), cultures),
                          (os.path.join(VAN, "in_game", "common", "religions"), religions),
-                         (os.path.join(MOD, "in_game", "common", "cultures"), cultures)):
+                         (os.path.join(MOD, "in_game", "common", "cultures"), cultures),
+                         (os.path.join(MOD, "in_game", "common", "religions"), religions)):
         if not os.path.isdir(base):
             continue
         for f in sorted(os.listdir(base)):
@@ -8743,6 +8783,102 @@ def build_pops(src):
             lambda p: p["culture"] == "khon_muang_culture",
             lambda p, l: p.__setitem__("culture", "mon_culture"))
 
+    # ================= BATCH 3 =================
+    # --- the Wendish shore ---
+    wend = (scope("mecklenburg_area") + scope("pomerania_area")
+            + scope("brandenburg_area"))
+    convert(wend, "wendish slavic catholics -> slavic_paganism",
+            lambda p: p["religion"] == "catholic" and p["culture"] in _WEND_SLAVS,
+            lambda p, l: p.__setitem__("religion", "slavic_paganism"))
+    n_ger = 0
+    n_altmark = 0
+    for l in wend:
+        gers = [p for p in after[l] if p["culture"] in _WEND_GERMANS]
+        if not gers:
+            continue
+        hosts = [p for p in after[l] if p["culture"] in _WEND_SLAVS]
+        if not hosts:
+            n_altmark += 1
+            continue
+        host = max(hosts, key=lambda p: float(p["size"]))
+        for p in gers:
+            p["culture"] = host["culture"]
+            p["religion"] = host["religion"]
+        n_ger += len(gers)
+        after[l] = fold(after[l])
+        touched.add(l)
+    expect("wendish german pops folded into Slavic hosts", n_ger)
+    expect("wendish German-kept locations (the Altmark)", n_altmark)
+
+    # --- Mongol-minimal: Persia + Khorasan ---
+    pk = scope("persia_region") + scope("khorasan_region")
+    n_mgf = 0
+    n_steppe = 0
+    for l in pk:
+        mg = [p for p in after[l] if p["culture"] in _MG_KEYS]
+        if not mg:
+            continue
+        hosts = [p for p in after[l] if p["culture"] not in _MG_KEYS]
+        if hosts:
+            host = max(hosts, key=lambda p: float(p["size"]))
+            for p in mg:
+                p["culture"] = host["culture"]
+                p["religion"] = host["religion"]
+            n_mgf += len(mg)
+        else:
+            for p in mg:
+                p["culture"] = "turkmen_culture"
+                n_steppe += 1
+        after[l] = fold(after[l])
+        touched.add(l)
+    expect("persia/khorasan mongol pops folded into locals", n_mgf)
+    expect("hostless steppe fringe re-labeled turkmen", n_steppe)
+
+    # --- Anatolia: the inventory's last item ---
+    ana = scope("anatolia_region")
+    ana_set = set(ana)
+    area_of = {}
+    for a in [n for n in defs if n.endswith("_area")]:
+        for t in defs.get(a, []):
+            if t in ana_set:
+                area_of.setdefault(t, a)
+    area_mix = {}
+    for l in ana:
+        a = area_of.get(l)
+        for p in before[l]:
+            if p["culture"] not in _ANA_TURK and p["religion"] in (
+                    "orthodox", "miaphysite", "nestorianism"):
+                area_mix.setdefault(a, {})
+                area_mix[a][p["culture"]] = (area_mix[a].get(p["culture"], 0.0)
+                                             + float(p["size"]))
+    n_tkf = 0
+    n_reseed = 0
+    for l in ana:
+        tks = [p for p in after[l] if p["culture"] in _ANA_TURK]
+        if not tks:
+            continue
+        hosts = [p for p in after[l] if p["culture"] not in _ANA_TURK]
+        if hosts:
+            host = max(hosts, key=lambda p: float(p["size"]))
+            for p in tks:
+                p["culture"] = host["culture"]
+                p["religion"] = host["religion"]
+            n_tkf += len(tks)
+        else:
+            mix = area_mix.get(area_of.get(l))
+            if not mix:
+                sys.exit(f"build_pops: no Christian host mix for {l}")
+            hc = max(mix, key=mix.get)
+            hr = _ANA_REL_OF.get(hc, "orthodox")
+            for p in tks:
+                p["culture"] = hc
+                p["religion"] = hr
+            n_reseed += 1
+        after[l] = fold(after[l])
+        touched.add(l)
+    expect("anatolia turkic pops folded into locals", n_tkf)
+    expect("anatolia all-turkic locations re-seeded", n_reseed)
+
     report.append(("locations touched", len(touched)))
     report.append(("same-identity pops folded", n_folds))
     report.append(("pops created (seeds + split clones)", n_created))
@@ -8899,6 +9035,26 @@ def build_pops(src):
         for l in _HPJ_TWELVE:
             if any(p["culture"] == "khon_muang_culture" for p in seen[l]):
                 return f"D9: {l} still carries khon_muang pops"
+        # --- Batch 3 bands ---
+        wend_l = (scope("mecklenburg_area") + scope("pomerania_area")
+                  + scope("brandenburg_area"))
+        r = shares(wend_l, "religion")
+        if r.get("slavic_paganism", 0) < 0.50:
+            return f"D9: wendish slavic_paganism {r.get('slavic_paganism', 0):.2f} below band"
+        for l in scope("persia_region") + scope("khorasan_region") + scope("anatolia_region"):
+            for p in seen[l]:
+                if p["culture"] in ("mongolian_culture", "nogai"):
+                    return f"D9: {l} still carries mongol/nogai pops"
+        for l in scope("anatolia_region"):
+            for p in seen[l]:
+                if p["culture"] in ("turkish_culture", "turkoman_culture"):
+                    return f"D9: {l} still carries turkic pops"
+        n_mgl_b = sum(1 for l in scope("mongolia_region") for p in before[l]
+                      if p["culture"] == "mongolian_culture")
+        n_mgl_a = sum(1 for l in scope("mongolia_region") for p in seen[l]
+                      if p["culture"] == "mongolian_culture")
+        if n_mgl_a != n_mgl_b:
+            return f"D9: mongolia_region mongols moved ({n_mgl_b} -> {n_mgl_a})"
         # D10 — the uppercase keys survived
         for k in ("trgoviste_SER", "targoviste_BUL", "ratnapura_LKA", "tata_MOR",
                   "massa_MOR", "asir_ALG", "al_khadra_ALG", "constantine_ALG",
@@ -8908,8 +9064,9 @@ def build_pops(src):
         return None
 
     return out, report, validate, (
-        "Batches 1+2: the Baltic pagan, Ireland/Wales native, Mozarab "
-        "al-Andalus, the three valli, Coptic Egypt — remainder byte-identical")
+        "THE POP PHASE COMPLETE (Batches 1-3): pagan Baltic and Wendish "
+        "shore, native Ireland/Wales, Mozarab al-Andalus, the valli, Coptic "
+        "Egypt, pre-Chinggisid Persia, pre-Manzikert Anatolia")
 
 
 TARGETS = [
