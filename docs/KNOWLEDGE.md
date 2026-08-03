@@ -2193,6 +2193,36 @@ diffs were two draft bookkeeping slips (Bronze `define_pop` 50,052 not
 46,119; `07_cities` has 1,023 location blocks not 1,129) and one
 reviewer-scanner bug, with every load-bearing number exact.
 
+### The second grand test's render-law harvest — dialect-carried rank gates, court-language titles, the Minor-Tribe default
+
+**Established:** 2026-08-03, the items 35-41 grand test (screenshots in
+`docs/test-evidence/2026-08-03/`). Four OWED in-game questions closed
+in one launch:
+1. **The Mahārājā law (OWED CHECK 1, SEA):** a `country_ranks` gate
+   keyed `culture.language = language:X` MATCHES when the culture
+   declares a DIALECT of X — PLB (malay culture) renders "Mahārājya of
+   Palembang", settling every Malay-culture rank render. Bonus: a
+   female random ruler composes the feminine form "Mahārānī" — the
+   rank-word tables carry gendered variants that just work.
+2. **The Negus law (Africa):** `court_language = ethiopic` alone flips
+   ETH's ruler title to "Negus" — the court-language-gated rank-word
+   branch fires at setup with no other change. Capital Kubar renders.
+3. **The derived-rank answer (Perm/Tibet/Americas):** a tag with NO
+   `country_rank` declaration renders **"Minor Tribe of X" /
+   "Chieftain" regardless of size** — PRM at 64 locations and KKE at 5
+   both. A rank declaration is the only knob if a bigger word is
+   wanted; the culture-gated branches can still override it upward
+   ("Kuchkabal of Cocom", "County of Kano").
+4. **The five-pair mandala ring held** — vanilla's template-carried
+   `mandala_system` paid the tributary gate at init (gate pattern #4
+   confirmed in game; the SEL fallback never needed).
+**Means:** rank/render design can trust dialect-carrying cultures and
+court-language gates; leave a tag rank-less only when "Minor Tribe" is
+acceptable. Same launch, same class: random rulers draw the vanilla
+1337 DYNASTY pool — Kanem's "Sayfawa" (Duguwa until ~1075), Makuria's
+"Kanz el-Dawla" (1317+), Ethiopia's "Solomon" (Zagwe expected) — a
+cosmetic flavor-pass debt, not a defect (HANDOFF residual 3).
+
 ## Template for new entries
 
 ```

@@ -2028,42 +2028,96 @@ TEST — click tour, ~10 minutes (accumulates with items 33-35):
       static analysis cannot reach, watch for surprises there.
    6. scan_log.py REGRESSION 0.
 
+**ITEMS 35-41 CONFIRMED IN GAME (2026-08-03, the second grand
+accumulated test — 24 screenshots archived in
+`docs/test-evidence/2026-08-03/`, INDEX.md maps each to its probe).**
+Every front passed: Baltic (Order gone, eight tribes + Novogrudok, no
+Lithuania, Tallinn Estonian, "Tribe of Prussia" panel with our
+pruthenian+romuva registry identity); Africa (no Mali Empire, **Sultan
+Tunka Manin Cissé seated**, **"Mai"** on Kanem, Makuria Miaphysite,
+Kano bori, **"Negus" — the court-language OWED check PASSED**, capital
+Kubar, Adrar filled, the Mahdali web gone); SEA (**"Mahārājya of
+Palembang" — the Mahārājā probe PASSED**, feminine "Mahārānī" compose,
+**five mandala tributaries live with no authored reform**, Pagan
+whole, Kediri/Janggala, Linge renders); Tibet ("Ü" renders, **Dongzhan
+on Tsongkha user-confirmed**, no Tibet anywhere, Changthang unowned);
+Perm/Vyatka (**"Minor Tribe of Perm"/"Chieftain" — the derived-rank
+OWED answered**, Vyatka basin empty); Americas (Cahokia, five
+league-less Haudenosaunee, no Tenochtitlan state, **Cocom's capital
+displays Chich'en Itza**, "Minor Tribe of Killke"/Inti; AYA's big
+paint is exactly its 4 jungle-sliver locations, data-verified); China
+residue (**THE SONG PROBE PASSED: Zhōngyuán/Sānjiào**, Goryeo Liao's
+tributary, CHA/DAI + tusi ring intact, western Mongolia empty). THE
+LOG: 5,062 known entries, **REGRESSION 0, `:2477` ZERO, vacate class
+952 (~1,000 forecast ✔)**, UNKNOWN 14 → all decoded same session
+(decoder + scan_log grew four classes; **the ONE real defect — DJN/SNH
+missing `religious_school` — FIXED same day**, maliki per vanilla's
+MAL/TKR/KBO position, scan_log REGRESSION-scoped). The items 23/25 HRE
+density audit debt: PAID on four close-ups (France/N-Germany/
+S-Germany/Italy all match the landed designs).
+**RESIDUALS BANKED (none blocking; decisions OPEN unless noted):**
+1. **The Wendish/Holstein seam is still 1337** — the Mecklenburg
+   partition (MKL 8/GSW 3/WRN 2/SWR 2), the Pomeranian duchies
+   (WOL 15/STE 6/KMM 3), Brandenburg east of the Elbe (BRA 21),
+   Holstein-Plön/Rendsburg. BALTIC-PACKAGE §H left it "to a German
+   pass" that never came; the map phase closed over it. DECIDE:
+   accept + pop-layer only (pop decision 5 already paganises the
+   ground), or a small Wendish territorial slice (1066.9.15 = Kruto's
+   pagan Obodrites — Gottschalk killed June 1066; the Liutizi
+   federation; marks west of the Elbe). Cilli (1341) is the same
+   class in miniature.
+2. **ZAN/Kilwa's 21→5 shrink (AFRICA-PACKAGE:624) never landed** —
+   item 36 shipped rank+web-strip only and its tour line
+   ("one-town emirate") overpromised; ZAN holds the 21-location
+   coast. DECIDE: implement the rufiji_area shrink or accept.
+3. **The cosmetic dynasty pool**: random rulers wear 1337 dynasties —
+   KBO "Sayfawa" (Duguwa until ~1075), MAK "Kanz el-Dawla" (1317+),
+   ETH "Solomon" (Zagwe expected). Flavor-pass material (author the
+   houses or FIELD_FIXES block-dynasty swaps, the ZTA/MFA route).
+4. **KKE's capital is yanahuara** (vanilla's) while qusqu is held — a
+   one-line CAPITAL_FIXES candidate for an Americas polish.
+5. One-glance leftovers for any future launch: does CHI's ruler
+   render "Yingzong" anywhere (the panel's character bar shows
+   "Zhao Zhao Shu"; the build carries `regnal_name = Yingzong` — one
+   tooltip click); TEP holding the island (map-level passed, data
+   says TEP owns tenochtitlan).
+6. TRH "Torghut Horde" + MNL "Mangalai" on the map = the banked
+   Central-Asia leftovers (CENTRAL-ASIA-PACKAGE:622), correctly
+   independent, anachronistic NAMES only — the future Xinjiang/
+   Mongolia tidy owns renames.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
-WHERE THE WORLD IS. Items 1-34 are landed and game-tested (the grand
-test of 2026-08-01 passed). Items **35 (Baltic), 36 (Africa), 37
-(Southeast Asia), 38 (Tibet), 39 (Perm/Vyatka), 40 (the Americas)
-and 41 (China residue)** are LANDED, COMMITTED and HARNESS-GREEN but
-**NOT YET GAME-TESTED** — the user is accumulating tests
-deliberately ("testi en son yapalım"). The 2026-08-02 marathon
-shipped FIVE theaters in one day: `b3f3665`/`35ecdf6` (SEA),
-`e63c255`/`e027550` (Tibet), `2c9a76d`/`ee9dbf3` (Perm/Vyatka),
-`32293c3`/`0a39b5f` (Americas), `401952b` + the docs commit carrying
-this block (China residue). **THE MAP PHASE IS CLOSED: every region
-of the world is 1066.** Constants right now: registry 74 blocks,
+WHERE THE WORLD IS. **Items 1-41 are ALL landed and game-tested** —
+the 2026-08-01 grand test closed 1-34, the **2026-08-03 grand test
+closed 35-41** (confirmation block after item 41; evidence in
+`docs/test-evidence/2026-08-03/`). **THE MAP PHASE IS CLOSED AND
+FULLY CONFIRMED IN GAME: every region of the world is 1066.** The
+pop-package review is DONE and its ten decisions TAKEN (item 2
+below); the DJN/SNH religious_school fix is the only mod-file change
+since the test build. Constants right now: registry 74 blocks,
 country blocks 2411, thrones 179, landless-dep strips 281, pacts 9,
 IO ghosts **160**, vacated **630**, parliament min **1360**, loc
 rows 375, CoA 125, gate 79, IO-members floor **850**, harness all
-green, working tree clean.
+green.
 
-1. **THE GRAND ACCUMULATED TEST comes when the user says so, not
-   before.** It is items 33+34 leftovers + 35 through 41 in one
-   sitting (~60 min): the click tours are written inside each item
-   above. One-glance musts: **the Song identity probe (41.1 —
-   Zhongyuan/Sanjiao, decision 1's religion half is the one change
-   static analysis cannot reach)**; scan_log.py REGRESSION 0 —
-   **after moving its vacate-class baseline: ~1,000 lines of the
-   vacated-pop class are now EXPECTED (decoder entry updated), and
-   `:2477` must be ZERO (QUN was the last producer)**; the Baltic
-   tribes and no Teutons; Tunka Manin / "Mai" / Negus-or-King;
-   the Mahārājā probe (37.3) and the five mandala tributaries
-   (37.4); the "Ü" render and Dongzhan (38.2-38.3); tribal Perm and
-   the empty Vyatka basin (39.1-39.2); Killke Cusco and the TEP
-   island (40.1-40.3); **Goryeo under the Liao (41.3)**; landless
-   flood NOT grown beyond the known classes. **During that test the
-   user will send an HRE close-up screenshot** — audit Germany
-   density against items 23/25 (promised follow-up, still owed).
+1. **THE GRAND ACCUMULATED TEST RAN 2026-08-03 AND PASSED** — items
+   35-41 all confirmed, the 23/25 HRE density audit paid, four OWED
+   checks closed (Mahārājā, Negus, derived-rank, mandala gate — the
+   render-law harvest in KNOWLEDGE), the one real defect (DJN/SNH
+   religious_school) fixed same day, six residuals banked in the
+   confirmation block after item 41 (Wendish/Holstein seam and the
+   ZAN shrink are the two carrying OPEN DECISIONS). Evidence:
+   `docs/test-evidence/2026-08-03/` (the new archive convention —
+   screenshots copied out of the user's volatile folder, INDEX.md
+   maps file → probe → item; keep doing this every test session).
+   **STILL OWED FROM THE SESSION: the PROBE mini-relaunch** — the
+   probe file is written ONLY when the user is ready to relaunch
+   (12 lines, POP-PHASE-PACKAGE §A.6), the launch reads TWO disjoint
+   things: Mistretta's pops/map color (the four outcomes) and
+   scan_log REGRESSION staying 0 (the DJN/SNH :520 pattern must be
+   GONE — the fix's proof). Delete the probe in its result commit.
 2. **The pop-package review is DONE (2026-08-03) — THE TEN DECISIONS
    ARE TAKEN.** The main session reproduced 180 mechanical checks with
    `build_setup.py`'s own imported parsers, **177 exact**; every
