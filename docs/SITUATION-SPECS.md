@@ -1,6 +1,8 @@
-> **STATUS (2026-08-02): UNIMPLEMENTED — the situations phase's primary
-> input, now NEXT-BUT-ONE in the queue (after the pop phase; the map
-> phase closed with item 41).** Two cautions before building from this:
+> **STATUS (2026-08-03): UNIMPLEMENTED — the situations phase is NOW
+> OPEN (both world phases closed and confirmed, items 1-44); this file
+> is its primary input, to be read AFTER the vanilla+reference-mod
+> craft sweep the next session opens with.** Two cautions before
+> building from this:
 > (1) **its Pecheneg route cites the DEAD SKE law** (AUDIT-2026-07-31
 > §4.1 killed it — a tag needs BOTH a registry identity block AND a
 > claims-backed landless start block; re-derive that spec before use);
