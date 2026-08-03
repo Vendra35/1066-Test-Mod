@@ -2235,6 +2235,32 @@ S-Germany/Italy all match the landed designs).
       doğruluk-okuması); **accepted-culture çift-yön sınıfını İZLE**
       (554'lük re-label İber paylarını oynatır — çıkarsa yapıştır,
       bütçelendi); REGRESSION 0.
+   **CONFIRMED IN GAME (2026-08-03, same day — the session's FOURTH
+   launch; frames batch2-* in the archive).** THE INVENTION PROBE
+   PASSED — "Mozarabic" renders as the Iberian region label (culture
+   block + loc row both live); Córdoba reads Mozarabic 86.0% /
+   Andalusi 10.6% PRIMARY / Sephardi 3.4%; the seed hatching shows
+   across the whole taifa zone. Sicily renders "Sunni" with the
+   Demone corner catholic and **Mistretta at EXACTLY 25.0%** (the
+   named share to the decimal); Malta sunni. The Nile is striped
+   Miaphysite end to end, Asyut at Coptic 56.6% (the split's
+   Upper-Egypt variance; "Heretic" under Shia FAT is correct
+   mechanics). Lamphun Mon 56.6% PRIMARY, Theravāda 100% — and
+   **HPJ's 301 line is DEAD in the log**. THE LOG (error.1.log —
+   note: the game had ROTATED it; the live error.log held only
+   post-init noise): UNKNOWN 0 after two decodes — **the budgeted
+   accepted-culture class fired its FIRST live member, exactly one
+   line (ARA 4.31/2** — the world-share terms moved with the 554
+   re-label; scan_log now separates it from CHI's flood signature,
+   which stays REGRESSION) — and :205 gained VAL/catalan over a
+   "mozarabic" capital (the readout class again). RESIDUAL BANKED:
+   PLM×2/AGR joined 237/301 (Kalbid courts carry `sicilian` registry
+   culture over now-maltese-majority ground — a one-line
+   italy.txt-override polish candidate, decide with the next Sicily
+   touch). **ITEM 43 IS CLOSED — Batch 2 measured in game end to
+   end. Remaining in the pop phase: Batch 3 (Mongol-minimal
+   Persia+Khorasan 330, then ANATOLIA LAST in its own launch) and
+   decision 3's full-conversion call.**
 
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**

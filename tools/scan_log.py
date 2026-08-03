@@ -41,7 +41,13 @@ KNOWN = [
     ("REGRESSION", "tributary/tusi gate is BACK (Middle Kingdom restore broke?)",
      r"government\.cpp:3702"),
     ("REGRESSION", "CHI culture flood is BACK (Middle Kingdom restore broke?)",
-     r"country\.cpp:9635"),
+     r"country\.cpp:9635.*CHI China"),
+    # single-instance capacity lines are the budgeted both-directions class
+    # (POP-PHASE-PACKAGE, decoder 2026-08-03: ARA 4.31/2 after the mozarabic
+    # re-label moved world shares) — the CHI-scoped FLOOD above stays a
+    # regression signal
+    ("ACCEPTED", "accepted-culture setup capacity (both-directions, budgeted)",
+     r"country\.cpp:9635|accepted_cultures_capacity"),
     ("REGRESSION", "parliament_type barrage is BACK (audit D2 regressed)",
      r"initialize_from_bookmark\.cpp:1719"),
     ("REGRESSION", "landless-no-claims is BACK (the claims guard regressed)",

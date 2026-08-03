@@ -837,6 +837,23 @@ mark it probe-side and close.
 ZERO lines of this class — probe-side confirmed. The scan_log WATCH
 pattern stays as a tripwire.
 
+### `country.cpp:9635 — Country ARA Aragon starts with 4.31 out of 2 accepted or tolerated cultures…` (the both-directions class, first live member)
+**Means:** the FORECAST accepted-culture setup class
+(`ACCEPTED_CULTURE_SETUP_ERROR_IF_ABOVE_MAX`, 00_defines:1508-1509;
+budgeted in POP-PHASE-PACKAGE before any pop landed). The 554-pop
+mozarabic re-label moved the WORLD-share terms of the acceptance
+formula and pushed ARA — already near its wall — 0.3 over. ONE line,
+informational, nothing is removed at start.
+**Fix:** ACCEPTED (scan_log entry scoped so CHI's old FLOOD signature
+stays a REGRESSION signal). If the class ever floods or hits a country
+whose acceptances matter, the known cure is a Nizamiyya-style
+`cultures_capacity` reform (the SEL precedent). Rider from the same
+launch: `237/301` gained PLM×2/AGR (Kalbid courts with `sicilian`
+registry culture over now-maltese-majority ground — a one-line
+registry-polish candidate, banked) and LOST HPJ (the Batch 2 fix);
+`:205` gained VAL/catalan over a mozarabic capital — the readout
+class again.
+
 ## Adding to this file
 
 When the game reports a signature that is not here, add a row **once you have

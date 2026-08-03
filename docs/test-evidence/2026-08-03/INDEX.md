@@ -76,3 +76,17 @@ readout).
 | `batch1-xining.png` | Amdowa 55.0% PRIMARY over Liáng 29.5%, no mongol clergy row | 42.6 |
 | `batch1-osa.png` | Bashkir/Tengrism 97.8% — the slave pocket is a peasant population | 42.7 |
 | `batch1-perlis.png` | No Sunnism row at all — Eastern Buddhism 59.3%/Theravāda/Orang Asli | 42.7 |
+
+## The Batch 2 launch (same day, fourth launch — commits `e756ddf`..`7ad9835`)
+
+| file | proves | item |
+|---|---|---|
+| `batch2-iberia-culture.png` | **THE INVENTION PROBE: "Mozarabic" renders** as the region label — culture block + loc row both live; "Andalusi" band in the deep south; the Christian north intact | 43.1 |
+| `batch2-iberia-religion.png` | al-Andalus still catholic-dominant (the re-label stage, by design) with sunni seed hatching everywhere | 43.2 |
+| `batch2-qurtubah.png` | Córdoba: Mozarabic 86.0% Discriminated / Andalusi 10.6% PRIMARY / Sephardi 3.4% — the re-label to the decimal | 43.1 |
+| `batch2-sicily-religion.png` | "Sunni" over the island, Demone corner catholic, Malta a green dot — the three-valli pattern | 43.3 |
+| `batch2-mistretta.png` | Mistretta EXACTLY 25.0% Sunni/Maltese — Demone's share to the decimal | 43.3 |
+| `batch2-egypt-religion.png` | The Nile striped Miaphysite/Sunni end to end | 43.4 |
+| `batch2-asyut.png` | Asyut: Coptic 56.6% — the f=0.377 split's Upper-Egypt variance; Sunnism renders "Heretic" under Shia FAT (correct mechanics) | 43.4 |
+| `batch2-lamphun.png` | Mon 56.6% PRIMARY / Lawa 43.4%, Theravāda 100% — khon_muang gone | 43.5 |
+| `batch2-log-frame.png` | The user's log frame; the full scan lives in the decoder (ARA 9635 = the budgeted class's first member) | 43.6 |
