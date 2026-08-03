@@ -2317,6 +2317,36 @@ S-Germany/Italy all match the landed designs).
       Baltık pagan — birer bakış.
    6. Log bana: 9635 satırları (bütçeli sınıf), :205 büyümesi
       (beklenen okuma), 237/301 hareketi, REGRESSION 0.
+   **CONFIRMED IN GAME (2026-08-03, the session's FIFTH launch —
+   frames batch3-* in the archive). THE POP PHASE IS MEASURED
+   COMPLETE.** The Wendish shore paints "Slavic Paganism" with the
+   west-of-Elbe Altmark catholic; Berlin reads Polabian 94.9%/Slavic
+   Paganism 94.9% (the 600 Brandenburgish catholics are the ENGINE's
+   primary-culture elite inflation over BRA's pagan ground — the
+   margrave-over-Wends texture, correct); Anatolia is Orthodox purple
+   end to end with the Miaphysite east and the Kurdish/Arab southeast
+   intact — Ánkyra reads Greek 96.0%/Orthodoxy 96.0% (the 37-location
+   re-seed live); Iran carries no Mongolian/Nogai anywhere, Esfahân's
+   Zoroastrian 19.3% is vanilla's own correct texture, and
+   mongolia_region held still. THE LOG: UNKNOWN 0, REGRESSION 0,
+   **the accepted-culture class did NOT grow — still exactly ARA's
+   one line** despite 852 folds; `:205` at 61 = the 21 Anatolian
+   beylik shells joining the readout class (their ground now carries
+   zero turkish pops — the strongest possible pre-Manzikert
+   correctness signal); vacate class stable at 952. **ONE FIND, THE
+   USER'S: the religion loc convention** — the map label rendered
+   `slavic_paganism_ADJ` raw and the tooltip's foot
+   `slavic_paganism_desc` — a religion's display text is THREE
+   engine-derived keys (vanilla romuva :270-271/:1525; the
+   loc-conventions FORBIDDEN class's measured instance, KNOWLEDGE
+   entry banked). FIXED same session, rows 379-380; NEXT-LAUNCH
+   one-glance: the Wendish map label reads "Slavic Pagan" and the
+   scan's "engine-derived loc key missing ×2" is gone. **ITEM 44 IS
+   CLOSED. THE POP PHASE (items 42-44) IS COMPLETE AND CONFIRMED —
+   next: the SITUATIONS backlog, Manzikert first (SITUATION-SPECS'
+   banded cautions; its Pecheneg route cites the DEAD SKE law,
+   re-derive before use; Anatolia's Turkification-over-time is now
+   route (d)'s canonical job).**
 
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**

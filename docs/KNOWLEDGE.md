@@ -2275,6 +2275,22 @@ conversions (it names each shell's now-foreign ground) — expect it to
 GROW with every pop batch and read its "Capital dominant culture"
 column as a correctness check, not an error.
 
+### A religion's display text is THREE engine-derived keys — base, `_ADJ`, `_desc`
+
+**Established:** 2026-08-03, the Batch 3 launch — the loc-conventions
+FORBIDDEN class's measured instance. `slavic_paganism` shipped with
+only its base row and the game rendered the RELIGION fine (map color,
+tooltip title "Slavic Paganism") while printing **`slavic_paganism_ADJ`
+raw as the map-mode label** and in the tooltip's body, and
+`slavic_paganism_desc` raw at its foot; the engine also logged the
+gaps (the scan's "engine-derived loc key missing :103" ×2). Vanilla's
+own romuva carries all three (`religion_l_english.yml:270-271,
+:1525`). FIXED same session: `_ADJ` "Slavic Pagan" + a `_desc` row.
+**Means:** every invented RELIGION ships three rows from birth; check
+the sibling convention before shipping any invented database entry's
+loc (cultures measured fine with one row — mozarabic; religions need
+three; other databases: check first).
+
 ## Template for new entries
 
 ```
