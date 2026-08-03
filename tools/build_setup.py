@@ -8385,9 +8385,10 @@ def build_wars(src):
 #    peasant pair on those three is re-balanced to TKA_AMDOWA_SHARE amdowa —
 #    Tsongkha is an Amdo Tibetan court [U]; zhuanglang (genuinely Chinese
 #    ground) and the monguor/mi_niah layers untouched.
-# Emptied-culture flags: anglo_irish and german_baltic reach ZERO pop
-# locations world-wide — both re-declared with suppress_no_pops_error in
-# in_game/common/cultures/zz_1066_pop_cultures.txt (guard D8 enforces).
+# Emptied cultures: anglo_irish and german_baltic reach ZERO pop locations
+# world-wide — MEASURED HARMLESS (2026-08-03 launch: no error class; the
+# suppress_no_pops_error token is itself parser-REJECTED and its flag file
+# was retired the same day). Guard D8 only pins the emptied set as intended.
 
 TKA_AMDOWA_SHARE = 0.65  # [U 0.5-0.8] — amdowa share of the liang+amdowa peasant pair
 
@@ -8665,7 +8666,15 @@ def build_pops(src):
         before_units = sum(float(p["size"]) for ps in before.values() for p in ps)
         if abs((before_units - units) - 0.012) > 0.01:
             return f"D6: units drifted by {before_units - units:.3f}, budget 0.012"
-        # D8 — emptied cultures must carry the flag file
+        # D8 — no culture may be emptied world-wide unless DECLARED here.
+        # MEASURED 2026-08-03 (the Batch 1 launch): emptying a culture is
+        # ERROR-FREE — anglo_irish and german_baltic sat at zero pops with
+        # no engine complaint (consistent with vanilla's own three zero-pop
+        # cultures) — and the `suppress_no_pops_error` token from
+        # 00_cultures.info:28 is REJECTED by the culture parser
+        # (pdx_persistent_reader.cpp:289 "Unexpected token", twice). The
+        # flag file was deleted the same day; the guard's job is only that
+        # an emptying is INTENDED, never accidental.
         b_cul, a_cul = set(), set()
         for ps in before.values():
             for p in ps:
@@ -8675,17 +8684,7 @@ def build_pops(src):
                 a_cul.add(p["culture"])
         emptied = b_cul - a_cul
         if emptied != _POP_FLAGGED_EMPTY:
-            return f"D8: emptied cultures {sorted(emptied)} != flagged"
-        flag = os.path.join(MOD, "in_game", "common", "cultures",
-                            "zz_1066_pop_cultures.txt")
-        if not os.path.isfile(flag):
-            return "D8: flag file missing"
-        fs = open(flag, encoding="utf-8-sig").read()
-        for c in _POP_FLAGGED_EMPTY:
-            if not re.search(r"REPLACE_OR_CREATE:" + c + r"[ \t]*=", fs):
-                return f"D8: {c} not re-declared in the flag file"
-            if fs.count("suppress_no_pops_error") < 2:
-                return "D8: flag lines missing"
+            return f"D8: emptied cultures {sorted(emptied)} != declared"
         # D9 — share bands per theatre (post-state, generous bands)
         def shares(locs, field):
             tot = {}

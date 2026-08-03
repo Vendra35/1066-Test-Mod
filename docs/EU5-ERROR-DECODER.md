@@ -535,6 +535,15 @@ re-cultured ground), our CMS/EWY (English marcher shells over Welsh
 pops) — and vanilla's OWN 'ATH Athens' (catalan over Greek pops, the
 1311 Catalan duchy). Informational; the tags are dormant irredenta.
 ACCEPT.
+**GREW 8→30 with POP BATCH 1 (2026-08-03) — still the same class,
+still ACCEPT.** The pop re-labels emptied the ground the shells'
+1337 identities pointed at: the five Baltic Order shells
+(LIV/BIO/KUR/BID/RIG, german_baltic), the eight Irish Norman shells
+(CLR/DMS/KID/ORD/CWM/ULS/MYO + PLE), the nine Welsh marcher shells
+(WLS/DEN/GWR/GMG/BRO/POS/PMB + CMS/EWY), LNG/HLG joining the
+Mongol-era set. The "Capital dominant culture" each line prints
+(estonian, curonian, liv, irish, welsh…) is the CONVERSION WORKING —
+the class is now a per-launch correctness readout, not noise to fix.
 
 ### `initialize_from_bookmark.cpp:237/:301 + country.cpp:9778 — primary-vs-pop culture mismatches, discriminated estate cultures, DUB fort limit`
 **DECODED (2026-07-29) — the POP PHASE's debt made visible; the
@@ -797,6 +806,20 @@ map renders ships. The mod ships zero gfx entities — vanilla-side,
 confirmed by content.
 **Fix:** none — ACCEPTED as environment noise.
 
+### `pdx_persistent_reader.cpp:289 — Unexpected token: suppress_no_pops_error` (×2, one launch, RETIRED)
+**Means:** the culture parser REJECTS the `suppress_no_pops_error` key
+that `00_cultures.info:28` documents — a vanilla doc-vs-engine gap.
+Fired once (2026-08-03, the Batch 1 launch) for both entries of the
+mod's emptied-culture flag file. The same launch answered the
+underlying [U]: **emptying a culture world-wide produces NO error at
+all** — anglo_irish and german_baltic sat at zero pops without a
+single complaint, consistent with vanilla's own three flag-less
+zero-pop cultures. POP-PHASE.md:107's banked "errors unless flagged"
+claim is retired as measured-false.
+**Fix:** FIXED same day — the flag file deleted (it was insurance for
+a hazard that does not exist), guard D8 reworked to pin the emptied
+set as intended-only. The class cannot recur.
+
 ### `pdx_gui_data_model.cpp:100 — Trying to reshape data model with negative count -1` (burst, single timestamp)
 **Means:** a GUI list model asked to shrink below zero — pure UI-side,
 no gamestate effect claimed. First seen 2026-08-03 on THE PROBE
@@ -810,6 +833,9 @@ the same day's earlier launch (14 UNKNOWN lines, none of this class).
 now deleted; if the class recurs on a probe-free launch the
 hypothesis is dead and it needs a real decode; if it never returns,
 mark it probe-side and close.
+**CLOSED 2026-08-03, same day:** the Batch 1 launch (probe-free) had
+ZERO lines of this class — probe-side confirmed. The scan_log WATCH
+pattern stays as a tripwire.
 
 ## Adding to this file
 

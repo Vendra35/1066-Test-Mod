@@ -2253,6 +2253,28 @@ launch also proved the DJN/SNH religious_school fix in game (the
 single-timestamp burst (decoder: WATCH, probe-adjacent hypothesis —
 the next probe-free launch decides).
 
+### Emptying a culture world-wide is ERROR-FREE — and the suppress flag is a documented key the parser rejects
+
+**Established:** 2026-08-03, the Batch 1 launch. Two cultures went to
+zero pop locations game-wide (anglo_irish, german_baltic) and the
+engine logged NOTHING for them — consistent with vanilla's own three
+zero-pop cultures, which carry no flag. The insurance shipped for it —
+`suppress_no_pops_error = yes`, straight from `00_cultures.info:28` —
+was itself REJECTED by the culture parser
+(`pdx_persistent_reader.cpp:289 "Unexpected token"`, once per entry),
+so the .info documents a key this engine build does not accept. The
+flag file was deleted the same day; build guard D8 now only pins the
+emptied set as intended. POP-PHASE.md:107's banked claim ("errors
+unless the culture carries the flag") is retired as measured-false.
+**Means:** never author around a hazard the .info files describe
+without one attested vanilla USE — the info-vs-engine gap joins the
+wiki-vs-engine one; and culture-emptying pop rules need no flag
+machinery, only an intent assert. Rider from the same launch: the
+`:205` releasable-shell class is the natural readout of pop
+conversions (it names each shell's now-foreign ground) — expect it to
+GROW with every pop batch and read its "Capital dominant culture"
+column as a correctness check, not an error.
+
 ## Template for new entries
 
 ```

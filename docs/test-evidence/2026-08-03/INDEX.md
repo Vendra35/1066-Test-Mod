@@ -58,3 +58,21 @@ debt of POP-PHASE-PACKAGE is visible as 1337 hatching. Frames marked
 | `italy-political/culture.png` | political re-confirms the Mezzogiorno/giudicati frame; culture (baseline) | — |
 | `baltic-rus-culture.png`, `anatolia-egypt-iran-culture.png`, `africa-political/culture.png`, `central-asia-political/religion.png` | (baseline) | — |
 | `india-political/culture/religion.png`, `north-asia-political/culture/religion.png`, `sea-political/culture/religion.png` | (baseline) | — |
+
+## The Batch 1 launch (same day, third launch — commits `3df4456`..`365f45b`)
+
+Nine probes, nine passes; the log run closed two [U]s (emptying a
+culture is error-free; the suppress flag token is parser-rejected)
+and confirmed the corrected error-budget forecast (GDD/MWG dead,
+GLC stays, DUB transformed, `:205` grew 8→30 as the conversion's
+readout).
+
+| file | proves | item |
+|---|---|---|
+| `batch1-baltic-religion.png` | Muinaisusko over Finland's interior AND Estonia, Romuvan over Latvia/Prussia/Lithuania, Swedish coastal catholic hatching, Sámi north — probe 1 exactly as designed | 42.1 |
+| `batch1-gdansk-demography.png` | The Gdańsk decode: vanilla ships the city 57.8% PRUSSIAN — ethnic conversion made them Romuva (no Christian Prussians in 1066) while the kashubian 38.8% + polish 2.2% stay catholic. Rule working, not leaking | 42.2 |
+| `batch1-britain-culture.png` | Ireland solid Irish (anglo_irish hatching gone), Pembroke Welsh, Hebridean Norse-Gael intact | 42.3 |
+| `batch1-koumbi-saleh.png` | Soninke 94.9% now Nyama 94.3% vs Sunnism 5.7% primary — the share shift + the map's new "Nyama" label behind | 42.5 |
+| `batch1-xining.png` | Amdowa 55.0% PRIMARY over Liáng 29.5%, no mongol clergy row | 42.6 |
+| `batch1-osa.png` | Bashkir/Tengrism 97.8% — the slave pocket is a peasant population | 42.7 |
+| `batch1-perlis.png` | No Sunnism row at all — Eastern Buddhism 59.3%/Theravāda/Orang Asli | 42.7 |

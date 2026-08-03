@@ -2154,6 +2154,33 @@ S-Germany/Italy all match the landed designs).
       (WATCH kapanır).
    8. Regresyon: Mistretta yine 2 pop/katolik (sonda silindi);
       DJN/SNH okul satırları hâlâ yok.
+   **CONFIRMED IN GAME (2026-08-03, same day — NINE PROBES, NINE
+   PASSES; frames in test-evidence, batch1-*).** The religion map:
+   Muinaisusko over Finland's interior AND Estonia, Romuvan over
+   Latvia/Prussia, the Swedish coastal minority hatched, Pomerelia's
+   POLISH catholics intact — and the tour's one surprise DECODED as
+   the rule working: **vanilla ships Gdańsk 57.8% PRUSSIAN-culture**,
+   so the city's Prussian majority went Romuva (no Christian
+   Prussians exist in 1066 — ethnic conversion is the right law)
+   while its kashubian/polish catholics stayed. ESO religious unity
+   0→90%. Ireland/Wales culture map clean, Norse-Gael intact. Koumbi
+   Saleh Nyama 94.3%/Sunni-court 5.7% with a "Nyama" map label;
+   Njimi karama. Xining Amdowa 55% PRIMARY, mongol clergy gone.
+   Osa = Bashkir/Tengri peasants 97.8%. Perlis: no Sunnism row.
+   THE LOG: REGRESSION 0 (DJN/SNH :520 dead — that fix is proven),
+   the GUI burst DID NOT recur (probe-side, decoder CLOSED),
+   accepted-culture class never fired, 237/301 landed exactly on the
+   corrected forecast (GDD/MWG dead, GLC stays, DUB now norse_gael-
+   court texture, HPJ's line waits for its Batch 2 fix), :205 grew
+   8→30 = the shells naming their now-native ground (decoder:
+   ACCEPT, a per-launch correctness readout). TWO [U]s CLOSED AS
+   MEASUREMENTS: **emptying a culture world-wide is ERROR-FREE, and
+   `suppress_no_pops_error` is parser-REJECTED** (pdx_persistent_
+   reader:289 ×2) — the flag file was RETIRED same day, D8 reworked
+   to a declared-set assert (re-proven by breaking), POP-PHASE.md's
+   banked flag claim retired (KNOWLEDGE has the law). **ITEM 42 IS
+   CLOSED — the pop phase's mechanism, guards and first six theaters
+   are all measured in game. Batch 2 is unblocked.**
 
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
