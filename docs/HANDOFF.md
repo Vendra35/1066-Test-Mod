@@ -2182,6 +2182,60 @@ S-Germany/Italy all match the landed designs).
    CLOSED — the pop phase's mechanism, guards and first six theaters
    are all measured in game. Batch 2 is unblocked.**
 
+43. **POP PHASE BATCH 2 (LANDED 2026-08-03, needs game test).**
+   Decisions 3 (first stage), 4, 7 + the HPJ micro, riding the proven
+   Batch 1 machinery. **`mozarabic` is INVENTED** — the phase's one new
+   identifier (decision 4): `in_game/common/cultures/
+   zz_1066_cultures.txt` (BOM; Basileia's br_iberia.txt:24 shape
+   WITHOUT its −0.25 conversion modifier) + the `mozarabic:` loc row
+   (377th) — and guard D4 was proven to catch the file's absence
+   ("unknown culture mozarabic in coria"). Rules, all exact-pinned:
+   **taifas** — all 554 catholic pops (nine donor cultures, flat)
+   re-labeled `mozarabic` at unchanged size/religion + one
+   ANDALUS_SEED_SIZE=0.5u andalusi/sunni peasant seed on each of the
+   69 zero-sunni locations (the engine inflates identity seeds);
+   **Sicily** — 72 sicilian/catholic pops SPLIT into maltese/sunni
+   clones by the three valli (mazara+girgenti 0.80, noto 0.55,
+   demena 0.25 [D]; province structure maps the valli exactly), with
+   the NEW merge-ceiling skip rule (2 clones skipped — messina ships
+   3 clergy; a fourth would similar-merge on load) and malta's own
+   2 maltese pops flipped sunni whole (Muslim until 1091, item 22);
+   **Egypt** — 52 lower/upper_egyptian sunni PEASANT pops split
+   f=0.377 into coptic_culture/miaphysite, landing the region on
+   EGYPT_COPTIC_SHARE=0.40 [U 0.30-0.60] exactly (D9 asserts ±0.02;
+   bedouin/libyan-arab untouched — countryside Coptic, cities
+   Muslim); **HPJ** — the 14 khon_muang pops become mon_culture
+   (SEA decision 4's micro; retires HPJ's 237/301 line). Totals:
+   516 locations touched across both batches, 105 folds, 193
+   created → define_pop **50,340**; three NEW break tests proven
+   (egypt D9 arithmetic, seed count assert, D4 file dependency).
+   TEST NEXT LAUNCH (~8 dk, kimlik testleri):
+   1. **Kültür haritası, İberya:** taifa bölgesi tek parça
+      **"Mozarabic"** renginde — İCAT SONDASI: etiket düzgün
+      "Mozarabic" mi okunuyor (raw key/boşluk = loc/kültür dosyası
+      başarısız, hemen söyle). Sevilla/Toledo'ya tık → eski katolik
+      poplar Mozarabic kültürlü, sephardi dokunulmamış.
+   2. **Din haritası, İberya:** al-Andalus HÂLÂ katolik-baskın —
+      TASARIM (re-label aşaması; tam dönüşüm decision 3'ün ayrı
+      kararı). Ama iç bölgeden herhangi bir taifa lokasyonuna tık →
+      listede küçük bir **andalusi/Sunnism tohumu** var (69'un
+      hepsinde).
+   3. **Din haritası, Sicilya:** batı (Palermo-Mazara-Agrigento)
+      SÜNNİ-baskın, güneydoğu karışık, kuzeydoğu katolik-ağırlıklı —
+      üç vallo deseni. **Mistretta artık ~%25 Sünni** (bu Batch 2'nin
+      Demone payı, sonda DEĞİL — sonda silindi). **Malta'ya tık →
+      maltese poplar Sunni.**
+   4. **Mısır:** Miaphysite şeridi görünür büyümüş; bir delta
+      lokasyonuna tık → coptic_culture/Miaphysite köylüler
+      lower_egyptian/Sunni'nin yanında; bölge ~%40.
+   5. **Lamphun (HPJ):** khon_muang YOK, mon poplar — ve logda
+      HPJ'nin 301 satırı ölmüş olmalı.
+   6. Log: :205 sınıfı İber kabuklarıyla BÜYÜYEBİLİR (POR/MLL/GRA
+      tarzı tanımlar mozarabic'leşen toprağa bakıyor — beklenen,
+      doğruluk-okuması); **accepted-culture çift-yön sınıfını İZLE**
+      (554'lük re-label İber paylarını oynatır — çıkarsa yapıştır,
+      bütçelendi); REGRESSION 0.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 

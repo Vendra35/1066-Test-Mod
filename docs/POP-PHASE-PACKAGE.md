@@ -37,6 +37,16 @@
 > 50,177 (−75 folds, −3 TKA clergy). Remaining: Batch 2 (mozarabic +
 > al-Andalus + Sicily + Egypt + HPJ), Batch 3 (Mongol-minimal +
 > Anatolia LAST).
+>
+> **BATCH 1 CONFIRMED IN GAME and BATCH 2 LANDED (2026-08-03, same
+> day — items 42/43).** Two [U]s closed as measurements: emptying a
+> culture is ERROR-FREE and `suppress_no_pops_error` is
+> parser-REJECTED (the flag insurance is retired; §0.7's caution
+> resolved). `mozarabic` exists; decision 3's re-label stage +
+> decision 7's 0.40 + the Sicily valli [D] are in the file;
+> `define_pop` is now **50,340** (+193 created, −105 folds, −3).
+> Left: Batch 3 (Mongol-minimal Persia+Khorasan, then Anatolia LAST)
+> and decision 3's own conversion call.
 
 # THE POP PHASE — the mechanism first, then a correction inventory that survived an audit (DRAFT)
 
