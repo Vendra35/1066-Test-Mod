@@ -47,6 +47,19 @@
 > `define_pop` is now **50,340** (+193 created, −105 folds, −3).
 > Left: Batch 3 (Mongol-minimal Persia+Khorasan, then Anatolia LAST)
 > and decision 3's own conversion call.
+>
+> **BATCH 3 LANDED 2026-08-03 — THE §B INVENTORY IS COMPLETE (HANDOFF
+> item 44).** `slavic_paganism` invented (the first mod religion);
+> the Wendish shore pagan with the Altmark drawing itself (8
+> German-kept locations); Persia/Khorasan pre-Chinggisid (mongolia
+> asserted untouched); Anatolia pre-Manzikert (37 all-turkic
+> locations re-seeded by area). `define_pop` **49,984** (1,142
+> locations touched phase-wide, 461 folds, 193 created). Open BY
+> DESIGN: decision 3's full conversion; banked residue: 15
+> outside-scope turkic straggler locations, PLM/AGR registry culture.
+> One accumulated test covers the phase; then the SITUATIONS backlog
+> (Manzikert first — its Turkification-over-time is now route (d)'s
+> canonical job, §C.3).
 
 # THE POP PHASE — the mechanism first, then a correction inventory that survived an audit (DRAFT)
 

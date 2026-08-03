@@ -2262,6 +2262,62 @@ S-Germany/Italy all match the landed designs).
    Persia+Khorasan 330, then ANATOLIA LAST in its own launch) and
    decision 3's full-conversion call.**
 
+44. **POP PHASE BATCH 3 — THE PHASE CLOSES (LANDED 2026-08-03, needs
+   game test; user instruction "finish the whole pop, then one test"
+   supersedes the Anatolia-own-launch caution — ARA's single 9635 line
+   was that class's preview and scan_log now classifies it).**
+   **`slavic_paganism` is INVENTED** — the mod's first religion
+   (`in_game/common/religions/zz_1066_religions.txt`, romuva's template
+   shape, inline rgb per folk_african.txt:744, loc row 379th; D4 proven
+   to catch the file's absence). Rules, all pinned: **the Wendish
+   shore** (decision 5, all 87) — 189 Slavic catholic pops (western/
+   eastern_pomeranian, polabian, kashubian, sorbian) → slavic_paganism;
+   the 71 German Ostsiedlung pops FOLD into each location's largest
+   Slavic pop; **8 locations with NO Slavic host keep their Germans
+   whole — the west-of-Elbe Altmark, the 983 frontier drawing itself**;
+   greater_polish keeps catholic (the Piast Lubusz reading).
+   **Mongol-minimal** (decision 6): 428 mongolian/nogai pops in
+   Persia+Khorasan fold into local identities; the 104 hostless
+   Aral-fringe pops re-label turkmen_culture (the 1066 Oghuz steppe
+   [U]) keeping their religions; **mongolia_region asserted UNTOUCHED**
+   (proven by breaking). **Anatolia** (the inventory's last item): 424
+   turkic pops fold into each location's largest non-turkic pop (the
+   southeast folds Kurdish/Arab — correct); the **37 all-turkic
+   locations RE-SEED as their area's largest Christian culture**
+   (Cilicia/Cappadocia → armenian+miaphysite, Marmara/west → greek,
+   Pontus → pontic_greek), sizes kept. Residue recorded, untouched:
+   turkish/turkoman stragglers on 15 locations outside the scoped
+   regions (genoa/kaffa traders, armenia_region borders). CENSUS:
+   **1,142 locations touched across the phase, 461 folds, 193
+   created → define_pop 49,984**; three new break tests proven
+   (mongolia guard, Altmark counter via the fold assert, religion-file
+   dependency). **THE §B INVENTORY IS COMPLETE** — every master-table
+   row landed or consciously retired; open by design: decision 3's
+   full-conversion call (al-Andalus is Mozarab-majority until then).
+   TEST NEXT LAUNCH (~10 dk, kimlik testleri — accepted-culture
+   sınıfı bu launch'ta EN OLASI: 424+428 katlama dünya paylarını
+   oynattı; çıkan her 9635 satırını yapıştır, bütçeli):
+   1. **Din haritası, Kuzey Almanya:** Mecklenburg-Pomeranya-
+      Brandenburg **"Slavic Paganism"** renginde (İCAT SONDASI #2 —
+      etiket düzgün mü?); Elbe'nin BATISI katolik kalır (Altmark 8);
+      Lübeck-Hamburg hattı katolik.
+   2. **Berlin/Brandenburg lokasyonuna tık** → eski markish poplar
+      yerel Slav kimliğinde (polabian/sorbian vb.), din Slavic
+      Paganism; **Stendal/Altmark tarafına tık** → Almanlar katolik
+      DURUYOR.
+   3. **Din+kültür haritası, Anadolu:** plato artık RUM/ERMENİ —
+      "Sunni" etiketi ve turkic taramalar GİTTİ; Kilikya/Kapadokya
+      Ermeni-Miafizit, Marmara/batı Rum-Ortodoks, Pontus Pontus-Rum;
+      güneydoğu Kürt/Arap-Sünni KALIR (doğru). Konya/Ankara'ya tık →
+      turkish pop YOK.
+   4. **Kültür haritası, İran:** "Mongolian"/"Nogai" lekeleri YOK;
+      Aral güneyi bozkırı **Turkmen**; Moğolistan'ın kendisi
+      DEĞİŞMEMİŞ (Mongolian durur).
+   5. Regresyon: Mistretta %25, Mozarabic İberya, Koumbi Saleh nyama,
+      Baltık pagan — birer bakış.
+   6. Log bana: 9635 satırları (bütçeli sınıf), :205 büyümesi
+      (beklenen okuma), 237/301 hareketi, REGRESSION 0.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
