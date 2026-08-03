@@ -2339,17 +2339,39 @@ S-Germany/Italy all match the landed designs).
    `slavic_paganism_desc` — a religion's display text is THREE
    engine-derived keys (vanilla romuva :270-271/:1525; the
    loc-conventions FORBIDDEN class's measured instance, KNOWLEDGE
-   entry banked). FIXED same session, rows 379-380; NEXT-LAUNCH
-   one-glance: the Wendish map label reads "Slavic Pagan" and the
-   scan's "engine-derived loc key missing ×2" is gone. **ITEM 44 IS
+   entry banked). FIXED same session, rows 379-380 — **and
+   USER-CONFIRMED in game the same evening ("din locları düzelmiş
+   çalışıyor"); no one-glance debt remains.** **ITEM 44 IS
    CLOSED. THE POP PHASE (items 42-44) IS COMPLETE AND CONFIRMED —
    next: the SITUATIONS backlog, Manzikert first (SITUATION-SPECS'
    banded cautions; its Pecheneg route cites the DEAD SKE law,
    re-derive before use; Anatolia's Turkification-over-time is now
    route (d)'s canonical job).**
 
-**NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
-BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
+**NEXT SESSION STARTS WITH (updated 2026-08-03, end of day — READ THIS
+BLOCK FIRST; the 2026-08-02 block below is now HISTORICAL too):**
+
+THE MAP PHASE AND THE POP PHASE ARE BOTH COMPLETE AND CONFIRMED IN
+GAME (items 1-44; the pop phase closed 2026-08-03 in one five-launch
+day — items 42-44, define_pop 49,984, two invented identifiers, the
+religion-loc three-key law the user's own eye found). Harness all
+green, tree clean. **THE NEXT SESSION OPENS THE SITUATIONS PHASE, and
+its FIRST MOVE is the research pass the user themselves specified
+("bütün vanilla situationları oku tara — nasıl yapmışlar, nasıl
+flavour eklemişler, nasıl immersive yapmışlar"):** Opus agents sweep
+EVERY vanilla situation end to end — structure, lifecycle, cards/GUI,
+the flavour-event stacks riding them, map modes, rewards, pacing —
+into a decision-ready craft report; alongside it re-read
+docs/SITUATION-SPECS.md (its banded cautions; the Pecheneg route
+cites the DEAD SKE law — re-derive before use) and the situation
+quality bar (HYW/G&G/MR class; Norman Conquest itself owes v2).
+THEN the Manzikert design conversation with the user — five years
+from start, Alp Arslan and Romanos both seated, Anatolia's
+Turkification now entirely route (d)'s over-time job (the file ships
+pre-Manzikert ground as of Batch 3). Standing owed items unchanged:
+decision 3's full-conversion call, the Wendish/Holstein territorial
+seam, ZAN's shrink, the cosmetic dynasty pool, PLM/AGR registry
+culture, TRH/MNL renames.
 
 WHERE THE WORLD IS. **Items 1-41 are ALL landed and game-tested** —
 the 2026-08-01 grand test closed 1-34, the **2026-08-03 grand test
