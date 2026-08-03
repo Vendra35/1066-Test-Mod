@@ -61,6 +61,8 @@ KNOWN = [
      r"government\.cpp:512.*three_departments_system"),
     ("ACCEPTED", "boat/waves vfx entity noise (vanilla gfx)",
      r"(particle_event\.h:114.*waves_vfx|state_event\.h:391.*boat_with_oars_unit)"),
+    ("WATCH", "GUI data-model reshape burst (first seen on the probe launch)",
+     r"pdx_gui_data_model\.cpp:100.*negative count"),
     ("ACCEPTED", "landless-shell law trims (3535 sub-class 3)",
      r"government\.cpp:3535.*Removing invalid law"),
     ("ACCEPTED", "landless/inland privilege trims (3662)",

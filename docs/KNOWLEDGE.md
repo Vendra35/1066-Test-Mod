@@ -2223,6 +2223,36 @@ acceptable. Same launch, same class: random rulers draw the vanilla
 "Kanz el-Dawla" (1317+), Ethiopia's "Solomon" (Zagwe expected) — a
 cosmetic flavor-pass debt, not a defect (HANDOFF residual 3).
 
+### THE POP PROBE ANSWERED: additive setup files APPEND pops, and the map modes read pops — measured in game
+
+**Established:** 2026-08-03, the mistretta probe (POP-PHASE-PACKAGE
+§A.6; evidence `docs/test-evidence/2026-08-03/
+probe-mistretta-demography.png` + `italy-religion.png`). A 12-line
+additive file (`50_1066_pop_probe.txt`, no BOM) adding one 60-unit
+maltese/sunni peasant pop to SIC's mistretta produced, in game:
+1. **APPEND** — the location panel showed THREE pops: the probe pop
+   (Maltese 68.7%, Tolerated; Sunnism 68.7%, "Heathen") beside
+   vanilla's two sicilian/catholic pops (31.3%, Primary). A repeated
+   `define_pop` for the same location in a later file ADDS to the
+   list; it does not replace the block. (Location blocks were already
+   proven to merge key-level across files — this closes the narrower
+   repeated-key question §A.2 left open.)
+2. **The religion map mode paints from POPS** — Sicily rendered
+   Catholic gold with exactly one green "Sunni" location, mistretta,
+   whose `location_templates.txt` religion is catholic. Route (c)
+   (template override) is permanently dead; GetDominant* is not just
+   the GUI's path but the mapmode's.
+**Means:** pop-phase route (a) is fully confirmed — the generated
+whole-file `06_pops.txt` override can DELETE and the additive form
+can only ever ADD; and any future "why is this location the wrong
+color" question is a POPS question, never a template question. The
+probe file is deleted (this entry is its record). Rider: the probe
+launch also proved the DJN/SNH religious_school fix in game (the
+:520 REGRESSION pattern at zero) and surfaced ONE new signature —
+`pdx_gui_data_model.cpp:100` "negative count -1" ×~1,079 in a
+single-timestamp burst (decoder: WATCH, probe-adjacent hypothesis —
+the next probe-free launch decides).
+
 ## Template for new entries
 
 ```

@@ -797,6 +797,20 @@ map renders ships. The mod ships zero gfx entities — vanilla-side,
 confirmed by content.
 **Fix:** none — ACCEPTED as environment noise.
 
+### `pdx_gui_data_model.cpp:100 — Trying to reshape data model with negative count -1` (burst, single timestamp)
+**Means:** a GUI list model asked to shrink below zero — pure UI-side,
+no gamestate effect claimed. First seen 2026-08-03 on THE PROBE
+LAUNCH: ~1,079 lines all stamped the same second, i.e. ONE interface
+event. Leading hypothesis: the probe's unusual location state
+(a Tolerated-majority culture and a "Heathen"-majority religion
+inside a catholic realm) hit a panel/legend edge while the user had
+Mistretta's demography open or was sweeping map modes. Not present on
+the same day's earlier launch (14 UNKNOWN lines, none of this class).
+**Fix:** none yet — WATCH (scan_log entry added). The probe file is
+now deleted; if the class recurs on a probe-free launch the
+hypothesis is dead and it needs a real decode; if it never returns,
+mark it probe-side and close.
+
 ## Adding to this file
 
 When the game reports a signature that is not here, add a row **once you have

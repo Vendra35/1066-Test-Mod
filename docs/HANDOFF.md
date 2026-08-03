@@ -2112,12 +2112,25 @@ green.
    `docs/test-evidence/2026-08-03/` (the new archive convention —
    screenshots copied out of the user's volatile folder, INDEX.md
    maps file → probe → item; keep doing this every test session).
-   **STILL OWED FROM THE SESSION: the PROBE mini-relaunch** — the
-   probe file is written ONLY when the user is ready to relaunch
-   (12 lines, POP-PHASE-PACKAGE §A.6), the launch reads TWO disjoint
-   things: Mistretta's pops/map color (the four outcomes) and
-   scan_log REGRESSION staying 0 (the DJN/SNH :520 pattern must be
-   GONE — the fix's proof). Delete the probe in its result commit.
+   **THE PROBE RAN THE SAME DAY AND ANSWERED: APPEND + the map
+   reads pops** (KNOWLEDGE entry; evidence in the archive's probe
+   section) — route (a) is FULLY CONFIRMED, route (c) permanently
+   dead, and the same launch proved the DJN/SNH fix in game (:520
+   at zero). The probe file is deleted. One new WATCH signature:
+   `pdx_gui_data_model.cpp:100` burst (decoder — probe-adjacent
+   hypothesis, the next probe-free launch decides). The world
+   survey's culture/religion frames are the pop phase's visual
+   baseline; central-asia-culture.png adds "Uzbek"/"Oirat" paint
+   to the parked Steppe/CUM design's evidence. **NEXT SESSION'S
+   FIRST JOB: BATCH 1 of the pop phase** — `build_pops` as the
+   sixth TARGETS entry + guards D1-D10 (each proven by breaking,
+   same commit as the first content), BOM check 6→7, then the
+   Baltic slice (ESO/LTG/ZEM ~250 `define_pop`, decision 2) +
+   Wales/Ireland deletions + the four micros + Ghana/Kanem as
+   per-theater commits, ONE launch for the whole batch
+   (decision 10). Archive note: test-evidence/2026-08-03 is
+   ~106 MB; if the convention gets heavy, future sessions may
+   downscale to JPEG or archive selectively.
 2. **The pop-package review is DONE (2026-08-03) — THE TEN DECISIONS
    ARE TAKEN.** The main session reproduced 180 mechanical checks with
    `build_setup.py`'s own imported parsers, **177 exact**; every

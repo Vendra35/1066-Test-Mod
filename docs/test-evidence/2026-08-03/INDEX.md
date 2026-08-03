@@ -32,3 +32,29 @@ Referenced from the consolidated confirmation block after item 41.
 | `cocom-panel.png` | "Kuchkabal of Cocom", capital displays Chich'en Itza (the repoint landed), Maya identity | 40.2 |
 | `killke-panel.png` | "Minor Tribe of Killke", Inti religion, Quechuan (INC_f path); capital Yanahuara = the banked CAPITAL_FIXES candidate | 40.3 |
 | `mexico-map.png` | Valley of Mexico: altepetl patchwork, no Tenochtitlan state, Itza/Cocom/Mam/K'iche' Yucatán-Guatemala spread | 40.1 |
+
+## The probe launch (same day, second relaunch — fix `ec4e175` + probe `b247a23`)
+
+**THE PROBE ANSWERED: APPEND, and the map reads pops** — both from one
+frame each. Plus a world survey in three map modes per region: the
+political frames are the fully-confirmed map phase; the culture and
+religion frames are **the pop phase's visual baseline** — every §B
+debt of POP-PHASE-PACKAGE is visible as 1337 hatching. Frames marked
+(baseline) were archived unexamined; the examined ones carry notes.
+
+| file | proves | ref |
+|---|---|---|
+| `probe-mistretta-demography.png` | **APPEND**: three pops — Maltese 68.7% Tolerated / Sicilian 31.3% Primary, Sunnism 68.7% "Heathen" / Catholicism 31.3% — the additive pop landed BESIDE vanilla's two and the location panel derives from pops | §A.6 outcome 1 |
+| `italy-religion.png` | **The map reads pops**: Sicily all Catholic except ONE green "Sunni" spot = Mistretta. Route (c) is dead permanently | §A.6, KNOWLEDGE |
+| `britain-political/culture/religion.png` | Item 21 regression holds; culture mode shows the Ireland/Wales debt (anglo_irish hatching, Pembroke "English"); religion all-Catholic | B.7 baseline |
+| `baltic-rus-political.png` | The whole northeast in one frame — five Rus, Perm, the eight tribes, Cumania, two GLH lobes | items 28/31/35/39 |
+| `baltic-rus-religion.png` | THE BATCH 1 TARGET: Estonia/Latvia/Prussia read "Catholic", Lithuania core "Romuvan" (the samogitia control), Finland "Muinaisusko"; Komi/Obian/Udmurt/Mari pagan labels = the retirement's visual proof | §B.2, §0.1 |
+| `anatolia-egypt-iran-political.png` | Pre-Manzikert Byzantium, the Seljuk ring, Fatimids — items 15-19 regression in one frame | — |
+| `anatolia-egypt-iran-religion.png` | THE B.3/B.4 DEBTS: central Anatolia "Sunni"-hatched under Byzantine purple coasts; Egypt sunni with thin coptic stripes | §B.3, decision 7 |
+| `africa-religion.png` | THE B.5 DEBT: the Sahel "Sunni" band over Ghana/Kanem with Bori/Sao/Nyama/Isese south of it; Makuria Miaphysite pink | §B.5 |
+| `central-asia-culture.png` | **NEW EVIDENCE for the parked Steppe design**: "Uzbek" over Transoxiana and "Oirat" over Dzungaria — 15th/13th-century culture paint adjacent to decision 6's minimal-scope line; belongs to the CUM/Steppe file with decision 8 | decisions 6/8 |
+| `france-political/culture/religion.png` | (baseline) | — |
+| `germany-political/culture/religion.png` | (baseline) | — |
+| `italy-political/culture.png` | political re-confirms the Mezzogiorno/giudicati frame; culture (baseline) | — |
+| `baltic-rus-culture.png`, `anatolia-egypt-iran-culture.png`, `africa-political/culture.png`, `central-asia-political/religion.png` | (baseline) | — |
+| `india-political/culture/religion.png`, `north-asia-political/culture/religion.png`, `sea-political/culture/religion.png` | (baseline) | — |
