@@ -2086,6 +2086,75 @@ S-Germany/Italy all match the landed designs).
    independent, anachronistic NAMES only — the future Xinjiang/
    Mongolia tidy owns renames.
 
+42. **POP PHASE BATCH 1 (LANDED 2026-08-03, needs game test — the first
+   pop content in the mod's history).** Route (a) live: `build_pops` is
+   build_setup's SIXTH target — vanilla's 28,570-block `06_pops.txt`
+   re-emitted with corrections spliced into exactly **208 touched
+   blocks, every untouched block byte-identical**. Thirteen rules, all
+   exact-count asserted (the numbers ARE the design doc):
+   Baltic — estonian→muinaisusko 33, latvian/liv/curonian→romuva 65,
+   german_baltic FOLDED into each location's largest native culture 47
+   (Ostsiedlung is 12th-13th c.; the culture EMPTIES world-wide),
+   prussian→romuva 65 (Poland's kashubian/polish Pomerelia catholics
+   KEEP — reasoned deviation from the package's flat 99), Finnic
+   four→muinaisusko 56 (the 51 swedish catholics KEEP under SWE's
+   standing south Finland); Wales english→welsh 19; Ireland
+   anglo_irish/english→irish 50 (both RE-LABELS, unit-conserving,
+   norse_gael untouched; anglo_irish empties world-wide);
+   Ghana soninke-sunni→nyama 34 and Kanem kanembu-sunni→karama 32
+   (ONLY the named movers — lamtuna/dyula/tuareg/toubou/bilala/
+   godala/mandinka keep sunni [D]); perlis→mahayana 1; PRM's ten
+   chiyalik slave pockets→bashkir/tengri PEASANTS; TKA's three
+   0.004u mongol clergy DELETED (the batch's only unit loss,
+   0.012u) + the liang/amdowa pairs re-balanced to
+   TKA_AMDOWA_SHARE=0.65 [U]. 75 same-identity folds → define_pop
+   50,255→50,177. The two emptied cultures re-declared with
+   `suppress_no_pops_error` via REPLACE_OR_CREATE in the mod's FIRST
+   `in_game/common/cultures/` file (`zz_1066_pop_cultures.txt`, BOM).
+   **Guards D1-D10 all live and ALL PROVEN BY BREAKING** (ten break
+   tests: count-assert, D1 renamed block, D2 uncounted additions,
+   D3 dropped field, D4 misspelt culture, D5 past-ceiling additions,
+   D6 silent size edit, D7 typo'd scope, D8 missing flag file,
+   lowercase-walker input regex; D5 and D9 additionally fired LIVE
+   during authoring — elk ships 4 peasants from vanilla, and the
+   prussia band was first mis-derived). Harness: BOM floor 6→7 and
+   the NEW independent "06_pops block-name set equals vanilla"
+   check (28,570 items, separate parser, proven both ways — and
+   06_pops blocks sit at COLUMN 0: a `^\t`-anchored scan returns a
+   confident zero, the anchor class again). HPJ deliberately waits
+   for Batch 2 (the SEA seam). Deviation from decision 10 recorded:
+   one slice commit, not per-theater — the rules share one generated
+   artifact and one guard set; the per-rule asserts carry the
+   reviewability the split was for.
+   TEST NEXT LAUNCH (~10 dk; decision 9: identity-only, `-leavepops`
+   GEREKMEZ — her şey re-label, tek kayıp 0.012u):
+   1. **Din haritası, Baltık:** Estonya + Letonya + Prusya artık
+      PAGAN (muinaisusko/romuva); Pomerelia kıyısı KATOLİK KALIR
+      (Polonya — tasarım); Litvanya çekirdeği zaten romuvaydı
+      (kontrol); Finlandiya içi muinaisusko, İsveç'in kıyı şeridinde
+      katolik azınlık kalır.
+   2. ESO/LTG/ZEM panelleri: **dinî birlik yapısal 0'dan çıktı mı**
+      (B.2'nin tek bakışlık sinyali — önceki launch'ta 0'dı).
+   3. **Kültür haritası, İrlanda+Galler:** anglo_irish/english
+      taramaları GİTTİ; Pembroke artık Galce; norse_gael noktaları
+      (Dublin/Waterford/Limerick) DURUYOR.
+   4. Koumbi Saleh'e tık → soninke poplar **nyama**; Njimi → kanembu
+      poplar **karama**; her iki ülkenin dinî birliği DÜŞER (sunni
+      saray, karışık taban — tasarım, şaşırma).
+   5. Xining'e tık → demografide **amdowa çoğunluk**, mongol clergy
+      YOK; zhuanglang Çinli kalır.
+   6. PRM'nin on cebinden birine tık (ör. osa) → **bashkir/tengri
+      KÖYLÜ** (slave yok); perlis → mahayana.
+   7. error.log + scan_log: REGRESSION 0; **estate/pop 237/301
+      sınıfı KÜÇÜLMELİ** (GDD/MWG/DUB ölür; GLC'nin portuguese
+      satırı KALIR — düzeltilmiş tahmin); YENİ sınıf adayı:
+      accepted-culture çift-yön hatası (bilinen bütçe, mod-çapı
+      olabilir — çıkarsa satırları yapıştır); vacated-pop ~1.000
+      bandı DEĞİŞMEZ; GUI burst sondasız launch'ta dönmemeli
+      (WATCH kapanır).
+   8. Regresyon: Mistretta yine 2 pop/katolik (sonda silindi);
+      DJN/SNH okul satırları hâlâ yok.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-02, end of day — READ THIS
 BLOCK FIRST, the 2026-07-30 block below it is HISTORICAL RECORD ONLY):**
 
@@ -2094,13 +2163,15 @@ the 2026-08-01 grand test closed 1-34, the **2026-08-03 grand test
 closed 35-41** (confirmation block after item 41; evidence in
 `docs/test-evidence/2026-08-03/`). **THE MAP PHASE IS CLOSED AND
 FULLY CONFIRMED IN GAME: every region of the world is 1066.** The
-pop-package review is DONE and its ten decisions TAKEN (item 2
-below); the DJN/SNH religious_school fix is the only mod-file change
-since the test build. Constants right now: registry 74 blocks,
-country blocks 2411, thrones 179, landless-dep strips 281, pacts 9,
-IO ghosts **160**, vacated **630**, parliament min **1360**, loc
-rows 375, CoA 125, gate 79, IO-members floor **850**, harness all
-green.
+pop-package review is DONE, its ten decisions TAKEN, the probe
+answered (APPEND + map-reads-pops), and **POP BATCH 1 IS LANDED
+(item 42, needs game test)** — the mod's first pop content.
+Constants right now: registry 74 blocks, country blocks 2411,
+thrones 179, landless-dep strips 281, pacts 9, IO ghosts **160**,
+vacated **630**, parliament min **1360**, loc rows 375, CoA 125,
+gate 79, IO-members floor **850**, **setup files 7, 06_pops
+define_pop 50,177 (vanilla 50,255 − 75 folds − 3 deletions),
+06_pops blocks 28,570 — must never move**, harness all green.
 
 1. **THE GRAND ACCUMULATED TEST RAN 2026-08-03 AND PASSED** — items
    35-41 all confirmed, the 23/25 HRE density audit paid, four OWED
@@ -2121,16 +2192,18 @@ green.
    hypothesis, the next probe-free launch decides). The world
    survey's culture/religion frames are the pop phase's visual
    baseline; central-asia-culture.png adds "Uzbek"/"Oirat" paint
-   to the parked Steppe/CUM design's evidence. **NEXT SESSION'S
-   FIRST JOB: BATCH 1 of the pop phase** — `build_pops` as the
-   sixth TARGETS entry + guards D1-D10 (each proven by breaking,
-   same commit as the first content), BOM check 6→7, then the
-   Baltic slice (ESO/LTG/ZEM ~250 `define_pop`, decision 2) +
-   Wales/Ireland deletions + the four micros + Ghana/Kanem as
-   per-theater commits, ONE launch for the whole batch
-   (decision 10). Archive note: test-evidence/2026-08-03 is
-   ~106 MB; if the convention gets heavy, future sessions may
-   downscale to JPEG or archive selectively.
+   to the parked Steppe/CUM design's evidence. **BATCH 1 LANDED
+   the same day (item 42 — click tour there; one launch, identity
+   tests only). NEXT after its test: BATCH 2 of the pop phase** —
+   invent `mozarabic` (decision 4, the flag-file precedent now
+   exists), al-Andalus re-label (decision 3, 554 pops), Sicily
+   (85), Egypt 0.40 [U] (decision 7), HPJ's khon_muang→mon (the
+   deferred micro); then BATCH 3 = Mongol-minimal (Persia+Khorasan
+   330) + **Anatolia LAST** (the accepted-culture class can fire
+   mod-wide — never entangle it with another first launch).
+   Archive note: test-evidence/2026-08-03 is ~106 MB; if the
+   convention gets heavy, future sessions may downscale to JPEG or
+   archive selectively.
 2. **The pop-package review is DONE (2026-08-03) — THE TEN DECISIONS
    ARE TAKEN.** The main session reproduced 180 mechanical checks with
    `build_setup.py`'s own imported parsers, **177 exact**; every

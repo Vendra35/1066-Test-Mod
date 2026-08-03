@@ -25,6 +25,18 @@
 > sitting; the probe file is deleted in the commit that records its
 > outcome. Nothing here is a test result; historical judgments keep their
 > `[U]`/`[D]` flags. (Original draft: 2026-08-02, against `5000dbd`.)**
+>
+> **BATCH 1 LANDED (2026-08-03, same day — HANDOFF item 42 is the
+> authority where this file and the implementation differ).** The probe
+> measured APPEND + map-reads-pops in game; `build_pops` is live as the
+> sixth target (208 touched blocks, byte-identical remainder, 13
+> exact-count rules, D1-D10 all proven by breaking, the harness's
+> independent set check at 28,570). Batch 1's reasoned deviations from
+> this package's flat area rules are culture-scoped movers — recorded in
+> item 42 and in build_setup.py's section comment. `define_pop` is now
+> 50,177 (−75 folds, −3 TKA clergy). Remaining: Batch 2 (mozarabic +
+> al-Andalus + Sicily + Egypt + HPJ), Batch 3 (Mongol-minimal +
+> Anatolia LAST).
 
 # THE POP PHASE — the mechanism first, then a correction inventory that survived an audit (DRAFT)
 
