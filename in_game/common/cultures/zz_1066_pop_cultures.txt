@@ -1,0 +1,67 @@
+﻿# BATCH 1 of the pop phase (docs/POP-PHASE-PACKAGE.md, decided 2026-08-03).
+# Two cultures the 1066 pop corrections empty WORLD-WIDE, re-declared with
+# suppress_no_pops_error (00_cultures.info:28) via REPLACE_OR_CREATE — the
+# attested one-entry database edit (Basileia x259; never a whole-file
+# override). Bodies are vanilla's own blocks (british.txt / baltic.txt)
+# plus the one flag line; the only other change is dropping vanilla's
+# duplicated `danube_bavarian` opinion line in german_baltic:
+#  - anglo_irish: the Ireland rule re-labels all 42 of its pops to irish —
+#    the Pale's settlers do not exist in 1066 (their 1337 identity lives on
+#    as DCI's culture_definition and ENG/DCI claims).
+#  - german_baltic: the Baltic rule folds all 47 of its pops into the
+#    native cultures — Ostsiedlung is 12th-13th century; no Baltic Germans
+#    in 1066. Both cultures stay declared so 1337-era references resolve.
+
+REPLACE_OR_CREATE:anglo_irish = {
+	language = hiberno_english_dialect
+
+	color = map_PLE
+
+	tags = { english_gfx british_gfx western_european_gfx european_gfx }
+
+	culture_groups = {
+		hibernian_group
+		british_group
+	}
+
+	opinions = {
+		irish = negative
+		english = kindred
+		norman = positive
+	}
+
+	suppress_no_pops_error = yes # 1066: no Pale yet — emptied by the pop phase
+}
+
+REPLACE_OR_CREATE:german_baltic = { #Baltic https://en.wikipedia.org/wiki/Baltic_Germans
+	language = low_german_dialect
+
+	color = map_baltic_german
+
+	tags = { north_german_gfx german_gfx western_european_gfx european_gfx }
+
+	opinions = {
+		danube_bavarian = positive
+		holsatian = positive
+		saxon = positive
+		markish = positive
+		western_pomeranian = positive
+		eastern_pomeranian = positive
+		lower_saxon = positive
+		rhine_franconian = positive
+		prussian = positive
+		westphalian = positive
+		east_franconian = positive
+		high_alemannic = positive
+		rhine_alemannic = positive
+		swabian = positive
+		german_silesian = positive
+	}
+
+	culture_groups = {
+		german_group
+		baltic_group
+	}
+
+	suppress_no_pops_error = yes # 1066: no Ostsiedlung yet — emptied by the pop phase
+}

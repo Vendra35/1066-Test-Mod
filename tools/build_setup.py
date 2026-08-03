@@ -8342,12 +8342,407 @@ def build_wars(src):
     return src, report, validate, "2 wars of 1066 in progress at start"
 
 
+# ========================== THE POP PHASE — BATCH 1 ==========================
+# docs/POP-PHASE-PACKAGE.md, REVIEWED AND DECIDED 2026-08-03 (the ten
+# decisions live in its STATUS band). The mistretta probe measured APPEND +
+# the-map-reads-pops in game the same day, so this SIXTH target is route (a):
+# vanilla's 06_pops.txt re-emitted with corrections SPLICED into the touched
+# location blocks only — every untouched block is byte-identical to vanilla,
+# which keeps the diff reviewable and makes D1 trivial to satisfy.
+#
+# BATCH 1 (decision 10's first launch batch): the Baltic (decision 2's first
+# slice), Wales+Ireland, the four micros (HPJ rides with a later batch — its
+# correction is in the SEA seam; here: TKA, PRM, KED), Ghana/Kanem.
+# HPJ deliberately NOT here: khon_muang->mon touches the same locations the
+# SEA §H banked for a per-theatre look; it lands with Batch 2's seedings.
+#
+# REASONED DEVIATIONS from the package's flat area rules (all culture-scoped,
+# measured 2026-08-03; the package counted the sunni/catholic UNIVERSE, the
+# rules move only the movers):
+#  - prussia_area: only `prussian` catholics convert (65 of 99) — the
+#    kashubian/greater_polish/mazovian/eastern_pomeranian catholics are
+#    POLAND's Christian Pomerelia (966+), correct at 1066.
+#  - baltic_area: estonian -> muinaisusko (Finnic), latvian/liv/curonian ->
+#    romuva (liv with the Latgalian orbit, LTG's own identity [D]);
+#    `german_baltic` (47 pops, 17.8u — the 1337 Ostsiedlung layer, which is
+#    12th-13th c.) FOLDS into each location's largest native culture;
+#    swedish/danish catholics (4.7u) KEEP — coastal Scandinavians are not
+#    obviously wrong at 1066 [D].
+#  - finland_area: the Finnic four (tavastian/finnish/kvens/karelian) ->
+#    muinaisusko; the 51 swedish catholics KEEP — the map phase left south
+#    Finland under SWE, and a Christian Swedish minority over a pagan Finnic
+#    majority is that map's coherent (and pre-crusade-tension-rich) reading.
+#  - ghana/kanem: ONLY the named movers move (package §B.5's design point):
+#    soninke sunni -> nyama_religion, kanembu sunni -> karama_religion;
+#    lamtuna/godala/dyula/tuareg/toubou/bilala/mandinka keep sunni [D].
+#  - Ireland/Wales are RE-LABELS to irish/welsh (unit-conserving, the
+#    settlers' population WAS the native one), not deletions; same-identity
+#    same-type pops FOLD so the merge safe zone holds. norse_gael untouched.
+#  - PRM's ten chiyalik/tengri slave pockets -> bashkir/tengri PEASANTS
+#    (the Bashkir edge [U]; an all-slave location is a Golden-Horde tableau).
+#  - TKA: the three 0.004u mongolian clergy seeds at gushan/nianbo/xining
+#    are DELETED (the only unit loss in the batch, 0.012u); the liang/amdowa
+#    peasant pair on those three is re-balanced to TKA_AMDOWA_SHARE amdowa —
+#    Tsongkha is an Amdo Tibetan court [U]; zhuanglang (genuinely Chinese
+#    ground) and the monguor/mi_niah layers untouched.
+# Emptied-culture flags: anglo_irish and german_baltic reach ZERO pop
+# locations world-wide — both re-declared with suppress_no_pops_error in
+# in_game/common/cultures/zz_1066_pop_cultures.txt (guard D8 enforces).
+
+TKA_AMDOWA_SHARE = 0.65  # [U 0.5-0.8] — amdowa share of the liang+amdowa peasant pair
+
+_PRM_TEN = ("aspa", "kasevo", "orda", "osa", "saygatsky", "suksun",
+            "tatyshly", "ust_kishert", "yanaul", "yelovo")
+_TKA_THREE = ("gushan", "nianbo", "xining")
+_POP_FLAGGED_EMPTY = {"anglo_irish", "german_baltic"}
+
+# The batch's exact expectations — every count measured 2026-08-03 and the
+# build aborts on any drift (the Tibet donor-table law: the count assert is
+# the only guard against an over-broad rule).
+_POP_EXPECT = {
+    "baltic_area estonian -> muinaisusko":            33,
+    "baltic_area latvian/liv/curonian -> romuva":     65,
+    "baltic_area german_baltic -> native fold":       47,
+    "prussia_area prussian -> romuva":                65,
+    "finland_area finnic four -> muinaisusko":        56,
+    "wales_area english -> welsh":                    19,
+    "ireland_region anglo_irish/english -> irish":    50,
+    "ghana_area soninke sunni -> nyama":              34,
+    "kanem_area kanembu sunni -> karama":             32,
+    "perlis sunni -> mahayana":                        1,
+    "PRM chiyalik slaves -> bashkir peasants":        10,
+    "TKA mongol clergy deleted":                       3,
+    "TKA liang/amdowa pairs re-balanced":              3,
+}
+
+
+def _pop_identifier_sets():
+    """Every culture and religion key the emitted file may legally use:
+    vanilla's two databases plus the mod's additive culture files (the
+    REPLACE_OR_CREATE prefix included). Four vanilla cultures are declared
+    NESTED (POP-PHASE-PACKAGE §0.7) — added explicitly."""
+    key_re = re.compile(r"^(?:REPLACE_OR_CREATE:)?([A-Za-z0-9_]+)[ \t]*=[ \t]*\{", re.M)
+    cultures, religions = set(), set()
+    for base, bucket in ((os.path.join(VAN, "in_game", "common", "cultures"), cultures),
+                         (os.path.join(VAN, "in_game", "common", "religions"), religions),
+                         (os.path.join(MOD, "in_game", "common", "cultures"), cultures)):
+        if not os.path.isdir(base):
+            continue
+        for f in sorted(os.listdir(base)):
+            if f.endswith(".txt"):
+                s = open(os.path.join(base, f), encoding="utf-8-sig").read()
+                bucket.update(key_re.findall(s))
+    cultures.update(("cunco_culture", "manekenk_culture", "yaros_culture", "she_culture"))
+    return cultures, religions
+
+
+def build_pops(src):
+    report = []
+    masked = re.sub(r"#[^\n]*", lambda m: " " * len(m.group(0)), src)
+    wm = re.search(r"\blocations[ \t]*=[ \t]*\{", masked)
+    wlo = masked.index("{", wm.start())
+    whi = find_block_end(masked, wlo)
+    child = re.compile(r"([A-Za-z0-9_]+)[ \t]*=[ \t]*\{")
+    spans, order = {}, []
+    i = wlo + 1
+    while True:
+        m = child.search(masked, i, whi - 1)
+        if not m:
+            break
+        bo = masked.index("{", m.start())
+        be = find_block_end(masked, bo)
+        if m.group(1) in spans:
+            sys.exit(f"build_pops: duplicate vanilla block {m.group(1)}")
+        spans[m.group(1)] = (bo + 1, be - 1)
+        order.append(m.group(1))
+        i = be
+    if len(spans) != 28570:
+        sys.exit(f"build_pops: expected 28570 vanilla blocks, got {len(spans)}")
+
+    POP = re.compile(r"define_pop[ \t\r\n]*=[ \t\r\n]*\{([^}]*)\}")
+    FLD = re.compile(r"([a-z_]+)[ \t]*=[ \t]*([A-Za-z0-9_.\-]+)")
+
+    def parse_loc(lo, hi):
+        out = []
+        for pm in POP.finditer(masked, lo, hi):
+            d = dict(FLD.findall(pm.group(1)))
+            if set(d) != {"type", "size", "culture", "religion"}:
+                sys.exit(f"build_pops: non-4-field vanilla pop near offset {pm.start()}")
+            out.append(d)
+        return out
+
+    before = {l: parse_loc(*spans[l]) for l in order}
+    after = {l: [dict(p) for p in ps] for l, ps in before.items()}
+    touched = set()
+    n_folds = 0
+
+    own = _ownable_set()
+    defs = _parse_defs()
+
+    def scope(name):
+        s = sorted(set(t for t in defs.get(name, []) if t in own))
+        missing = [l for l in s if l not in spans]
+        if missing or not s:
+            sys.exit(f"build_pops: {name} unresolved or missing blocks: {missing[:5]}")
+        return s
+
+    def fold(ps):
+        nonlocal n_folds
+        out = []
+        for p in ps:
+            for q in out:
+                if (q["type"] == p["type"] and q["culture"] == p["culture"]
+                        and q["religion"] == p["religion"]):
+                    q["size"] = f"{float(q['size']) + float(p['size']):.3f}"
+                    n_folds += 1
+                    break
+            else:
+                out.append(p)
+        return out
+
+    def convert(locs, label, match, change):
+        n = 0
+        for l in locs:
+            hit = False
+            for p in after[l]:
+                if match(p):
+                    change(p, l)
+                    n += 1
+                    hit = True
+            if hit:
+                after[l] = fold(after[l])
+                touched.add(l)
+        if n != _POP_EXPECT[label]:
+            sys.exit(f"build_pops: {label}: expected {_POP_EXPECT[label]}, got {n}")
+        report.append((label, n))
+
+    # --- the Baltic (decision 2's slice) ---
+    bal = scope("baltic_area")
+    convert(bal, "baltic_area estonian -> muinaisusko",
+            lambda p: p["religion"] == "catholic" and p["culture"] == "estonian",
+            lambda p, l: p.__setitem__("religion", "muinaisusko"))
+    convert(bal, "baltic_area latvian/liv/curonian -> romuva",
+            lambda p: p["religion"] == "catholic" and p["culture"] in ("latvian", "liv", "curonian"),
+            lambda p, l: p.__setitem__("religion", "romuva"))
+    _natives = ("estonian", "latvian", "liv", "curonian")
+
+    def _gb_host(l):
+        cands = [p for p in before[l] if p["culture"] in _natives]
+        if not cands:
+            sys.exit(f"build_pops: german_baltic with no native host at {l}")
+        host = max(cands, key=lambda p: float(p["size"]))["culture"]
+        return host, ("muinaisusko" if host == "estonian" else "romuva")
+
+    convert(bal, "baltic_area german_baltic -> native fold",
+            lambda p: p["culture"] == "german_baltic",
+            lambda p, l: (p.__setitem__("culture", _gb_host(l)[0]),
+                          p.__setitem__("religion", _gb_host(l)[1])))
+    convert(scope("prussia_area"), "prussia_area prussian -> romuva",
+            lambda p: p["religion"] == "catholic" and p["culture"] == "prussian",
+            lambda p, l: p.__setitem__("religion", "romuva"))
+    convert(scope("finland_area"), "finland_area finnic four -> muinaisusko",
+            lambda p: p["religion"] == "catholic"
+            and p["culture"] in ("tavastian", "finnish", "kvens", "karelian"),
+            lambda p, l: p.__setitem__("religion", "muinaisusko"))
+
+    # --- Wales + Ireland (re-labels, norse_gael untouched) ---
+    convert(scope("wales_area"), "wales_area english -> welsh",
+            lambda p: p["culture"] == "english",
+            lambda p, l: p.__setitem__("culture", "welsh"))
+    convert(scope("ireland_region"), "ireland_region anglo_irish/english -> irish",
+            lambda p: p["culture"] in ("anglo_irish", "english"),
+            lambda p, l: p.__setitem__("culture", "irish"))
+
+    # --- Ghana / Kanem (only the named movers, §B.5) ---
+    convert(scope("ghana_area"), "ghana_area soninke sunni -> nyama",
+            lambda p: p["culture"] == "soninke" and p["religion"] == "sunni",
+            lambda p, l: p.__setitem__("religion", "nyama_religion"))
+    convert(scope("kanem_area"), "kanem_area kanembu sunni -> karama",
+            lambda p: p["culture"] == "kanembu_culture" and p["religion"] == "sunni",
+            lambda p, l: p.__setitem__("religion", "karama_religion"))
+
+    # --- the micros ---
+    convert(["perlis"], "perlis sunni -> mahayana",
+            lambda p: p["culture"] == "malay_culture" and p["religion"] == "sunni",
+            lambda p, l: p.__setitem__("religion", "mahayana"))
+    convert(list(_PRM_TEN), "PRM chiyalik slaves -> bashkir peasants",
+            lambda p: p["culture"] == "chiyalik_culture",
+            lambda p, l: (p.__setitem__("type", "peasants"),
+                          p.__setitem__("culture", "bashkir")))
+    n_del = 0
+    for l in _TKA_THREE:
+        keep = [p for p in after[l]
+                if not (p["culture"] == "mongolian_culture" and p["type"] == "clergy")]
+        n_del += len(after[l]) - len(keep)
+        after[l] = keep
+        touched.add(l)
+    if n_del != _POP_EXPECT["TKA mongol clergy deleted"]:
+        sys.exit(f"build_pops: TKA clergy: expected 3 deletions, got {n_del}")
+    report.append(("TKA mongol clergy deleted", n_del))
+    n_pair = 0
+    for l in _TKA_THREE:
+        liang = [p for p in after[l] if p["culture"] == "liang_culture" and p["type"] == "peasants"]
+        amdo = [p for p in after[l] if p["culture"] == "amdowa_culture" and p["type"] == "peasants"]
+        if len(liang) != 1 or len(amdo) != 1:
+            sys.exit(f"build_pops: TKA pair not 1+1 at {l}")
+        total = float(liang[0]["size"]) + float(amdo[0]["size"])
+        amdo[0]["size"] = f"{total * TKA_AMDOWA_SHARE:.3f}"
+        liang[0]["size"] = f"{total * (1 - TKA_AMDOWA_SHARE):.3f}"
+        n_pair += 1
+    if n_pair != _POP_EXPECT["TKA liang/amdowa pairs re-balanced"]:
+        sys.exit("build_pops: TKA pair count drifted")
+    report.append(("TKA liang/amdowa pairs re-balanced", n_pair))
+    report.append(("locations touched", len(touched)))
+    report.append(("same-identity pops folded", n_folds))
+
+    # --- emit: splice touched blocks, keep every other byte vanilla ---
+    out = src
+    for l in sorted(touched, key=lambda x: spans[x][0], reverse=True):
+        lo, hi = spans[l]
+        body = "\n" + "".join(
+            "\t\tdefine_pop = {\ttype = %s\tsize = %s\tculture = %s\treligion = %s }\n"
+            % (p["type"], p["size"], p["culture"], p["religion"]) for p in after[l]) + "\t"
+        out = out[:lo] + body + out[hi:]
+
+    def validate():
+        cultures, religions = _pop_identifier_sets()
+        m2 = re.sub(r"#[^\n]*", lambda m: " " * len(m.group(0)), out)
+        w2 = re.search(r"\blocations[ \t]*=[ \t]*\{", m2)
+        lo2 = m2.index("{", w2.start())
+        hi2 = find_block_end(m2, lo2)
+        seen, total, units = {}, 0, 0.0
+        i2 = lo2 + 1
+        while True:
+            m = child.search(m2, i2, hi2 - 1)
+            if not m:
+                break
+            bo = m2.index("{", m.start())
+            be = find_block_end(m2, bo)
+            name = m.group(1)
+            if name in seen:
+                return f"D1: duplicate block {name}"
+            ps = []
+            for pm in POP.finditer(m2, bo + 1, be - 1):
+                d = dict(FLD.findall(pm.group(1)))
+                if set(d) != {"type", "size", "culture", "religion"}:
+                    return f"D3: bad pop shape in {name}"
+                if d["culture"] not in cultures:
+                    return f"D4: unknown culture {d['culture']} in {name}"
+                if d["religion"] not in religions:
+                    return f"D4: unknown religion {d['religion']} in {name}"
+                ps.append(d)
+                total += 1
+                units += float(d["size"])
+            seen[name] = ps
+            i2 = be
+        if set(seen) != set(spans):
+            return f"D1: block set diverged by {len(set(seen) ^ set(spans))}"
+        # D2 — census: folds and the three deletions are the only count moves
+        delta = total - 50255
+        if delta != -(n_folds + 3):
+            return f"D2: define_pop delta {delta}, expected {-(n_folds + 3)}"
+        # D5 — merge safe zone. Batch 1 adds NO pops, so a touched location
+        # may never end with MORE same-type pops than vanilla gave it (elk in
+        # prussia_area ships at 4 peasants — vanilla's attested 4-6 practice,
+        # POP-PHASE-PACKAGE §0.3 — and a re-label must not be blamed for it);
+        # anything we leave above 3 must have been above 3 already.
+        for l in touched:
+            b_per, a_per = {}, {}
+            for p in before[l]:
+                b_per[p["type"]] = b_per.get(p["type"], 0) + 1
+            for p in seen[l]:
+                a_per[p["type"]] = a_per.get(p["type"], 0) + 1
+            for t, n in a_per.items():
+                if n > max(b_per.get(t, 0), 3):
+                    return f"D5: {l} grew to {n} pops of {t}"
+        for l, ps in seen.items():
+            per = {}
+            for p in ps:
+                per[p["type"]] = per.get(p["type"], 0) + 1
+            if per and max(per.values()) > 6:
+                return f"D5: {l} beyond vanilla's ceiling"
+        # D6 — unit conservation: only TKA's three 0.004u seeds may go
+        before_units = sum(float(p["size"]) for ps in before.values() for p in ps)
+        if abs((before_units - units) - 0.012) > 0.01:
+            return f"D6: units drifted by {before_units - units:.3f}, budget 0.012"
+        # D8 — emptied cultures must carry the flag file
+        b_cul, a_cul = set(), set()
+        for ps in before.values():
+            for p in ps:
+                b_cul.add(p["culture"])
+        for ps in seen.values():
+            for p in ps:
+                a_cul.add(p["culture"])
+        emptied = b_cul - a_cul
+        if emptied != _POP_FLAGGED_EMPTY:
+            return f"D8: emptied cultures {sorted(emptied)} != flagged"
+        flag = os.path.join(MOD, "in_game", "common", "cultures",
+                            "zz_1066_pop_cultures.txt")
+        if not os.path.isfile(flag):
+            return "D8: flag file missing"
+        fs = open(flag, encoding="utf-8-sig").read()
+        for c in _POP_FLAGGED_EMPTY:
+            if not re.search(r"REPLACE_OR_CREATE:" + c + r"[ \t]*=", fs):
+                return f"D8: {c} not re-declared in the flag file"
+            if fs.count("suppress_no_pops_error") < 2:
+                return "D8: flag lines missing"
+        # D9 — share bands per theatre (post-state, generous bands)
+        def shares(locs, field):
+            tot = {}
+            for l in locs:
+                for p in seen[l]:
+                    tot[p[field]] = tot.get(p[field], 0.0) + float(p["size"])
+            s = sum(tot.values()) or 1.0
+            return {k: v / s for k, v in tot.items()}
+        r = shares(scope("baltic_area"), "religion")
+        if r.get("catholic", 0) > 0.06 or (r.get("romuva", 0) + r.get("muinaisusko", 0)) < 0.85:
+            return f"D9: baltic_area bands failed: {r}"
+        r = shares(scope("prussia_area"), "religion")
+        # measured 0.70 on first build: the 128.1u conversion PLUS the native
+        # romuva pops the area already carried on 28 of 44 locations; the
+        # catholic remainder is Poland's Christian Pomerelia, kept by design
+        if not (0.55 <= r.get("romuva", 0) <= 0.85 and 0.10 <= r.get("catholic", 1) <= 0.40):
+            return f"D9: prussia_area bands failed: {r}"
+        r = shares(scope("finland_area"), "religion")
+        if r.get("muinaisusko", 0) < 0.60 or r.get("catholic", 0) > 0.35:
+            return f"D9: finland_area bands failed"
+        r = shares(scope("ghana_area"), "religion")
+        if not (0.25 <= r.get("sunni", 0) <= 0.60 and r.get("nyama_religion", 0) >= 0.35):
+            return f"D9: ghana_area bands failed: sunni {r.get('sunni', 0):.2f}"
+        r = shares(scope("kanem_area"), "religion")
+        if not (0.10 <= r.get("sunni", 0) <= 0.45 and r.get("karama_religion", 0) >= 0.40):
+            return f"D9: kanem_area bands failed: sunni {r.get('sunni', 0):.2f}"
+        c = shares(scope("ireland_region"), "culture")
+        if c.get("anglo_irish", 0) > 0 or c.get("english", 0) > 0:
+            return "D9: ireland still carries settler cultures"
+        c = shares(scope("wales_area"), "culture")
+        if c.get("english", 0) > 0:
+            return "D9: wales still carries english pops"
+        for l in _TKA_THREE:
+            liang = sum(float(p["size"]) for p in seen[l] if p["culture"] == "liang_culture")
+            amdo = sum(float(p["size"]) for p in seen[l] if p["culture"] == "amdowa_culture")
+            if amdo <= liang:
+                return f"D9: {l} amdowa not dominant"
+        # D10 — the uppercase keys survived
+        for k in ("trgoviste_SER", "targoviste_BUL", "ratnapura_LKA", "tata_MOR",
+                  "massa_MOR", "asir_ALG", "al_khadra_ALG", "constantine_ALG",
+                  "beja_TUN", "jama_TUN", "matanda_aChiwawa"):
+            if k not in seen:
+                return f"D10: uppercase key {k} lost"
+        return None
+
+    return out, report, validate, (
+        "Batch 1: the Baltic pagan again, Ireland/Wales native, "
+        "Ghana/Kanem mixed, the micros — untouched blocks byte-identical")
+
+
 TARGETS = [
     ("05_characters.txt", build_characters),
     ("10_countries.txt", build_countries),
     ("12_diplomacy.txt", build_diplomacy),
     ("15_international_organizations.txt", build_ios),
     ("16_wars.txt", build_wars),
+    ("06_pops.txt", build_pops),
 ]
 
 HEADER = """# GENERATED by tools/build_setup.py — do not hand-edit.

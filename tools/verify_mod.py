@@ -119,10 +119,41 @@ check("BOM on .txt and .yml (outside setup/start)", len(bom_files), probs, min_c
 
 probs = [os.path.relpath(p, MOD) for p in setup_txt
          if open(p, "rb").read(3) == BOM]
-# Armed at 6: five generated files plus the additive 04_zz_1066_dynasties.
-# Raise it again as more setup files land — a BOM here is the single most
-# expensive byte in the project.
-check("no BOM in setup/start", len(setup_txt), probs, min_count=6)
+# Armed at 7: six generated files (06_pops joined with the pop phase's
+# Batch 1) plus the additive 04_zz_1066_dynasties. Raise it again as more
+# setup files land — a BOM here is the single most expensive byte in the
+# project.
+check("no BOM in setup/start", len(setup_txt), probs, min_count=7)
+
+# THE POP OVERRIDE'S INDEPENDENT SET CHECK (guard D1's harness twin,
+# 2026-08-03). The 5 MB generated 06_pops.txt cannot be read; the one
+# structural property everything else hangs off is that its location-block
+# NAME SET equals vanilla's exactly — the Bronze Era conversion shipped
+# 2,633 duplicate blocks, 502 phantoms and 3,131 drops in this same file
+# and nothing errored. Re-derived here from scratch (a separate parser
+# from the build's, on purpose). Blocks sit at COLUMN 0 inside the
+# wrapper — a `^\t`-anchored scan returns a confident zero.
+_pops_path = os.path.join(MOD, "main_menu", "setup", "start", "06_pops.txt")
+probs = []
+_pop_names = []
+if os.path.isfile(_pops_path):
+    _ps = read(_pops_path)
+    _ps = re.sub(r"#[^\n]*", "", _ps)
+    _pop_names = re.findall(r"^([A-Za-z0-9_]+)[ \t]*=[ \t]*\{", _ps, re.M)
+    _pop_names = [n for n in _pop_names if n != "locations"]
+    _vs = re.sub(r"#[^\n]*", "",
+                 open(os.path.join(VAN, "main_menu", "setup", "start",
+                                   "06_pops.txt"), encoding="utf-8-sig").read())
+    _van_names = [n for n in re.findall(r"^([A-Za-z0-9_]+)[ \t]*=[ \t]*\{", _vs, re.M)
+                  if n != "locations"]
+    if len(_pop_names) != len(set(_pop_names)):
+        probs.append(f"duplicate location blocks: {len(_pop_names) - len(set(_pop_names))}")
+    _diff = set(_pop_names) ^ set(_van_names)
+    if _diff:
+        probs.append(f"block set diverges from vanilla by {len(_diff)}: "
+                     f"{sorted(_diff)[:5]}")
+check("06_pops block-name set equals vanilla", len(_pop_names), probs,
+      min_count=28570)
 
 # .gui is the other exception: vanilla ships 483 and only 49 carry a BOM.
 probs = [os.path.relpath(p, MOD) for p in gui_files
