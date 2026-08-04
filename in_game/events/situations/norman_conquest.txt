@@ -13,11 +13,14 @@
 # coronation (25 Dec). Event shape cloned from
 # events/situations/hundred_years_war.txt.
 #
-# NO event-level trigger blocks. In the second in-game round every event
-# that carried one went silent while the trigger-less intro fired; whether
-# the triggers or the war-legality chain were at fault is not yet isolated,
-# so the guards moved INSIDE the options as if/limit — a false guard then
-# skips an effect instead of silently swallowing the whole event.
+# Trigger law, RESOLVED (2026-07-29, docs/EVENT-SYSTEM.md): the round-2
+# "triggers swallow events" hypothesis was FALSE — the triggers were simply
+# false. The corrected rule: RAILROAD beats (.1-.90 below) carry NO
+# event-level trigger, guards live inside options as if/limit; FLAVOUR
+# events (the .100+ DHE band) SHOULD carry triggers, as 95% of vanilla
+# DHEs do. The .100+ band uses vanilla's dynamic_historical_event
+# self-scheduler (hundred_years_war.txt:452-457's exact shape) — no
+# on_start plumbing, fires on its own date window.
 
 ######################################
 # 1 — the succession crisis, to the five courts
@@ -424,6 +427,178 @@ norman_conquest.42 = {
 ######################################
 # 90 — the situation closes
 ######################################
+
+######################################
+# 100+ — the DHE flavour band (NC v2 increment 3). Texture, not
+# railroad: no war-critical effects, event-level triggers per the
+# resolved law, magnitudes from vanilla's mild band
+# (default_values.txt:15-33).
+######################################
+
+# The fleet wind-bound at Saint-Valery, the relics carried to the shore
+norman_conquest.100 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.100.title
+	desc = norman_conquest.100.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NRM
+		from = 1066.9.15
+		to = 1066.12.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		character:eng_william_the_conquerer ?= { is_alive = yes }
+		NOT = { in_union_with = c:ENG }
+	}
+
+	option = {
+		name = norman_conquest.100.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 80
+		}
+	}
+
+	option = {
+		name = norman_conquest.100.b
+		add_stability = stability_mild_penalty
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+# The survivors of Stamford Bridge sail home
+norman_conquest.101 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.101.title
+	desc = norman_conquest.101.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NOR
+		from = 1066.10.1
+		to = 1067.6.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		character:nor_harald_hardrada ?= { is_alive = no }
+	}
+
+	option = {
+		name = norman_conquest.101.a
+		historical_option = yes
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 80
+		}
+	}
+
+	option = {
+		name = norman_conquest.101.b
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+# William's march through the south country
+norman_conquest.102 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.102.title
+	desc = norman_conquest.102.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ENG
+		from = 1066.10.20
+		to = 1067.3.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		is_at_war_with = c:NRM
+	}
+
+	option = {
+		name = norman_conquest.102.a
+		historical_option = yes
+		add_stability = stability_mild_penalty
+		ai_chance = {
+			base = 80
+		}
+	}
+
+	option = {
+		name = norman_conquest.102.b
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+# The Easter court at Fecamp parades the spoils of England
+norman_conquest.103 = {
+	type = country_event
+	category = situation_event
+
+	title = norman_conquest.103.title
+	desc = norman_conquest.103.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = NRM
+		from = 1067.2.1
+		to = 1068.1.1
+		monthly_chance = 50
+	}
+
+	trigger = {
+		in_union_with = c:ENG
+	}
+
+	option = {
+		name = norman_conquest.103.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 70
+		}
+	}
+
+	option = {
+		name = norman_conquest.103.b
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 30
+		}
+	}
+}
 
 norman_conquest.90 = {
 	type = country_event

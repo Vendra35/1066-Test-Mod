@@ -1220,6 +1220,42 @@ for _t in sorted(_start_tags - _id_tags):
 check("identity <-> start-block bijection (DUMMY/MER/PIR excepted)",
       len(_id_tags), probs, min_count=2414)  # +3 Tibet (2026-08-02)
 
+# DHE blocks are the flavour backbone AND a reachability blind spot (craft
+# sweep 2026-08-04): an event fired only by its own dynamic_historical_event
+# looks orphaned to call-site scanners — two independent validators have
+# been wrong about that class before — and a typo'd tag or an inverted
+# window in the block is a no-op with no error. Validate every DHE block we
+# ship: tag has a 10_countries block, dates parse with from < to,
+# monthly_chance in (0, 100]. DHE blocks are flat (no nested braces in any
+# of vanilla's 3,182), so the [^}]* body match is safe.
+probs, count = [], 0
+for _p in [p for p in txt_files if "/in_game/events/" in p]:
+    _s = strip_comments(read(_p))
+    for _m in re.finditer(r"dynamic_historical_event[ \t]*=[ \t]*" + BS + "{([^}]*)}", _s):
+        count += 1
+        _b = _m.group(1)
+        _rel = os.path.relpath(_p, MOD)
+        _tag = re.search(r"tag[ \t]*=[ \t]*([A-Z0-9_]+)", _b)
+        _fr = re.search(r"from[ \t]*=[ \t]*([0-9.]+)", _b)
+        _to = re.search(r"to[ \t]*=[ \t]*([0-9.]+)", _b)
+        _mc = re.search(r"monthly_chance[ \t]*=[ \t]*([0-9.]+)", _b)
+        if not _tag or _tag.group(1) not in _start_tags:
+            probs.append(f"{_rel}: DHE tag "
+                         f"{'missing' if not _tag else _tag.group(1)} has no 10_countries block")
+        if not (_fr and _to):
+            probs.append(f"{_rel}: DHE window incomplete (from/to)")
+        else:
+            def _dhe_d(s):
+                _pp = [x for x in s.split(".") if x != ""]
+                return tuple(int(x) for x in (_pp + ["1", "1"])[:3])
+            if not _dhe_d(_fr.group(1)) < _dhe_d(_to.group(1)):
+                probs.append(f"{_rel}: DHE window inverted "
+                             f"({_fr.group(1)} !< {_to.group(1)})")
+        if not _mc or not (0 < float(_mc.group(1)) <= 100):
+            probs.append(f"{_rel}: DHE monthly_chance missing or outside (0, 100]")
+# Armed at 4: the Norman Conquest .100+ flavour band.
+check("DHE blocks well-formed (tag, window, chance)", count, probs, min_count=4)
+
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):
 # the authoring check had compared rgb VALUES, and a word-boundary tag scan
