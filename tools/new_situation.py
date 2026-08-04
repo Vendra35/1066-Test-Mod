@@ -47,6 +47,22 @@ SPECS = {
     #     "sides": {"BYZ": None, "SEL": None},
     #     "events": [(1, "the intro, to both courts")],
     # },
+    "three_brothers": {   # spec 5 — generated 2026-08-04 (HANDOFF item 51)
+        "title": "The Three Brothers",
+        "desc": "Fernando the Great divided his realm among his sons: Castile to Sancho, Leon to Alfonso, Galicia to Garcia. Partible inheritance has its own logic, and the eldest brother commands the best army in Iberia.",
+        "info": "The war of Fernando I's sons over his divided inheritance, 1068-1072, between [GetCountry('CAS').GetName], [GetCountry('LON').GetName] and [GetCountry('GLC').GetName].",
+        # ALL THREE map_ keys exist in VANILLA (02_map.txt:95/152/153 —
+        # the shadow check caught the first draft redefining them);
+        # None = reuse vanilla's own colours, the map_ENG precedent.
+        "sides": {"CAS": None, "LON": None, "GLC": None},
+        "events": [(1, "the intro - the will of Fernando"),
+                   (10, "Llantada - the wager battle"),
+                   (20, "the fall of Galicia - THE DECLARATION-LOCK PROBE"),
+                   (25, "Garcia in chains"),
+                   (30, "Golpejera - the exile to Toledo"),
+                   (40, "Zamora - the bolt from the wall"),
+                   (90, "the closing - one crown after all")],
+    },
     "khutba_wars": {   # spec 4 — generated 2026-08-04 (HANDOFF item 49)
         "title": "The Khutba Wars",
         "desc": "In the mosques of the holy cities, sovereignty is a sentence: the name of the caliph for whom the Friday prayer is read. Mecca's khutba is for sale, and two caliphates are bidding.",

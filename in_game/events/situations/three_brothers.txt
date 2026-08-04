@@ -1,0 +1,299 @@
+﻿namespace = three_brothers
+
+# The Three Brothers — spec 5 event chain, ARMED 2026-08-04.
+# .1 intro and .90 are DIRECT-fired; .10/.20/.25/.30/.40 ride DHE
+# windows. Flavour events carry triggers per the resolved law; the AI
+# is railroaded by ai_chance 100/0, the player refuses freely.
+# Shapes: kill_character with location = our NC rounds 3-6 (in-repo,
+# game-proven); force_union from the surviving side = NC .40;
+# annex_country = { country reason } effects.log:616-617;
+# leave-then-act ordering = NC's proven idiom.
+
+######################################
+# 1 — the intro, the will of Fernando
+######################################
+
+three_brothers.1 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.1.title
+	desc = three_brothers.1.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = three_brothers.1.a
+	}
+}
+
+######################################
+# 10 — Llantada, the wager battle (CAS, 1068)
+######################################
+
+three_brothers.10 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.10.title
+	desc = three_brothers.10.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CAS
+		from = 1068.7.1
+		to = 1068.11.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		country_exists = c:LON
+	}
+
+	option = {
+		name = three_brothers.10.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		c:LON ?= { add_prestige = prestige_mild_penalty }
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = three_brothers.10.b
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+######################################
+# 20 — the fall of Galicia: THE DECLARATION-LOCK PROBE (CAS, 1071)
+######################################
+
+three_brothers.20 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.20.title
+	desc = three_brothers.20.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CAS
+		from = 1071.1.1
+		to = 1071.7.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		country_exists = c:GLC
+		NOT = { is_at_war_with = c:GLC }
+	}
+
+	option = {
+		name = three_brothers.20.a
+		historical_option = yes
+		# THE MEASUREMENT: the CB has been in hand since 1068. Note in
+		# game whether the war opens on THIS day or the next monthly
+		# tick — that answer is the round-5 lock's scope.
+		if = {
+			limit = {
+				can_declare_legal_war_on = { target = c:GLC }
+			}
+			declare_war_with_cb = { target = c:GLC type = casus_belli:cb_claim_throne }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = three_brothers.20.b
+		set_variable = {
+			name = tb_galicia_spared
+			years = 10
+		}
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+######################################
+# 25 — Garcia in chains (CAS, 1072)
+######################################
+
+three_brothers.25 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.25.title
+	desc = three_brothers.25.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CAS
+		from = 1072.1.1
+		to = 1072.9.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		country_exists = c:GLC
+		NOT = { has_variable = tb_galicia_spared }
+	}
+
+	option = {
+		name = three_brothers.25.a
+		historical_option = yes
+		leave_all_wars_with = c:GLC
+		annex_country = { country = c:GLC reason = MilitaryConquest }
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = three_brothers.25.b
+		add_prestige = prestige_mild_penalty
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+######################################
+# 30 — Golpejera, the exile to Toledo (CAS, 1072)
+######################################
+
+three_brothers.30 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.30.title
+	desc = three_brothers.30.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = CAS
+		from = 1072.1.1
+		to = 1072.7.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		country_exists = c:LON
+	}
+
+	option = {
+		name = three_brothers.30.a
+		historical_option = yes
+		add_prestige = prestige_mild_bonus
+		c:LON ?= {
+			add_country_modifier = {
+				modifier = tb_king_in_toledo
+				years = 1
+				mode = add
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = three_brothers.30.b
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+######################################
+# 40 — Zamora, the bolt from the wall (LON, autumn 1072)
+######################################
+
+three_brothers.40 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.40.title
+	desc = three_brothers.40.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = LON
+		from = 1072.9.1
+		to = 1073.1.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		country_exists = c:CAS
+		character:cas_sancho_ii_jimena ?= { is_alive = yes }
+	}
+
+	option = {
+		name = three_brothers.40.a
+		historical_option = yes
+		kill_character = {
+			target = character:cas_sancho_ii_jimena
+			location = location:zamora
+		}
+		remove_country_modifier = tb_king_in_toledo
+		leave_all_wars_with = c:CAS
+		force_union = c:CAS
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = three_brothers.40.b
+		add_prestige = prestige_mild_bonus
+		remove_country_modifier = tb_king_in_toledo
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+######################################
+# 90 — the closing, one crown after all (fired from on_ended)
+######################################
+
+three_brothers.90 = {
+	type = country_event
+	category = situation_event
+
+	title = three_brothers.90.title
+	desc = three_brothers.90.desc
+	outcome = neutral
+
+	image = "gfx/interface/illustrations/situation/_default.dds"
+
+	option = {
+		name = three_brothers.90.a
+	}
+}

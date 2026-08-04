@@ -1,4 +1,4 @@
-# Handoff — where the 1066 mod stands
+﻿# Handoff — where the 1066 mod stands
 
 > Written at the end of the first working session. Read `CLAUDE.md` first, then
 > this, then `docs/KNOWLEDGE.md`. Everything below is either measured or marked
@@ -2576,40 +2576,108 @@ S-Germany/Italy all match the landed designs).
    6. Regresyon: NC situation'ı ve error.log sınıfları değişmemiş;
       `:520` reform-loc sınıfı sıfır.
 
-**NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
-FIRST; the 2026-08-03 block below is now HISTORICAL too):**
+51. **THE THREE BROTHERS ARMED (LANDED 2026-08-04, needs game test —
+   CARRIES THE DECLARATION-LOCK MEASUREMENT).** Spec 5's machine on
+   the hint-aware scaffolder's skeleton, one increment: vanilla's own
+   terms ARE the timeline. can_start 1068; on_start grants
+   `cb_claim_throne` on GLC THREE YEARS EARLY (CB-first law — so the
+   .20 measurement isolates the LOCK variable alone;
+   `claim_throne.txt:12-19`'s monarchy+claimant gates verified);
+   .10 Llantada (the wager battle) → **.20 the fall of Galicia (DHE
+   1071.1-7): THE MEASUREMENT — the in-event `declare_war_with_cb`
+   either opens the war SAME DAY (the round-5 lock was
+   game-start-only → specs 2/6/8/11/12 may declare from script) or
+   lags to the monthly tick (lock universal → opening wars stay
+   16_wars-shipped)**; on_monthly is_ai retry through the 1071 window
+   (NC's shape; a player's .20b refusal sets `tb_galicia_spared` and
+   STICKS) → .25 García in chains (`leave_all_wars_with` +
+   `annex_country = { country reason }`, effects.log:616-617) → .30
+   Golpejera (Alfonso exiled to OUR al-Ma'mun's Toledo —
+   `tb_king_in_toledo`) → **.40 Zamora (DHE LON 1072.9-1073.1):
+   `kill_character` with `location:zamora` (our proven NC shape) +
+   `force_union = c:CAS` from LON (NC .40's shape) — Alfonso rules
+   both**; .90 closing; custom_tooltip can_end ladder (union settled
+   Nov 1072 / expired 1075). MAP: vanilla's OWN Iberian colours
+   REUSED (map_CAS/LON/GLC, `02_map.txt:95/152/153`) — **the
+   colour-shadow check caught the first draft redefining all three**
+   (the D3 repaint class, caught live again); the scaffolder SPECS
+   entry documents the None=reuse route. ALSO: hint files normalised
+   ONE-PER-SITUATION (the user's question — the shared
+   zz_1066_hints.txt split into per-key files and removed; the
+   scaffolder's convention). DEFERRED to a flavour increment: El Cid
+   / Urraca / Elvira authoring + the Santa Gadea band (the NC
+   pattern: machine first). Floors: fields 39, hint 12, DHE 14.
+   TIK TURU (bankalı, ~4 dk; hız 5, gözlemci ya da CAS/LON):
+   1. **1068 başı:** situation doğar; haritada vanilla İber renkleri
+      (Kastilya altın-turuncusu / León moru / Galiçya somonu).
+   2. **1068 Tem-Kas:** CAS'a "The Wager of Llantada" düşer.
+   3. **1071 Oca-Tem: .20 "The Weakest Brother" — ÖLÇÜM: GLC
+      savaşının İLAN TARİHİNİ not et.** Event günüyle aynı gün =
+      kilit yok; sonraki ay-başı = kilit evrensel. (CB 1068'den
+      beri elde — değişken izole.)
+   4. **1072:** García annex edilir (GLC haritadan silinir);
+      Golpejera → LON'da "The King in Toledo"; **Eyl-Ara: Zamora —
+      Sancho zamora lokasyonunda ölür, LON-CAS union kurulur,
+      Alfonso ikisini birden yönetir.**
+   5. **1072 Kas+:** situation biter, .90 kapanış her izleyiciye.
+   6. Regresyon: NC/khutba dosyaları aynı; error.log'da yeni sınıf
+      yok; map_CAS/LON/GLC vanilla tüketicileri OYNAMAMIŞ (D3).
 
-THE SITUATIONS PHASE IS OPEN AND ITS CRAFT SWEEP IS BANKED (item 45:
-`docs/SITUATION-CRAFT.md` = the HOW, `docs/SITUATION-SPECS.md` = the
-WHAT, raw reports in `docs/research/2026-08-04/`; the five craft-sweep
-decisions are recorded in the item). **THE MANZIKERT DESIGN
-CONVERSATION IS CLOSED — decisions D1-D6 taken 2026-08-04 under the
-user's full delegation ("sana bırakıyorum"), banked as the spec-1
-DESIGN ADDENDUM in SITUATION-SPECS.md** (two layers; game-start
-ambient phase 0; float phase + 0-100 collapse meter; Layer B its own
-is_data_map situation configured-then-activated from A's on_ended;
-scaled_gold pricing; Rum = NIC). **BUILD is underway in SPECS
-priority order: NC v2 increments 1-3 LANDED — the hint triple (item
-46), the first situation action (item 47), the first DHE band (item
-48), click tours banked in all three; the three tool-teaching
-mechanisms the later situations need are now proven in-repo (static
-proof; game test rides the accumulated tour).** THE FORK IS
-DECIDED — (a), by user delegation ("sen ne öneriyorsan"): NC stops
-at increments 1-3, spec-8's 1067-1072 extension moves to the
-phase-end polish pass. **The khutba wars are
-ARMED (item 50 — the full machine: DHE beat chain, tributary
-surgery, the runtime-`add_reform` probe, banner-colour map, real
-prose; click tour banked there — NOTE it needs speed-5 play to 1071+
-and answers the PROBE: tributary or vassal).** Accumulated test debt
-now items 46-48 + 50 (~11 dk). NEXT: **THE THREE BROTHERS (spec 5)**
-— skeleton via the (now hint-aware) scaffolder, then arm: vanilla's
-own terms are the timeline, El Cid + Urraca + Elvira to author
-(the lon_urraca trap is in the spec), and it carries **the
-DECLARATION-LOCK measurement** (first war declared after year 1 —
-gates specs 2/6/8/11/12). Then Welsh → Godred → Manzikert. Standing owed items unchanged: decision 3's
-full-conversion call, the Wendish/Holstein territorial seam, ZAN's
-shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
-renames; the grand-test OWED list rides the 2026-08-03 block below.
+**NEXT SESSION STARTS WITH (updated 2026-08-04 END OF DAY — READ
+THIS BLOCK FIRST; the 2026-08-03 block below is now HISTORICAL too):**
+
+THE SITUATIONS PHASE IS OPEN AND RUNNING — one session landed items
+45-51: **the craft sweep** (item 45 — `SITUATION-CRAFT.md` = the
+twelve laws + trap list + adopted techniques, six raw agent reports
+in `docs/research/2026-08-04/`), **the Manzikert design D1-D6**
+(spec-1 DESIGN ADDENDUM in SITUATION-SPECS.md: two layers,
+game-start phase 0, float phase + 0-100 collapse meter, Layer B its
+own is_data_map situation, scaled_gold pricing, Rum = NIC), **NC v2
+increments 1-3** (items 46-48: hint triple, first action, first DHE
+band — NC capped there by fork decision (a); spec-8's extension =
+phase-end polish), **the khutba wars ARMED** (item 50 — tributary
+surgery + the runtime-`add_reform` PROBE), **the three brothers
+ARMED** (item 51 — the DECLARATION-LOCK measurement). THREE
+situations live in the repo, harness all green, tree clean.
+
+**TEST DEBT — ONE SESSION, ~15 dk, and the phase's design hangs on
+two of its answers:** the five click tours (items 46/47/48/50/51),
+carrying (a) **the khutba probe** (item 50 tour #2: does MEC arrive
+on ABS's ring as TRIBUTARY, or downgraded to VASSAL? — decides
+whether runtime add_reform passes the gate; vassal = move the reform
+to ABS's setup line and bank the law) and (b) **the lock
+measurement** (item 51 tour #3: the GLC declaration's DATE —
+same-day = the round-5 lock was game-start-only and specs
+2/6/8/11/12 may declare from script; next-tick = the lock is
+universal and opening wars stay 16_wars-shipped).
+
+**NEXT BUILD, in order:** the Welsh wars (spec 9, S — pure event
+chain, five thrones seated, item 21 done) → Godred Crovan (spec 10,
+S — **the RUNTIME-CAST probe**: `create_character` +
+`found_dynasty`, the Rise-of-Timur route; Malik-Shah, Gregory VII
+and Bohemond all depend on it) → **THE MANZIKERT FLAGSHIP** (design
+closed, addendum D1-D6). Deferred flavour increments, buildable any
+time: NC spec-8 extension (Edgar/Harrying/Sweyn/Ely/Abernethy + the
+Henry-I bug fix), the three brothers' El Cid/Urraca/Elvira band
+(Santa Gadea; the lon_urraca trap is in the spec), khutba
+advisor-voice hint rows.
+
+**FRESH-SESSION READ ORDER:** CLAUDE.md → this block →
+SITUATION-CRAFT.md (the laws, BEFORE writing any situation) →
+SITUATION-SPECS.md (the WHAT + the addendum) → the three built
+situations as live templates (`norman_conquest` = machine + wars +
+flavour stack; `khutba_wars` = DHE beat chain + tributary surgery +
+runtime reform; `three_brothers` = war beats + kill/union
+succession). `tools/new_situation.py` is hint-aware and emits six
+files. THE BUILD RHYTHM PER SITUATION: verify ground (rulers, tags,
+rings, colours — the shadow check exists because all three Iberian
+map_ keys were vanilla's) → SPECS entry → scaffold → arm with every
+construct cited → floors raised in the same commit → HANDOFF item +
+Turkish click tour → slice commit + docs commit. Standing owed items
+unchanged: decision 3's full-conversion call, the Wendish/Holstein
+seam, ZAN's shrink, the cosmetic dynasty pool, PLM/AGR registry
+culture, TRH/MNL renames; the grand-test OWED list rides the
+2026-08-03 block below.
 
 **(HISTORICAL) NEXT SESSION STARTS WITH (updated 2026-08-03, end of
 day; the 2026-08-02 block below is HISTORICAL too):**

@@ -1,0 +1,154 @@
+﻿# The Three Brothers — spec 5, ARMED 2026-08-04 (HANDOFF item 51).
+# Vanilla's own ruler terms ARE the timeline (accessions :14521/:14736/
+# :14791; Sancho's death date and all three term closes 1072.10.7).
+# THE MEASUREMENT THIS SITUATION CARRIES: the declaration lock. The CB
+# is granted at on_start (1068, CB-first law), the declaration fires
+# from event .20 in 1071 — year 5 of the campaign. If the war opens the
+# DAY .20 fires, the round-5 lock was a game-start lock only and specs
+# 2/6/8/11/12 may declare from script; if it opens on the next monthly
+# tick, the lock is universal and opening wars stay 16_wars-shipped.
+# The on_monthly retry (NC's proven shape) keeps the railroad honest
+# either way.
+
+three_brothers = {
+	monthly_spawn_chance = 1
+	# The alert rides the hint contract (SITUATION-CRAFT law #9).
+	hint_tag = hint_three_brothers
+
+	can_start = {
+		current_date >= 1068.1.1
+		country_exists = c:CAS
+		country_exists = c:LON
+		country_exists = c:GLC
+	}
+
+	on_start = {
+		# CB-first (the round-3 law): Sancho's claim on Garcia's crown
+		# sits in hand three years before the declaration attempt, so
+		# the .20 measurement isolates the LOCK variable alone.
+		# cb_claim_throne: monarchy-over-monarchy, claimant character
+		# alive and not the target's ruler (claim_throne.txt:12-19).
+		c:CAS ?= {
+			add_casus_belli = {
+				target = c:GLC
+				type = casus_belli:cb_claim_throne
+				character = character:cas_sancho_ii_jimena
+				years = 8
+			}
+		}
+		c:CAS ?= { trigger_event_non_silently = { id = three_brothers.1 } }
+		c:LON ?= { trigger_event_non_silently = { id = three_brothers.1 } }
+		c:GLC ?= { trigger_event_non_silently = { id = three_brothers.1 } }
+	}
+
+	can_end = {
+		# The custom_tooltip OR-ladder (SITUATION-CRAFT technique #2).
+		OR = {
+			custom_tooltip = {
+				text = three_brothers_end_settled_tt
+				current_date >= 1072.11.1
+				c:LON ?= { in_union_with = c:CAS }
+			}
+			custom_tooltip = {
+				text = three_brothers_end_expired_tt
+				current_date >= 1075.1.1
+			}
+		}
+	}
+
+	visible = {
+		OR = {
+			tag = CAS
+			tag = LON
+			tag = GLC
+			tag = TOL
+			capital ?= { sub_continent = sub_continent:western_europe }
+		}
+	}
+
+	on_monthly = {
+		# The Galicia railroad's monthly retry while the historical
+		# window is open — NC's proven architecture, is_ai-gated so a
+		# player's refusal in .20b sticks (it sets tb_galicia_spared).
+		c:CAS ?= {
+			if = {
+				limit = {
+					is_ai = yes
+					current_date >= 1071.1.1
+					current_date <= 1071.12.31
+					NOT = { has_variable = tb_galicia_spared }
+					NOT = { is_at_war_with = c:GLC }
+					country_exists = c:GLC
+				}
+				if = {
+					limit = {
+						can_declare_legal_war_on = { target = c:GLC }
+					}
+					declare_war_with_cb = { target = c:GLC type = casus_belli:cb_claim_throne }
+				}
+			}
+		}
+	}
+
+	on_ended = {
+		every_country = {
+			limit = { can_see_situation = situation:three_brothers }
+			trigger_event_non_silently = three_brothers.90
+		}
+	}
+
+	# Map layer, norman_conquest.txt's proven branch shape.
+	map_color = {
+		if = {
+			limit = { owner ?= c:CAS }
+			value = map_CAS
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:CAS } }
+			value = map_CAS
+		}
+		else_if = {
+			limit = { owner ?= c:LON }
+			value = map_LON
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:LON } }
+			value = map_LON
+		}
+		else_if = {
+			limit = { owner ?= c:GLC }
+			value = map_GLC
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "CAS"
+		color = map_CAS
+	}
+	legend_key = {
+		desc = "LON"
+		color = map_LON
+	}
+	legend_key = {
+		desc = "GLC"
+		color = map_GLC
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = { owner ?= c:CAS }
+			value = map_CAS
+		}
+		else_if = {
+			limit = { owner ?= c:LON }
+			value = map_LON
+		}
+		else_if = {
+			limit = { owner ?= c:GLC }
+			value = map_GLC
+		}
+	}
+}

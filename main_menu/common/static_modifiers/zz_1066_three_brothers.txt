@@ -1,0 +1,11 @@
+﻿# Three Brothers situation modifiers. monthly_prestige magnitude sits
+# in vanilla's static band (country.txt:140/151/162/341, +-0.025-0.05).
+
+# Alfonso at the court of al-Mamun: a Christian king sheltered by the
+# Muslim king of Toledo, learning the city he will one day take.
+tb_king_in_toledo = {
+	game_data = {
+		category = country
+	}
+	monthly_prestige = -0.05
+}

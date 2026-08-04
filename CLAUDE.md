@@ -16,16 +16,21 @@ most likely need an age of its own eventually.
 
 This file holds the RULES. Current state and architecture live in
 `docs/HANDOFF.md` — read its "NEXT SESSION STARTS WITH" block first; it is
-kept current at every session close. As of 2026-08-03: Phase 1 is done,
+kept current at every session close. As of 2026-08-04: Phase 1 is done,
 **Phase 2's MAP half AND POP half are BOTH CLOSED and confirmed in
-game** — 44 HANDOFF items: every region's borders, rulers and diplomacy
-at 1066 (items 1-41), and the world's populations corrected on top
-(items 42-44 — `06_pops.txt` as the sixth generated target, 1,142
-locations, two invented identifiers: `mozarabic`, `slavic_paganism`).
-What remains is the **SITUATIONS phase** (the 271-year gap: Manzikert
-first — Anatolia's Turkification is now entirely its
-over-time job), opening with a craft-research sweep of every vanilla
-and reference-mod situation. Read this file, then `docs/HANDOFF.md`,
+game** (items 1-44: every region's borders, rulers and diplomacy at
+1066; the world's populations corrected on top — `06_pops.txt` as the
+sixth generated target, two invented identifiers: `mozarabic`,
+`slavic_paganism`), and **the SITUATIONS phase is OPEN and RUNNING**
+(items 45-51): the craft sweep is banked (`docs/SITUATION-CRAFT.md` —
+twelve laws every situation is built under, plus the trap list; read
+it BEFORE writing any situation), the Manzikert flagship's design is
+closed (SITUATION-SPECS.md spec-1 addendum, two-layer architecture —
+Anatolia's Turkification is Layer B's over-time job), and THREE
+situations are live in the repo (norman_conquest, khutba_wars,
+three_brothers — the last two carry the phase's two open PROBES,
+answered by the next test session). `tools/new_situation.py`
+scaffolds new situations. Read this file, then `docs/HANDOFF.md`,
 then `docs/KNOWLEDGE.md`, in that order, before writing anything.
 
 **Scope: the whole map, historically, in two phases.** The target is a real

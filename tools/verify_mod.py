@@ -508,8 +508,8 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
         count += 1
         if _f not in _van_sit:
             probs.append(f"{os.path.basename(_p)}: field '{_f}' appears in no vanilla situation")
-# Armed at 26: norman_conquest + the ARMED khutba_wars (item 50).
-check("situation fields exist in vanilla's field set", count, probs, min_count=26)
+# Armed at 39: NC + khutba_wars + three_brothers, all armed (item 51).
+check("situation fields exist in vanilla's field set", count, probs, min_count=39)
 
 # The situation ALERT rides a THREE-part hint contract (craft sweep
 # 2026-08-04, SITUATION-CRAFT law #9, all three legs vanilla-verified):
@@ -542,8 +542,8 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
             count += 1
             if _want not in keys and _want not in _van_hint_loc:
                 probs.append(f"hint loc key {_want} is not defined")
-# Armed at 8: two situations (NC + khutba, item 49) x (key+tag+2 loc).
-check("situation hint contract complete (tag, object, loc)", count, probs, min_count=8)
+# Armed at 12: three situations (NC/khutba/brothers) x (key+tag+2 loc).
+check("situation hint contract complete (tag, object, loc)", count, probs, min_count=12)
 
 # The ACTION contract: every generic action we ship must carry its
 # name/desc loc pair (generic_actions/readme.txt:3 — "strings for the
@@ -1253,8 +1253,8 @@ for _p in [p for p in txt_files if "/in_game/events/" in p]:
                              f"({_fr.group(1)} !< {_to.group(1)})")
         if not _mc or not (0 < float(_mc.group(1)) <= 100):
             probs.append(f"{_rel}: DHE monthly_chance missing or outside (0, 100]")
-# Armed at 9: NC's .100+ band (4) + khutba_wars' beat chain (5, item 50).
-check("DHE blocks well-formed (tag, window, chance)", count, probs, min_count=9)
+# Armed at 14: NC (4) + khutba (5) + three_brothers (5, item 51).
+check("DHE blocks well-formed (tag, window, chance)", count, probs, min_count=14)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):

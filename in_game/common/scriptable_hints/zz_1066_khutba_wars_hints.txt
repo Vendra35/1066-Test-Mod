@@ -1,0 +1,14 @@
+﻿# Per-situation scriptable hint (the hint contract's third leg,
+# SITUATION-CRAFT law #9; shape = vanilla scripted_hints.txt:721-729).
+# ONE FILE PER SITUATION - the scaffolder's convention (item 51):
+# a deleted situation takes its hint with it.
+
+hint_khutba_wars = {
+	priority = {
+		can_see_situation = situation:khutba_wars
+	}
+	hide = {
+		NOT = { is_situation_active = situation:khutba_wars }
+	}
+	sort_priority = 200 #React now!
+}

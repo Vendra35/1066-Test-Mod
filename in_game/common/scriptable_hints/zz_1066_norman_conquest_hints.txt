@@ -1,0 +1,14 @@
+﻿# Per-situation scriptable hint (the hint contract's third leg,
+# SITUATION-CRAFT law #9; shape = vanilla scripted_hints.txt:721-729).
+# ONE FILE PER SITUATION - the scaffolder's convention (item 51):
+# a deleted situation takes its hint with it.
+
+hint_norman_conquest = {
+	priority = {
+		can_see_situation = situation:norman_conquest
+	}
+	hide = {
+		NOT = { is_situation_active = situation:norman_conquest }
+	}
+	sort_priority = 200 #React now!
+}

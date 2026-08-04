@@ -1,0 +1,9 @@
+﻿hint_three_brothers = {
+	priority = {
+		can_see_situation = situation:three_brothers
+	}
+	hide = {
+		NOT = { is_situation_active = situation:three_brothers }
+	}
+	sort_priority = 200 #React now!
+}
