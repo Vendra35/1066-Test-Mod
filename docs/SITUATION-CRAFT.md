@@ -59,8 +59,15 @@ plus per-country state they can move. Read-back root changes by site:
 **4. Flavour's backbone is `dynamic_historical_event`.** A
 self-scheduling date-window block — 13 uses in the situation corpus
 (✓MS: fall_of_delhi 2, hundred_years_war 8, hussite_wars 2,
-rise_of_the_ottomans 1), 3,182 across vanilla's event tree, no
-`effects.log` entry. Anno 1644 fills its moved-date world with 333 DHE
+rise_of_the_ottomans 1), 3,171 in `events/DHE/` (159 files, ✓MS), no
+`effects.log` entry. PLACEMENT is organization, not mechanism (✓MS,
+user question 2026-08-04): situation-attached DHE flavour lives IN
+the situation's own `events/situations/<key>.txt` (HYW's Robert de
+Artois chain is the model), while `events/DHE/` holds situation-FREE
+country flavour — zero of its 159 files carry
+`category = situation_event`. A future free-flavour band for the
+276-year age_1 goes in a DHE-style tree; a situation's band stays
+with its situation. Anno 1644 fills its moved-date world with 333 DHE
 blocks opening `from = 1644.1.1`. No `mean_time_to_happen` exists
 anywhere; the idiom is a weighted `on_monthly` `random_list` with an
 empty-weight idler. National Destinies is the degenerate case — 1,601
