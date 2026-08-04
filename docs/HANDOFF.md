@@ -2521,6 +2521,61 @@ S-Germany/Italy all match the landed designs).
    contract 4 → 8. NO CLICK TOUR — the situation cannot fire; the
    tour comes with the arming increment.
 
+50. **THE KHUTBA WARS ARMED (LANDED 2026-08-04, needs game test —
+   AND CARRIES THE RUNTIME-REFORM PROBE).** The full machine over
+   item 49's skeleton, every construct cited: can_start 1069 +
+   the three courts; on_start grants **`abbasid_khutba_reform` at
+   RUNTIME** (`add_reform` effects.log:379, usage shape
+   flavor_ach.txt:1337; the reform is the khutba pattern's EIGHTH
+   use, defined beside its seven siblings) and raises the −1000
+   opinion wall (`opinion_khutba_rivals`, NC's proven pair);
+   can_end is the custom_tooltip OR-ladder (settled mid-1077 /
+   expired 1080 — CRAFT technique #2, first in-repo use); visible =
+   five tags + `sub_continent:middle_east` (fall_of_delhi's shape);
+   map = NC's proven branch chain in the BANNER colours. The beat
+   chain: .1 intro (five courts) → **.10 the Friday (DHE 1071.4-8):
+   MEC's three-way auction** — a (historical, ai 100): FAT's ring
+   broken from the OVERLORD scope (`cancel_subject`,
+   flavor_ach.txt:609), ABS's joined from the subject
+   (`make_subject_of = { target type = subject_type:tributary }`,
+   conquistador.txt:223), three timed modifiers land (magnitudes in
+   vanilla's ±0.05 monthly_prestige band, country.txt:140-341) —
+   b: stay with Cairo — c: independence → .11 the Fatimid counter
+   (gold flag, set_variable-with-years, HYW:483-489) → .20 Medina
+   (ABS) / .30 the patron's letter (YEM, pressure flag) → .40 the
+   reversal (DHE 1074-75, chance 50, gated on the flags — no
+   courtship, no reversal) → .50 the permanent switch (DHE 1077,
+   permanent modifier) → .90 closing from on_ended. AI railroaded
+   ai_chance 100/0; the player refuses freely everywhere
+   (Human-choice rule). **A WRITER BUG CAUGHT IN REVIEW:** the
+   bash-heredoc route ate an escape level and two loc values split
+   onto REAL second lines (the exact one-physical-line law) —
+   fixed by eye before the harness ran; python writer scripts go
+   through Write-tool files from now on, not heredocs. Floors:
+   situation fields 19 → 26, DHE 4 → 9; the tributary-gate check
+   demanded the new reform's loc pair (added: "The Khutba
+   Restored"). Harness all green.
+   TIK TURU (bankalı, ~5 dk — HIZ 5 gerektirir, gözlemci ya da MEC;
+   bu bandın beat'leri yıllar sonrasında):
+   1. **1069 başı:** situation İLK aylık tick'te doğar — bildirim,
+      panel (iki kart + hint butonu), harita modunda SİYAH (ABS) /
+      BEYAZ (FAT) / ALTIN (MEC) lejantı.
+   2. **1071 Nisan-Ağustos: "The Friday the Name Changed" MEC'e
+      düşer** — AI a'yı seçer. **PROBUN CEVABI BURADA:** MEC'in
+      efendisi ABS olur — ilişki TRIBUTARY mi kaldı, VASSAL'a mı
+      düştü? (Vassal = runtime add_reform rotası ÖLÜ → reform ABS
+      setup satırına taşınır, KNOWLEDGE'a yasa yazılır.)
+   3. Zincir: FAT'a "Gold for a Sentence" (+Shamed Caliphate
+      modifier'ı), ABS'ye "The Caliph's One Good Day" + Medine
+      event'i, YEM'e "The Patron's Letter".
+   4. **1074-75:** %50 şansla "The Reversal" (yalnız 11a/30a
+      bayrakları atıldıysa) — MEC Cairo'ya döner; **1077:** kalıcı
+      geçiş, MEC'te kalıcı "The Khutba for Baghdad".
+   5. **1077 ortası+:** situation biter, .90 kapanış her izleyiciye,
+      kanaat duvarı kalkar (FAT-ABS opinion normale döner).
+   6. Regresyon: NC situation'ı ve error.log sınıfları değişmemiş;
+      `:520` reform-loc sınıfı sıfır.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
 FIRST; the 2026-08-03 block below is now HISTORICAL too):**
 
@@ -2541,19 +2596,17 @@ mechanisms the later situations need are now proven in-repo (static
 proof; game test rides the accumulated tour).** THE FORK IS
 DECIDED — (a), by user delegation ("sen ne öneriyorsan"): NC stops
 at increments 1-3, spec-8's 1067-1072 extension moves to the
-phase-end polish pass. **The khutba wars skeleton is LANDED, INERT
-(item 49 — the scaffolder grew the hint triple and shed two dead
-values doing it).** NEXT: ARM THE KHUTBA MACHINE — flip the two
-`always = no` gates (can_start ~1069, can_end after the permanent
-switch), wire the Friday chain (.10/.11 via DHE windows, the item-48
-tool), the tributary surgery (cancel_subject on FAT's ring +
-make_subject_of into ABS's — arg shapes from vanilla under the
-citation rule) with the ABS runtime-`add_reform` PROBE (the spec's
-one open mechanism question), map_color/legend blocks (NC's proven
-shape, the white/black/gold colors are minted), the three timed
-modifiers + opinion wall, and real loc prose over the TODO stubs;
-min_counts and the click tour ride that commit. Then three brothers
-→ Welsh → Godred → Manzikert. Standing owed items unchanged: decision 3's
+phase-end polish pass. **The khutba wars are
+ARMED (item 50 — the full machine: DHE beat chain, tributary
+surgery, the runtime-`add_reform` probe, banner-colour map, real
+prose; click tour banked there — NOTE it needs speed-5 play to 1071+
+and answers the PROBE: tributary or vassal).** Accumulated test debt
+now items 46-48 + 50 (~11 dk). NEXT: **THE THREE BROTHERS (spec 5)**
+— skeleton via the (now hint-aware) scaffolder, then arm: vanilla's
+own terms are the timeline, El Cid + Urraca + Elvira to author
+(the lon_urraca trap is in the spec), and it carries **the
+DECLARATION-LOCK measurement** (first war declared after year 1 —
+gates specs 2/6/8/11/12). Then Welsh → Godred → Manzikert. Standing owed items unchanged: decision 3's
 full-conversion call, the Wendish/Holstein territorial seam, ZAN's
 shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
 renames; the grand-test OWED list rides the 2026-08-03 block below.
