@@ -2427,13 +2427,16 @@ S-Germany/Italy all match the landed designs).
    bullets iconised, GetCountry names resolved); tour 1 effectively
    confirmed (the hint is selected and rendered). Remaining: the
    hide clause after 1067 (tour 3's second half) and error.log.
-   ALSO BANKED FROM THE SAME FRAME, WATCH class: at 1 Oct the NOR
-   war is LIVE but the NRM war is NOT, while 16_wars ships both —
-   round 6 + the grand tests closed GREEN with this machine and the
-   measured monthly retry re-lands NRM on 1 Nov; if a fuller run
-   shows Hastings (+13) and the coronation (+85) on schedule this is
-   the known-good state, else investigate the NRM 16_wars entry
-   first (INDEX has the full note).
+   ALSO FROM THE SAME FRAME — a WATCH raised and RESOLVED THE SAME
+   DAY by the user's own play: the NRM war ships LIVE at start
+   alongside NOR's, the engine PEACES it out after a while (the
+   no-engagement auto-peace class), the measured monthly retry
+   re-declares, **and the union still lands on schedule** ("ama
+   sonra unionı falan alıyor"). The 1-Oct not-at-war frame is the
+   KNOWN-GOOD state mid-cycle, not a defect. Behaviour now recorded:
+   a 16_wars pre-start war is a BRIDGE, not a guarantee — the
+   monthly retry is what makes the railroad hold, which is exactly
+   why it stays in the machine.
 
 47. **NC v2 INCREMENT 2 — THE FIRST SITUATION ACTION (LANDED
    2026-08-04, needs game test).** `nc_muster_the_fyrd`, the repo's
