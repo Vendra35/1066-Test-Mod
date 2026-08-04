@@ -307,6 +307,30 @@ Caesar; "Sell the Bronze Doors" (Parapinakes); the bride from Alania
 refuse the marriage, refuse battle, refuse the blinding, buy Suleiman
 or fight two usurpers; SEL may ransom or keep Romanos.
 
+**DESIGN ADDENDUM (2026-08-04 — decisions delegated by the user and
+taken; HANDOFF item 46). The architecture is TWO-LAYER:**
+- **D1** Layer A (this spec) starts at GAME START with a phase-0
+  "sick empire" ambience — protagonist tempo for BYZ from day 1
+  (CRAFT law #5); the 1067+ beats ride the phase machine, not
+  `can_start`.
+- **D2** Phase idiom: beat-event-driven FLOAT PHASE (the Tordesillas
+  shape) + a clamped 0-100 "Anatolian collapse" meter (the
+  italian_wars shape) that stages the beylik release and paints to
+  the map via `lerp` (the only number-painter, CRAFT law).
+- **D3** Layer B — the Turkification — is its OWN quiet situation:
+  `is_data_map` + `lerp`, the black_death shape, low tempo, hosting
+  the `local_pop_conversion_speed/_modifier` family
+  (POP-PHASE-PACKAGE §C.3) and, later, Danishmend/Rum beats. Layer
+  A's `on_ended` CONFIGURES it first, THEN calls
+  `activate_situation` (the on-start-runs-first trap, CRAFT traps).
+- **D4** Action prices: BYZ actions in `scaled_gold` (+stability at
+  the harsh end) — the theme is treasury-vs-themes (CRAFT law #7);
+  SEL's Romanos ransom choice is free but consequential.
+- **D5** Rum's tag is **NIC** — Suleiman established at Nicaea 1077,
+  the historical seat; verified-free id (this spec's Mechanics row).
+- **D6** The full design package is written when the build turn
+  arrives, after the cheap five teach the tools (priority table).
+
 ### 2. THE NORMANS IN THE SOUTH — 1066-1091 · L
 
 **Purpose:** twelve knights eat an island and a mainland; the player

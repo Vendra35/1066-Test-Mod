@@ -2387,23 +2387,59 @@ S-Germany/Italy all match the landed designs).
    family, POP-PHASE-PACKAGE §C.3). The Manzikert design conversation
    is OPEN as of this session.
 
+46. **NC v2 INCREMENT 1 — THE HINT TRIPLE (LANDED 2026-08-04, needs
+   game test; the situations phase's first content commit, carrying
+   the first of the new harness checks).** The Norman Conquest now
+   ships the full three-part hint contract (SITUATION-CRAFT law #9):
+   `hint_tag = hint_norman_conquest` in the def; the scriptable_hints
+   object in NEW `in_game/common/scriptable_hints/zz_1066_hints.txt`
+   (BOM'd like vanilla's 1/1 — dir verified against vanilla; HYW's
+   `scripted_hints.txt:721-729` shape verbatim, key changed); the loc
+   family — 8 rows appended to `1066_norman_conquest_l_english.yml`
+   (base + `_hint_text` + `_hint_text_1..3` + the three advisor
+   voices; vanilla's exact key shapes, `hints_l_english.yml:593-603`);
+   and the GUI hint pair on the END_REQUIREMENTS card
+   (`rise_of_the_ottomans.gui:67-73` verbatim — `visible_hint {}` +
+   `action_tooltip` opening the hints view; the old "no hint
+   blockoverrides" comment retired WITH its reason). HARNESS: new
+   check **"situation hint contract complete (tag, object, loc)"**,
+   armed `min_count=4`, resolves against ours ∪ vanilla, PROVEN BY
+   BREAKING BOTH WAYS (bogus tag → FAIL on the object+loc arms;
+   stripped tag → FAIL on the no-hint arm; restored → all green).
+   ALSO THIS SESSION: **MANZİKERT DESIGN DECISIONS D1-D6 taken under
+   the user's full delegation** — banked as the spec-1 DESIGN
+   ADDENDUM in SITUATION-SPECS.md.
+   TIK TURU (sonraki test oturumuna bankalı, ~2 dk):
+   1. **Situation panelini aç** (1 Ekim tick'i sonrası) →
+      END_REQUIREMENTS kartında HİNT BUTONU GÖRÜNÜR (önceden yoktu;
+      CARD 1'de buton YOK — vanilla ikincil kart şekli).
+   2. **Butona tıkla** → hints lateral view açılır, "The Norman
+      Conquest" hint'i SEÇİLİ; metin üç parça, "#T" başlıkları
+      render edilmiş (ham # YOK), NRM/NOR/ENG adları çözülmüş.
+   3. **Alarm/hint listesi:** situation aktifken hint listede;
+      situation bitince (1067 başı) KAYBOLUR (hide klozu).
+   4. Regresyon: panelin iki kartı, harita modu, legend değişmemiş;
+      error.log'da hint/loc sınıfı yeni satır yok.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
 FIRST; the 2026-08-03 block below is now HISTORICAL too):**
 
 THE SITUATIONS PHASE IS OPEN AND ITS CRAFT SWEEP IS BANKED (item 45:
 `docs/SITUATION-CRAFT.md` = the HOW, `docs/SITUATION-SPECS.md` = the
 WHAT, raw reports in `docs/research/2026-08-04/`; the five craft-sweep
-decisions are recorded in the item). **NEXT MOVE: finish the MANZIKERT
-DESIGN CONVERSATION with the user** — the two-layer architecture is
-approved (short dramatic situation 1067-1081 driving vanilla's
-`byzantine_succession_crisis` + the long `local_pop_conversion` layer);
-open sub-questions on the table: phase idiom (from CRAFT law #3's
-five), action price currency (law #7 — the theme is the currency),
-BYZ+SEL protagonist tempo (law #5), the beylik release staging, and
-where the two layers hand over. **THEN BUILD in SPECS priority order —
-NC v2 first** (concrete scope: hint triple, 1-2 actions, DHE flavour
-layer, phase variable, panel richness; the new harness checks ride
-that commit). Standing owed items unchanged: decision 3's
+decisions are recorded in the item). **THE MANZIKERT DESIGN
+CONVERSATION IS CLOSED — decisions D1-D6 taken 2026-08-04 under the
+user's full delegation ("sana bırakıyorum"), banked as the spec-1
+DESIGN ADDENDUM in SITUATION-SPECS.md** (two layers; game-start
+ambient phase 0; float phase + 0-100 collapse meter; Layer B its own
+is_data_map situation configured-then-activated from A's on_ended;
+scaled_gold pricing; Rum = NIC). **BUILD is underway in SPECS
+priority order: NC v2 increment 1 — the hint triple — LANDED (item
+46, click tour banked there).** NEXT: NC v2's remaining scope (1-2
+situation actions — the panel lists them free; a DHE flavour layer;
+the phase variable; panel richness; spec 8's beats and cast with the
+Henry-I bug fix), then khutba → three brothers → Welsh → Godred →
+the Manzikert flagship. Standing owed items unchanged: decision 3's
 full-conversion call, the Wendish/Holstein territorial seam, ZAN's
 shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
 renames; the grand-test OWED list rides the 2026-08-03 block below.
