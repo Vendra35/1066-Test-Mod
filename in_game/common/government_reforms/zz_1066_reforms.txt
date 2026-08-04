@@ -199,3 +199,26 @@ liao_ordo_reform = {
 
 	years = 4
 }
+
+# The khutba read for the Abbasid caliph — the EIGHTH use of the khutba
+# pattern and the first granted at RUNTIME: the khutba_wars situation's
+# on_start hands it to ABS via add_reform (effects.log:379, usage shape
+# flavor_ach.txt:1337) so Mecca's 1071 switch can attach to the Abbasid
+# ring as a tributary. THE PROBE (spec 4): setup-assigned reforms pass
+# the tributary gate (measured 2026-07-29); the runtime route is
+# unobserved until this situation's first test. If MEC arrives as a
+# vassal instead, move this to ABS's setup reforms line.
+abbasid_khutba_reform = {
+	potential = {
+		tag = ABS
+	}
+	allow = {
+	}
+
+	country_modifier = {
+		allow_tributary_subject = yes
+		government_reform_slots = 1
+	}
+
+	years = 4
+}

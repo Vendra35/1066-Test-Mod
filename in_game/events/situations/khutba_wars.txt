@@ -1,8 +1,18 @@
-﻿# The Khutba Wars — SCAFFOLD events. NO event-level triggers (the round-2
-# class); guards go inside options as if/limit.
+﻿namespace = khutba_wars
+
+# The Khutba Wars — spec 4 event chain, ARMED 2026-08-04.
+# .1 intro and .11/.90 are DIRECT-fired (on_start / .10a / on_ended);
+# .10/.20/.30/.40/.50 ride dynamic_historical_event windows
+# (hundred_years_war.txt:452-457 shape). Flavour events carry triggers
+# per the resolved law; the AI is railroaded by ai_chance 100/0, the
+# player chooses freely (Human-choice rule, CLAUDE.md).
+# Effect shapes: cancel_subject from the OVERLORD scope
+# (flavor_ach.txt:609), make_subject_of from the subject-to-be
+# (conquistador.txt:223), set_variable-with-years
+# (hundred_years_war.txt:483-489).
 
 ######################################
-# 1 — the intro - the pressure on the Sharif
+# 1 — the intro, to the five courts
 ######################################
 
 khutba_wars.1 = {
@@ -21,7 +31,7 @@ khutba_wars.1 = {
 }
 
 ######################################
-# 10 — the Friday the name changed
+# 10 — the Friday the name changed (MEC, 1071)
 ######################################
 
 khutba_wars.10 = {
@@ -34,13 +44,73 @@ khutba_wars.10 = {
 
 	image = "gfx/interface/illustrations/situation/_default.dds"
 
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = MEC
+		from = 1071.4.1
+		to = 1071.8.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		is_subject_of = c:FAT
+		country_exists = c:ABS
+	}
+
 	option = {
 		name = khutba_wars.10.a
+		historical_option = yes
+		c:FAT ?= { cancel_subject = c:MEC }
+		make_subject_of = { target = c:ABS type = subject_type:tributary }
+		add_country_modifier = {
+			modifier = kw_khutba_for_baghdad
+			years = 6
+			mode = add
+		}
+		c:ABS ?= {
+			add_country_modifier = {
+				modifier = kw_the_caliphs_good_day
+				years = 4
+				mode = add
+			}
+			trigger_event_non_silently = { id = khutba_wars.20 days = { 30 60 } }
+		}
+		c:FAT ?= {
+			add_country_modifier = {
+				modifier = kw_the_shamed_caliphate
+				years = 4
+				mode = add
+			}
+			trigger_event_non_silently = { id = khutba_wars.11 days = { 3 5 } }
+		}
+		c:YEM ?= {
+			trigger_event_non_silently = { id = khutba_wars.30 days = { 20 40 } }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = khutba_wars.10.b
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 0
+		}
+	}
+
+	option = {
+		name = khutba_wars.10.c
+		c:FAT ?= { cancel_subject = c:MEC }
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 0
+		}
 	}
 }
 
 ######################################
-# 11 — gold for a sentence - the Fatimid counter
+# 11 — gold for a sentence, the Fatimid counter (chained from .10a)
 ######################################
 
 khutba_wars.11 = {
@@ -55,11 +125,37 @@ khutba_wars.11 = {
 
 	option = {
 		name = khutba_wars.11.a
+		historical_option = yes
+		c:MEC ?= {
+			set_variable = {
+				name = kw_gold_offered
+				years = 8
+			}
+		}
+		ai_chance = {
+			base = 60
+		}
+	}
+
+	option = {
+		name = khutba_wars.11.b
+		add_prestige = prestige_mild_penalty
+		ai_chance = {
+			base = 20
+		}
+	}
+
+	option = {
+		name = khutba_wars.11.c
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 20
+		}
 	}
 }
 
 ######################################
-# 20 — Medina follows Mecca
+# 20 — Medina follows Mecca (ABS)
 ######################################
 
 khutba_wars.20 = {
@@ -72,13 +168,26 @@ khutba_wars.20 = {
 
 	image = "gfx/interface/illustrations/situation/_default.dds"
 
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ABS
+		from = 1071.6.1
+		to = 1072.6.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		c:MEC ?= { is_subject_of = c:ABS }
+	}
+
 	option = {
 		name = khutba_wars.20.a
+		add_prestige = prestige_mild_bonus
 	}
 }
 
 ######################################
-# 30 — the patron's letter, to Yemen
+# 30 — the patron's letter, to Yemen (YEM)
 ######################################
 
 khutba_wars.30 = {
@@ -91,13 +200,42 @@ khutba_wars.30 = {
 
 	image = "gfx/interface/illustrations/situation/_default.dds"
 
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = YEM
+		from = 1071.5.1
+		to = 1072.6.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		c:MEC ?= { is_subject_of = c:ABS }
+	}
+
 	option = {
 		name = khutba_wars.30.a
+		historical_option = yes
+		c:MEC ?= {
+			set_variable = {
+				name = kw_yemeni_pressure
+				years = 8
+			}
+		}
+		ai_chance = {
+			base = 70
+		}
+	}
+
+	option = {
+		name = khutba_wars.30.b
+		ai_chance = {
+			base = 30
+		}
 	}
 }
 
 ######################################
-# 40 — the reversal
+# 40 — the reversal (MEC, 1074-75, only if Cairo courted the Sharif)
 ######################################
 
 khutba_wars.40 = {
@@ -110,13 +248,46 @@ khutba_wars.40 = {
 
 	image = "gfx/interface/illustrations/situation/_default.dds"
 
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = MEC
+		from = 1074.6.1
+		to = 1075.12.1
+		monthly_chance = 50
+	}
+
+	trigger = {
+		is_subject_of = c:ABS
+		country_exists = c:FAT
+		OR = {
+			has_variable = kw_gold_offered
+			has_variable = kw_yemeni_pressure
+		}
+	}
+
 	option = {
 		name = khutba_wars.40.a
+		historical_option = yes
+		c:ABS ?= { cancel_subject = c:MEC }
+		make_subject_of = { target = c:FAT type = subject_type:tributary }
+		remove_country_modifier = kw_khutba_for_baghdad
+		c:FAT ?= { remove_country_modifier = kw_the_shamed_caliphate }
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = khutba_wars.40.b
+		add_prestige = prestige_mild_bonus
+		ai_chance = {
+			base = 0
+		}
 	}
 }
 
 ######################################
-# 50 — the permanent switch
+# 50 — the permanent switch (MEC, 1077)
 ######################################
 
 khutba_wars.50 = {
@@ -129,13 +300,45 @@ khutba_wars.50 = {
 
 	image = "gfx/interface/illustrations/situation/_default.dds"
 
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = MEC
+		from = 1077.1.1
+		to = 1078.6.1
+		monthly_chance = 100
+	}
+
+	trigger = {
+		is_subject_of = c:FAT
+		country_exists = c:ABS
+	}
+
 	option = {
 		name = khutba_wars.50.a
+		historical_option = yes
+		c:FAT ?= { cancel_subject = c:MEC }
+		make_subject_of = { target = c:ABS type = subject_type:tributary }
+		add_country_modifier = {
+			modifier = kw_khutba_for_baghdad
+			years = -1
+			mode = add
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = khutba_wars.50.b
+		add_stability = stability_mild_bonus
+		ai_chance = {
+			base = 0
+		}
 	}
 }
 
 ######################################
-# 90 — the closing - the age of the black banners
+# 90 — the closing, to every viewer (fired from on_ended)
 ######################################
 
 khutba_wars.90 = {

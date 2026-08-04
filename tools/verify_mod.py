@@ -508,8 +508,8 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
         count += 1
         if _f not in _van_sit:
             probs.append(f"{os.path.basename(_p)}: field '{_f}' appears in no vanilla situation")
-# Armed at 19: norman_conquest (7 with hint_tag) + khutba_wars (item 49).
-check("situation fields exist in vanilla's field set", count, probs, min_count=19)
+# Armed at 26: norman_conquest + the ARMED khutba_wars (item 50).
+check("situation fields exist in vanilla's field set", count, probs, min_count=26)
 
 # The situation ALERT rides a THREE-part hint contract (craft sweep
 # 2026-08-04, SITUATION-CRAFT law #9, all three legs vanilla-verified):
@@ -1253,8 +1253,8 @@ for _p in [p for p in txt_files if "/in_game/events/" in p]:
                              f"({_fr.group(1)} !< {_to.group(1)})")
         if not _mc or not (0 < float(_mc.group(1)) <= 100):
             probs.append(f"{_rel}: DHE monthly_chance missing or outside (0, 100]")
-# Armed at 4: the Norman Conquest .100+ flavour band.
-check("DHE blocks well-formed (tag, window, chance)", count, probs, min_count=4)
+# Armed at 9: NC's .100+ band (4) + khutba_wars' beat chain (5, item 50).
+check("DHE blocks well-formed (tag, window, chance)", count, probs, min_count=9)
 
 # (2) Named-colour keys must not shadow vanilla's. map_NRM was redefined
 # and silently repainted vanilla's Normandy AND the norman CULTURE (D3):

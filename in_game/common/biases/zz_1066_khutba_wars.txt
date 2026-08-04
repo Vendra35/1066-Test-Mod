@@ -1,0 +1,8 @@
+﻿# Cloned from opinion_hyw_enemies
+# (biases/01_opinion_scripted_diplomacy.txt:544, value = -1000) via our
+# proven opinion_norman_conquest_enemies: total hostility between the
+# caliphates while the pulpits are contested; removed in on_ended.
+
+opinion_khutba_rivals = {
+	value = -1000
+}

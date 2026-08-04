@@ -1,0 +1,29 @@
+﻿# Khutba wars situation modifiers. monthly_prestige magnitudes sit in
+# vanilla's own static band (country.txt:140/151/162/341 run +-0.025 to
+# +-0.05); stability_investment is our proven the_norman_yoke tag.
+
+# Mecca reads the prayer for Baghdad: the Sharif's standing rises with
+# every returning pilgrim.
+kw_khutba_for_baghdad = {
+	game_data = {
+		category = country
+	}
+	monthly_prestige = 0.05
+}
+
+# Baghdad's name in the holy cities: the caliph's one good day, lasting.
+kw_the_caliphs_good_day = {
+	game_data = {
+		category = country
+	}
+	monthly_prestige = 0.05
+}
+
+# Cairo dropped from the Friday prayer: every pilgrim carries the shame.
+kw_the_shamed_caliphate = {
+	game_data = {
+		category = country
+	}
+	monthly_prestige = -0.05
+	stability_investment = -0.05
+}

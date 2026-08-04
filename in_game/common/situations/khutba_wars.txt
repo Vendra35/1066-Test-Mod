@@ -1,18 +1,12 @@
-﻿# The Khutba Wars — SCAFFOLD. The situation owns its own lifecycle
-# (can_start opens, on_start schedules, can_end closes — the on_action
-# route did nothing in game; KNOWLEDGE.md). Observed: situations spawn
-# on the FIRST MONTHLY TICK after can_start passes, not on the day
-# itself — anchor day offsets to that tick and recalibrate in game.
-#
-# AUTHOR CHECKLIST (every item cost a Norman round):
-# - RAILROAD beats carry NO event-level trigger (guards go INSIDE
-#   options as if/limit); FLAVOR events MAY carry one — the resolved
-#   trigger law, docs/EVENT-SYSTEM.md 4.3
-# - wars that must exist in the opening weeks are SHIPPED in 16_wars,
-#   never declared from script (the round-5 lesson)
-# - CBs are granted in on_start, BEFORE any legality check
-# - prev is ONE scope hop; two hops down use save_scope_as
-# - every c:TAG link is ?=-guarded
+﻿# The Khutba Wars — spec 4, ARMED 2026-08-04 (HANDOFF item 50).
+# The situation owns its lifecycle; the beat chain is DHE-scheduled
+# (the .100-band tool from item 48) so the machine needs no on_monthly.
+# THE PROBE THIS SITUATION CARRIES: abbasid_khutba_reform is granted at
+# RUNTIME in on_start (add_reform, effects.log:379, usage
+# flavor_ach.txt:1337) — the setup-assigned route is measured, the
+# runtime route is NOT; if MEC's 1071 switch to the ABS ring silently
+# downgrades to vassal (the 2026-07-29 gate failure class), the runtime
+# route is dead and the reform moves to ABS's setup line.
 
 khutba_wars = {
 	monthly_spawn_chance = 1
@@ -20,45 +14,129 @@ khutba_wars = {
 	hint_tag = hint_khutba_wars
 
 	can_start = {
-		always = no
-		# AUTHOR GATE — replace with the real gate, e.g.:
-		# current_date >= 1066.9.15
-		# country_exists = c:XXX
+		current_date >= 1069.1.1
+		country_exists = c:MEC
+		country_exists = c:FAT
+		country_exists = c:ABS
 	}
 
 	on_start = {
-		# the intro - the pressure on the Sharif
-		trigger_event_non_silently = { id = khutba_wars.1 }
-		# the Friday the name changed
-		trigger_event_non_silently = { id = khutba_wars.10 }
-		# gold for a sentence - the Fatimid counter
-		trigger_event_non_silently = { id = khutba_wars.11 }
-		# Medina follows Mecca
-		trigger_event_non_silently = { id = khutba_wars.20 }
-		# the patron's letter, to Yemen
-		trigger_event_non_silently = { id = khutba_wars.30 }
-		# the reversal
-		trigger_event_non_silently = { id = khutba_wars.40 }
-		# the permanent switch
-		trigger_event_non_silently = { id = khutba_wars.50 }
-		# the closing - the age of the black banners
-		trigger_event_non_silently = { id = khutba_wars.90 }
+		# The tributary gate for the Abbasid ring, granted at runtime —
+		# the eighth use of the khutba reform pattern and its first
+		# runtime grant.
+		c:ABS ?= {
+			add_reform = government_reform:abbasid_khutba_reform
+		}
+		# The opinion wall between the caliphates (NC's proven pair).
+		c:FAT ?= {
+			add_opinion_mutual_effect = {
+				modifier = opinion_khutba_rivals
+				target = c:ABS
+			}
+		}
+		c:FAT ?= { trigger_event_non_silently = { id = khutba_wars.1 } }
+		c:ABS ?= { trigger_event_non_silently = { id = khutba_wars.1 } }
+		c:MEC ?= { trigger_event_non_silently = { id = khutba_wars.1 } }
+		c:YEM ?= { trigger_event_non_silently = { id = khutba_wars.1 } }
+		c:SEL ?= { trigger_event_non_silently = { id = khutba_wars.1 } }
 	}
 
 	can_end = {
-		always = no
-		# AUTHOR GATE — the real end conditions render in the panel's
-		# END_REQUIREMENTS card.
+		# The custom_tooltip OR-ladder renders in the panel via
+		# GetEndConditions (SITUATION-CRAFT adopted technique #2).
+		OR = {
+			custom_tooltip = {
+				text = khutba_wars_end_settled_tt
+				current_date >= 1077.6.1
+				c:MEC ?= { is_subject_of = c:ABS }
+			}
+			custom_tooltip = {
+				text = khutba_wars_end_expired_tt
+				current_date >= 1080.1.1
+			}
+		}
+	}
+
+	visible = {
+		OR = {
+			tag = FAT
+			tag = ABS
+			tag = MEC
+			tag = YEM
+			tag = SEL
+			capital ?= { sub_continent = sub_continent:middle_east }
+		}
 	}
 
 	on_monthly = {
 	}
 
 	on_ended = {
+		c:FAT ?= {
+			remove_opinion_mutual_effect = {
+				modifier = opinion_khutba_rivals
+				target = c:ABS
+			}
+		}
+		every_country = {
+			limit = { can_see_situation = situation:khutba_wars }
+			trigger_event_non_silently = khutba_wars.90
+		}
 	}
 
-	# map_color / legend_key / secondary_map_color: clone the exact
-	# shapes from in_game/common/situations/norman_conquest.txt (proven
-	# in game) once the sides are final. Named colors for the sides are
-	# in main_menu/common/named_colors/zz_1066_khutba_wars_colors.txt.
+	# Map layer, norman_conquest.txt's proven branch shape. The war of
+	# the banners: Abbasid BLACK, Fatimid WHITE, Mecca gold.
+	map_color = {
+		if = {
+			limit = { owner ?= c:MEC }
+			value = map_MEC
+		}
+		else_if = {
+			limit = { owner ?= c:ABS }
+			value = map_ABS
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:ABS } }
+			value = map_ABS
+		}
+		else_if = {
+			limit = { owner ?= c:FAT }
+			value = map_FAT
+		}
+		else_if = {
+			limit = { owner ?= { is_subject_or_below_of = c:FAT } }
+			value = map_FAT
+		}
+		else = {
+			value = define:NMapColors|DEFAULT_COLOR
+		}
+	}
+
+	legend_key = {
+		desc = "ABS"
+		color = map_ABS
+	}
+	legend_key = {
+		desc = "FAT"
+		color = map_FAT
+	}
+	legend_key = {
+		desc = "MEC"
+		color = map_MEC
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = { owner ?= c:MEC }
+			value = map_MEC
+		}
+		else_if = {
+			limit = { owner ?= c:ABS }
+			value = map_ABS
+		}
+		else_if = {
+			limit = { owner ?= c:FAT }
+			value = map_FAT
+		}
+	}
 }
