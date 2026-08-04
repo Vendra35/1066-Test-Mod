@@ -2493,6 +2493,34 @@ S-Germany/Italy all match the landed designs).
    5. Regresyon: .1-.90 makinesi aynı; error.log'da yeni event
       sınıfı satır yok.
 
+49. **THE KHUTBA WARS SKELETON (LANDED 2026-08-04, INERT — NO test
+   debt: both author gates are `always = no`).** Spec 4 opens per
+   fork decision (a): NC stops at increments 1-3, spec-8's extension
+   deferred to the phase-end polish pass. Ground verified before
+   generation: all five thrones seated exactly as spec'd
+   (mec_muhammad_abu_hashim, fat_maad_al_mustansir,
+   abs_abdallah_al_qaim, yem_ali_al_sulayhi, sel_alp_arslan), MEC is
+   FAT's tributary (`12_diplomacy.txt:425`), and build_setup already
+   ships the reform CLASS the switch needs (`seljuk_khutba_reform` /
+   `fatimid_khutba_reform` — `allow_tributary_subject`; the ABS
+   runtime-`add_reform` probe rides the arming increment). Scaffold
+   = `tools/new_situation.py` with a new khutba_wars SPECS entry —
+   sides FAT WHITE / ABS BLACK (the dynasties' actual banner
+   colours) / MEC gold; eight event stubs (.1 intro, .10 the Friday,
+   .11 the Fatimid counter, .20 Medina, .30 the patron's letter,
+   .40 the reversal, .50 the permanent switch, .90 closing). **THE
+   HARNESS CAUGHT THREE SCAFFOLDER DEFECTS ON FIRST RUN** — the tool
+   predates the hint law and the D4/D5 audits: no `hint_tag`
+   (hint-contract check), dead `fontsize_medium` (zero vanilla uses;
+   AUDIT D4 fixed NC's FILE but the template kept the value — tool
+   drift), and `visible_hint {}` beside an EMPTY `onaction_hint {}`
+   (the D5 dead-button trap, flagged by the .gui reference check).
+   All three fixed in khutba's files AND in the generator, which now
+   emits the full hint triple (six files; demo re-proven to
+   scratchpad). Floors raised: situation fields 5 → 19, hint
+   contract 4 → 8. NO CLICK TOUR — the situation cannot fire; the
+   tour comes with the arming increment.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
 FIRST; the 2026-08-03 block below is now HISTORICAL too):**
 
@@ -2510,15 +2538,22 @@ priority order: NC v2 increments 1-3 LANDED — the hint triple (item
 46), the first situation action (item 47), the first DHE band (item
 48), click tours banked in all three; the three tool-teaching
 mechanisms the later situations need are now proven in-repo (static
-proof; game test rides the accumulated tour).** THE FORK (user
-question, 2026-08-04, "NC çok kısa sürüyor — o kadar eklemek
-mantıklı mı"): (a) STOP NC here — the tools are taught, the DHE
-band already outlives the short situation by design — defer spec
-8's 1067-1072 extension (Edgar/Harrying/Sweyn/Ely/Abernethy, the
-thing that would make NC LONG) and move to khutba → three brothers;
-or (b) build the extension now per the original order. Answer
-pending; either way the Manzikert flagship comes after the cheap
-five. Standing owed items unchanged: decision 3's
+proof; game test rides the accumulated tour).** THE FORK IS
+DECIDED — (a), by user delegation ("sen ne öneriyorsan"): NC stops
+at increments 1-3, spec-8's 1067-1072 extension moves to the
+phase-end polish pass. **The khutba wars skeleton is LANDED, INERT
+(item 49 — the scaffolder grew the hint triple and shed two dead
+values doing it).** NEXT: ARM THE KHUTBA MACHINE — flip the two
+`always = no` gates (can_start ~1069, can_end after the permanent
+switch), wire the Friday chain (.10/.11 via DHE windows, the item-48
+tool), the tributary surgery (cancel_subject on FAT's ring +
+make_subject_of into ABS's — arg shapes from vanilla under the
+citation rule) with the ABS runtime-`add_reform` PROBE (the spec's
+one open mechanism question), map_color/legend blocks (NC's proven
+shape, the white/black/gold colors are minted), the three timed
+modifiers + opinion wall, and real loc prose over the TODO stubs;
+min_counts and the click tour ride that commit. Then three brothers
+→ Welsh → Godred → Manzikert. Standing owed items unchanged: decision 3's
 full-conversion call, the Wendish/Holstein territorial seam, ZAN's
 shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
 renames; the grand-test OWED list rides the 2026-08-03 block below.
