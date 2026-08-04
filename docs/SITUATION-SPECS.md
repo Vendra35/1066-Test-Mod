@@ -1,11 +1,13 @@
-> **STATUS (2026-08-04): UNIMPLEMENTED — the situations phase is OPEN
-> and its opening craft sweep is DONE (HANDOFF item 45): read
-> `SITUATION-CRAFT.md` (the HOW — twelve laws, trap list, adopted
-> techniques) beside this file (the WHAT); six raw agent reports in
-> `docs/research/2026-08-04/`. Build order confirmed 2026-08-04: the
-> priority table below stands — cheap five first, Manzikert flagship
-> after; Manzikert's architecture is two-layer (short dramatic
-> situation + long conversion layer, POP-PHASE-PACKAGE §C.3).**
+> **STATUS (2026-08-04 END OF DAY): THE BUILD IS RUNNING — specs 4
+> (khutba wars) and 5 (three brothers) are ARMED in the repo (HANDOFF
+> items 50-51, each carrying an open PROBE: runtime add_reform /
+> the declaration lock), NC v2 increments 1-3 are landed (items
+> 46-48; spec 8's 1067-72 extension deferred to phase-end polish),
+> and Manzikert's design is CLOSED (the spec-1 DESIGN ADDENDUM
+> below, decisions D1-D6). Craft bank: `SITUATION-CRAFT.md` (the HOW
+> — twelve laws, trap list; read it FIRST), six raw reports in
+> `docs/research/2026-08-04/`. NEXT: spec 9 (Welsh) → spec 10
+> (Godred — the runtime-cast probe) → the spec-1 flagship.**
 > Three cautions before building from this:
 > (1) **its Pecheneg route cites the DEAD SKE law** (AUDIT-2026-07-31
 > §4.1 killed it — a tag needs BOTH a registry identity block AND a
