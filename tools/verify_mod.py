@@ -511,6 +511,40 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
 # Armed at 5: norman_conquest.txt carries 5 top-level fields.
 check("situation fields exist in vanilla's field set", count, probs, min_count=5)
 
+# The situation ALERT rides a THREE-part hint contract (craft sweep
+# 2026-08-04, SITUATION-CRAFT law #9, all three legs vanilla-verified):
+# hint_tag in the def + a scriptable_hints object + the <tag>/<tag>_hint_text
+# loc pair. Any missing leg is SILENT — vanilla ships it 22/22, and four
+# reference/workshop mods shipped dangling hint_tags. Objects and loc may
+# resolve from vanilla too (a REPLACE'd vanilla situation keeps its hint).
+# File-scoped by our one-situation-per-file convention.
+_hint_objs = set()
+for _p in glob.glob(MOD + "/in_game/common/scriptable_hints/*.txt") + \
+          glob.glob(VAN + "/in_game/common/scriptable_hints/*.txt"):
+    _hint_objs |= set(re.findall(r"^([a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{",
+                                 strip_comments(read(_np(_p))), re.M))
+_van_hint_loc = set(re.findall(r"^[ \t]+([A-Za-z0-9_.]+):",
+                               read(_np(VAN + "/main_menu/localization/english/hints_l_english.yml")), re.M))
+probs, count = [], 0
+for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
+    _s = strip_comments(read(_np(_p)))
+    _sitkeys = re.findall(r"^([a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{", _s, re.M)
+    _tags = re.findall(r"^\thint_tag[ \t]*=[ \t]*([a-z_0-9]+)", _s, re.M)
+    for _k in _sitkeys:
+        count += 1
+        if not _tags:
+            probs.append(f"{os.path.basename(_p)}: situation '{_k}' has no hint_tag — no alert, silently")
+    for _t in _tags:
+        count += 1
+        if _t not in _hint_objs:
+            probs.append(f"{os.path.basename(_p)}: hint_tag {_t} resolves to no scriptable_hints object")
+        for _want in (_t, _t + "_hint_text"):
+            count += 1
+            if _want not in keys and _want not in _van_hint_loc:
+                probs.append(f"hint loc key {_want} is not defined")
+# Armed at 4: one situation + its tag + the two loc keys.
+check("situation hint contract complete (tag, object, loc)", count, probs, min_count=4)
+
 # Every event id we REFERENCE in a namespace we DECLARE must be DEFINED by us.
 # Both reference shapes are scanned — the plain `trigger_event_x = ns.1` and
 # the delayed block `{ id = ns.1 days = N }`. The block form is the exact

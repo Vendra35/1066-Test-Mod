@@ -15,6 +15,9 @@
 
 norman_conquest = {
 	monthly_spawn_chance = 1
+	# The alert rides the hint contract (SITUATION-CRAFT law #9): this tag +
+	# the zz_1066_hints.txt object + the hint loc family, all three or nothing.
+	hint_tag = hint_norman_conquest
 
 	can_start = {
 		current_date >= 1066.9.15

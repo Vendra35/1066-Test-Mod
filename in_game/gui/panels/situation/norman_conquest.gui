@@ -63,12 +63,18 @@ situation_panel = {
 					textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
 				}
 			}
-			# No hint blockoverrides: this situation has no scriptable
-			# hint, and blanking visible_hint would SHOW the hint button
-			# (template default is visible = no, cards.gui:2537-2539)
-			# while blanking onaction_hint killed its action — a visible
-			# dead button (AUDIT D5). Leaving both alone is the shape 8
-			# vanilla cards use; CARD 1 above already does the same.
+			# The hint pair — rise_of_the_ottomans.gui:67-73's exact shape.
+			# The situation now SHIPS its scriptable hint (craft sweep
+			# 2026-08-04, SITUATION-CRAFT law #9), so visible_hint {} blanks
+			# the template's visible = no and the button opens the hints view.
+			# CARD 1 stays hint-less like vanilla's own secondary cards.
+			blockoverride "visible_hint" {}
+			blockoverride "onaction_hint" {
+				action_tooltip = {
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_norman_conquest')]"
+				}
+			}
 			blockoverride "bottom_content_onclick" {
 				visible = "[LateralView.Vars.Exists( 'nc_req_toggled' )]"
 			}

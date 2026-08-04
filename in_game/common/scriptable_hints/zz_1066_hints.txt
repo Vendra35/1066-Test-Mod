@@ -1,0 +1,16 @@
+﻿# The Norman Conquest's scriptable hint — the third leg of the hint
+# contract (SITUATION-CRAFT law #9: hint_tag + this object + the loc
+# family; any missing part = no alert, silently). Shape is vanilla's
+# own hint_hundred_years_war, scripted_hints.txt:721-729, verbatim
+# with only the key changed. Additive file: a NEW filename merges
+# key-by-key into the database.
+
+hint_norman_conquest = {
+	priority = {
+		can_see_situation = situation:norman_conquest
+	}
+	hide = {
+		NOT = { is_situation_active = situation:norman_conquest }
+	}
+	sort_priority = 200 #React now!
+}
