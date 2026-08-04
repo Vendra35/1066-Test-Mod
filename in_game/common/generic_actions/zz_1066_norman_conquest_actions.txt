@@ -1,0 +1,67 @@
+﻿# The situations phase's FIRST generic action (NC v2 increment 2).
+# Binding shape is vanilla's universal situation-action form
+# (generic_actions/black_death.txt:1-39): select_trigger with
+# looking_for_a = situation, target_flag = recipient, gated on
+# situation:<key> = this + situation_is_active. Cooldown shape:
+# generic_actions/hundred_years_war.txt:34-37 (months per
+# generic_actions/readme.txt:71). ai_prerequisite: culture.txt:94-98.
+# Price: our zz_1066_prices.txt. The panel lists this button
+# automatically (SITUATION-CRAFT law #7) - zero GUI work.
+
+nc_muster_the_fyrd = {
+	type = situation
+
+	ai_tick = daily
+	ai_tick_frequency = 40
+	automation_tick = never
+
+	ai_prerequisite = {
+		at_war = yes
+	}
+
+	potential = {
+		scope:actor ?= {
+			tag = ENG
+			NOT = { has_country_modifier = nc_fyrd_mustered }
+		}
+	}
+
+	price = price:nc_muster_the_fyrd_price
+
+	select_trigger = {
+		looking_for_a = situation
+		target_flag = recipient
+		name = "choose_situation"
+		column = { data = name }
+		visible = {
+			situation:norman_conquest = this
+			situation_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor ?= {
+			add_country_modifier = {
+				modifier = nc_fyrd_mustered
+				months = 2
+				mode = add_and_extend
+			}
+		}
+	}
+
+	cooldown = {
+		type = nc_muster_the_fyrd
+		months = 6
+	}
+
+	ai_will_do = {
+		add = {
+			desc = "the crown is contested"
+			value = 50
+		}
+		subtract = {
+			desc = "bias against doing stuff"
+			value = 1
+		}
+	}
+}

@@ -38,3 +38,15 @@ the_norman_yoke = {
 	}
 	stability_investment = -0.1
 }
+
+# The fyrd called out: every shire's levy raised and fed at the crown's
+# cost. This tag pair inside one country static is vanilla's own —
+# country.txt:1946-1947 carries land_morale_modifier = 0.1 beside
+# peasants_estate_levy_size = 0.25 in the same block.
+nc_fyrd_mustered = {
+	game_data = {
+		category = country
+	}
+	land_morale_modifier = 0.05
+	peasants_estate_levy_size = 0.15
+}

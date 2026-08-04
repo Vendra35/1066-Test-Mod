@@ -545,6 +545,43 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
 # Armed at 4: one situation + its tag + the two loc keys.
 check("situation hint contract complete (tag, object, loc)", count, probs, min_count=4)
 
+# The ACTION contract: every generic action we ship must carry its
+# name/desc loc pair (generic_actions/readme.txt:3 — "strings for the
+# name (tag is the <action_tag>) and description (tag is
+# <action_tag>_desc)"), every price:X it references must resolve to a
+# price entry (ours or vanilla's), and every situation:X = this binding
+# must name a situation that exists (ours or vanilla's). All three fail
+# SILENTLY in game — a broken price or binding is a button that never
+# appears.
+_price_keys = set()
+for _p in glob.glob(MOD + "/in_game/common/prices/*.txt") + \
+          glob.glob(VAN + "/in_game/common/prices/*.txt"):
+    _price_keys |= set(re.findall(r"^([a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{",
+                                  strip_comments(read(_np(_p))), re.M))
+_all_sit_keys = set()
+for _p in glob.glob(VAN + "/in_game/common/situations/*.txt") + \
+          glob.glob(MOD + "/in_game/common/situations/*.txt"):
+    _all_sit_keys |= set(re.findall(r"^([a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{",
+                                    strip_comments(read(_np(_p))), re.M))
+probs, count = [], 0
+for _p in glob.glob(MOD + "/in_game/common/generic_actions/*.txt"):
+    _s = strip_comments(read(_np(_p)))
+    for _a in re.findall(r"^([a-z_0-9]+)[ \t]*=[ \t]*" + BS + "{", _s, re.M):
+        count += 1
+        for _want in (_a, _a + "_desc"):
+            if _want not in keys:
+                probs.append(f"action loc key {_want} is not defined")
+    for _pk in re.findall(r"price[ \t]*=[ \t]*price:([a-z_0-9]+)", _s):
+        count += 1
+        if _pk not in _price_keys:
+            probs.append(f"{os.path.basename(_p)}: price:{_pk} resolves to no price entry")
+    for _sk in re.findall(r"situation:([a-z_0-9]+)[ \t]*=[ \t]*this", _s):
+        count += 1
+        if _sk not in _all_sit_keys:
+            probs.append(f"{os.path.basename(_p)}: situation:{_sk} does not exist")
+# Armed at 3: one action + its price ref + its situation binding.
+check("situation action contract (loc, price, situation)", count, probs, min_count=3)
+
 # Every event id we REFERENCE in a namespace we DECLARE must be DEFINED by us.
 # Both reference shapes are scanned — the plain `trigger_event_x = ns.1` and
 # the delayed block `{ id = ns.1 days = N }`. The block form is the exact

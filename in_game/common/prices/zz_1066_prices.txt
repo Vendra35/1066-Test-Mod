@@ -1,0 +1,8 @@
+﻿# NC v2 prices. Values calibrated against vanilla's situation-action
+# band (rot_select_core_region_price scaled_gold = 4.0,
+# prices/00_hardcoded.txt:1013; hide_from_black_death stability = 10,
+# :698-700). File shape is MR_prices.txt, proven in game in our hands.
+
+nc_muster_the_fyrd_price = {
+	scaled_gold = 2.0
+}
