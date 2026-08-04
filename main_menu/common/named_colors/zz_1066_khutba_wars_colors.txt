@@ -1,0 +1,5 @@
+﻿colors = {
+	map_FAT = rgb { 240 240 230 }
+	map_ABS = rgb { 45 45 45 }
+	map_MEC = rgb { 212 175 55 }
+}

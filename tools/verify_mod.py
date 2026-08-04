@@ -508,8 +508,8 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
         count += 1
         if _f not in _van_sit:
             probs.append(f"{os.path.basename(_p)}: field '{_f}' appears in no vanilla situation")
-# Armed at 5: norman_conquest.txt carries 5 top-level fields.
-check("situation fields exist in vanilla's field set", count, probs, min_count=5)
+# Armed at 19: norman_conquest (7 with hint_tag) + khutba_wars (item 49).
+check("situation fields exist in vanilla's field set", count, probs, min_count=19)
 
 # The situation ALERT rides a THREE-part hint contract (craft sweep
 # 2026-08-04, SITUATION-CRAFT law #9, all three legs vanilla-verified):
@@ -542,8 +542,8 @@ for _p in glob.glob(MOD + "/in_game/common/situations/*.txt"):
             count += 1
             if _want not in keys and _want not in _van_hint_loc:
                 probs.append(f"hint loc key {_want} is not defined")
-# Armed at 4: one situation + its tag + the two loc keys.
-check("situation hint contract complete (tag, object, loc)", count, probs, min_count=4)
+# Armed at 8: two situations (NC + khutba, item 49) x (key+tag+2 loc).
+check("situation hint contract complete (tag, object, loc)", count, probs, min_count=8)
 
 # The ACTION contract: every generic action we ship must carry its
 # name/desc loc pair (generic_actions/readme.txt:3 — "strings for the

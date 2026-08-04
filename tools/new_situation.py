@@ -47,6 +47,23 @@ SPECS = {
     #     "sides": {"BYZ": None, "SEL": None},
     #     "events": [(1, "the intro, to both courts")],
     # },
+    "khutba_wars": {   # spec 4 — generated 2026-08-04 (HANDOFF item 49)
+        "title": "The Khutba Wars",
+        "desc": "In the mosques of the holy cities, sovereignty is a sentence: the name of the caliph for whom the Friday prayer is read. Mecca's khutba is for sale, and two caliphates are bidding.",
+        "info": "The contest for the allegiance of the holy cities, 1069-1077, fought in Friday prayers between [GetCountry('FAT').GetName] and [GetCountry('ABS').GetName].",
+        # The war of the banners: Fatimid WHITE vs Abbasid BLACK (the
+        # dynasties' actual banner colours), Mecca gold between them.
+        "sides": {"FAT": "rgb { 240 240 230 }", "ABS": "rgb { 45 45 45 }",
+                  "MEC": "rgb { 212 175 55 }"},
+        "events": [(1, "the intro - the pressure on the Sharif"),
+                   (10, "the Friday the name changed"),
+                   (11, "gold for a sentence - the Fatimid counter"),
+                   (20, "Medina follows Mecca"),
+                   (30, "the patron's letter, to Yemen"),
+                   (40, "the reversal"),
+                   (50, "the permanent switch"),
+                   (90, "the closing - the age of the black banners")],
+    },
     "demo": {   # --out testing only; never generate into the repo
         "title": "Scaffold Demo",
         "desc": "Scaffold demo description on one line.",
@@ -74,6 +91,9 @@ SITUATION_TPL = """# {title} — SCAFFOLD. The situation owns its own lifecycle
 
 {key} = {{
 	monthly_spawn_chance = 1
+	# The alert rides the hint contract (SITUATION-CRAFT law #9): this
+	# tag + the zz_1066_{key}_hints.txt object + the hint loc family.
+	hint_tag = hint_{key}
 
 	can_start = {{
 		always = no
@@ -154,7 +174,10 @@ GUI_TPL = """situation_panel = {{
 					max_width = 460
 					autoresize = yes
 					text = "{key}_desc"
-					using = fontsize_medium
+					# Font_Size_Medium: fontsize_medium has ZERO vanilla
+					# uses (AUDIT D4) — the template shipped the dead value
+					# once and the .gui reference check caught it.
+					using = Font_Size_Medium
 				}}
 			}}
 			blockoverride "bottom_content_onclick" {{
@@ -184,7 +207,12 @@ GUI_TPL = """situation_panel = {{
 				}}
 			}}
 			blockoverride "visible_hint" {{}}
-			blockoverride "onaction_hint" {{}}
+			blockoverride "onaction_hint" {{
+				action_tooltip = {{
+					title = "OPEN_HINT"
+					on_action = "[OpenLateralViewWithParams('hints', 'selected_hint = hint_{key}')]"
+				}}
+			}}
 			blockoverride "bottom_content_onclick" {{
 				visible = "[LateralView.Vars.Exists( '{k}_req_toggled' )]"
 			}}
@@ -248,7 +276,12 @@ def generate(key, out):
     loc = ["﻿l_english:",
            f' {key}: "{title}"',
            f' {key}_desc: "{desc}"',
-           f' {key}_info: "{info}"']
+           f' {key}_info: "{info}"',
+           # The hint loc family (SITUATION-CRAFT law #9); shapes are
+           # vanilla's own hints_l_english.yml:593-597.
+           f' hint_{key}: "[GetSituationByKey(\'{key}\').GetNameWithNoTooltip]"',
+           f' hint_{key}_hint_text: "$hint_{key}_hint_text_1$"',
+           f' hint_{key}_hint_text_1: "TODO — what this situation is"']
     for n, c in events:
         loc += [f' {key}.{n}.title: "TODO — {c}"',
                 f' {key}.{n}.desc: "TODO"',
@@ -257,6 +290,22 @@ def generate(key, out):
         os.path.join(out, "main_menu", "localization", "english",
                      f"1066_{key}_l_english.yml"),
         "\n".join(loc) + "\n", bom=False))   # BOM is in the ﻿ literal
+
+    # The scriptable hint object — the hint contract's third leg; shape
+    # is vanilla's hint_hundred_years_war (scripted_hints.txt:721-729).
+    hint_body = (f"hint_{key} = {{\n"
+                 f"\tpriority = {{\n"
+                 f"\t\tcan_see_situation = situation:{key}\n"
+                 f"\t}}\n"
+                 f"\thide = {{\n"
+                 f"\t\tNOT = {{ is_situation_active = situation:{key} }}\n"
+                 f"\t}}\n"
+                 f"\tsort_priority = 200 #React now!\n"
+                 f"}}\n")
+    written.append(_write(
+        os.path.join(out, "in_game", "common", "scriptable_hints",
+                     f"zz_1066_{key}_hints.txt"),
+        hint_body, bom=True))
 
     new_colors = {t: v for t, v in spec["sides"].items() if v}
     if new_colors:

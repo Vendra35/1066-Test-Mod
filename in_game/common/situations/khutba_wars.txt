@@ -1,0 +1,64 @@
+﻿# The Khutba Wars — SCAFFOLD. The situation owns its own lifecycle
+# (can_start opens, on_start schedules, can_end closes — the on_action
+# route did nothing in game; KNOWLEDGE.md). Observed: situations spawn
+# on the FIRST MONTHLY TICK after can_start passes, not on the day
+# itself — anchor day offsets to that tick and recalibrate in game.
+#
+# AUTHOR CHECKLIST (every item cost a Norman round):
+# - RAILROAD beats carry NO event-level trigger (guards go INSIDE
+#   options as if/limit); FLAVOR events MAY carry one — the resolved
+#   trigger law, docs/EVENT-SYSTEM.md 4.3
+# - wars that must exist in the opening weeks are SHIPPED in 16_wars,
+#   never declared from script (the round-5 lesson)
+# - CBs are granted in on_start, BEFORE any legality check
+# - prev is ONE scope hop; two hops down use save_scope_as
+# - every c:TAG link is ?=-guarded
+
+khutba_wars = {
+	monthly_spawn_chance = 1
+	# The alert rides the hint contract (SITUATION-CRAFT law #9).
+	hint_tag = hint_khutba_wars
+
+	can_start = {
+		always = no
+		# AUTHOR GATE — replace with the real gate, e.g.:
+		# current_date >= 1066.9.15
+		# country_exists = c:XXX
+	}
+
+	on_start = {
+		# the intro - the pressure on the Sharif
+		trigger_event_non_silently = { id = khutba_wars.1 }
+		# the Friday the name changed
+		trigger_event_non_silently = { id = khutba_wars.10 }
+		# gold for a sentence - the Fatimid counter
+		trigger_event_non_silently = { id = khutba_wars.11 }
+		# Medina follows Mecca
+		trigger_event_non_silently = { id = khutba_wars.20 }
+		# the patron's letter, to Yemen
+		trigger_event_non_silently = { id = khutba_wars.30 }
+		# the reversal
+		trigger_event_non_silently = { id = khutba_wars.40 }
+		# the permanent switch
+		trigger_event_non_silently = { id = khutba_wars.50 }
+		# the closing - the age of the black banners
+		trigger_event_non_silently = { id = khutba_wars.90 }
+	}
+
+	can_end = {
+		always = no
+		# AUTHOR GATE — the real end conditions render in the panel's
+		# END_REQUIREMENTS card.
+	}
+
+	on_monthly = {
+	}
+
+	on_ended = {
+	}
+
+	# map_color / legend_key / secondary_map_color: clone the exact
+	# shapes from in_game/common/situations/norman_conquest.txt (proven
+	# in game) once the sides are final. Named colors for the sides are
+	# in main_menu/common/named_colors/zz_1066_khutba_wars_colors.txt.
+}
