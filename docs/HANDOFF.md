@@ -2421,6 +2421,46 @@ S-Germany/Italy all match the landed designs).
    4. Regresyon: panelin iki kartı, harita modu, legend değişmemiş;
       error.log'da hint/loc sınıfı yeni satır yok.
 
+47. **NC v2 INCREMENT 2 — THE FIRST SITUATION ACTION (LANDED
+   2026-08-04, needs game test).** `nc_muster_the_fyrd`, the repo's
+   first generic action: ENG calls out the shire levies while the
+   conquest runs. Three pieces, every shape vanilla- or MR-attested:
+   the ACTION (`in_game/common/generic_actions/
+   zz_1066_norman_conquest_actions.txt`, BOM'd like vanilla's —
+   byte-probed; binding = `black_death.txt:1-39`'s universal
+   situation form verbatim, cooldown = `hundred_years_war.txt:34-37`
+   with `months` per `readme.txt:71`, `ai_prerequisite` =
+   `culture.txt:94-98`'s shape); the PRICE
+   (`in_game/common/prices/zz_1066_prices.txt`, `scaled_gold = 2.0`,
+   calibrated against `rot_select_core_region_price` 4.0 at
+   `00_hardcoded.txt:1013`; file shape = MR_prices.txt, proven in
+   game in our hands); the MODIFIER (`nc_fyrd_mustered`,
+   `land_morale_modifier = 0.05` + `peasants_estate_levy_size =
+   0.15` — the pair in ONE country static is vanilla's own,
+   `country.txt:1946-1947`; 2 months `add_and_extend`, `months`
+   attested `fall_of_delhi.txt:753-756`). Loc: 8 rows — name/desc
+   (readme:3's demanded pair), STATIC_MODIFIER pair, and the
+   PERFORM message family (`messages_l_english.yml:2122-2125`'s
+   exact four-key shape). The panel lists the button AUTOMATICALLY
+   (CRAFT law #7) — zero GUI work, the law's first in-repo test.
+   HARNESS: new check **"situation action contract (loc, price,
+   situation)"** armed `min_count=3`, proven by breaking (bogus
+   price ref → FAIL, restored → green); the modifier-tags check
+   grew 4 → 6, both new tags resolving in engine docs.
+   TIK TURU (bankalı, ~2 dk):
+   1. **ENG olarak situation panelini aç** → aksiyon listesinde
+      "Muster the Fyrd" butonu GÖRÜNÜR — otomatik listeleme, GUI
+      işi sıfırdı (yasa #7'nin oyun-içi kanıtı).
+   2. **Bas** → fiyat scaled_gold gösterilir; onayla → "The Fyrd
+      Mustered" modifier'ı 2 AY; tooltip morale +%5, köylü levy
+      +%15.
+   3. **Cooldown:** 6 ay yeniden basılamaz; modifier düşünce
+      potential yeniden açılır (modifier varken buton gizli).
+   4. **AI tarafı:** NRM/NOR oynarken ENG AI savaşta kendi basıyor
+      mu — "England has called out the fyrd!" mesajı.
+   5. Regresyon: NOR/NRM'de buton YOK (tag kapısı); iki kart,
+      harita modu, legend yerinde.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
 FIRST; the 2026-08-03 block below is now HISTORICAL too):**
 
@@ -2434,10 +2474,11 @@ DESIGN ADDENDUM in SITUATION-SPECS.md** (two layers; game-start
 ambient phase 0; float phase + 0-100 collapse meter; Layer B its own
 is_data_map situation configured-then-activated from A's on_ended;
 scaled_gold pricing; Rum = NIC). **BUILD is underway in SPECS
-priority order: NC v2 increment 1 — the hint triple — LANDED (item
-46, click tour banked there).** NEXT: NC v2's remaining scope (1-2
-situation actions — the panel lists them free; a DHE flavour layer;
-the phase variable; panel richness; spec 8's beats and cast with the
+priority order: NC v2 increments 1-2 LANDED — the hint triple (item
+46) and the first situation action, `nc_muster_the_fyrd` (item 47),
+click tours banked in both.** NEXT: NC v2's remaining scope (the DHE
+flavour layer — the first DHE teaches the checker its syntax; the
+phase variable; panel richness; spec 8's beats and cast with the
 Henry-I bug fix), then khutba → three brothers → Welsh → Godred →
 the Manzikert flagship. Standing owed items unchanged: decision 3's
 full-conversion call, the Wendish/Holstein territorial seam, ZAN's
