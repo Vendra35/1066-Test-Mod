@@ -2677,7 +2677,14 @@ same-day = the round-5 lock was game-start-only and specs
 universal and opening wars stay 16_wars-shipped).
 
 **NEXT BUILD, in order:** the Welsh wars (spec 9, S — pure event
-chain, five thrones seated, item 21 done) → Godred Crovan (spec 10,
+chain, five thrones seated, item 21 done; **GROUND VERIFIED AND
+BANKED 2026-08-04 second sitting: `docs/research/2026-08-04/welsh-wars-ground.md`
+carries every cite, the four-character cast and the decided BUILD
+PLAN — start THERE and write, re-derive nothing. Headlines: all five
+Welsh map_ keys are VANILLA'S (named_colors/02_map.txt:61-66, reuse);
+set_new_ruler cross-court precedent = HYW's eng_robert_iii_artois on
+ARS (:805); characters are generated — the four new actors go into
+build_setup.py's blob at :4988/:4990, then rerun**) → Godred Crovan (spec 10,
 S — **the RUNTIME-CAST probe**: `create_character` +
 `found_dynasty`, the Rise-of-Timur route; Malik-Shah, Gregory VII
 and Bohemond all depend on it) → **THE MANZIKERT FLAGSHIP** (design
