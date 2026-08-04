@@ -2348,8 +2348,68 @@ S-Germany/Italy all match the landed designs).
    re-derive before use; Anatolia's Turkification-over-time is now
    route (d)'s canonical job).**
 
-**NEXT SESSION STARTS WITH (updated 2026-08-03, end of day — READ THIS
-BLOCK FIRST; the 2026-08-02 block below is now HISTORICAL too):**
+45. **THE SITUATIONS PHASE OPENS — THE CRAFT SWEEP (DONE 2026-08-04,
+   docs-only, NO game test owed).** Six Opus research agents swept the
+   whole situation corpus end to end — vanilla (22 situations/9,171
+   lines + 473 events/34,297 lines + 155 situation actions + 23 GUI
+   panels + loc), Anno 1644, Rise of Timur, Bronze Era, Basileia,
+   National Destinies, six workshop mods. Raw reports banked in
+   `docs/research/2026-08-04/` (six files); the main-session
+   distillation is **`docs/SITUATION-CRAFT.md`** — twelve craft laws,
+   a forbidden/trap list, adopted techniques. Seven load-bearing
+   claims re-verified by hand the same day (✓MS ledger in the file),
+   headline: **the seeding law** (NO vanilla situation starts active;
+   22_situations is dead even in vanilla — one live EMPTY entry;
+   day-one = already-true `can_start` + `monthly_spawn_chance_unique`
+   — our first-monthly-tick law from the other side); **the hint
+   three-part contract** (hint_tag 22/22 + scriptable_hints object +
+   strict loc family; the situation ALERT rides it; our Norman
+   Conquest ships NONE — v2 debt); **`end_reason` is NOT REAL** (0
+   vanilla uses; National Destinies built both its endings on it);
+   five hand-rolled phase idioms (the engine has no phase concept);
+   tempo concentrates on 1-2 protagonists; action price currency =
+   the theme; DHE is flavour's backbone (3,182 game-wide, and a NEW
+   reachability blind spot: events fired only by their own DHE block
+   look dead to call-site scanners). SPECS corrected in the same pass
+   (banner + §0.3: situation actions live in `generic_actions/`;
+   `rise_of_timur` the situation is VANILLA's — the mod layers around
+   it; Manzikert has nothing to ride). **DECISIONS TAKEN (user
+   "onay", 2026-08-04):** (1) reports banked as above; (2) SPECS
+   maintenance landed; (3) build order = SPECS priority table (cheap
+   five first: NC v2 → khutba → three brothers → Welsh wars → Godred;
+   Manzikert flagship after the tools are taught); (4) new harness
+   checks (hint triple, on_action single-effect, DHE-aware
+   reachability) land WITH the first situation commit (NC v2);
+   (5) **Manzikert architecture is TWO-LAYER** — a short dramatic
+   situation (1067-1081, driving vanilla's live
+   `byzantine_succession_crisis` disaster) + the long quiet
+   Turkification layer (route (d), the `local_pop_conversion_speed`
+   family, POP-PHASE-PACKAGE §C.3). The Manzikert design conversation
+   is OPEN as of this session.
+
+**NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
+FIRST; the 2026-08-03 block below is now HISTORICAL too):**
+
+THE SITUATIONS PHASE IS OPEN AND ITS CRAFT SWEEP IS BANKED (item 45:
+`docs/SITUATION-CRAFT.md` = the HOW, `docs/SITUATION-SPECS.md` = the
+WHAT, raw reports in `docs/research/2026-08-04/`; the five craft-sweep
+decisions are recorded in the item). **NEXT MOVE: finish the MANZIKERT
+DESIGN CONVERSATION with the user** — the two-layer architecture is
+approved (short dramatic situation 1067-1081 driving vanilla's
+`byzantine_succession_crisis` + the long `local_pop_conversion` layer);
+open sub-questions on the table: phase idiom (from CRAFT law #3's
+five), action price currency (law #7 — the theme is the currency),
+BYZ+SEL protagonist tempo (law #5), the beylik release staging, and
+where the two layers hand over. **THEN BUILD in SPECS priority order —
+NC v2 first** (concrete scope: hint triple, 1-2 actions, DHE flavour
+layer, phase variable, panel richness; the new harness checks ride
+that commit). Standing owed items unchanged: decision 3's
+full-conversion call, the Wendish/Holstein territorial seam, ZAN's
+shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
+renames; the grand-test OWED list rides the 2026-08-03 block below.
+
+**(HISTORICAL) NEXT SESSION STARTS WITH (updated 2026-08-03, end of
+day; the 2026-08-02 block below is HISTORICAL too):**
 
 THE MAP PHASE AND THE POP PHASE ARE BOTH COMPLETE AND CONFIRMED IN
 GAME (items 1-44; the pop phase closed 2026-08-03 in one five-launch

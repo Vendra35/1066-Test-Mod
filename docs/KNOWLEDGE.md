@@ -2291,6 +2291,44 @@ the sibling convention before shipping any invented database entry's
 loc (cultures measured fine with one row — mozarabic; religions need
 three; other databases: check first).
 
+### The situation craft sweep — twelve laws banked (2026-08-04)
+**Established:** six Opus agent reports (raw in
+`docs/research/2026-08-04/`) over vanilla's full situation corpus
+(22 situations/9,171 lines + 473 events/34,297 lines + 155 actions +
+23 panels), five reference mods and six workshop mods; seven
+load-bearing claims re-verified by the main session the same day
+(✓MS ledger in `docs/SITUATION-CRAFT.md`, the distillation).
+Headlines: (1) **NO vanilla situation starts active at 1337** —
+22_situations is dead even in vanilla (one live EMPTY entry ✓MS);
+day-one = already-true `can_start` + `monthly_spawn_chance_unique`
+(=1, value table `default_values.txt:1205-1212` ✓MS) — our
+"first monthly tick" law is this mechanism from the other side.
+(2) The engine has **no phase concept** — five hand-rolled idioms
+(CRAFT law #3). (3) **The hint is a three-part contract and the
+situation ALERT rides it** (hint_tag 22/22 ✓MS + scriptable_hints
+object ✓MS + strict loc family) — Norman Conquest ships none: v2
+debt. (4) **`end_reason` is NOT REAL** (0 vanilla situation uses
+✓MS) — a reference mod built both its endings on it. (5)
+`dynamic_historical_event` is flavour's backbone (3,182 game-wide,
+13 in situations ✓MS) and a NEW reachability blind spot: events
+fired only by their own DHE block look dead to call-site scanners —
+the third member of the two-validators-wrong family; teach the
+checker DHE before the first DHE lands. (6) Tempo concentrates on
+1-2 protagonists (HYW ~3.7 beats/yr for ENG/FRA ONLY); bystanders
+get map/panel/actions. (7) `on_action` `effect` is SINGLE-VALUE and
+`on_country_yearly_pulse` does not exist (both are a reference mod's
+live bugs). (8) SPECS' Timur cite was wrong and is corrected —
+situation actions live in `generic_actions/`
+(`generic_actions/rise_of_timur.txt:289` ✓MS); `rise_of_timur` the
+situation is VANILLA's, the mod only layers around it.
+**Means:** `SITUATION-CRAFT.md` is the phase's second primary input
+beside `SITUATION-SPECS.md`; the five craft-sweep decisions are in
+HANDOFF item 45; new harness checks (hint triple, on_action
+single-effect, DHE-aware reachability) land with the NC v2 commit;
+`add_country_modifier`'s parameter name (`modifier` per vanilla
+1919/0 vs script docs' `name`) is flagged UNVERIFIED for the next
+launch's log read.
+
 ## Template for new entries
 
 ```

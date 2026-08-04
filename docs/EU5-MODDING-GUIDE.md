@@ -664,3 +664,42 @@ reference-integrity harness structurally cannot see.
 - **Invented name keys are proven** (a name key is a loc key; language
   rows render free — 'Abbād, Bādīs screenshots). Each new key is still a
   deliberate act with a loc entry, never a substitute-guess.
+
+## Session 2026-08-04 — the situation craft sweep (full bank in SITUATION-CRAFT.md)
+
+- **No vanilla situation starts active at 1337; `22_situations.txt` is
+  dead** (one live entry, empty body). Day-one starts = an already-true
+  `can_start` + `monthly_spawn_chance_unique` (=1 → 100%/month). A
+  situation then spawns on the first monthly tick — plan offsets to it.
+- **The engine has no phase field.** Every phased situation hand-rolls
+  one of five idioms (float+progress bar / IO-hosted accumulators /
+  clamped tension + point-of-no-return / variable-vs-`_max` / monthly
+  top-N ranking). Pick per design; never invent a `phase =` key.
+- **`end_reason` is not a real situation field** — zero vanilla uses;
+  a published mod built its endings on it and shipped situations that
+  may never end. The readme + attested keys are the whole schema.
+- **A situation's alert rides a three-part hint contract**: `hint_tag`
+  in the def + a `scriptable_hints` object + the strict hint loc family
+  (`_hint_text_1..N` with `#T` headers). Any missing part = no alert,
+  no error. Most published mods get this wrong.
+- **`dynamic_historical_event` is the flavour backbone** (3,182 vanilla
+  uses): a self-scheduling date-window block, no on_monthly plumbing —
+  and a reachability blind spot: events fired only by their own DHE
+  block look orphaned to call-site scanners.
+- **Concentrate tempo on 1-2 protagonists** (HYW: ~3.7 beats/yr for
+  ENG/FRA, ONE event ever for everyone else); bystanders get map
+  colour, panel state and actions. Chains stay ≤3 hops; no situation
+  event is `hidden = yes` — hidden machinery is `hidden_effect` inside
+  popups plus the monthly tick.
+- **An action's price currency is the theme** (government_power for a
+  crown war, religious_influence for a schism, stability+honor for a
+  betrayal), and the panel lists actions automatically — an action
+  costs zero GUI work.
+- **`on_action` `effect` is single-value** — a second declaration is
+  silently eaten by whichever parses last; aggregate handlers behind
+  one attested pulse hook instead. And verify hook names: mods invent
+  nonexistent ones (`on_country_yearly_pulse`) with no error.
+- **`REPLACE:<key>` on a database entry is a FULL overwrite** — it
+  inherits the panel/art/hint/events of what it names but drops every
+  line not repeated (a published mod lost its map legend in 218
+  faithfully-copied lines).

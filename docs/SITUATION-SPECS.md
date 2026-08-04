@@ -1,14 +1,21 @@
-> **STATUS (2026-08-03): UNIMPLEMENTED — the situations phase is NOW
-> OPEN (both world phases closed and confirmed, items 1-44); this file
-> is its primary input, to be read AFTER the vanilla+reference-mod
-> craft sweep the next session opens with.** Two cautions before
-> building from this:
+> **STATUS (2026-08-04): UNIMPLEMENTED — the situations phase is OPEN
+> and its opening craft sweep is DONE (HANDOFF item 45): read
+> `SITUATION-CRAFT.md` (the HOW — twelve laws, trap list, adopted
+> techniques) beside this file (the WHAT); six raw agent reports in
+> `docs/research/2026-08-04/`. Build order confirmed 2026-08-04: the
+> priority table below stands — cheap five first, Manzikert flagship
+> after; Manzikert's architecture is two-layer (short dramatic
+> situation + long conversion layer, POP-PHASE-PACKAGE §C.3).**
+> Three cautions before building from this:
 > (1) **its Pecheneg route cites the DEAD SKE law** (AUDIT-2026-07-31
 > §4.1 killed it — a tag needs BOTH a registry identity block AND a
 > claims-backed landless start block; re-derive that spec before use);
 > (2) the world under it has changed — 41 items landed since it was
-> written; re-verify every tag/holding claim against the build. New
-> banked situation material since: the Second Diffusion (TIBET §H —
+> written; re-verify every tag/holding claim against the build;
+> (3) **one citation in §0.3 was wrong and is corrected there** —
+> situation actions live in `generic_actions/`, and `rise_of_timur`
+> the situation is VANILLA's (the Timur mod only layers around it).
+> New banked situation material since: the Second Diffusion (TIBET §H —
 > re-create the Sakya 1073/Jonang 1120 sect instances on schedule), the
 > 1025 Chola-Srivijaya raid (SEA §H), Novgorod's Yugra tribute c. 1096
 > (PERM-VYATKA §H), a Vinland/Markland thread (AMERICAS §0.8/§H), and
@@ -131,7 +138,10 @@ ai_tick / effect / ai_will_do / cooldown / show_in_gui_list`
 (`generic_actions/readme.txt:8-76`), and a per-select_trigger
 `map_mode`/`map_color` that recolours the map during target selection
 (`:56-59`). Our own Mongol Resurgence ships one (`MR_actions.txt:33`,
-modelled on `rise_of_timur.txt:288-385`) — proven in our hands, just
+modelled on `generic_actions/rise_of_timur.txt:289` — CORRECTED
+2026-08-04: the original cite `rise_of_timur.txt:288-385` pointed at
+the SITUATION file, whose :288-385 is its tooltip/map_color tail;
+actions live in `generic_actions/`) — proven in our hands, just
 not in this repo.
 
 ### 0.4 Factions = International Organizations
