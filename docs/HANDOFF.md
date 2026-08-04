@@ -2420,6 +2420,20 @@ S-Germany/Italy all match the landed designs).
       situation bitince (1067 başı) KAYBOLUR (hide klozu).
    4. Regresyon: panelin iki kartı, harita modu, legend değişmemiş;
       error.log'da hint/loc sınıfı yeni satır yok.
+   **PARTIAL CONFIRM (2026-08-04, the user's quick England launch —
+   evidence `docs/test-evidence/2026-08-04/`):** tours 2-3 CONFIRMED
+   in game — the Hints tab lists "The Norman Conquest" with its
+   alert, all three text parts render (#T headers processed, @hint
+   bullets iconised, GetCountry names resolved); tour 1 effectively
+   confirmed (the hint is selected and rendered). Remaining: the
+   hide clause after 1067 (tour 3's second half) and error.log.
+   ALSO BANKED FROM THE SAME FRAME, WATCH class: at 1 Oct the NOR
+   war is LIVE but the NRM war is NOT, while 16_wars ships both —
+   round 6 + the grand tests closed GREEN with this machine and the
+   measured monthly retry re-lands NRM on 1 Nov; if a fuller run
+   shows Hastings (+13) and the coronation (+85) on schedule this is
+   the known-good state, else investigate the NRM 16_wars entry
+   first (INDEX has the full note).
 
 47. **NC v2 INCREMENT 2 — THE FIRST SITUATION ACTION (LANDED
    2026-08-04, needs game test).** `nc_muster_the_fyrd`, the repo's
@@ -2460,6 +2474,10 @@ S-Germany/Italy all match the landed designs).
       mu — "England has called out the fyrd!" mesajı.
    5. Regresyon: NOR/NRM'de buton YOK (tag kapısı); iki kart,
       harita modu, legend yerinde.
+   **PARTIAL CONFIRM (2026-08-04, same frame as item 46's):** tour 1
+   CONFIRMED — "Muster the Fyrd" sits under "Main Actions" on the
+   panel with ZERO GUI work: CRAFT law #7's auto-listing proven in
+   game. Tours 2-5 (price/modifier/cooldown/AI) remain.
 
 48. **NC v2 INCREMENT 3 — THE DHE FLAVOUR BAND (LANDED 2026-08-04,
    needs game test).** The repo's first `dynamic_historical_event`s:
