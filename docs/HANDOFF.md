@@ -2461,6 +2461,38 @@ S-Germany/Italy all match the landed designs).
    5. Regresyon: NOR/NRM'de buton YOK (tag kapısı); iki kart,
       harita modu, legend yerinde.
 
+48. **NC v2 INCREMENT 3 — THE DHE FLAVOUR BAND (LANDED 2026-08-04,
+   needs game test).** The repo's first `dynamic_historical_event`s:
+   four flavour events at `norman_conquest.100-103`, HYW's exact DHE
+   shape (`hundred_years_war.txt:452-457`) — the South Wind at
+   Saint-Valéry (NRM, Sep-Dec 1066), Four and Twenty Ships (NOR,
+   fires on Hardrada's death), the Wasting of the South (ENG, at war
+   with NRM), the Spoils at Fécamp (NRM, in union, 1067). Texture
+   not railroad: event-level triggers per the RESOLVED law — the
+   events file header STILL carried the dead round-2 hypothesis and
+   was corrected in this commit — magnitudes from vanilla's mild
+   band (`default_values.txt:15-33`), `historical_option` +
+   `ai_chance` 80/20 throughout. THE CRAFT POINT: .101/.103 fire
+   AFTER the situation closes — DHEs self-schedule on calendar
+   windows, independent of situation lifetime (the user's "NC is
+   short" concern is answered by design, item 48 discussion).
+   HARNESS: new check **"DHE blocks well-formed (tag, window,
+   chance)"** armed `min_count=4`, proven by breaking (inverted
+   window → FAIL, named file and dates); loc-resolve check grew
+   40 → 61 over the 16 new rows.
+   TIK TURU (bankalı, ~2 dk):
+   1. NRM: Eylül-Kasım 1066'da "The South Wind" düşer (tek sefer);
+      tarihî seçenek prestij verir.
+   2. NOR: Hardrada öldükten SONRA "Four and Twenty Ships" —
+      trigger'lı flavour'ın oyun-içi ilk sınavı (çözülmüş trigger
+      yasasının kanıt probu).
+   3. ENG: NRM savaşı sürerken "The Wasting of the South".
+   4. Union kurulduktan sonra 1067'de NRM'ye "The Spoils of
+      England" — situation KAPANDIKTAN sonra düşen DHE (bandın
+      situation-ömründen bağımsızlığının kanıtı).
+   5. Regresyon: .1-.90 makinesi aynı; error.log'da yeni event
+      sınıfı satır yok.
+
 **NEXT SESSION STARTS WITH (updated 2026-08-04 — READ THIS BLOCK
 FIRST; the 2026-08-03 block below is now HISTORICAL too):**
 
@@ -2474,13 +2506,19 @@ DESIGN ADDENDUM in SITUATION-SPECS.md** (two layers; game-start
 ambient phase 0; float phase + 0-100 collapse meter; Layer B its own
 is_data_map situation configured-then-activated from A's on_ended;
 scaled_gold pricing; Rum = NIC). **BUILD is underway in SPECS
-priority order: NC v2 increments 1-2 LANDED — the hint triple (item
-46) and the first situation action, `nc_muster_the_fyrd` (item 47),
-click tours banked in both.** NEXT: NC v2's remaining scope (the DHE
-flavour layer — the first DHE teaches the checker its syntax; the
-phase variable; panel richness; spec 8's beats and cast with the
-Henry-I bug fix), then khutba → three brothers → Welsh → Godred →
-the Manzikert flagship. Standing owed items unchanged: decision 3's
+priority order: NC v2 increments 1-3 LANDED — the hint triple (item
+46), the first situation action (item 47), the first DHE band (item
+48), click tours banked in all three; the three tool-teaching
+mechanisms the later situations need are now proven in-repo (static
+proof; game test rides the accumulated tour).** THE FORK (user
+question, 2026-08-04, "NC çok kısa sürüyor — o kadar eklemek
+mantıklı mı"): (a) STOP NC here — the tools are taught, the DHE
+band already outlives the short situation by design — defer spec
+8's 1067-1072 extension (Edgar/Harrying/Sweyn/Ely/Abernethy, the
+thing that would make NC LONG) and move to khutba → three brothers;
+or (b) build the extension now per the original order. Answer
+pending; either way the Manzikert flagship comes after the cheap
+five. Standing owed items unchanged: decision 3's
 full-conversion call, the Wendish/Holstein territorial seam, ZAN's
 shrink, the cosmetic dynasty pool, PLM/AGR registry culture, TRH/MNL
 renames; the grand-test OWED list rides the 2026-08-03 block below.
