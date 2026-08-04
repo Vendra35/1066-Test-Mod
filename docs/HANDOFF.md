@@ -2427,16 +2427,20 @@ S-Germany/Italy all match the landed designs).
    bullets iconised, GetCountry names resolved); tour 1 effectively
    confirmed (the hint is selected and rendered). Remaining: the
    hide clause after 1067 (tour 3's second half) and error.log.
-   ALSO FROM THE SAME FRAME — a WATCH raised and RESOLVED THE SAME
-   DAY by the user's own play: the NRM war ships LIVE at start
-   alongside NOR's, the engine PEACES it out after a while (the
-   no-engagement auto-peace class), the measured monthly retry
-   re-declares, **and the union still lands on schedule** ("ama
-   sonra unionı falan alıyor"). The 1-Oct not-at-war frame is the
-   KNOWN-GOOD state mid-cycle, not a defect. Behaviour now recorded:
-   a 16_wars pre-start war is a BRIDGE, not a guarantee — the
-   monthly retry is what makes the railroad hold, which is exactly
-   why it stays in the machine.
+   ALSO FROM THE SAME FRAME — a WATCH raised, resolved and then
+   SHARPENED the same day by the user's follow-up ("biz yaptık
+   onu"): TWO peaces, two authors. The user's observed
+   war→peace→union arc IS our script BY DESIGN — all five
+   `leave_all_wars_with` sites audited: Stamford +3 (Norway's war
+   dies with Hardrada), the post-Hastings submission +13
+   (AI-England) and the coronation/union +85 end wars deliberately,
+   while the two DECLARATION events are NOT-at-war-guarded and can
+   never end a live war (the round-5 guards). The 1-Oct frame's NRM
+   peace CANNOT be ours (nothing of the situation runs before its
+   1-Oct spawn; every peace site is days later) — that one is the
+   ENGINE white-peacing an engagementless war. Both are known-good:
+   the measured 1-Nov retry re-lands NRM and the rail holds.
+   Recorded: a 16_wars pre-start war is a BRIDGE, not a guarantee.
 
 47. **NC v2 INCREMENT 2 — THE FIRST SITUATION ACTION (LANDED
    2026-08-04, needs game test).** `nc_muster_the_fyrd`, the repo's
